@@ -1,5 +1,14 @@
 History:
 
+Version 1.6.6
+Added : Option Close to tray
+Added : Minimize on startup
+Added : Aut2exe directive added (#pragma directive)
+Changed : AutoItWrapper Directive removed
+
+Version 1.6.5
+Fix : Show/hide Tray Icon when Gui is visible or not
+
 Version 1.6.4
 Added : tray icon tooltip with load, charge and status
 Added : Start with Windows Option

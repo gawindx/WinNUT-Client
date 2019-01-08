@@ -1,16 +1,12 @@
-#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_icon=upsicon.ico
-#AutoIt3Wrapper_outfile=upsclient.exe
-#AutoIt3Wrapper_Compression=4
-#AutoIt3Wrapper_Res_Comment=Windows NUT Client
-#AutoIt3Wrapper_Res_Description=WinNutClient
-#AutoIt3Wrapper_Res_LegalCopyright=Freeware
-#AutoIt3Wrapper_Res_Fileversion=1.6.4
-#AutoIt3Wrapper_Res_Language=1033
-#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
-#AutoIt3Wrapper_Allow_Decompile=n
-#Region converted Directives from D:\winnut\winnut\upsclient.au3.ini
-#EndRegion converted Directives from D:\winnut\winnut\upsclient.au3.ini
+#pragma compile(FileVersion, 1.6.6.0)
+#pragma compile(Icon, .\images\upsicon.ico)
+#pragma compile(Out, .\Build\upsclient.exe)
+#pragma compile(Compression, 1)
+#pragma compile(Comments, 'Windows NUT Client')
+#pragma compile(FileDescription, Windows NUT Client. This is a NUT windows client for monitoring your ups hooked up to your favorite linux server.)
+#pragma compile(LegalCopyright, Freeware)
+#pragma compile(ProductName, WinNUT-Client)
+#pragma compile(Compatibility, win7, win8, win81, win10)
 ;
 #include <GUIConstants.au3>
 #include <Misc.au3>
@@ -24,6 +20,8 @@
 #include "nutGui.au3"
 #include "nutNetwork.au3"
 #Include "nutTreeView.au3"
+
+If UBound(ProcessList(@ScriptName)) > 2 Then Exit
 
 ;This function repaints all needles when required and passes on control
 ;to internal AUTOIT repaint handler
@@ -57,7 +55,7 @@ Func prefGui()
 		TraySetClick(0)
 	EndIf
 	$guipref = GUICreate("Preferences", 364, 331, 190, 113,-1,-1,$gui  )
-	GUISetIcon(@ScriptDir & "\images\upsicon.ico")
+	GUISetIcon(@tempdir & "upsicon.ico")
 	$Bcancel = GUICtrlCreateButton("Cancel", 286, 298, 75, 25, 0)
 	$Bapply = GUICtrlCreateButton("Apply", 206, 298, 75, 25, 0)
 	$Bok = GUICtrlCreateButton("OK", 126, 298, 75, 25, 0)
@@ -74,7 +72,6 @@ Func prefGui()
 	$Checkbox1 = GUICtrlCreateCheckbox("ACheckbox1", 334, 256, 17, 17,BitOr($BS_AUTOCHECKBOX,$WS_TABSTOP ),$WS_EX_STATICEDGE )
 	$Label9 = GUICtrlCreateLabel("Re-establish connection", 217, 256, 115, 17)
 
-;	GUICtrlCreateTabItem("")
 	$TabSheet2 = GUICtrlCreateTabItem("Colors")
 	GUICtrlCreateLabel("Panel background color", 16, 48, 131, 25)
 	GUICtrlCreateLabel("Analogue background color", 16, 106, 179, 25)
@@ -104,13 +101,38 @@ Func prefGui()
 	$TabSheet1 = GUICtrlCreateTabItem("Misc")
 	GUICtrlCreateLabel("Minimize to tray", 16, 42, 99, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
 	$chMinimizeTray = GUICtrlCreateCheckbox("MinimizeTray", 224, 39, 17, 17,BitOr($BS_AUTOCHECKBOX,$WS_TABSTOP ),$WS_EX_STATICEDGE)
+	$lblstartminimized = GUICtrlCreateLabel("Start Minimized", 16, 84, 99, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
+	$chstartminimized = GUICtrlCreateCheckbox("StartMinimized", 224, 81, 17, 17,BitOr($BS_AUTOCHECKBOX,$WS_TABSTOP ),$WS_EX_STATICEDGE)
+	$lblclosetotray = GUICtrlCreateLabel("Close to Tray", 16, 126, 99, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
+	$chclosetotray = GUICtrlCreateCheckbox("ClosetoTray", 224, 123, 17, 17,BitOr($BS_AUTOCHECKBOX,$WS_TABSTOP ),$WS_EX_STATICEDGE)
 	if GetOption("minimizetray") == 0 Then
-		GuiCtrlSetState($chMinimizeTray , $GUI_UNCHECKED)
+		GuiCtrlSetState($chMinimizeTray, $GUI_UNCHECKED)
+		GuiCtrlSetState($chstartminimized, $GUI_UNCHECKED)
+		GuiCtrlSetState($chclosetotray, $GUI_UNCHECKED)
+		GUICtrlSetState($lblstartminimized, $GUI_DISABLE)
+		GUICtrlSetState($chstartminimized, $GUI_DISABLE)
+		GUICtrlSetState($lblclosetotray, $GUI_DISABLE)
+		GUICtrlSetState($chclosetotray, $GUI_DISABLE)
 	Else
 		GuiCtrlSetState($chMinimizeTray , $GUI_CHECKED)
+		GUICtrlSetState($lblstartminimized,$GUI_ENABLE)
+		GUICtrlSetState($chstartminimized,$GUI_ENABLE)
+		GUICtrlSetState($lblclosetotray, $GUI_ENABLE)
+		GUICtrlSetState($chclosetotray, $GUI_ENABLE)
+		if GetOption("minimizeonstart") == 0 Then
+			GuiCtrlSetState($chstartminimized, $GUI_UNCHECKED)
+		Else
+			GuiCtrlSetState($chstartminimized, $GUI_CHECKED)
+		EndIf
+		if GetOption("closetotray") == 0 Then
+			GuiCtrlSetState($chclosetotray, $GUI_UNCHECKED)
+		Else
+			GuiCtrlSetState($chclosetotray, $GUI_CHECKED)
+		EndIf
 	EndIf
-	$lblstartwithwindows = GUICtrlCreateLabel("Start with Windows", 16, 84, 99, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
-	$chStartWithWindows = GUICtrlCreateCheckbox("Startwithwindows", 224, 81, 17, 17,BitOr($BS_AUTOCHECKBOX,$WS_TABSTOP ),$WS_EX_STATICEDGE)
+
+	$lblstartwithwindows = GUICtrlCreateLabel("Start with Windows", 16, 168, 99, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
+	$chStartWithWindows = GUICtrlCreateCheckbox("Startwithwindows", 224, 167, 17, 17,BitOr($BS_AUTOCHECKBOX,$WS_TABSTOP ),$WS_EX_STATICEDGE)
 	if $runasexe == True Then
 		GUICtrlSetState($chStartWithWindows,$GUI_ENABLE)
 		GUICtrlSetState($lblstartwithwindows,$GUI_ENABLE)
@@ -124,9 +146,9 @@ Func prefGui()
 		GUICtrlSetState($lblstartwithwindows,$GUI_DISABLE)
 		GUICtrlSetState($chStartWithWindows,$GUI_DISABLE)
 	EndIf
-	GUICtrlCreateLabel("Shutdown if battery lower then", 16, 126, 179, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
-	$lshutdownPC = GUICtrlCreateInput(GetOption("shutdownpc"), 217, 123, 25, 23)
-	GUICtrlCreateLabel("%", 248, 126, 15, 19)
+	GUICtrlCreateLabel("Shutdown if battery lower then", 16, 210, 179, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
+	$lshutdownPC = GUICtrlCreateInput(GetOption("shutdownpc"), 217, 207, 25, 23)
+	GUICtrlCreateLabel("%", 248, 210, 15, 19)
 
 	GUICtrlCreateTabItem("")
 	GuiSetState(@SW_DISABLE,$gui )
@@ -135,10 +157,8 @@ Func prefGui()
 	While 1
 		$nMsg1 = GUIGetMsg()
 		Switch $nMsg1
-
 			Case $GUI_EVENT_CLOSE
 				ExitLoop
-
 			Case $Bapply, $Bok
 				SetOption("ipaddr",GuiCtrlRead($Iipaddr ) , "string")
 				SetOption("port",GuiCtrlRead($Iport ) , "number")
@@ -158,8 +178,22 @@ Func prefGui()
 				$minimizetray = GuiCtrlRead($chMinimizeTray)
 				If $minimizetray == $GUI_CHECKED Then
 					SetOption("minimizetray",1 , "number")
+					$startminimized = GuiCtrlRead($chstartminimized)
+					If $startminimized == $GUI_CHECKED Then
+						SetOption("minimizeonstart",1 , "number")
+					Else
+						SetOption("minimizeonstart",0 , "number")
+					EndIf
+					$closetotray = GuiCtrlRead($chclosetotray)
+					If $closetotray == $GUI_CHECKED Then
+						SetOption("closetotray",1 , "number")
+					Else
+						SetOption("closetotray",0 , "number")
+					EndIf
 				Else
 					SetOption("minimizetray",0 , "number")
+					SetOption("minimizeonstart",0 , "number")
+					SetOption("closetotray",0 , "number")
 				EndIf
 				If $runasexe == True Then
 					$startwithwindows = GuiCtrlRead($chStartWithWindows)
@@ -214,6 +248,21 @@ Func prefGui()
 					$tempcolor2 = $clock_bkg
 				EndIf
 				$result = 1
+			Case $chMinimizeTray
+				$minimizetray = GuiCtrlRead($chMinimizeTray)
+				If $minimizetray == $GUI_CHECKED Then
+					GUICtrlSetState($lblstartminimized,$GUI_ENABLE)
+					GUICtrlSetState($chstartminimized,$GUI_ENABLE)
+					GUICtrlSetState($lblclosetotray, $GUI_ENABLE)
+					GUICtrlSetState($chclosetotray, $GUI_ENABLE)
+				Else
+					GuiCtrlSetState($chstartminimized, $GUI_UNCHECKED)
+					GuiCtrlSetState($chclosetotray, $GUI_UNCHECKED)
+					GUICtrlSetState($lblstartminimized,$GUI_DISABLE)
+					GUICtrlSetState($chstartminimized,$GUI_DISABLE)
+					GUICtrlSetState($lblclosetotray, $GUI_DISABLE)
+					GUICtrlSetState($chclosetotray, $GUI_DISABLE)
+				EndIf
 		EndSwitch
 	WEnd
 	If $minimizetray == 1 Then
@@ -256,7 +305,7 @@ Func varlistGui()
 	$vars = StringSplit($varlist , "VAR",1)
 	AdlibRegister("Update",1000)
 	$guilistvar = GUICreate("LIST UPS Variables", 365, 331, 196, 108, -1 , -1 , $gui)
-	GUISetIcon(@ScriptDir & "\images\upsicon.ico")
+	GUISetIcon(@tempdir & "upsicon.ico")
 	$TreeView1 = GUICtrlCreateTreeView(0, 8, 361, 169)
 	;$state = GUICtrlSetImage($TreeView1, @ScriptDir & "\light.ico", -1 , 4)
 
@@ -445,7 +494,6 @@ Func ResetGui()
 EndFunc
 
 Func Update()
-
 	;if $socket == 0 Then
 	;	Return
 	;EndIf
@@ -551,7 +599,7 @@ EndFunc
 
 Func OpenMainWindow()
 	$gui = GUICreate($ProgramDesc, 640, 380, -1 , -1,Bitor($GUI_SS_DEFAULT_GUI ,$WS_CLIPCHILDREN))
-	GUISetIcon(@ScriptDir & "\images\upsicon.ico")
+	GUISetIcon(@tempdir & "upsicon.ico")
 	$fileMenu = GUICtrlCreateMenu("&File")
 	$listvarMenu = GuiCtrlCreateMenuItem("&List UPS Vars",$fileMenu)
 	$exitMenu = GUICtrlCreateMenuItem("&Exit", $fileMenu)
@@ -628,9 +676,9 @@ Func aboutGui()
 		TraySetClick(0)
 	EndIf
 	$guiabout = GUICreate("About", 324, 220, 271, 178)
-	GUISetIcon(@ScriptDir & "\images\upsicon.ico")
+	GUISetIcon(@tempdir & "upsicon.ico")
 	$GroupBox1 = GUICtrlCreateGroup("", 8, 0, 308, 184)
-	$Image1 = GUICtrlCreatePic(@tempdir&"ups.jpg", 16, 16, 104, 104, BitOR($SS_NOTIFY,$WS_GROUP))
+	$Image1 = GUICtrlCreatePic(@tempdir & "ups.jpg", 16, 16, 104, 104, BitOR($SS_NOTIFY,$WS_GROUP))
 	$Label10 = GUICtrlCreateLabel($ProgramDesc, 128, 16, 180 , 18, $WS_GROUP)
 	$Label11 = GUICtrlCreateLabel("Version " & $ProgramVersion, 128, 34, 180, 18, $WS_GROUP)
 	$Label12 = GUICtrlCreateLabel("Copyright Michael Liberman" & @LF & "2006-2007", 128, 52, 270, 44, $WS_GROUP)
@@ -669,6 +717,7 @@ func mainLoop()
 				Case $TRAY_EVENT_PRIMARYDOUBLE
 					GuiSetState(@SW_SHOW, $gui)
 					GuiSetState(@SW_RESTORE ,$gui )
+					TraySetState($TRAY_ICONSTATE_HIDE)
 				Case $idTrayExit
 					TCPSend($socket,"LOGOUT")
 					TCPCloseSocket($socket)
@@ -706,14 +755,28 @@ func mainLoop()
 			EndSwitch
 		EndIf
 		$nMsg = GUIGetMsg(1)
-		if ($nMsg[0] == $GUI_EVENT_CLOSE and $nMsg[1]==$gui)  or $nMsg[0] == $exitMenu or $nMsg[0] == $exitb then
-			TCPSend($socket,"LOGOUT")
-			TCPCloseSocket($socket)
-			TCPShutdown()
-			Exit
+		if GetOption("closetotray") == 0 Then
+			if ($nMsg[0] == $GUI_EVENT_CLOSE and $nMsg[1]==$gui)  or $nMsg[0] == $exitMenu or $nMsg[0] == $exitb then
+				TCPSend($socket,"LOGOUT")
+				TCPCloseSocket($socket)
+				TCPShutdown()
+				Exit
+			EndIf
+		Else
+			if $nMsg[0] == $exitMenu or $nMsg[0] == $exitb then
+				TCPSend($socket,"LOGOUT")
+				TCPCloseSocket($socket)
+				TCPShutdown()
+				Exit
+			EndIf
+			if ($nMsg[0] == $GUI_EVENT_CLOSE and $nMsg[1]==$gui) Then
+				GuiSetState(@SW_HIDE , $gui)
+				TraySetState($TRAY_ICONSTATE_SHOW)
+			EndIf
 		EndIf
 		if ($nMsg[0] == $GUI_EVENT_MINIMIZE and $nMsg[1]==$gui and $minimizetray ==1) Then;minimize to tray
 			GuiSetState(@SW_HIDE , $gui)
+			TraySetState($TRAY_ICONSTATE_SHOW)
 		EndIf
 		if $nMsg[0] == $toolb or $nMsg[0]==$settingssubMenu Then
 			AdlibUnregister()
@@ -764,7 +827,7 @@ EndFunc
 func setTrayMode()
 	$minimizetray = GetOption("minimizetray")
 	if $minimizetray == 1 Then
-		TraySetIcon(@ScriptDir & "\images\upsicon.ico")
+		TraySetIcon(@tempdir & "upsicon.ico")
 		TraySetState($TRAY_ICONSTATE_SHOW)
 		Opt("TrayAutoPause", 0) ; Le script n'est pas mis en pause lors de la sélection de l'icône de la zone de notification.
 		Opt("TrayMenuMode", 3) ; Les items ne sont pas cochés lorsqu'ils sont sélectionnés.
@@ -778,7 +841,9 @@ func setTrayMode()
 EndFunc
 
 ;HERE STARTS MAIN SCRIPT
-Fileinstall(".\images\ups.jpg", @tempdir&"ups.jpg",1)
+Fileinstall(".\images\ups.jpg", @tempdir & "ups.jpg",1)
+Fileinstall(".\images\upsicon.ico", @tempdir & "upsicon.ico",1)
+
 TraySetState($TRAY_ICONSTATE_HIDE)
 $status = TCPStartup ( )
 if $status == false Then
@@ -808,6 +873,10 @@ TrayCreateItem("")
 $idTrayExit = TrayCreateItem("Exit")
 
 OpenMainWindow()
+if ( GetOption("minimizeonstart") == 1 and GetOption("minimizetray") == 1 ) Then
+	GuiSetState(@SW_HIDE , $gui)
+	TraySetState($TRAY_ICONSTATE_SHOW)
+EndIf
 $ProgramVersion = _GetScriptVersion()
 $status = ConnectServer()
 Opt("TCPTimeout",3000)
