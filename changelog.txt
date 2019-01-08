@@ -1,0 +1,54 @@
+History:
+
+Version 1.6.4
+Added : tray icon tooltip with load, charge and status
+Added : Start with Windows Option
+Added : prevent shutdown when UPS not connected but NUT is running (from v1.6.2 written by crazytiti see https://github.com/crazytiti/Windows-Nut)
+fix : change adlibenable / disable to register / unregister and some other code modification to make it compil on AutoIt v3.3.14
+Changed : some code optimisation
+Changed : Some aesthetic improvement of GUI
+Changed : tray icon improvment
+
+Version 1.5
+
+1.  Added calibration for all clocks except battery charge.
+Now you can suite the program to your ups readings.
+For example if you are in USA and your UPS supplies 30V when
+fully charged set the values as follows :
+Input Voltage Min 50 , Input Voltage Max 150
+Output Voltage Min 50 , Output Voltage Max 150 
+Input Frequency Min 30 , Input Frequency Max 80 (Center at 60Hz).
+Battery Voltage Min 0 , Battery Voltage Max 50
+
+This is of course only an example and you may set the values
+the way you like.
+At this moment no checking is done on values used so please be reasonable with what you enter (no negative numbers , max less the min etc).
+
+In order to change calibration go to Settings->Preferences.
+Select Calibration TAB and change the values as required.
+Then press OK or APPLY.
+After you close the Preferences window clocks will be refreshed and updated with new settings.
+
+
+2.  Added Minimize to tray (Requested by druidtaliesin).
+In order to toggle go to Settings->Preferences.
+Select Misc TAB and check the appropriate option.
+Click OK or APPLY to save the changes
+It is off by default.
+
+3. Added Shutdown PC if battery charge lower then specified value
+In order to change go to Settings->Preferences.
+Select Misc TAB and type in the battery charge percentage at which
+you want your pc to shutdown if UPS is offline.
+Click OK or APPLY to save the changes.
+
+ATTENTION this option is DANGEROUS!
+The computer is shutdown forcibly so if you have any unsaved documents and set the value too high while UPS was offline , you might lose data.
+Please use with care.
+By default the value is 0 which effectively disables this option.
+
+
+4.  Compiled with latest release of AutoIT which hopefully should speed things up a little bit.
+
+5. Rewritten most of configuration management code.
+It is much more readable now and also much easier to add new options.

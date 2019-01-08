@@ -1,13 +1,14 @@
 #include-once
-#include <nutColor.au3>
-#include <nutDraw.au3>
+#include "nutColor.au3"
+#include "nutDraw.au3"
+
 Global $optionList = "int port;int delay;char ipaddr[64];char upsname[64];"
 $optionList = $optionList & "int mininputv;int maxinputv;"
 $optionList = $optionList & "int minoutputv;int maxoutputv;"
 $optionList = $optionList & "int mininputf;int maxinputf;"
 $optionList = $optionList & "int minupsl;int maxupsl;"
 $optionList = $optionList & "int minbattv;int maxbattv;"
-$optionList = $optionList & "int minimizetray;int shutdownpc;"
+$optionList = $optionList & "int minimizetray;int startwithwindows;int shutdownpc;"
 
 Global $optionsStruct = 0
 Global $inipath = @ScriptDir & "\" & "ups.ini"
@@ -15,9 +16,23 @@ Global $panel_bkg = 0
 Global $clock_bkg_bgr = 0
 Global $panel_bkg_bgr = 0
 
+Func _GetScriptVersion()
+	If @Compiled Then
+		Return FileGetVersion(@ScriptFullPath)
+	Else
+		Local $sText = FileRead(@ScriptFullPath)
+		If @error Then Return SetError(1, 0, "0.0.0.0") ; File couldn't be read
+WriteLog(@ScriptFullPath)
+WriteLog($sText)
+		Local $asRet = StringRegExp($sText, "(?si)(?:\A|\n)\#AutoIt3Wrapper\_Res\_Fileversion\=(.*?)(?:\z|\n)", 3)
+		If @error ==1 Then Return SetError(2, 0, "0.1.0.0") ; No version number found
+		If @error ==2 Then Return SetError(2, 0, "0.2.0.0") ; No version number found
+
+		Return $asRet[0]
+	EndIf
+EndFunc;==>_GetScriptVersion
 
 Func InitOptionDATA()
-	
 	$result = 0
 	$optionsStruct = 0 ;reset the variable if was inited earlier
 	$optionsStruct = DllStructCreate($optionList)
@@ -30,7 +45,6 @@ EndFunc
 
 
 Func GetOption($optionName )
-	
 	$result = DllStructGetData($optionsStruct , $optionName);
 	if ($result == 0) Then
 		if @error <> 0 Then
@@ -84,32 +98,30 @@ EndFunc
 
 
 Func ReadParams()
-
-	
 	if FileExists($inipath) == 0 then ; file not created yet/doesn't exist
 									  ;then create ini file and write them to that file
 		$clock_bkg = String($gray)
 		$panel_bkg = String($gray)
-		SetOption("ipaddr","nutserver host" , "string")
-		SetOption("upsname","ups", "string")
-		SetOption("port",3493 , "number")
-		SetOption("delay",5000 , "number")
-		SetOption("mininputv",170 , "number")
-		SetOption("maxinputv",270 , "number")
-		SetOption("minoutputv",170 , "number")
-		SetOption("maxoutputv",270 , "number")
-		SetOption("mininputf",20 , "number")
-		SetOption("maxinputf",70 , "number")
-		SetOption("minupsl" , 0 , "number")
-		SetOption("maxupsl" , 100 , "number")
-		SetOption("minbattv", 0 , "number")
-		SetOption("maxbattv" , 20 , "number")
-		SetOption("minimizetray" , 0 , "number")
-		SetOption("shutdownpc" , 0 , "number")
+		SetOption("ipaddr", "nutserver host", "string")
+		SetOption("upsname", "ups", "string")
+		SetOption("port", 3493, "number")
+		SetOption("delay", 5000, "number")
+		SetOption("mininputv", 170, "number")
+		SetOption("maxinputv", 270, "number")
+		SetOption("minoutputv", 170, "number")
+		SetOption("maxoutputv", 270, "number")
+		SetOption("mininputf", 20, "number")
+		SetOption("maxinputf", 70, "number")
+		SetOption("minupsl", 0, "number")
+		SetOption("maxupsl", 100, "number")
+		SetOption("minbattv", 0, "number")
+		SetOption("maxbattv", 20, "number")
+		SetOption("minimizetray", 0, "number")
+		SetOption("startwithwindows", 0, "number")
+		SetOption("shutdownpc", 0, "number")
 		WriteParams()
-		
 	Else
-		Readparam( "ipaddr" , "Connection" , "string" , "nutserver host" , "Server address")		
+		Readparam("ipaddr" , "Connection" , "string" , "nutserver host" , "Server address")		
 		Readparam("port","Connection" , "number" , "3493" , "Port")
 		Readparam("upsname", "Connection" , "string" , "ups" , "UPS name")
 		Readparam("delay" , "Connection" , "number" , "5000" , "Delay")
@@ -130,6 +142,8 @@ Func ReadParams()
 		ReadParam("maxbattv" , "Calibration" , "number" , "20" , "Max Batt Voltage")
 		
 		ReadParam("minimizetray" , "Appearance" , "number" , "0" , "Minimize to tray")
+		ReadParam("startwithwindows" , "Appearance" , "number" , "0" , "Start with Windows")
+		
 		ReadParam("shutdownpc" , "Power" , "number" , "0" , "Shutdown Computer")
 		$clock_bkg = IniRead($inipath , "Colors","Clocks Color","error")
 		
@@ -162,23 +176,23 @@ EndFunc
 ;This function writes parameters to ini file
 ;This is after these were set in the gui and apply or OK button was hit there
 Func WriteParams()
-	
-	IniWrite($inipath , "Connection","Server address",GetOption("ipaddr"))
-	IniWrite($inipath , "Connection","Port",GetOption("port"))
-	IniWrite($inipath , "Connection","UPS name",GetOption("upsname"))
-	IniWrite($inipath , "Connection","Delay",GetOption("delay"))
-	IniWrite($inipath , "Colors","Clocks Color" , "0x" & Hex($clock_bkg))
-	IniWrite($inipath , "Colors","Panel Color" , "0x" & Hex($panel_bkg))
-	IniWrite($inipath , "Appearance","Minimize to tray",GetOption("minimizetray"))
-	IniWrite($inipath , "Power","Shutdown Computer",GetOption("shutdownpc"))
-	IniWrite($inipath , "Calibration","Min Input Voltage",GetOption("mininputv"))
-	IniWrite($inipath , "Calibration","Max Input Voltage",GetOption("maxinputv"))
-	IniWrite($inipath , "Calibration","Min Output Voltage",GetOption("minoutputv"))
-	IniWrite($inipath , "Calibration","Max Output Voltage",GetOption("maxoutputv"))
-	IniWrite($inipath , "Calibration","Min Input Frequency",GetOption("mininputf"))
-	IniWrite($inipath , "Calibration","Max Input Frequency",GetOption("maxinputf"))
-	IniWrite($inipath , "Calibration","Min UPS Load",GetOption("minupsl"))
-	IniWrite($inipath , "Calibration","Max UPS Load",GetOption("maxupsl"))
-	IniWrite($inipath , "Calibration","Min Batt Voltage",GetOption("minbattv"))
-	IniWrite($inipath , "Calibration","Max Batt Voltage",GetOption("maxbattv"))
+	IniWrite($inipath, "Connection", "Server address", GetOption("ipaddr"))
+	IniWrite($inipath, "Connection", "Port", GetOption("port"))
+	IniWrite($inipath, "Connection", "UPS name", GetOption("upsname"))
+	IniWrite($inipath, "Connection", "Delay", GetOption("delay"))
+	IniWrite($inipath, "Colors", "Clocks Color", "0x" & Hex($clock_bkg))
+	IniWrite($inipath, "Colors", "Panel Color", "0x" & Hex($panel_bkg))
+	IniWrite($inipath, "Appearance", "Minimize to tray", GetOption("minimizetray"))
+	IniWrite($inipath, "Appearance", "Start with Windows", GetOption("startwithwindows"))
+	IniWrite($inipath, "Power", "Shutdown Computer", GetOption("shutdownpc"))
+	IniWrite($inipath, "Calibration", "Min Input Voltage", GetOption("mininputv"))
+	IniWrite($inipath, "Calibration", "Max Input Voltage", GetOption("maxinputv"))
+	IniWrite($inipath, "Calibration", "Min Output Voltage", GetOption("minoutputv"))
+	IniWrite($inipath, "Calibration", "Max Output Voltage", GetOption("maxoutputv"))
+	IniWrite($inipath, "Calibration", "Min Input Frequency", GetOption("mininputf"))
+	IniWrite($inipath, "Calibration", "Max Input Frequency", GetOption("maxinputf"))
+	IniWrite($inipath, "Calibration", "Min UPS Load", GetOption("minupsl"))
+	IniWrite($inipath, "Calibration", "Max UPS Load", GetOption("maxupsl"))
+	IniWrite($inipath, "Calibration", "Min Batt Voltage", GetOption("minbattv"))
+	IniWrite($inipath, "Calibration", "Max Batt Voltage", GetOption("maxbattv"))
 EndFunc
