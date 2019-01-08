@@ -9,6 +9,7 @@ $optionList = $optionList & "int mininputf;int maxinputf;"
 $optionList = $optionList & "int minupsl;int maxupsl;"
 $optionList = $optionList & "int minbattv;int maxbattv;"
 $optionList = $optionList & "int minimizetray;int startwithwindows;int shutdownpc;"
+$optionList = $optionList & "int minimizeonstart;int closetotray;"
 
 Global $optionsStruct = 0
 Global $inipath = @ScriptDir & "\" & "ups.ini"
@@ -22,11 +23,9 @@ Func _GetScriptVersion()
 	Else
 		Local $sText = FileRead(@ScriptFullPath)
 		If @error Then Return SetError(1, 0, "0.0.0.0") ; File couldn't be read
-WriteLog(@ScriptFullPath)
-WriteLog($sText)
-		Local $asRet = StringRegExp($sText, "(?si)(?:\A|\n)\#AutoIt3Wrapper\_Res\_Fileversion\=(.*?)(?:\z|\n)", 3)
-		If @error ==1 Then Return SetError(2, 0, "0.1.0.0") ; No version number found
-		If @error ==2 Then Return SetError(2, 0, "0.2.0.0") ; No version number found
+		$pattern = "(?si)(?:\A|\n)\#pragma compile\(FileVersion, (.*?)(?:\)|\z|\n)"
+		Local $asRet = StringRegExp($sText, $pattern, 3)
+		If @error Then Return SetError(2, 0, "0.0.0.0") ; No version number found
 
 		Return $asRet[0]
 	EndIf
@@ -118,6 +117,8 @@ Func ReadParams()
 		SetOption("maxbattv", 20, "number")
 		SetOption("minimizetray", 0, "number")
 		SetOption("startwithwindows", 0, "number")
+		SetOption("minimizeonstart", 0, "number")
+		SetOption("closetotray", 0, "number")
 		SetOption("shutdownpc", 0, "number")
 		WriteParams()
 	Else
@@ -125,28 +126,30 @@ Func ReadParams()
 		Readparam("port","Connection" , "number" , "3493" , "Port")
 		Readparam("upsname", "Connection" , "string" , "ups" , "UPS name")
 		Readparam("delay" , "Connection" , "number" , "5000" , "Delay")
-		
+
 		ReadParam("mininputv" , "Calibration" , "number" , "170" , "Min Input Voltage")
 		ReadParam("maxinputv" , "Calibration" , "number" , "270" , "Max Input Voltage")
 
 		ReadParam("minoutputv" , "Calibration" , "number" , "170" , "Min Output Voltage")
 		ReadParam("maxoutputv" , "Calibration" , "number" , "270" , "Max Output Voltage")
-		
+
 		ReadParam("mininputf" , "Calibration" , "number" , "20" , "Min Input Frequency")
 		ReadParam("maxinputf" , "Calibration" , "number" , "70" , "Max Input Frequency")
-		
+
 		ReadParam("minupsl" , "Calibration" , "number" , "0" , "Min UPS Load")
 		ReadParam("maxupsl" , "Calibration" , "number" , "100" , "Max UPS Load")
-		
+
 		ReadParam("minbattv" , "Calibration" , "number" , "0" , "Min Batt Voltage")
 		ReadParam("maxbattv" , "Calibration" , "number" , "20" , "Max Batt Voltage")
-		
+
 		ReadParam("minimizetray" , "Appearance" , "number" , "0" , "Minimize to tray")
+		ReadParam("closetotray" , "Appearance" , "number" , "0" , "Close to tray")
+		ReadParam("minimizeonstart" , "Appearance" , "number" , "0" , "Minimize on Start")
 		ReadParam("startwithwindows" , "Appearance" , "number" , "0" , "Start with Windows")
-		
+
 		ReadParam("shutdownpc" , "Power" , "number" , "0" , "Shutdown Computer")
 		$clock_bkg = IniRead($inipath , "Colors","Clocks Color","error")
-		
+
 		if $clock_bkg == "error" Then
 			$clock_bkg = $gray
 			IniWrite($inipath , "Colors","Clocks Color" , "0x" & Hex($clock_bkg))
@@ -183,6 +186,8 @@ Func WriteParams()
 	IniWrite($inipath, "Colors", "Clocks Color", "0x" & Hex($clock_bkg))
 	IniWrite($inipath, "Colors", "Panel Color", "0x" & Hex($panel_bkg))
 	IniWrite($inipath, "Appearance", "Minimize to tray", GetOption("minimizetray"))
+	IniWrite($inipath, "Appearance", "Close to tray", GetOption("closetotray"))
+	IniWrite($inipath, "Appearance", "Minimize on Start", GetOption("minimizeonstart"))
 	IniWrite($inipath, "Appearance", "Start with Windows", GetOption("startwithwindows"))
 	IniWrite($inipath, "Power", "Shutdown Computer", GetOption("shutdownpc"))
 	IniWrite($inipath, "Calibration", "Min Input Voltage", GetOption("mininputv"))
