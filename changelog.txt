@@ -1,6 +1,6 @@
 History:
 
-Version 1.6.4
+Version 1.6.5
 Fix : Show/hide Tray Icon when Gui is visible or not
 
 Version 1.6.4
