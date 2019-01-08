@@ -1,6 +1,9 @@
 History:
 
 Version 1.6.4
+Fix : Show/hide Tray Icon when Gui is visible or not
+
+Version 1.6.4
 Added : tray icon tooltip with load, charge and status
 Added : Start with Windows Option
 Added : prevent shutdown when UPS not connected but NUT is running (from v1.6.2 written by crazytiti see https://github.com/crazytiti/Windows-Nut)

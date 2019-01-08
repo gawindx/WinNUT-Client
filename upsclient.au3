@@ -5,7 +5,7 @@
 #AutoIt3Wrapper_Res_Comment=Windows NUT Client
 #AutoIt3Wrapper_Res_Description=WinNutClient
 #AutoIt3Wrapper_Res_LegalCopyright=Freeware
-#AutoIt3Wrapper_Res_Fileversion=1.6.4
+#AutoIt3Wrapper_Res_Fileversion=1.6.5
 #AutoIt3Wrapper_Res_Language=1033
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Allow_Decompile=n
@@ -445,7 +445,6 @@ Func ResetGui()
 EndFunc
 
 Func Update()
-
 	;if $socket == 0 Then
 	;	Return
 	;EndIf
@@ -669,6 +668,7 @@ func mainLoop()
 				Case $TRAY_EVENT_PRIMARYDOUBLE
 					GuiSetState(@SW_SHOW, $gui)
 					GuiSetState(@SW_RESTORE ,$gui )
+					TraySetState($TRAY_ICONSTATE_HIDE)
 				Case $idTrayExit
 					TCPSend($socket,"LOGOUT")
 					TCPCloseSocket($socket)
@@ -714,6 +714,7 @@ func mainLoop()
 		EndIf
 		if ($nMsg[0] == $GUI_EVENT_MINIMIZE and $nMsg[1]==$gui and $minimizetray ==1) Then;minimize to tray
 			GuiSetState(@SW_HIDE , $gui)
+			TraySetState($TRAY_ICONSTATE_SHOW)
 		EndIf
 		if $nMsg[0] == $toolb or $nMsg[0]==$settingssubMenu Then
 			AdlibUnregister()
