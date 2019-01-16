@@ -8,8 +8,11 @@ $optionList = $optionList & "int minoutputv;int maxoutputv;"
 $optionList = $optionList & "int mininputf;int maxinputf;"
 $optionList = $optionList & "int minupsl;int maxupsl;"
 $optionList = $optionList & "int minbattv;int maxbattv;"
-$optionList = $optionList & "int minimizetray;int startwithwindows;int shutdownpc;"
+$optionList = $optionList & "int minimizetray;int startwithwindows;"
 $optionList = $optionList & "int minimizeonstart;int closetotray;"
+$optionList = $optionList & "int shutdownpcbatt;int shutdownpctime;"
+$optionList = $optionList & "int InstantShutdown;int AllowGrace;"
+$optionList = $optionList & "int ShutdownDelay;int GraceDelay;"
 
 Global $optionsStruct = 0
 Global $inipath = @ScriptDir & "\" & "ups.ini"
@@ -22,14 +25,49 @@ Func _GetScriptVersion()
 		Return FileGetVersion(@ScriptFullPath)
 	Else
 		Local $sText = FileRead(@ScriptFullPath)
-		If @error Then Return SetError(1, 0, "0.0.0.0") ; File couldn't be read
+		If @error Then Return SetError(1, 0, "0.0.0.0")
 		$pattern = "(?si)(?:\A|\n)\#pragma compile\(FileVersion, (.*?)(?:\)|\z|\n)"
 		Local $asRet = StringRegExp($sText, $pattern, 3)
-		If @error Then Return SetError(2, 0, "0.0.0.0") ; No version number found
-
+		If @error Then Return SetError(2, 0, "0.0.0.0")
 		Return $asRet[0]
 	EndIf
-EndFunc;==>_GetScriptVersion
+EndFunc
+
+Func Reset_Shutdown_Timer()
+	$compteur_actif = 0
+	Update_label()
+EndFunc
+
+Func Init_Shutdown_Timer()
+	If Not $compteur_actif Then
+		$compteur_actif = 1
+		$en_cours = $Nb_seconds
+		Update_label($en_cours)
+		AdlibRegister("Update_compteur",1000)
+	EndIf
+EndFunc
+
+Func Update_label($param_string=0)
+	Local $nMin = Floor($param_string/60)
+	Local $nSec = $param_string - $nMin*60
+	GUICtrlSetData($lbl_countdown, StringFormat("%02d:%02d", $nMin,$nSec))
+	GUICtrlSetData($lbl_ups_status, StringFormat("Battery Charge : %02d\r\nRemaining Time : %s", $battCh, $battrtimeStr))
+EndFunc
+
+Func _Restart_Compteur($hWnd, $iMsg, $iIDTimer, $iTime)
+	AdlibRegister("Update_compteur",1000)
+	$compteur_pause = 0
+	GUICtrlSetColor($lbl_countdown, 0x000000)
+EndFunc
+
+;==== Fonction principale de gestion du compteur
+Func Update_compteur()
+	If $compteur_actif Then
+		$en_cours -= 1
+		Update_label($en_cours)
+		If $en_cours = 0 Then AdlibUnregister("Update_compteur")
+	EndIf
+EndFunc
 
 Func InitOptionDATA()
 	$result = 0
@@ -42,6 +80,14 @@ Func InitOptionDATA()
 
 EndFunc
 
+Func IsShutdownCondition()
+	If ($upsstatus <> "0") and ($upsstatus <> "OL" and $socket <> 0) Then
+		If ($battCh < GetOption("shutdownpcbatt")) and ($battruntime < GetOption("shutdownpctime")) Then
+			return True
+		EndIf
+	EndIf
+	return False
+EndFunc
 
 Func GetOption($optionName )
 	$result = DllStructGetData($optionsStruct , $optionName);
@@ -119,7 +165,12 @@ Func ReadParams()
 		SetOption("startwithwindows", 0, "number")
 		SetOption("minimizeonstart", 0, "number")
 		SetOption("closetotray", 0, "number")
-		SetOption("shutdownpc", 0, "number")
+		SetOption("shutdownpcbatt", 0, "number")
+		SetOption("shutdownpctime", 60, "number")
+		SetOption("InstantShutdown", 0, "number")
+		SetOption("ShutdownDelay", 15, "number")
+		SetOption("AllowGrace", 0, "number")
+		SetOption("GraceDelay", 15, "number")
 		WriteParams()
 	Else
 		Readparam("ipaddr" , "Connection" , "string" , "nutserver host" , "Server address")		
@@ -147,7 +198,12 @@ Func ReadParams()
 		ReadParam("minimizeonstart" , "Appearance" , "number" , "0" , "Minimize on Start")
 		ReadParam("startwithwindows" , "Appearance" , "number" , "0" , "Start with Windows")
 
-		ReadParam("shutdownpc" , "Power" , "number" , "0" , "Shutdown Computer")
+		ReadParam("shutdownpcbatt" , "Power" , "number" , "0" , "Shutdown Limit Battery Charge")
+		ReadParam("shutdownpctime" , "Power" , "number" , "60" , "Shutdown Limit UPS Remain Time")
+		ReadParam("InstantShutdown" , "Power" , "number" , "0" , "Shutdown Immediately")
+		ReadParam("ShutdownDelay" , "Power" , "number" , "15" , "Delay To Shutdown")
+		ReadParam("AllowGrace" , "Power" , "number" , "0" , "Allow Extended Shutdown Delay")
+		ReadParam("GraceDelay" , "Power" , "number" , "15" , "Extended Shutdown Delay")
 		$clock_bkg = IniRead($inipath , "Colors","Clocks Color","error")
 
 		if $clock_bkg == "error" Then
@@ -189,7 +245,12 @@ Func WriteParams()
 	IniWrite($inipath, "Appearance", "Close to tray", GetOption("closetotray"))
 	IniWrite($inipath, "Appearance", "Minimize on Start", GetOption("minimizeonstart"))
 	IniWrite($inipath, "Appearance", "Start with Windows", GetOption("startwithwindows"))
-	IniWrite($inipath, "Power", "Shutdown Computer", GetOption("shutdownpc"))
+	IniWrite($inipath, "Power", "Shutdown Limit Battery Charge", GetOption("shutdownpcbatt"))
+	IniWrite($inipath, "Power", "Shutdown Limit UPS Remain Time", GetOption("shutdownpctime"))
+	IniWrite($inipath, "Power", "Shutdown Immediately", GetOption("InstantShutdown"))
+	IniWrite($inipath, "Power", "Delay To Shutdown", GetOption("ShutdownDelay"))
+	IniWrite($inipath, "Power", "Allow Extended Shutdown Delay", GetOption("AllowGrace"))
+	IniWrite($inipath, "Power", "Extended Shutdown Delay", GetOption("GraceDelay"))
 	IniWrite($inipath, "Calibration", "Min Input Voltage", GetOption("mininputv"))
 	IniWrite($inipath, "Calibration", "Max Input Voltage", GetOption("maxinputv"))
 	IniWrite($inipath, "Calibration", "Min Output Voltage", GetOption("minoutputv"))
