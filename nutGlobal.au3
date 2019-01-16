@@ -17,6 +17,7 @@ Global $inputFreq = 0
 Global $battVol = 0
 Global $upsLoad = 0
 Global $battCh = 0
+Global $battruntime = 0
 
 Global $upsstatus = 0
 Global $needle1 = 0
@@ -40,6 +41,7 @@ Global $mfr = ""
 Global $name = ""
 Global $serial = ""
 Global $firmware = ""
+Global $battrtimeStr = "00:00"
 
 Global $TreeView1
 Global $varselected
@@ -57,3 +59,9 @@ Global $wPanel = 0
 
 Global $idTrayExit,$idTrayPref,$idTrayAbout
 Global $runasexe = False
+
+Global $compteur_actif=0,$compteur_pause=0
+;========globale devaleur du compteur max de référence (30 sec par exple)
+Global $Nb_seconds, $grace_time
+;=======globale de compteur courrant
+Global $en_cours, $lbl_countdown, $lbl_ups_status

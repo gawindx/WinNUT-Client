@@ -1,4 +1,4 @@
-#pragma compile(FileVersion, 1.6.6.0)
+#pragma compile(FileVersion, 1.7.0.1)
 #pragma compile(Icon, .\images\upsicon.ico)
 #pragma compile(Out, .\Build\upsclient.exe)
 #pragma compile(Compression, 1)
@@ -13,6 +13,7 @@
 #Include <Constants.au3>
 #include <Array.au3>
 #include <TrayConstants.au3>
+#include <Timers.au3>
 #include "nutGlobal.au3"
 #include "nutDraw.au3"
 #include "nutColor.au3"
@@ -139,16 +140,46 @@ Func prefGui()
 		if GetOption("startwithwindows") == 0 Then
 			GuiCtrlSetState($chStartWithWindows , $GUI_UNCHECKED)
 		Else
-			GuiCtrlSetState($chStartWithWindows , $GUI_CHECKED)
+			GuiCtrlSetState($chStartWithWindows, $GUI_CHECKED)
 		EndIf
 	Else
-		GuiCtrlSetState($chStartWithWindows , $GUI_UNCHECKED)
+		GuiCtrlSetState($chStartWithWindows, $GUI_UNCHECKED)
 		GUICtrlSetState($lblstartwithwindows,$GUI_DISABLE)
 		GUICtrlSetState($chStartWithWindows,$GUI_DISABLE)
 	EndIf
-	GUICtrlCreateLabel("Shutdown if battery lower then", 16, 210, 179, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
-	$lshutdownPC = GUICtrlCreateInput(GetOption("shutdownpc"), 217, 207, 25, 23)
-	GUICtrlCreateLabel("%", 248, 210, 15, 19)
+
+	$TSShutdown = GUICtrlCreateTabItem("Shutdown Options")
+	GUICtrlCreateLabel("Shutdown if battery lower than", 16, 39, 179, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
+	$lshutdownpcbatt = GUICtrlCreateInput(GetOption("shutdownpcbatt"), 217, 36, 25, 23)
+	GUICtrlCreateLabel("%", 248, 39, 15, 19)
+	GUICtrlCreateLabel("Shutdown if runtime lower than (sec)", 16, 81, 179, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
+	$lshutdownrtime = GUICtrlCreateInput(GetOption("shutdownpctime"), 217, 78, 40, 23)
+	$lblInstantShutdown = GUICtrlCreateLabel("Shutdown Immediately", 16, 123, 179, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
+	$chInstantShutdown = GUICtrlCreateCheckbox("Shutdown Immediately", 224, 122, 17, 17,BitOr($BS_AUTOCHECKBOX,$WS_TABSTOP ),$WS_EX_STATICEDGE)
+	$lbldelayshutdown = GUICtrlCreateLabel("Delay to Shutdown", 16, 165, 179, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
+	$ldelayshutdown = GUICtrlCreateInput(GetOption("ShutdownDelay"), 217, 162, 40, 23)
+	$lblAllowGrace = GUICtrlCreateLabel("Allow Extended Shutdown Time", 16, 207, 179, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
+	$chAllowGrace = GUICtrlCreateCheckbox("AllowExtendedShutdownTime", 224, 206, 17, 17,BitOr($BS_AUTOCHECKBOX,$WS_TABSTOP ),$WS_EX_STATICEDGE)
+	$lbldelaygrace = GUICtrlCreateLabel("Grace Delay to Shutdown", 16, 249, 179, 17, BitOR($SS_BLACKRECT,$SS_GRAYFRAME,$SS_LEFTNOWORDWRAP))
+	$ldelaygrace = GUICtrlCreateInput(GetOption("GraceDelay"), 217, 246, 40, 23)
+	if GetOption("InstantShutdown") == 0 Then
+		GuiCtrlSetState($chInstantShutdown, $GUI_UNCHECKED)
+		GUICtrlSetState($lbldelayshutdown,$GUI_ENABLE)
+		GUICtrlSetState($ldelayshutdown,$GUI_ENABLE)
+	Else
+		GuiCtrlSetState($chInstantShutdown, $GUI_CHECKED)
+		GUICtrlSetState($lbldelayshutdown,$GUI_DISABLE)
+		GUICtrlSetState($ldelayshutdown,$GUI_DISABLE)
+	EndIf
+	if GetOption("AllowGrace") == 0 Then
+		GuiCtrlSetState($chAllowGrace, $GUI_UNCHECKED)
+		GUICtrlSetState($lbldelaygrace,$GUI_DISABLE)
+		GUICtrlSetState($ldelaygrace,$GUI_DISABLE)
+	Else
+		GuiCtrlSetState($chAllowGrace, $GUI_CHECKED)
+		GUICtrlSetState($lbldelaygrace,$GUI_ENABLE)
+		GUICtrlSetState($ldelaygrace,$GUI_ENABLE)
+	EndIf
 
 	GUICtrlCreateTabItem("")
 	GuiSetState(@SW_DISABLE,$gui )
@@ -160,21 +191,63 @@ Func prefGui()
 			Case $GUI_EVENT_CLOSE
 				ExitLoop
 			Case $Bapply, $Bok
-				SetOption("ipaddr",GuiCtrlRead($Iipaddr ) , "string")
-				SetOption("port",GuiCtrlRead($Iport ) , "number")
-				SetOption("upsname",GuiCtrlRead($Iupsname ) , "string")
-				SetOption("delay",GuiCtrlRead($Idelay ) , "number")
-				SetOption("mininputv",GuiCtrlRead($lminInputVoltage ) , "number")
-				SetOption("maxinputv",GuiCtrlRead($lmaxInputVoltage ) , "number")
-				SetOption("minoutputv",GuiCtrlRead($lminOutputVoltage ) , "number")
-				SetOption("maxoutputv",GuiCtrlRead($lmaxOutputVoltage ) , "number")
-				SetOption("mininputf",GuiCtrlRead($lminInputFreq ) , "number")
-				SetOption("maxinputf",GuiCtrlRead($lmaxInputFreq ) , "number")
-				SetOption("minupsl",GuiCtrlRead($lminUpsLoad ) , "number")
-				SetOption("maxupsl",GuiCtrlRead($lmaxUpsLoad ) , "number")
-				SetOption("minbattv",GuiCtrlRead($lminBattVoltage ) , "number")
-				SetOption("maxbattv",GuiCtrlRead($lmaxBattVoltage ) , "number")
-				SetOption("shutdownpc",GuiCtrlRead($lshutdownPC ) , "number")
+				SetOption("ipaddr", GuiCtrlRead($Iipaddr), "string")
+				SetOption("port", GuiCtrlRead($Iport), "number")
+				SetOption("upsname", GuiCtrlRead($Iupsname), "string")
+				SetOption("delay", GuiCtrlRead($Idelay), "number")
+				SetOption("mininputv", GuiCtrlRead($lminInputVoltage), "number")
+				SetOption("maxinputv", GuiCtrlRead($lmaxInputVoltage), "number")
+				SetOption("minoutputv", GuiCtrlRead($lminOutputVoltage), "number")
+				SetOption("maxoutputv", GuiCtrlRead($lmaxOutputVoltage), "number")
+				SetOption("mininputf", GuiCtrlRead($lminInputFreq), "number")
+				SetOption("maxinputf", GuiCtrlRead($lmaxInputFreq), "number")
+				SetOption("minupsl", GuiCtrlRead($lminUpsLoad), "number")
+				SetOption("maxupsl", GuiCtrlRead($lmaxUpsLoad), "number")
+				SetOption("minbattv", GuiCtrlRead($lminBattVoltage), "number")
+				SetOption("maxbattv", GuiCtrlRead($lmaxBattVoltage), "number")
+				SetOption("shutdownpcbatt", GuiCtrlRead($lshutdownpcbatt), "number")
+				$guiminruntime = GuiCtrlRead($lshutdownrtime)
+				If $guiminruntime < 60 Then
+					$guiminruntime = 60
+					GUICtrlSetData($lshutdownrtime, $guiminruntime)
+				EndIf
+				SetOption("shutdownpctime", $guiminruntime, "number")
+				$InstantShutdown = GuiCtrlRead($chInstantShutdown)
+				If $InstantShutdown == $GUI_CHECKED Then
+					SetOption("InstantShutdown", 1, "number")
+				Else
+					SetOption("InstantShutdown", 0, "number")
+				EndIf
+				$guidelayshutdown = GuiCtrlRead($ldelayshutdown)
+				If $guidelayshutdown > $guiminruntime Then 
+					$guidelayshutdown = $guiminruntime
+					GUICtrlSetData($ldelayshutdown, $guidelayshutdown)
+				EndIf
+				SetOption("ShutdownDelay", $guidelayshutdown, "number")
+				$guigracedelay = GuiCtrlRead($ldelaygrace)
+				If $guigracedelay > ($guiminruntime - $guidelayshutdown) Then
+					$guigracedelay = ($guiminruntime - $guidelayshutdown)
+					GUICtrlSetData($ldelaygrace, $guigracedelay)
+				ElseIf $guigracedelay > $guidelayshutdown Then
+					$guigracedelay = $guidelayshutdown
+					GUICtrlSetData($ldelaygrace, $guigracedelay)
+				EndIf
+				$AllowGrace = GuiCtrlRead($chAllowGrace)
+				If ($AllowGrace == $GUI_UNCHECKED) or ($guigracedelay = 0) Then
+					SetOption("AllowGrace", 0, "number")
+				Else
+					SetOption("AllowGrace", 1, "number")
+				EndIf
+				SetOption("GraceDelay", $guigracedelay, "number")
+				if GetOption("AllowGrace") == 0 Then
+					GuiCtrlSetState($chAllowGrace, $GUI_UNCHECKED)
+					GUICtrlSetState($lbldelaygrace,$GUI_DISABLE)
+					GUICtrlSetState($ldelaygrace,$GUI_DISABLE)
+				Else
+					GuiCtrlSetState($chAllowGrace, $GUI_CHECKED)
+					GUICtrlSetState($lbldelaygrace,$GUI_ENABLE)
+					GUICtrlSetState($ldelaygrace,$GUI_ENABLE)
+				EndIf
 				$minimizetray = GuiCtrlRead($chMinimizeTray)
 				If $minimizetray == $GUI_CHECKED Then
 					SetOption("minimizetray",1 , "number")
@@ -263,6 +336,24 @@ Func prefGui()
 					GUICtrlSetState($lblclosetotray, $GUI_DISABLE)
 					GUICtrlSetState($chclosetotray, $GUI_DISABLE)
 				EndIf
+			Case $chInstantShutdown
+				$instantshutdown = GuiCtrlRead($chInstantShutdown)
+				If $instantshutdown == $GUI_CHECKED Then
+					GUICtrlSetState($lbldelayshutdown,$GUI_DISABLE)
+					GUICtrlSetState($ldelayshutdown,$GUI_DISABLE)
+				Else
+					GUICtrlSetState($lbldelayshutdown,$GUI_ENABLE)
+					GUICtrlSetState($ldelayshutdown,$GUI_ENABLE)
+				EndIf
+			Case $chAllowGrace
+				$AllowGrace = GuiCtrlRead($chAllowGrace)
+				if $AllowGrace == $GUI_CHECKED Then
+					GUICtrlSetState($lbldelaygrace,$GUI_ENABLE)
+					GUICtrlSetState($ldelaygrace,$GUI_ENABLE)
+				Else
+					GUICtrlSetState($lbldelaygrace,$GUI_DISABLE)
+					GUICtrlSetState($ldelaygrace,$GUI_DISABLE)
+				EndIf
 		EndSwitch
 	WEnd
 	If $minimizetray == 1 Then
@@ -299,7 +390,7 @@ EndFunc
 Func varlistGui()
 	$varlist = ""
 	$templist = ""
-	AdlibUnregister()
+	AdlibUnregister("Update")
 	$status1 = ListUPSVars(GetOption("upsname") , $varlist)
 	$varlist = StringReplace($varlist , GetOption("upsname") , "")
 	$vars = StringSplit($varlist , "VAR",1)
@@ -336,12 +427,12 @@ Func varlistGui()
 	_SetIcons($TreeView1, 0)
 	_GUICtrlTreeView_Expand($TreeView1,0,false)
 
-	AdlibUnregister()
+	AdlibUnregister("Update")
 	AdlibRegister("updateVarList",500)
 	While 1
 		$nMsg = GUIGetMsg(1)
 		if ($nMsg[0] == $GUI_EVENT_CLOSE) Then
-			AdlibUnregister()
+			AdlibUnregister("Update")
 			GuiSetState(@SW_ENABLE,$gui )
 			GuiDelete($guilistvar)
 			WinActivate($gui)
@@ -428,6 +519,7 @@ Func GetData()
 	EndIf
 	GetUPSVar($ups_name ,"battery.charge" , $battch)
 	GetUPSVar($ups_name ,"battery.voltage",$battVol)
+	GetUPSVar($ups_name ,"battery.runtime",$battruntime)
 	GetUPSVar($ups_name ,"input.frequency",$inputFreq)
 	GetUPSVar($ups_name ,"input.voltage",$inputVol)
 	GetUPSVar($ups_name ,"output.voltage",$outputVol)
@@ -524,6 +616,18 @@ Func Update()
 		SetColor(0xffffff , $wPanel , $upslowbatt )
 		$trayStatus  = $trayStatus & @LF &  "Battery OK"
 	EndIf
+	$hourrtime = Floor($battruntime / 3600)
+	$minrtime = Floor(($battruntime - ($hourrtime * 3600)) / 60 )
+	$secrtime = $battruntime - ($hourrtime * 3600) - ($minrtime * 60)
+	If ( $hourrtime > 23) Then
+		$dayrtime = Floor($hourrtime/24)
+		$hourrtime = $hourrtime - ($dayrtime * 24)
+		$battrtimeStr = StringFormat("%02dd%02dh:%02dm:%02ds", $dayrtime, $hourrtime, $minrtime, $secrtime)
+	ElseIf ( $hourrtime = 0 ) Then
+		$battrtimeStr = StringFormat("%02dm:%02ds", $minrtime, $secrtime)
+	Else
+		$battrtimeStr = StringFormat("%02dh:%02dm:%02ds", $hourrtime, $minrtime, $secrtime)
+	EndIf
 	UpdateValue($needle4 , $battVol , $battv , $dial4 , getOption("minbattv") , getOption("maxbattv") )
 	UpdateValue($needle5 , $upsLoad , $upsl , $dial5 , getOption("minupsl") , getOption("maxupsl") )
 	UpdateValue($needle6 , $battCh , $upsch , $dial6 , 0 , 100 )
@@ -534,8 +638,13 @@ Func Update()
 	TraySetToolTip($ProgramDesc & " - " & $ProgramVersion & @LF &  $trayStatus )
 	;if connection to UPS is in fact alive and charge below shutdown setting and ups is not online
 	;add different from status 0 when UPS not connected but NUT is running
-	if ($battch <  GetOption("shutdownpc")) and ($upsstatus <>  "0") and ($upsstatus <>  "OL" and $socket <> 0) Then
-		Shutdown(13) ;Shutdown PC if battery charge lower then given percentage and UPS offline
+	if (IsShutdownCondition()) Then
+		$InstantShutdown = GetOption("InstantShutdown")
+		If $InstantShutdown = 1 Then
+			Shutdown(17)
+		Else
+			ShutdownGui()
+		EndIf
 	EndIf
 EndFunc
 
@@ -670,7 +779,7 @@ Func OpenMainWindow()
 EndFunc
 
 Func aboutGui()
-	AdlibUnregister()
+	AdlibUnregister("Update")
 	$minimizetray = GetOption("minimizetray")
 	If $minimizetray == 1 Then
 		TraySetClick(0)
@@ -726,7 +835,7 @@ func mainLoop()
 				Case $idTrayAbout
 					aboutGui()
 				Case $idTrayPref
-					AdlibUnregister()
+					AdlibUnregister("Update")
 					$changedprefs = prefGui()
 					if $changedprefs == 1 Then
 						$painting = 1
@@ -779,7 +888,7 @@ func mainLoop()
 			TraySetState($TRAY_ICONSTATE_SHOW)
 		EndIf
 		if $nMsg[0] == $toolb or $nMsg[0]==$settingssubMenu Then
-			AdlibUnregister()
+			AdlibUnregister("Update")
 			$changedprefs = prefGui()
 			if $changedprefs == 1 Then
 				$painting = 1
@@ -814,7 +923,7 @@ func mainLoop()
 			varlistGui()
 		EndIf
 		If $nMsg[0]== $reconnectMenu then
-			AdlibUnregister()
+			AdlibUnregister("Update")
 			ConnectServer() ;;aaaaa
 			Opt("TCPTimeout",3000)
 			GetUPSInfo()
@@ -831,12 +940,92 @@ func setTrayMode()
 		TraySetState($TRAY_ICONSTATE_SHOW)
 		Opt("TrayAutoPause", 0) ; Le script n'est pas mis en pause lors de la sélection de l'icône de la zone de notification.
 		Opt("TrayMenuMode", 3) ; Les items ne sont pas cochés lorsqu'ils sont sélectionnés.
-
 		TraySetClick(8)
 		TraySetToolTip($ProgramDesc & " - " & $ProgramVersion )
-
 	Else
 		TraySetState($TRAY_ICONSTATE_HIDE)
+	EndIf
+EndFunc
+
+Func ShutdownGui()
+	Local $Halt, $msg
+	Global $guishutdown, $button_grace, $button_shutdown
+
+	$Nb_seconds = GetOption("ShutdownDelay")
+	$grace_time = GetOption("GraceDelay")
+	$AllowGrace = GetOption("AllowGrace")
+	$guishutdown = GUICreate("Shutdown", (290 + $AllowGrace * 110) , 120,-1,-1, Bitor($WS_EX_TOPMOST, $WS_POPUP))
+	$button_grace = GUICtrlCreateButton("Grace Time", 10, 10, 100, 100,BitOR($BS_NOTIFY, $GUI_SS_DEFAULT_BUTTON))
+	If $AllowGrace = 0 Then
+		GUICtrlSetState($button_grace, $GUI_HIDE)
+	EndIf
+	$button_Shutdown = GUICtrlCreateButton("Shutdown Immediately" & @CRLF & "Double-Click to Shutdown", (180 + $AllowGrace * 110), 10, 100, 100,BitOR($BS_MULTILINE, $BS_NOTIFY, $GUI_SS_DEFAULT_BUTTON))
+	$lbl_ups_status = GUICtrlCreateLabel("", (8 + $AllowGrace * 110), 10, 170, 40)
+	$lbl_countdown = GUICtrlCreateLabel("", (8 + $AllowGrace * 110), 45, 170, 70)
+	GUICtrlSetFont(-1, 48, 800, 0, "MS SansSerif")
+	GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+	GUICtrlSetColor(-1, 0x000000)
+	GUISetState(@SW_SHOW,$guishutdown)
+	Reset_Shutdown_Timer()
+	Init_Shutdown_Timer()
+	$sec = @SEC
+	$REDText = 1
+	While 1
+		$nMsg3 = GUIGetMsg()
+		Select
+			Case $nMsg3 = $button_grace
+				GUICtrlSetState($button_grace,$GUI_DISABLE)
+				_Timer_SetTimer($guishutdown, $grace_time*1000, "_Restart_Compteur")
+				$compteur_pause = 1
+				AdlibUnregister("Update_compteur")
+			Case $nMsg3 = $button_shutdown or $en_cours = 0
+				GUICtrlSetState($button_grace,$GUI_DISABLE)
+				GUICtrlSetState($button_Shutdown,$GUI_DISABLE)
+				AdlibUnregister("Update_compteur")
+				Reset_Shutdown_Timer()
+				Shutdown(17)
+				Exit
+			Case IsShutdownCondition() = False
+				AdlibUnregister("Update_compteur")
+				Reset_Shutdown_Timer()
+				GuiDelete($guishutdown)
+				ExitLoop
+			Case $compteur_pause = 1
+				If @SEC <> $sec Then
+					$sec = @SEC
+					If $REDText Then
+						GUICtrlSetColor($lbl_countdown, 0xffffff)
+					Else
+						GUICtrlSetColor($lbl_countdown, 0xff0000)
+					EndIf
+					$REDText = Not $REDText
+				EndIf
+		EndSelect
+	WEnd
+EndFunc
+
+Func ShutdownGui_Event($hWnd, $Msg, $wParam, $lParam)
+	$nNotifyCode = BitShift($wParam, 16)
+	$nID = BitAnd($wParam, 0x0000FFFF)
+	$hCtrl = $lParam
+	writelog("notify " & $nNotifyCode)
+	If $nID = $guishutdown Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				writelog("bidule")
+		EndSwitch
+	EndIf
+		If $nID = $button_grace Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				writelog("grace")
+		EndSwitch
+	EndIf
+		If $nID = $button_shutdown Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				writelog("shutdown")
+		EndSwitch
 	EndIf
 EndFunc
 
@@ -845,7 +1034,7 @@ Fileinstall(".\images\ups.jpg", @tempdir & "ups.jpg",1)
 Fileinstall(".\images\upsicon.ico", @tempdir & "upsicon.ico",1)
 
 TraySetState($TRAY_ICONSTATE_HIDE)
-$status = TCPStartup ( )
+$status = TCPStartup()
 if $status == false Then
 	MsgBox(48,"Critical Error","Couldn't startup TCP")
 	Exit
@@ -854,7 +1043,7 @@ EndIf
 Opt("GUIDataSeparatorChar", ".")
 $status = InitOptionDATA()
 if $status == -1 Then
-	MsgBox(48,"Critical Error","Couldn't initialize Options")
+	MsgBox(48, "Critical Error", "Couldn't initialize Options")
 	Exit
 EndIf
 
@@ -885,4 +1074,5 @@ SetUPSInfo()
 Update()
 GuiRegisterMsg(0x000F,"rePaint")
 AdlibRegister("Update",GetOption("delay"))
+;ShutdownGui()
 mainLoop()
