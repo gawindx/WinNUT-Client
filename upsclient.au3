@@ -1,4 +1,4 @@
-#pragma compile(FileVersion, 1.7.0.1)
+#pragma compile(FileVersion, 1.7.0.2)
 #pragma compile(Icon, .\images\upsicon.ico)
 #pragma compile(Out, .\Build\upsclient.exe)
 #pragma compile(Compression, 1)
@@ -398,7 +398,6 @@ Func varlistGui()
 	$guilistvar = GUICreate("LIST UPS Variables", 365, 331, 196, 108, -1 , -1 , $gui)
 	GUISetIcon(@tempdir & "upsicon.ico")
 	$TreeView1 = GUICtrlCreateTreeView(0, 8, 361, 169)
-	;$state = GUICtrlSetImage($TreeView1, @ScriptDir & "\light.ico", -1 , 4)
 
 	$Group1 = GUICtrlCreateGroup("Item properties", 0, 184, 361, 105, $BS_CENTER)
 	$Label1 = GUICtrlCreateLabel("Name :", 8, 200, 38, 17)
@@ -408,15 +407,14 @@ Func varlistGui()
 	$varvalue = GUICtrlCreateLabel("", 50, 232, 291, 17, $SS_SUNKEN)
 	$vardesc = GUICtrlCreateLabel("", 72, 264, 283, 17, $SS_SUNKEN)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
-	$Button1 = GUICtrlCreateButton("Reload", 80, 296, 65, 25, 0)
-	$Button2 = GUICtrlCreateButton("Clear", 200, 296, 65, 25, 0)
+	$Reload_Btn = GUICtrlCreateButton("Reload", 80, 296, 65, 25, 0)
+	$Clear_Btn = GUICtrlCreateButton("Clear", 200, 296, 65, 25, 0)
 	GuiSetState(@SW_DISABLE,$gui )
 	GUISetState(@SW_SHOW , $guilistvar)
 
 	$varcount = Ubound($vars) - 2
 	$varlist = "";
 	for $i = 3 to $varcount
-
 		if $i == $varcount Then
 			ContinueLoop
 		EndIf
@@ -431,18 +429,31 @@ Func varlistGui()
 	AdlibRegister("updateVarList",500)
 	While 1
 		$nMsg = GUIGetMsg(1)
-		if ($nMsg[0] == $GUI_EVENT_CLOSE) Then
-			AdlibUnregister("Update")
-			GuiSetState(@SW_ENABLE,$gui )
-			GuiDelete($guilistvar)
-			WinActivate($gui)
-			AdlibRegister("Update",1000)
-
-			return
-		EndIf
-		if ($nMsg[0] == $Button2) Then
-			;_GUICtrlTreeViewDeleteAllItems ( $TreeView1 )
-		EndIf
+		Switch $nMsg[0]
+			Case $GUI_EVENT_CLOSE
+				AdlibUnregister("updateVarList")
+				GuiSetState(@SW_ENABLE,$gui )
+				GuiDelete($guilistvar)
+				WinActivate($gui)
+				AdlibRegister("Update",1000)
+				return
+			Case $Clear_Btn
+				_GUICtrlTreeView_Expand($TreeView1,0,false)
+			Case $Reload_Btn
+				AdlibUnRegister("updateVarList")
+				_GUICtrlTreeView_DeleteAll($TreeView1)
+				for $i = 3 to $varcount
+					if $i == $varcount Then
+						ContinueLoop
+					EndIf
+					$templist = StringSplit($vars[$i],'"')
+					$curpath = StringStripWS($templist[1],3)
+					_addPath($TreeView1, $curpath )
+				Next
+				_SetIcons($TreeView1, 0)
+				_GUICtrlTreeView_Expand($TreeView1,0,false)
+				AdlibRegister("updateVarList",500)
+		EndSwitch
 	WEnd
 EndFunc
 
@@ -719,9 +730,6 @@ Func OpenMainWindow()
 	$helpMenu = GUICtrlCreateMenu("&Help")
 	$aboutMenu = GUICtrlCreateMenuItem("About", $helpMenu)
 	$log = GUICtrlCreateCombo("", 5, 335, 630, 25,Bitor($CBS_DROPDOWNLIST,0))
-	;$Group8 = GUICtrlCreateGroup("", 0, 0, 598 + 25, 65)
-
-	;	GuiSwitch($gui)
 	$wPanel = GUICreate("", 150, 250,0, 70,BitOR($WS_CHILD, $WS_DLGFRAME), $WS_EX_CLIENTEDGE, $gui)
 	GUISetBkColor($panel_bkg , $wPanel)
 	$Label1 = GUICtrlCreateLabel("UPS On Line", 8, 8, 110, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
@@ -757,14 +765,12 @@ Func OpenMainWindow()
 	$upsfirmware = GUICtrlCreateLabel($firmware, 8, 222, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 800, 0, "MS SansSerif")
 
-	;$wPanel = GUICtrlCreateGroup("", 0, 70, 130 + 25, 240)
 	GuiSwitch($gui)
 	$Group8 = GUICreate("", 638, 60,0, 0,BitOR($WS_CHILD, $WS_BORDER), 0, $gui)
 	$exitb = GUICtrlCreateButton("Exit", 10, 10, 73, 40, 0)
 	$toolb = GUICtrlCreateButton("Settings", 102, 10, 73, 40, 0)
 	GUISetState(@SW_SHOW,$Group8)
 	GUISetState(@SW_SHOW,$wPanel)
-	GUISetState(@SW_SHOW,$gui)
 	$calc = 1 / ((GetOption("maxinputv") - GetOption("mininputv")) / 100 )
 	$dial1 = DrawDial(160, 70 , GetOption("mininputv") , "Input Voltage" , "V" , $inputv , $needle1 , $calc)
 	$calc = 1 / ((GetOption("maxoutputv") - GetOption("minoutputv")) / 100 )
@@ -817,7 +823,102 @@ Func aboutGui()
 	WEnd
 EndFunc
 
-func mainLoop()
+Func ShutdownGui()
+	Local $Halt, $msg
+
+	$ShutdownDelay = GetOption("ShutdownDelay")
+	$grace_time = GetOption("GraceDelay")
+	$AllowGrace = GetOption("AllowGrace")
+	$guishutdown = GUICreate("Shutdown", (290 + $AllowGrace * 110) , 120,-1,-1, Bitor($WS_EX_TOPMOST, $WS_POPUP))
+	$Grace_btn = GUICtrlCreateButton("Grace Time", 10, 10, 100, 100,BitOR($BS_NOTIFY, $GUI_SS_DEFAULT_BUTTON))
+	If $AllowGrace = 0 Then
+		GUICtrlSetState($Grace_btn, $GUI_HIDE)
+	EndIf
+	$Shutdown_btn = GUICtrlCreateButton("Shutdown Immediately" & @CRLF & "Double-Click to Shutdown", (180 + $AllowGrace * 110), 10, 100, 100,BitOR($BS_MULTILINE, $BS_NOTIFY, $GUI_SS_DEFAULT_BUTTON))
+	$lbl_ups_status = GUICtrlCreateLabel("", (8 + $AllowGrace * 110), 10, 170, 40)
+	$lbl_countdown = GUICtrlCreateLabel("", (8 + $AllowGrace * 110), 45, 170, 70)
+	GUICtrlSetFont(-1, 48, 800, 0, "MS SansSerif")
+	GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+	GUICtrlSetColor(-1, 0x000000)
+	GUISetState(@SW_SHOW,$guishutdown)
+	Reset_Shutdown_Timer()
+	Init_Shutdown_Timer()
+	$sec = @SEC
+	$REDText = 1
+	While 1
+		$nMsg3 = GUIGetMsg()
+		Select
+			Case $nMsg3 = $Grace_btn
+				GUICtrlSetState($Grace_btn,$GUI_DISABLE)
+				_Timer_SetTimer($guishutdown, $grace_time*1000, "_Restart_Compteur")
+				$Suspend_Countdown = 1
+				AdlibUnregister("Update_compteur")
+			Case $nMsg3 = $Shutdown_btn or $en_cours = 0
+				GUICtrlSetState($Grace_btn,$GUI_DISABLE)
+				GUICtrlSetState($Shutdown_btn,$GUI_DISABLE)
+				AdlibUnregister("Update_compteur")
+				Reset_Shutdown_Timer()
+				Shutdown(17)
+				Exit
+			Case IsShutdownCondition() = False
+				AdlibUnregister("Update_compteur")
+				Reset_Shutdown_Timer()
+				GuiDelete($guishutdown)
+				ExitLoop
+			Case $Suspend_Countdown = 1
+				If @SEC <> $sec Then
+					$sec = @SEC
+					If $REDText Then
+						GUICtrlSetColor($lbl_countdown, 0xffffff)
+					Else
+						GUICtrlSetColor($lbl_countdown, 0xff0000)
+					EndIf
+					$REDText = Not $REDText
+				EndIf
+		EndSelect
+	WEnd
+EndFunc
+
+Func ShutdownGui_Event($hWnd, $Msg, $wParam, $lParam)
+	$nNotifyCode = BitShift($wParam, 16)
+	$nID = BitAnd($wParam, 0x0000FFFF)
+	$hCtrl = $lParam
+	writelog("notify " & $nNotifyCode)
+	If $nID = $guishutdown Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				writelog("bidule")
+		EndSwitch
+	EndIf
+		If $nID = $Grace_btn Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				writelog("grace")
+		EndSwitch
+	EndIf
+		If $nID = $Shutdown_btn Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				writelog("shutdown")
+		EndSwitch
+	EndIf
+EndFunc
+
+Func setTrayMode()
+	$minimizetray = GetOption("minimizetray")
+	if $minimizetray == 1 Then
+		TraySetIcon(@tempdir & "upsicon.ico")
+		TraySetState($TRAY_ICONSTATE_SHOW)
+		Opt("TrayAutoPause", 0) ; Le script n'est pas mis en pause lors de la sélection de l'icône de la zone de notification.
+		Opt("TrayMenuMode", 3) ; Les items ne sont pas cochés lorsqu'ils sont sélectionnés.
+		TraySetClick(8)
+		TraySetToolTip($ProgramDesc & " - " & $ProgramVersion )
+	Else
+		TraySetState($TRAY_ICONSTATE_HIDE)
+	EndIf
+EndFunc
+
+Func mainLoop()
 	$minimizetray = GetOption("minimizetray")
 	While 1
 		if ($minimizetray == 1) Then
@@ -933,102 +1034,6 @@ func mainLoop()
 	WEnd
 EndFunc
 
-func setTrayMode()
-	$minimizetray = GetOption("minimizetray")
-	if $minimizetray == 1 Then
-		TraySetIcon(@tempdir & "upsicon.ico")
-		TraySetState($TRAY_ICONSTATE_SHOW)
-		Opt("TrayAutoPause", 0) ; Le script n'est pas mis en pause lors de la sélection de l'icône de la zone de notification.
-		Opt("TrayMenuMode", 3) ; Les items ne sont pas cochés lorsqu'ils sont sélectionnés.
-		TraySetClick(8)
-		TraySetToolTip($ProgramDesc & " - " & $ProgramVersion )
-	Else
-		TraySetState($TRAY_ICONSTATE_HIDE)
-	EndIf
-EndFunc
-
-Func ShutdownGui()
-	Local $Halt, $msg
-	Global $guishutdown, $button_grace, $button_shutdown
-
-	$Nb_seconds = GetOption("ShutdownDelay")
-	$grace_time = GetOption("GraceDelay")
-	$AllowGrace = GetOption("AllowGrace")
-	$guishutdown = GUICreate("Shutdown", (290 + $AllowGrace * 110) , 120,-1,-1, Bitor($WS_EX_TOPMOST, $WS_POPUP))
-	$button_grace = GUICtrlCreateButton("Grace Time", 10, 10, 100, 100,BitOR($BS_NOTIFY, $GUI_SS_DEFAULT_BUTTON))
-	If $AllowGrace = 0 Then
-		GUICtrlSetState($button_grace, $GUI_HIDE)
-	EndIf
-	$button_Shutdown = GUICtrlCreateButton("Shutdown Immediately" & @CRLF & "Double-Click to Shutdown", (180 + $AllowGrace * 110), 10, 100, 100,BitOR($BS_MULTILINE, $BS_NOTIFY, $GUI_SS_DEFAULT_BUTTON))
-	$lbl_ups_status = GUICtrlCreateLabel("", (8 + $AllowGrace * 110), 10, 170, 40)
-	$lbl_countdown = GUICtrlCreateLabel("", (8 + $AllowGrace * 110), 45, 170, 70)
-	GUICtrlSetFont(-1, 48, 800, 0, "MS SansSerif")
-	GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
-	GUICtrlSetColor(-1, 0x000000)
-	GUISetState(@SW_SHOW,$guishutdown)
-	Reset_Shutdown_Timer()
-	Init_Shutdown_Timer()
-	$sec = @SEC
-	$REDText = 1
-	While 1
-		$nMsg3 = GUIGetMsg()
-		Select
-			Case $nMsg3 = $button_grace
-				GUICtrlSetState($button_grace,$GUI_DISABLE)
-				_Timer_SetTimer($guishutdown, $grace_time*1000, "_Restart_Compteur")
-				$compteur_pause = 1
-				AdlibUnregister("Update_compteur")
-			Case $nMsg3 = $button_shutdown or $en_cours = 0
-				GUICtrlSetState($button_grace,$GUI_DISABLE)
-				GUICtrlSetState($button_Shutdown,$GUI_DISABLE)
-				AdlibUnregister("Update_compteur")
-				Reset_Shutdown_Timer()
-				Shutdown(17)
-				Exit
-			Case IsShutdownCondition() = False
-				AdlibUnregister("Update_compteur")
-				Reset_Shutdown_Timer()
-				GuiDelete($guishutdown)
-				ExitLoop
-			Case $compteur_pause = 1
-				If @SEC <> $sec Then
-					$sec = @SEC
-					If $REDText Then
-						GUICtrlSetColor($lbl_countdown, 0xffffff)
-					Else
-						GUICtrlSetColor($lbl_countdown, 0xff0000)
-					EndIf
-					$REDText = Not $REDText
-				EndIf
-		EndSelect
-	WEnd
-EndFunc
-
-Func ShutdownGui_Event($hWnd, $Msg, $wParam, $lParam)
-	$nNotifyCode = BitShift($wParam, 16)
-	$nID = BitAnd($wParam, 0x0000FFFF)
-	$hCtrl = $lParam
-	writelog("notify " & $nNotifyCode)
-	If $nID = $guishutdown Then
-		Switch $nNotifyCode
-			Case $LBN_DBLCLK
-				writelog("bidule")
-		EndSwitch
-	EndIf
-		If $nID = $button_grace Then
-		Switch $nNotifyCode
-			Case $LBN_DBLCLK
-				writelog("grace")
-		EndSwitch
-	EndIf
-		If $nID = $button_shutdown Then
-		Switch $nNotifyCode
-			Case $LBN_DBLCLK
-				writelog("shutdown")
-		EndSwitch
-	EndIf
-EndFunc
-
 ;HERE STARTS MAIN SCRIPT
 Fileinstall(".\images\ups.jpg", @tempdir & "ups.jpg",1)
 Fileinstall(".\images\upsicon.ico", @tempdir & "upsicon.ico",1)
@@ -1063,8 +1068,11 @@ $idTrayExit = TrayCreateItem("Exit")
 
 OpenMainWindow()
 if ( GetOption("minimizeonstart") == 1 and GetOption("minimizetray") == 1 ) Then
-	GuiSetState(@SW_HIDE , $gui)
+	GuiSetState(@SW_HIDE, $gui)
 	TraySetState($TRAY_ICONSTATE_SHOW)
+Else
+	GuiSetState(@SW_SHOW, $gui)
+	TraySetState($TRAY_ICONSTATE_HIDE)
 EndIf
 $ProgramVersion = _GetScriptVersion()
 $status = ConnectServer()

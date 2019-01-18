@@ -60,8 +60,7 @@ Global $wPanel = 0
 Global $idTrayExit,$idTrayPref,$idTrayAbout
 Global $runasexe = False
 
-Global $compteur_actif=0,$compteur_pause=0
-;========globale devaleur du compteur max de référence (30 sec par exple)
-Global $Nb_seconds, $grace_time
-;=======globale de compteur courrant
-Global $en_cours, $lbl_countdown, $lbl_ups_status
+Global $Active_Countdown = 0,$Suspend_Countdown = 0
+Global $ShutdownDelay, $grace_time
+Global $Running_Shutdown, $lbl_countdown, $lbl_ups_status
+Global $guishutdown, $Grace_btn, $Shutdown_btn

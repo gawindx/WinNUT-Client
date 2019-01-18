@@ -34,14 +34,14 @@ Func _GetScriptVersion()
 EndFunc
 
 Func Reset_Shutdown_Timer()
-	$compteur_actif = 0
+	$Active_Countdown = 0
 	Update_label()
 EndFunc
 
 Func Init_Shutdown_Timer()
-	If Not $compteur_actif Then
-		$compteur_actif = 1
-		$en_cours = $Nb_seconds
+	If Not $Active_Countdown Then
+		$Active_Countdown = 1
+		$en_cours = $ShutdownDelay
 		Update_label($en_cours)
 		AdlibRegister("Update_compteur",1000)
 	EndIf
@@ -56,13 +56,13 @@ EndFunc
 
 Func _Restart_Compteur($hWnd, $iMsg, $iIDTimer, $iTime)
 	AdlibRegister("Update_compteur",1000)
-	$compteur_pause = 0
+	$Suspend_Countdown = 0
 	GUICtrlSetColor($lbl_countdown, 0x000000)
 EndFunc
 
 ;==== Fonction principale de gestion du compteur
 Func Update_compteur()
-	If $compteur_actif Then
+	If $Active_Countdown Then
 		$en_cours -= 1
 		Update_label($en_cours)
 		If $en_cours = 0 Then AdlibUnregister("Update_compteur")
@@ -140,7 +140,6 @@ Func Readparam($paramName , $sectionName , $type ,$defaultValue , $iniName)
 	EndIf
 	
 EndFunc
-
 
 Func ReadParams()
 	if FileExists($inipath) == 0 then ; file not created yet/doesn't exist
