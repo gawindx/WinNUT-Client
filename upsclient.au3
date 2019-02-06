@@ -1,4 +1,4 @@
-#pragma compile(FileVersion, 1.7.0.2)
+#pragma compile(FileVersion, 1.7.0.5)
 #pragma compile(Icon, .\images\upsicon.ico)
 #pragma compile(Out, .\Build\upsclient.exe)
 #pragma compile(Compression, 1)
@@ -491,6 +491,8 @@ Func GetUPSInfo()
 		EndIf
 		$name =""
 	EndIf
+	;trim $name
+	$name = StringStripWS ( $name, $STR_STRIPLEADING + $STR_STRIPTRAILING )
 
 	$status = GetUPSVar(GetOption("upsname") ,"ups.serial" , $serial)
 	if $status = -1 then
@@ -531,11 +533,13 @@ Func GetData()
 	GetUPSVar($ups_name ,"battery.charge" , $battch)
 	GetUPSVar($ups_name ,"battery.voltage",$battVol)
 	GetUPSVar($ups_name ,"battery.runtime",$battruntime)
+	GetUPSVar($ups_name ,"battery.capacity",$batcapacity)
 	GetUPSVar($ups_name ,"input.frequency",$inputFreq)
 	GetUPSVar($ups_name ,"input.voltage",$inputVol)
 	GetUPSVar($ups_name ,"output.voltage",$outputVol)
 	GetUPSVar($ups_name ,"ups.load",$upsLoad)
 	GetUPSVar($ups_name ,"ups.status",$upsstatus)
+	GetUPSVar($ups_name ,"ups.realpower.nominal",$upsoutpower)
 	return 0
 EndFunc
 
@@ -580,16 +584,16 @@ Func ResetGui()
 		$outputVol = 0
 		$inputFreq = 0
 	EndIf
-	UpdateValue($needle4 , 0 , $battv ,$dial4 , getOption("minbattv"), getOption("maxbattv") )
-	UpdateValue($needle5 , 0 , $upsl , $dial5 , getOption("minupsl") , getOption("maxupsl") )
-	UpdateValue($needle6 , 0 , $upsch , $dial6 , 0 , 100 )
-	UpdateValue($needle1 , 0, $inputv ,$dial1 , getOption("mininputv") , getOption("maxinputv"))
-	UpdateValue($needle2 , 0, $outputv ,$dial2 , getOption("minoutputv") , getOption("maxoutputv"))
-	UpdateValue($needle3 , 0, $inputf , $dial3 , getOption("mininputf") , getOption("maxinputf") )
-	GuiCtrlSetBkColor( $upsonline , $gray )
-	GuiCtrlSetBkColor($upsonbatt , $gray )
-	GUICtrlSetBkColor($upsoverload , $gray )
-	GUICtrlSetBkColor($upslowbatt , $gray )
+	UpdateValue($needle4, 0, $battv,$dial4, getOption("minbattv"), getOption("maxbattv"))
+	UpdateValue($needle5, 0, $upsl, $dial5, getOption("minupsl"), getOption("maxupsl"))
+	UpdateValue($needle6, 0, $upsch, $dial6, 0, 100)
+	UpdateValue($needle1, 0, $inputv, $dial1, getOption("mininputv"), getOption("maxinputv"))
+	UpdateValue($needle2, 0, $outputv,$dial2, getOption("minoutputv"), getOption("maxoutputv"))
+	UpdateValue($needle3, 0, $inputf, $dial3, getOption("mininputf"), getOption("maxinputf"))
+	GuiCtrlSetBkColor($upsonline, $gray)
+	GuiCtrlSetBkColor($upsonbatt, $gray)
+	GUICtrlSetBkColor($upsoverload, $gray)
+	GUICtrlSetBkColor($upslowbatt, $gray)
 	if ($socket <> 0 ) Then
 		SetUPSInfo()
 	EndIf
@@ -606,7 +610,7 @@ Func Update()
 		Return
 	EndIf
 	$trayStatus  = ""
-	if $upsstatus == "OL" Then
+	If $upsstatus == "OL" Then
 		SetColor($green , $wPanel , $upsonline )
 		SetColor(0xffffff , $wPanel , $upsonbatt )
 		$trayStatus  = $trayStatus & "UPS On Line"
@@ -615,10 +619,36 @@ Func Update()
 		SetColor(0xffffff , $wPanel , $upsonline )
 		$trayStatus  = $trayStatus & "UPS On Batt"
 	EndIf
-	if $upsLoad > 100 Then
+	Local $PowerDivider = 0.9
+	If $upsLoad > 100 Then
 		SetColor($red , $wPanel , $upsoverload )
 	Else
 		SetColor(0xffffff , $wPanel , $upsoverload )
+		If $upsLoad > 75 Then
+			$PowerDivider = 0.8
+		ElseIf $upsLoad > 50 Then
+			$PowerDivider = 0.85
+		EndIf
+	EndIf
+	;In case of that your inverter does not provide the State of Charge, he will be estimated.
+	;The calculation method used is linear and considers that a fully charged 12V battery has
+	;a voltage of 13.6V while the voltage of a fully discharged battery is only 11.6V .
+	;In this way each percentage of Charge level corresponds to 0.02V.
+	;This method is not accurate but offers a consistent approximation.
+	If ($battCh = 255) Then
+		Local $nbattery = Floor($battVol / 12)
+		$battCh = Floor(($battVol - (11.6 * $nbattery)) / (0.02 * $nbattery))
+	EndIF
+	;In case your inverter does not provide a consistent value for its runtime, 
+	;he will also be determined by the calculation
+	;The calculation takes into account the capacity of the batteries, 
+	; the instantaneous charge, the battery voltage, their state of charge,
+	; the Power Factor as well as a coefficient allowing to take into account
+	;a large instantaneous charge (this limits the runtime ).
+	If ($battruntime >= 86400 ) Then
+		Local $RealLoad = ($upsoutpower*($upsLoad/100))
+		Local $InstantCurrent = $RealLoad / $battVol
+		$battruntime = Floor(((($batcapacity / $InstantCurrent)* $upsPF) * ($battCh/100) * $PowerDivider)*3600)
 	EndIf
 	if $battCh < 40 Then
 		SetColor($red , $wPanel , $upslowbatt )
@@ -627,18 +657,8 @@ Func Update()
 		SetColor(0xffffff , $wPanel , $upslowbatt )
 		$trayStatus  = $trayStatus & @LF &  "Battery OK"
 	EndIf
-	$hourrtime = Floor($battruntime / 3600)
-	$minrtime = Floor(($battruntime - ($hourrtime * 3600)) / 60 )
-	$secrtime = $battruntime - ($hourrtime * 3600) - ($minrtime * 60)
-	If ( $hourrtime > 23) Then
-		$dayrtime = Floor($hourrtime/24)
-		$hourrtime = $hourrtime - ($dayrtime * 24)
-		$battrtimeStr = StringFormat("%02dd%02dh:%02dm:%02ds", $dayrtime, $hourrtime, $minrtime, $secrtime)
-	ElseIf ( $hourrtime = 0 ) Then
-		$battrtimeStr = StringFormat("%02dm:%02ds", $minrtime, $secrtime)
-	Else
-		$battrtimeStr = StringFormat("%02dh:%02dm:%02ds", $hourrtime, $minrtime, $secrtime)
-	EndIf
+	$battrtimeStr = TimeToStr($battruntime)
+	GuiCtrlSetData($remainTimeLabel,$battrtimeStr) 
 	UpdateValue($needle4 , $battVol , $battv , $dial4 , getOption("minbattv") , getOption("maxbattv") )
 	UpdateValue($needle5 , $upsLoad , $upsl , $dial5 , getOption("minupsl") , getOption("maxupsl") )
 	UpdateValue($needle6 , $battCh , $upsch , $dial6 , 0 , 100 )
@@ -732,37 +752,40 @@ Func OpenMainWindow()
 	$log = GUICtrlCreateCombo("", 5, 335, 630, 25,Bitor($CBS_DROPDOWNLIST,0))
 	$wPanel = GUICreate("", 150, 250,0, 70,BitOR($WS_CHILD, $WS_DLGFRAME), $WS_EX_CLIENTEDGE, $gui)
 	GUISetBkColor($panel_bkg , $wPanel)
-	$Label1 = GUICtrlCreateLabel("UPS On Line", 8, 8, 110, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label1 = GUICtrlCreateLabel("UPS On Line", 8, 8, 110, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsonline = GUICtrlCreateLabel("", 121, 8, 15, 17, BitOR($SS_CENTER,$SS_SUNKEN))
+	$upsonline = GUICtrlCreateLabel("", 121, 6, 16, 16, BitOR($SS_CENTER,$SS_SUNKEN))
 	GUICtrlSetBkColor(-1, $gray)
-	$Label2 = GUICtrlCreateLabel("UPS On Battery", 8, 32, 110, 18,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label2 = GUICtrlCreateLabel("UPS On Battery", 8, 28, 110, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsonbatt = GUICtrlCreateLabel("", 121, 32, 15, 17, BitOR($SS_CENTER,$SS_SUNKEN))
+	$upsonbatt = GUICtrlCreateLabel("", 121, 26, 16, 16, BitOR($SS_CENTER,$SS_SUNKEN))
 	GUICtrlSetBkColor(-1, $gray)
-	$Label3 = GUICtrlCreateLabel("UPS Overload", 8, 56, 110, 18,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label3 = GUICtrlCreateLabel("UPS Overload", 8, 48, 110, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsoverload = GUICtrlCreateLabel("", 121, 56, 15, 17, BitOR($SS_CENTER,$SS_SUNKEN))
+	$upsoverload = GUICtrlCreateLabel("", 121, 46, 16, 16, BitOR($SS_CENTER,$SS_SUNKEN))
 	GUICtrlSetBkColor(-1, $gray)
-	$Label4 = GUICtrlCreateLabel("UPS Battery low", 8, 80, 110, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label4 = GUICtrlCreateLabel("UPS Battery low", 8, 68, 110, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upslowbatt = GUICtrlCreateLabel("", 121, 80, 15, 17, BitOR($SS_CENTER,$SS_SUNKEN))
+	$upslowbatt = GUICtrlCreateLabel("", 121, 66, 16, 16, BitOR($SS_CENTER,$SS_SUNKEN))
 	GUICtrlSetBkColor(-1, $gray)
-	$Label5 = GUICtrlCreateLabel("Manufacturer :", 8, 110, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
-	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsmfr = GUICtrlCreateLabel($mfr, 8, 128, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$labelUpsRemain = GUICtrlCreateLabel("Remaining Time", 8, 88, 110, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$remainTimeLabel = GUICtrlCreateLabel($battrtimeStr, 8, 104, 130, 16,Bitor($SS_RIGHT,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 800, 0, "MS SansSerif")
-	$Label14 = GUICtrlCreateLabel("Name :", 8, 142, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label5 = GUICtrlCreateLabel("Manufacturer :", 8, 122, 130, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsmodel = GUICtrlCreateLabel($name, 8, 160, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$upsmfr = GUICtrlCreateLabel($mfr, 8, 138, 130, 16,Bitor($SS_RIGHT,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 800, 0, "MS SansSerif")
-	$Label15 = GUICtrlCreateLabel("Serial :", 8, 174, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label14 = GUICtrlCreateLabel("Name :", 8, 154, 130, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsserial = GUICtrlCreateLabel($serial, 8, 190, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$upsmodel = GUICtrlCreateLabel($name, 8, 170, 130, 16,Bitor($SS_RIGHT,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 800, 0, "MS SansSerif")
-	$Label16 = GUICtrlCreateLabel("Firmware :", 8, 204, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label15 = GUICtrlCreateLabel("Serial :", 8, 186, 130, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsfirmware = GUICtrlCreateLabel($firmware, 8, 222, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$upsserial = GUICtrlCreateLabel($serial, 8, 202, 130, 16,Bitor($SS_RIGHT,$GUI_SS_DEFAULT_LABEL))
+	GUICtrlSetFont(-1, 8, 800, 0, "MS SansSerif")
+	$Label16 = GUICtrlCreateLabel("Firmware :", 8, 218, 130, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
+	$upsfirmware = GUICtrlCreateLabel($firmware, 8, 234, 130, 16,Bitor($SS_RIGHT,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 800, 0, "MS SansSerif")
 
 	GuiSwitch($gui)

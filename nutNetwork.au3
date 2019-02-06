@@ -71,7 +71,6 @@ Func ListUPSVars($upsId , byref $upsVar)
 	EndIf
 	$upsVar = $data
 	return 0	
-	
 EndFunc
 
 Func GetUPSDescVar($upsId , $varName , byref $upsVar)

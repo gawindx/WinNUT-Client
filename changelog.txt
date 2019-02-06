@@ -1,7 +1,12 @@
 History:
 
+Version 1.7.0.5
+Added : Added ability to estimate the load level and run time of the UPS when he does not provide the information itself (or is inconsistent).
+Fix : Some Source Cleanup
+
+
 Version 1.7.0
-Added : Custom Shutdwn Options.
+Added : Custom Shutdown Options.
 Allow software to not shutdown immediately and permit backup data before shutdown
 Fix : Ups VarList Gui
 
