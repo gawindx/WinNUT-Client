@@ -5,6 +5,7 @@ Global $haserror = 0
 Global $ProgramDesc = "Windows NUT Client"
 Global $ProgramVersion = ""
 
+Global $upsPF = 0.7
 Global $inputv = 0
 Global $outputv = 0
 Global $inputf = 0
@@ -18,6 +19,7 @@ Global $battVol = 0
 Global $upsLoad = 0
 Global $battCh = 0
 Global $battruntime = 0
+Global $batcapacity = 0
 
 Global $upsstatus = 0
 Global $needle1 = 0
@@ -37,6 +39,8 @@ Global $upsonline = 0
 Global $upsonbatt = 0
 Global $upslowbatt = 0
 Global $upsoverload = 0
+Global $upsoutpower = 0
+Global $remainTimeLabel = 0
 Global $mfr = ""
 Global $name = ""
 Global $serial = ""
@@ -60,8 +64,15 @@ Global $wPanel = 0
 Global $idTrayExit,$idTrayPref,$idTrayAbout
 Global $runasexe = False
 
-Global $compteur_actif=0,$compteur_pause=0
-;========globale devaleur du compteur max de référence (30 sec par exple)
-Global $Nb_seconds, $grace_time
-;=======globale de compteur courrant
-Global $en_cours, $lbl_countdown, $lbl_ups_status
+Global $Active_Countdown = 0,$Suspend_Countdown = 0
+Global $ShutdownDelay, $grace_time
+Global $Running_Shutdown, $lbl_countdown, $lbl_ups_status
+Global $guishutdown, $Grace_btn, $Shutdown_btn
+
+;nutOption
+Global $optionsStruct = 0
+Global $inipath = @ScriptDir & "\" & "ups.ini"
+Global $panel_bkg = 0
+Global $clock_bkg_bgr = 0
+Global $panel_bkg_bgr = 0
+Global $optionList = ""

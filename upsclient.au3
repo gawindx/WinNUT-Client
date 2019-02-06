@@ -1,4 +1,4 @@
-#pragma compile(FileVersion, 1.7.0.1)
+#pragma compile(FileVersion, 1.7.0.5)
 #pragma compile(Icon, .\images\upsicon.ico)
 #pragma compile(Out, .\Build\upsclient.exe)
 #pragma compile(Compression, 1)
@@ -398,7 +398,6 @@ Func varlistGui()
 	$guilistvar = GUICreate("LIST UPS Variables", 365, 331, 196, 108, -1 , -1 , $gui)
 	GUISetIcon(@tempdir & "upsicon.ico")
 	$TreeView1 = GUICtrlCreateTreeView(0, 8, 361, 169)
-	;$state = GUICtrlSetImage($TreeView1, @ScriptDir & "\light.ico", -1 , 4)
 
 	$Group1 = GUICtrlCreateGroup("Item properties", 0, 184, 361, 105, $BS_CENTER)
 	$Label1 = GUICtrlCreateLabel("Name :", 8, 200, 38, 17)
@@ -408,15 +407,14 @@ Func varlistGui()
 	$varvalue = GUICtrlCreateLabel("", 50, 232, 291, 17, $SS_SUNKEN)
 	$vardesc = GUICtrlCreateLabel("", 72, 264, 283, 17, $SS_SUNKEN)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
-	$Button1 = GUICtrlCreateButton("Reload", 80, 296, 65, 25, 0)
-	$Button2 = GUICtrlCreateButton("Clear", 200, 296, 65, 25, 0)
+	$Reload_Btn = GUICtrlCreateButton("Reload", 80, 296, 65, 25, 0)
+	$Clear_Btn = GUICtrlCreateButton("Clear", 200, 296, 65, 25, 0)
 	GuiSetState(@SW_DISABLE,$gui )
 	GUISetState(@SW_SHOW , $guilistvar)
 
 	$varcount = Ubound($vars) - 2
 	$varlist = "";
 	for $i = 3 to $varcount
-
 		if $i == $varcount Then
 			ContinueLoop
 		EndIf
@@ -431,18 +429,31 @@ Func varlistGui()
 	AdlibRegister("updateVarList",500)
 	While 1
 		$nMsg = GUIGetMsg(1)
-		if ($nMsg[0] == $GUI_EVENT_CLOSE) Then
-			AdlibUnregister("Update")
-			GuiSetState(@SW_ENABLE,$gui )
-			GuiDelete($guilistvar)
-			WinActivate($gui)
-			AdlibRegister("Update",1000)
-
-			return
-		EndIf
-		if ($nMsg[0] == $Button2) Then
-			;_GUICtrlTreeViewDeleteAllItems ( $TreeView1 )
-		EndIf
+		Switch $nMsg[0]
+			Case $GUI_EVENT_CLOSE
+				AdlibUnregister("updateVarList")
+				GuiSetState(@SW_ENABLE,$gui )
+				GuiDelete($guilistvar)
+				WinActivate($gui)
+				AdlibRegister("Update",1000)
+				return
+			Case $Clear_Btn
+				_GUICtrlTreeView_Expand($TreeView1,0,false)
+			Case $Reload_Btn
+				AdlibUnRegister("updateVarList")
+				_GUICtrlTreeView_DeleteAll($TreeView1)
+				for $i = 3 to $varcount
+					if $i == $varcount Then
+						ContinueLoop
+					EndIf
+					$templist = StringSplit($vars[$i],'"')
+					$curpath = StringStripWS($templist[1],3)
+					_addPath($TreeView1, $curpath )
+				Next
+				_SetIcons($TreeView1, 0)
+				_GUICtrlTreeView_Expand($TreeView1,0,false)
+				AdlibRegister("updateVarList",500)
+		EndSwitch
 	WEnd
 EndFunc
 
@@ -480,6 +491,8 @@ Func GetUPSInfo()
 		EndIf
 		$name =""
 	EndIf
+	;trim $name
+	$name = StringStripWS ( $name, $STR_STRIPLEADING + $STR_STRIPTRAILING )
 
 	$status = GetUPSVar(GetOption("upsname") ,"ups.serial" , $serial)
 	if $status = -1 then
@@ -520,11 +533,13 @@ Func GetData()
 	GetUPSVar($ups_name ,"battery.charge" , $battch)
 	GetUPSVar($ups_name ,"battery.voltage",$battVol)
 	GetUPSVar($ups_name ,"battery.runtime",$battruntime)
+	GetUPSVar($ups_name ,"battery.capacity",$batcapacity)
 	GetUPSVar($ups_name ,"input.frequency",$inputFreq)
 	GetUPSVar($ups_name ,"input.voltage",$inputVol)
 	GetUPSVar($ups_name ,"output.voltage",$outputVol)
 	GetUPSVar($ups_name ,"ups.load",$upsLoad)
 	GetUPSVar($ups_name ,"ups.status",$upsstatus)
+	GetUPSVar($ups_name ,"ups.realpower.nominal",$upsoutpower)
 	return 0
 EndFunc
 
@@ -569,16 +584,16 @@ Func ResetGui()
 		$outputVol = 0
 		$inputFreq = 0
 	EndIf
-	UpdateValue($needle4 , 0 , $battv ,$dial4 , getOption("minbattv"), getOption("maxbattv") )
-	UpdateValue($needle5 , 0 , $upsl , $dial5 , getOption("minupsl") , getOption("maxupsl") )
-	UpdateValue($needle6 , 0 , $upsch , $dial6 , 0 , 100 )
-	UpdateValue($needle1 , 0, $inputv ,$dial1 , getOption("mininputv") , getOption("maxinputv"))
-	UpdateValue($needle2 , 0, $outputv ,$dial2 , getOption("minoutputv") , getOption("maxoutputv"))
-	UpdateValue($needle3 , 0, $inputf , $dial3 , getOption("mininputf") , getOption("maxinputf") )
-	GuiCtrlSetBkColor( $upsonline , $gray )
-	GuiCtrlSetBkColor($upsonbatt , $gray )
-	GUICtrlSetBkColor($upsoverload , $gray )
-	GUICtrlSetBkColor($upslowbatt , $gray )
+	UpdateValue($needle4, 0, $battv,$dial4, getOption("minbattv"), getOption("maxbattv"))
+	UpdateValue($needle5, 0, $upsl, $dial5, getOption("minupsl"), getOption("maxupsl"))
+	UpdateValue($needle6, 0, $upsch, $dial6, 0, 100)
+	UpdateValue($needle1, 0, $inputv, $dial1, getOption("mininputv"), getOption("maxinputv"))
+	UpdateValue($needle2, 0, $outputv,$dial2, getOption("minoutputv"), getOption("maxoutputv"))
+	UpdateValue($needle3, 0, $inputf, $dial3, getOption("mininputf"), getOption("maxinputf"))
+	GuiCtrlSetBkColor($upsonline, $gray)
+	GuiCtrlSetBkColor($upsonbatt, $gray)
+	GUICtrlSetBkColor($upsoverload, $gray)
+	GUICtrlSetBkColor($upslowbatt, $gray)
 	if ($socket <> 0 ) Then
 		SetUPSInfo()
 	EndIf
@@ -595,7 +610,7 @@ Func Update()
 		Return
 	EndIf
 	$trayStatus  = ""
-	if $upsstatus == "OL" Then
+	If $upsstatus == "OL" Then
 		SetColor($green , $wPanel , $upsonline )
 		SetColor(0xffffff , $wPanel , $upsonbatt )
 		$trayStatus  = $trayStatus & "UPS On Line"
@@ -604,10 +619,36 @@ Func Update()
 		SetColor(0xffffff , $wPanel , $upsonline )
 		$trayStatus  = $trayStatus & "UPS On Batt"
 	EndIf
-	if $upsLoad > 100 Then
+	Local $PowerDivider = 0.9
+	If $upsLoad > 100 Then
 		SetColor($red , $wPanel , $upsoverload )
 	Else
 		SetColor(0xffffff , $wPanel , $upsoverload )
+		If $upsLoad > 75 Then
+			$PowerDivider = 0.8
+		ElseIf $upsLoad > 50 Then
+			$PowerDivider = 0.85
+		EndIf
+	EndIf
+	;In case of that your inverter does not provide the State of Charge, he will be estimated.
+	;The calculation method used is linear and considers that a fully charged 12V battery has
+	;a voltage of 13.6V while the voltage of a fully discharged battery is only 11.6V .
+	;In this way each percentage of Charge level corresponds to 0.02V.
+	;This method is not accurate but offers a consistent approximation.
+	If ($battCh = 255) Then
+		Local $nbattery = Floor($battVol / 12)
+		$battCh = Floor(($battVol - (11.6 * $nbattery)) / (0.02 * $nbattery))
+	EndIF
+	;In case your inverter does not provide a consistent value for its runtime, 
+	;he will also be determined by the calculation
+	;The calculation takes into account the capacity of the batteries, 
+	; the instantaneous charge, the battery voltage, their state of charge,
+	; the Power Factor as well as a coefficient allowing to take into account
+	;a large instantaneous charge (this limits the runtime ).
+	If ($battruntime >= 86400 ) Then
+		Local $RealLoad = ($upsoutpower*($upsLoad/100))
+		Local $InstantCurrent = $RealLoad / $battVol
+		$battruntime = Floor(((($batcapacity / $InstantCurrent)* $upsPF) * ($battCh/100) * $PowerDivider)*3600)
 	EndIf
 	if $battCh < 40 Then
 		SetColor($red , $wPanel , $upslowbatt )
@@ -616,18 +657,8 @@ Func Update()
 		SetColor(0xffffff , $wPanel , $upslowbatt )
 		$trayStatus  = $trayStatus & @LF &  "Battery OK"
 	EndIf
-	$hourrtime = Floor($battruntime / 3600)
-	$minrtime = Floor(($battruntime - ($hourrtime * 3600)) / 60 )
-	$secrtime = $battruntime - ($hourrtime * 3600) - ($minrtime * 60)
-	If ( $hourrtime > 23) Then
-		$dayrtime = Floor($hourrtime/24)
-		$hourrtime = $hourrtime - ($dayrtime * 24)
-		$battrtimeStr = StringFormat("%02dd%02dh:%02dm:%02ds", $dayrtime, $hourrtime, $minrtime, $secrtime)
-	ElseIf ( $hourrtime = 0 ) Then
-		$battrtimeStr = StringFormat("%02dm:%02ds", $minrtime, $secrtime)
-	Else
-		$battrtimeStr = StringFormat("%02dh:%02dm:%02ds", $hourrtime, $minrtime, $secrtime)
-	EndIf
+	$battrtimeStr = TimeToStr($battruntime)
+	GuiCtrlSetData($remainTimeLabel,$battrtimeStr) 
 	UpdateValue($needle4 , $battVol , $battv , $dial4 , getOption("minbattv") , getOption("maxbattv") )
 	UpdateValue($needle5 , $upsLoad , $upsl , $dial5 , getOption("minupsl") , getOption("maxupsl") )
 	UpdateValue($needle6 , $battCh , $upsch , $dial6 , 0 , 100 )
@@ -719,52 +750,50 @@ Func OpenMainWindow()
 	$helpMenu = GUICtrlCreateMenu("&Help")
 	$aboutMenu = GUICtrlCreateMenuItem("About", $helpMenu)
 	$log = GUICtrlCreateCombo("", 5, 335, 630, 25,Bitor($CBS_DROPDOWNLIST,0))
-	;$Group8 = GUICtrlCreateGroup("", 0, 0, 598 + 25, 65)
-
-	;	GuiSwitch($gui)
 	$wPanel = GUICreate("", 150, 250,0, 70,BitOR($WS_CHILD, $WS_DLGFRAME), $WS_EX_CLIENTEDGE, $gui)
 	GUISetBkColor($panel_bkg , $wPanel)
-	$Label1 = GUICtrlCreateLabel("UPS On Line", 8, 8, 110, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label1 = GUICtrlCreateLabel("UPS On Line", 8, 8, 110, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsonline = GUICtrlCreateLabel("", 121, 8, 15, 17, BitOR($SS_CENTER,$SS_SUNKEN))
+	$upsonline = GUICtrlCreateLabel("", 121, 6, 16, 16, BitOR($SS_CENTER,$SS_SUNKEN))
 	GUICtrlSetBkColor(-1, $gray)
-	$Label2 = GUICtrlCreateLabel("UPS On Battery", 8, 32, 110, 18,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label2 = GUICtrlCreateLabel("UPS On Battery", 8, 28, 110, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsonbatt = GUICtrlCreateLabel("", 121, 32, 15, 17, BitOR($SS_CENTER,$SS_SUNKEN))
+	$upsonbatt = GUICtrlCreateLabel("", 121, 26, 16, 16, BitOR($SS_CENTER,$SS_SUNKEN))
 	GUICtrlSetBkColor(-1, $gray)
-	$Label3 = GUICtrlCreateLabel("UPS Overload", 8, 56, 110, 18,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label3 = GUICtrlCreateLabel("UPS Overload", 8, 48, 110, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsoverload = GUICtrlCreateLabel("", 121, 56, 15, 17, BitOR($SS_CENTER,$SS_SUNKEN))
+	$upsoverload = GUICtrlCreateLabel("", 121, 46, 16, 16, BitOR($SS_CENTER,$SS_SUNKEN))
 	GUICtrlSetBkColor(-1, $gray)
-	$Label4 = GUICtrlCreateLabel("UPS Battery low", 8, 80, 110, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label4 = GUICtrlCreateLabel("UPS Battery low", 8, 68, 110, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upslowbatt = GUICtrlCreateLabel("", 121, 80, 15, 17, BitOR($SS_CENTER,$SS_SUNKEN))
+	$upslowbatt = GUICtrlCreateLabel("", 121, 66, 16, 16, BitOR($SS_CENTER,$SS_SUNKEN))
 	GUICtrlSetBkColor(-1, $gray)
-	$Label5 = GUICtrlCreateLabel("Manufacturer :", 8, 110, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
-	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsmfr = GUICtrlCreateLabel($mfr, 8, 128, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$labelUpsRemain = GUICtrlCreateLabel("Remaining Time", 8, 88, 110, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$remainTimeLabel = GUICtrlCreateLabel($battrtimeStr, 8, 104, 130, 16,Bitor($SS_RIGHT,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 800, 0, "MS SansSerif")
-	$Label14 = GUICtrlCreateLabel("Name :", 8, 142, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label5 = GUICtrlCreateLabel("Manufacturer :", 8, 122, 130, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsmodel = GUICtrlCreateLabel($name, 8, 160, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$upsmfr = GUICtrlCreateLabel($mfr, 8, 138, 130, 16,Bitor($SS_RIGHT,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 800, 0, "MS SansSerif")
-	$Label15 = GUICtrlCreateLabel("Serial :", 8, 174, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label14 = GUICtrlCreateLabel("Name :", 8, 154, 130, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsserial = GUICtrlCreateLabel($serial, 8, 190, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$upsmodel = GUICtrlCreateLabel($name, 8, 170, 130, 16,Bitor($SS_RIGHT,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 800, 0, "MS SansSerif")
-	$Label16 = GUICtrlCreateLabel("Firmware :", 8, 204, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$Label15 = GUICtrlCreateLabel("Serial :", 8, 186, 130, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
-	$upsfirmware = GUICtrlCreateLabel($firmware, 8, 222, 130, 17,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	$upsserial = GUICtrlCreateLabel($serial, 8, 202, 130, 16,Bitor($SS_RIGHT,$GUI_SS_DEFAULT_LABEL))
+	GUICtrlSetFont(-1, 8, 800, 0, "MS SansSerif")
+	$Label16 = GUICtrlCreateLabel("Firmware :", 8, 218, 130, 16,Bitor($SS_LEFTNOWORDWRAP,$GUI_SS_DEFAULT_LABEL))
+	GUICtrlSetFont(-1, 8, 400, 0, "MS SansSerif")
+	$upsfirmware = GUICtrlCreateLabel($firmware, 8, 234, 130, 16,Bitor($SS_RIGHT,$GUI_SS_DEFAULT_LABEL))
 	GUICtrlSetFont(-1, 8, 800, 0, "MS SansSerif")
 
-	;$wPanel = GUICtrlCreateGroup("", 0, 70, 130 + 25, 240)
 	GuiSwitch($gui)
 	$Group8 = GUICreate("", 638, 60,0, 0,BitOR($WS_CHILD, $WS_BORDER), 0, $gui)
 	$exitb = GUICtrlCreateButton("Exit", 10, 10, 73, 40, 0)
 	$toolb = GUICtrlCreateButton("Settings", 102, 10, 73, 40, 0)
 	GUISetState(@SW_SHOW,$Group8)
 	GUISetState(@SW_SHOW,$wPanel)
-	GUISetState(@SW_SHOW,$gui)
 	$calc = 1 / ((GetOption("maxinputv") - GetOption("mininputv")) / 100 )
 	$dial1 = DrawDial(160, 70 , GetOption("mininputv") , "Input Voltage" , "V" , $inputv , $needle1 , $calc)
 	$calc = 1 / ((GetOption("maxoutputv") - GetOption("minoutputv")) / 100 )
@@ -817,7 +846,102 @@ Func aboutGui()
 	WEnd
 EndFunc
 
-func mainLoop()
+Func ShutdownGui()
+	Local $Halt, $msg
+
+	$ShutdownDelay = GetOption("ShutdownDelay")
+	$grace_time = GetOption("GraceDelay")
+	$AllowGrace = GetOption("AllowGrace")
+	$guishutdown = GUICreate("Shutdown", (290 + $AllowGrace * 110) , 120,-1,-1, Bitor($WS_EX_TOPMOST, $WS_POPUP))
+	$Grace_btn = GUICtrlCreateButton("Grace Time", 10, 10, 100, 100,BitOR($BS_NOTIFY, $GUI_SS_DEFAULT_BUTTON))
+	If $AllowGrace = 0 Then
+		GUICtrlSetState($Grace_btn, $GUI_HIDE)
+	EndIf
+	$Shutdown_btn = GUICtrlCreateButton("Shutdown Immediately" & @CRLF & "Double-Click to Shutdown", (180 + $AllowGrace * 110), 10, 100, 100,BitOR($BS_MULTILINE, $BS_NOTIFY, $GUI_SS_DEFAULT_BUTTON))
+	$lbl_ups_status = GUICtrlCreateLabel("", (8 + $AllowGrace * 110), 10, 170, 40)
+	$lbl_countdown = GUICtrlCreateLabel("", (8 + $AllowGrace * 110), 45, 170, 70)
+	GUICtrlSetFont(-1, 48, 800, 0, "MS SansSerif")
+	GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
+	GUICtrlSetColor(-1, 0x000000)
+	GUISetState(@SW_SHOW,$guishutdown)
+	Reset_Shutdown_Timer()
+	Init_Shutdown_Timer()
+	$sec = @SEC
+	$REDText = 1
+	While 1
+		$nMsg3 = GUIGetMsg()
+		Select
+			Case $nMsg3 = $Grace_btn
+				GUICtrlSetState($Grace_btn,$GUI_DISABLE)
+				_Timer_SetTimer($guishutdown, $grace_time*1000, "_Restart_Compteur")
+				$Suspend_Countdown = 1
+				AdlibUnregister("Update_compteur")
+			Case $nMsg3 = $Shutdown_btn or $en_cours = 0
+				GUICtrlSetState($Grace_btn,$GUI_DISABLE)
+				GUICtrlSetState($Shutdown_btn,$GUI_DISABLE)
+				AdlibUnregister("Update_compteur")
+				Reset_Shutdown_Timer()
+				Shutdown(17)
+				Exit
+			Case IsShutdownCondition() = False
+				AdlibUnregister("Update_compteur")
+				Reset_Shutdown_Timer()
+				GuiDelete($guishutdown)
+				ExitLoop
+			Case $Suspend_Countdown = 1
+				If @SEC <> $sec Then
+					$sec = @SEC
+					If $REDText Then
+						GUICtrlSetColor($lbl_countdown, 0xffffff)
+					Else
+						GUICtrlSetColor($lbl_countdown, 0xff0000)
+					EndIf
+					$REDText = Not $REDText
+				EndIf
+		EndSelect
+	WEnd
+EndFunc
+
+Func ShutdownGui_Event($hWnd, $Msg, $wParam, $lParam)
+	$nNotifyCode = BitShift($wParam, 16)
+	$nID = BitAnd($wParam, 0x0000FFFF)
+	$hCtrl = $lParam
+	writelog("notify " & $nNotifyCode)
+	If $nID = $guishutdown Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				writelog("bidule")
+		EndSwitch
+	EndIf
+		If $nID = $Grace_btn Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				writelog("grace")
+		EndSwitch
+	EndIf
+		If $nID = $Shutdown_btn Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				writelog("shutdown")
+		EndSwitch
+	EndIf
+EndFunc
+
+Func setTrayMode()
+	$minimizetray = GetOption("minimizetray")
+	if $minimizetray == 1 Then
+		TraySetIcon(@tempdir & "upsicon.ico")
+		TraySetState($TRAY_ICONSTATE_SHOW)
+		Opt("TrayAutoPause", 0) ; Le script n'est pas mis en pause lors de la sélection de l'icône de la zone de notification.
+		Opt("TrayMenuMode", 3) ; Les items ne sont pas cochés lorsqu'ils sont sélectionnés.
+		TraySetClick(8)
+		TraySetToolTip($ProgramDesc & " - " & $ProgramVersion )
+	Else
+		TraySetState($TRAY_ICONSTATE_HIDE)
+	EndIf
+EndFunc
+
+Func mainLoop()
 	$minimizetray = GetOption("minimizetray")
 	While 1
 		if ($minimizetray == 1) Then
@@ -933,102 +1057,6 @@ func mainLoop()
 	WEnd
 EndFunc
 
-func setTrayMode()
-	$minimizetray = GetOption("minimizetray")
-	if $minimizetray == 1 Then
-		TraySetIcon(@tempdir & "upsicon.ico")
-		TraySetState($TRAY_ICONSTATE_SHOW)
-		Opt("TrayAutoPause", 0) ; Le script n'est pas mis en pause lors de la sélection de l'icône de la zone de notification.
-		Opt("TrayMenuMode", 3) ; Les items ne sont pas cochés lorsqu'ils sont sélectionnés.
-		TraySetClick(8)
-		TraySetToolTip($ProgramDesc & " - " & $ProgramVersion )
-	Else
-		TraySetState($TRAY_ICONSTATE_HIDE)
-	EndIf
-EndFunc
-
-Func ShutdownGui()
-	Local $Halt, $msg
-	Global $guishutdown, $button_grace, $button_shutdown
-
-	$Nb_seconds = GetOption("ShutdownDelay")
-	$grace_time = GetOption("GraceDelay")
-	$AllowGrace = GetOption("AllowGrace")
-	$guishutdown = GUICreate("Shutdown", (290 + $AllowGrace * 110) , 120,-1,-1, Bitor($WS_EX_TOPMOST, $WS_POPUP))
-	$button_grace = GUICtrlCreateButton("Grace Time", 10, 10, 100, 100,BitOR($BS_NOTIFY, $GUI_SS_DEFAULT_BUTTON))
-	If $AllowGrace = 0 Then
-		GUICtrlSetState($button_grace, $GUI_HIDE)
-	EndIf
-	$button_Shutdown = GUICtrlCreateButton("Shutdown Immediately" & @CRLF & "Double-Click to Shutdown", (180 + $AllowGrace * 110), 10, 100, 100,BitOR($BS_MULTILINE, $BS_NOTIFY, $GUI_SS_DEFAULT_BUTTON))
-	$lbl_ups_status = GUICtrlCreateLabel("", (8 + $AllowGrace * 110), 10, 170, 40)
-	$lbl_countdown = GUICtrlCreateLabel("", (8 + $AllowGrace * 110), 45, 170, 70)
-	GUICtrlSetFont(-1, 48, 800, 0, "MS SansSerif")
-	GUICtrlSetBkColor(-1, $GUI_BKCOLOR_TRANSPARENT)
-	GUICtrlSetColor(-1, 0x000000)
-	GUISetState(@SW_SHOW,$guishutdown)
-	Reset_Shutdown_Timer()
-	Init_Shutdown_Timer()
-	$sec = @SEC
-	$REDText = 1
-	While 1
-		$nMsg3 = GUIGetMsg()
-		Select
-			Case $nMsg3 = $button_grace
-				GUICtrlSetState($button_grace,$GUI_DISABLE)
-				_Timer_SetTimer($guishutdown, $grace_time*1000, "_Restart_Compteur")
-				$compteur_pause = 1
-				AdlibUnregister("Update_compteur")
-			Case $nMsg3 = $button_shutdown or $en_cours = 0
-				GUICtrlSetState($button_grace,$GUI_DISABLE)
-				GUICtrlSetState($button_Shutdown,$GUI_DISABLE)
-				AdlibUnregister("Update_compteur")
-				Reset_Shutdown_Timer()
-				Shutdown(17)
-				Exit
-			Case IsShutdownCondition() = False
-				AdlibUnregister("Update_compteur")
-				Reset_Shutdown_Timer()
-				GuiDelete($guishutdown)
-				ExitLoop
-			Case $compteur_pause = 1
-				If @SEC <> $sec Then
-					$sec = @SEC
-					If $REDText Then
-						GUICtrlSetColor($lbl_countdown, 0xffffff)
-					Else
-						GUICtrlSetColor($lbl_countdown, 0xff0000)
-					EndIf
-					$REDText = Not $REDText
-				EndIf
-		EndSelect
-	WEnd
-EndFunc
-
-Func ShutdownGui_Event($hWnd, $Msg, $wParam, $lParam)
-	$nNotifyCode = BitShift($wParam, 16)
-	$nID = BitAnd($wParam, 0x0000FFFF)
-	$hCtrl = $lParam
-	writelog("notify " & $nNotifyCode)
-	If $nID = $guishutdown Then
-		Switch $nNotifyCode
-			Case $LBN_DBLCLK
-				writelog("bidule")
-		EndSwitch
-	EndIf
-		If $nID = $button_grace Then
-		Switch $nNotifyCode
-			Case $LBN_DBLCLK
-				writelog("grace")
-		EndSwitch
-	EndIf
-		If $nID = $button_shutdown Then
-		Switch $nNotifyCode
-			Case $LBN_DBLCLK
-				writelog("shutdown")
-		EndSwitch
-	EndIf
-EndFunc
-
 ;HERE STARTS MAIN SCRIPT
 Fileinstall(".\images\ups.jpg", @tempdir & "ups.jpg",1)
 Fileinstall(".\images\upsicon.ico", @tempdir & "upsicon.ico",1)
@@ -1063,8 +1091,11 @@ $idTrayExit = TrayCreateItem("Exit")
 
 OpenMainWindow()
 if ( GetOption("minimizeonstart") == 1 and GetOption("minimizetray") == 1 ) Then
-	GuiSetState(@SW_HIDE , $gui)
+	GuiSetState(@SW_HIDE, $gui)
 	TraySetState($TRAY_ICONSTATE_SHOW)
+Else
+	GuiSetState(@SW_SHOW, $gui)
+	TraySetState($TRAY_ICONSTATE_HIDE)
 EndIf
 $ProgramVersion = _GetScriptVersion()
 $status = ConnectServer()

@@ -2,7 +2,7 @@
 #include "nutColor.au3"
 #include "nutDraw.au3"
 
-Global $optionList = "int port;int delay;char ipaddr[64];char upsname[64];"
+$optionList = "int port;int delay;char ipaddr[64];char upsname[64];"
 $optionList = $optionList & "int mininputv;int maxinputv;"
 $optionList = $optionList & "int minoutputv;int maxoutputv;"
 $optionList = $optionList & "int mininputf;int maxinputf;"
@@ -14,11 +14,23 @@ $optionList = $optionList & "int shutdownpcbatt;int shutdownpctime;"
 $optionList = $optionList & "int InstantShutdown;int AllowGrace;"
 $optionList = $optionList & "int ShutdownDelay;int GraceDelay;"
 
-Global $optionsStruct = 0
-Global $inipath = @ScriptDir & "\" & "ups.ini"
-Global $panel_bkg = 0
-Global $clock_bkg_bgr = 0
-Global $panel_bkg_bgr = 0
+Func TimeToStr($TimeValue = 0)
+	Local $hourrtime, $minrtime, $secrtime,$TimeStr
+	
+	$hourrtime = Floor($TimeValue / 3600)
+	$minrtime = Floor(($TimeValue - ($hourrtime * 3600)) / 60 )
+	$secrtime = $TimeValue - ($hourrtime * 3600) - ($minrtime * 60)
+	If ( $hourrtime > 23) Then
+		$dayrtime = Floor($hourrtime/24)
+		$hourrtime = $hourrtime - ($dayrtime * 24)
+		$TimeStr = StringFormat("%02dd%02dh:%02dm:%02ds", $dayrtime, $hourrtime, $minrtime, $secrtime)
+	ElseIf ( $hourrtime = 0 ) Then
+		$TimeStr = StringFormat("%02dm:%02ds", $minrtime, $secrtime)
+	Else
+		$TimeStr = StringFormat("%02dh:%02dm:%02ds", $hourrtime, $minrtime, $secrtime)
+	EndIf
+	return $TimeStr
+EndFunc
 
 Func _GetScriptVersion()
 	If @Compiled Then
@@ -34,14 +46,14 @@ Func _GetScriptVersion()
 EndFunc
 
 Func Reset_Shutdown_Timer()
-	$compteur_actif = 0
+	$Active_Countdown = 0
 	Update_label()
 EndFunc
 
 Func Init_Shutdown_Timer()
-	If Not $compteur_actif Then
-		$compteur_actif = 1
-		$en_cours = $Nb_seconds
+	If Not $Active_Countdown Then
+		$Active_Countdown = 1
+		$en_cours = $ShutdownDelay
 		Update_label($en_cours)
 		AdlibRegister("Update_compteur",1000)
 	EndIf
@@ -56,13 +68,13 @@ EndFunc
 
 Func _Restart_Compteur($hWnd, $iMsg, $iIDTimer, $iTime)
 	AdlibRegister("Update_compteur",1000)
-	$compteur_pause = 0
+	$Suspend_Countdown = 0
 	GUICtrlSetColor($lbl_countdown, 0x000000)
 EndFunc
 
 ;==== Fonction principale de gestion du compteur
 Func Update_compteur()
-	If $compteur_actif Then
+	If $Active_Countdown Then
 		$en_cours -= 1
 		Update_label($en_cours)
 		If $en_cours = 0 Then AdlibUnregister("Update_compteur")
@@ -89,7 +101,7 @@ Func IsShutdownCondition()
 	return False
 EndFunc
 
-Func GetOption($optionName )
+Func GetOption($optionName)
 	$result = DllStructGetData($optionsStruct , $optionName);
 	if ($result == 0) Then
 		if @error <> 0 Then
@@ -104,7 +116,7 @@ Func GetOption($optionName )
 EndFunc
 
 
-Func SetOption($optionName , $value , $type )
+Func SetOption($optionName, $value, $type )
 	if $type == "string" Then
 		$value = String($value)
 	EndIf
@@ -127,7 +139,7 @@ EndFunc
 ;Will also read color and other preferences that might be added in the future
 ;If ini file is not found in script's directory , default values are set for connection
 ;settings of UPS
-Func Readparam($paramName , $sectionName , $type ,$defaultValue , $iniName)
+Func Readparam($paramName, $sectionName, $type, $defaultValue, $iniName)
 	
 	$optionValue = IniRead($inipath , $sectionName,$iniName,"error")
 	if $optionValue == "error" Then 
@@ -140,7 +152,6 @@ Func Readparam($paramName , $sectionName , $type ,$defaultValue , $iniName)
 	EndIf
 	
 EndFunc
-
 
 Func ReadParams()
 	if FileExists($inipath) == 0 then ; file not created yet/doesn't exist
