@@ -1,6 +1,4 @@
-#include-once
 #include <Color.au3>
-#include <GUIConstants.au3>
 
 Global $painting = 0
 Global $clock_bkg = 0

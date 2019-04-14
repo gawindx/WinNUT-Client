@@ -1,10 +1,6 @@
-#include-once
-#include <nutGlobal.au3>
-#include <nutGui.au3>
-#include <nutOption.au3>
 Global $socket = 0 
 
-Func ProcessData($data )
+Func ProcessData($data)
 	
 	Local $strs
 	
@@ -20,8 +16,7 @@ Func ProcessData($data )
 	
 EndFunc
 
-Func CheckErr($upsresp )
-	
+Func CheckErr($upsresp)
 	Local $strs
 	if StringLeft($upsresp,3)=="ERR" Then
 		$strs = StringSplit($upsresp , " ")
@@ -45,7 +40,7 @@ Func ListUPSVars($upsId , byref $upsVar)
 	$sendstring ="LIST VAR " & $upsID  & @CRLF
 	$sent = TCPSend($socket , $sendstring )
 	if $sent == 0 Then ;connection lost
-		$errorstring ="Connection lost"
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -54,7 +49,7 @@ Func ListUPSVars($upsId , byref $upsVar)
 	Sleep(500)
 	$data = TCPRecv($socket , 4096)
 	if $data == "" Then ;connection lost
-		$errorstring ="Connection lost"
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -64,7 +59,7 @@ Func ListUPSVars($upsId , byref $upsVar)
 	if $err <> "OK" Then
 		$errorstring = $err
 		if StringInStr($errorstring,"UNKNOWN-UPS") <> 0 Then
-			WriteLog("UPS " & $upsId & " doesn't exist")
+			WriteLog(StringFormat(__("UPS %s doesn't exist"), $upsId))
 		EndIf
 		$upsVar = "0"
 		return -1
@@ -83,7 +78,7 @@ Func GetUPSDescVar($upsId , $varName , byref $upsVar)
 	$sendstring ="GET DESC " & $upsID & " " & $varName & @CRLF
 	$sent = TCPSend($socket , $sendstring )
 	if $sent == 0 Then ;connection lost
-		$errorstring ="Connection lost"
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -91,7 +86,7 @@ Func GetUPSDescVar($upsId , $varName , byref $upsVar)
 	EndIf
 	$data = TCPRecv($socket , 4096)
 	if $data == "" Then ;connection lost
-		$errorstring ="Connection lost"
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -101,7 +96,7 @@ Func GetUPSDescVar($upsId , $varName , byref $upsVar)
 	if $err <> "OK" Then
 		$errorstring = $err
 		if StringInStr($errorstring,"UNKNOWN-UPS") <> 0 Then
-			WriteLog("UPS " & $upsId & " doesn't exist")
+			WriteLog(StringFormat(__("UPS %s doesn't exist"), $upsId))
 		EndIf
 		$upsVar = "0"
 		return -1
@@ -121,7 +116,7 @@ Func GetUPSVar($upsId , $varName , byref $upsVar)
 	$sendstring ="GET VAR " & $upsID & " " & $varName & @CRLF
 	$sent = TCPSend($socket , $sendstring )
 	if $sent == 0 Then ;connection lost
-		$errorstring ="Connection lost"
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -129,7 +124,7 @@ Func GetUPSVar($upsId , $varName , byref $upsVar)
 	EndIf
 	$data = TCPRecv($socket , 4096)
 	if $data == "" Then ;connection lost
-		$errorstring ="Connection lost"
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -139,36 +134,34 @@ Func GetUPSVar($upsId , $varName , byref $upsVar)
 	if $err <> "OK" Then
 		$errorstring = $err
 		if StringInStr($errorstring,"UNKNOWN-UPS") <> 0 Then
-			WriteLog("UPS " & $upsId & " doesn't exist")
+			WriteLog(StringFormat(__("UPS %s doesn't exist"), $upsId))
 		EndIf
 		$upsVar = "0"
 		return -1
 	EndIf
 	$upsVar = ProcessData($data)
 	return 0
-	
 EndFunc
 
 Func ConnectServer()
-	if $socket <>0 then ;already connected
-		WriteLog("Disconnecting from server")
+	if $socket <> 0 then ;already connected
+		WriteLog(__("Disconnecting from server"))
 		TCPSend($socket,"LOGOUT")
 		TCPCloseSocket($socket) ;disconnect first
 		$socket = 0
 	EndIf
 	Opt("TCPTimeout",10)
-	WriteLog("Connecting to NUT Server")
-	$ipaddr = TCPNameToIP ( GetOption("ipaddr") )
-	$socket = TCPConnect($ipaddr,GetOption("port"))
+	WriteLog(__("Connecting to NUT Server"))
+	$ipaddr = TCPNameToIP(GetOption("ipaddr"))
+	$socket = TCPConnect($ipaddr, GetOption("port"))
 	if $socket == -1 Then;connection failed
 		$haserror = 1
-		$errorstring = "connection failed"
-		WriteLog("Connection failed")
+		$errorstring = __("Connection failed")
+		WriteLog($errorstring)
 		return -1
 	Else
-		WriteLog("Connection Established")
+		WriteLog(__("Connection Established"))
 		return 0
 	EndIf
-
 EndFunc
 

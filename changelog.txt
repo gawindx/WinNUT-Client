@@ -1,5 +1,10 @@
 History:
 
+Version 1.7.2.0
+Added : Support for multi language
+Added : Auto reconnection 
+
+
 Version 1.7.0.5
 Added : Added ability to estimate the load level and run time of the UPS when he does not provide the information itself (or is inconsistent).
 Fix : Some Source Cleanup
