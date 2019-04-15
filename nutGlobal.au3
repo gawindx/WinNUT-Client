@@ -1,5 +1,3 @@
-#include-once
-
 Global $errorstring = "no error"
 Global $haserror = 0
 Global $ProgramDesc = "Windows NUT Client"
@@ -56,18 +54,25 @@ Global $settingssubMenu,$exitMenu,$editMenu,$aboutMenu,$reconnectMenu,$listvarMe
 
 Global $guipref = 0
 Global $guiabout = 0
-Global $gui
-Global $upsmfr,$upsmodel,$upsserial,$upsfirmware,$toolb,$exitb
+Global $gui = 0
+Global $fileMenu, 	$listvarMenu, $exitMenu, $editMenu, $reconnectMenu,	$settingsMenu
+Global $settingssubMenu, $LanguageSettings, $LangSubMenuSystem, $helpMenu, $aboutMenu
+Global $Label1, $Label2, $Label3, $Label4, $labelUpsRemain, $Label5
+Global $Label14, $Label15, $Label16, $exitb, $toolb
+Global $upsmfr, $upsmodel, $upsserial, $upsfirmware
 
 Global $wPanel = 0
 
 Global $idTrayExit,$idTrayPref,$idTrayAbout
 Global $runasexe = False
 
-Global $Active_Countdown = 0,$Suspend_Countdown = 0
+Global $Active_Countdown = 0, $Suspend_Countdown = 0
 Global $ShutdownDelay, $grace_time
 Global $Running_Shutdown, $lbl_countdown, $lbl_ups_status
 Global $guishutdown, $Grace_btn, $Shutdown_btn
+
+Global $ReconnectTry = 0
+Global $LastSocket = 0
 
 ;nutOption
 Global $optionsStruct = 0
@@ -76,3 +81,5 @@ Global $panel_bkg = 0
 Global $clock_bkg_bgr = 0
 Global $panel_bkg_bgr = 0
 Global $optionList = ""
+
+Global $MenuLangListhwd

@@ -1,4 +1,5 @@
 
-Build/ups.ini
 ups.ini
+*.ini
+Build/ups.ini
 *.ini
