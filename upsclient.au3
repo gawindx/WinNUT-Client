@@ -1,4 +1,4 @@
-﻿#pragma compile(FileVersion, 1.7.2.0)
+﻿#pragma compile(FileVersion, 1.7.2.1)
 #pragma compile(Icon, .\images\upsicon.ico)
 #pragma compile(Out, .\Build\upsclient.exe)
 #pragma compile(Compression, 1)
@@ -31,12 +31,12 @@ If UBound(ProcessList(@ScriptName)) > 2 Then Exit
 ;to internal AUTOIT repaint handler
 ;This is registered for WM_PAINT event
 Func rePaint()
-	repaintNeedle($needle6 , $battCh ,$dial6 ,0 , 100 )
-	repaintNeedle($needle4 ,  $battVol ,$dial4 ,getOption("minbattv") , getOption("maxbattv") )
-	repaintNeedle($needle5 , $upsLoad ,$dial5 ,getOption("minupsl") , getOption("maxupsl") )
-	repaintNeedle($needle1 , $inputVol ,$dial1, getOption("mininputv") , getOption("maxinputv") )
-	repaintNeedle($needle2 , $outputVol , $dial2, getOption("minoutputv") , getOption("maxoutputv"))
-	repaintNeedle($needle3 , $inputFreq , $dial3 ,getOption("mininputf"), getOption("maxinputf") )
+	repaintNeedle($needle6, $battCh, $dial6, 0, 100)
+	repaintNeedle($needle4, $battVol, $dial4, getOption("minbattv"), getOption("maxbattv"))
+	repaintNeedle($needle5, $upsLoad, $dial5, getOption("minupsl"), getOption("maxupsl"))
+	repaintNeedle($needle1, $inputVol, $dial1, getOption("mininputv"), getOption("maxinputv"))
+	repaintNeedle($needle2, $outputVol, $dial2, getOption("minoutputv"), getOption("maxoutputv"))
+	repaintNeedle($needle3, $inputFreq, $dial3, getOption("mininputf"), getOption("maxinputf"))
 	return $GUI_RUNDEFMSG
 EndFunc
 
@@ -491,7 +491,7 @@ Func mainLoop()
 			Switch $tMsg
 				Case $TRAY_EVENT_PRIMARYDOUBLE
 					GuiSetState(@SW_SHOW, $gui)
-					GuiSetState(@SW_RESTORE ,$gui )
+					GuiSetState(@SW_RESTORE ,$gui)
 					TraySetState($TRAY_ICONSTATE_HIDE)
 				Case $idTrayExit
 					TCPSend($socket,"LOGOUT")
@@ -511,16 +511,16 @@ Func mainLoop()
 						GuiDelete($dial5)
 						GuiDelete($dial4)
 						DrawError(160, 70, "Delete")
-						$calc = 1 / ((GetOption("maxinputv") - GetOption("mininputv")) / 100 )
-						$dial1 = DrawDial(160, 70 , GetOption("mininputv") , "Input Voltage" , "V" , $inputv , $needle1 , $calc)
-						$calc = 1 / ((GetOption("maxoutputv") - GetOption("minoutputv")) / 100 )
-						$dial2 = DrawDial(480, 70 , GetOption("minoutputv") , "Output Voltage" , "V" , $outputv , $needle2 , $calc)
-						$calc = 1 / ((GetOption("maxinputf") - GetOption("mininputf")) / 100 )
-						$dial3 = DrawDial(320, GetOption("maxinputf") , GetOption("mininputf") , "Input Frequency" , "Hz" , $inputf , $needle3 , $calc )
-						$calc = 1 / ((GetOption("maxbattv") - GetOption("minbattv")) / 100 )
-						$dial4 = DrawDial(480, 200 , GetOption("minbattv") , "Battery Voltage" , "V" , $battv , $needle4 , $calc , 20 , 120)
-						$calc = 1 / ((GetOption("maxupsl") - GetOption("minupsl")) / 100 )
-						$dial5 = DrawDial(320, 200 , 0 , "UPS Load" , "%" , $upsl , $needle5 , $calc , -1 , 80)
+						$calc = 1 / ((GetOption("maxinputv") - GetOption("mininputv")) / 100)
+						$dial1 = DrawDial(160, 70, GetOption("mininputv"), "Input Voltage", "V", $inputv, $needle1, $calc)
+						$calc = 1 / ((GetOption("maxoutputv") - GetOption("minoutputv")) / 100)
+						$dial2 = DrawDial(480, 70, GetOption("minoutputv"), "Output Voltage", "V", $outputv, $needle2, $calc)
+						$calc = 1 / ((GetOption("maxinputf") - GetOption("mininputf")) / 100)
+						$dial3 = DrawDial(320, GetOption("maxinputf"), GetOption("mininputf"), "Input Frequency", "Hz", $inputf, $needle3, $calc )
+						$calc = 1 / ((GetOption("maxbattv") - GetOption("minbattv")) / 100)
+						$dial4 = DrawDial(480, 200, GetOption("minbattv"), "Battery Voltage", "V", $battv, $needle4, $calc, 20, 120)
+						$calc = 1 / ((GetOption("maxupsl") - GetOption("minupsl")) / 100)
+						$dial5 = DrawDial(320, 200, 0, "UPS Load", "%", $upsl, $needle5, $calc, -1, 80)
 						$painting = 0
 					EndIf
 					if $haserror == 0 Then
@@ -553,7 +553,7 @@ Func mainLoop()
 			GuiSetState(@SW_HIDE , $gui)
 			TraySetState($TRAY_ICONSTATE_SHOW)
 		EndIf
-		if $nMsg[0] == $toolb or $nMsg[0]==$settingssubMenu Then
+		if $nMsg[0] == $toolb or $nMsg[0] == $settingssubMenu Then
 			AdlibUnregister("Update")
 			$changedprefs = prefGui()
 			if $changedprefs == 1 Then
@@ -563,17 +563,17 @@ Func mainLoop()
 				GuiDelete($dial3)
 				GuiDelete($dial5)
 				GuiDelete($dial4)
-				DrawError(160 , 70 , "Delete")
-				$calc = 1 / ((GetOption("maxinputv") - GetOption("mininputv")) / 100 )
-				$dial1 = DrawDial(160, 70 , GetOption("mininputv") , "Input Voltage" , "V" , $inputv , $needle1 , $calc)
-				$calc = 1 / ((GetOption("maxoutputv") - GetOption("minoutputv")) / 100 )
-				$dial2 = DrawDial(480, 70 , GetOption("minoutputv") , "Output Voltage" , "V" , $outputv , $needle2 , $calc)
-				$calc = 1 / ((GetOption("maxinputf") - GetOption("mininputf")) / 100 )
-				$dial3 = DrawDial(320, GetOption("maxinputf") , GetOption("mininputf") , "Input Frequency" , "Hz" , $inputf , $needle3 , $calc )
-				$calc = 1 / ((GetOption("maxbattv") - GetOption("minbattv")) / 100 )
-				$dial4 = DrawDial(480, 200 , GetOption("minbattv") , "Battery Voltage" , "V" , $battv , $needle4 , $calc , 20 , 120)
-				$calc = 1 / ((GetOption("maxupsl") - GetOption("minupsl")) / 100 )
-				$dial5 = DrawDial(320, 200 , 0 , "UPS Load" , "%" , $upsl , $needle5 , $calc , -1 , 80)
+				DrawError(160, 70, "Delete")
+				$calc = 1 / ((GetOption("maxinputv") - GetOption("mininputv")) / 100)
+				$dial1 = DrawDial(160, 70, GetOption("mininputv"), "Input Voltage", "V", $inputv, $needle1, $calc)
+				$calc = 1 / ((GetOption("maxoutputv") - GetOption("minoutputv")) / 100)
+				$dial2 = DrawDial(480, 70, GetOption("minoutputv"), "Output Voltage", "V", $outputv, $needle2, $calc)
+				$calc = 1 / ((GetOption("maxinputf") - GetOption("mininputf")) / 100)
+				$dial3 = DrawDial(320, GetOption("maxinputf"), GetOption("mininputf"), "Input Frequency", "Hz", $inputf, $needle3, $calc )
+				$calc = 1 / ((GetOption("maxbattv") - GetOption("minbattv")) / 100)
+				$dial4 = DrawDial(480, 200, GetOption("minbattv"), "Battery Voltage", "V", $battv, $needle4, $calc, 20, 120)
+				$calc = 1 / ((GetOption("maxupsl") - GetOption("minupsl")) / 100)
+				$dial5 = DrawDial(320, 200, 0, "UPS Load", "%", $upsl, $needle5, $calc, -1, 80)
 				$painting = 0
 			EndIf
 			if $haserror == 0 Then
@@ -628,10 +628,11 @@ Func WinNut_Init()
 
 	;Language
 	; function to auto include all language file
-		_ListFileInstallFolder(".\Language", "\Language", 0, "*.lng", "include", True, False)
+		_ListFileInstallFolder(".\Language", "\Language", 0, "*.lng", "include", True)
 		;Now file is generated so include it
 		#Include "include.au3"
 
+	;Get Script Version
 	$ProgramVersion = _GetScriptVersion()
 
 	;HERE STARTS MAIN SCRIPT
@@ -641,6 +642,7 @@ Func WinNut_Init()
 		Exit
 	EndIf
 	Opt("GUIDataSeparatorChar", ".")
+
 	;Initialize all Option Data
 	InitOptionDATA()
 	if $status == -1 Then

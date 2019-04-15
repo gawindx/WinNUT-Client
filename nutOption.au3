@@ -16,18 +16,15 @@ $optionList = $optionList & "int ShutdownDelay;int GraceDelay;"
 ; Name...........: _ListFileInstallFolder
 ; Description ...: List Install file(s) from a folder into au3
 ; Syntax.........: _ListFileInstallFolder($sSource, $sDest, $nFlag = 0, $sMask = '*', $sName = 'include', $sOverWrite = False, $sCompiled = False)
-; Parameters ....: $sSource = Source folder to get file(s) from
-;                  $sDest   = Destination to install file(s) to
-;                  $nFlag   = According to the flag of FileInstall [Optional]
-;               $sMask  = Extensions of file(s) to List         [Optional]
-;               $sName  = Out au3 script name     [Optional]
-;                  $sCompiled - One of the following:            [Optional]
-;                  False = Always install file(s)
-;                  True = Only install file(s) when the script is compiled
+; Parameters ....:	$sSource = Source folder to get file(s) from
+;					$sDest   = Destination to install file(s) to
+;					$nFlag   = According to the flag of FileInstall [Optional]
+;					$sMask  = Extensions of file(s) to List         [Optional]
+;					$sName  = Out au3 script name     [Optional]
 ; Return values .: Success - Returns 1
 ;                  Failure - Returns 0
 ; Author ........: MrCreator, FireFox
-; Modified.......: FireFox
+; Modified.......: FireFox, Gawindx
 ; Remarks .......: this function is faster with _WinAPI_FileFind :
 ;                  [url="http://www.autoitscript.com/forum/index.php?showtopic=90545"]http://www.autoitscript.com/forum/index.php?showtopic=90545[/url]
 ; Related .......:
@@ -35,13 +32,13 @@ $optionList = $optionList & "int ShutdownDelay;int GraceDelay;"
 ; Example .......;
 ;
 ;===================================================================================================
-Func _ListFileInstallFolder($sSource, $sDest, $nFlag = 0, $sMask = '*', $sName = 'include', $sOverWrite = False, $sCompiled = False)
+
+Func _ListFileInstallFolder($sSource, $sDest, $nFlag = 0, $sMask = '*', $sName = 'include', $sOverWrite = False)
 	Local $hSearch, $sNext_File, $sRet_FI_Lines = ''
 
-	If (Not $sCompiled) Or ($sCompiled And @Compiled) Then
+	If (Not @Compiled) Then
 		$hSearch = FileFindFirstFile($sSource & '\' & $sMask)
 		If $hSearch = -1 Then Return SetError(1, 0, 'FileFindFirstFile')
-
 		While 1
 			$sNext_File = FileFindNextFile($hSearch)
 			If @error Then ExitLoop ;No more files
@@ -218,9 +215,9 @@ Func ReadParams()
 		SetOption("language", "system", "string")
 		SetOption("minimizeonstart", 0, "number")
 		SetOption("closetotray", 0, "number")
-		SetOption("shutdownpcbatt", 0, "number")
-		SetOption("shutdownpctime", 60, "number")
-		SetOption("InstantShutdown", 0, "number")
+		SetOption("shutdownpcbatt", 30, "number")
+		SetOption("shutdownpctime", 120, "number")
+		SetOption("InstantShutdown", 1, "number")
 		SetOption("ShutdownDelay", 15, "number")
 		SetOption("AllowGrace", 0, "number")
 		SetOption("GraceDelay", 15, "number")
@@ -247,9 +244,9 @@ Func ReadParams()
 		ReadParam("startwithwindows" , "Appearance" , "number" , "0" , "Start with Windows")
 		ReadParam("defaultlang", "Appearance", "string" , "en-US" , "Default Language")
 		ReadParam("language", "Appearance", "string" , "system" , "Language")
-		ReadParam("shutdownpcbatt" , "Power" , "number" , "0" , "Shutdown Limit Battery Charge")
-		ReadParam("shutdownpctime" , "Power" , "number" , "60" , "Shutdown Limit UPS Remain Time")
-		ReadParam("InstantShutdown" , "Power" , "number" , "0" , "Shutdown Immediately")
+		ReadParam("shutdownpcbatt" , "Power" , "number" , "30" , "Shutdown Limit Battery Charge")
+		ReadParam("shutdownpctime" , "Power" , "number" , "120" , "Shutdown Limit UPS Remain Time")
+		ReadParam("InstantShutdown" , "Power" , "number" , "1" , "Shutdown Immediately")
 		ReadParam("ShutdownDelay" , "Power" , "number" , "15" , "Delay To Shutdown")
 		ReadParam("AllowGrace" , "Power" , "number" , "0" , "Allow Extended Shutdown Delay")
 		ReadParam("GraceDelay" , "Power" , "number" , "15" , "Extended Shutdown Delay")
