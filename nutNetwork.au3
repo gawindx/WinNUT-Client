@@ -114,6 +114,7 @@ Func GetUPSVar($upsId , $varName , byref $upsVar)
 		return -1
 	EndIf
 	$sendstring ="GET VAR " & $upsID & " " & $varName & @CRLF
+	WriteLog("Data Send : " & $sendstring & ";")
 	$sent = TCPSend($socket , $sendstring )
 	if $sent == 0 Then ;connection lost
 		$errorstring = __("Connection lost")  & "GetUPSVar TCP Send"
@@ -122,7 +123,8 @@ Func GetUPSVar($upsId , $varName , byref $upsVar)
 		$upsVar = "0"
 		return -1
 	EndIf
-	$data = TCPRecv($socket , 4096)
+	$data = TCPRecv($socket , 8192)
+	WriteLog("Data : " & $data & ";")
 	if $data == "" Then ;connection lost
 		$errorstring = __("Connection lost") & "GetUPSVar TCP Rcv"
 		WriteLog($errorstring)
