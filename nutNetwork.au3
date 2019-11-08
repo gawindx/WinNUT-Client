@@ -40,7 +40,7 @@ Func ListUPSVars($upsId , byref $upsVar)
 	$sendstring ="LIST VAR " & $upsID  & @CRLF
 	$sent = TCPSend($socket , $sendstring )
 	if $sent == 0 Then ;connection lost
-		$errorstring = __("Connection lost")
+		$errorstring = __("Connection lost") & "ListUPSVars TCP Send"
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -49,7 +49,7 @@ Func ListUPSVars($upsId , byref $upsVar)
 	Sleep(500)
 	$data = TCPRecv($socket , 4096)
 	if $data == "" Then ;connection lost
-		$errorstring = __("Connection lost")
+		$errorstring = __("Connection lost") & "ListUPSVars TCP Rcv"
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -78,7 +78,7 @@ Func GetUPSDescVar($upsId , $varName , byref $upsVar)
 	$sendstring ="GET DESC " & $upsID & " " & $varName & @CRLF
 	$sent = TCPSend($socket , $sendstring )
 	if $sent == 0 Then ;connection lost
-		$errorstring = __("Connection lost")
+		$errorstring = __("Connection lost") & "GetUPSDescVar TCP Send"
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -86,7 +86,7 @@ Func GetUPSDescVar($upsId , $varName , byref $upsVar)
 	EndIf
 	$data = TCPRecv($socket , 4096)
 	if $data == "" Then ;connection lost
-		$errorstring = __("Connection lost")
+		$errorstring = __("Connection lost") & "GetUPSDescVar TCP Rcv"
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -116,7 +116,7 @@ Func GetUPSVar($upsId , $varName , byref $upsVar)
 	$sendstring ="GET VAR " & $upsID & " " & $varName & @CRLF
 	$sent = TCPSend($socket , $sendstring )
 	if $sent == 0 Then ;connection lost
-		$errorstring = __("Connection lost")
+		$errorstring = __("Connection lost")  & "GetUPSVar TCP Send"
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -124,7 +124,7 @@ Func GetUPSVar($upsId , $varName , byref $upsVar)
 	EndIf
 	$data = TCPRecv($socket , 4096)
 	if $data == "" Then ;connection lost
-		$errorstring = __("Connection lost")
+		$errorstring = __("Connection lost") & "GetUPSVar TCP Rcv"
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
