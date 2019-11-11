@@ -40,7 +40,7 @@ Func ListUPSVars($upsId , byref $upsVar)
 	$sendstring ="LIST VAR " & $upsID  & @CRLF
 	$sent = TCPSend($socket , $sendstring )
 	if $sent == 0 Then ;connection lost
-		$errorstring = __("Connection lost") & "ListUPSVars TCP Send"
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -49,7 +49,7 @@ Func ListUPSVars($upsId , byref $upsVar)
 	Sleep(500)
 	$data = TCPRecv($socket , 4096)
 	if $data == "" Then ;connection lost
-		$errorstring = __("Connection lost") & "ListUPSVars TCP Rcv"
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -78,7 +78,7 @@ Func GetUPSDescVar($upsId , $varName , byref $upsVar)
 	$sendstring ="GET DESC " & $upsID & " " & $varName & @CRLF
 	$sent = TCPSend($socket , $sendstring )
 	if $sent == 0 Then ;connection lost
-		$errorstring = __("Connection lost") & "GetUPSDescVar TCP Send"
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -86,7 +86,7 @@ Func GetUPSDescVar($upsId , $varName , byref $upsVar)
 	EndIf
 	$data = TCPRecv($socket , 4096)
 	if $data == "" Then ;connection lost
-		$errorstring = __("Connection lost") & "GetUPSDescVar TCP Rcv"
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -106,27 +106,27 @@ Func GetUPSDescVar($upsId , $varName , byref $upsVar)
 	
 EndFunc
 
-Func GetUPSVar($upsId , $varName , byref $upsVar)
-	
+Func GetUPSVar($upsId , $varName , byref $upsVar, $fallback_value=Null)
+
 	Local $sendstring , $sent , $data
 	if $socket == 0 then
 		$upsVar = "0"
 		return -1
 	EndIf
 	$sendstring ="GET VAR " & $upsID & " " & $varName & @CRLF
-	WriteLog("Data Send : " & $sendstring & ";")
 	$sent = TCPSend($socket , $sendstring )
 	if $sent == 0 Then ;connection lost
-		$errorstring = __("Connection lost")  & "GetUPSVar TCP Send"
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
 		return -1
 	EndIf
-	$data = TCPRecv($socket , 8192)
-	WriteLog("Data : " & $data & ";")
-	if $data == "" Then ;connection lost
-		$errorstring = __("Connection lost") & "GetUPSVar TCP Rcv"
+	$data = TCPRecv($socket , 4096)
+	if $data == "" and $fallback_value Then
+		$data = $fallback_value
+	Elseif $data == "" Then ;connection lost
+		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"

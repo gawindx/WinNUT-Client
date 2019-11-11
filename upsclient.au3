@@ -1,4 +1,4 @@
-﻿#pragma compile(FileVersion, 1.7.2.1)
+﻿#pragma compile(FileVersion, 1.7.2.2)
 #pragma compile(Icon, .\images\upsicon.ico)
 #pragma compile(Out, .\Build\upsclient.exe)
 #pragma compile(Compression, 1)
@@ -45,7 +45,7 @@ Func updateVarList()
 	GuiCtrlSetData($varselected , $selected)
 	$upsval = ""
 	$upsdesc = ""
-	$checkstatus1 = GetUPSVar(GetOption("upsname") , $selected , $upsval)
+	$checkstatus1 = GetUPSVar(GetOption("upsname") , $selected , $upsval, __("Unknown"))
 	$checkstatus2 = GetUPSDescVar(GetOption("upsname") , $selected , $upsdesc)
 	if $checkstatus1 == -1 or $checkstatus2 == -1 Then
 		$upsval = ""
@@ -138,7 +138,7 @@ Func GetUPSInfo()
 	if $socket == 0 Then ; not connected to server/connection lost
 		Return
 	EndIf
-	$status = GetUPSVar(GetOption("upsname") ,"ups.mfr" , $mfr)
+	$status = GetUPSVar(GetOption("upsname") ,"ups.mfr" , $mfr, __("Unknown"))
 	if $status = -1 then ;UPS name wrong or variable not supported or connection lost
 		if $socket == 0 Then
 			Return
@@ -154,7 +154,7 @@ Func GetUPSInfo()
 		EndIf
 	EndIf
 
-	$status = GetUPSVar(GetOption("upsname") ,"ups.model" , $name)
+	$status = GetUPSVar(GetOption("upsname") ,"ups.model" , $name, __("Unknown"))
 	if $status = -1 then
 		if $socket == 0 Then
 			Return
@@ -164,7 +164,7 @@ Func GetUPSInfo()
 	;trim $name
 	$name = StringStripWS($name, $STR_STRIPLEADING + $STR_STRIPTRAILING)
 
-	$status = GetUPSVar(GetOption("upsname"), "ups.serial", $serial)
+	$status = GetUPSVar(GetOption("upsname"), "ups.serial", $serial, __("Unknown"))
 	if $status = -1 then
 		if $socket == 0 Then
 			Return
@@ -172,7 +172,7 @@ Func GetUPSInfo()
 		$serial =""
 	EndIf
 
-	$status = GetUPSVar(GetOption("upsname"), "ups.firmware", $firmware)
+	$status = GetUPSVar(GetOption("upsname"), "ups.firmware", $firmware, __("Unknown"))
 	if $status = -1 then
 		if $socket == 0 Then
 			Return
