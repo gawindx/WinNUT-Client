@@ -124,7 +124,7 @@ Func GetUPSVar($upsId , $varName , byref $upsVar, $fallback_value=Null)
 	EndIf
 	$data = TCPRecv($socket , 4096)
 	if $data == "" and $fallback_value Then
-		$data = $fallback_value
+		$data = "VAR " & $upsID & " " & $varName & " " & '"' & $fallback_value & '"'
 	Elseif $data == "" Then ;connection lost
 		$errorstring = __("Connection lost")
 		WriteLog($errorstring)
