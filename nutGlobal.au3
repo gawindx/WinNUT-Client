@@ -83,3 +83,4 @@ Global $panel_bkg_bgr = 0
 Global $optionList = ""
 
 Global $MenuLangListhwd
+Global $en_cours
