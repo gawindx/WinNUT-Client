@@ -198,16 +198,30 @@ Func GetUPSData()
 	;$status = 0
 	$ups_name = GetOption("upsname")
 	If $socket == 0 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.charge" , $battch) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.voltage",$battVol)  == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.runtime",$battruntime) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.capacity",$batcapacity) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"input.frequency",$inputFreq) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"input.voltage",$inputVol) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"output.voltage",$outputVol)  == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"ups.load",$upsLoad) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"ups.status",$upsstatus) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"ups.realpower.nominal",$upsoutpower) == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.charge", $battch, "255") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.voltage", $battVol, "12")  == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.runtime", $battruntime, "86400") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.capacity", $batcapacity, "7") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "input.frequency", $inputFreq, "50") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "input.voltage", $inputVol, "220") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "output.voltage", $outputVol, $inputVol)  == -1 Then $status = -1
+	If GetUPSVar($ups_name, "ups.load", $upsLoad, "100") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "ups.status", $upsstatus, "OL") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "ups.realpower.nominal", $upsoutpower, __("Unknown")) == -1 Then 
+		$status = -1
+	ElseIf $upsoutpower == __("Unknown") Then
+		If GetUPSVar($ups_name, "ups.current.nominal", $inputcurrent, 1) == -1 Then
+			$status = -1
+		Else 
+			;Because this inverter does not provide information on its power,
+			;we will determine it according to the elements and defaults at our disposal
+			;For this, we will consider an input and output yield of 70% (rather low yield) and a power factor of 0.6
+			;$inputVol * $inputcurrent)*$yield_In*$yield_Out)*$PF)
+			;In this way, the power obtained should be lower than the real characteristic of the UPS and there will be no risk of late shutdown
+			$upsoutpower = ((($inputVol * $inputcurrent)*0.7*0.7)*0.6)
+		EndIf
+	EndIf
+
 EndFunc
 
 Func UpdateValue(byref $needle , $value , $label , $whandle ,$min = 170, $max = 270, $force = 0)
