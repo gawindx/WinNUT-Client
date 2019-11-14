@@ -198,7 +198,7 @@ Func GetUPSData()
 	;$status = 0
 	$ups_name = GetOption("upsname")
 	If $socket == 0 Then $status = -1
-	If GetUPSVar($ups_name, "battery.charge", $battch, "255") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.charge", $battch, "255", 50) == -1 Then $status = -1
 	If GetUPSVar($ups_name, "battery.voltage", $battVol, "12")  == -1 Then $status = -1
 	If GetUPSVar($ups_name, "battery.runtime", $battruntime, "86400") == -1 Then $status = -1
 	If GetUPSVar($ups_name, "battery.capacity", $batcapacity, "7") == -1 Then $status = -1

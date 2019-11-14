@@ -1,9 +1,9 @@
-Global $socket = 0 
+Global $socket = 0
 
 Func ProcessData($data)
-	
+
 	Local $strs
-	
+
 	$strs = StringSplit($data , '"')
 	if UBound($strs)<2 Then ;ERROR string returned or other unexpected condition
 		return -1 ;return -1 which means the something bad happened and value
@@ -13,7 +13,7 @@ Func ProcessData($data)
 	Else
 		return $strs[2]
 	EndIf
-	
+
 EndFunc
 
 Func CheckErr($upsresp)
@@ -27,11 +27,11 @@ Func CheckErr($upsresp)
 	Else
 		return "OK"
 	EndIf
-	
+
 EndFunc
 
 Func ListUPSVars($upsId , byref $upsVar)
-	
+
 	Local $sendstring , $sent , $data
 	if $socket == 0 then
 		$upsVar = "0"
@@ -65,11 +65,11 @@ Func ListUPSVars($upsId , byref $upsVar)
 		return -1
 	EndIf
 	$upsVar = $data
-	return 0	
+	return 0
 EndFunc
 
 Func GetUPSDescVar($upsId , $varName , byref $upsVar)
-	
+
 	Local $sendstring , $sent , $data
 	if $socket == 0 then
 		$upsVar = "0"
@@ -102,12 +102,11 @@ Func GetUPSDescVar($upsId , $varName , byref $upsVar)
 		return -1
 	EndIf
 	$upsVar = ProcessData($data)
-	return 0	
-	
+	return 0
+
 EndFunc
 
-Func GetUPSVar($upsId , $varName , byref $upsVar, $fallback_value=Null)
-
+Func GetUPSVar($upsId , $varName , byref $upsVar, $fallback_value=Null, $post_send_delay=Null)
 	Local $sendstring , $sent , $data
 	if $socket == 0 then
 		$upsVar = "0"
@@ -122,11 +121,12 @@ Func GetUPSVar($upsId , $varName , byref $upsVar, $fallback_value=Null)
 		$upsVar = "0"
 		return -1
 	EndIf
+	if $post_send_delay Then Sleep($post_send_delay)
 	$data = TCPRecv($socket , 4096)
 	if $data == "" and $fallback_value Then
 		$data = "VAR " & $upsID & " " & $varName & " " & '"' & $fallback_value & '"'
 	Elseif $data == "" Then ;connection lost
-		$errorstring = __("Connection lost")
+		$errorstring = __("Connection lost at " & $varName)
 		WriteLog($errorstring)
 		$socket = 0
 		$upsVar = "0"
@@ -166,4 +166,3 @@ Func ConnectServer()
 		return 0
 	EndIf
 EndFunc
-
