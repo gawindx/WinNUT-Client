@@ -210,16 +210,20 @@ Func GetUPSData()
 	If GetUPSVar($ups_name, "ups.realpower.nominal", $upsoutpower, __("Unknown")) == -1 Then 
 		$status = -1
 	ElseIf $upsoutpower == __("Unknown") Then
+		Local $inputcurrent
 		If GetUPSVar($ups_name, "ups.current.nominal", $inputcurrent, 1) == -1 Then
 			$status = -1
 		Else 
 			;Because this inverter does not provide information on its power,
 			;we will determine it according to the elements and defaults at our disposal
 			;For this, we will consider an input and output yield of 70% (rather low yield) and a power factor of 0.6
-			;$inputVol * $inputcurrent)*$yield_In*$yield_Out)*$PF)
+			;(((($inputVol * $inputcurrent)/($yield_In*$yield_Out))/$PF)*($upsLoad)
 			;In this way, the power obtained should be lower than the real characteristic of the UPS and there will be no risk of late shutdown
-			$upsoutpower = ((($inputVol * $inputcurrent)*0.7*0.7)*0.6)
+			;$upsoutpower = (((($inputVol * $inputcurrent)/(0.7*0.7))/0.6)*($upsLoad/100))
+			$upsoutpower = ($inputVol * 0.95 *$inputcurrent)
 		EndIf
+	Else
+		$upsoutpower = $upsoutpower / $upsPF
 	EndIf
 
 EndFunc
@@ -303,15 +307,15 @@ Func Update()
 		SetColor($yellow , $wPanel , $upsonbatt )
 		SetColor(0xffffff , $wPanel , $upsonline )
 	EndIf
-	Local $PowerDivider = 0.9
+	Local $PowerDivider = 0.5
 	If $upsLoad > 100 Then
 		SetColor($red , $wPanel , $upsoverload )
 	Else
 		SetColor(0xffffff , $wPanel , $upsoverload )
 		If $upsLoad > 75 Then
-			$PowerDivider = 0.8
+			$PowerDivider = 0.4
 		ElseIf $upsLoad > 50 Then
-			$PowerDivider = 0.85
+			$PowerDivider = 0.3
 		EndIf
 	EndIf
 	;In case of that your inverter does not provide the State of Charge, he will be estimated.
@@ -330,9 +334,8 @@ Func Update()
 	; the Power Factor as well as a coefficient allowing to take into account
 	;a large instantaneous charge (this limits the runtime ).
 	If ($battruntime >= 86400 ) Then
-		Local $RealLoad = ($upsoutpower*($upsLoad/100))
-		Local $InstantCurrent = $RealLoad / $battVol
-		$battruntime = Floor(((($batcapacity / $InstantCurrent)* $upsPF) * ($battCh/100) * $PowerDivider)*3600)
+		Local $BattInstantCurrent = ($upsoutpower * $upsLoad) / ( $battVol* 100)
+		$battruntime = Floor(($batcapacity * $upsPF * $battCh * (1-$PowerDivider) * 3600) / ($BattInstantCurrent * 100))
 	EndIf
 	if $battCh < 40 Then
 		SetColor($red , $wPanel , $upslowbatt )
