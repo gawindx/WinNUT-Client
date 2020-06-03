@@ -1,4 +1,4 @@
-﻿#pragma compile(FileVersion, 1.7.2.1)
+﻿#pragma compile(FileVersion, 1.7.2.2)
 #pragma compile(Icon, .\images\upsicon.ico)
 #pragma compile(Out, .\Build\upsclient.exe)
 #pragma compile(Compression, 1)
