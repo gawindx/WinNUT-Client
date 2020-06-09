@@ -143,17 +143,66 @@ Func GetUPSVar($upsId , $varName , byref $upsVar)
 	return 0
 EndFunc
 
+Func DeletePortProxy()
+	If $ipv6mode Then
+		Local $PortProxycmd = "netsh interface portproxy delete v4tov6 listenaddress=" & $PortProxyAddress & " listenport=" & $PortProxyPort
+		Local $PortProxyFullcmd = @ComSpec & " /c " & $PortProxycmd
+		MsgBox($MB_SYSTEMMODAL, "", $PortProxyFullcmd)
+		Local $iReturn = RunWait($PortProxyFullcmd, "", @SW_HIDE,  $STDERR_MERGED)
+    	If @error = 0 Then
+    		MsgBox($MB_SYSTEMMODAL, "", "Le code de retour était: " & $iReturn)
+			WriteLog(__("PortProxy Deleted on") & " " & $PortProxyAddress & ":" & $PortProxyPort)
+		EndIf
+	EndIf
+EndFunc
+
+Func DisconnectServer()
+	If $socket <> 0 then ;already connected
+		WriteLog(__("Disconnecting from server"))
+		TCPSend($socket,"LOGOUT")
+		TCPCloseSocket($socket) ;disconnect first
+		DeletePortProxy()
+		$socket = 0
+	EndIf
+	Return $socket
+EndFunc
+
 Func ConnectServer()
 	if $socket <> 0 then ;already connected
 		WriteLog(__("Disconnecting from server"))
 		TCPSend($socket,"LOGOUT")
 		TCPCloseSocket($socket) ;disconnect first
+		DeletePortProxy()
 		$socket = 0
 	EndIf
 	Opt("TCPTimeout",10)
 	WriteLog(__("Connecting to NUT Server"))
-	$ipaddr = TCPNameToIP(GetOption("ipaddr"))
-	$socket = TCPConnect($ipaddr, GetOption("port"))
+	If IsFQDN(GetOption("ipaddr")) Then
+		$ResolvedHost = ResolveFQDN(GetOption("ipaddr"))
+	Else
+		$ResolvedHost = GetOption("ipaddr")
+	EndIf
+	If IsIPV4($ResolvedHost) Then
+		;WriteLog("Nut Server Is IPV4 Address")
+		$ipv6mode = False
+	ElseIf IsIPV6($ResolvedHost) Then
+		;WriteLog("Nut Server Is IPV6 Address")
+		$ipv6mode = True
+	EndIf
+	If $ipv6mode Then
+		;create portproxy
+		$PortProxyPort = Random($PortProxyPortMin, $PortProxyPortMax, 1)
+		Local $PortProxycmd = "netsh interface portproxy add v4tov6 listenaddress=" & $PortProxyAddress & " listenport=" & $PortProxyPort & " connectport=" & GetOption("port") &" connectaddress=" & $ResolvedHost
+		Local $PortProxyFullcmd = @ComSpec & " /c " & $PortProxycmd
+		Local $iReturn = RunWait($PortProxyFullcmd, "", @SW_HIDE,  $STDERR_MERGED)
+    	If @error = 0 Then
+    		WriteLog(__("PortProxy Created on") & " " & $PortProxyAddress & ":" & $PortProxyPort)
+			$socket = TCPConnect($PortProxyAddress, $PortProxyPort)
+		EndIf
+	Else
+		$ipaddr = $ResolvedHost
+		$socket = TCPConnect($ipaddr, GetOption("port"))
+	EndIf
 	if $socket == -1 Then;connection failed
 		$haserror = 1
 		$errorstring = __("Connection failed")

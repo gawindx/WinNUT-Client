@@ -1,13 +1,15 @@
-﻿#pragma compile(FileVersion, 1.7.2.2)
+﻿#pragma compile(FileVersion, 1.7.3.0)
 #pragma compile(Icon, .\images\upsicon.ico)
 #pragma compile(Out, .\Build\upsclient.exe)
 #pragma compile(Compression, 1)
+#pragma compile(UPX, False)
 #pragma compile(Comments, 'Windows NUT Client')
 #pragma compile(FileDescription, Windows NUT Client. This is a NUT windows client for monitoring your ups hooked up to your favorite linux server.)
 #pragma compile(LegalCopyright, Freeware)
 #pragma compile(ProductName, WinNUT-Client)
 #pragma compile(Compatibility, win7, win8, win81, win10)
 ;
+#RequireAdmin
 #include-once
 #include <GUIConstants.au3>
 #include <Misc.au3>
@@ -31,12 +33,12 @@ If UBound(ProcessList(@ScriptName)) > 2 Then Exit
 ;to internal AUTOIT repaint handler
 ;This is registered for WM_PAINT event
 Func rePaint()
-	repaintNeedle($needle6, $battCh, $dial6, 0, 100)
-	repaintNeedle($needle4, $battVol, $dial4, getOption("minbattv"), getOption("maxbattv"))
-	repaintNeedle($needle5, $upsLoad, $dial5, getOption("minupsl"), getOption("maxupsl"))
 	repaintNeedle($needle1, $inputVol, $dial1, getOption("mininputv"), getOption("maxinputv"))
 	repaintNeedle($needle2, $outputVol, $dial2, getOption("minoutputv"), getOption("maxoutputv"))
 	repaintNeedle($needle3, $inputFreq, $dial3, getOption("mininputf"), getOption("maxinputf"))
+	repaintNeedle($needle4, $battVol, $dial4, getOption("minbattv"), getOption("maxbattv"))
+	repaintNeedle($needle5, $upsLoad, $dial5, getOption("minupsl"), getOption("maxupsl"))
+	repaintNeedle($needle6, $battCh, $dial6, 0, 100)
 	return $GUI_RUNDEFMSG
 EndFunc
 
@@ -129,6 +131,93 @@ Func varlistGui()
 	WEnd
 EndFunc
 
+Func IsFQDN($IPAddress)
+	Local $sPattern = "^(?:(?!\d+\.|-)[a-zA-Z0-9_\-]{1,63}(?<!-)\.?)+(?:[a-zA-Z]{2,})$"
+	If StringRegExp($IPAddress, $sPattern) Then
+		WriteLog($IPAddress & " " & __("Is an FQDN Address"))
+		Return True
+	Else
+		WriteLog($IPAddress & " " & __("Is not an FQDN Address"))
+		Return False
+	EndIF
+EndFunc
+
+Func IsIPV4($IPAddress)
+	Local $sPattern = "^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$"
+	Local $RegExResult = StringRegExp($IPAddress, $sPattern, $STR_REGEXPARRAYGLOBALFULLMATCH, 1)
+	If @error Then 
+		WriteLog($IPAddress & " " & __("Is not an IPV4 Address"))
+		Return False
+	ElseIf ($RegExResult[0])[0] = $IPAddress  Then
+		WriteLog($IPAddress & " " & __("Is an IPV4 Address"))
+		Return True
+	Else
+		WriteLog($IPAddress & " " & __("Is not an IPV4 Address"))
+		Return False
+	EndIF
+EndFunc
+
+Func IsIPV6($IPAddress)
+	WriteLog("IPV6 Test")
+	Local $sPattern = "^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$"
+	Local $RegExResult = StringRegExp($IPAddress, $sPattern, $STR_REGEXPARRAYGLOBALFULLMATCH, 1)
+	If @error Then 
+		WriteLog($IPAddress & " " & __("Is not an IPV6 Address"))
+		Return False
+	ElseIf ($RegExResult[0])[0] = $IPAddress  Then
+		WriteLog($IPAddress & " " & __("Is an IPV6 Address"))
+		Return True
+	Else
+		WriteLog($IPAddress & " " & __("Is not an IPV6 Address"))
+		Return False
+	EndIF
+EndFunc
+
+Func ResolveFQDN($IPAddress)
+	Local $TypeSearch = [ 'A' , 'AAAA' ]
+	Local $ResultAddress = ""
+	For $IpType In $TypeSearch
+		Local $nscmd = @ComSpec & " /c " & "nslookup -type=" & $IpType & " " & $IPAddress
+		Local $iPID = Run($nscmd, "", @SW_HIDE,  $STDERR_MERGED)
+    	If @error = 0 Then
+    		ProcessWaitClose($iPID)
+    		Local $sOutput = StdoutRead($iPID)
+    		Local $nsResultArray = StringSplit($sOutput, @CRLF)
+    		Local $idResult = null
+    		If UBound($nsResultArray) > 5 Then
+    			Local $countAddress = 0
+    			For $i = 0 To (UBound($nsResultArray)-1)
+    				If StringRegExp($nsResultArray[$i], "Address:") Then
+    					$countAddress += 1
+    					If $countAddress = 2 Then
+        					$idResult=$i
+        					ExitLoop
+        				EndIf
+    				endif
+				Next
+			Else
+				ContinueLoop
+			EndIf
+			If $idResult = null Then 
+				WriteLog(__("Error nslookup Search Type") & " " & $IpType)
+				ContinueLoop
+			Else
+				If $IpType = 'A' Then
+    				$ResultAddress = StringStripWS((StringSplit($nsResultArray[$idResult], ":"))[2], $STR_STRIPALL)
+    			Else
+    				Local $tmpAddress = $nsResultArray[$idResult]
+    				$ResultAddress = StringStripWS(StringRight($tmpAddress, StringLen($tmpAddress) - StringInStr($tmpAddress, ':')), $STR_STRIPALL)
+    			EndIf
+   				WriteLog(__("Resolved Address") & ": " & $ResultAddress)
+   				ExitLoop
+   			EndIf
+    	Else
+    		WriteLog(__("Error nslookup Search Type") & " " & $IpType)
+    	EndIf
+    Next
+    Return $ResultAddress
+EndFunc
+
 Func GetUPSInfo()
 	Local $status = 0
 	$mfr = ""
@@ -143,11 +232,12 @@ Func GetUPSInfo()
 		if $socket == 0 Then
 			Return
 		EndIf
-		if StringInStr($errorstring,"UNKNOWN-UPS") <> 0 Then
+		If StringInStr($errorstring,"UNKNOWN-UPS") <> 0 Then
 			$mfr = ""
 			WriteLog(__("Disconnecting from server"))
 			TCPSend($socket,"LOGOUT")
 			TCPCloseSocket($socket)
+			DeletePortProxy()
 			$socket = 0
 			ResetGui()
 			Return
@@ -202,7 +292,24 @@ Func GetUPSData()
 	If GetUPSVar($ups_name ,"battery.voltage",$battVol)  == -1 Then $status = -1
 	If GetUPSVar($ups_name ,"battery.runtime",$battruntime) == -1 Then $status = -1
 	If GetUPSVar($ups_name ,"battery.capacity",$batcapacity) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"input.frequency",$inputFreq) == -1 Then $status = -1
+	If GetUPSVar($ups_name, "input.frequency", $inputFreq) == -1 Then
+		$inputFreq = GetOption("frequencysupply")
+		$mininputf = $inputFreq - 10
+		$maxinputf = $inputFreq + 10
+	Else
+		$halfinputFreq = $inputFreq/2
+		If (($halfinputFreq >= 22.5) And ( $halfinputFreq <= 27.5)) Then
+			If (GetOption("frequencysupply") <> 50 ) Then
+				SetOption("frequencysupply", 50, "number")
+				WriteParams()
+			EndIf
+		ElseIf (($halfinputFreq >= 27.6) And ( $halfinputFreq <= 32.5)) Then
+			If (GetOption("frequencysupply") <> 60 ) Then
+				SetOption("frequencysupply", 60, "number")
+				WriteParams()
+			EndIf
+		EndIf
+	EndIf
 	If GetUPSVar($ups_name ,"input.voltage",$inputVol) == -1 Then $status = -1
 	If GetUPSVar($ups_name ,"output.voltage",$outputVol)  == -1 Then $status = -1
 	If GetUPSVar($ups_name ,"ups.load",$upsLoad) == -1 Then $status = -1
@@ -246,12 +353,12 @@ Func ResetGui()
 		$outputVol = 0
 		$inputFreq = 0
 	EndIf
-	UpdateValue($needle4, 0, $battv,$dial4, getOption("minbattv"), getOption("maxbattv"))
-	UpdateValue($needle5, 0, $upsl, $dial5, getOption("minupsl"), getOption("maxupsl"))
-	UpdateValue($needle6, 0, $upsch, $dial6, 0, 100)
 	UpdateValue($needle1, 0, $inputv, $dial1, getOption("mininputv"), getOption("maxinputv"))
 	UpdateValue($needle2, 0, $outputv,$dial2, getOption("minoutputv"), getOption("maxoutputv"))
 	UpdateValue($needle3, 0, $inputf, $dial3, getOption("mininputf"), getOption("maxinputf"))
+	UpdateValue($needle4, 0, $battv,$dial4, getOption("minbattv"), getOption("maxbattv"))
+	UpdateValue($needle5, 0, $upsl, $dial5, getOption("minupsl"), getOption("maxupsl"))
+	UpdateValue($needle6, 0, $upsch, $dial6, 0, 100)
 	GuiCtrlSetBkColor($upsonline, $gray)
 	GuiCtrlSetBkColor($upsonbatt, $gray)
 	GUICtrlSetBkColor($upsoverload, $gray)
@@ -337,9 +444,9 @@ Func Update()
 	;if connection to UPS is in fact alive and charge below shutdown setting and ups is not online
 	;add different from status 0 when UPS not connected but NUT is running
 	if (IsShutdownCondition()) Then
-		$InstantShutdown = GetOption("InstantShutdown")
-		If $InstantShutdown = 1 Then
-			Shutdown(17)
+		$InstantAction = GetOption("InstantAction")
+		If $InstantAction = 1 Then
+			Shutdown(GetOption("TypeOfStop"))
 		Else
 			ShutdownGui()
 		EndIf
@@ -449,24 +556,24 @@ Func ShutdownGui_Event($hWnd, $Msg, $wParam, $lParam)
 	$nID = BitAnd($wParam, 0x0000FFFF)
 	$hCtrl = $lParam
 	writelog("notify " & $nNotifyCode)
-	If $nID = $guishutdown Then
-		Switch $nNotifyCode
-			Case $LBN_DBLCLK
-				writelog("bidule")
-		EndSwitch
-	EndIf
-		If $nID = $Grace_btn Then
-		Switch $nNotifyCode
-			Case $LBN_DBLCLK
-				writelog("grace")
-		EndSwitch
-	EndIf
-		If $nID = $Shutdown_btn Then
-		Switch $nNotifyCode
-			Case $LBN_DBLCLK
-				writelog("shutdown")
-		EndSwitch
-	EndIf
+	;If $nID = $guishutdown Then
+	;	Switch $nNotifyCode
+	;		Case $LBN_DBLCLK
+	;			writelog("Click to Gui Shutdown")
+	;	EndSwitch
+	;EndIf
+	;If $nID = $Grace_btn Then
+	;	Switch $nNotifyCode
+	;		Case $LBN_DBLCLK
+	;			writelog("Click to Grace Button")
+	;	EndSwitch
+	;EndIf
+	;If $nID = $Shutdown_btn Then
+	;	Switch $nNotifyCode
+	;		Case $LBN_DBLCLK
+	;			writelog("Click to Shutdown Button")
+	;	EndSwitch
+	;EndIf
 EndFunc
 
 Func setTrayMode()
@@ -496,6 +603,8 @@ Func mainLoop()
 				Case $idTrayExit
 					TCPSend($socket,"LOGOUT")
 					TCPCloseSocket($socket)
+					AdlibUnregister("Update")
+					DeletePortProxy()
 					TCPShutdown()
 					Exit
 				Case $idTrayAbout
@@ -508,19 +617,21 @@ Func mainLoop()
 						GuiDelete($dial1)
 						GuiDelete($dial2)
 						GuiDelete($dial3)
-						GuiDelete($dial5)
 						GuiDelete($dial4)
+						GuiDelete($dial5)
+						GuiDelete($dial6)
 						DrawError(160, 70, "Delete")
 						$calc = 1 / ((GetOption("maxinputv") - GetOption("mininputv")) / 100)
-						$dial1 = DrawDial(160, 70, GetOption("mininputv"), "Input Voltage", "V", $inputv, $needle1, $calc)
+						$dial1 = DrawDial(160, 70, GetOption("mininputv"), __("Input Voltage"), "V", $inputv, $needle1, $calc)
 						$calc = 1 / ((GetOption("maxoutputv") - GetOption("minoutputv")) / 100)
-						$dial2 = DrawDial(480, 70, GetOption("minoutputv"), "Output Voltage", "V", $outputv, $needle2, $calc)
+						$dial2 = DrawDial(480, 70, GetOption("minoutputv"), __("Output Voltage)", "V", $outputv, $needle2, $calc)
 						$calc = 1 / ((GetOption("maxinputf") - GetOption("mininputf")) / 100)
-						$dial3 = DrawDial(320, GetOption("maxinputf"), GetOption("mininputf"), "Input Frequency", "Hz", $inputf, $needle3, $calc )
+						$dial3 = DrawDial(320, 70, GetOption("mininputf"), __("Input Frequency"), "Hz", $inputf, $needle3, $calc )
 						$calc = 1 / ((GetOption("maxbattv") - GetOption("minbattv")) / 100)
-						$dial4 = DrawDial(480, 200, GetOption("minbattv"), "Battery Voltage", "V", $battv, $needle4, $calc, 20, 120)
+						$dial4 = DrawDial(480, 200, GetOption("minbattv"), __("Battery Voltage"), "V", $battv, $needle4, $calc, 20, 120)
 						$calc = 1 / ((GetOption("maxupsl") - GetOption("minupsl")) / 100)
-						$dial5 = DrawDial(320, 200, 0, "UPS Load", "%", $upsl, $needle5, $calc, -1, 80)
+						$dial5 = DrawDial(320, 200, 0, __("UPS Load"), "%", $upsl, $needle5, $calc, -1, 80)
+						$dial6 = DrawDial(160, 200, 0, __("Battery Charge"), "%", $upsch, $needle6, 1, 30, 101)
 						$painting = 0
 					EndIf
 					if $haserror == 0 Then
@@ -534,6 +645,8 @@ Func mainLoop()
 			if ($nMsg[0] == $GUI_EVENT_CLOSE and $nMsg[1]==$gui)  or $nMsg[0] == $exitMenu or $nMsg[0] == $exitb then
 				TCPSend($socket,"LOGOUT")
 				TCPCloseSocket($socket)
+				AdlibUnregister("Update")
+				DeletePortProxy()
 				TCPShutdown()
 				Exit
 			EndIf
@@ -541,6 +654,8 @@ Func mainLoop()
 			if $nMsg[0] == $exitMenu or $nMsg[0] == $exitb then
 				TCPSend($socket,"LOGOUT")
 				TCPCloseSocket($socket)
+				AdlibUnregister("Update")
+				DeletePortProxy()
 				TCPShutdown()
 				Exit
 			EndIf
@@ -561,19 +676,21 @@ Func mainLoop()
 				GuiDelete($dial1)
 				GuiDelete($dial2)
 				GuiDelete($dial3)
-				GuiDelete($dial5)
 				GuiDelete($dial4)
+				GuiDelete($dial5)
+				GuiDelete($dial6)
 				DrawError(160, 70, "Delete")
 				$calc = 1 / ((GetOption("maxinputv") - GetOption("mininputv")) / 100)
-				$dial1 = DrawDial(160, 70, GetOption("mininputv"), "Input Voltage", "V", $inputv, $needle1, $calc)
+				$dial1 = DrawDial(160, 70, GetOption("mininputv"), __("Input Voltage"), "V", $inputv, $needle1, $calc)
 				$calc = 1 / ((GetOption("maxoutputv") - GetOption("minoutputv")) / 100)
-				$dial2 = DrawDial(480, 70, GetOption("minoutputv"), "Output Voltage", "V", $outputv, $needle2, $calc)
+				$dial2 = DrawDial(480, 70, GetOption("minoutputv"), __("Output Voltage"), "V", $outputv, $needle2, $calc)
 				$calc = 1 / ((GetOption("maxinputf") - GetOption("mininputf")) / 100)
-				$dial3 = DrawDial(320, GetOption("maxinputf"), GetOption("mininputf"), "Input Frequency", "Hz", $inputf, $needle3, $calc )
+				$dial3 = DrawDial(320, 70, GetOption("mininputf"), __("Input Frequency"), "Hz", $inputf, $needle3, $calc )
 				$calc = 1 / ((GetOption("maxbattv") - GetOption("minbattv")) / 100)
-				$dial4 = DrawDial(480, 200, GetOption("minbattv"), "Battery Voltage", "V", $battv, $needle4, $calc, 20, 120)
+				$dial4 = DrawDial(480, 200, GetOption("minbattv"), __("Battery Voltage"), "V", $battv, $needle4, $calc, 20, 120)
 				$calc = 1 / ((GetOption("maxupsl") - GetOption("minupsl")) / 100)
-				$dial5 = DrawDial(320, 200, 0, "UPS Load", "%", $upsl, $needle5, $calc, -1, 80)
+				$dial5 = DrawDial(320, 200, 0, __("UPS Load"), "%", $upsl, $needle5, $calc, -1, 80)
+				$dial6 = DrawDial(160, 200, 0, __("Battery Charge"), "%", $upsch, $needle6, 1, 30, 101)
 				$painting = 0
 			EndIf
 			if $haserror == 0 Then
@@ -589,11 +706,18 @@ Func mainLoop()
 		EndIf
 		If $nMsg[0]== $reconnectMenu then
 			AdlibUnregister("Update")
-			$socket = ConnectServer() ;;aaaaa
+			$socket = ConnectServer()
 			Opt("TCPTimeout",3000)
 			GetUPSInfo()
 			SetUPSInfo()
 			AdlibRegister("Update",1000)
+		EndIf
+		If $nMsg[0]== $DisconnectMenu then
+			AdlibUnregister("Update")
+			$socket = DisconnectServer()
+			ResetGui()
+			SetUPSInfo()
+			GuiCtrlSetData($remainTimeLabel, "")
 		EndIf
 		For $vKey In $MenuLangListhwd
 			If $nMsg[0] == $MenuLangListhwd.Item($vKey) Then
@@ -638,7 +762,7 @@ Func WinNut_Init()
 	;HERE STARTS MAIN SCRIPT
 	$status = TCPStartup()
 	if $status == false Then
-		MsgBox(48,"Critical Error","Couldn't startup TCP")
+		MsgBox(48,"Critical Error", "Couldn't startup TCP")
 		Exit
 	EndIf
 	Opt("GUIDataSeparatorChar", ".")

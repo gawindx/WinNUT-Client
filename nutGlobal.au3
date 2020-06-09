@@ -18,6 +18,12 @@ Global $upsLoad = 0
 Global $battCh = 0
 Global $battruntime = 0
 Global $batcapacity = 0
+Global $ipv6mode = False
+Global $ResolvedHost = ""
+Global $PortProxyAddress = "127.0.0.1"
+Global $PortProxyPortMin = 20000
+Global $PortProxyPortMax = 30000
+Global $PortProxyPort = 0
 
 Global $upsstatus = 0
 Global $needle1 = 0
@@ -50,7 +56,7 @@ Global $varselected
 Global $varvalue
 Global $vardesc
 
-Global $settingssubMenu,$exitMenu,$editMenu,$aboutMenu,$reconnectMenu,$listvarMenu
+Global $settingssubMenu, $exitMenu, $editMenu, $aboutMenu, $reconnectMenu, $DisconnectMenu, $listvarMenu
 
 Global $guipref = 0
 Global $guiabout = 0
