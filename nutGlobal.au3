@@ -3,7 +3,7 @@ Global $haserror = 0
 Global $ProgramDesc = "Windows NUT Client"
 Global $ProgramVersion = ""
 
-Global $upsPF = 0.7
+Global $upsPF = 0.6
 Global $inputv = 0
 Global $outputv = 0
 Global $inputf = 0
@@ -89,3 +89,4 @@ Global $panel_bkg_bgr = 0
 Global $optionList = ""
 
 Global $MenuLangListhwd
+Global $en_cours

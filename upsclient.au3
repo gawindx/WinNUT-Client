@@ -1,4 +1,4 @@
-﻿#pragma compile(FileVersion, 1.7.3.0)
+﻿#pragma compile(FileVersion, 1.7.3.1)
 #pragma compile(Icon, .\images\upsicon.ico)
 #pragma compile(Out, .\Build\upsclient.exe)
 #pragma compile(Compression, 1)
@@ -47,7 +47,7 @@ Func updateVarList()
 	GuiCtrlSetData($varselected , $selected)
 	$upsval = ""
 	$upsdesc = ""
-	$checkstatus1 = GetUPSVar(GetOption("upsname") , $selected , $upsval)
+	$checkstatus1 = GetUPSVar(GetOption("upsname") , $selected , $upsval, __("Unknown"))
 	$checkstatus2 = GetUPSDescVar(GetOption("upsname") , $selected , $upsdesc)
 	if $checkstatus1 == -1 or $checkstatus2 == -1 Then
 		$upsval = ""
@@ -179,21 +179,21 @@ Func ResolveFQDN($IPAddress)
 	For $IpType In $TypeSearch
 		Local $nscmd = @ComSpec & " /c " & "nslookup -type=" & $IpType & " " & $IPAddress
 		Local $iPID = Run($nscmd, "", @SW_HIDE,  $STDERR_MERGED)
-    	If @error = 0 Then
-    		ProcessWaitClose($iPID)
-    		Local $sOutput = StdoutRead($iPID)
-    		Local $nsResultArray = StringSplit($sOutput, @CRLF)
-    		Local $idResult = null
-    		If UBound($nsResultArray) > 5 Then
-    			Local $countAddress = 0
-    			For $i = 0 To (UBound($nsResultArray)-1)
-    				If StringRegExp($nsResultArray[$i], "Address:") Then
-    					$countAddress += 1
-    					If $countAddress = 2 Then
-        					$idResult=$i
-        					ExitLoop
-        				EndIf
-    				endif
+	If @error = 0 Then
+		ProcessWaitClose($iPID)
+		Local $sOutput = StdoutRead($iPID)
+		Local $nsResultArray = StringSplit($sOutput, @CRLF)
+		Local $idResult = null
+		If UBound($nsResultArray) > 5 Then
+			Local $countAddress = 0
+			For $i = 0 To (UBound($nsResultArray)-1)
+				If StringRegExp($nsResultArray[$i], "Address:") Then
+					$countAddress += 1
+					If $countAddress = 2 Then
+						$idResult=$i
+						ExitLoop
+					EndIf
+				endif
 				Next
 			Else
 				ContinueLoop
@@ -203,17 +203,17 @@ Func ResolveFQDN($IPAddress)
 				ContinueLoop
 			Else
 				If $IpType = 'A' Then
-    				$ResultAddress = StringStripWS((StringSplit($nsResultArray[$idResult], ":"))[2], $STR_STRIPALL)
-    			Else
-    				Local $tmpAddress = $nsResultArray[$idResult]
-    				$ResultAddress = StringStripWS(StringRight($tmpAddress, StringLen($tmpAddress) - StringInStr($tmpAddress, ':')), $STR_STRIPALL)
-    			EndIf
-   				WriteLog(__("Resolved Address") & ": " & $ResultAddress)
-   				ExitLoop
-   			EndIf
-    	Else
-    		WriteLog(__("Error nslookup Search Type") & " " & $IpType)
-    	EndIf
+				$ResultAddress = StringStripWS((StringSplit($nsResultArray[$idResult], ":"))[2], $STR_STRIPALL)
+			Else
+				Local $tmpAddress = $nsResultArray[$idResult]
+				$ResultAddress = StringStripWS(StringRight($tmpAddress, StringLen($tmpAddress) - StringInStr($tmpAddress, ':')), $STR_STRIPALL)
+			EndIf
+				WriteLog(__("Resolved Address") & ": " & $ResultAddress)
+				ExitLoop
+			EndIf
+	Else
+		WriteLog(__("Error nslookup Search Type") & " " & $IpType)
+	EndIf
     Next
     Return $ResultAddress
 EndFunc
@@ -227,7 +227,7 @@ Func GetUPSInfo()
 	if $socket == 0 Then ; not connected to server/connection lost
 		Return
 	EndIf
-	$status = GetUPSVar(GetOption("upsname") ,"ups.mfr" , $mfr)
+	$status = GetUPSVar(GetOption("upsname") ,"ups.mfr" , $mfr, __("Unknown"))
 	if $status = -1 then ;UPS name wrong or variable not supported or connection lost
 		if $socket == 0 Then
 			Return
@@ -244,7 +244,7 @@ Func GetUPSInfo()
 		EndIf
 	EndIf
 
-	$status = GetUPSVar(GetOption("upsname") ,"ups.model" , $name)
+	$status = GetUPSVar(GetOption("upsname") ,"ups.model" , $name, __("Unknown"))
 	if $status = -1 then
 		if $socket == 0 Then
 			Return
@@ -254,7 +254,7 @@ Func GetUPSInfo()
 	;trim $name
 	$name = StringStripWS($name, $STR_STRIPLEADING + $STR_STRIPTRAILING)
 
-	$status = GetUPSVar(GetOption("upsname"), "ups.serial", $serial)
+	$status = GetUPSVar(GetOption("upsname"), "ups.serial", $serial, __("Unknown"))
 	if $status = -1 then
 		if $socket == 0 Then
 			Return
@@ -262,7 +262,7 @@ Func GetUPSInfo()
 		$serial =""
 	EndIf
 
-	$status = GetUPSVar(GetOption("upsname"), "ups.firmware", $firmware)
+	$status = GetUPSVar(GetOption("upsname"), "ups.firmware", $firmware, __("Unknown"))
 	if $status = -1 then
 		if $socket == 0 Then
 			Return
@@ -288,11 +288,11 @@ Func GetUPSData()
 	;$status = 0
 	$ups_name = GetOption("upsname")
 	If $socket == 0 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.charge" , $battch) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.voltage",$battVol)  == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.runtime",$battruntime) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.capacity",$batcapacity) == -1 Then $status = -1
-	If GetUPSVar($ups_name, "input.frequency", $inputFreq) == -1 Then
+	If GetUPSVar($ups_name, "battery.charge", $battch, "255", 50) == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.voltage", $battVol, "12")  == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.runtime", $battruntime, "86400") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.capacity", $batcapacity, "7") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "input.frequency", $inputFreq, "50") == -1 Then
 		$inputFreq = GetOption("frequencysupply")
 		$mininputf = $inputFreq - 10
 		$maxinputf = $inputFreq + 10
@@ -311,10 +311,28 @@ Func GetUPSData()
 		EndIf
 	EndIf
 	If GetUPSVar($ups_name ,"input.voltage",$inputVol) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"output.voltage",$outputVol)  == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"ups.load",$upsLoad) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"ups.status",$upsstatus) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"ups.realpower.nominal",$upsoutpower) == -1 Then $status = -1
+	If GetUPSVar($ups_name, "input.voltage", $inputVol, "220") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "output.voltage", $outputVol, $inputVol)  == -1 Then $status = -1
+	If GetUPSVar($ups_name, "ups.load", $upsLoad, "100") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "ups.status", $upsstatus, "OL") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "ups.realpower.nominal", $upsoutpower, __("Unknown")) == -1 Then 
+		$status = -1
+	ElseIf $upsoutpower == __("Unknown") Then
+		Local $inputcurrent
+		If GetUPSVar($ups_name, "ups.current.nominal", $inputcurrent, 1) == -1 Then
+			$status = -1
+		Else 
+			;Because this inverter does not provide information on its power,
+			;we will determine it according to the elements and defaults at our disposal
+			;For this, we will consider an input and output yield of 70% (rather low yield) and a power factor of 0.6
+			;(((($inputVol * $inputcurrent)/($yield_In*$yield_Out))/$PF)*($upsLoad)
+			;In this way, the power obtained should be lower than the real characteristic of the UPS and there will be no risk of late shutdown
+			;$upsoutpower = (((($inputVol * $inputcurrent)/(0.7*0.7))/0.6)*($upsLoad/100))
+			$upsoutpower = ($inputVol * 0.95 *$inputcurrent)
+		EndIf
+	Else
+		$upsoutpower = $upsoutpower / $upsPF
+	EndIf
 EndFunc
 
 Func UpdateValue(byref $needle , $value , $label , $whandle ,$min = 170, $max = 270, $force = 0)
@@ -396,15 +414,15 @@ Func Update()
 		SetColor($yellow , $wPanel , $upsonbatt )
 		SetColor(0xffffff , $wPanel , $upsonline )
 	EndIf
-	Local $PowerDivider = 0.9
+	Local $PowerDivider = 0.5
 	If $upsLoad > 100 Then
 		SetColor($red , $wPanel , $upsoverload )
 	Else
 		SetColor(0xffffff , $wPanel , $upsoverload )
 		If $upsLoad > 75 Then
-			$PowerDivider = 0.8
+			$PowerDivider = 0.4
 		ElseIf $upsLoad > 50 Then
-			$PowerDivider = 0.85
+			$PowerDivider = 0.3
 		EndIf
 	EndIf
 	;In case of that your inverter does not provide the State of Charge, he will be estimated.
@@ -423,9 +441,8 @@ Func Update()
 	; the Power Factor as well as a coefficient allowing to take into account
 	;a large instantaneous charge (this limits the runtime ).
 	If ($battruntime >= 86400 ) Then
-		Local $RealLoad = ($upsoutpower*($upsLoad/100))
-		Local $InstantCurrent = $RealLoad / $battVol
-		$battruntime = Floor(((($batcapacity / $InstantCurrent)* $upsPF) * ($battCh/100) * $PowerDivider)*3600)
+		Local $BattInstantCurrent = ($upsoutpower * $upsLoad) / ( $battVol* 100)
+		$battruntime = Floor(($batcapacity * $upsPF * $battCh * (1-$PowerDivider) * 3600) / ($BattInstantCurrent * 100))
 	EndIf
 	if $battCh < 40 Then
 		SetColor($red , $wPanel , $upslowbatt )
