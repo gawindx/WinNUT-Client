@@ -3,3 +3,7 @@ ups.ini
 *.ini
 Build/ups.ini
 *.ini
+Build/Language
+Build
+*.lng
+*.exe

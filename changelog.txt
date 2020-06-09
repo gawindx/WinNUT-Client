@@ -1,4 +1,14 @@
 History:
+Version 1.7.3.0
+Added : Compatibility with IPV6 (Experimental)
+Added : Disconnect Option in Menu
+
+Version 1.7.2.2
+Fix : Fixed some graphical issues
+Added : German translation
+Added : Ability to set the input frequency manually in case the UPS does not return this information. The value is set automatically when the UPS supplies it.
+Added : Possibility to choose the type of stop action (Shutdown/Sleep/Hibernate)
+No Build Release
 
 Version 1.7.2.1
 Fix : Missing Translation
@@ -9,11 +19,9 @@ Version 1.7.2.0
 Added : Support for multi language
 Added : Auto reconnection 
 
-
 Version 1.7.0.5
 Added : Added ability to estimate the load level and run time of the UPS when he does not provide the information itself (or is inconsistent).
 Fix : Some Source Cleanup
-
 
 Version 1.7.0
 Added : Custom Shutdown Options.
