@@ -1,4 +1,4 @@
-Global $socket = 0 
+Global $socket = 0
 
 Func ProcessData($data)
 	Local $strs
@@ -96,7 +96,7 @@ Func GetUPSDescVar($upsId, $varName, byref $upsVar)
 		Return -1
 	EndIf
 	$upsVar = ProcessData($data)
-	return 0	
+	Return 0	
 EndFunc ;==> GetUPSDescVar
 
 Func GetUPSVar($upsId, $varName, byref $upsVar)
@@ -113,9 +113,12 @@ Func GetUPSVar($upsId, $varName, byref $upsVar)
 		$upsVar = "0"
 		Return -1
 	EndIf
+	If $post_send_delay Then Sleep($post_send_delay)
 	$data = TCPRecv($socket , 4096)
-	If $data == "" Then ;connection lost
-		WriteLog(__("Connection lost"))
+	If $data == "" And $fallback_value Then
+		$data = "VAR " & $upsID & " " & $varName & " " & '"' & $fallback_value & '"'
+	ElseIf $data == "" Then ;connection lost
+		WriteLog(__("Connection lost at " & $varName))
 		$socket = 0
 		$upsVar = "0"
 		Return -1
