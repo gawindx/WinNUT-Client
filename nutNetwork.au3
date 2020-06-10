@@ -99,7 +99,7 @@ Func GetUPSDescVar($upsId, $varName, byref $upsVar)
 	Return 0	
 EndFunc ;==> GetUPSDescVar
 
-Func GetUPSVar($upsId, $varName, byref $upsVar)
+Func GetUPSVar($upsId, $varName, byref $upsVar, $fallback_value=Null, $post_send_delay=Null)
 	Local $sendstring, $sent, $data
 	If $socket == 0 Then
 		$upsVar = "0"
