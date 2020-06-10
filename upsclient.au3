@@ -1,4 +1,4 @@
-﻿#pragma compile(FileVersion, 1.7.3.0)
+﻿#pragma compile(FileVersion, 1.7.3.1)
 #pragma compile(Icon, .\images\upsicon.ico)
 #pragma compile(Out, .\Build\upsclient.exe)
 #pragma compile(Compression, 1)
@@ -8,7 +8,7 @@
 #pragma compile(LegalCopyright, Freeware)
 #pragma compile(ProductName, WinNUT-Client)
 #pragma compile(Compatibility, win7, win8, win81, win10)
-;
+
 #RequireAdmin
 #include-once
 #include <GUIConstants.au3>
@@ -40,34 +40,34 @@ Func rePaint()
 	repaintNeedle($needle5, $upsLoad, $dial5, getOption("minupsl"), getOption("maxupsl"))
 	repaintNeedle($needle6, $battCh, $dial6, 0, 100)
 	return $GUI_RUNDEFMSG
-EndFunc
+EndFunc ;==> rePaint
 
 Func updateVarList()
-	$selected = _GUICtrlTreeViewGetTree1($TreeView1, "." , 0)
-	GuiCtrlSetData($varselected , $selected)
+	$selected = _GUICtrlTreeViewGetTree1($TreeView1, ".", 0)
+	GuiCtrlSetData($varselected, $selected)
 	$upsval = ""
 	$upsdesc = ""
-	$checkstatus1 = GetUPSVar(GetOption("upsname") , $selected , $upsval)
-	$checkstatus2 = GetUPSDescVar(GetOption("upsname") , $selected , $upsdesc)
-	if $checkstatus1 == -1 or $checkstatus2 == -1 Then
+	$checkstatus1 = GetUPSVar(GetOption("upsname"), $selected, $upsval)
+	$checkstatus2 = GetUPSDescVar(GetOption("upsname"), $selected, $upsdesc)
+	If $checkstatus1 == -1 or $checkstatus2 == -1 Then
 		$upsval = ""
 		$upsdesc = ""
 	EndIf
-	if GuiCtrlRead($varvalue ) <> $upsval Then
-		GuiCtrlSetData($varvalue , $upsval)
+	If GuiCtrlRead($varvalue ) <> $upsval Then
+		GuiCtrlSetData($varvalue, $upsval)
 	EndIf
-	if GuiCtrlRead($vardesc ) <> $upsdesc Then
-		GuiCtrlSetData($vardesc , $upsdesc)
+	If GuiCtrlRead($vardesc ) <> $upsdesc Then
+		GuiCtrlSetData($vardesc, $upsdesc)
 	EndIf
-EndFunc
+EndFunc ;==> updateVarList
 
 Func varlistGui()
 	$varlist = ""
 	$templist = ""
 	AdlibUnregister("Update")
-	$status1 = ListUPSVars(GetOption("upsname") , $varlist)
-	$varlist = StringReplace($varlist , GetOption("upsname") , "")
-	$vars = StringSplit($varlist , "VAR",1)
+	$status1 = ListUPSVars(GetOption("upsname"), $varlist)
+	$varlist = StringReplace($varlist, GetOption("upsname"), "")
+	$vars = StringSplit($varlist, "VAR", 1)
 	AdlibRegister("Update",1000)
 	$guilistvar = GUICreate(__("LIST UPS Variables"), 365, 331, 196, 108, -1 , -1 , $gui)
 	GUISetIcon(@tempdir & "upsicon.ico")
@@ -88,48 +88,48 @@ Func varlistGui()
 
 	$varcount = Ubound($vars) - 2
 	$varlist = "";
-	for $i = 3 to $varcount
-		if $i == $varcount Then
+	For $i = 3 To $varcount
+		If $i == $varcount Then
 			ContinueLoop
 		EndIf
-		$templist = StringSplit($vars[$i],'"')
-		$curpath = StringStripWS($templist[1],3)
-		_addPath($TreeView1, $curpath )
+		$templist = StringSplit($vars[$i], '"')
+		$curpath = StringStripWS($templist[1], 3)
+		_addPath($TreeView1, $curpath)
 	Next
 	_SetIcons($TreeView1, 0)
-	_GUICtrlTreeView_Expand($TreeView1,0,false)
+	_GUICtrlTreeView_Expand($TreeView1, 0, false)
 
 	AdlibUnregister("Update")
-	AdlibRegister("updateVarList",500)
+	AdlibRegister("updateVarList", 500)
 	While 1
 		$nMsg = GUIGetMsg(1)
 		Switch $nMsg[0]
 			Case $GUI_EVENT_CLOSE
 				AdlibUnregister("updateVarList")
-				GuiSetState(@SW_ENABLE,$gui )
+				GuiSetState(@SW_ENABLE, $gui)
 				GuiDelete($guilistvar)
 				WinActivate($gui)
-				AdlibRegister("Update",1000)
+				AdlibRegister("Update", 1000)
 				return
 			Case $Clear_Btn
-				_GUICtrlTreeView_Expand($TreeView1,0,false)
+				_GUICtrlTreeView_Expand($TreeView1, 0, false)
 			Case $Reload_Btn
 				AdlibUnRegister("updateVarList")
 				_GUICtrlTreeView_DeleteAll($TreeView1)
-				for $i = 3 to $varcount
-					if $i == $varcount Then
+				For $i = 3 To $varcount
+					If $i == $varcount Then
 						ContinueLoop
 					EndIf
-					$templist = StringSplit($vars[$i],'"')
-					$curpath = StringStripWS($templist[1],3)
-					_addPath($TreeView1, $curpath )
+					$templist = StringSplit($vars[$i], '"')
+					$curpath = StringStripWS($templist[1], 3)
+					_addPath($TreeView1, $curpath)
 				Next
 				_SetIcons($TreeView1, 0)
-				_GUICtrlTreeView_Expand($TreeView1,0,false)
-				AdlibRegister("updateVarList",500)
+				_GUICtrlTreeView_Expand($TreeView1, 0, false)
+				AdlibRegister("updateVarList", 500)
 		EndSwitch
 	WEnd
-EndFunc
+EndFunc ;==> varlistGui
 
 Func IsFQDN($IPAddress)
 	Local $sPattern = "^(?:(?!\d+\.|-)[a-zA-Z0-9_\-]{1,63}(?<!-)\.?)+(?:[a-zA-Z]{2,})$"
@@ -140,7 +140,7 @@ Func IsFQDN($IPAddress)
 		WriteLog($IPAddress & " " & __("Is not an FQDN Address"))
 		Return False
 	EndIF
-EndFunc
+EndFunc ;==> IsFQDN
 
 Func IsIPV4($IPAddress)
 	Local $sPattern = "^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$"
@@ -155,7 +155,7 @@ Func IsIPV4($IPAddress)
 		WriteLog($IPAddress & " " & __("Is not an IPV4 Address"))
 		Return False
 	EndIF
-EndFunc
+EndFunc ;==> IsIPV4
 
 Func IsIPV6($IPAddress)
 	WriteLog("IPV6 Test")
@@ -171,7 +171,7 @@ Func IsIPV6($IPAddress)
 		WriteLog($IPAddress & " " & __("Is not an IPV6 Address"))
 		Return False
 	EndIF
-EndFunc
+EndFunc ;==> IsIPV6
 
 Func ResolveFQDN($IPAddress)
 	Local $TypeSearch = [ 'A' , 'AAAA' ]
@@ -179,21 +179,21 @@ Func ResolveFQDN($IPAddress)
 	For $IpType In $TypeSearch
 		Local $nscmd = @ComSpec & " /c " & "nslookup -type=" & $IpType & " " & $IPAddress
 		Local $iPID = Run($nscmd, "", @SW_HIDE,  $STDERR_MERGED)
-    	If @error = 0 Then
-    		ProcessWaitClose($iPID)
-    		Local $sOutput = StdoutRead($iPID)
-    		Local $nsResultArray = StringSplit($sOutput, @CRLF)
-    		Local $idResult = null
-    		If UBound($nsResultArray) > 5 Then
-    			Local $countAddress = 0
-    			For $i = 0 To (UBound($nsResultArray)-1)
-    				If StringRegExp($nsResultArray[$i], "Address:") Then
-    					$countAddress += 1
-    					If $countAddress = 2 Then
-        					$idResult=$i
-        					ExitLoop
-        				EndIf
-    				endif
+		If @error = 0 Then
+			ProcessWaitClose($iPID)
+			Local $sOutput = StdoutRead($iPID)
+			Local $nsResultArray = StringSplit($sOutput, @CRLF)
+			Local $idResult = null
+			If UBound($nsResultArray) > 5 Then
+				Local $countAddress = 0
+				For $i = 0 To (UBound($nsResultArray) - 1)
+					If StringRegExp($nsResultArray[$i], "Address:") Then
+						$countAddress += 1
+						If $countAddress = 2 Then
+							$idResult=$i
+							ExitLoop
+						EndIf
+					endif
 				Next
 			Else
 				ContinueLoop
@@ -203,20 +203,20 @@ Func ResolveFQDN($IPAddress)
 				ContinueLoop
 			Else
 				If $IpType = 'A' Then
-    				$ResultAddress = StringStripWS((StringSplit($nsResultArray[$idResult], ":"))[2], $STR_STRIPALL)
-    			Else
-    				Local $tmpAddress = $nsResultArray[$idResult]
-    				$ResultAddress = StringStripWS(StringRight($tmpAddress, StringLen($tmpAddress) - StringInStr($tmpAddress, ':')), $STR_STRIPALL)
-    			EndIf
-   				WriteLog(__("Resolved Address") & ": " & $ResultAddress)
-   				ExitLoop
-   			EndIf
-    	Else
-    		WriteLog(__("Error nslookup Search Type") & " " & $IpType)
-    	EndIf
-    Next
-    Return $ResultAddress
-EndFunc
+					$ResultAddress = StringStripWS((StringSplit($nsResultArray[$idResult], ":"))[2], $STR_STRIPALL)
+				Else
+					Local $tmpAddress = $nsResultArray[$idResult]
+					$ResultAddress = StringStripWS(StringRight($tmpAddress, StringLen($tmpAddress) - StringInStr($tmpAddress, ':')), $STR_STRIPALL)
+				EndIf
+				WriteLog(__("Resolved Address") & ": " & $ResultAddress)
+				ExitLoop
+			EndIf
+		Else
+			WriteLog(__("Error nslookup Search Type") & " " & $IpType)
+		EndIf
+	Next
+	Return $ResultAddress
+EndFunc ;==> ResolveFQDN
 
 Func GetUPSInfo()
 	Local $status = 0
@@ -224,15 +224,15 @@ Func GetUPSInfo()
 	$name = ""
 	$serial = ""
 	$firmware = ""
-	if $socket == 0 Then ; not connected to server/connection lost
+	If $socket == 0 Then ; not connected to server/connection lost
 		Return
 	EndIf
-	$status = GetUPSVar(GetOption("upsname") ,"ups.mfr" , $mfr)
-	if $status = -1 then ;UPS name wrong or variable not supported or connection lost
+	$status = GetUPSVar(GetOption("upsname"), "ups.mfr", $mfr)
+	If $status = -1 then ;UPS name wrong or variable not supported or connection lost
 		if $socket == 0 Then
 			Return
 		EndIf
-		If StringInStr($errorstring,"UNKNOWN-UPS") <> 0 Then
+		If StringInStr($errorstring, "UNKNOWN-UPS") <> 0 Then
 			$mfr = ""
 			WriteLog(__("Disconnecting from server"))
 			TCPSend($socket,"LOGOUT")
@@ -244,22 +244,22 @@ Func GetUPSInfo()
 		EndIf
 	EndIf
 
-	$status = GetUPSVar(GetOption("upsname") ,"ups.model" , $name)
-	if $status = -1 then
-		if $socket == 0 Then
+	$status = GetUPSVar(GetOption("upsname"), "ups.model", $name)
+	If $status = -1 Then
+		If $socket == 0 Then
 			Return
 		EndIf
-		$name =""
+		$name = ""
 	EndIf
 	;trim $name
 	$name = StringStripWS($name, $STR_STRIPLEADING + $STR_STRIPTRAILING)
 
 	$status = GetUPSVar(GetOption("upsname"), "ups.serial", $serial)
-	if $status = -1 then
+	If $status = -1 Then
 		if $socket == 0 Then
 			Return
 		EndIf
-		$serial =""
+		$serial = ""
 	EndIf
 
 	$status = GetUPSVar(GetOption("upsname"), "ups.firmware", $firmware)
@@ -267,82 +267,82 @@ Func GetUPSInfo()
 		if $socket == 0 Then
 			Return
 		EndIf
-		$firmware =""
+		$firmware = ""
 	EndIf
-EndFunc
+EndFunc ;==> GetUPSInfo
 
 Func SetUPSInfo()
-	if $socket == 0 Then ;if not connected or connection lost
+	If $socket == 0 Then ;if not connected or connection lost
 		$mfr = ""
 		$name = ""
 		$serial = ""
 		$firmware = ""
 	EndIf
-	GuiCtrlSetData($upsmfr,$mfr)
-	GuiCtrlSetData($upsmodel,$name)
-	GuiCtrlSetData($upsserial,$serial)
-	GuiCtrlSetData($upsfirmware,$firmware)
-EndFunc
+	GuiCtrlSetData($upsmfr, $mfr)
+	GuiCtrlSetData($upsmodel, $name)
+	GuiCtrlSetData($upsserial, $serial)
+	GuiCtrlSetData($upsfirmware, $firmware)
+EndFunc ;==> SetUPSInfo
 
 Func GetUPSData()
 	;$status = 0
 	$ups_name = GetOption("upsname")
 	If $socket == 0 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.charge" , $battch) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.voltage",$battVol)  == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.runtime",$battruntime) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"battery.capacity",$batcapacity) == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.charge", $battch) == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.voltage", $battVol)  == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.runtime", $battruntime) == -1 Then $status = -1
+	If GetUPSVar($ups_name, "battery.capacity", $batcapacity) == -1 Then $status = -1
 	If GetUPSVar($ups_name, "input.frequency", $inputFreq) == -1 Then
 		$inputFreq = GetOption("frequencysupply")
 		$mininputf = $inputFreq - 10
 		$maxinputf = $inputFreq + 10
 	Else
-		$halfinputFreq = $inputFreq/2
-		If (($halfinputFreq >= 22.5) And ( $halfinputFreq <= 27.5)) Then
+		$halfinputFreq = $inputFreq / 2
+		If (($halfinputFreq >= 22.5) And ($halfinputFreq <= 27.5)) Then
 			If (GetOption("frequencysupply") <> 50 ) Then
 				SetOption("frequencysupply", 50, "number")
 				WriteParams()
 			EndIf
-		ElseIf (($halfinputFreq >= 27.6) And ( $halfinputFreq <= 32.5)) Then
+		ElseIf (($halfinputFreq >= 27.6) And ($halfinputFreq <= 32.5)) Then
 			If (GetOption("frequencysupply") <> 60 ) Then
 				SetOption("frequencysupply", 60, "number")
 				WriteParams()
 			EndIf
 		EndIf
 	EndIf
-	If GetUPSVar($ups_name ,"input.voltage",$inputVol) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"output.voltage",$outputVol)  == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"ups.load",$upsLoad) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"ups.status",$upsstatus) == -1 Then $status = -1
-	If GetUPSVar($ups_name ,"ups.realpower.nominal",$upsoutpower) == -1 Then $status = -1
-EndFunc
+	If GetUPSVar($ups_name, "input.voltage", $inputVol) == -1 Then $status = -1
+	If GetUPSVar($ups_name, "output.voltage", $outputVol)  == -1 Then $status = -1
+	If GetUPSVar($ups_name, "ups.load", $upsLoad) == -1 Then $status = -1
+	If GetUPSVar($ups_name, "ups.status", $upsstatus) == -1 Then $status = -1
+	If GetUPSVar($ups_name, "ups.realpower.nominal", $upsoutpower) == -1 Then $status = -1
+EndFunc ;==> GetUPSData
 
-Func UpdateValue(byref $needle , $value , $label , $whandle ,$min = 170, $max = 270, $force = 0)
-	$oldval = Round (GuiCtrlRead($label))
-	if $oldval < $min Then
+Func UpdateValue(byref $needle, $value, $label, $whandle, $min = 170, $max = 270, $force = 0)
+	$oldval = Round(GuiCtrlRead($label))
+	If $oldval < $min Then
 		$oldval = $min
 	EndIf
-	if $oldval > $max Then
+	If $oldval > $max Then
 		$oldval = $max
 	EndIf
-	if $oldval == Round($value) and $force == 0 Then
+	If $oldval == Round($value) and $force == 0 Then
 		Return
 	EndIf
-	GuiCtrlSetData($label , $value )
-	$value = Round($value )
-	if $value < $min Then
+	GuiCtrlSetData($label, $value )
+	$value = Round($value)
+	If $value < $min Then
 		$value = $min
 	EndIf
-	if $value > $max Then
+	If $value > $max Then
 		$value = $max
 	EndIf
-	$oldneedle = ($oldval - $min) / ( ($max - $min ) / 100 )
+	$oldneedle = ($oldval - $min) / (($max - $min ) / 100)
 	if $oldneedle > 0 or $oldneedle == 0 then
-		DrawNeedle(15 + $oldneedle ,$clock_bkg_bgr , $whandle , $needle)
+		DrawNeedle(15 + $oldneedle, $clock_bkg_bgr, $whandle, $needle)
 	EndIf
-	$setneedle =($value - $min)/ ( ($max - $min ) / 100 )
-	DrawNeedle(15 + $setneedle ,0x0 , $whandle , $needle)
-EndFunc
+	$setneedle = ($value - $min) / (($max - $min ) / 100)
+	DrawNeedle(15 + $setneedle ,0x0, $whandle, $needle)
+EndFunc ;==> UpdateValue
 
 Func ResetGui()
 	if $socket == 0  Then
@@ -354,7 +354,7 @@ Func ResetGui()
 		$inputFreq = 0
 	EndIf
 	UpdateValue($needle1, 0, $inputv, $dial1, getOption("mininputv"), getOption("maxinputv"))
-	UpdateValue($needle2, 0, $outputv,$dial2, getOption("minoutputv"), getOption("maxoutputv"))
+	UpdateValue($needle2, 0, $outputv, $dial2, getOption("minoutputv"), getOption("maxoutputv"))
 	UpdateValue($needle3, 0, $inputf, $dial3, getOption("mininputf"), getOption("maxinputf"))
 	UpdateValue($needle4, 0, $battv,$dial4, getOption("minbattv"), getOption("maxbattv"))
 	UpdateValue($needle5, 0, $upsl, $dial5, getOption("minupsl"), getOption("maxupsl"))
@@ -363,44 +363,47 @@ Func ResetGui()
 	GuiCtrlSetBkColor($upsonbatt, $gray)
 	GUICtrlSetBkColor($upsoverload, $gray)
 	GUICtrlSetBkColor($upslowbatt, $gray)
-	if ($socket <> 0 ) Then
+	If ($socket <> 0 ) Then
 		SetUPSInfo()
 	EndIf
 	rePaint()
-EndFunc
+EndFunc ;==> ResetGui
 
 Func Update()
 	GetUPSData()
-	if $socket == 0 and $LastSocket <> 0 Then
+	If $socket == 0 and $LastSocket <> 0 Then
 		;Connection is lost from last Update Loop
 		$ReconnectTry = 0
 		ResetGui()
 		If GetOption("autoreconnect") == 1 Then
 			ReconnectNut()
-			AdlibRegister("ReconnectNut", 30000)
+			AdlibRegister("ReconnectNut", $ReconnectDelay)
 		EndIf
 		AdlibUnregister("Update")
+		GUICtrlSetState($DisconnectMenu, $GUI_DISABLE)
 		Return
 	ElseIf $socket == 0 then ; connection lost so throw all needles to left
 		ResetGui()
 		AdlibUnregister("Update")
+		GUICtrlSetState($DisconnectMenu, $GUI_DISABLE)
 		Return
 	Else
 		$LastSocket = $socket
 		$ReconnectTry = 0
+		GUICtrlSetState($DisconnectMenu, $GUI_ENABLE)
 	EndIf
 	If $upsstatus == "OL" Then
-		SetColor($green , $wPanel , $upsonline )
-		SetColor(0xffffff , $wPanel , $upsonbatt )
+		SetColor($green, $wPanel, $upsonline)
+		SetColor(0xffffff, $wPanel, $upsonbatt)
 	Else
-		SetColor($yellow , $wPanel , $upsonbatt )
-		SetColor(0xffffff , $wPanel , $upsonline )
+		SetColor($yellow, $wPanel, $upsonbatt)
+		SetColor(0xffffff, $wPanel, $upsonline)
 	EndIf
 	Local $PowerDivider = 0.9
 	If $upsLoad > 100 Then
-		SetColor($red , $wPanel , $upsoverload )
+		SetColor($red, $wPanel, $upsoverload)
 	Else
-		SetColor(0xffffff , $wPanel , $upsoverload )
+		SetColor(0xffffff, $wPanel, $upsoverload)
 		If $upsLoad > 75 Then
 			$PowerDivider = 0.8
 		ElseIf $upsLoad > 50 Then
@@ -423,18 +426,18 @@ Func Update()
 	; the Power Factor as well as a coefficient allowing to take into account
 	;a large instantaneous charge (this limits the runtime ).
 	If ($battruntime >= 86400 ) Then
-		Local $RealLoad = ($upsoutpower*($upsLoad/100))
+		Local $RealLoad = ($upsoutpower * ($upsLoad / 100))
 		Local $InstantCurrent = $RealLoad / $battVol
-		$battruntime = Floor(((($batcapacity / $InstantCurrent)* $upsPF) * ($battCh/100) * $PowerDivider)*3600)
+		$battruntime = Floor(((($batcapacity / $InstantCurrent)* $upsPF) * ($battCh / 100) * $PowerDivider)  *3600)
 	EndIf
 	if $battCh < 40 Then
-		SetColor($red , $wPanel , $upslowbatt )
+		SetColor($red, $wPanel, $upslowbatt )
 	Else
-		SetColor(0xffffff , $wPanel , $upslowbatt )
+		SetColor(0xffffff, $wPanel, $upslowbatt )
 	EndIf
 	$battrtimeStr = TimeToStr($battruntime) 
-	GuiCtrlSetData($remainTimeLabel,$battrtimeStr)
-	UpdateValue($needle1, $inputVol, $inputv, $dial1,getOption("mininputv"), getOption("maxinputv"))
+	GuiCtrlSetData($remainTimeLabel, $battrtimeStr)
+	UpdateValue($needle1, $inputVol, $inputv, $dial1, getOption("mininputv"), getOption("maxinputv"))
 	UpdateValue($needle2, $outputVol, $outputv, $dial2, getOption("minoutputv"), getOption("maxoutputv"))
 	UpdateValue($needle3, $inputFreq, $inputf, $dial3, getOption("mininputf"), getOption("maxinputf"))
 	UpdateValue($needle4, $battVol, $battv, $dial4, getOption("minbattv"), getOption("maxbattv"))
@@ -451,12 +454,12 @@ Func Update()
 			ShutdownGui()
 		EndIf
 	EndIf
-EndFunc
+EndFunc ;==> Update
 
 Func SetTrayIconText()
 	$trayStatus  = ""
 	If $socket > 0 Then
-		if $battCh < 40 Then
+		If $battCh < 40 Then
 			$trayStatus  = $trayStatus & @LF &  __("Low Battery")
 		Else
 			$trayStatus  = $trayStatus & @LF &  __("Battery OK")
@@ -472,22 +475,23 @@ Func SetTrayIconText()
 		$trayStatus = __("Not Connected")
 	EndIf
 	TraySetToolTip($ProgramDesc & " - " & $ProgramVersion & $trayStatus )
-EndFunc
+EndFunc ;==> SetTrayIconText
 
 Func ReconnectNut()
 	local $NewSocket = ConnectServer()
-	Opt("TCPTimeout",3000)
-	$ReconnectTry = $ReconnectTry + 1
-	If $ReconnectTry > 29 Then
+	Opt("TCPTimeout", 3000)
+	$ReconnectTry += 1
+	If $ReconnectTry >= $MaxReconnectTry Then
 		AdlibUnregister("ReconnectNut")
+		MsgBox(0, __("Alert"), __("Connection to Nut server could not be reestablished within the specified time"), 30, $gui)
 	ElseIf $NewSocket >= 0  Then
 		GetUPSInfo()
 		SetUPSInfo()
 		Update()
-		AdlibRegister("Update",1000)
+		AdlibRegister("Update", 1000)
 		AdlibUnregister("ReconnectNut")
 	EndIf
-EndFunc
+EndFunc ;==> ReconnectNut
 
 Func DrawDial($left, $top, $basescale, $title, $units, ByRef $value, ByRef $needle, $scale = 1, $leftG = 20, $rightG = 70)
 	Local $group = 0
@@ -497,59 +501,55 @@ Func DrawDial($left, $top, $basescale, $title, $units, ByRef $value, ByRef $need
 	GuiSwitch($group)
 	GuiCtrlCreateLabel($title,0,0,150,14,$SS_CENTER )
 
-	for $x = 0 to 100 step 10
-		if StringinStr($x / 20,".") = 0 Then
-			GUICtrlCreateLabel("",$x * 1.2 + 15 , 15  , 1 , 15 , $SS_BLACKRECT)
-			GuiCtrlSetState(-1,$GUI_DISABLE)
-			if $x < 100 Then
-				$test = GUICtrlCreateLabel("",$x * 1.2  + 16,15  , 11 , 5 , 0 )
-				GuiCtrlSetState(-1,$GUI_DISABLE)
-				if $x < $rightG and $x > $leftG then
-					GUICtrlSetBkColor($test , 0x00ff00)
+	For $x = 0 To 100 Step 10
+		If StringinStr($x / 20,".") = 0 Then
+			GUICtrlCreateLabel("", $x * 1.2 + 15, 15, 1, 15, $SS_BLACKRECT)
+			GuiCtrlSetState(-1, $GUI_DISABLE)
+			If $x < 100 Then
+				$test = GUICtrlCreateLabel("", $x * 1.2 + 16, 15, 11, 5, 0)
+				GuiCtrlSetState(-1, $GUI_DISABLE)
+				If $x < $rightG And $x > $leftG Then
+					GUICtrlSetBkColor($test, 0x00ff00)
 				Else
-					GUICtrlSetBkColor($test , 0xff0000)
+					GUICtrlSetBkColor($test, 0xff0000)
 				EndIf
 			EndIf
 			$scalevalue = $basescale + $x / $scale
-			switch $scalevalue
-				Case 0 to 9
-					GuiCtrlCreateLabel($scalevalue, $x*1.2 + 13, 25, 20, 10)
-				Case 10 to 99
-					GuiCtrlCreateLabel($scalevalue, $x*1.2 + 10, 25, 20, 10)
-				Case 100 to 1000
-					GuiCtrlCreateLabel($scalevalue, $x*1.2 + 7, 25, 20, 10)
+			Switch $scalevalue
+				Case 0 To 9
+					GuiCtrlCreateLabel($scalevalue, $x * 1.2 + 13, 25, 20, 10)
+				Case 10 To 99
+					GuiCtrlCreateLabel($scalevalue, $x * 1.2 + 10, 25, 20, 10)
+				Case 100 To 1000
+					GuiCtrlCreateLabel($scalevalue, $x * 1.2 + 7, 25, 20, 10)
 			EndSwitch
-			GUICtrlSetFont(-1,7)
+			GUICtrlSetFont(-1, 7)
 		Else
-			GUICtrlCreateLabel("", $x*1.2+15, 15, 1, 5, $SS_BLACKRECT)
-			GuiCtrlSetState(-1,$GUI_DISABLE)
-			$test = GUICtrlCreateLabel("", $x*1.2+16, 15, 11, 5, 0)
-			;GuiCtrlSetState(-1,$GUI_DISABLE)
-			if $x < $rightG and $x > $leftG then
-				GUICtrlSetBkColor($test , 0x00ff00)
+			GUICtrlCreateLabel("", $x * 1.2 + 15, 15, 1, 5, $SS_BLACKRECT)
+			GuiCtrlSetState(-1, $GUI_DISABLE)
+			$test = GUICtrlCreateLabel("", $x * 1.2 + 16, 15, 11, 5, 0)
+			If $x < $rightG And $x > $leftG Then
+				GUICtrlSetBkColor($test, 0x00ff00)
 			Else
-				GUICtrlSetBkColor($test , 0xff0000)
+				GUICtrlSetBkColor($test, 0xff0000)
 			EndIf
 		EndIf
 	Next
-	if $units =="%" then
+	If $units == "%" Then
 		$value = GUICtrlCreateLabel(0, 10, 100, 40, 15, $SS_LEFT)
 	Else
 		$value = GUICtrlCreateLabel(220, 10, 100, 40, 15, $SS_LEFT)
 	EndIf
-	$label2 = GUICtrlCreateLabel($units, 116, 100, 25, 15,$SS_RIGHT)
+	$label2 = GUICtrlCreateLabel($units, 116, 100, 25, 15, $SS_RIGHT)
 	$needle = GUICtrlCreateGraphic(10, 35, 120, 60)
-	;GUICtrlSetBkColor(-1,$aqua)
-	;$fill = GuiCtrlCreateGraphic(0 , 0 , 150 , 120)
 	If BitAND(WinGetState($gui), $WIN_STATE_MINIMIZED) Then
-		GuiSetState(@SW_HIDE,$group)
+		GuiSetState(@SW_HIDE, $group)
 	Else
-		GuiSetState(@SW_SHOW,$group)
+		GuiSetState(@SW_SHOW, $group)
 	EndIf
-	;GuiCtrlSetBkColor(-1,0x00ffff)
-	$result  = $group
-	return $group
-EndFunc
+	$result = $group
+	Return $group
+EndFunc ;==> DrawDial
 
 Func ShutdownGui_Event($hWnd, $Msg, $wParam, $lParam)
 	$nNotifyCode = BitShift($wParam, 16)
@@ -574,11 +574,11 @@ Func ShutdownGui_Event($hWnd, $Msg, $wParam, $lParam)
 	;			writelog("Click to Shutdown Button")
 	;	EndSwitch
 	;EndIf
-EndFunc
+EndFunc ;==>ShutdownGui_Event
 
 Func setTrayMode()
 	$minimizetray = GetOption("minimizetray")
-	if $minimizetray == 1 Then
+	If $minimizetray == 1 Then
 		TraySetIcon(@tempdir & "upsicon.ico")
 		TraySetState($TRAY_ICONSTATE_SHOW)
 		Opt("TrayAutoPause", 0) ; Le script n'est pas mis en pause lors de la sélection de l'icône de la zone de notification.
@@ -588,12 +588,12 @@ Func setTrayMode()
 	Else
 		TraySetState($TRAY_ICONSTATE_HIDE)
 	EndIf
-EndFunc
+EndFunc ;==> setTrayMode
 
 Func mainLoop()
 	$minimizetray = GetOption("minimizetray")
 	While 1
-		if ($minimizetray == 1) Then
+		If ($minimizetray == 1) Then
 			$tMsg = TrayGetMsg()
 			Switch $tMsg
 				Case $TRAY_EVENT_PRIMARYDOUBLE
@@ -601,7 +601,7 @@ Func mainLoop()
 					GuiSetState(@SW_RESTORE ,$gui)
 					TraySetState($TRAY_ICONSTATE_HIDE)
 				Case $idTrayExit
-					TCPSend($socket,"LOGOUT")
+					TCPSend($socket, "LOGOUT")
 					TCPCloseSocket($socket)
 					AdlibUnregister("Update")
 					DeletePortProxy()
@@ -612,7 +612,7 @@ Func mainLoop()
 				Case $idTrayPref
 					AdlibUnregister("Update")
 					$changedprefs = prefGui()
-					if $changedprefs == 1 Then
+					If $changedprefs == 1 Then
 						$painting = 1
 						GuiDelete($dial1)
 						GuiDelete($dial2)
@@ -634,15 +634,15 @@ Func mainLoop()
 						$dial6 = DrawDial(160, 200, 0, __("Battery Charge"), "%", $upsch, $needle6, 1, 30, 101)
 						$painting = 0
 					EndIf
-					if $haserror == 0 Then
+					If $haserror == 0 Then
 						Update()
 						AdlibRegister("Update",1000)
 					EndIf
 			EndSwitch
 		EndIf
 		$nMsg = GUIGetMsg(1)
-		if GetOption("closetotray") == 0 Then
-			if ($nMsg[0] == $GUI_EVENT_CLOSE and $nMsg[1]==$gui)  or $nMsg[0] == $exitMenu or $nMsg[0] == $exitb then
+		If GetOption("closetotray") == 0 Then
+			If ($nMsg[0] == $GUI_EVENT_CLOSE And $nMsg[1]==$gui) Or $nMsg[0] == $exitMenu Or $nMsg[0] == $exitb Then
 				TCPSend($socket,"LOGOUT")
 				TCPCloseSocket($socket)
 				AdlibUnregister("Update")
@@ -651,7 +651,7 @@ Func mainLoop()
 				Exit
 			EndIf
 		Else
-			if $nMsg[0] == $exitMenu or $nMsg[0] == $exitb then
+			If $nMsg[0] == $exitMenu Or $nMsg[0] == $exitb Then
 				TCPSend($socket,"LOGOUT")
 				TCPCloseSocket($socket)
 				AdlibUnregister("Update")
@@ -659,16 +659,16 @@ Func mainLoop()
 				TCPShutdown()
 				Exit
 			EndIf
-			if ($nMsg[0] == $GUI_EVENT_CLOSE and $nMsg[1]==$gui) Then
+			If ($nMsg[0] == $GUI_EVENT_CLOSE And $nMsg[1]==$gui) Then
 				GuiSetState(@SW_HIDE , $gui)
 				TraySetState($TRAY_ICONSTATE_SHOW)
 			EndIf
 		EndIf
-		if ($nMsg[0] == $GUI_EVENT_MINIMIZE and $nMsg[1]==$gui and $minimizetray ==1) Then;minimize to tray
+		If ($nMsg[0] == $GUI_EVENT_MINIMIZE And $nMsg[1]==$gui And $minimizetray ==1) Then;minimize to tray
 			GuiSetState(@SW_HIDE , $gui)
 			TraySetState($TRAY_ICONSTATE_SHOW)
 		EndIf
-		if $nMsg[0] == $toolb or $nMsg[0] == $settingssubMenu Then
+		If $nMsg[0] == $toolb Or $nMsg[0] == $settingssubMenu Then
 			AdlibUnregister("Update")
 			$changedprefs = prefGui()
 			if $changedprefs == 1 Then
@@ -693,27 +693,33 @@ Func mainLoop()
 				$dial6 = DrawDial(160, 200, 0, __("Battery Charge"), "%", $upsch, $needle6, 1, 30, 101)
 				$painting = 0
 			EndIf
-			if $haserror == 0 Then
+			If $haserror == 0 Then
 				Update()
 				AdlibRegister("Update",1000)
 			EndIf
 		EndIf
-		if $nMsg[0] == $aboutMenu Then
+		If $nMsg[0] == $aboutMenu Then
 			aboutGui()
 		EndIf
-		if ($nMsg[0] == $listvarMenu) Then
+		If ($nMsg[0] == $listvarMenu) Then
 			varlistGui()
 		EndIf
-		If $nMsg[0]== $reconnectMenu then
+		If $nMsg[0]== $reconnectMenu Then
 			AdlibUnregister("Update")
-			$socket = ConnectServer()
-			Opt("TCPTimeout",3000)
+			$status = ConnectServer()
+			Opt("TCPTimeout", 3000)
 			GetUPSInfo()
 			SetUPSInfo()
-			AdlibRegister("Update",1000)
+			GetUPSData()
+			Update()
+			GuiRegisterMsg(0x000F, "rePaint")
+			AdlibRegister("GetUPSData", GetOption("delay"))
+			AdlibRegister("Update", 1000)
+			AdlibRegister("SetTrayIconText", 1000)
 		EndIf
-		If $nMsg[0]== $DisconnectMenu then
+		If $nMsg[0]== $DisconnectMenu Then
 			AdlibUnregister("Update")
+			GUICtrlSetState($DisconnectMenu, $GUI_DISABLE)
 			$socket = DisconnectServer()
 			ResetGui()
 			SetUPSInfo()
@@ -732,13 +738,12 @@ Func mainLoop()
 						GUICtrlSetState($MenuLangListhwd.Item($vxKey), $GUI_UNCHECKED)
 					EndIf
 				Next
-				;_i18n_SetLanguage($vKey)
 				ExitLoop
 			EndIf
 		Next
 
 	WEnd
-EndFunc
+EndFunc ;==> mainLoop
 
 Func WinNut_Init()
 	;Install all needed Files
@@ -752,16 +757,16 @@ Func WinNut_Init()
 
 	;Language
 	; function to auto include all language file
-		_ListFileInstallFolder(".\Language", "\Language", 0, "*.lng", "include", True)
-		;Now file is generated so include it
-		#Include "include.au3"
+	_ListFileInstallFolder(".\Language", "\Language", 0, "*.lng", "include", True)
+	;Now file is generated so include it
+	#Include "include.au3"
 
 	;Get Script Version
 	$ProgramVersion = _GetScriptVersion()
 
 	;HERE STARTS MAIN SCRIPT
 	$status = TCPStartup()
-	if $status == false Then
+	If $status == False Then
 		MsgBox(48,"Critical Error", "Couldn't startup TCP")
 		Exit
 	EndIf
@@ -769,7 +774,7 @@ Func WinNut_Init()
 
 	;Initialize all Option Data
 	InitOptionDATA()
-	if $status == -1 Then
+	If $status == -1 Then
 		MsgBox(48, "Critical Error", "Couldn't initialize Options")
 		Exit
 	EndIf
@@ -805,7 +810,7 @@ Func WinNut_Init()
 	$idTrayExit = TrayCreateItem(__("Exit"))
 	
 	OpenMainWindow()
-	if ( GetOption("minimizeonstart") == 1 and GetOption("minimizetray") == 1 ) Then
+	If (GetOption("minimizeonstart") == 1 And GetOption("minimizetray") == 1) Then
 		GuiSetState(@SW_HIDE, $gui)
 		TraySetState($TRAY_ICONSTATE_SHOW)
 	Else
@@ -815,16 +820,16 @@ Func WinNut_Init()
 
 	;Initilize connexion to Nut/Ups
 	$status = ConnectServer()
-	Opt("TCPTimeout",3000)
+	Opt("TCPTimeout", 3000)
 	GetUPSInfo()
 	SetUPSInfo()
 	GetUPSData()
 	Update()
-	GuiRegisterMsg(0x000F,"rePaint")
-	AdlibRegister("GetUPSData",GetOption("delay"))
-	AdlibRegister("Update",1000)
-	AdlibRegister("SetTrayIconText",1000)
-EndFunc
+	GuiRegisterMsg(0x000F, "rePaint")
+	AdlibRegister("GetUPSData", GetOption("delay"))
+	AdlibRegister("Update", 1000)
+	AdlibRegister("SetTrayIconText", 1000)
+EndFunc ;==> WinNut_Init
 
 WinNut_Init()
 mainLoop()

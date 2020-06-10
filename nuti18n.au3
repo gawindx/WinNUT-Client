@@ -10,7 +10,7 @@ Global $i18n_locale2 = ""
 Func _i18n_GetLocaleList()
 	Local $LocaleFileList, $i, $sFnameLanguage
 	Local $aLocalList[1]
-	$LocaleFileList = _FileListToArray ( $_i18n_LangBase, "*.lng", $FLTA_FILESFOLDERS, True)
+	$LocaleFileList = _FileListToArray($_i18n_LangBase, "*.lng", $FLTA_FILESFOLDERS, True)
 	$aLocalList[0] = 0
 	If @error == 1 Then Return -1
 	For $i = 1 to UBound($LocaleFileList) - 1
@@ -33,23 +33,23 @@ Func _i18n_GetLocale()
 	Else
 		Return $_i18n_Language
 	EndIf
-EndFunc   ;==>LCIDToLocaleName
+EndFunc ;==> LCIDToLocaleName
 
 Func _i18n_GetLocale2()
 	Return StringSplit(_i18n_GetLocale(), "-")[1]
-EndFunc
+EndFunc ;==> _i18n_GetLocale2
 
 Func _i18n_SetLangBase($sFolder)
 	$_i18n_LangBase = $sFolder
-EndFunc
+EndFunc ;==> _i18n_SetLangBase
 
 Func _i18n_SetDefault($sDefault)
 	$_i18n_Default = $sDefault
-EndFunc
+EndFunc ;==> _i18n_SetDefault
 
 Func _i18n_SetLanguage($sLanguage)
 	$_i18n_Language = $sLanguage
-EndFunc
+EndFunc ;==> _i18n_SetLanguage
 
 Func __($sText)
 	$workingdir = @WorkingDir
@@ -66,7 +66,7 @@ Func __($sText)
 	If $sControl = "I18N ERROR NO TRANSLATION" Then	$sControl = IniRead($_i18n_TranslationFileDefault, $_i18n_Default, $sText, $sText) ; fallback lang
 	FileChangeDir($workingdir)
 	Return StringReplace($sControl, "\n", @CRLF)
-EndFunc
+EndFunc ;==> __
 
 Func __i18n_GetTranslationFile($locale)
 	If FileExists($_i18n_LangBase & "\" & $locale & ".lng") Then
@@ -74,4 +74,4 @@ Func __i18n_GetTranslationFile($locale)
 	Else
 		Return $_i18n_LangBase & "\" & $_i18n_Default & ".lng"
 	EndIf
-EndFunc
+EndFunc ;==> __i18n_GetTranslationFile

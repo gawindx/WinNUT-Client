@@ -1,9 +1,10 @@
 Global $errorstring = "no error"
 Global $haserror = 0
 Global $ProgramDesc = "Windows NUT Client"
+Global $ProgramName = "WinNUT"
 Global $ProgramVersion = ""
 
-Global $upsPF = 0.7
+Global $upsPF = 0.6
 Global $inputv = 0
 Global $outputv = 0
 Global $inputf = 0
@@ -61,7 +62,7 @@ Global $settingssubMenu, $exitMenu, $editMenu, $aboutMenu, $reconnectMenu, $Disc
 Global $guipref = 0
 Global $guiabout = 0
 Global $gui = 0
-Global $fileMenu, 	$listvarMenu, $exitMenu, $editMenu, $reconnectMenu,	$settingsMenu
+Global $fileMenu, $listvarMenu, $exitMenu, $editMenu, $reconnectMenu, $settingsMenu
 Global $settingssubMenu, $LanguageSettings, $LangSubMenuSystem, $helpMenu, $aboutMenu
 Global $Label1, $Label2, $Label3, $Label4, $labelUpsRemain, $Label5
 Global $Label14, $Label15, $Label16, $exitb, $toolb
@@ -69,7 +70,7 @@ Global $upsmfr, $upsmodel, $upsserial, $upsfirmware
 
 Global $wPanel = 0
 
-Global $idTrayExit,$idTrayPref,$idTrayAbout
+Global $idTrayExit, $idTrayPref, $idTrayAbout
 Global $runasexe = False
 
 Global $Active_Countdown = 0, $Suspend_Countdown = 0
@@ -78,6 +79,8 @@ Global $Running_Shutdown, $lbl_countdown, $lbl_ups_status
 Global $guishutdown, $Grace_btn, $Shutdown_btn
 
 Global $ReconnectTry = 0
+Global $MaxReconnectTry = 30
+Global $ReconnectDelay = 30000
 Global $LastSocket = 0
 
 ;nutOption

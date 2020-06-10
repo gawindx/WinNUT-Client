@@ -1,4 +1,11 @@
 History:
+
+Version 1.7.3.1
+Changed : Better syntactic respect of the code
+Added : A notification message is displayed when the connection could not be re-established within the time allowed 
+Fix : Disconnect menu option is now disabled when connection to NUT server is not established
+Fix : Correction of a problem with information refresh when the connection is established after starting WinNUT
+
 Version 1.7.3.0
 Added : Compatibility with IPV6 (Experimental)
 Added : Disconnect Option in Menu

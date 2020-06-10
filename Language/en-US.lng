@@ -88,3 +88,5 @@ Is an IPV6 Address=Is an IPV6 Address
 Error nslookup Search Type=Error nslookup Search Typ
 Resolved Address=Resolved Address
 Disconnect=Disconnect
+Alert=Alert
+Connection to Nut server could not be reestablished within the specified time=Connection to Nut server could not be reestablished within the specified time
