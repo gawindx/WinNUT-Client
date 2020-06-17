@@ -3,6 +3,5 @@ Build/Language
 Build/Resources
 Build/log.txt
 Build/ups.ini
-*.exe
 WinNUT_Icons.dll
 Log.txt
