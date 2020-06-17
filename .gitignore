@@ -1,8 +1,8 @@
-ups.ini
-*.ini
-Build/ups.ini
 *.ini
 Build/Language
-Build
-*.lng
+Build/Resources
+Build/log.txt
+Build/ups.ini
 *.exe
+WinNUT_Icons.dll
+Log.txt

@@ -1,13 +1,12 @@
 #include <Color.au3>
 
-Global $painting = 0
-Global $clock_bkg = 0
-
-;This function returns the x and y coordinates of a point which is located
-;on an intersection of a circle with radius of 60 centered at (60,70) and a line
-;passing through center of a circle and a point whose x coordinate is passed as a
-;parameter .y coordinate of that point is is assumed to be 10
-;This is to calculate a point inside analogue clock where needle drawing will end
+#comments-start
+	This function returns the x and y coordinates of a point which is located
+	on an intersection of a circle with radius of 60 centered at (60,70) and a line
+	passing through center of a circle and a point whose x coordinate is passed as a
+	parameter .y coordinate of that point is is assumed to be 10
+	This is to calculate a point inside analogue clock where needle drawing will end
+#comments-end
 Func getPoint($coordX )
 	Local $result[2]
 	Local $coordY = 10
@@ -37,12 +36,14 @@ Func getPoint($coordX )
 	Return $result
 EndFunc ;==> getPoint
 
-;This function draws a needle from center of a circle located at 60,70 to a point
-;whose x is passed as a parameter and y assumed to be 10
-;$x : X coordinate of the point
-;$color : the color of the needle
-;$windhandle : handle of the main window ($gui)
-;$chandle : handle of the control for the drawing (graphic control)
+#comments-start
+	This function draws a needle from center of a circle located at 60,70 to a point
+	whose x is passed as a parameter and y assumed to be 10
+	$x : X coordinate of the point
+	$color : the color of the needle
+	$windhandle : handle of the main window ($gui)
+	$chandle : handle of the control for the drawing (graphic control)
+#comments-end
 Func DrawNeedle($x, $color, $winhandle, $chandle)
 	If $painting <> 0 Then
 		Return
@@ -70,7 +71,7 @@ Func DrawNeedle($x, $color, $winhandle, $chandle)
 	$painting  = 0
 EndFunc ;==> DrawNeedle
 
-Func RGBtoBGR($color )
+Func RGBtoBGR($color)
 	Local $redcomponent, $greencomponent, $bluecomponent
 	
 	$redcomponent = _ColorGetRed($color)
@@ -88,7 +89,7 @@ Func RGBtoBGR($color )
 	Return Number($result)
 EndFunc ;==> RGBtoBGR
 
-Func GetColor($window , $control)
+Func GetColor($window, $control)
 	Local $cPos = 0
 	Local $wPos = 0
 	Local $xPos, $yPos
@@ -119,15 +120,17 @@ EndFunc ;==> repaintNeedle
 
 Func SetColor($color, $window, $control)
 	Local $prevColor
-	$prevColor = getColor($window, $control )
+	$prevColor = getColor($window, $control)
 	If $prevColor == $color Then ;has same color so no need to update
 		Return
 	EndIf
 	GuiCtrlSetBkColor($control, $color)
 EndFunc ;==> SetColor
 
-Func DrawError($left, $top, $message ) ;message to write over the dial if some error happened
-	$result= GuiCtrlCreateLabel($message , $left + 25, $top + 50, 110, 50, $BS_CENTER)
+Func DrawError($left, $top, $message) ;message to write over the dial if some error happened
+	$result = GuiCtrlCreateLabel($message , $left + 25, $top + 50, 110, 50, $BS_CENTER)
 	GuiCtrlSetColor(-1,0xff0000)
+	Local $arr[2] = ["Draw Error - Message : %s", $message]
+	WriteLog($arr, $LOG2FILE, $DBG_ERROR)
 	Return $result
 EndFunc ;==> DrawError

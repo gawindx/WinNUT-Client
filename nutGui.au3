@@ -6,13 +6,60 @@
 Global $gui = 0
 Global $log
 
-Func WriteLog($msg, $Level = null)
-	$msg = _Now() & " : " & $msg
-	ControlCommand($gui, "", $log, "AddString", $msg)
-	ControlCommand($gui, "", $log, "SetCurrentSelection", _GUICtrlComboBox_GetCount($log) - 1)
+Func WriteLog($msg, $Dest_Log = BitOr($LOG_GUI, $LOG2FILE), $Level = $DBG_NOTICE)
+	Local $gui_msg, $sLogMsg
+	If BitAnd($Dest_Log, $LOG_GUI) Then
+		$gui_msg = _Now() & " : "
+		If IsArray($msg) Then
+			$gui_msg &= StringFormat(__($msg[0]), $msg[1])
+		Else
+			$gui_msg &= __($msg)
+		EndIf
+		ControlCommand($gui, "", $log, "AddString", $gui_msg)
+		ControlCommand($gui, "", $log, "SetCurrentSelection", _GUICtrlComboBox_GetCount($log) - 1)
+	EndIf
+	If BitAnd($Dest_Log, $LOG2FILE) And GetOption("uselogfile") == 1 Then
+		If Not FileExists($LogFile) Then
+			_FileCreate($LogFile)
+			If Not $msg == $START_LOG_STR Then
+				_FileWriteLog($LogFile, $START_LOG_STR, -1)
+			EndIf
+		EndIf
+		If $Level <= GetOption("loglevel") Then
+			$sLogMsg = _Now() & $oDBG_LVL_TXT.Item($Level)
+			If IsArray($msg) Then
+				If IsArray($msg[1]) Then
+					Local $tmp_sLogMsg = ""
+					Local $arr_sLogMsg = StringSplit($msg[0], '%s', BitOr($STR_NOCOUNT, $STR_ENTIRESPLIT))
+					_ArrayPop($arr_sLogMsg)
+					For $i = 0 To (UBound($arr_sLogMsg) - 1) Step 1
+						Local $tmpValue = StringStripWS(($msg[1])[$i], BitOr($STR_STRIPLEADING, $STR_STRIPTRAILING, $STR_STRIPSPACES))
+						If $tmpValue == "" Then
+							$tmpValue = "Undefined"
+						EndIf
+						$tmp_sLogMsg &= StringFormat($arr_sLogMsg[$i] & "%s" , $tmpValue)
+					Next
+					$sLogMsg &= $tmp_sLogMsg
+				Else
+					$sLogMsg &= StringFormat($msg[0], $msg[1])
+				EndIf 
+			Else
+				$sLogMsg &= $msg
+			EndIf
+			Local $sPattern = '\n'
+			$sLogMsg = StringRegExpReplace($sLogMsg, $sPattern, @CRLF)
+			Local $arrStr = StringSplit($sLogMsg, @CRLF, $STR_ENTIRESPLIT)
+			If $arrStr[0] > 1 Then
+				_ArrayDelete($arrStr, 0)
+				$sLogMsg = _ArrayToString($arrStr, @CRLF & @TAB & @TAB & @TAB & @TAB & @TAB & @TAB & "    ")
+			EndIf
+			_FileWriteLog($LogFile, $sLogMsg, -1)
+		EndIf
+	EndIf
 EndFunc ;==> WriteLog
 
 Func prefGui()
+	WriteLog("Enter prefGui Function", $LOG2FILE, $DBG_DEBUG)
 	Local $Iipaddr = 0
 	Local $Iport = 0
 	Local $Iupsname = 0
@@ -31,7 +78,7 @@ Func prefGui()
 		TraySetClick(0)
 	EndIf
 	$guipref = GUICreate(__("Preferences"), 364, 331, 190, 113, -1, -1, $gui)
-	GUISetIcon(@tempdir & "upsicon.ico")
+	SetIconGuiTray($guipref)
 	$Bcancel = GUICtrlCreateButton(__("Cancel"), 286, 298, 75, 25, 0)
 	$Bapply = GUICtrlCreateButton(__("Apply"), 206, 298, 75, 25, 0)
 	$Bok = GUICtrlCreateButton(__("Ok"), 126, 298, 75, 25, 0)
@@ -88,6 +135,7 @@ Func prefGui()
 	$chstartminimized = GUICtrlCreateCheckbox("StartMinimized", 224, 81, 17, 17, BitOr($BS_AUTOCHECKBOX, $WS_TABSTOP), $WS_EX_STATICEDGE)
 	$lblclosetotray = GUICtrlCreateLabel(__("Close to Tray"), 16, 126, 150, 17, BitOR($SS_BLACKRECT, $SS_GRAYFRAME, $SS_LEFTNOWORDWRAP))
 	$chclosetotray = GUICtrlCreateCheckbox("ClosetoTray", 224, 123, 17, 17, BitOr($BS_AUTOCHECKBOX, $WS_TABSTOP), $WS_EX_STATICEDGE)
+
 	If GetOption("minimizetray") == 0 Then
 		GuiCtrlSetState($chMinimizeTray, $GUI_UNCHECKED)
 		GuiCtrlSetState($chstartminimized, $GUI_UNCHECKED)
@@ -116,6 +164,44 @@ Func prefGui()
 
 	$lblstartwithwindows = GUICtrlCreateLabel(__("Start with Windows"), 16, 168, 150, 17, BitOR($SS_BLACKRECT, $SS_GRAYFRAME, $SS_LEFTNOWORDWRAP))
 	$chStartWithWindows = GUICtrlCreateCheckbox("Startwithwindows", 224, 167, 17, 17, BitOr($BS_AUTOCHECKBOX, $WS_TABSTOP), $WS_EX_STATICEDGE)
+	$lblCreateLogFile = GUICtrlCreateLabel(__("Create LogFile"), 16, 210, 150, 17, BitOR($SS_BLACKRECT, $SS_GRAYFRAME, $SS_LEFTNOWORDWRAP))
+	$chCreateLogFile = GUICtrlCreateCheckbox("UseLogFile", 224, 209, 17, 17, BitOr($BS_AUTOCHECKBOX, $WS_TABSTOP), $WS_EX_STATICEDGE)
+	$BtnViewLogFile = GUICtrlCreateButton(__("View LogFile"), 248, 198, 48, 40, $BS_ICON)
+	GUICtrlSetImage($BtnViewLogFile, $IconDLL, $IDX_ICO_VIEWLOG)
+	GUICtrlSetTip ($BtnViewLogFile, __("View LogFile"), null, $TIP_NOICON, $TIP_BALLOON)
+	$BtnDeleteLogFile = GUICtrlCreateButton(__("Delete LogFile"), 302, 198, 48, 40, $BS_ICON)
+	GUICtrlSetImage($BtnDeleteLogFile, $IconDLL, $IDX_ICO_DELETELOG)
+	GUICtrlSetTip ($BtnDeleteLogFile, __("Delete LogFile"), null, $TIP_NOICON, $TIP_BALLOON)
+	$lbLogLevel = GUICtrlCreateLabel(__("Logging Level"), 16, 252, 150, 17, BitOR($SS_BLACKRECT, $SS_GRAYFRAME, $SS_LEFTNOWORDWRAP))
+	$cbLogLevel = GUICtrlCreateCombo("", 224, 252, 126, 23, Bitor($CBS_DROPDOWNLIST, 0))
+
+	If GetOption("uselogfile") == 0 Then
+		GuiCtrlSetState($chCreateLogFile, $GUI_UNCHECKED)
+	Else
+		GuiCtrlSetState($chCreateLogFile, $GUI_CHECKED)
+	EndIf
+	If $oDBG_LEVEL.Count > 0 Then
+		$oDBG_LEVEL.RemoveAll
+	EndIf
+	$oDBG_LEVEL.Add($DBG_NOTICE, __("Notice"))
+	$oDBG_LEVEL.Add($DBG_WARNING, __("Warning"))
+	$oDBG_LEVEL.Add($DBG_ERROR, __("Error"))
+	$oDBG_LEVEL.Add($DBG_DEBUG, __("Debug"))
+	Local $cbLogLevelstr = ""
+	For $vKey In $oDBG_LEVEL
+       $cbLogLevelstr &= $oDBG_LEVEL.Item($vKey) & "."
+    Next
+
+	GUICtrlSetData($cbLogLevel, $cbLogLevelstr, $oDBG_LEVEL.Item(GetOption("loglevel")))
+
+	If FileExists($LogFile) Then
+		GUICtrlSetState($BtnViewLogFile, $GUI_ENABLE)
+		GUICtrlSetState($BtnDeleteLogFile, $GUI_ENABLE)
+	Else
+		GUICtrlSetState($BtnViewLogFile, $GUI_DISABLE)
+		GUICtrlSetState($BtnDeleteLogFile, $GUI_DISABLE)
+	EndIf
+
 	If $runasexe == True Then
 		GUICtrlSetState($chStartWithWindows, $GUI_ENABLE)
 		GUICtrlSetState($lblstartwithwindows, $GUI_ENABLE)
@@ -180,13 +266,16 @@ Func prefGui()
 	GUICtrlCreateTabItem("")
 	GuiSetState(@SW_DISABLE, $gui)
 	GUISetState(@SW_SHOW, $guipref)
+	WriteLog("creation of prefGui is complete", $LOG2FILE, $DBG_DEBUG)
 
 	While 1
 		$nMsg1 = GUIGetMsg()
 		Switch $nMsg1
 			Case $GUI_EVENT_CLOSE
+				WriteLog("prefGui Closed", $LOG2FILE, $DBG_DEBUG)
 				ExitLoop
 			Case $Bapply, $Bok
+				WriteLog("prefGui Apply/OK", $LOG2FILE, $DBG_DEBUG)
 				SetOption("ipaddr", GuiCtrlRead($Iipaddr), "string")
 				If IsFQDN(GuiCtrlRead($Iipaddr)) Then
 					$ResolvedHost = ResolveFQDN(GuiCtrlRead($Iipaddr))
@@ -194,7 +283,7 @@ Func prefGui()
 				If IsIPV4($ResolvedHost) Then
 					$ipv6mode = False
 				ElseIf IsIPV6($ResolvedHost) Then
-					WriteLog(__("Switch to IPV6 Mode")
+					WriteLog("Switch to IPV6 Mode")
 					$ipv6mode = True
 				EndIf
 				SetOption("port", GuiCtrlRead($Iport), "number")
@@ -291,6 +380,20 @@ Func prefGui()
 					SetOption("minimizeonstart", 0, "number")
 					SetOption("closetotray", 0, "number")
 				EndIf
+				$UseLogFile = GuiCtrlRead($chCreateLogFile)
+				If $UseLogFile == $GUI_CHECKED Then
+					SetOption("uselogfile", 1, "number")
+					GUICtrlSetState($BtnViewLogFile, $GUI_ENABLE)
+					GUICtrlSetState($BtnDeleteLogFile, $GUI_ENABLE)
+				Else
+					SetOption("uselogfile", 0, "number")
+				EndIf
+				Local $LogLevelValue = GuiCtrlRead($cbLogLevel)
+				For $vKey In $oDBG_LEVEL
+					If $LogLevelValue == $oDBG_LEVEL.Item($vKey) Then
+						SetOption("loglevel", $vKey, "number")
+       				EndIf
+    			Next
 				If $runasexe == True Then
 					$startwithwindows = GuiCtrlRead($chStartWithWindows)
 					$linkexe = @StartupDir & "\Upsclient.lnk"
@@ -324,11 +427,14 @@ Func prefGui()
 				AdlibUnregister("GetUPSData")
 				AdlibRegister("GetUPSData", GetOption("delay"))
 				If $nMsg1 == $Bok Then
+					WriteLog("prefGui Closed - OK Button", $LOG2FILE, $DBG_DEBUG)
 					ExitLoop
 				EndIf
 			Case $Bcancel
+				WriteLog("prefGui Canceled", $LOG2FILE, $DBG_DEBUG)
 				ExitLoop
 			Case $colorchoose1
+				WriteLog("prefGui Choose Color1", $LOG2FILE, $DBG_DEBUG)
 				$tempcolor1 = _ChooseColor(2, 0, 2)
 				If $tempcolor1 <> -1 Then
 					GuiCtrlSetBkColor($colorchoose1, $tempcolor1)
@@ -337,6 +443,7 @@ Func prefGui()
 				EndIf
 				$result = 1
 			Case $colorchoose2
+				WriteLog("prefGui Choose Color2", $LOG2FILE, $DBG_DEBUG)
 				$tempcolor2 = _ChooseColor(2, 0, 2)
 				If $tempcolor2 <> -1 Then
 					GuiCtrlSetBkColor($colorchoose2, $tempcolor2)
@@ -345,6 +452,7 @@ Func prefGui()
 				EndIf
 				$result = 1
 			Case $chMinimizeTray
+				WriteLog("prefGui Change Minimize To Tray", $LOG2FILE, $DBG_DEBUG)
 				$minimizetray = GuiCtrlRead($chMinimizeTray)
 				If $minimizetray == $GUI_CHECKED Then
 					GUICtrlSetState($lblstartminimized, $GUI_ENABLE)
@@ -360,6 +468,7 @@ Func prefGui()
 					GUICtrlSetState($chclosetotray, $GUI_DISABLE)
 				EndIf
 			Case $chInstantAction
+				WriteLog("prefGui Change Instant Action", $LOG2FILE, $DBG_DEBUG)
 				$InstantAction = GuiCtrlRead($chInstantAction)
 				If $InstantAction == $GUI_CHECKED Then
 					GUICtrlSetState($lbldelayshutdown, $GUI_DISABLE)
@@ -369,6 +478,7 @@ Func prefGui()
 					GUICtrlSetState($ldelayshutdown, $GUI_ENABLE)
 				EndIf
 			Case $chAllowGrace
+				WriteLog("prefGui Change Allow Grace", $LOG2FILE, $DBG_DEBUG)
 				$AllowGrace = GuiCtrlRead($chAllowGrace)
 				If $AllowGrace == $GUI_CHECKED Then
 					GUICtrlSetState($lbldelaygrace, $GUI_ENABLE)
@@ -376,6 +486,20 @@ Func prefGui()
 				Else
 					GUICtrlSetState($lbldelaygrace, $GUI_DISABLE)
 					GUICtrlSetState($ldelaygrace, $GUI_DISABLE)
+				EndIf
+			Case $BtnViewLogFile
+				WriteLog("prefGui View Log File", $LOG2FILE, $DBG_DEBUG)
+				If FileExists($LogFile) Then
+					Run("notepad.exe " & _PathFull($LogFile), @WindowsDir)
+				Else
+					GUICtrlSetState($BtnViewLogFile, $GUI_DISABLE)
+					GUICtrlSetState($BtnDeleteLogFile, $GUI_DISABLE)
+				EndIf
+			Case $BtnDeleteLogFile
+				WriteLog("prefGui Delete Log File", $LOG2FILE, $DBG_DEBUG)
+				If FileDelete($LogFile) Then
+					GUICtrlSetState($BtnViewLogFile, $GUI_DISABLE)
+					GUICtrlSetState($BtnDeleteLogFile, $GUI_DISABLE)
 				EndIf
 		EndSwitch
 	WEnd
@@ -392,10 +516,12 @@ Func prefGui()
 EndFunc ;==> prefGui
 
 Func OpenMainWindow()
+	WriteLog("Enter OpenMainWindow Function", $LOG2FILE, $DBG_DEBUG)
 	Local $aLanguageList = _i18n_GetLocaleList()
 	
 	$gui = GUICreate($ProgramDesc, 640, 380, -1 , -1, Bitor($GUI_SS_DEFAULT_GUI, $WS_CLIPCHILDREN))
-	GUISetIcon(@tempdir & "upsicon.ico")
+	SetIconGuiTray()
+	;GUISetIcon(@tempdir & "upsicon.ico")
 	$fileMenu = GUICtrlCreateMenu("&" & __("File"))
 	$listvarMenu = GuiCtrlCreateMenuItem("&" & __("List UPS Vars"), $fileMenu)
 	$exitMenu = GUICtrlCreateMenuItem("&" & __("Exit"), $fileMenu)
@@ -490,46 +616,54 @@ Func OpenMainWindow()
 	GuiSwitch($gui)
 	GUISetState(@SW_SHOW, $Group8)
 	GUISetState(@SW_SHOW, $wPanel)
-EndFunc ;==>OpenMainWindow
+	WriteLog("creation of MainWindow is complete", $LOG2FILE, $DBG_DEBUG)
+EndFunc ;==> OpenMainWindow
 
 Func aboutGui()
+	WriteLog("Enter aboutGui Function", $LOG2FILE, $DBG_DEBUG)
 	$minimizetray = GetOption("minimizetray")
 	If $minimizetray == 1 Then
 		TraySetClick(0)
 	EndIf
 	$guiabout = GUICreate("About", 340, 240, 271, 178)
-	GUISetIcon(@tempdir & "upsicon.ico")
+	SetIconGuiTray($guiabout)
+	;GUISetIcon(@tempdir & "upsicon.ico")
 	$GroupBox1 = GUICtrlCreateGroup("", 8, 0, 324, 204)
-	$Image1 = GUICtrlCreatePic(@tempdir & "ups.jpg", 16, 16, 104, 104, BitOR($SS_NOTIFY, $WS_GROUP))
+	$Image1 = GUICtrlCreatePic(@ScriptDir & "\Resources\ups.jpg", 16, 16, 104, 104, BitOR($SS_NOTIFY, $WS_GROUP))
 	$Label10 = GUICtrlCreateLabel($ProgramDesc, 128, 16, 180 , 18, $WS_GROUP)
 	$Label11 = GUICtrlCreateLabel(__("Version ") & $ProgramVersion, 128, 34, 180, 18, $WS_GROUP)
 	$Label12 = GUICtrlCreateLabel("Copyright Michael Liberman" & @LF & "2006-2007", 128, 52, 200, 44, $WS_GROUP)
 	$Label12 = GUICtrlCreateLabel("Copyright Gawindx (Decaux Nicolas)" & @LF & "2019-" & @YEAR, 128, 88, 200, 44, $WS_GROUP)
-	$Label13 = GUICtrlCreateLabel("Based from Winnut Sf https://sourceforge.net/projects/winnutclient/", 16, 128, 270, 44, $WS_GROUP)
-	$Label13 = GUICtrlCreateLabel("Source Available from GitHub https://github.com/gawindx/WinNUT-Client", 16, 154, 270, 44, $WS_GROUP)
+	$Label13 = GUICtrlCreateLabel("Based from Winnut Sf https://sourceforge.net/projects/winnutclient/", 16, 128, 270, 40, $WS_GROUP)
+	$Label13 = GUICtrlCreateLabel("Source Available from GitHub https://github.com/gawindx/WinNUT-Client", 16, 160, 270, 40, $WS_GROUP)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 	$AboutBtnOk = GUICtrlCreateButton("&OK", 134, 208, 72, 24)
 	GUISetState(@SW_SHOW,$guiabout)
 	GuiSetState(@SW_DISABLE,$gui)
+	WriteLog("Creation of aboutGui is complete", $LOG2FILE, $DBG_DEBUG)
 	While 1
 		$nMsg2 = GUIGetMsg()
 		Switch $nMsg2
 			Case $GUI_EVENT_CLOSE, $AboutBtnOk
+				WriteLog("Close aboutGui - Close/Ok Button", $LOG2FILE, $DBG_DEBUG)
 				GuiDelete($guiabout)
 				$guiabout = 0
 				If (WinGetState($gui) <> 17 ) Then
 					GuiSetState(@SW_ENABLE, $gui)
 					WinActivate($gui)
+					WriteLog("Reactivate Main Gui", $LOG2FILE, $DBG_DEBUG)
 				EndIf
 				If $minimizetray == 1 Then
 					TraySetClick(8)
 				EndIf
+				WriteLog("aboutGui Closed", $LOG2FILE, $DBG_DEBUG)
 				ExitLoop
 		EndSwitch
 	WEnd
 EndFunc ;==> aboutGui
 
 Func ShutdownGui()
+	WriteLog("Enter ShutdownGui Function", $LOG2FILE, $DBG_DEBUG)
 	Local $Halt, $msg
 	$ShutdownDelay = GetOption("ShutdownDelay")
 	$grace_time = GetOption("GraceDelay")
@@ -548,27 +682,39 @@ Func ShutdownGui()
 	Init_Shutdown_Timer()
 	$sec = @SEC
 	$REDText = 1
+	WriteLog("Creation of ShutdownGui is complete", $LOG2FILE, $DBG_DEBUG)
 	While 1
 		$nMsg3 = GUIGetMsg()
 		Select
 			Case $nMsg3 = $Grace_btn
+				WriteLog("Click On Grace Button", $LOG2FILE, $DBG_DEBUG)
 				GUICtrlSetState($Grace_btn, $GUI_DISABLE)
 				_Timer_SetTimer($guishutdown, $grace_time*1000, "_Restart_counter")
 				$Suspend_Countdown = 1
 				AdlibUnregister("Update_counter")
+				WriteLog("Update_counter Fonction UnRegistered", $LOG2FILE, $DBG_DEBUG)
 			Case $nMsg3 = $Shutdown_btn or $In_progress = 0
+				WriteLog("Shutdown Button or Time Elapsed", $LOG2FILE, $DBG_DEBUG)
 				GUICtrlSetState($Grace_btn, $GUI_DISABLE)
 				GUICtrlSetState($Shutdown_btn, $GUI_DISABLE)
 				AdlibUnregister("Update_counter")
+				WriteLog("Update_counter Fonction UnRegistered", $LOG2FILE, $DBG_DEBUG)
 				Reset_Shutdown_Timer()
+				Local $arr[2] = ["Execute Action Shutdown - Type : %s", GetOption("TypeOfStop")]
+				WriteLog($arr, $LOG2FILE, $DBG_WARNING)
 				Shutdown(GetOption("TypeOfStop"))
+				WriteLog("Exit WinNut", $LOG2FILE, $DBG_DEBUG)
 				Exit
 			Case IsShutdownCondition() = False
+				WriteLog("ShutDown Condition Resolved", $LOG2FILE, $DBG_DEBUG)
 				AdlibUnregister("Update_counter")
+				WriteLog("Update_counter Fonction UnRegistered", $LOG2FILE, $DBG_DEBUG)
 				Reset_Shutdown_Timer()
 				GuiDelete($guishutdown)
+				WriteLog("Close ShutDownGui", $LOG2FILE, $DBG_DEBUG)
 				ExitLoop
 			Case $Suspend_Countdown = 1
+				WriteLog("Suspend Countdown", $LOG2FILE, $DBG_DEBUG)
 				If @SEC <> $sec Then
 					$sec = @SEC
 					If $REDText Then

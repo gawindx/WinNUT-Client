@@ -1,5 +1,11 @@
 History:
 
+Version 1.7.9.9
+Change/Add :  Graphic redesign of the icons as well as the setting of dynamic icons according to the connection / reconnection state, the connection state of
+			  the inverter and also the charge/discharge state of the battery.
+			  All of the icons are packaged in a DLL which will be installed with the executable WinNut during its first launch.
+Add: Logging Features
+
 Version 1.7.3.1
 Changed : Better syntactic respect of the code
 Added : A notification message is displayed when the connection could not be re-established within the time allowed 

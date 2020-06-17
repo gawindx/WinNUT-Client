@@ -1,7 +1,7 @@
-﻿#pragma compile(FileVersion, 1.7.3.1)
-#pragma compile(Icon, .\images\upsicon.ico)
+﻿#pragma compile(FileVersion, 1.7.9.9)
+#pragma compile(Icon, .\images\Ico\WinNut.ico)
 #pragma compile(Out, .\Build\upsclient.exe)
-#pragma compile(Compression, 1)
+#pragma compile(Compression, 9)
 #pragma compile(UPX, False)
 #pragma compile(Comments, 'Windows NUT Client')
 #pragma compile(FileDescription, Windows NUT Client. This is a NUT windows client for monitoring your ups hooked up to your favorite linux server.)
@@ -22,7 +22,6 @@
 #include "nutGui.au3"
 #Include "nuti18n.au3"
 #include "nutDraw.au3"
-#include "nutColor.au3"
 #include "nutOption.au3"
 #include "nutNetwork.au3"
 #Include "nutTreeView.au3"
@@ -33,6 +32,7 @@ If UBound(ProcessList(@ScriptName)) > 2 Then Exit
 ;to internal AUTOIT repaint handler
 ;This is registered for WM_PAINT event
 Func rePaint()
+	WriteLog("Enter rePaint Function", $LOG2FILE, $DBG_DEBUG)
 	repaintNeedle($needle1, $inputVol, $dial1, getOption("mininputv"), getOption("maxinputv"))
 	repaintNeedle($needle2, $outputVol, $dial2, getOption("minoutputv"), getOption("maxoutputv"))
 	repaintNeedle($needle3, $inputFreq, $dial3, getOption("mininputf"), getOption("maxinputf"))
@@ -43,6 +43,7 @@ Func rePaint()
 EndFunc ;==> rePaint
 
 Func updateVarList()
+	WriteLog("Enter updateVarList Function", $LOG2FILE, $DBG_DEBUG)
 	$selected = _GUICtrlTreeViewGetTree1($TreeView1, ".", 0)
 	GuiCtrlSetData($varselected, $selected)
 	$upsval = ""
@@ -62,15 +63,19 @@ Func updateVarList()
 EndFunc ;==> updateVarList
 
 Func varlistGui()
+	WriteLog("Enter varlistGui Function", $LOG2FILE, $DBG_DEBUG)
 	$varlist = ""
 	$templist = ""
 	AdlibUnregister("Update")
+	WriteLog("Update Fonction UnRegister", $LOG2FILE, $DBG_DEBUG)
 	$status1 = ListUPSVars(GetOption("upsname"), $varlist)
 	$varlist = StringReplace($varlist, GetOption("upsname"), "")
 	$vars = StringSplit($varlist, "VAR", 1)
 	AdlibRegister("Update",1000)
+	WriteLog("Update Fonction Register", $LOG2FILE, $DBG_DEBUG)
 	$guilistvar = GUICreate(__("LIST UPS Variables"), 365, 331, 196, 108, -1 , -1 , $gui)
-	GUISetIcon(@tempdir & "upsicon.ico")
+
+	GUISetIcon($IconDLL, SelectTrayIconIDX())
 	$TreeView1 = GUICtrlCreateTreeView(0, 8, 361, 169)
 
 	$Group1 = GUICtrlCreateGroup(__("Item properties"), 0, 184, 361, 105, $BS_CENTER)
@@ -100,21 +105,31 @@ Func varlistGui()
 	_GUICtrlTreeView_Expand($TreeView1, 0, false)
 
 	AdlibUnregister("Update")
+	WriteLog("Update Fonction UnRegister", $LOG2FILE, $DBG_DEBUG)
 	AdlibRegister("updateVarList", 500)
+	WriteLog("updateVarList Fonction Register", $LOG2FILE, $DBG_DEBUG)
 	While 1
 		$nMsg = GUIGetMsg(1)
 		Switch $nMsg[0]
 			Case $GUI_EVENT_CLOSE
+				WriteLog("varlistGui Event Close", $LOG2FILE, $DBG_DEBUG)
 				AdlibUnregister("updateVarList")
+				WriteLog("updateVarList Fonction UnRegister", $LOG2FILE, $DBG_DEBUG)
 				GuiSetState(@SW_ENABLE, $gui)
 				GuiDelete($guilistvar)
+				WriteLog("Delete guilistvar", $LOG2FILE, $DBG_DEBUG)
 				WinActivate($gui)
+				WriteLog("Activate WinNut Gui", $LOG2FILE, $DBG_DEBUG)
 				AdlibRegister("Update", 1000)
+				WriteLog("Update Fonction Register", $LOG2FILE, $DBG_DEBUG)
 				return
 			Case $Clear_Btn
+				WriteLog("varlistGui Event Clear", $LOG2FILE, $DBG_DEBUG)
 				_GUICtrlTreeView_Expand($TreeView1, 0, false)
 			Case $Reload_Btn
+				WriteLog("varlistGui Event Reload", $LOG2FILE, $DBG_DEBUG)
 				AdlibUnRegister("updateVarList")
+				WriteLog("updateVarList Fonction UnRegister", $LOG2FILE, $DBG_DEBUG)
 				_GUICtrlTreeView_DeleteAll($TreeView1)
 				For $i = 3 To $varcount
 					If $i == $varcount Then
@@ -127,98 +142,13 @@ Func varlistGui()
 				_SetIcons($TreeView1, 0)
 				_GUICtrlTreeView_Expand($TreeView1, 0, false)
 				AdlibRegister("updateVarList", 500)
+				WriteLog("updateVarList Fonction Register", $LOG2FILE, $DBG_DEBUG)
 		EndSwitch
 	WEnd
 EndFunc ;==> varlistGui
 
-Func IsFQDN($IPAddress)
-	Local $sPattern = "^(?:(?!\d+\.|-)[a-zA-Z0-9_\-]{1,63}(?<!-)\.?)+(?:[a-zA-Z]{2,})$"
-	If StringRegExp($IPAddress, $sPattern) Then
-		WriteLog($IPAddress & " " & __("Is an FQDN Address"))
-		Return True
-	Else
-		WriteLog($IPAddress & " " & __("Is not an FQDN Address"))
-		Return False
-	EndIF
-EndFunc ;==> IsFQDN
-
-Func IsIPV4($IPAddress)
-	Local $sPattern = "^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$"
-	Local $RegExResult = StringRegExp($IPAddress, $sPattern, $STR_REGEXPARRAYGLOBALFULLMATCH, 1)
-	If @error Then
-		WriteLog($IPAddress & " " & __("Is not an IPV4 Address"))
-		Return False
-	ElseIf ($RegExResult[0])[0] = $IPAddress  Then
-		WriteLog($IPAddress & " " & __("Is an IPV4 Address"))
-		Return True
-	Else
-		WriteLog($IPAddress & " " & __("Is not an IPV4 Address"))
-		Return False
-	EndIF
-EndFunc ;==> IsIPV4
-
-Func IsIPV6($IPAddress)
-	WriteLog("IPV6 Test")
-	Local $sPattern = "^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$"
-	Local $RegExResult = StringRegExp($IPAddress, $sPattern, $STR_REGEXPARRAYGLOBALFULLMATCH, 1)
-	If @error Then
-		WriteLog($IPAddress & " " & __("Is not an IPV6 Address"))
-		Return False
-	ElseIf ($RegExResult[0])[0] = $IPAddress  Then
-		WriteLog($IPAddress & " " & __("Is an IPV6 Address"))
-		Return True
-	Else
-		WriteLog($IPAddress & " " & __("Is not an IPV6 Address"))
-		Return False
-	EndIF
-EndFunc ;==> IsIPV6
-
-Func ResolveFQDN($IPAddress)
-	Local $TypeSearch = [ 'A' , 'AAAA' ]
-	Local $ResultAddress = ""
-	For $IpType In $TypeSearch
-		Local $nscmd = @ComSpec & " /c " & "nslookup -type=" & $IpType & " " & $IPAddress
-		Local $iPID = Run($nscmd, "", @SW_HIDE,  $STDERR_MERGED)
-		If @error = 0 Then
-			ProcessWaitClose($iPID)
-			Local $sOutput = StdoutRead($iPID)
-			Local $nsResultArray = StringSplit($sOutput, @CRLF)
-			Local $idResult = null
-			If UBound($nsResultArray) > 5 Then
-				Local $countAddress = 0
-				For $i = 0 To (UBound($nsResultArray) - 1)
-					If StringRegExp($nsResultArray[$i], "Address:") Then
-						$countAddress += 1
-						If $countAddress = 2 Then
-							$idResult=$i
-							ExitLoop
-						EndIf
-					endif
-				Next
-			Else
-				ContinueLoop
-			EndIf
-			If $idResult = null Then
-				WriteLog(__("Error nslookup Search Type") & " " & $IpType)
-				ContinueLoop
-			Else
-				If $IpType = 'A' Then
-					$ResultAddress = StringStripWS((StringSplit($nsResultArray[$idResult], ":"))[2], $STR_STRIPALL)
-				Else
-					Local $tmpAddress = $nsResultArray[$idResult]
-					$ResultAddress = StringStripWS(StringRight($tmpAddress, StringLen($tmpAddress) - StringInStr($tmpAddress, ':')), $STR_STRIPALL)
-				EndIf
-				WriteLog(__("Resolved Address") & ": " & $ResultAddress)
-				ExitLoop
-			EndIf
-		Else
-			WriteLog(__("Error nslookup Search Type") & " " & $IpType)
-		EndIf
-	Next
-	Return $ResultAddress
-EndFunc ;==> ResolveFQDN
-
 Func GetUPSInfo()
+	WriteLog("Enter GetUPSInfo Function", $LOG2FILE, $DBG_DEBUG)
 	Local $status = 0
 	$mfr = ""
 	$name = ""
@@ -229,12 +159,14 @@ Func GetUPSInfo()
 	EndIf
 	$status = GetUPSVar(GetOption("upsname"), "ups.mfr", $mfr, __("Unknown"))
 	If $status = -1 then ;UPS name wrong or variable not supported or connection lost
+		WriteLog("UPS name wrong or variable not supported or connection lost", $LOG2FILE, $DBG_WARNING)
 		if $socket == 0 Then
+			WriteLog("Disconnecting from server", $LOG2FILE, $DBG_ERROR)
 			Return
 		EndIf
 		If StringInStr($errorstring, "UNKNOWN-UPS") <> 0 Then
 			$mfr = ""
-			WriteLog(__("Disconnecting from server"))
+			WriteLog("Disconnecting from server", $LOG2FILE, $DBG_ERROR)
 			TCPSend($socket,"LOGOUT")
 			TCPCloseSocket($socket)
 			DeletePortProxy()
@@ -246,7 +178,9 @@ Func GetUPSInfo()
 
 	$status = GetUPSVar(GetOption("upsname"), "ups.model", $name, __("Unknown"))
 	If $status = -1 Then
+		WriteLog("GetUPSVar ups->model Return -1", $LOG2FILE, $DBG_WARNING)
 		If $socket == 0 Then
+			WriteLog("Disconnected from server", $LOG2FILE, $DBG_ERROR)
 			Return
 		EndIf
 		$name = ""
@@ -255,8 +189,10 @@ Func GetUPSInfo()
 	$name = StringStripWS($name, $STR_STRIPLEADING + $STR_STRIPTRAILING)
 
 	$status = GetUPSVar(GetOption("upsname"), "ups.serial", $serial, __("Unknown"))
+	WriteLog("GetUPSVar ups->serial Return -1", $LOG2FILE, $DBG_WARNING)
 	If $status = -1 Then
 		if $socket == 0 Then
+			WriteLog("Disconnected from server", $LOG2FILE, $DBG_ERROR)
 			Return
 		EndIf
 		$serial = ""
@@ -264,7 +200,9 @@ Func GetUPSInfo()
 
 	$status = GetUPSVar(GetOption("upsname"), "ups.firmware", $firmware, __("Unknown"))
 	if $status = -1 then
+		WriteLog("GetUPSVar ups->firmware Return -1", $LOG2FILE, $DBG_WARNING)
 		if $socket == 0 Then
+			WriteLog("Disconnected from server", $LOG2FILE, $DBG_ERROR)
 			Return
 		EndIf
 		$firmware = ""
@@ -272,12 +210,16 @@ Func GetUPSInfo()
 EndFunc ;==> GetUPSInfo
 
 Func SetUPSInfo()
+	WriteLog("Enter SetUPSInfo Function", $LOG2FILE, $DBG_DEBUG)
 	If $socket == 0 Then ;if not connected or connection lost
 		$mfr = ""
 		$name = ""
 		$serial = ""
 		$firmware = ""
 	EndIf
+	Local $arrvalue[4] = [$mfr, $name, $serial, $firmware]
+	Local $arr[2] = ["GuiCtrlSetData : mfr->%s, name->%s, serial->%s, firmware->%s", $arrvalue]
+	WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
 	GuiCtrlSetData($upsmfr, $mfr)
 	GuiCtrlSetData($upsmodel, $name)
 	GuiCtrlSetData($upsserial, $serial)
@@ -285,56 +227,134 @@ Func SetUPSInfo()
 EndFunc ;==> SetUPSInfo
 
 Func GetUPSData()
-	;$status = 0
+	WriteLog("Enter GetUPSData Function", $LOG2FILE, $DBG_DEBUG)
 	$ups_name = GetOption("upsname")
 	If $socket == 0 Then $status = -1
-	If GetUPSVar($ups_name, "battery.charge", $battch, "255", 50) == -1 Then $status = -1
-	If GetUPSVar($ups_name, "battery.voltage", $battVol, "12")  == -1 Then $status = -1
-	If GetUPSVar($ups_name, "battery.runtime", $battruntime, "86400") == -1 Then $status = -1
-	If GetUPSVar($ups_name, "battery.capacity", $batcapacity, "7") == -1 Then $status = -1
-	If GetUPSVar($ups_name, "input.frequency", $inputFreq) == -1 Then
-		$inputFreq = GetOption("frequencysupply")
-		$mininputf = $inputFreq - 10
-		$maxinputf = $inputFreq + 10
+	If GetUPSVar($ups_name, "battery.charge", $battch, "255", 50) == -1 Then 
+		$status = -1
+		WriteLog("GetUPSData battery->charge Return -1", $LOG2FILE, $DBG_DEBUG)
 	Else
+		Local $arr[2] = ["GetUPSData battery->charge Return %s", $battch]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+	EndIf
+	If GetUPSVar($ups_name, "battery.voltage", $battVol, "12")  == -1 Then 
+		$status = -1
+		WriteLog("GetUPSData battery->voltage Return -1", $LOG2FILE, $DBG_DEBUG)
+	Else
+		Local $arr[2] = ["GetUPSData battery->voltage Return %s", $battVol]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+	EndIf
+	If GetUPSVar($ups_name, "battery.runtime", $battruntime, "86400") == -1 Then 
+		$status = -1
+		WriteLog("GetUPSData battery->runtime Return -1", $LOG2FILE, $DBG_DEBUG)
+	Else
+		Local $arr[2] = ["GetUPSData battery->runtime Return %s", $battruntime]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+	EndIf
+	If GetUPSVar($ups_name, "battery.capacity", $batcapacity, "7") == -1 Then 
+		$status = -1
+		WriteLog("GetUPSData battery->capacity Return -1", $LOG2FILE, $DBG_DEBUG)
+	Else
+		Local $arr[2] = ["GetUPSData battery->capacity Return %s", $batcapacity]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+	EndIf
+	If GetUPSVar($ups_name, "input.frequency", $inputFreq) == -1 Then
+		WriteLog("GetUPSData input->frequency Return -1", $LOG2FILE, $DBG_DEBUG)
+		If $socket <> 0 Then
+			Local $arr[2] = ["Nut Server connection Is Ok \n Set input->frequency with Value %s", GetOption("frequencysupply")]
+			WriteLog($arr, $LOG2FILE, $DBG_WARNING)
+			$inputFreq = GetOption("frequencysupply")
+			$mininputf = $inputFreq - 10
+			$maxinputf = $inputFreq + 10
+		Else
+			WriteLog("Nut Server connection Is Not Ok \n Set input->frequency with Value 0", $LOG2FILE, $DBG_ERROR)
+			$inputFreq = 0
+			Local $tmpinputFreq = GetOption("frequencysupply")
+			$mininputf = $tmpinputFreq - 10
+			$maxinputf = $tmpinputFreq + 10
+		EndIf
+	Else
+		Local $arr[2] = ["GetUPSData input->frequency Return %s", $inputFreq]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
 		$halfinputFreq = $inputFreq / 2
 		If (($halfinputFreq >= 22.5) And ($halfinputFreq <= 27.5)) Then
 			If (GetOption("frequencysupply") <> 50 ) Then
 				SetOption("frequencysupply", 50, "number")
 				WriteParams()
+				WriteLog("Param frequencysupply fixed at 50Hz", $LOG2FILE, $DBG_DEBUG)
 			EndIf
 		ElseIf (($halfinputFreq >= 27.6) And ($halfinputFreq <= 32.5)) Then
 			If (GetOption("frequencysupply") <> 60 ) Then
 				SetOption("frequencysupply", 60, "number")
 				WriteParams()
+				WriteLog("Param frequencysupply fixed at 60Hz", $LOG2FILE, $DBG_DEBUG)
 			EndIf
 		EndIf
 	EndIf
-	If GetUPSVar($ups_name, "input.voltage", $inputVol, "220") == -1 Then $status = -1
-	If GetUPSVar($ups_name, "output.voltage", $outputVol, $inputVol)  == -1 Then $status = -1
-	If GetUPSVar($ups_name, "ups.load", $upsLoad, "100") == -1 Then $status = -1
-	If GetUPSVar($ups_name, "ups.status", $upsstatus, "OL") == -1 Then $status = -1
+	If GetUPSVar($ups_name, "input.voltage", $inputVol, "220") == -1 Then
+		$status = -1
+		WriteLog("GetUPSData input->voltage Return -1", $LOG2FILE, $DBG_DEBUG)
+	Else
+		Local $arr[2] = ["GetUPSData input->voltage Return %s", $inputVol]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+	EndIf
+	If GetUPSVar($ups_name, "output.voltage", $outputVol, $inputVol)  == -1 Then
+		$status = -1
+		WriteLog("GetUPSData output->voltage Return -1", $LOG2FILE, $DBG_DEBUG)
+	Else
+		Local $arr[2] = ["GetUPSData output->voltage Return %s", $outputVol]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+	EndIf
+	If GetUPSVar($ups_name, "ups.load", $upsLoad, "100") == -1 Then
+		$status = -1
+		WriteLog("GetUPSData ups->load Return -1", $LOG2FILE, $DBG_DEBUG)
+	Else
+		Local $arr[2] = ["GetUPSData ups->load Return %s", $upsLoad]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+	EndIf
+	If GetUPSVar($ups_name, "ups.status", $upsstatus, "OL") == -1 Then
+		$status = -1
+		WriteLog("GetUPSData ups->status Return -1", $LOG2FILE, $DBG_DEBUG)
+	Else
+		Local $arr[2] = ["GetUPSData ups->status Return %s", $upsstatus]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+	EndIf
 	If GetUPSVar($ups_name, "ups.realpower.nominal", $upsoutpower, __("Unknown")) == -1 Then
 		$status = -1
-	ElseIf $upsoutpower == __("Unknown") Then
-		Local $inputcurrent
-		If GetUPSVar($ups_name, "ups.current.nominal", $inputcurrent, 1) == -1 Then
-			$status = -1
-		Else
-			;Because this inverter does not provide information on its power,
-			;we will determine it according to the elements and defaults at our disposal
-			;For this, we will consider an input and output yield of 70% (rather low yield) and a power factor of 0.6
-			;(((($inputVol * $inputcurrent)/($yield_In*$yield_Out))/$PF)*($upsLoad)
-			;In this way, the power obtained should be lower than the real characteristic of the UPS and there will be no risk of late shutdown
-			;$upsoutpower = (((($inputVol * $inputcurrent)/(0.7*0.7))/0.6)*($upsLoad/100))
-			$upsoutpower = ($inputVol * 0.95 *$inputcurrent)
-		EndIf
+		WriteLog("GetUPSData ups->realpower->nominal Return -1", $LOG2FILE, $DBG_DEBUG)
 	Else
-		$upsoutpower = $upsoutpower / $upsPF
+		Local $arr[2] = ["GetUPSData ups->realpower->nominal Return %s", $upsoutpower]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+		If $upsoutpower == __("Unknown") Then
+			Local $inputcurrent
+			If GetUPSVar($ups_name, "ups.current.nominal", $inputcurrent, 1) == -1 Then
+				$status = -1
+				WriteLog("GetUPSData ups->current->nominal Return -1", $LOG2FILE, $DBG_DEBUG)
+			Else
+				#comments-start
+					Because this inverter does not provide information on its power,
+					we will determine it according to the elements and defaults at our disposal
+					For this, we will consider an input and output yield of 70% (rather low yield) and a power factor of 0.6
+					(((($inputVol * $inputcurrent)/($yield_In*$yield_Out))/$PF)*($upsLoad)
+					In this way, the power obtained should be lower than the real characteristic of the UPS and there will be no risk of late shutdown
+					$upsoutpower = (((($inputVol * $inputcurrent)/(0.7*0.7))/0.6)*($upsLoad/100))
+				#comments-end
+				Local $arr[2] = ["GetUPSData ups->current->nominal Return %s", $inputcurrent]
+				WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+				$upsoutpower = ($inputVol * 0.95 *$inputcurrent)
+				Local $arr[2] = ["ups->realpower->nominal estimed at %s", $upsoutpower]
+				WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+			EndIf
+		Else
+			$upsoutpower = $upsoutpower / $upsPF
+			Local $arr[2] = ["ups->realpower->nominal <> Unknown \n instant upsoutpower determined at %s", $upsoutpower]
+			WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+		EndIf
 	EndIf
 EndFunc ;==> GetUPSData
 
 Func UpdateValue(byref $needle, $value, $label, $whandle, $min = 170, $max = 270, $force = 0)
+	WriteLog("Enter UpdateValue Function", $LOG2FILE, $DBG_DEBUG)
 	$oldval = Round(GuiCtrlRead($label))
 	If $oldval < $min Then
 		$oldval = $min
@@ -345,7 +365,10 @@ Func UpdateValue(byref $needle, $value, $label, $whandle, $min = 170, $max = 270
 	If $oldval == Round($value) and $force == 0 Then
 		Return
 	EndIf
-	GuiCtrlSetData($label, $value )
+	GuiCtrlSetData($label, $value)
+	Local $arrvalue[2] = [ControlGetText($whandle,'', $whandle), $value]
+	Local $arr[2] = ["GuiCtrlSetData : %s->%s", $arrvalue]
+	WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
 	$value = Round($value)
 	If $value < $min Then
 		$value = $min
@@ -362,6 +385,7 @@ Func UpdateValue(byref $needle, $value, $label, $whandle, $min = 170, $max = 270
 EndFunc ;==> UpdateValue
 
 Func ResetGui()
+	WriteLog("Enter SetUPSInfo Function", $LOG2FILE, $DBG_DEBUG)
 	if $socket == 0  Then
 		$battVol = 0
 		$battCh = 0
@@ -369,6 +393,7 @@ Func ResetGui()
 		$inputVol = 0
 		$outputVol = 0
 		$inputFreq = 0
+		WriteLog("Nut Server Not Connected. Set alla value to 0", $LOG2FILE, $DBG_WARNING)
 	EndIf
 	UpdateValue($needle1, 0, $inputv, $dial1, getOption("mininputv"), getOption("maxinputv"))
 	UpdateValue($needle2, 0, $outputv, $dial2, getOption("minoutputv"), getOption("maxoutputv"))
@@ -387,22 +412,37 @@ Func ResetGui()
 EndFunc ;==> ResetGui
 
 Func Update()
+	WriteLog("Enter Update Function", $LOG2FILE, $DBG_DEBUG)
 	GetUPSData()
+	$ActualIcon_IDX = 0
 	If $socket == 0 and $LastSocket <> 0 Then
-		;Connection is lost from last Update Loop
+		WriteLog("Connection is lost from last Update Loop", $LOG2FILE, $DBG_ERROR)
 		$ReconnectTry = 0
 		ResetGui()
+		If GetOption("autoreconnect") == 0 Or $ReconnectTry >= $MaxReconnectTry Then
+			$ActualIcon_IDX = $IDX_ICO_OFFLINE
+		Else 
+			$ActualIcon_IDX = $IDX_ICO_RETRY
+		EndIf
 		If GetOption("autoreconnect") == 1 Then
 			ReconnectNut()
 			AdlibRegister("ReconnectNut", $ReconnectDelay)
+			WriteLog("ReconnectNut Fonction Registered", $LOG2FILE, $DBG_WARNING)
+			$ActualIcon_IDX = $IDX_ICO_RETRY
 		EndIf
 		AdlibUnregister("Update")
+		WriteLog("Update Fonction UnRegister", $LOG2FILE, $DBG_DEBUG)
 		GUICtrlSetState($DisconnectMenu, $GUI_DISABLE)
+		SetIconGuiTray()
 		Return
-	ElseIf $socket == 0 then ; connection lost so throw all needles to left
+	ElseIf $socket == 0 Then
+		WriteLog("Connection is lost so throw all needles to left", $LOG2FILE, $DBG_WARNING)
 		ResetGui()
 		AdlibUnregister("Update")
+		WriteLog("Update Fonction UnRegister", $LOG2FILE, $DBG_DEBUG)
 		GUICtrlSetState($DisconnectMenu, $GUI_DISABLE)
+		$ActualIcon_IDX = $IDX_ICO_OFFLINE
+		SetIconGuiTray()
 		Return
 	Else
 		$LastSocket = $socket
@@ -410,47 +450,89 @@ Func Update()
 		GUICtrlSetState($DisconnectMenu, $GUI_ENABLE)
 	EndIf
 	If $upsstatus == "OL" Then
+		WriteLog("UPS Status Is OL", $LOG2FILE, $DBG_WARNING)
 		SetColor($green, $wPanel, $upsonline)
 		SetColor(0xffffff, $wPanel, $upsonbatt)
+		$ActualIcon_IDX = BitOR($ActualIcon_IDX, $IDX_OL)
 	Else
+		WriteLog("UPS Status Is Not OL", $LOG2FILE, $DBG_WARNING)
 		SetColor($yellow, $wPanel, $upsonbatt)
 		SetColor(0xffffff, $wPanel, $upsonline)
 	EndIf
 	Local $PowerDivider = 0.5
 	If $upsLoad > 100 Then
 		SetColor($red, $wPanel, $upsoverload)
+		;$ActualIcon_IDX = BitOR($ActualIcon_IDX, $IDX_LOAD_100)
+		WriteLog("UPS Is OverLoad", $LOG2FILE, $DBG_WARNING)
 	Else
 		SetColor(0xffffff, $wPanel, $upsoverload)
-		If $upsLoad > 75 Then
-			$PowerDivider = 0.4
-		ElseIf $upsLoad > 50 Then
-			$PowerDivider = 0.3
-		EndIf
+		Switch $upsLoad
+			Case 76 To 100
+				$PowerDivider = 0.4
+				;$ActualIcon_IDX = BitOR($ActualIcon_IDX, $IDX_LOAD_75)
+			Case 51 To 75
+				$PowerDivider = 0.3
+				;$ActualIcon_IDX = BitOR($ActualIcon_IDX, $IDX_LOAD_50)
+			;Case 26 To 50
+			;	$ActualIcon_IDX = BitOR($ActualIcon_IDX, $IDX_LOAD_25)
+			;Case 0 To 25
+			;	$ActualIcon_IDX = BitOR($ActualIcon_IDX, $IDX_LOAD_0)
+		EndSwitch
 	EndIf
-	;In case of that your inverter does not provide the State of Charge, he will be estimated.
-	;The calculation method used is linear and considers that a fully charged 12V battery has
-	;a voltage of 13.6V while the voltage of a fully discharged battery is only 11.6V .
-	;In this way each percentage of Charge level corresponds to 0.02V.
-	;This method is not accurate but offers a consistent approximation.
+	#comments-start
+		In case of that your inverter does not provide the State of Charge, he will be estimated.
+		The calculation method used is linear and considers that a fully charged 12V battery has
+		a voltage of 13.6V while the voltage of a fully discharged battery is only 11.6V .
+		In this way each percentage of Charge level corresponds to 0.02V.
+		This method is not accurate but offers a consistent approximation.
+	#comments-end
 	If ($battCh = 255) Then
 		Local $nbattery = Floor($battVol / 12)
 		$battCh = Floor(($battVol - (11.6 * $nbattery)) / (0.02 * $nbattery))
-	EndIF
-	;In case your inverter does not provide a consistent value for its runtime,
-	;he will also be determined by the calculation
-	;The calculation takes into account the capacity of the batteries,
-	; the instantaneous charge, the battery voltage, their state of charge,
-	; the Power Factor as well as a coefficient allowing to take into account
-	;a large instantaneous charge (this limits the runtime ).
+		Local $arr[2] = ["battch Value need to be Estimated\nResult : %s", $battCh]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+	EndIf
+	#comments-start
+		In case your inverter does not provide a consistent value for its runtime,
+		he will also be determined by the calculation
+		The calculation takes into account the capacity of the batteries,
+		the instantaneous charge, the battery voltage, their state of charge,
+		the Power Factor as well as a coefficient allowing to take into account
+		a large instantaneous charge (this limits the runtime ).
+	#comments-end
 	If ($battruntime >= 86400 ) Then
 		Local $BattInstantCurrent = ($upsoutpower * $upsLoad) / ( $battVol* 100)
 		$battruntime = Floor(($batcapacity * $upsPF * $battCh * (1-$PowerDivider) * 3600) / ($BattInstantCurrent * 100))
+		Local $arr[2] = ["battruntime Value need to be Estimated\nResult : %s", $battruntime]
+		WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
 	EndIf
-	if $battCh < 40 Then
-		SetColor($red, $wPanel, $upslowbatt )
-	Else
-		SetColor(0xffffff, $wPanel, $upslowbatt )
-	EndIf
+	Switch $battch
+		Case 76 To 100
+			$ActualIcon_IDX = BitOr($ActualIcon_IDX, $IDX_BATT_100)
+			SetColor(0xffffff, $wPanel, $upslowbatt)
+		Case 51 To 75
+			$ActualIcon_IDX = BitOr($ActualIcon_IDX, $IDX_BATT_75)
+			SetColor(0xffffff, $wPanel, $upslowbatt)
+		Case 40 To 50
+			$ActualIcon_IDX = BitOr($ActualIcon_IDX, $IDX_BATT_50)
+			SetColor(0xffffff, $wPanel, $upslowbatt)
+		Case 26 To 39
+			$ActualIcon_IDX = BitOr($ActualIcon_IDX, $IDX_BATT_50)
+			SetColor($red, $wPanel, $upslowbatt)
+		Case 11 To 25
+			$ActualIcon_IDX = BitOr($ActualIcon_IDX, $IDX_BATT_25)
+			SetColor($red, $wPanel, $upslowbatt)
+		Case 0 To 10
+			If IsPairSeconds() Then
+				$ActualIcon_IDX = BitOr($ActualIcon_IDX, $IDX_BATT_25)
+			Else
+				$ActualIcon_IDX = BitOr($ActualIcon_IDX, $IDX_BATT_0)
+			EndIf
+			SetColor($red, $wPanel, $upslowbatt)
+		Case Else
+			$ActualIcon_IDX = BitOr($ActualIcon_IDX, $IDX_BATT_0)
+			SetColor($red, $wPanel, $upslowbatt)
+	EndSwitch
 	$battrtimeStr = TimeToStr($battruntime)
 	GuiCtrlSetData($remainTimeLabel, $battrtimeStr)
 	UpdateValue($needle1, $inputVol, $inputv, $dial1, getOption("mininputv"), getOption("maxinputv"))
@@ -460,19 +542,83 @@ Func Update()
 	UpdateValue($needle5, $upsLoad, $upsl, $dial5, getOption("minupsl"), getOption("maxupsl"))
 	UpdateValue($needle6, $battCh, $upsch, $dial6, 0, 100)
 	rePaint()
-	;if connection to UPS is in fact alive and charge below shutdown setting and ups is not online
-	;add different from status 0 when UPS not connected but NUT is running
-	if (IsShutdownCondition()) Then
+	#comments-start
+		If connection to UPS is in fact alive and charge below shutdown setting and ups is not online
+		add different from status 0 when UPS not connected but NUT is running
+	#comments-end
+	If (IsShutdownCondition()) Then
+		WriteLog("Shutdown Condition reach", $LOG2FILE, $DBG_NOTICE)
 		$InstantAction = GetOption("InstantAction")
 		If $InstantAction = 1 Then
+			Local $arr[2] = ["Proceed to Instant Shutdown Action : %s", GetOption("TypeOfStop")]
+			WriteLog($arr, $LOG2FILE, $DBG_NOTICE)
 			Shutdown(GetOption("TypeOfStop"))
 		Else
+			WriteLog("Delayed Shutdown", $LOG2FILE, $DBG_NOTICE)
 			ShutdownGui()
 		EndIf
 	EndIf
+	#comments-start
+	If $upsstatus == "OL" Then
+		Switch $battCh
+			Case 76 To 100
+				$ActualIcon_IDX = $IDX_ICO_OL100
+			Case 51 To 75
+				$ActualIcon_IDX = $IDX_ICO_OL75
+			Case 26 To 50
+				$ActualIcon_IDX = $IDX_ICO_OL50
+			Case 11 To 25
+				$ActualIcon_IDX = $IDX_ICO_OL25
+			Case 0 To 10
+				If IsPairSeconds() Then
+					$ActualIcon_IDX = $IDX_ICO_OL25
+				Else
+					$ActualIcon_IDX = $IDX_ICO_OL0
+				EndIf
+			Case Else
+				$ActualIcon_IDX = $IDX_ICO_OL0
+		EndSwitch
+	Else
+		Switch $battCh
+			Case 76 To 100
+				$ActualIcon_IDX = $IDX_ICO_OB100
+			Case 51 To 75
+				$ActualIcon_IDX = $IDX_ICO_OB75
+			Case 26 To 50
+				$ActualIcon_IDX = $IDX_ICO_OB50
+			Case 11 To 25
+				$ActualIcon_IDX = $IDX_ICO_OB25
+			Case 0 To 10
+				If @SEC <> $sec Then
+					$sec = @SEC
+					$ActualIcon_IDX = $IDX_ICO_OB25
+				Else
+					$ActualIcon_IDX = $IDX_ICO_OB0
+				EndIf
+			Case Else
+				$ActualIcon_IDX = $IDX_ICO_OB0
+		EndSwitch
+	EndIf
+	#comments-end
+	SetIconGuiTray()
 EndFunc ;==> Update
 
+Func SetIconGuiTray($id_gui = $gui)
+	WriteLog("Enter SetIconGuiTray Function", $LOG2FILE, $DBG_DEBUG)
+	If $LastIcon_IDX <> $ActualIcon_IDX Then
+		Local $tmp_Gui_IDX = BitOr($ActualIcon_IDX, $IDX_ICON_BASE_APP)
+		Local $tmp_Tray_IDX = BitOr($ActualIcon_IDX, $IDX_ICON_BASE_SYS)
+		TraySetIcon($IconDLL, $tmp_Tray_IDX)
+		GUISetIcon($IconDLL, $tmp_Gui_IDX, $id_gui)
+		Local $arrValue[2] = [$tmp_Gui_IDX, $tmp_Tray_IDX]
+		Local $arr[2] = ["Gui/Tray Icon Updated to : %s/%s", $arrValue]
+		WriteLog($arr, $LOG2FILE, $DBG_NOTICE)
+		$LastIcon_IDX = $ActualIcon_IDX
+	EndIf
+EndFunc
+
 Func SetTrayIconText()
+	WriteLog("Enter SetTrayIconText Function", $LOG2FILE, $DBG_DEBUG)
 	$trayStatus  = ""
 	If $socket > 0 Then
 		If $battCh < 40 Then
@@ -486,39 +632,51 @@ Func SetTrayIconText()
 			$trayStatus  = $trayStatus & @LF & __("UPS On Battery") & "(" & $battCh & "%)"
 		EndIf
 	ElseIf $ReconnectTry <> 0 Then
-		$trayStatus = __("Connection lost") & @LF & StringFormat(__("%d attempts remaining"), (30 - $ReconnectTry))
+		$trayStatus = __("Connection lost") & @LF & StringFormat(__("%d attempts remaining"), ($MaxReconnectTry - $ReconnectTry))
 	Else
 		$trayStatus = __("Not Connected")
 	EndIf
-	TraySetToolTip($ProgramDesc & " - " & $ProgramVersion & $trayStatus )
+	Local $trayStr = $ProgramDesc & " - " & $ProgramVersion & $trayStatus
+	Local $arr[2] = ["TraySetToolTip Updated To :\n %s", $trayStr]
+	WriteLog($arr, $LOG2FILE, $DBG_NOTICE)
+	TraySetToolTip($trayStr)
 EndFunc ;==> SetTrayIconText
 
 Func ReconnectNut()
-	local $NewSocket = ConnectServer()
+	WriteLog("Enter ReconnectNut Function", $LOG2FILE, $DBG_DEBUG)
+	Local $NewSocket = ConnectServer()
 	Opt("TCPTimeout", 3000)
 	$ReconnectTry += 1
 	If $ReconnectTry >= $MaxReconnectTry Then
+		WriteLog("Max Retry reached", $LOG2FILE, $DBG_ERROR)
 		AdlibUnregister("ReconnectNut")
+		WriteLog("ReconnectNut Function UnRegistered", $LOG2FILE, $DBG_DEBUG)
+		DisconnectServer()
+		$ActualIcon_IDX = BitOr($IDX_ICON_BASE, $IDX_ICO_OFFLINE)
+		SetIconGuiTray()
 		MsgBox(0, __("Alert"), __("Connection to Nut server could not be reestablished within the specified time"), 30, $gui)
 	ElseIf $NewSocket >= 0  Then
 		GetUPSInfo()
 		SetUPSInfo()
 		Update()
 		AdlibRegister("Update", 1000)
+		WriteLog("Update Function Registered", $LOG2FILE, $DBG_DEBUG)
 		AdlibUnregister("ReconnectNut")
+		WriteLog("ReconnectNut Function UnRegistered", $LOG2FILE, $DBG_DEBUG)
 	EndIf
 EndFunc ;==> ReconnectNut
 
 Func DrawDial($left, $top, $basescale, $title, $units, ByRef $value, ByRef $needle, $scale = 1, $leftG = 20, $rightG = 70)
+	WriteLog("Enter DrawDial Function", $LOG2FILE, $DBG_DEBUG)
 	Local $group = 0
 
 	$group = GUICreate(" " & $title, 150, 120, $left, $top, BitOR($WS_CHILD, $WS_DLGFRAME), $WS_EX_CLIENTEDGE, $gui)
 	GUISetBkColor($clock_bkg,$group)
 	GuiSwitch($group)
-	GuiCtrlCreateLabel($title,0,0,150,14,$SS_CENTER )
+	GuiCtrlCreateLabel($title,0,0,150,14,$SS_CENTER)
 
 	For $x = 0 To 100 Step 10
-		If StringinStr($x / 20,".") = 0 Then
+		If StringinStr($x / 20, ".") = 0 Then
 			GUICtrlCreateLabel("", $x * 1.2 + 15, 15, 1, 15, $SS_BLACKRECT)
 			GuiCtrlSetState(-1, $GUI_DISABLE)
 			If $x < 100 Then
@@ -568,37 +726,41 @@ Func DrawDial($left, $top, $basescale, $title, $units, ByRef $value, ByRef $need
 EndFunc ;==> DrawDial
 
 Func ShutdownGui_Event($hWnd, $Msg, $wParam, $lParam)
+	WriteLog("Enter ShutdownGui_Event Function", $LOG2FILE, $DBG_DEBUG)
 	$nNotifyCode = BitShift($wParam, 16)
 	$nID = BitAnd($wParam, 0x0000FFFF)
 	$hCtrl = $lParam
 	writelog("notify " & $nNotifyCode)
-	;If $nID = $guishutdown Then
-	;	Switch $nNotifyCode
-	;		Case $LBN_DBLCLK
-	;			writelog("Click to Gui Shutdown")
-	;	EndSwitch
-	;EndIf
-	;If $nID = $Grace_btn Then
-	;	Switch $nNotifyCode
-	;		Case $LBN_DBLCLK
-	;			writelog("Click to Grace Button")
-	;	EndSwitch
-	;EndIf
-	;If $nID = $Shutdown_btn Then
-	;	Switch $nNotifyCode
-	;		Case $LBN_DBLCLK
-	;			writelog("Click to Shutdown Button")
-	;	EndSwitch
-	;EndIf
-EndFunc ;==>ShutdownGui_Event
+	If $nID = $guishutdown Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				WriteLog("Double-Click to ShutdownGui", $LOG2FILE, $DBG_DEBUG)
+		EndSwitch
+	EndIf
+	If $nID = $Grace_btn Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				WriteLog("Double-Click to Grace Button", $LOG2FILE, $DBG_DEBUG)
+		EndSwitch
+	EndIf
+	If $nID = $Shutdown_btn Then
+		Switch $nNotifyCode
+			Case $LBN_DBLCLK
+				WriteLog("Double-Click to Shutdown Button", $LOG2FILE, $DBG_DEBUG)
+		EndSwitch
+	EndIf
+EndFunc ;==> ShutdownGui_Event
 
 Func setTrayMode()
+	WriteLog("Enter setTrayMode Function", $LOG2FILE, $DBG_DEBUG)
 	$minimizetray = GetOption("minimizetray")
 	If $minimizetray == 1 Then
-		TraySetIcon(@tempdir & "upsicon.ico")
+		SetIconGuiTray()
 		TraySetState($TRAY_ICONSTATE_SHOW)
-		Opt("TrayAutoPause", 0) ; Le script n'est pas mis en pause lors de la sélection de l'icône de la zone de notification.
-		Opt("TrayMenuMode", 3) ; Les items ne sont pas cochés lorsqu'ils sont sélectionnés.
+		;The script is not paused when the icon in the notification area is selected.
+		Opt("TrayAutoPause", 0)
+		;Items are not checked when selected.
+		Opt("TrayMenuMode", 3)
 		TraySetClick(8)
 		TraySetToolTip($ProgramDesc & " - " & $ProgramVersion )
 	Else
@@ -607,7 +769,8 @@ Func setTrayMode()
 EndFunc ;==> setTrayMode
 
 Func mainLoop()
-	$minimizetray = GetOption("minimizetray")
+	WriteLog("Enter mainLoop Function", $LOG2FILE, $DBG_DEBUG)
+	Local $minimizetray = GetOption("minimizetray")
 	While 1
 		If ($minimizetray == 1) Then
 			$tMsg = TrayGetMsg()
@@ -616,17 +779,22 @@ Func mainLoop()
 					GuiSetState(@SW_SHOW, $gui)
 					GuiSetState(@SW_RESTORE ,$gui)
 					TraySetState($TRAY_ICONSTATE_HIDE)
+					WriteLog("Double-Click on Tray Icon", $LOG2FILE, $DBG_DEBUG)
 				Case $idTrayExit
 					TCPSend($socket, "LOGOUT")
 					TCPCloseSocket($socket)
 					AdlibUnregister("Update")
 					DeletePortProxy()
 					TCPShutdown()
+					WriteLog("Exit WinNut From Tray Icon", $LOG2FILE, $DBG_DEBUG)
 					Exit
 				Case $idTrayAbout
+					WriteLog("Open aboutGui From Tray Icon", $LOG2FILE, $DBG_DEBUG)
 					aboutGui()
 				Case $idTrayPref
+					WriteLog("Open prefGui From Tray Icon", $LOG2FILE, $DBG_DEBUG)
 					AdlibUnregister("Update")
+					WriteLog("Update Function UnRegistered", $LOG2FILE, $DBG_DEBUG)
 					$changedprefs = prefGui()
 					If $changedprefs == 1 Then
 						$painting = 1
@@ -653,9 +821,11 @@ Func mainLoop()
 					If $haserror == 0 Then
 						Update()
 						AdlibRegister("Update",1000)
+						WriteLog("Update Function Registered", $LOG2FILE, $DBG_DEBUG)
 					EndIf
 			EndSwitch
 		EndIf
+		SetIconGuiTray()
 		$nMsg = GUIGetMsg(1)
 		If GetOption("closetotray") == 0 Then
 			If ($nMsg[0] == $GUI_EVENT_CLOSE And $nMsg[1]==$gui) Or $nMsg[0] == $exitMenu Or $nMsg[0] == $exitb Then
@@ -664,6 +834,7 @@ Func mainLoop()
 				AdlibUnregister("Update")
 				DeletePortProxy()
 				TCPShutdown()
+				WriteLog("Exit WinNut From RedCross GUI", $LOG2FILE, $DBG_DEBUG)
 				Exit
 			EndIf
 		Else
@@ -673,19 +844,24 @@ Func mainLoop()
 				AdlibUnregister("Update")
 				DeletePortProxy()
 				TCPShutdown()
+				WriteLog("Exit WinNut", $LOG2FILE, $DBG_DEBUG)
 				Exit
 			EndIf
 			If ($nMsg[0] == $GUI_EVENT_CLOSE And $nMsg[1]==$gui) Then
 				GuiSetState(@SW_HIDE , $gui)
 				TraySetState($TRAY_ICONSTATE_SHOW)
+				WriteLog("Reduce to Tray Icon", $LOG2FILE, $DBG_DEBUG)
 			EndIf
 		EndIf
-		If ($nMsg[0] == $GUI_EVENT_MINIMIZE And $nMsg[1]==$gui And $minimizetray ==1) Then;minimize to tray
+		If ($nMsg[0] == $GUI_EVENT_MINIMIZE And $nMsg[1]==$gui And $minimizetray ==1) Then
 			GuiSetState(@SW_HIDE , $gui)
 			TraySetState($TRAY_ICONSTATE_SHOW)
+			WriteLog("Reduce to Tray Icon", $LOG2FILE, $DBG_DEBUG)
 		EndIf
 		If $nMsg[0] == $toolb Or $nMsg[0] == $settingssubMenu Then
+			WriteLog("Open prefGui From Menu/Button", $LOG2FILE, $DBG_DEBUG)
 			AdlibUnregister("Update")
+			WriteLog("Update Function UnRegistered", $LOG2FILE, $DBG_DEBUG)
 			$changedprefs = prefGui()
 			if $changedprefs == 1 Then
 				$painting = 1
@@ -712,16 +888,23 @@ Func mainLoop()
 			If $haserror == 0 Then
 				Update()
 				AdlibRegister("Update",1000)
+				WriteLog("Update Function Registered", $LOG2FILE, $DBG_DEBUG)
 			EndIf
 		EndIf
 		If $nMsg[0] == $aboutMenu Then
+			WriteLog("Open aboutGui From Menu", $LOG2FILE, $DBG_DEBUG)
 			aboutGui()
 		EndIf
-		If ($nMsg[0] == $listvarMenu) Then
+		If $nMsg[0] == $listvarMenu Then
+			WriteLog("Open varlistGui From Menu", $LOG2FILE, $DBG_DEBUG)
 			varlistGui()
 		EndIf
 		If $nMsg[0]== $reconnectMenu Then
+			WriteLog("Reconnect From Menu", $LOG2FILE, $DBG_DEBUG)
+			$ActualIcon_IDX = $IDX_ICO_RETRY
+			SetIconGuiTray($gui)
 			AdlibUnregister("Update")
+			WriteLog("Update Function UnRegistered", $LOG2FILE, $DBG_DEBUG)
 			$status = ConnectServer()
 			Opt("TCPTimeout", 3000)
 			GetUPSInfo()
@@ -730,16 +913,23 @@ Func mainLoop()
 			Update()
 			GuiRegisterMsg(0x000F, "rePaint")
 			AdlibRegister("GetUPSData", GetOption("delay"))
+			WriteLog("GetUPSData Function Registered", $LOG2FILE, $DBG_DEBUG)
 			AdlibRegister("Update", 1000)
+			WriteLog("Update Function Registered", $LOG2FILE, $DBG_DEBUG)
 			AdlibRegister("SetTrayIconText", 1000)
+			WriteLog("SetTrayIconText Function Registered", $LOG2FILE, $DBG_DEBUG)
 		EndIf
 		If $nMsg[0]== $DisconnectMenu Then
+			WriteLog("Disconnect From Menu", $LOG2FILE, $DBG_DEBUG)
 			AdlibUnregister("Update")
+			WriteLog("Update Function UnRegistered", $LOG2FILE, $DBG_DEBUG)
 			GUICtrlSetState($DisconnectMenu, $GUI_DISABLE)
 			$socket = DisconnectServer()
 			ResetGui()
 			SetUPSInfo()
 			GuiCtrlSetData($remainTimeLabel, "")
+			$ActualIcon_IDX = BitOr($IDX_ICON_BASE, $IDX_ICO_OFFLINE)
+			SetIconGuiTray($gui)
 		EndIf
 		For $vKey In $MenuLangListhwd
 			If $nMsg[0] == $MenuLangListhwd.Item($vKey) Then
@@ -747,6 +937,8 @@ Func mainLoop()
 				SetOption("language", $vKey, "string")
 				MsgBox($MB_SYSTEMMODAL, "",  __("The language change will be effective after restarting WinNut"))
 				WriteParams()
+				Local $arr[2] = ["Language Change To : %s", $vKey]
+				WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
 				For $vxKey In $MenuLangListhwd
 					If $vxKey == $vKey Then
 						GUICtrlSetState($MenuLangListhwd.Item($vxKey), $GUI_CHECKED)
@@ -762,13 +954,60 @@ Func mainLoop()
 EndFunc ;==> mainLoop
 
 Func WinNut_Init()
-	;Install all needed Files
-	;icon
-	Fileinstall(".\images\ups.jpg", @tempdir & "ups.jpg",1)
-	Fileinstall(".\images\upsicon.ico", @tempdir & "upsicon.ico",1)
+	;Initialize all Option Data
+	InitOptionDATA()
+	If $status == -1 Then
+		WriteLog("Critical Error - Couldn't initialize Options", $LOG2FILE, $DBG_ERROR)
+		MsgBox(48, "Critical Error", "Couldn't initialize Options")
+		Exit
+	EndIf
+
+	;load/create ini file
+	ReadParams()
+
+	WriteLog($START_LOG_STR, $LOG2FILE, $DBG_NOTICE)
+	WriteLog("Enter WinNut_Init Function", $LOG2FILE, $DBG_DEBUG)
 
 	If Not FileExists(@ScriptDir & "\Language") Then
 		DirCreate(@ScriptDir & "\Language")
+		WriteLog("Directory Language Created.", $LOG2FILE, $DBG_DEBUG)
+	EndIf
+
+	If Not FileExists(@ScriptDir & "\Resources") Then
+		DirCreate(@ScriptDir & "\Resources")
+		WriteLog("Directory Resources Created.", $LOG2FILE, $DBG_DEBUG)
+	EndIf
+
+	;Install all needed Files
+	;icon
+	Fileinstall(".\images\Jpg\ups.jpg", @ScriptDir & "\Resources\ups.jpg", 1)
+	Fileinstall(".\WinNUT_Icons\bin\Debug\netstandard2.0\WinNUT_Icons.dll", @ScriptDir & "\Resources\WinNUT_Icons.dll", 1)
+
+	;Get Info from Regedit for Icon Theme
+	Local $RegResult_APP = RegRead("HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme")
+	If @error <> 0 Then
+		WriteLog("Cannot Read AppsUseLightTheme", $LOG2FILE, $DBG_WARNING)
+		$RegResult_APP = 0
+	EndIf
+	If $RegResult_APP == 0 Then
+		$IDX_ICON_BASE_APP = BitOr($IconIdxOffset, $WIN_DARK)
+		WriteLog("Windows App Use Dark Theme", $LOG2FILE, $DBG_NOTICE)
+	Else
+		$IDX_ICON_BASE_APP = $IconIdxOffset
+		WriteLog("Windows App Use Light Theme", $LOG2FILE, $DBG_NOTICE)
+	EndIf
+
+	Local $RegResult_SYS = RegRead("HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme")
+	If @error <> 0 Then
+		WriteLog("Cannot Read SystemUsesLightTheme", $LOG2FILE, $DBG_WARNING)
+		$RegResult_SYS = 0
+	EndIf
+	If $RegResult_SYS == 0 Then
+		$IDX_ICON_BASE_SYS = BitOr($IconIdxOffset, $WIN_DARK)
+		WriteLog("Windows Use Dark Theme", $LOG2FILE, $DBG_NOTICE)
+	Else
+		$IDX_ICON_BASE_SYS = $IconIdxOffset
+		WriteLog("Windows Use Light Theme", $LOG2FILE, $DBG_NOTICE)
 	EndIf
 
 	;Language
@@ -776,6 +1015,7 @@ Func WinNut_Init()
 	_ListFileInstallFolder(".\Language", "\Language", 0, "*.lng", "include", True)
 	;Now file is generated so include it
 	#Include "include.au3"
+	WriteLog("All necessary files have been installed", $LOG2FILE, $DBG_DEBUG)
 
 	;Get Script Version
 	$ProgramVersion = _GetScriptVersion()
@@ -783,23 +1023,19 @@ Func WinNut_Init()
 	;HERE STARTS MAIN SCRIPT
 	$status = TCPStartup()
 	If $status == False Then
+		WriteLog("Critical Error - Couldn't startup TCP", $LOG2FILE, $DBG_ERROR)
 		MsgBox(48,"Critical Error", "Couldn't startup TCP")
 		Exit
 	EndIf
 	Opt("GUIDataSeparatorChar", ".")
 
-	;Initialize all Option Data
-	InitOptionDATA()
-	If $status == -1 Then
-		MsgBox(48, "Critical Error", "Couldn't initialize Options")
-		Exit
-	EndIf
-
 	;Determine if running as exe or script
-	If @Compiled Then $runasexe = True
-
-	;load/create ini file
-	ReadParams()
+	If @Compiled Then 
+		$runasexe = True
+		WriteLog("WinNut Run as Compiled Version", $LOG2FILE, $DBG_NOTICE)
+	Else
+		WriteLog("WinNut Run as Scripted Version", $LOG2FILE, $DBG_NOTICE)
+	EndIf
 
 	;Define default language and language file directory
 	_i18n_SetLangBase(@ScriptDir & "\Language")
@@ -815,8 +1051,9 @@ Func WinNut_Init()
 		SetOption("language", $sLanguage, "string")
 	EndIf
 	_i18n_SetLanguage($sLanguage)
+	WriteLog("Language initialization complete", $LOG2FILE, $DBG_DEBUG)
 
-	;Create and iitialize Systray Icon
+	;Create and intialize Systray Icon
 	TraySetState($TRAY_ICONSTATE_HIDE)
 	setTrayMode()
 	$idTrayPref = TrayCreateItem(__("Preferences"))
@@ -824,6 +1061,7 @@ Func WinNut_Init()
 	$idTrayAbout = TrayCreateItem(__("About"))
 	TrayCreateItem("")
 	$idTrayExit = TrayCreateItem(__("Exit"))
+	WriteLog("Systray initialization completed", $LOG2FILE, $DBG_DEBUG)
 
 	OpenMainWindow()
 	If (GetOption("minimizeonstart") == 1 And GetOption("minimizetray") == 1) Then
@@ -843,8 +1081,11 @@ Func WinNut_Init()
 	Update()
 	GuiRegisterMsg(0x000F, "rePaint")
 	AdlibRegister("GetUPSData", GetOption("delay"))
+	WriteLog("GetUPSData Function Registered", $LOG2FILE, $DBG_DEBUG)
 	AdlibRegister("Update", 1000)
+	WriteLog("Update Function Registered", $LOG2FILE, $DBG_DEBUG)
 	AdlibRegister("SetTrayIconText", 1000)
+	WriteLog("SetTrayIconText Function Registered", $LOG2FILE, $DBG_DEBUG)
 EndFunc ;==> WinNut_Init
 
 WinNut_Init()
