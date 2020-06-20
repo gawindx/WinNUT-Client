@@ -1,9 +1,17 @@
 History:
 
+Version 1.8.0.0
+Changed : The executable is no longer called "upsclient.exe" but "WinNUT-client.exe"
+Fix : Significant slowdown caused by the Logging functionality and memory leak caused by this same functionality
+Fix : Working Fallback Value on GetUPSVar
+Changed : When changing languages, it is no longer necessary to restart WinNUT. The window closes and reopens automatically with the new language.
+Fix : When the preferences are open but no modification is made, there is no longer a reconnection when clicking on the OK / Apply buttons 
+      (which could generate a flickering of the dials and unnecessary entries in the logs)
+
 Version 1.7.9.9
 Change/Add :  Graphic redesign of the icons as well as the setting of dynamic icons according to the connection / reconnection state, the connection state of
-			  the inverter and also the charge/discharge state of the battery.
-			  All of the icons are packaged in a DLL which will be installed with the executable WinNut during its first launch.
+	      the inverter and also the charge/discharge state of the battery.
+	      All of the icons are packaged in a DLL which will be installed with the executable WinNut during its first launch.
 Add: Logging Features
 
 Version 1.7.3.1
@@ -36,21 +44,21 @@ Version 1.7.0.5
 Added : Added ability to estimate the load level and run time of the UPS when he does not provide the information itself (or is inconsistent).
 Fix : Some Source Cleanup
 
-Version 1.7.0
+Version 1.7.0.0
 Added : Custom Shutdown Options.
 Allow software to not shutdown immediately and permit backup data before shutdown
 Fix : Ups VarList Gui
 
-Version 1.6.6
+Version 1.6.6.0
 Added : Option Close to tray
 Added : Minimize on startup
 Added : Aut2exe directive added (#pragma directive)
 Changed : AutoItWrapper Directive removed
 
-Version 1.6.5
+Version 1.6.5.0
 Fix : Show/hide Tray Icon when Gui is visible or not
 
-Version 1.6.4
+Version 1.6.4.0
 Added : tray icon tooltip with load, charge and status
 Added : Start with Windows Option
 Added : prevent shutdown when UPS not connected but NUT is running (from v1.6.2 written by crazytiti see https://github.com/crazytiti/Windows-Nut)
@@ -59,9 +67,8 @@ Changed : some code optimisation
 Changed : Some aesthetic improvement of GUI
 Changed : tray icon improvment
 
-Version 1.5
-
-1.  Added calibration for all clocks except battery charge.
+Version 1.5.0.0
+Added : Calibration for all clocks except battery charge.
 Now you can suite the program to your ups readings.
 For example if you are in USA and your UPS supplies 30V when
 fully charged set the values as follows :
@@ -69,36 +76,27 @@ Input Voltage Min 50 , Input Voltage Max 150
 Output Voltage Min 50 , Output Voltage Max 150 
 Input Frequency Min 30 , Input Frequency Max 80 (Center at 60Hz).
 Battery Voltage Min 0 , Battery Voltage Max 50
-
 This is of course only an example and you may set the values
 the way you like.
 At this moment no checking is done on values used so please be reasonable with what you enter (no negative numbers , max less the min etc).
-
 In order to change calibration go to Settings->Preferences.
 Select Calibration TAB and change the values as required.
 Then press OK or APPLY.
 After you close the Preferences window clocks will be refreshed and updated with new settings.
-
-
-2.  Added Minimize to tray (Requested by druidtaliesin).
+Added : Minimize to tray (Requested by druidtaliesin).
 In order to toggle go to Settings->Preferences.
 Select Misc TAB and check the appropriate option.
 Click OK or APPLY to save the changes
 It is off by default.
-
-3. Added Shutdown PC if battery charge lower then specified value
+Added : Shutdown PC if battery charge lower then specified value
 In order to change go to Settings->Preferences.
 Select Misc TAB and type in the battery charge percentage at which
 you want your pc to shutdown if UPS is offline.
 Click OK or APPLY to save the changes.
-
 ATTENTION this option is DANGEROUS!
 The computer is shutdown forcibly so if you have any unsaved documents and set the value too high while UPS was offline , you might lose data.
 Please use with care.
 By default the value is 0 which effectively disables this option.
-
-
-4.  Compiled with latest release of AutoIT which hopefully should speed things up a little bit.
-
-5. Rewritten most of configuration management code.
+Notice : Compiled with latest release of AutoIT which hopefully should speed things up a little bit.
+Notice : Rewritten most of configuration management code.
 It is much more readable now and also much easier to add new options.
