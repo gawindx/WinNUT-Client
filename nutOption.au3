@@ -11,29 +11,39 @@ $optionList &= "int shutdownpcbatt; int shutdownpctime;"
 $optionList &= "int InstantAction; int AllowGrace;"
 $optionList &= "int ShutdownDelay; int GraceDelay;"
 $optionList &= "int TypeOfStop; int frequencysupply;"
-$optionList &= "int uselogfile; int loglevel"
+$optionList &= "int uselogfile; int loglevel;"
+$optionList &= "int VerifyUpdateAtStart; int VerifyUpdate;"
+$optionList &= "int DelayVerif; int VerifyBranch;"
+$optionList &= "char LastVerif[64];"
+#comments-start
+Reserved for future usage
+$optionList &= "int upsauth;"
+$optionList &= "char upsusername[64];char upspassword[64]"
+#comments-end
 
-; #FUNCTION# ;===================================================================================================
-;
-; Name...........: _ListFileInstallFolder
-; Description ...: List Install file(s) from a folder into au3
-; Syntax.........: _ListFileInstallFolder($sSource, $sDest, $nFlag = 0, $sMask = '*', $sName = 'include', $sOverWrite = False, $sCompiled = False)
-; Parameters ....:	$sSource = Source folder to get file(s) from
-;					$sDest   = Destination to install file(s) to
-;					$nFlag   = According to the flag of FileInstall [Optional]
-;					$sMask  = Extensions of file(s) to List         [Optional]
-;					$sName  = Out au3 script name     [Optional]
-; Return values .: Success - Returns 1
-;                  Failure - Returns 0
-; Author ........: MrCreator, FireFox
-; Modified.......: FireFox, Gawindx
-; Remarks .......: this function is faster with _WinAPI_FileFind :
-;                  [url="http://www.autoitscript.com/forum/index.php?showtopic=90545"]http://www.autoitscript.com/forum/index.php?showtopic=90545[/url]
-; Related .......:
-; Link ..........;
-; Example .......;
-;
-;===================================================================================================
+#comments-start
+#FUNCTION# ;===================================================================================================
+
+ Name...........: _ListFileInstallFolder
+ Description ...: List Install file(s) from a folder into au3
+ Syntax.........: _ListFileInstallFolder($sSource, $sDest, $nFlag = 0, $sMask = '*', $sName = 'include', $sOverWrite = False, $sCompiled = False)
+ Parameters ....:	$sSource = Source folder to get file(s) from
+					$sDest   = Destination to install file(s) to
+					$nFlag   = According to the flag of FileInstall [Optional]
+					$sMask  = Extensions of file(s) to List         [Optional]
+					$sName  = Out au3 script name     [Optional]
+ Return values .: Success - Returns 1
+                  Failure - Returns 0
+ Author ........: MrCreator, FireFox
+ Modified.......: FireFox, Gawindx
+ Remarks .......: this function is faster with _WinAPI_FileFind :
+                  [url="http://www.autoitscript.com/forum/index.php?showtopic=90545"]http://www.autoitscript.com/forum/index.php?showtopic=90545[/url]
+ Related .......:
+ Link ..........;
+ Example .......;
+
+===================================================================================================
+#comments-end
 
 Func _ListFileInstallFolder($sSource, $sDest, $nFlag = 0, $sMask = '*', $sName = 'include', $sOverWrite = False)
 	WriteLog("Enter _ListFileInstallFolder Function", $LOG2FILE, $DBG_DEBUG)
@@ -72,7 +82,7 @@ Func TimeToStr($TimeValue = 0)
 		$TimeStr = StringFormat("%02dh:%02dm:%02ds", $hourrtime, $minrtime, $secrtime)
 	EndIf
 	Local $arrValue[2] = [$TimeValue, $TimeStr]
-	Local $arr[2] = ["Converted %s To %s"]
+	Local $arr[2] = ["Converted %s To %s", $arrValue]
 	WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
 	Return $TimeStr
 EndFunc ;==> TimeToStr
@@ -254,6 +264,11 @@ Func ReadParams()
 		SetOption("GraceDelay", 15, "number")
 		SetOption("uselogfile", 0, "number")
 		SetOption("loglevel", 1, "number")
+		SetOption("VerifyUpdateAtStart", 1, "number")
+		SetOption("VerifyUpdate", 1, "number")
+		SetOption("DelayVerif", 3, "number")
+		SetOption("VerifyBranch", 1, "number")
+		SetOption("LastVerif", _DateTimeFormat(_NowCalcDate(), 0), "string")
 		WriteLog("Default IniFile Not Exists - Created", $LOG2FILE, $DBG_DEBUG)
 		WriteParams()
 	Else
@@ -289,8 +304,13 @@ Func ReadParams()
 		ReadParam("GraceDelay", "Power", "number", "15", "Extended Shutdown Delay")
 		ReadParam("uselogfile", "Logging", "number", "0", "Use Log File")
 		ReadParam("loglevel", "Logging", "number", "0", "Log Level")
-		$clock_bkg = IniRead($inipath, "Colors", "Clocks Color", "error")
+		ReadParam("VerifyUpdateAtStart", "Update", "number", "1", "Verify Update At Start")
+		ReadParam("VerifyUpdate", "Update", "number", "1", "Verify Update")
+		ReadParam("DelayVerif", "Update", "number", "3", "Delay Between Each Verification")
+		ReadParam("VerifyBranch", "Update", "number", "1", "Stable Or Dev Branch")
+		ReadParam("LastVerif", "Update", "string", _DateTimeFormat(_NowCalcDate(), 0), "Last Date Verification")
 
+		$clock_bkg = IniRead($inipath, "Colors", "Clocks Color", "error")
 		If $clock_bkg == "error" Then
 			$clock_bkg = $gray
 			IniWrite($inipath, "Colors", "Clocks Color", "0x" & Hex($clock_bkg))
@@ -317,7 +337,6 @@ EndFunc ;==> ReadParams
 	This is after these were set in the gui and apply or OK button was hit there
 #comments-end
 Func Log_WriteParams(ByRef $ArrayValue, $strSection, $strParam, $strValue, ByRef $strLog)
-	;Redim $ArrayValue[Ubound($ArrayValue) + 1]
 	_ArrayAdd($ArrayValue, $strSection & "/" & $strParam)
 	_ArrayAdd($ArrayValue, $strValue)
 	$strLog &= "%s -> %s\n"
@@ -394,6 +413,17 @@ Func WriteParams()
 	Log_WriteParams($arrValue, "Logging", "Use Log File", GetOption("uselogfile"), $strLog)
 	IniWrite($inipath, "Logging", "Log Level", GetOption("loglevel"))
 	Log_WriteParams($arrValue, "Logging", "Log Level", GetOption("loglevel"), $strLog)
+	IniWrite($inipath, "Update", "Verify Update At Start", GetOption("VerifyUpdateAtStart"))
+	Log_WriteParams($arrValue, "Update", "Verify Update At Start", GetOption("VerifyUpdateAtStart"), $strLog)
+	IniWrite($inipath, "Update", "Verify Update", GetOption("VerifyUpdate"))
+	Log_WriteParams($arrValue, "Update", "Verify Update", GetOption("VerifyUpdate"), $strLog)
+	IniWrite($inipath, "Update", "Delay Between Each Verification", GetOption("DelayVerif"))
+	Log_WriteParams($arrValue, "Update", "Delay Between Each Verification", GetOption("DelayVerif"), $strLog)
+	IniWrite($inipath, "Update", "Stable Or Dev Branch", GetOption("VerifyBranch"))
+	Log_WriteParams($arrValue, "Update", "Stable Or Dev Branch", GetOption("VerifyBranch"), $strLog)
+	IniWrite($inipath, "Update", "Last Date Verification", GetOption("LastVerif"))
+	Log_WriteParams($arrValue, "Update", "Last Date Verification", GetOption("LastVerif"), $strLog)
+
 	Local $arr[2] = [$strLog, $arrValue]
 	WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
 EndFunc ;==> WriteParams

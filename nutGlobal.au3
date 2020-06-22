@@ -12,6 +12,8 @@ Global $ProgramDesc = "Windows NUT Client"
 Global $ProgramName = "WinNUT"
 Global $ProgramVersion = ""
 Global $status = 0
+Global $LangChanged = 0
+Global $RefreshInterval = 1000
 
 ;Icon's Consts
 Global const $IconDLL = @ScriptDir & "\Resources\WinNUT_Icons.dll"
@@ -48,6 +50,8 @@ Global $gui = 0
 Global $guipref = 0
 Global $guiabout = 0
 Global $guishutdown = 0
+Global $guiupdate = 0
+Global $log
 
 ;Color's Consts
 Global const $green = 0x00FF00
@@ -59,12 +63,12 @@ Global const $aqua = 0x00ffff
 ;MainGui_Menu's Variables
 Global $fileMenu, $listvarMenu, $exitMenu, $editMenu, $reconnectMenu, $settingsMenu
 Global $exitMenu, $editMenu, $aboutMenu, $reconnectMenu, $DisconnectMenu, $listvarMenu
-Global $settingssubMenu, $LanguageSettings, $LangSubMenuSystem, $helpMenu, $aboutMenu
+Global $settingssubMenu, $LanguageSettings, $LangSubMenuSystem, $helpMenu, $aboutMenu, $updateMenu
 Global $Label1, $Label2, $Label3, $Label4, $labelUpsRemain, $Label5
 Global $Label14, $Label15, $Label16, $exitb, $toolb
 Global $wPanel = 0
 Global $MenuLangListhwd
-Global $idTrayExit, $idTrayPref, $idTrayAbout
+Global $idTrayExit, $idTrayPref, $idTrayAbout, $idTrayUpdate
 
 ;GUI_TreeView's Variables
 Global Const $s_TVITEMEX = "uint;uint;uint;uint;ptr;int;int;int;int;uint;int"
@@ -102,6 +106,7 @@ Global $inputVol = 0
 Global $outputVol = 0
 Global $inputFreq = 0
 Global $battVol = 0
+Global $realoutpower = 0
 Global $upsLoad = 0
 Global $battCh = 0
 Global $battruntime = 0
@@ -167,3 +172,13 @@ Global const $LOG_GUI = 16
 Global const $LOG2FILE = 32
 Global const $START_LOG_STR = "====================================================================="
 Global $LogFile = @ScriptDir & "\Log.txt"
+Global $hLogFile = null
+Global const $DELAY_WRITE_LOG = 10000
+
+;VerifyUpdate' Consts
+Global const $URLStable = "https://raw.githubusercontent.com/gawindx/WinNUT-Client/master/changelog.txt"
+Global const $URLDev = "https://raw.githubusercontent.com/gawindx/WinNUT-Client/Dev/changelog.txt"
+Global $sChangeLog = null
+Global $oUPDATE_DELAY = ObjCreate("Scripting.Dictionary")
+Global $oUPDATE_BRANCH = ObjCreate("Scripting.Dictionary")
+Local $HighestVersion = null

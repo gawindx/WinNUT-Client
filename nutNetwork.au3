@@ -1,3 +1,7 @@
+#include-once
+#include <WinAPIFiles.au3>
+#include <InetConstants.au3>
+
 Func IsFQDN($IPAddress)
 	WriteLog("Enter IsFQDN Function", $LOG2FILE, $DBG_DEBUG)
 	Local $sPattern = "^(?:(?!\d+\.|-)[a-zA-Z0-9_\-]{1,63}(?<!-)\.?)+(?:[a-zA-Z]{2,})$"
@@ -120,6 +124,103 @@ Func DeletePortProxy()
 	EndIf
 EndFunc ;==> DeletePortProxy
 
+Func ChangeFormatDate($sDate)
+	Local $arrDate
+	Local $arrTime
+	_DateTimeSplit($sDate, $arrDate, $arrTime)
+	Return StringFormat("%04d/%02d/%02d", $arrDate[3], $arrDate[2], $arrDate[1])
+EndFunc
+
+Func VerifyUpdate($ManualUpdate = False)
+	WriteLog("Enter VerifyUpdate Function", $LOG2FILE, $DBG_DEBUG)
+	If GetOption("VerifyUpdate") Or $ManualUpdate Then
+		Local $sDelayVerif
+		Switch GetOption("DelayVerif")
+			Case 1
+				$sDelayVerif = "D"
+			Case 2
+				$sDelayVerif = "w"
+			Case 3
+				$sDelayVerif = "M"
+			Case Else
+				$sDelayVerif = "M"
+		EndSwitch
+		Local $Today = ChangeFormatDate(_DateTimeFormat(_NowCalcDate(), 0))
+		$diff = _DateDiff($sDelayVerif, ChangeFormatDate(GetOption("LastVerif")), $Today)
+		If $diff >= 1 Or $ManualUpdate Then
+			Local $ChangeLog = _WinAPI_GetTempFileName(@TempDir)
+			If GetOption("VerifyBranch") == 1 Then
+				$URL_Changelog = $URLStable
+				WriteLog("VerifyUpdate from Stable branch", $LOG2FILE, $DBG_DEBUG)
+			Else
+				$URL_Changelog = $URLDev
+				WriteLog("VerifyUpdate from Stable branch", $LOG2FILE, $DBG_DEBUG)
+			EndIf
+			Local $ChangeLogByteSize = InetGet($URLDev, $ChangeLog, BitOr($INET_FORCERELOAD, $INET_IGNORESSL), $INET_DOWNLOADWAIT)
+			If $ChangeLogByteSize <> 0 Then
+				Local $ArrChangeLog
+				Local $newline = ""
+				_FileReadToArray($ChangeLog, $ArrChangeLog, $FRTA_NOCOUNT)
+				;extract data from array
+				Local $ChangeLogDiff[0]
+				For $line in $ArrChangeLog
+					If StringInStr($line, "History") == 0 Then
+						If $line <> "" Then
+							Local $LogVersion
+							Local $ActualVersion = Number(StringReplace($ProgramVersion, ".", ""))
+							Local $sPattern = "^[Vv]ersion.*(\d).*(\d).*(\d).*(\d)$"
+							Local $RegExResult = StringRegExp($line, $sPattern, $STR_REGEXPARRAYFULLMATCH, 1)
+							If Not @error Then
+								_ArrayDelete($RegExResult, 0)
+								If $HighestVersion == null Then
+									$HighestVersion = _ArrayToString($RegExResult, ".")
+								EndIf
+								$LogVersion = Number(_ArrayToString($RegExResult, ""))
+								If $LogVersion > $ActualVersion Then
+									If UBound($ChangeLogDiff) >= 1 Then
+										_ArrayAdd($ChangeLogDiff, "")
+									EndIf
+									_ArrayAdd($ChangeLogDiff, $line)
+								Else
+									ExitLoop
+								EndIf
+							Else
+								If $LogVersion > $ActualVersion Then
+									Local $sPattern = "^.*:.*$"
+									Local $RegExResult = StringRegExp($line, $sPattern, $STR_REGEXPMATCH, 1)
+									If Not @error And $RegExResult == 1 Then
+										If $newline <> "" Then
+											_ArrayAdd($ChangeLogDiff, $newline)
+											$newline = ""
+										EndIf
+										$newline &= StringStripWS($line, BitOr($STR_STRIPLEADING, $STR_STRIPTRAILING, $STR_STRIPSPACES))
+									Else
+										$newline &= StringStripWS($line, BitOr($STR_STRIPLEADING, $STR_STRIPTRAILING, $STR_STRIPSPACES))
+									EndIf
+								EndIf
+							EndIf
+						EndIf
+					EndIf
+				Next
+				If UBound($ChangeLogDiff) > 0 Then
+					$sChangeLog = _ArrayToString($ChangeLogDiff, @CRLF)
+					Local $arr[2] = ["New Version Available : %s", $HighestVersion]
+					WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+					WriteLog(StringFormat(__("New Version Available : %s"), $HighestVersion), $LOG_GUI, $DBG_DEBUG)
+				Else
+					$HighestVersion = null
+					WriteLog(__("No Update Available"), $LOG_GUI, $DBG_DEBUG)
+				EndIf
+			Else
+				WriteLog("Cannot download changelog.txt", $LOG2FILE, $DBG_DEBUG)
+			EndIf
+			FileDelete($ChangeLog)
+			SetOption("LastVerif", $Today, "string")
+			WriteParams()
+		EndIf
+	EndIf
+EndFunc
+
 Func ProcessData($data)
 	WriteLog("Enter ProcessData Function", $LOG2FILE, $DBG_DEBUG)
 	Local $strs
@@ -143,7 +244,7 @@ EndFunc ;==> ProcessData
 Func CheckErr($upsresp)
 	WriteLog("Enter CheckErr Function", $LOG2FILE, $DBG_DEBUG)
 	Local $strs
-	If StringLeft($upsresp,3) == "ERR" Then
+	If StringLeft($upsresp, 3) == "ERR" Then
 		$strs = StringSplit($upsresp, " ")
 		if UBound($strs) < 2 Then
 			WriteLog("Unknown Error", $LOG2FILE, $DBG_ERROR)
@@ -234,7 +335,7 @@ Func GetUPSDescVar($upsId, $varName, byref $upsVar)
 	Return 0	
 EndFunc ;==> GetUPSDescVar
 
-Func GetUPSVar($upsId, $varName, byref $upsVar, $fallback_value=Null, $post_send_delay=Null)
+Func GetUPSVar($upsId, $varName, byref $upsVar, $fallback_value = null, $post_send_delay = null)
 	WriteLog("Enter GetUPSVar Function", $LOG2FILE, $DBG_DEBUG)
 	Local $sendstring, $sent, $data
 	If $socket == 0 Then
@@ -253,12 +354,16 @@ Func GetUPSVar($upsId, $varName, byref $upsVar, $fallback_value=Null, $post_send
 	EndIf
 	If $post_send_delay Then Sleep($post_send_delay)
 	$data = TCPRecv($socket , 4096)
-	If $data == "" And $fallback_value Then
+	If StringInStr($data, "ERR") <> 0 And $fallback_value <> null Then
 		$data = "VAR " & $upsID & " " & $varName & " " & '"' & $fallback_value & '"'
+		Local $arrValue[3] = [$varName, $fallback_value, $data]
+		Local $arr[2] = ["VarName %s doesn't exist.\n Replaced by fallback Value : %s \nSimulated Data : %s", $arrValue]
+		WriteLog($arr, $LOG2FILE, $DBG_ERROR)
 	ElseIf $data == "" Then ;connection lost
 		$socket = 0
 		$upsVar = "0"
-		WriteLog("Connection lost at " & $varName, BitOr($LOG_GUI, $LOG2FILE), $DBG_ERROR)
+		Local $arr[2] = ["Error - Disconnected when retrieved %s", $varname]
+		WriteLog($arr, $LOG2FILE, $DBG_ERROR)
 		Return -1
 	EndIf
 	$err = CheckErr($data)
@@ -332,7 +437,6 @@ Func ConnectServer()
 		WriteLog("Connection failed", BitOr($LOG_GUI, $LOG2FILE), $DBG_ERROR)
 		Return -1
 	Else
-		WriteLog("Connection Established", BitOr($LOG_GUI, $LOG2FILE), $DBG_NOTICE)
 		Return 0
 	EndIf
 EndFunc ;==>ConnectServer

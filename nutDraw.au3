@@ -1,5 +1,72 @@
 #include <Color.au3>
 
+Func DrawDial($left, $top, $basescale, $title, $units, ByRef $value, ByRef $needle, ByRef $sndvalue, $sndunits = null, $scale = 1, $leftG = 20, $rightG = 70)
+	WriteLog("Enter DrawDial Function", $LOG2FILE, $DBG_DEBUG)
+	Local $group = 0
+
+	$group = GUICreate(" " & $title, 150, 120, $left, $top, BitOR($WS_CHILD, $WS_DLGFRAME), $WS_EX_CLIENTEDGE, $gui)
+	GUISetBkColor($clock_bkg, $group)
+	GuiSwitch($group)
+	GuiCtrlCreateLabel($title, 0, 0, 150, 14, $SS_CENTER)
+
+	For $x = 0 To 100 Step 10
+		If StringinStr($x / 20, ".") = 0 Then
+			GUICtrlCreateLabel("", $x * 1.2 + 15, 15, 1, 15, $SS_BLACKRECT)
+			GuiCtrlSetState(-1, $GUI_DISABLE)
+			If $x < 100 Then
+				$test = GUICtrlCreateLabel("", $x * 1.2 + 16, 15, 11, 5, 0)
+				GuiCtrlSetState(-1, $GUI_DISABLE)
+				If $x < $rightG And $x > $leftG Then
+					GUICtrlSetBkColor($test, 0x00ff00)
+				Else
+					GUICtrlSetBkColor($test, 0xff0000)
+				EndIf
+			EndIf
+			$scalevalue = $basescale + $x / $scale
+			Switch $scalevalue
+				Case 0 To 9
+					GuiCtrlCreateLabel($scalevalue, $x * 1.2 + 13, 25, 20, 10)
+				Case 10 To 99
+					GuiCtrlCreateLabel($scalevalue, $x * 1.2 + 10, 25, 20, 10)
+				Case 100 To 1000
+					GuiCtrlCreateLabel($scalevalue, $x * 1.2 + 7, 25, 20, 10)
+			EndSwitch
+			GUICtrlSetFont(-1, 7)
+		Else
+			GUICtrlCreateLabel("", $x * 1.2 + 15, 15, 1, 5, $SS_BLACKRECT)
+			GuiCtrlSetState(-1, $GUI_DISABLE)
+			$test = GUICtrlCreateLabel("", $x * 1.2 + 16, 15, 11, 5, 0)
+			If $x < $rightG And $x > $leftG Then
+				GUICtrlSetBkColor($test, 0x00ff00)
+			Else
+				GUICtrlSetBkColor($test, 0xff0000)
+			EndIf
+		EndIf
+	Next
+	If $units == "%" Then
+		$value = GUICtrlCreateLabel(0, 90, 100, 40, 15, $SS_RIGHT)
+	Else
+		$value = GUICtrlCreateLabel(220, 90, 100, 40, 15, $SS_RIGHT)
+	EndIf
+	$label2 = GUICtrlCreateLabel($units, 134, 100, 16, 15, $SS_LEFT)
+	If $sndunits <> null Then
+		If $sndunits == "%" Then
+			$sndvalue = GUICtrlCreateLabel(0, 90, 85, 40, 15, $SS_RIGHT)
+		Else
+			$sndvalue = GUICtrlCreateLabel(220, 90, 85, 40, 15, $SS_RIGHT)
+		EndIf
+		$label3 = GUICtrlCreateLabel($sndunits, 134, 85, 16, 15, $SS_LEFT)
+	EndIf
+	$needle = GUICtrlCreateGraphic(10, 35, 120, 60)
+	If BitAND(WinGetState($gui), $WIN_STATE_MINIMIZED) Then
+		GuiSetState(@SW_HIDE, $group)
+	Else
+		GuiSetState(@SW_SHOW, $group)
+	EndIf
+	$result = $group
+	Return $group
+EndFunc ;==> DrawDial
+
 #comments-start
 	This function returns the x and y coordinates of a point which is located
 	on an intersection of a circle with radius of 60 centered at (60,70) and a line

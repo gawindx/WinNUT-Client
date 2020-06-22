@@ -1,6 +1,6 @@
-﻿#pragma compile(FileVersion, 1.7.9.9)
+#pragma compile(FileVersion, 1.8.0.0)
 #pragma compile(Icon, .\images\Ico\WinNut.ico)
-#pragma compile(Out, .\Build\upsclient.exe)
+#pragma compile(Out, .\Build\WinNUT-client.exe)
 #pragma compile(Compression, 9)
 #pragma compile(UPX, False)
 #pragma compile(Comments, 'Windows NUT Client')
@@ -28,17 +28,21 @@
 
 If UBound(ProcessList(@ScriptName)) > 2 Then Exit
 
+Opt("WinSearchChildren", 1)
+
 ;This function repaints all needles when required and passes on control
 ;to internal AUTOIT repaint handler
 ;This is registered for WM_PAINT event
 Func rePaint()
-	WriteLog("Enter rePaint Function", $LOG2FILE, $DBG_DEBUG)
-	repaintNeedle($needle1, $inputVol, $dial1, getOption("mininputv"), getOption("maxinputv"))
-	repaintNeedle($needle2, $outputVol, $dial2, getOption("minoutputv"), getOption("maxoutputv"))
-	repaintNeedle($needle3, $inputFreq, $dial3, getOption("mininputf"), getOption("maxinputf"))
-	repaintNeedle($needle4, $battVol, $dial4, getOption("minbattv"), getOption("maxbattv"))
-	repaintNeedle($needle5, $upsLoad, $dial5, getOption("minupsl"), getOption("maxupsl"))
-	repaintNeedle($needle6, $battCh, $dial6, 0, 100)
+	;Logging removed due to too many writes
+	If $gui <> 0 Then
+		repaintNeedle($needle1, $inputVol, $dial1, getOption("mininputv"), getOption("maxinputv"))
+		repaintNeedle($needle2, $outputVol, $dial2, getOption("minoutputv"), getOption("maxoutputv"))
+		repaintNeedle($needle3, $inputFreq, $dial3, getOption("mininputf"), getOption("maxinputf"))
+		repaintNeedle($needle4, $battVol, $dial4, getOption("minbattv"), getOption("maxbattv"))
+		repaintNeedle($needle5, $upsLoad, $dial5, getOption("minupsl"), getOption("maxupsl"))
+		repaintNeedle($needle6, $battCh, $dial6, 0, 100)
+	EndIf
 	return $GUI_RUNDEFMSG
 EndFunc ;==> rePaint
 
@@ -75,7 +79,7 @@ Func varlistGui()
 	WriteLog("Update Fonction Register", $LOG2FILE, $DBG_DEBUG)
 	$guilistvar = GUICreate(__("LIST UPS Variables"), 365, 331, 196, 108, -1 , -1 , $gui)
 
-	GUISetIcon($IconDLL, SelectTrayIconIDX())
+	SetIconGuiTray($guilistvar)
 	$TreeView1 = GUICtrlCreateTreeView(0, 8, 361, 169)
 
 	$Group1 = GUICtrlCreateGroup(__("Item properties"), 0, 184, 361, 105, $BS_CENTER)
@@ -120,7 +124,7 @@ Func varlistGui()
 				WriteLog("Delete guilistvar", $LOG2FILE, $DBG_DEBUG)
 				WinActivate($gui)
 				WriteLog("Activate WinNut Gui", $LOG2FILE, $DBG_DEBUG)
-				AdlibRegister("Update", 1000)
+				AdlibRegister("Update", $RefreshInterval)
 				WriteLog("Update Fonction Register", $LOG2FILE, $DBG_DEBUG)
 				return
 			Case $Clear_Btn
@@ -155,6 +159,7 @@ Func GetUPSInfo()
 	$serial = ""
 	$firmware = ""
 	If $socket == 0 Then ; not connected to server/connection lost
+		WriteLog("Not Connected To Nut server", $LOG2FILE, $DBG_ERROR)
 		Return
 	EndIf
 	$status = GetUPSVar(GetOption("upsname"), "ups.mfr", $mfr, __("Unknown"))
@@ -291,7 +296,13 @@ Func GetUPSData()
 			EndIf
 		EndIf
 	EndIf
-	If GetUPSVar($ups_name, "input.voltage", $inputVol, "220") == -1 Then
+	Local $Fallback_InputVol
+	If GetOption("mininputv") > 200 And GetOption("maxinputv") < 300 Then
+		$Fallback_InputVol = "230"
+	Else
+		$Fallback_InputVol = "110"
+	EndIf
+	If GetUPSVar($ups_name, "input.voltage", $inputVol, $Fallback_InputVol) == -1 Then
 		$status = -1
 		WriteLog("GetUPSData input->voltage Return -1", $LOG2FILE, $DBG_DEBUG)
 	Else
@@ -341,19 +352,19 @@ Func GetUPSData()
 				#comments-end
 				Local $arr[2] = ["GetUPSData ups->current->nominal Return %s", $inputcurrent]
 				WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
-				$upsoutpower = ($inputVol * 0.95 *$inputcurrent)
+				$upsoutpower = ($inputVol * 0.95 * $inputcurrent)
 				Local $arr[2] = ["ups->realpower->nominal estimed at %s", $upsoutpower]
 				WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
 			EndIf
 		Else
-			$upsoutpower = $upsoutpower / $upsPF
+			$upsoutpower = (($upsoutpower / $upsPF) * $upsLoad ) / 100
 			Local $arr[2] = ["ups->realpower->nominal <> Unknown \n instant upsoutpower determined at %s", $upsoutpower]
 			WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
 		EndIf
 	EndIf
 EndFunc ;==> GetUPSData
 
-Func UpdateValue(byref $needle, $value, $label, $whandle, $min = 170, $max = 270, $force = 0)
+Func UpdateValue(ByRef $needle, $value, $label, $whandle, $min = 170, $max = 270, $force = 0, $Text_And_Graph = True)
 	WriteLog("Enter UpdateValue Function", $LOG2FILE, $DBG_DEBUG)
 	$oldval = Round(GuiCtrlRead($label))
 	If $oldval < $min Then
@@ -369,19 +380,21 @@ Func UpdateValue(byref $needle, $value, $label, $whandle, $min = 170, $max = 270
 	Local $arrvalue[2] = [ControlGetText($whandle,'', $whandle), $value]
 	Local $arr[2] = ["GuiCtrlSetData : %s->%s", $arrvalue]
 	WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
-	$value = Round($value)
-	If $value < $min Then
-		$value = $min
+	If $Text_And_Graph Then
+		$value = Round($value)
+		If $value < $min Then
+			$value = $min
+		EndIf
+		If $value > $max Then
+			$value = $max
+		EndIf
+		$oldneedle = ($oldval - $min) / (($max - $min ) / 100)
+		if $oldneedle > 0 or $oldneedle == 0 then
+			DrawNeedle(15 + $oldneedle, $clock_bkg_bgr, $whandle, $needle)
+		EndIf
+		$setneedle = ($value - $min) / (($max - $min ) / 100)
+		DrawNeedle(15 + $setneedle, 0x0, $whandle, $needle)
 	EndIf
-	If $value > $max Then
-		$value = $max
-	EndIf
-	$oldneedle = ($oldval - $min) / (($max - $min ) / 100)
-	if $oldneedle > 0 or $oldneedle == 0 then
-		DrawNeedle(15 + $oldneedle, $clock_bkg_bgr, $whandle, $needle)
-	EndIf
-	$setneedle = ($value - $min) / (($max - $min ) / 100)
-	DrawNeedle(15 + $setneedle ,0x0, $whandle, $needle)
 EndFunc ;==> UpdateValue
 
 Func ResetGui()
@@ -400,6 +413,7 @@ Func ResetGui()
 	UpdateValue($needle3, 0, $inputf, $dial3, getOption("mininputf"), getOption("maxinputf"))
 	UpdateValue($needle4, 0, $battv,$dial4, getOption("minbattv"), getOption("maxbattv"))
 	UpdateValue($needle5, 0, $upsl, $dial5, getOption("minupsl"), getOption("maxupsl"))
+	UpdateValue($needle5, 0, $realoutpower, $dial5, null, null, 0, False)
 	UpdateValue($needle6, 0, $upsch, $dial6, 0, 100)
 	GuiCtrlSetBkColor($upsonline, $gray)
 	GuiCtrlSetBkColor($upsonbatt, $gray)
@@ -462,21 +476,14 @@ Func Update()
 	Local $PowerDivider = 0.5
 	If $upsLoad > 100 Then
 		SetColor($red, $wPanel, $upsoverload)
-		;$ActualIcon_IDX = BitOR($ActualIcon_IDX, $IDX_LOAD_100)
 		WriteLog("UPS Is OverLoad", $LOG2FILE, $DBG_WARNING)
 	Else
 		SetColor(0xffffff, $wPanel, $upsoverload)
 		Switch $upsLoad
 			Case 76 To 100
 				$PowerDivider = 0.4
-				;$ActualIcon_IDX = BitOR($ActualIcon_IDX, $IDX_LOAD_75)
 			Case 51 To 75
 				$PowerDivider = 0.3
-				;$ActualIcon_IDX = BitOR($ActualIcon_IDX, $IDX_LOAD_50)
-			;Case 26 To 50
-			;	$ActualIcon_IDX = BitOR($ActualIcon_IDX, $IDX_LOAD_25)
-			;Case 0 To 25
-			;	$ActualIcon_IDX = BitOR($ActualIcon_IDX, $IDX_LOAD_0)
 		EndSwitch
 	EndIf
 	#comments-start
@@ -540,6 +547,7 @@ Func Update()
 	UpdateValue($needle3, $inputFreq, $inputf, $dial3, getOption("mininputf"), getOption("maxinputf"))
 	UpdateValue($needle4, $battVol, $battv, $dial4, getOption("minbattv"), getOption("maxbattv"))
 	UpdateValue($needle5, $upsLoad, $upsl, $dial5, getOption("minupsl"), getOption("maxupsl"))
+	UpdateValue($needle5, $upsoutpower, $realoutpower, $dial5, null, null, 0, False)
 	UpdateValue($needle6, $battCh, $upsch, $dial6, 0, 100)
 	rePaint()
 	#comments-start
@@ -552,68 +560,38 @@ Func Update()
 		If $InstantAction = 1 Then
 			Local $arr[2] = ["Proceed to Instant Shutdown Action : %s", GetOption("TypeOfStop")]
 			WriteLog($arr, $LOG2FILE, $DBG_NOTICE)
+			FileClose($hLOGFile)
 			Shutdown(GetOption("TypeOfStop"))
 		Else
 			WriteLog("Delayed Shutdown", $LOG2FILE, $DBG_NOTICE)
 			ShutdownGui()
 		EndIf
 	EndIf
-	#comments-start
-	If $upsstatus == "OL" Then
-		Switch $battCh
-			Case 76 To 100
-				$ActualIcon_IDX = $IDX_ICO_OL100
-			Case 51 To 75
-				$ActualIcon_IDX = $IDX_ICO_OL75
-			Case 26 To 50
-				$ActualIcon_IDX = $IDX_ICO_OL50
-			Case 11 To 25
-				$ActualIcon_IDX = $IDX_ICO_OL25
-			Case 0 To 10
-				If IsPairSeconds() Then
-					$ActualIcon_IDX = $IDX_ICO_OL25
-				Else
-					$ActualIcon_IDX = $IDX_ICO_OL0
-				EndIf
-			Case Else
-				$ActualIcon_IDX = $IDX_ICO_OL0
-		EndSwitch
-	Else
-		Switch $battCh
-			Case 76 To 100
-				$ActualIcon_IDX = $IDX_ICO_OB100
-			Case 51 To 75
-				$ActualIcon_IDX = $IDX_ICO_OB75
-			Case 26 To 50
-				$ActualIcon_IDX = $IDX_ICO_OB50
-			Case 11 To 25
-				$ActualIcon_IDX = $IDX_ICO_OB25
-			Case 0 To 10
-				If @SEC <> $sec Then
-					$sec = @SEC
-					$ActualIcon_IDX = $IDX_ICO_OB25
-				Else
-					$ActualIcon_IDX = $IDX_ICO_OB0
-				EndIf
-			Case Else
-				$ActualIcon_IDX = $IDX_ICO_OB0
-		EndSwitch
-	EndIf
-	#comments-end
 	SetIconGuiTray()
 EndFunc ;==> Update
 
-Func SetIconGuiTray($id_gui = $gui)
-	WriteLog("Enter SetIconGuiTray Function", $LOG2FILE, $DBG_DEBUG)
-	If $LastIcon_IDX <> $ActualIcon_IDX Then
-		Local $tmp_Gui_IDX = BitOr($ActualIcon_IDX, $IDX_ICON_BASE_APP)
-		Local $tmp_Tray_IDX = BitOr($ActualIcon_IDX, $IDX_ICON_BASE_SYS)
-		TraySetIcon($IconDLL, $tmp_Tray_IDX)
-		GUISetIcon($IconDLL, $tmp_Gui_IDX, $id_gui)
-		Local $arrValue[2] = [$tmp_Gui_IDX, $tmp_Tray_IDX]
-		Local $arr[2] = ["Gui/Tray Icon Updated to : %s/%s", $arrValue]
-		WriteLog($arr, $LOG2FILE, $DBG_NOTICE)
-		$LastIcon_IDX = $ActualIcon_IDX
+Func SetIconGuiTray($id_gui = $gui, $ForceUpdate = False, $HasFocus = True)
+	;Logging removed due to too many writes
+	If $LastIcon_IDX <> $ActualIcon_IDX Or $ForceUpdate Then
+		If $HasFocus Then
+			Local $tmp_Gui_IDX = BitOr($ActualIcon_IDX, $IDX_ICON_BASE_APP)
+			Local $tmp_Tray_IDX = BitOr($ActualIcon_IDX, $IDX_ICON_BASE_SYS)
+			TraySetIcon($IconDLL, $tmp_Tray_IDX)
+			GUISetIcon($IconDLL, $tmp_Gui_IDX, $id_gui)
+			Local $arrValue[2] = [$tmp_Gui_IDX, $tmp_Tray_IDX]
+			Local $arr[2] = ["Gui/Tray Icon Updated to : %s/%s", $arrValue]
+			WriteLog($arr, $LOG2FILE, $DBG_NOTICE)
+			$LastIcon_IDX = $ActualIcon_IDX
+		Else
+			Local $tmp_Gui_IDX = BitXOR(BitOr($ActualIcon_IDX, $IDX_ICON_BASE_APP), $WIN_DARK)
+			Local $tmp_Tray_IDX = BitOr($ActualIcon_IDX, $IDX_ICON_BASE_SYS)
+			TraySetIcon($IconDLL, $tmp_Tray_IDX)
+			GUISetIcon($IconDLL, $tmp_Gui_IDX, $id_gui)
+			Local $arrValue[2] = [$tmp_Gui_IDX, $tmp_Tray_IDX]
+			Local $arr[2] = ["Gui/Tray Icon Updated to : %s/%s", $arrValue]
+			WriteLog($arr, $LOG2FILE, $DBG_NOTICE)
+			$LastIcon_IDX = $ActualIcon_IDX
+		EndIf
 	EndIf
 EndFunc
 
@@ -638,7 +616,7 @@ Func SetTrayIconText()
 	EndIf
 	Local $trayStr = $ProgramDesc & " - " & $ProgramVersion & $trayStatus
 	Local $arr[2] = ["TraySetToolTip Updated To :\n %s", $trayStr]
-	WriteLog($arr, $LOG2FILE, $DBG_NOTICE)
+	WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
 	TraySetToolTip($trayStr)
 EndFunc ;==> SetTrayIconText
 
@@ -652,78 +630,19 @@ Func ReconnectNut()
 		AdlibUnregister("ReconnectNut")
 		WriteLog("ReconnectNut Function UnRegistered", $LOG2FILE, $DBG_DEBUG)
 		DisconnectServer()
-		$ActualIcon_IDX = BitOr($IDX_ICON_BASE, $IDX_ICO_OFFLINE)
+		$ActualIcon_IDX = $IDX_ICO_OFFLINE
 		SetIconGuiTray()
 		MsgBox(0, __("Alert"), __("Connection to Nut server could not be reestablished within the specified time"), 30, $gui)
 	ElseIf $NewSocket >= 0  Then
 		GetUPSInfo()
 		SetUPSInfo()
 		Update()
-		AdlibRegister("Update", 1000)
+		AdlibRegister("Update", $RefreshInterval)
 		WriteLog("Update Function Registered", $LOG2FILE, $DBG_DEBUG)
 		AdlibUnregister("ReconnectNut")
 		WriteLog("ReconnectNut Function UnRegistered", $LOG2FILE, $DBG_DEBUG)
 	EndIf
 EndFunc ;==> ReconnectNut
-
-Func DrawDial($left, $top, $basescale, $title, $units, ByRef $value, ByRef $needle, $scale = 1, $leftG = 20, $rightG = 70)
-	WriteLog("Enter DrawDial Function", $LOG2FILE, $DBG_DEBUG)
-	Local $group = 0
-
-	$group = GUICreate(" " & $title, 150, 120, $left, $top, BitOR($WS_CHILD, $WS_DLGFRAME), $WS_EX_CLIENTEDGE, $gui)
-	GUISetBkColor($clock_bkg,$group)
-	GuiSwitch($group)
-	GuiCtrlCreateLabel($title,0,0,150,14,$SS_CENTER)
-
-	For $x = 0 To 100 Step 10
-		If StringinStr($x / 20, ".") = 0 Then
-			GUICtrlCreateLabel("", $x * 1.2 + 15, 15, 1, 15, $SS_BLACKRECT)
-			GuiCtrlSetState(-1, $GUI_DISABLE)
-			If $x < 100 Then
-				$test = GUICtrlCreateLabel("", $x * 1.2 + 16, 15, 11, 5, 0)
-				GuiCtrlSetState(-1, $GUI_DISABLE)
-				If $x < $rightG And $x > $leftG Then
-					GUICtrlSetBkColor($test, 0x00ff00)
-				Else
-					GUICtrlSetBkColor($test, 0xff0000)
-				EndIf
-			EndIf
-			$scalevalue = $basescale + $x / $scale
-			Switch $scalevalue
-				Case 0 To 9
-					GuiCtrlCreateLabel($scalevalue, $x * 1.2 + 13, 25, 20, 10)
-				Case 10 To 99
-					GuiCtrlCreateLabel($scalevalue, $x * 1.2 + 10, 25, 20, 10)
-				Case 100 To 1000
-					GuiCtrlCreateLabel($scalevalue, $x * 1.2 + 7, 25, 20, 10)
-			EndSwitch
-			GUICtrlSetFont(-1, 7)
-		Else
-			GUICtrlCreateLabel("", $x * 1.2 + 15, 15, 1, 5, $SS_BLACKRECT)
-			GuiCtrlSetState(-1, $GUI_DISABLE)
-			$test = GUICtrlCreateLabel("", $x * 1.2 + 16, 15, 11, 5, 0)
-			If $x < $rightG And $x > $leftG Then
-				GUICtrlSetBkColor($test, 0x00ff00)
-			Else
-				GUICtrlSetBkColor($test, 0xff0000)
-			EndIf
-		EndIf
-	Next
-	If $units == "%" Then
-		$value = GUICtrlCreateLabel(0, 10, 100, 40, 15, $SS_LEFT)
-	Else
-		$value = GUICtrlCreateLabel(220, 10, 100, 40, 15, $SS_LEFT)
-	EndIf
-	$label2 = GUICtrlCreateLabel($units, 116, 100, 25, 15, $SS_RIGHT)
-	$needle = GUICtrlCreateGraphic(10, 35, 120, 60)
-	If BitAND(WinGetState($gui), $WIN_STATE_MINIMIZED) Then
-		GuiSetState(@SW_HIDE, $group)
-	Else
-		GuiSetState(@SW_SHOW, $group)
-	EndIf
-	$result = $group
-	Return $group
-EndFunc ;==> DrawDial
 
 Func ShutdownGui_Event($hWnd, $Msg, $wParam, $lParam)
 	WriteLog("Enter ShutdownGui_Event Function", $LOG2FILE, $DBG_DEBUG)
@@ -768,10 +687,76 @@ Func setTrayMode()
 	EndIf
 EndFunc ;==> setTrayMode
 
+Func InitLanguage()
+	;Define default language and language file directory
+	_i18n_SetLangBase(@ScriptDir & "\Language")
+	Local $sDefLang = GetOption("defaultlang")
+	If $sDefLang == -1 Then
+		$sDefLang = 'en-US'
+		SetOption("defaultlang", $sDefLang, "string")
+	EndIf
+	_i18n_SetDefault($sDefLang)
+	Local $sLanguage = GetOption("language")
+	If $sLanguage == -1 Then
+		$sLanguage = 'system'
+		SetOption("language", $sLanguage, "string")
+	EndIf
+	_i18n_SetLanguage($sLanguage)
+	WriteLog("Language initialization complete", $LOG2FILE, $DBG_DEBUG)
+EndFunc
+
+Func InitSystray()
+	;Create and intialize Systray Icon
+	TraySetState($TRAY_ICONSTATE_HIDE)
+	setTrayMode()
+	If $LangChanged == 1 Then
+		TrayItemSetText($idTrayPref, __("Preferences"))
+		TrayItemSetText($idTrayAbout, __("Check Update"))
+		TrayItemSetText($idTrayAbout, __("About"))
+		TrayItemSetText($idTrayExit, __("Exit"))
+	Else
+		$idTrayPref = TrayCreateItem(__("Preferences"))
+		TrayCreateItem("")
+		$idTrayUpdate = TrayCreateItem(__("Check Update"))
+		TrayCreateItem("")
+		$idTrayAbout = TrayCreateItem(__("About"))
+		TrayCreateItem("")
+		$idTrayExit = TrayCreateItem(__("Exit"))
+	EndIf
+	WriteLog("Systray initialization completed", $LOG2FILE, $DBG_DEBUG)
+EndFunc ;==> InitSystray
+
+Func OnExitWinNUT()
+	AdlibUnregister("Update")
+	TCPSend($socket, "LOGOUT")
+	TCPCloseSocket($socket)
+	DeletePortProxy()
+	TCPShutdown()
+	WriteLog("Close WinNut", $LOG2FILE, $DBG_NOTICE)
+	WriteLog($START_LOG_STR, $LOG2FILE, $DBG_NOTICE)
+	FileClose($hLOGFile)
+EndFunc ;==> OnExitWinNUT
+
+Func On_WM_ACTIVATE($hWnd, $Msg, $wParam, $lParam)
+	Local $iState = BitAnd($wParam, 0x0000FFFF), $iMinimize = BitShift($wParam, 16)
+	If $iState Then
+		SetIconGuiTray($hWnd, True, True)
+		WriteLog($hWnd & " Get Focus", $LOG2FILE, $DBG_DEBUG)
+	Else
+		SetIconGuiTray($hWnd, True, False)
+		WriteLog($hWnd & " Lost Focus", $LOG2FILE, $DBG_DEBUG)
+	EndIf
+	Return $GUI_RUNDEFMSG
+EndFunc ;==> On_WM_ACTIVATE
+
 Func mainLoop()
 	WriteLog("Enter mainLoop Function", $LOG2FILE, $DBG_DEBUG)
 	Local $minimizetray = GetOption("minimizetray")
 	While 1
+		If $sChangeLog <> null Then
+			WriteLog("Update detected. Open updateGui", $LOG2FILE, $DBG_DEBUG)
+			updateGui()
+		EndIf
 		If ($minimizetray == 1) Then
 			$tMsg = TrayGetMsg()
 			Switch $tMsg
@@ -781,22 +766,20 @@ Func mainLoop()
 					TraySetState($TRAY_ICONSTATE_HIDE)
 					WriteLog("Double-Click on Tray Icon", $LOG2FILE, $DBG_DEBUG)
 				Case $idTrayExit
-					TCPSend($socket, "LOGOUT")
-					TCPCloseSocket($socket)
-					AdlibUnregister("Update")
-					DeletePortProxy()
-					TCPShutdown()
-					WriteLog("Exit WinNut From Tray Icon", $LOG2FILE, $DBG_DEBUG)
 					Exit
 				Case $idTrayAbout
 					WriteLog("Open aboutGui From Tray Icon", $LOG2FILE, $DBG_DEBUG)
 					aboutGui()
+				Case $idTrayUpdate
+					WriteLog("Check Update Manually From Tray Icon", $LOG2FILE, $DBG_DEBUG)
+					VerifyUpdate(True)
 				Case $idTrayPref
 					WriteLog("Open prefGui From Tray Icon", $LOG2FILE, $DBG_DEBUG)
 					AdlibUnregister("Update")
 					WriteLog("Update Function UnRegistered", $LOG2FILE, $DBG_DEBUG)
 					$changedprefs = prefGui()
 					If $changedprefs == 1 Then
+						WriteLog("Preferences Changed", $LOG2FILE, $DBG_DEBUG)
 						$painting = 1
 						GuiDelete($dial1)
 						GuiDelete($dial2)
@@ -806,16 +789,16 @@ Func mainLoop()
 						GuiDelete($dial6)
 						DrawError(160, 70, "Delete")
 						$calc = 1 / ((GetOption("maxinputv") - GetOption("mininputv")) / 100)
-						$dial1 = DrawDial(160, 70, GetOption("mininputv"), __("Input Voltage"), "V", $inputv, $needle1, $calc)
+						$dial1 = DrawDial(160, 70, GetOption("mininputv"), __("Input Voltage"), "V", $inputv, $needle1, null, null, $calc, 20, 70)
 						$calc = 1 / ((GetOption("maxoutputv") - GetOption("minoutputv")) / 100)
-						$dial2 = DrawDial(480, 70, GetOption("minoutputv"), __("Output Voltage)", "V", $outputv, $needle2, $calc)
+						$dial2 = DrawDial(480, 70, GetOption("minoutputv"), __("Output Voltage)", "V", $outputv, $needle2, null, null, $calc, 20, 70)
 						$calc = 1 / ((GetOption("maxinputf") - GetOption("mininputf")) / 100)
-						$dial3 = DrawDial(320, 70, GetOption("mininputf"), __("Input Frequency"), "Hz", $inputf, $needle3, $calc )
+						$dial3 = DrawDial(320, 70, GetOption("mininputf"), __("Input Frequency"), "Hz", $inputf, $needle3, null, null, $calc, 20, 70)
 						$calc = 1 / ((GetOption("maxbattv") - GetOption("minbattv")) / 100)
-						$dial4 = DrawDial(480, 200, GetOption("minbattv"), __("Battery Voltage"), "V", $battv, $needle4, $calc, 20, 120)
+						$dial4 = DrawDial(480, 200, GetOption("minbattv"), __("Battery Voltage"), "V", $battv, $needle4, null, null, $calc, 20, 120)
 						$calc = 1 / ((GetOption("maxupsl") - GetOption("minupsl")) / 100)
-						$dial5 = DrawDial(320, 200, 0, __("UPS Load"), "%", $upsl, $needle5, $calc, -1, 80)
-						$dial6 = DrawDial(160, 200, 0, __("Battery Charge"), "%", $upsch, $needle6, 1, 30, 101)
+						$dial5 = DrawDial(320, 200, 0, __("UPS Load"), "%", $upsl, $needle5, $realoutpower, "W", $calc, -1, 80)
+						$dial6 = DrawDial(160, 200, 0, __("Battery Charge"), "%", $upsch, $needle6, null, null, 1, 30, 101)
 						$painting = 0
 					EndIf
 					If $haserror == 0 Then
@@ -829,21 +812,11 @@ Func mainLoop()
 		$nMsg = GUIGetMsg(1)
 		If GetOption("closetotray") == 0 Then
 			If ($nMsg[0] == $GUI_EVENT_CLOSE And $nMsg[1]==$gui) Or $nMsg[0] == $exitMenu Or $nMsg[0] == $exitb Then
-				TCPSend($socket,"LOGOUT")
-				TCPCloseSocket($socket)
-				AdlibUnregister("Update")
-				DeletePortProxy()
-				TCPShutdown()
 				WriteLog("Exit WinNut From RedCross GUI", $LOG2FILE, $DBG_DEBUG)
 				Exit
 			EndIf
 		Else
 			If $nMsg[0] == $exitMenu Or $nMsg[0] == $exitb Then
-				TCPSend($socket,"LOGOUT")
-				TCPCloseSocket($socket)
-				AdlibUnregister("Update")
-				DeletePortProxy()
-				TCPShutdown()
 				WriteLog("Exit WinNut", $LOG2FILE, $DBG_DEBUG)
 				Exit
 			EndIf
@@ -864,6 +837,7 @@ Func mainLoop()
 			WriteLog("Update Function UnRegistered", $LOG2FILE, $DBG_DEBUG)
 			$changedprefs = prefGui()
 			if $changedprefs == 1 Then
+				WriteLog("Preferences Changed", $LOG2FILE, $DBG_DEBUG)
 				$painting = 1
 				GuiDelete($dial1)
 				GuiDelete($dial2)
@@ -873,16 +847,16 @@ Func mainLoop()
 				GuiDelete($dial6)
 				DrawError(160, 70, "Delete")
 				$calc = 1 / ((GetOption("maxinputv") - GetOption("mininputv")) / 100)
-				$dial1 = DrawDial(160, 70, GetOption("mininputv"), __("Input Voltage"), "V", $inputv, $needle1, $calc)
+				$dial1 = DrawDial(160, 70, GetOption("mininputv"), __("Input Voltage"), "V", $inputv, $needle1, null, null, $calc, 20, 70)
 				$calc = 1 / ((GetOption("maxoutputv") - GetOption("minoutputv")) / 100)
-				$dial2 = DrawDial(480, 70, GetOption("minoutputv"), __("Output Voltage"), "V", $outputv, $needle2, $calc)
+				$dial2 = DrawDial(480, 70, GetOption("minoutputv"), __("Output Voltage"), "V", $outputv, $needle2, null, null, $calc, 20, 70)
 				$calc = 1 / ((GetOption("maxinputf") - GetOption("mininputf")) / 100)
-				$dial3 = DrawDial(320, 70, GetOption("mininputf"), __("Input Frequency"), "Hz", $inputf, $needle3, $calc )
+				$dial3 = DrawDial(320, 70, GetOption("mininputf"), __("Input Frequency"), "Hz", $inputf, $needle3, null, null, $calc, 20, 70)
 				$calc = 1 / ((GetOption("maxbattv") - GetOption("minbattv")) / 100)
-				$dial4 = DrawDial(480, 200, GetOption("minbattv"), __("Battery Voltage"), "V", $battv, $needle4, $calc, 20, 120)
+				$dial4 = DrawDial(480, 200, GetOption("minbattv"), __("Battery Voltage"), "V", $battv, $needle4, null, null, $calc, 20, 120)
 				$calc = 1 / ((GetOption("maxupsl") - GetOption("minupsl")) / 100)
-				$dial5 = DrawDial(320, 200, 0, __("UPS Load"), "%", $upsl, $needle5, $calc, -1, 80)
-				$dial6 = DrawDial(160, 200, 0, __("Battery Charge"), "%", $upsch, $needle6, 1, 30, 101)
+				$dial5 = DrawDial(320, 200, 0, __("UPS Load"), "%", $upsl, $needle5, $realoutpower, "W", $calc, -1, 80)
+				$dial6 = DrawDial(160, 200, 0, __("Battery Charge"), "%", $upsch, $needle6, null, null, 1, 30, 101)
 				$painting = 0
 			EndIf
 			If $haserror == 0 Then
@@ -894,6 +868,10 @@ Func mainLoop()
 		If $nMsg[0] == $aboutMenu Then
 			WriteLog("Open aboutGui From Menu", $LOG2FILE, $DBG_DEBUG)
 			aboutGui()
+		EndIf
+		If $nMsg[0] == $updateMenu Then
+			WriteLog("Check Update Manually From  Menu", $LOG2FILE, $DBG_DEBUG)
+			VerifyUpdate(True)
 		EndIf
 		If $nMsg[0] == $listvarMenu Then
 			WriteLog("Open varlistGui From Menu", $LOG2FILE, $DBG_DEBUG)
@@ -914,9 +892,9 @@ Func mainLoop()
 			GuiRegisterMsg(0x000F, "rePaint")
 			AdlibRegister("GetUPSData", GetOption("delay"))
 			WriteLog("GetUPSData Function Registered", $LOG2FILE, $DBG_DEBUG)
-			AdlibRegister("Update", 1000)
+			AdlibRegister("Update", $RefreshInterval)
 			WriteLog("Update Function Registered", $LOG2FILE, $DBG_DEBUG)
-			AdlibRegister("SetTrayIconText", 1000)
+			AdlibRegister("SetTrayIconText", $RefreshInterval)
 			WriteLog("SetTrayIconText Function Registered", $LOG2FILE, $DBG_DEBUG)
 		EndIf
 		If $nMsg[0]== $DisconnectMenu Then
@@ -928,33 +906,41 @@ Func mainLoop()
 			ResetGui()
 			SetUPSInfo()
 			GuiCtrlSetData($remainTimeLabel, "")
-			$ActualIcon_IDX = BitOr($IDX_ICON_BASE, $IDX_ICO_OFFLINE)
+			$ActualIcon_IDX = $IDX_ICO_OFFLINE
 			SetIconGuiTray($gui)
 		EndIf
 		For $vKey In $MenuLangListhwd
 			If $nMsg[0] == $MenuLangListhwd.Item($vKey) Then
-				GUICtrlSetState($MenuLangListhwd.Item($vKey), $GUI_CHECKED)
-				SetOption("language", $vKey, "string")
-				MsgBox($MB_SYSTEMMODAL, "",  __("The language change will be effective after restarting WinNut"))
-				WriteParams()
-				Local $arr[2] = ["Language Change To : %s", $vKey]
-				WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
-				For $vxKey In $MenuLangListhwd
-					If $vxKey == $vKey Then
-						GUICtrlSetState($MenuLangListhwd.Item($vxKey), $GUI_CHECKED)
-					Else
-						GUICtrlSetState($MenuLangListhwd.Item($vxKey), $GUI_UNCHECKED)
-					EndIf
-				Next
+				If GetOption("language") <> $vKey Then 
+					$LangChanged = 1
+					GUICtrlSetState($MenuLangListhwd.Item($vKey), $GUI_CHECKED)
+					SetOption("language", $vKey, "string")
+					WriteParams()
+					Local $arr[2] = ["Language Change To : %s", $vKey]
+					WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+					For $vxKey In $MenuLangListhwd
+						If $vxKey == $vKey Then
+							GUICtrlSetState($MenuLangListhwd.Item($vxKey), $GUI_CHECKED)
+						Else
+							GUICtrlSetState($MenuLangListhwd.Item($vxKey), $GUI_UNCHECKED)
+						EndIf
+					Next
+					InitLanguage()
+					InitSystray()
+					OpenMainWindow()
+
+					Local $arr[2] = ["Language switched to : %s", $vKey]
+					WriteLog($arr, $LOG2FILE, $DBG_NOTICE)
+				EndIf
 				ExitLoop
 			EndIf
 		Next
-
 	WEnd
+	FileClose($hLOGFile)
 EndFunc ;==> mainLoop
 
 Func WinNut_Init()
-	;Initialize all Option Data
+	;Initialize all Options Data
 	InitOptionDATA()
 	If $status == -1 Then
 		WriteLog("Critical Error - Couldn't initialize Options", $LOG2FILE, $DBG_ERROR)
@@ -964,9 +950,23 @@ Func WinNut_Init()
 
 	;load/create ini file
 	ReadParams()
+	;If new params Added From New Version
+	WriteParams()
+
+	If GetOption("uselogfile") == 1 Then
+		AdlibRegister("WriteLogToDisk", $DELAY_WRITE_LOG)
+		If $hLogFile == null Then
+			If Not FileExists($LogFile) Then
+				_FileCreate($LogFile)
+			EndIf
+			$hLogFile = FileOpen($LogFile, $FO_APPEND)
+		EndIf
+	EndIf
 
 	WriteLog($START_LOG_STR, $LOG2FILE, $DBG_NOTICE)
 	WriteLog("Enter WinNut_Init Function", $LOG2FILE, $DBG_DEBUG)
+
+	OnAutoItExitRegister("OnExitWinNUT")
 
 	If Not FileExists(@ScriptDir & "\Language") Then
 		DirCreate(@ScriptDir & "\Language")
@@ -981,7 +981,10 @@ Func WinNut_Init()
 	;Install all needed Files
 	;icon
 	Fileinstall(".\images\Jpg\ups.jpg", @ScriptDir & "\Resources\ups.jpg", 1)
+	;DLL_Icon
 	Fileinstall(".\WinNUT_Icons\bin\Debug\netstandard2.0\WinNUT_Icons.dll", @ScriptDir & "\Resources\WinNUT_Icons.dll", 1)
+	;Updater
+	Fileinstall(".\Build\WinNUT-Updater.exe", @ScriptDir & "\Resources\WinNUT-Updater.exe", 1)
 
 	;Get Info from Regedit for Icon Theme
 	Local $RegResult_APP = RegRead("HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme")
@@ -1037,31 +1040,8 @@ Func WinNut_Init()
 		WriteLog("WinNut Run as Scripted Version", $LOG2FILE, $DBG_NOTICE)
 	EndIf
 
-	;Define default language and language file directory
-	_i18n_SetLangBase(@ScriptDir & "\Language")
-	Local $sDefLang = GetOption("defaultlang")
-	If $sDefLang == -1 Then
-		$sDefLang = 'en-US'
-		SetOption("defaultlang", $sDefLang, "string")
-	EndIf
-	_i18n_SetDefault($sDefLang)
-	Local $sLanguage = GetOption("language")
-	If $sLanguage == -1 Then
-		$sLanguage = 'system'
-		SetOption("language", $sLanguage, "string")
-	EndIf
-	_i18n_SetLanguage($sLanguage)
-	WriteLog("Language initialization complete", $LOG2FILE, $DBG_DEBUG)
-
-	;Create and intialize Systray Icon
-	TraySetState($TRAY_ICONSTATE_HIDE)
-	setTrayMode()
-	$idTrayPref = TrayCreateItem(__("Preferences"))
-	TrayCreateItem("")
-	$idTrayAbout = TrayCreateItem(__("About"))
-	TrayCreateItem("")
-	$idTrayExit = TrayCreateItem(__("Exit"))
-	WriteLog("Systray initialization completed", $LOG2FILE, $DBG_DEBUG)
+	InitLanguage()
+	InitSystray()
 
 	OpenMainWindow()
 	If (GetOption("minimizeonstart") == 1 And GetOption("minimizetray") == 1) Then
@@ -1080,13 +1060,19 @@ Func WinNut_Init()
 	GetUPSData()
 	Update()
 	GuiRegisterMsg(0x000F, "rePaint")
+	;GuiRegisterMsg($WM_SETFOCUS, "On_WM_ACTIVATE")
+	;GuiRegisterMsg($WM_KILLFOCUS, "On_WM_ACTIVATE")
+	GuiRegisterMsg($WM_ACTIVATE, "On_WM_ACTIVATE")
 	AdlibRegister("GetUPSData", GetOption("delay"))
 	WriteLog("GetUPSData Function Registered", $LOG2FILE, $DBG_DEBUG)
-	AdlibRegister("Update", 1000)
+	AdlibRegister("Update", $RefreshInterval)
 	WriteLog("Update Function Registered", $LOG2FILE, $DBG_DEBUG)
-	AdlibRegister("SetTrayIconText", 1000)
+	AdlibRegister("SetTrayIconText", $RefreshInterval)
 	WriteLog("SetTrayIconText Function Registered", $LOG2FILE, $DBG_DEBUG)
 EndFunc ;==> WinNut_Init
 
 WinNut_Init()
+If GetOption("VerifyUpdateAtStart") == 1 Then
+	VerifyUpdate()
+EndIf
 mainLoop()
