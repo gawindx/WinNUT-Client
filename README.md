@@ -34,8 +34,9 @@ Replace each part on the right with your translation.
 ##### IMPORTANT: The "Language_Description" key is the name of your language.
 
 ### If you want your translation file to be integrated too:
-#### Solution 1 
-Contact me and send me your translation file for integration at the repository level.
+
+Create an issue and attach your translation file, I will incorporate it into the sources and I will update the executable.
+Not speaking all languages, I fully trust you for the quality of the translations - I will make sure all the same by taking a few translations that they seem correct before integrating the language.
 
 # Manual Install - You do not wish to make the community benefit (not good ...).
 
