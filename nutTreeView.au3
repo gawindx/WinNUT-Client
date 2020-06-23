@@ -4,13 +4,12 @@
 #include <WinAPI.au3>
 #Include <GuiTreeView.au3>
 
-Global Const $s_TVITEMEX = "uint;uint;uint;uint;ptr;int;int;int;int;uint;int"
-Global $TVM_SETITEM = 0
-
 Func _GUICtrlTreeViewSetStateIcon($i_treeview, $h_item = 0, $s_iconfile = "", $i_iconID = 0)
+	WriteLog("Enter _GUICtrlTreeViewSetStateIcon Function", $LOG2FILE, $DBG_DEBUG)
+	
 	$h_item = _GUICtrlTreeView_GetItemHandle($i_treeview , $h_item)
-	;$h_item = _TreeViewGetItemHandle($i_treeview, $h_item)
 	If $h_item = 0 Or $s_iconfile = "" Then Return SetError(1, 1, False)
+
 	Local $st_TVITEM = DllStructCreate($s_TVITEMEX)
 	If @error Then Return SetError(1, 1, False)
 	Local $st_icon = DllStructCreate("int")
@@ -57,6 +56,8 @@ Func _GUICtrlTreeViewSetStateIcon($i_treeview, $h_item = 0, $s_iconfile = "", $i
 EndFunc ;==> _GUICtrlTreeViewSetStateIcon
 
 Func _GUICtrlTreeView_FindItemEx1($hWnd, $sPath, $sDelimiter = ".", $hStart = 0)
+	WriteLog("Enter _GUICtrlTreeView_FindItemEx1 Function", $LOG2FILE, $DBG_DEBUG)
+
 	Local $iIndex, $aParts
 	$iIndex = 1
 	$aParts = StringSplit($sPath, $sDelimiter)
@@ -75,6 +76,7 @@ Func _GUICtrlTreeView_FindItemEx1($hWnd, $sPath, $sDelimiter = ".", $hStart = 0)
 EndFunc ;==> _GUICtrlTreeView_FindItemEx
 
 Func _GUICtrlTreeViewGetTree1($i_treeview, $s_sep_char, $h_item)
+	WriteLog("Enter _GUICtrlTreeViewGetTree1 Function", $LOG2FILE, $DBG_DEBUG)
 	If Not _WinAPI_IsClassName ($i_treeview, "SysTreeView32") Then
 		Return SetError(-1, -1, "")
 	EndIf
@@ -94,7 +96,8 @@ Func _GUICtrlTreeViewGetTree1($i_treeview, $s_sep_char, $h_item)
 EndFunc ;==> _GUICtrlTreeViewGetTree
 
 
-Func _addPath($i_treeview , $path )
+Func _addPath($i_treeview , $path)
+	WriteLog("Enter _addPath Function", $LOG2FILE, $DBG_DEBUG)
 	Local $prevpath , $i ,$tempath
 	If $path == "" Then ;empty path so nothing to add
 		Return 0
@@ -118,6 +121,7 @@ Func _addPath($i_treeview , $path )
 EndFunc ;==> _addPath
 
 Func _SetIcons($i_treeview, $h_item)
+	WriteLog("Enter _SetIcons Function", $LOG2FILE, $DBG_DEBUG)
 	Local $h_child , $cur_text , $next_item
 	If ($h_item == 0) Then
 		$h_item = GUICtrlSendMsg($i_treeview, $TVM_GETNEXTITEM, $TVGN_CHILD, $h_item)
