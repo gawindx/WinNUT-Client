@@ -1,9 +1,0 @@
-C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_Icons\bin\Debug\netstandard2.0\WinNUT_Icons.deps.json
-C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_Icons\bin\Debug\netstandard2.0\WinNUT_Icons.dll
-C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_Icons\bin\Debug\netstandard2.0\WinNUT_Icons.pdb
-C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_Icons\obj\Debug\netstandard2.0\WinNUT_Icons.csprojAssemblyReference.cache
-C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_Icons\obj\Debug\netstandard2.0\WinNUT_Icons.AssemblyInfoInputs.cache
-C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_Icons\obj\Debug\netstandard2.0\WinNUT_Icons.AssemblyInfo.cs
-C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_Icons\obj\Debug\netstandard2.0\WinNUT_Icons.csproj.CoreCompileInputs.cache
-C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_Icons\obj\Debug\netstandard2.0\WinNUT_Icons.dll
-C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_Icons\obj\Debug\netstandard2.0\WinNUT_Icons.pdb
