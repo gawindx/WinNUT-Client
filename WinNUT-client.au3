@@ -380,8 +380,8 @@ Func UpdateValue(ByRef $needle, $value, $label, $whandle, $min = 170, $max = 270
 	Local $arrvalue[2] = [ControlGetText($whandle,'', $whandle), $value]
 	Local $arr[2] = ["GuiCtrlSetData : %s->%s", $arrvalue]
 	WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+	$value = Round($value)
 	If $Text_And_Graph Then
-		$value = Round($value)
 		If $value < $min Then
 			$value = $min
 		EndIf
