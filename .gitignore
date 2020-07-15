@@ -1,8 +1,5 @@
-*.ini
-Build/Language
-Build/Resources
-Build/log.txt
-Build/ups.ini
-WinNUT_Icons.dll
-Log.txt
-WinNut_V1.8.0.0/
+AGauge_mod/obj
+AGauge_mod/bin
+WinNUT_V2/.vs
+WinNUT_V2/WinNUT_GUI/obj
+WinNUT_V2/WinNUT_GUI/bin
