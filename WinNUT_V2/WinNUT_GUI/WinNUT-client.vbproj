@@ -11,10 +11,11 @@
     <AssemblyName>WinNUT-client</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\Releases\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,9 +25,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -38,6 +40,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>WinNUT-client.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -72,6 +75,19 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>WinNut.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>C19146538F0D20A60911FD278DFBE5B16AC3C499</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WinNUT-client_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
@@ -117,6 +133,7 @@
     <Compile Include="CProgressBar.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="IniFileVb.vb" />
     <Compile Include="Update_Gui.Designer.vb">
       <DependentUpon>Update_Gui.vb</DependentUpon>
     </Compile>
@@ -170,8 +187,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="About_Gui.de-DE.resx">
+      <DependentUpon>About_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="About_Gui.fr-FR.resx">
+      <DependentUpon>About_Gui.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="About_Gui.resx">
       <DependentUpon>About_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="List_Var_Gui.de-DE.resx">
+      <DependentUpon>List_Var_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="List_Var_Gui.fr-FR.resx">
+      <DependentUpon>List_Var_Gui.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="List_Var_Gui.resx">
       <DependentUpon>List_Var_Gui.vb</DependentUpon>
@@ -191,8 +220,20 @@
       <DependentUpon>Pref_Gui.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.en-US.resx" />
+    <EmbeddedResource Include="Shutdown Gui.de-DE.resx">
+      <DependentUpon>Shutdown Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shutdown Gui.fr-FR.resx">
+      <DependentUpon>Shutdown Gui.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Shutdown Gui.resx">
       <DependentUpon>Shutdown Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Gui.de-DE.resx">
+      <DependentUpon>Update_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Gui.fr-FR.resx">
+      <DependentUpon>Update_Gui.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Update_Gui.resx">
       <DependentUpon>Update_Gui.vb</DependentUpon>
@@ -235,6 +276,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="WinNUT-client_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\1025.ico" />
@@ -277,6 +319,11 @@
     <Content Include="WinNut.ico" />
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>

@@ -102,6 +102,7 @@ Partial Class Update_Gui
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Update_Gui"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Update"
         Me.GB1.ResumeLayout(False)
         Me.GB1.PerformLayout()

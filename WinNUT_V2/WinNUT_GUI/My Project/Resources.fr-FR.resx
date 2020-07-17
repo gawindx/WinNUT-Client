@@ -18,6 +18,9 @@
   <data name="ProgramVersion" xml:space="preserve">
     <value>2.0.0.0</value>
   </data>
+  <data name="LongProgramName" xml:space="preserve">
+    <value>Windows NUT Client</value>
+  </data>
   <data name="1025" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1025.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -110,5 +113,8 @@
   </data>
   <data name="ups_104x104" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ups_104x104.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GitHub_URL" xml:space="preserve">
+    <value>https://github.com/gawindx/WinNUT-Client</value>
   </data>
 </root>

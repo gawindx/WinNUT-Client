@@ -66,6 +66,9 @@
   <data name="Cb_Reconnect.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="Cb_Reconnect.Text" xml:space="preserve">
+    <value>Stellen Sie die Verbindung wieder her</value>
+  </data>
   <data name="Lbl_Delay_Com.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -77,6 +80,9 @@
   </data>
   <data name="Lbl_Delay_Com.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="Lbl_Delay_Com.Text" xml:space="preserve">
+    <value>Verzögern</value>
   </data>
   <data name="Lbl_Name_UPS.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -90,6 +96,9 @@
   <data name="Lbl_Name_UPS.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="Lbl_Name_UPS.Text" xml:space="preserve">
+    <value>UPS Name</value>
+  </data>
   <data name="Lbl_Port.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -102,6 +111,9 @@
   <data name="Lbl_Port.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="Lbl_Port.Text" xml:space="preserve">
+    <value>NUT Port</value>
+  </data>
   <data name="Lbl_Server_IP.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -113,6 +125,9 @@
   </data>
   <data name="Lbl_Server_IP.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="Lbl_Server_IP.Text" xml:space="preserve">
+    <value>NUT Host</value>
   </data>
   <data name="Lbl_Server_IP.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -128,6 +143,15 @@
   </data>
   <data name="Tab_Connexion.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="Tab_Connexion.Text" xml:space="preserve">
+    <value>Verbindung</value>
+  </data>
+  <data name="Cbx_Freq_Input.Items" xml:space="preserve">
+    <value>50</value>
+  </data>
+  <data name="Cbx_Freq_Input.Items1" xml:space="preserve">
+    <value>60</value>
   </data>
   <data name="Cbx_Freq_Input.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>265, 71</value>
@@ -240,6 +264,9 @@
   <data name="Lbl_Maxi.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="Lbl_Maxi.Text" xml:space="preserve">
+    <value>Max</value>
+  </data>
   <data name="Lbl_Mini.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -251,6 +278,9 @@
   </data>
   <data name="Lbl_Mini.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="Lbl_Mini.Text" xml:space="preserve">
+    <value>Min</value>
   </data>
   <data name="Lbl_BattV.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -264,6 +294,9 @@
   <data name="Lbl_BattV.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="Lbl_BattV.Text" xml:space="preserve">
+    <value>Batteriespannung</value>
+  </data>
   <data name="Lbl_LoadUPS.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -275,6 +308,9 @@
   </data>
   <data name="Lbl_LoadUPS.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="Lbl_LoadUPS.Text" xml:space="preserve">
+    <value>USV laden</value>
   </data>
   <data name="Lbl_OutputV.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -288,6 +324,9 @@
   <data name="Lbl_OutputV.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="Lbl_OutputV.Text" xml:space="preserve">
+    <value>Ausgangsspannung</value>
+  </data>
   <data name="Lbl_InputF.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -299,6 +338,9 @@
   </data>
   <data name="Lbl_InputF.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="Lbl_InputF.Text" xml:space="preserve">
+    <value>Eingangsfrequenz</value>
   </data>
   <data name="Lbl_PowerF.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -312,6 +354,9 @@
   <data name="Lbl_PowerF.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="Lbl_PowerF.Text" xml:space="preserve">
+    <value>Frequenzversorgung.</value>
+  </data>
   <data name="Lbl_InputV.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -324,6 +369,9 @@
   <data name="Lbl_InputV.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Lbl_InputV.Text" xml:space="preserve">
+    <value>Eingangsspannung</value>
+  </data>
   <data name="Tab_Calibrage.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
@@ -335,6 +383,21 @@
   </data>
   <data name="Tab_Calibrage.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="Tab_Calibrage.Text" xml:space="preserve">
+    <value>Kalibrierung</value>
+  </data>
+  <data name="Cbx_LogLevel.Items" xml:space="preserve">
+    <value>Notice</value>
+  </data>
+  <data name="Cbx_LogLevel.Items1" xml:space="preserve">
+    <value>Aufmerksam</value>
+  </data>
+  <data name="Cbx_LogLevel.Items2" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Cbx_LogLevel.Items3" xml:space="preserve">
+    <value>Debuggen</value>
   </data>
   <data name="Cbx_LogLevel.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>190, 161</value>
@@ -375,6 +438,9 @@
   <data name="Lbl_LevelLog.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
+  <data name="Lbl_LevelLog.Text" xml:space="preserve">
+    <value>Protokollierungsstufe</value>
+  </data>
   <data name="CB_Use_Logfile.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -395,6 +461,9 @@
   </data>
   <data name="CB_Use_Logfile.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="CB_Use_Logfile.Text" xml:space="preserve">
+    <value>LogFile erstellen</value>
   </data>
   <data name="CB_Start_W_Win.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -417,6 +486,9 @@
   <data name="CB_Start_W_Win.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="CB_Start_W_Win.Text" xml:space="preserve">
+    <value>Starte mit Windows</value>
+  </data>
   <data name="CB_Close_Tray.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -437,6 +509,9 @@
   </data>
   <data name="CB_Close_Tray.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="CB_Close_Tray.Text" xml:space="preserve">
+    <value>In der Nähe von Tablett</value>
   </data>
   <data name="CB_Start_Mini.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -459,6 +534,9 @@
   <data name="CB_Start_Mini.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="CB_Start_Mini.Text" xml:space="preserve">
+    <value>Minimiert starten</value>
+  </data>
   <data name="CB_Systray.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -480,6 +558,9 @@
   <data name="CB_Systray.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="CB_Systray.Text" xml:space="preserve">
+    <value>Minimize to tray</value>
+  </data>
   <data name="Tab_Miscellanous.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
@@ -488,6 +569,9 @@
   </data>
   <data name="Tab_Miscellanous.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="Tab_Miscellanous.Text" xml:space="preserve">
+    <value>Verschiedenes</value>
   </data>
   <data name="Lbl_Percent.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -500,6 +584,9 @@
   </data>
   <data name="Lbl_Percent.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>14</value>
+  </data>
+  <data name="Lbl_Percent.Text" xml:space="preserve">
+    <value>%</value>
   </data>
   <data name="Tb_GraceTime.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>240, 191</value>
@@ -528,6 +615,9 @@
   <data name="Cb_ExtendTime.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
+  <data name="Cb_ExtendTime.Text" xml:space="preserve">
+    <value>Erweiterte Abschaltzeit zulassen</value>
+  </data>
   <data name="Tb_Delay_Stop.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>240, 131</value>
   </data>
@@ -536,6 +626,15 @@
   </data>
   <data name="Tb_Delay_Stop.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>11</value>
+  </data>
+  <data name="Cbx_TypeStop.Items" xml:space="preserve">
+    <value>Shutdown</value>
+  </data>
+  <data name="Cbx_TypeStop.Items1" xml:space="preserve">
+    <value>Schlaf</value>
+  </data>
+  <data name="Cbx_TypeStop.Items2" xml:space="preserve">
+    <value>Überwintern</value>
   </data>
   <data name="Cbx_TypeStop.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>181, 101</value>
@@ -563,6 +662,9 @@
   </data>
   <data name="Cb_ImmediateStop.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>9</value>
+  </data>
+  <data name="Cb_ImmediateStop.Text" xml:space="preserve">
+    <value>Sofortige Stoppaktion</value>
   </data>
   <data name="Tb_BattLimit_Time.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>240, 41</value>
@@ -594,6 +696,9 @@
   <data name="Lbl_GraceTime.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
+  <data name="Lbl_GraceTime.Text" xml:space="preserve">
+    <value>Grace Verzögerung beim Herunterfahren (Sek.)</value>
+  </data>
   <data name="Lbl_Delay_Stop.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -605,6 +710,9 @@
   </data>
   <data name="Lbl_Delay_Stop.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="Lbl_Delay_Stop.Text" xml:space="preserve">
+    <value>Verzögerung beim Herunterfahren (Sek.)</value>
   </data>
   <data name="Lbl_StopType.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -618,6 +726,9 @@
   <data name="Lbl_StopType.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="Lbl_StopType.Text" xml:space="preserve">
+    <value>Art des Stopps</value>
+  </data>
   <data name="Lbl_BattLimit_Time.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -629,6 +740,10 @@
   </data>
   <data name="Lbl_BattLimit_Time.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="Lbl_BattLimit_Time.Text" xml:space="preserve">
+    <value>Herunterfahren, wenn die Laufzeit
+niedriger als (Sek.)</value>
   </data>
   <data name="Lbl_BattLimit_Load.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -642,6 +757,10 @@
   <data name="Lbl_BattLimit_Load.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Lbl_BattLimit_Load.Text" xml:space="preserve">
+    <value>Herunterfahren, wenn die Batterie
+niedriger als ist</value>
+  </data>
   <data name="Tab_Shutdown.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
@@ -651,6 +770,15 @@
   <data name="Tab_Shutdown.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="Tab_Shutdown.Text" xml:space="preserve">
+    <value>Optionen zum Herunterfahren</value>
+  </data>
+  <data name="Cbx_Branch_Update.Items" xml:space="preserve">
+    <value>Stabil</value>
+  </data>
+  <data name="Cbx_Branch_Update.Items1" xml:space="preserve">
+    <value>Entwicklung</value>
+  </data>
   <data name="Cbx_Branch_Update.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>196, 101</value>
   </data>
@@ -659,6 +787,15 @@
   </data>
   <data name="Cbx_Branch_Update.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="Cbx_Delay_Verif.Items" xml:space="preserve">
+    <value>Täglich</value>
+  </data>
+  <data name="Cbx_Delay_Verif.Items1" xml:space="preserve">
+    <value>Wöchentlich</value>
+  </data>
+  <data name="Cbx_Delay_Verif.Items2" xml:space="preserve">
+    <value>Monatlich</value>
   </data>
   <data name="Cbx_Delay_Verif.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>196, 71</value>
@@ -681,6 +818,9 @@
   <data name="Lbl_Branch_Update.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="Lbl_Branch_Update.Text" xml:space="preserve">
+    <value>Stabiler oder Entwicklungszweig</value>
+  </data>
   <data name="Lbl_Delay_Verif.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -692,6 +832,9 @@
   </data>
   <data name="Lbl_Delay_Verif.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="Lbl_Delay_Verif.Text" xml:space="preserve">
+    <value>Verzögerung zwischen der Überprüfung</value>
   </data>
   <data name="Cb_Update_At_Start.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -711,6 +854,9 @@
   <data name="Cb_Update_At_Start.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="Cb_Update_At_Start.Text" xml:space="preserve">
+    <value>Überprüfen Sie das Update beim Start</value>
+  </data>
   <data name="Cb_Verify_Update.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -729,6 +875,9 @@
   <data name="Cb_Verify_Update.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Cb_Verify_Update.Text" xml:space="preserve">
+    <value>Überprüfen Sie das Update</value>
+  </data>
   <data name="Tab_Update.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
@@ -737,6 +886,9 @@
   </data>
   <data name="Tab_Update.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="Tab_Update.Text" xml:space="preserve">
+    <value>Aktualisieren</value>
   </data>
   <data name="TabControl_Options.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
@@ -756,6 +908,9 @@
   <data name="Btn_Ok.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="Btn_Ok.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="Btn_Apply.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>186, 278</value>
   </data>
@@ -765,6 +920,9 @@
   <data name="Btn_Apply.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="Btn_Apply.Text" xml:space="preserve">
+    <value>Anwenden</value>
+  </data>
   <data name="Btn_Cancel.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>267, 278</value>
   </data>
@@ -773,6 +931,9 @@
   </data>
   <data name="Btn_Cancel.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="Btn_Cancel.Text" xml:space="preserve">
+    <value>Stornieren</value>
   </data>
   <data name="$this.AutoScaleDimensions" xml:space="preserve" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -7628,6 +7789,9 @@
         AAB+wwAAAIEAAMPbAADn2wAA
 </value>
   </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
   <metadata name="$this.Localizable" xml:space="preserve" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -7637,4 +7801,132 @@
   <metadata name="Pref_TlTip.TrayLocation" xml:space="preserve" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="Tb_Delay_Com.ToolTip" xml:space="preserve">
+    <value>Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5000).
+Akzeptierter Wert: Numerischer Wert von 1 bis 60.000 ms.</value>
+  </data>
+  <data name="Tb_UPS_Name.ToolTip" xml:space="preserve">
+    <value>Zu überwachender USV-Name.
+Akzeptierter Wert: Name der auf dem Nut-Server konfigurierten USV.</value>
+  </data>
+  <data name="Tb_Port.ToolTip" xml:space="preserve">
+    <value>Nut Server Port Number (Standard = 3493).
+Akzeptierter Wert: Numerischer Wert von 1 bis 65535.</value>
+  </data>
+  <data name="Tb_Server_IP.ToolTip" xml:space="preserve">
+    <value>Nut Server Adresse.
+Akzeptierter Wert: IPV4 / IPV6 / FQDN-Adresse.</value>
+  </data>
+  <data name="Cb_Reconnect.ToolTip" xml:space="preserve">
+    <value>Aktivieren Sie die automatische Verbindung / Wiederverbindung</value>
+  </data>
+  <data name="Cbx_Freq_Input.ToolTip" xml:space="preserve">
+    <value>Legt die Eingangsfrequenz fest, wenn diese nicht von der USV geliefert wird.</value>
+  </data>
+  <data name="Tb_BattV_Max.ToolTip" xml:space="preserve">
+    <value>Maximale Batteriespannung.
+Akzeptierter Wert: Numerischer Wert von 0 bis 100.</value>
+  </data>
+  <data name="Tb_Load_Max.ToolTip" xml:space="preserve">
+    <value>Maximaler Lastpegel der USV.
+Akzeptierter Wert: Numerischer Wert von 0 bis 100.</value>
+  </data>
+  <data name="Tb_OutV_Max.ToolTip" xml:space="preserve">
+    <value>Maximale Ausgangsspannung.
+Akzeptierter Wert: Numerischer Wert von 0 bis 999.</value>
+  </data>
+  <data name="Tb_InF_Max.ToolTip" xml:space="preserve">
+    <value>Maximale Eingangsfrequenz.
+Akzeptierter Wert: Numerischer Wert von 0 bis 100.</value>
+  </data>
+  <data name="Tb_BattV_Min.ToolTip" xml:space="preserve">
+    <value>Minimale Batteriespannung.
+Akzeptierter Wert: Numerischer Wert von 0 bis 100.</value>
+  </data>
+  <data name="Tb_Load_Min.ToolTip" xml:space="preserve">
+    <value>Mindestladezustand der USV.
+Akzeptierter Wert: Numerischer Wert von 0 bis 100.</value>
+  </data>
+  <data name="Tb_OutV_Min.ToolTip" xml:space="preserve">
+    <value>Minimale Ausgangsspannung.
+Akzeptierter Wert: Numerischer Wert von 0 bis 999.</value>
+  </data>
+  <data name="Tb_InF_Min.ToolTip" xml:space="preserve">
+    <value>Minimale Eingangsfrequenz.
+Akzeptierter Wert: Numerischer Wert von 0 bis 100.</value>
+  </data>
+  <data name="Tb_InV_Max.ToolTip" xml:space="preserve">
+    <value>Maximale Eingangsspannung.
+Akzeptierter Wert: Numerischer Wert von 0 bis 999.</value>
+  </data>
+  <data name="Tb_InV_Min.ToolTip" xml:space="preserve">
+    <value>Minimale Eingangsspannung.
+Akzeptierter Wert: Numerischer Wert von 0 bis 999.</value>
+  </data>
+  <data name="Cbx_LogLevel.ToolTip" xml:space="preserve">
+    <value>Protokollierungsstufe.</value>
+  </data>
+  <data name="Btn_DeleteLog.ToolTip" xml:space="preserve">
+    <value>Protokolldatei löschen.</value>
+  </data>
+  <data name="Btn_ViewLog.ToolTip" xml:space="preserve">
+    <value>Öffnen Sie die Protokolldatei.</value>
+  </data>
+  <data name="Lbl_LevelLog.ToolTip" xml:space="preserve">
+    <value>Protokolldatei Protokollstufe</value>
+  </data>
+  <data name="CB_Use_Logfile.ToolTip" xml:space="preserve">
+    <value>Erstellen Sie eine Protokolldatei (Datei "WinNUT-client.log" im WinNUT-Installationsverzeichnis).</value>
+  </data>
+  <data name="CB_Start_W_Win.ToolTip" xml:space="preserve">
+    <value>Startet WinNUT beim Start von Windows.</value>
+  </data>
+  <data name="CB_Close_Tray.ToolTip" xml:space="preserve">
+    <value>Sendet beim Schließen in Systray.</value>
+  </data>
+  <data name="CB_Start_Mini.ToolTip" xml:space="preserve">
+    <value>Startet WinNut Minimized.</value>
+  </data>
+  <data name="CB_Systray.ToolTip" xml:space="preserve">
+    <value>Reduziert auf die Taskleiste oder Systray.</value>
+  </data>
+  <data name="Tb_GraceTime.ToolTip" xml:space="preserve">
+    <value>Zusätzliche Nachfrist.
+Akzeptierter Wert: Numerischer Wert von 0 bis 3600.</value>
+  </data>
+  <data name="Cb_ExtendTime.ToolTip" xml:space="preserve">
+    <value>Warten Sie während des Herunterfahrens zusätzliche Zeit.
+Hinweis:
+Diese zusätzliche Zeit kann über die USV-Sicherungszeit hinausgehen - MIT VORSICHT VERWENDEN !!!</value>
+  </data>
+  <data name="Tb_Delay_Stop.ToolTip" xml:space="preserve">
+    <value>Stoppen Sie die Prozedurverzögerung, wenn sie verzögert ist.
+Akzeptierter Wert: Numerischer Wert von 0 bis 3600.</value>
+  </data>
+  <data name="Cbx_TypeStop.ToolTip" xml:space="preserve">
+    <value>Art des Stopps am Ende des Stoppvorgangs.</value>
+  </data>
+  <data name="Cb_ImmediateStop.ToolTip" xml:space="preserve">
+    <value>Startet das Herunterfahren sofort oder zeitgesteuert.</value>
+  </data>
+  <data name="Tb_BattLimit_Time.ToolTip" xml:space="preserve">
+    <value>Unteres Backup-Zeitlimit, das das Herunterfahren auslöst.
+Akzeptierter Wert: Numerischer Wert von 0 bis 3600.</value>
+  </data>
+  <data name="Tb_BattLimit_Load.ToolTip" xml:space="preserve">
+    <value>Untergrenze des Batteriestands, der den Abschaltvorgang auslöst.
+Akzeptierter Wert: Numerischer Wert von 0 bis 100.</value>
+  </data>
+  <data name="Cbx_Branch_Update.ToolTip" xml:space="preserve">
+    <value>Verwenden Sie während der Überprüfung den Zweig "Stabil" oder "Entwickeln".</value>
+  </data>
+  <data name="Cbx_Delay_Verif.ToolTip" xml:space="preserve">
+    <value>Häufigkeit der Überprüfung.</value>
+  </data>
+  <data name="Cb_Update_At_Start.ToolTip" xml:space="preserve">
+    <value>Sucht beim Start nach Updates.</value>
+  </data>
+  <data name="Cb_Verify_Update.ToolTip" xml:space="preserve">
+    <value>Auf Updates prüfen.</value>
+  </data>
 </root>

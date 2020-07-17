@@ -45,12 +45,6 @@ Public Class WinNUT
         IDX_ICO_DELETELOG = 2002
         IDX_OFFSET = 1024
     End Enum
-    'Public Enum LogLvl
-    '   LOG_NOTICE
-    '   LOG_WARNING
-    '   LOG_ERROR
-    '   LOG_DEBUG
-    'End Enum
     Public Property UpdateMethod() As String
         Get
             If Me.mUpdate Then
@@ -65,6 +59,8 @@ Public Class WinNUT
         End Set
     End Property
     Private Sub WinNUT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AddHandler Microsoft.Win32.SystemEvents.PowerModeChanged, AddressOf SystemEvents_PowerModeChanged
+
         'Init WinNUT Variables
         WinNUT_Globals.Init_Globals()
 
@@ -77,11 +73,25 @@ Public Class WinNUT
         'Init Log File
         LogFile.WriteLog = WinNUT_Params.Arr_Reg_Key.Item("UseLogFile")
         LogFile.LogLevel = WinNUT_Params.Arr_Reg_Key.Item("Log Level")
-        LogFile.LogTracing("Initialisation Globals Variables Complete", LogLvl.LOG_DEBUG, Me)
-        LogFile.LogTracing("Initialisation Params Complete", LogLvl.LOG_DEBUG, Me)
-        LogFile.LogTracing("Loaded Params Complete", LogLvl.LOG_DEBUG, Me)
         Me.LogLvls = New LogLvl
+        LogFile.LogTracing("Initialisation Globals Variables Complete", LogLvl.LOG_DEBUG, Me)
+        'Auto Import of old Ini File
+        Dim IniFile = AppDomain.CurrentDomain.BaseDirectory & "ups.ini"
 
+        If System.IO.File.Exists(IniFile) Then
+            If WinNUT_Params.ImportIni(IniFile) Then
+                LogFile.LogTracing("Import Old IniFile : Success", LogLvl.LOG_DEBUG, Me)
+                My.Computer.FileSystem.MoveFile(IniFile, IniFile & ".old")
+                MsgBox("Old ups.ini imported" & vbNewLine & "Ini File Moved to " & IniFile & ".old")
+            Else
+                LogFile.LogTracing("Failed To import old IniFile", LogLvl.LOG_DEBUG, Me)
+                LogFile.LogTracing("Initialisation Params Complete", LogLvl.LOG_DEBUG, Me)
+                LogFile.LogTracing("Loaded Params Complete", LogLvl.LOG_DEBUG, Me)
+            End If
+        Else
+            LogFile.LogTracing("Initialisation Params Complete", LogLvl.LOG_DEBUG, Me)
+            LogFile.LogTracing("Loaded Params Complete", LogLvl.LOG_DEBUG, Me)
+        End If
         'Init Systray
         Me.NotifyIcon.Text = WinNUT_Globals.LongProgramName & " - " & WinNUT_Globals.ProgramVersion
         Me.NotifyIcon.Visible = False
@@ -173,19 +183,21 @@ Public Class WinNUT
         Dim Start_App_Icon
         Dim Start_Tray_Icon
         If AppDarkMode Then
-            Start_App_Icon = AppIconIdx.IDX_OL Or AppIconIdx.IDX_BATT_100 Or AppIconIdx.WIN_DARK Or AppIconIdx.IDX_OFFSET
+            Start_App_Icon = AppIconIdx.IDX_ICO_OFFLINE Or AppIconIdx.WIN_DARK Or AppIconIdx.IDX_OFFSET
         Else
-            Start_App_Icon = AppIconIdx.IDX_OL Or AppIconIdx.IDX_BATT_100 Or AppIconIdx.IDX_OFFSET
+            Start_App_Icon = AppIconIdx.IDX_ICO_OFFLINE Or AppIconIdx.IDX_OFFSET
         End If
         Me.Icon = GetIcon(Start_App_Icon)
         If WinDarkMode Then
-            Start_Tray_Icon = AppIconIdx.IDX_OL Or AppIconIdx.IDX_BATT_100 Or AppIconIdx.WIN_DARK Or AppIconIdx.IDX_OFFSET
+            Start_Tray_Icon = AppIconIdx.IDX_ICO_OFFLINE Or AppIconIdx.WIN_DARK Or AppIconIdx.IDX_OFFSET
         Else
-            Start_Tray_Icon = AppIconIdx.IDX_OL Or AppIconIdx.IDX_BATT_100 Or AppIconIdx.IDX_OFFSET
+            Start_Tray_Icon = AppIconIdx.IDX_ICO_OFFLINE Or AppIconIdx.IDX_OFFSET
         End If
 
         'Initializes the state of the NotifyICon, the connection to the Nut server and the application icons
+        NotifyIcon.Visible = False
         NotifyIcon.Icon = GetIcon(Start_Tray_Icon)
+        Me.WindowState = FormWindowState.Minimized
         Dim NotifyStr As String
         NotifyStr = WinNUT_Globals.LongProgramName & " - " & WinNUT_Globals.ProgramVersion & vbNewLine
         NotifyStr &= "Not Connected"
@@ -197,7 +209,30 @@ Public Class WinNUT
         UpdateIcon_NotifyIcon()
         Start_Tray_Icon = Nothing
         NotifyStr = Nothing
+
+        'Run Update
+        If WinNUT_Params.Arr_Reg_Key.Item("VerifyUpdate") = True And WinNUT_Params.Arr_Reg_Key.Item("VerifyUpdateAtStart") = True Then
+            Dim th As System.Threading.Thread = New Threading.Thread(New System.Threading.ParameterizedThreadStart(AddressOf Run_Update))
+
+            th.SetApartmentState(System.Threading.ApartmentState.STA)
+            th.Start(Me.UpdateMethod)
+        End If
     End Sub
+
+    Private Sub SystemEvents_PowerModeChanged(ByVal sender As Object, ByVal e As Microsoft.Win32.PowerModeChangedEventArgs)
+        Select Case e.Mode
+            Case Microsoft.Win32.PowerModes.Resume
+                If WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect") = True Then
+                    UPS_Network.Connect()
+                End If
+            'Case PowerModes.StatusChange
+            Case Microsoft.Win32.PowerModes.Suspend
+                UPS_Network.Disconnect()
+                RemoveHandler Microsoft.Win32.SystemEvents.PowerModeChanged, AddressOf SystemEvents_PowerModeChanged
+                End
+        End Select
+    End Sub
+
     Private Sub WinNUT_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
         UpdateIcon_NotifyIcon()
@@ -209,6 +244,15 @@ Public Class WinNUT
         Else
             LogFile.LogTracing("Show WinNut Main Gui", LogLvl.LOG_DEBUG, Me)
             Me.NotifyIcon.Visible = False
+        End If
+        If WinNUT_Params.Arr_Reg_Key.Item("VerifyUpdate") = True Then
+            Me.Menu_Help_Sep1.Visible = True
+            Me.Menu_Update.Visible = True
+            Me.Menu_Update.Visible = Enabled = True
+        Else
+            Me.Menu_Help_Sep1.Visible = False
+            Me.Menu_Update.Visible = False
+            Me.Menu_Update.Visible = Enabled = False
         End If
     End Sub
 
@@ -225,8 +269,10 @@ Public Class WinNUT
             LogFile.LogTracing("Init Disconnecting Before Close WinNut", LogLvl.LOG_DEBUG, Me)
             UPS_Network.Disconnect()
             LogFile.LogTracing("WinNut Is now Closed", LogLvl.LOG_DEBUG, Me)
+            RemoveHandler Microsoft.Win32.SystemEvents.PowerModeChanged, AddressOf SystemEvents_PowerModeChanged
             End
         End If
+
     End Sub
 
     Private Sub Menu_Quit_Click_1(sender As Object, e As EventArgs) Handles Menu_Quit.Click
@@ -255,16 +301,16 @@ Public Class WinNUT
 
     Private Sub ContextMenu_Systray_DoubleClick(sender As Object, e As EventArgs) Handles ContextMenu_Systray.DoubleClick
         LogFile.LogTracing("Restore Main Gui On Mouse Double Click Contextual Menu Notify Icon", LogLvl.LOG_DEBUG, Me)
-        Me.WindowState = FormWindowState.Normal
         Me.Visible = True
         Me.NotifyIcon.Visible = False
+        Me.WindowState = FormWindowState.Normal
     End Sub
 
     Private Sub NotifyIcon_DoubleClick(sender As Object, e As EventArgs) Handles NotifyIcon.DoubleClick, NotifyIcon.MouseDoubleClick
         LogFile.LogTracing("Restore Main Gui On Double Click Notify Icon", LogLvl.LOG_DEBUG, Me)
-        Me.WindowState = FormWindowState.Normal
         Me.Visible = True
         Me.NotifyIcon.Visible = False
+        Me.WindowState = FormWindowState.Normal
     End Sub
     Private Sub WinNUT_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         If sender.WindowState = FormWindowState.Minimized Then
@@ -615,12 +661,21 @@ Public Class WinNUT
                 LogFile.LogTracing("Parameter Dial Voltage Battery Updated", LogLvl.LOG_DEBUG, Me)
             End If
         End With
+        If WinNUT_Params.Arr_Reg_Key.Item("VerifyUpdate") = True Then
+            Me.Menu_Help_Sep1.Visible = True
+            Me.Menu_Update.Visible = True
+            Me.Menu_Update.Visible = Enabled = True
+        Else
+            Me.Menu_Help_Sep1.Visible = False
+            Me.Menu_Update.Visible = False
+            Me.Menu_Update.Visible = Enabled = False
+        End If
     End Sub
 
     Private Sub UpdateIcon_NotifyIcon()
         Dim Tmp_Win_Mode As Integer
         Dim Tmp_App_Mode As Integer
-        If ActualAppIconIdx <> LastAppIconIdx Then
+        If (ActualAppIconIdx <> LastAppIconIdx) Then
             LogFile.LogTracing("Status Icon Changed", LogLvl.LOG_DEBUG, Me)
             If WinDarkMode Then
                 Tmp_Win_Mode = AppIconIdx.WIN_DARK Or AppIconIdx.IDX_OFFSET
@@ -639,7 +694,9 @@ Public Class WinNUT
             Dim TmpTrayIDX = ActualAppIconIdx Or Tmp_Win_Mode
             LogFile.LogTracing("New Icon Value For Systray : " & TmpTrayIDX.ToString, LogLvl.LOG_DEBUG, Me)
             LogFile.LogTracing("New Icon Value For Gui : " & TmpGuiIDX.ToString, LogLvl.LOG_DEBUG, Me)
-            NotifyIcon.Icon = GetIcon(TmpTrayIDX)
+            If NotifyIcon.Visible Then
+                NotifyIcon.Icon = GetIcon(TmpTrayIDX)
+            End If
             Me.Icon = GetIcon(TmpGuiIDX)
             LastAppIconIdx = ActualAppIconIdx
             TmpGuiIDX = Nothing
@@ -754,13 +811,14 @@ Public Class WinNUT
 
     Private Sub Menu_Update_Click(sender As Object, e As EventArgs) Handles Menu_Update.Click
         Me.mUpdate = True
-        Dim th As System.Threading.Thread = New Threading.Thread(New System.Threading.ParameterizedThreadStart(AddressOf Task_A))
+        Dim th As System.Threading.Thread = New Threading.Thread(New System.Threading.ParameterizedThreadStart(AddressOf Run_Update))
         th.SetApartmentState(System.Threading.ApartmentState.STA)
         th.Start(Me.UpdateMethod)
     End Sub
-    Public Sub Task_A(ByVal data As Object)
-        frmBuild = New Update_Gui(data) ' Must be created on this thread!
+    Public Sub Run_Update(ByVal data As Object)
+        Dim frmBuild As Update_Gui = New Update_Gui(data) ' Must be created on this thread!
         Application.Run(frmBuild)
+        frmBuild = Nothing
     End Sub
 End Class
 

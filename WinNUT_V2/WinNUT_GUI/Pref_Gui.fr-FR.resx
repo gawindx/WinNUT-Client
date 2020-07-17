@@ -744,7 +744,8 @@
     <value>1</value>
   </data>
   <data name="Lbl_BattLimit_Time.Text" xml:space="preserve">
-    <value>Arrêter si le temps de maintien est inférieur à (secondes)</value>
+    <value>Arrêter si le temps de maintien est 
+inférieur à (secondes)</value>
   </data>
   <data name="Lbl_BattLimit_Load.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -759,7 +760,8 @@
     <value>0</value>
   </data>
   <data name="Lbl_BattLimit_Load.Text" xml:space="preserve">
-    <value>Arrêter si le niveau de batterie est\ninférieur à</value>
+    <value>Arrêter si le niveau de batterie est
+inférieur à</value>
   </data>
   <data name="Tab_Shutdown.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -7801,4 +7803,132 @@
   <metadata name="Pref_TlTip.TrayLocation" xml:space="preserve" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="Tb_Delay_Com.ToolTip" xml:space="preserve">
+    <value>Temps entre chaque mise à jour des données UPS (par défaut = 5000).
+Valeur acceptée: valeur numérique de 1 à 60 000 ms.</value>
+  </data>
+  <data name="Tb_UPS_Name.ToolTip" xml:space="preserve">
+    <value>Nom de l'onduleur à surveiller.
+Valeur acceptée: nom de l'onduleur configuré dans le serveur Nut.</value>
+  </data>
+  <data name="Tb_Port.ToolTip" xml:space="preserve">
+    <value>Numéro de port du serveur Nut (par défaut = 3493).
+Valeur acceptée: valeur numérique de 1 à 65535.</value>
+  </data>
+  <data name="Tb_Server_IP.ToolTip" xml:space="preserve">
+    <value>Adresse du serveur Nut.
+Valeur acceptée: adresse IPV4 / IPV6 / FQDN.</value>
+  </data>
+  <data name="Cb_Reconnect.ToolTip" xml:space="preserve">
+    <value>Activer la connexion / reconnexion automatique</value>
+  </data>
+  <data name="Cbx_Freq_Input.ToolTip" xml:space="preserve">
+    <value>Sets the input frequency if not supplied by the UPS.</value>
+  </data>
+  <data name="Tb_BattV_Max.ToolTip" xml:space="preserve">
+    <value>Tension maximale de la batterie.
+Valeur acceptée: valeur numérique de 0 à 100.</value>
+  </data>
+  <data name="Tb_Load_Max.ToolTip" xml:space="preserve">
+    <value>Niveau de charge maximum de l'onduleur.
+Valeur acceptée: valeur numérique de 0 à 100.</value>
+  </data>
+  <data name="Tb_OutV_Max.ToolTip" xml:space="preserve">
+    <value>Tension de sortie maximale.
+Valeur acceptée: valeur numérique de 0 à 999.</value>
+  </data>
+  <data name="Tb_InF_Max.ToolTip" xml:space="preserve">
+    <value>Fréquence d'entrée maximale.
+Valeur acceptée: valeur numérique de 0 à 100.</value>
+  </data>
+  <data name="Tb_BattV_Min.ToolTip" xml:space="preserve">
+    <value>Tension minimale de la batterie.
+Valeur acceptée: valeur numérique de 0 à 100.</value>
+  </data>
+  <data name="Tb_Load_Min.ToolTip" xml:space="preserve">
+    <value>Niveau de charge minimum de l'onduleur.
+Valeur acceptée: valeur numérique de 0 à 100.</value>
+  </data>
+  <data name="Tb_OutV_Min.ToolTip" xml:space="preserve">
+    <value>Tension de sortie minimale.
+Valeur acceptée: valeur numérique de 0 à 999.</value>
+  </data>
+  <data name="Tb_InF_Min.ToolTip" xml:space="preserve">
+    <value>Fréquence d'entrée minimale.
+Valeur acceptée: valeur numérique de 0 à 100.</value>
+  </data>
+  <data name="Tb_InV_Max.ToolTip" xml:space="preserve">
+    <value>Tension d'entrée maximale.
+Valeur acceptée: valeur numérique de 0 à 999.</value>
+  </data>
+  <data name="Tb_InV_Min.ToolTip" xml:space="preserve">
+    <value>Tension d'entrée minimale.
+Valeur acceptée: valeur numérique de 0 à 999.</value>
+  </data>
+  <data name="Cbx_LogLevel.ToolTip" xml:space="preserve">
+    <value>Niveau de Journalisation</value>
+  </data>
+  <data name="Btn_DeleteLog.ToolTip" xml:space="preserve">
+    <value>Supprimer le fichier journal.</value>
+  </data>
+  <data name="Btn_ViewLog.ToolTip" xml:space="preserve">
+    <value>Ouvrez le fichier journal.</value>
+  </data>
+  <data name="Lbl_LevelLog.ToolTip" xml:space="preserve">
+    <value>Niveau de journalisation du fichier journal</value>
+  </data>
+  <data name="CB_Use_Logfile.ToolTip" xml:space="preserve">
+    <value>Créez un fichier journal (fichier "WinNUT-client.log" dans le répertoire d'installation de WinNUT).</value>
+  </data>
+  <data name="CB_Start_W_Win.ToolTip" xml:space="preserve">
+    <value>Démarre WinNUT au démarrage de Windows.</value>
+  </data>
+  <data name="CB_Close_Tray.ToolTip" xml:space="preserve">
+    <value>Envoie dans le Systray à la fermeture.</value>
+  </data>
+  <data name="CB_Start_Mini.ToolTip" xml:space="preserve">
+    <value>Démarre WinNut minimisé.</value>
+  </data>
+  <data name="CB_Systray.ToolTip" xml:space="preserve">
+    <value>Réduit à la barre des tâches ou Systray.</value>
+  </data>
+  <data name="Tb_GraceTime.ToolTip" xml:space="preserve">
+    <value>Limite de délai de grâce supplémentaire.
+Valeur acceptée: valeur numérique de 0 à 3600.</value>
+  </data>
+  <data name="Cb_ExtendTime.ToolTip" xml:space="preserve">
+    <value>Accordez du temps supplémentaire pendant la procédure d'arrêt.
+Remarque:
+Ce temps supplémentaire pourrait dépasser le temps de sauvegarde de l'onduleur - À UTILISER AVEC PRECAUTION !!!</value>
+  </data>
+  <data name="Tb_Delay_Stop.ToolTip" xml:space="preserve">
+    <value>Arrêter le délai de la procédure en cas de retard.
+Valeur acceptée: valeur numérique de 0 à 3600.</value>
+  </data>
+  <data name="Cbx_TypeStop.ToolTip" xml:space="preserve">
+    <value>Type d'arrêt à la fin de la procédure d'arrêt.</value>
+  </data>
+  <data name="Cb_ImmediateStop.ToolTip" xml:space="preserve">
+    <value>Démarre la procédure d'arrêt immédiatement ou temporisée.</value>
+  </data>
+  <data name="Tb_BattLimit_Time.ToolTip" xml:space="preserve">
+    <value>Délai de sauvegarde inférieur déclenchant la procédure d'arrêt.
+Valeur acceptée: valeur numérique de 0 à 3600.</value>
+  </data>
+  <data name="Tb_BattLimit_Load.ToolTip" xml:space="preserve">
+    <value>Limite inférieure du niveau de la batterie déclenchant la procédure d'arrêt.
+Valeur acceptée: valeur numérique de 0 à 100.</value>
+  </data>
+  <data name="Cbx_Branch_Update.ToolTip" xml:space="preserve">
+    <value>Utilisez la branche Stable ou Develop lors de la vérification.</value>
+  </data>
+  <data name="Cbx_Delay_Verif.ToolTip" xml:space="preserve">
+    <value>Fréquence de vérification.</value>
+  </data>
+  <data name="Cb_Update_At_Start.ToolTip" xml:space="preserve">
+    <value>Vérifie les mises à jour au démarrage.</value>
+  </data>
+  <data name="Cb_Verify_Update.ToolTip" xml:space="preserve">
+    <value>Vérifiez les mises à jour.</value>
+  </data>
 </root>

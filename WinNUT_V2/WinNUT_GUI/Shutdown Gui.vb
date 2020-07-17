@@ -2,7 +2,7 @@
     Private LogFile As Logger
     Private RedText As Boolean = True
     Private Elapsed As Double
-    Private Shutdown_PBar As New WinFormControls.CProgressBar
+    Private ReadOnly Shutdown_PBar As New WinFormControls.CProgressBar
     Private Start_Shutdown As DateTime
     Public Grace_Timer As New Timer
     Public Shutdown_Timer As New Timer

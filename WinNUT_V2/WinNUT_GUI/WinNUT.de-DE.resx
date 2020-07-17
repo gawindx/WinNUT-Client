@@ -6866,26 +6866,50 @@
   <data name="Menu_UPS_Var.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>139, 22</value>
   </data>
+  <data name="Menu_UPS_Var.Text" xml:space="preserve">
+    <value>USV-Variable</value>
+  </data>
   <data name="Menu_Quit.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>139, 22</value>
+  </data>
+  <data name="Menu_Quit.Text" xml:space="preserve">
+    <value>Ausgang</value>
   </data>
   <data name="Menu_File.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>37, 20</value>
   </data>
+  <data name="Menu_File.Text" xml:space="preserve">
+    <value>Datei</value>
+  </data>
   <data name="Menu_Reconnect.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>133, 22</value>
+  </data>
+  <data name="Menu_Reconnect.Text" xml:space="preserve">
+    <value>Erneut verbinden</value>
   </data>
   <data name="Menu_Disconnect.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>133, 22</value>
   </data>
+  <data name="Menu_Disconnect.Text" xml:space="preserve">
+    <value>Trennen</value>
+  </data>
   <data name="Menu_Connection.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>81, 20</value>
+  </data>
+  <data name="Menu_Connection.Text" xml:space="preserve">
+    <value>Verbindung</value>
   </data>
   <data name="Menu_Settings.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>61, 20</value>
   </data>
+  <data name="Menu_Settings.Text" xml:space="preserve">
+    <value>die Einstellungen</value>
+  </data>
   <data name="Menu_About.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>144, 22</value>
+  </data>
+  <data name="Menu_About.Text" xml:space="preserve">
+    <value>Über</value>
   </data>
   <data name="Menu_Help_Sep1.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>141, 6</value>
@@ -6893,8 +6917,14 @@
   <data name="Menu_Update.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>144, 22</value>
   </data>
+  <data name="Menu_Update.Text" xml:space="preserve">
+    <value>Überprüfen Sie das Update</value>
+  </data>
   <data name="Menu_Help.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>44, 20</value>
+  </data>
+  <data name="Menu_Help.Text" xml:space="preserve">
+    <value>Hilfe</value>
   </data>
   <data name="Main_Menu.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -6905,8 +6935,14 @@
   <data name="Main_Menu.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Main_Menu.Text" xml:space="preserve">
+    <value>MenuStrip1</value>
+  </data>
   <data name="$this.ClientSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>800, 450</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>WinNUT</value>
   </data>
   <metadata name="$this.Localizable" xml:space="preserve" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -6914,11 +6950,17 @@
   <data name="Menu_Sys_Settings.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>144, 22</value>
   </data>
+  <data name="Menu_Sys_Settings.Text" xml:space="preserve">
+    <value>die Einstellungen</value>
+  </data>
   <data name="Menu_Sys_Sep1.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>141, 6</value>
   </data>
   <data name="Menu_Sys_Update.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>144, 22</value>
+  </data>
+  <data name="Menu_Sys_Update.Text" xml:space="preserve">
+    <value>Überprüfen Sie das Update</value>
   </data>
   <data name="Menu_Sys_Sep2.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>141, 6</value>
@@ -6926,11 +6968,17 @@
   <data name="Menu_Sys_About.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>144, 22</value>
   </data>
+  <data name="Menu_Sys_About.Text" xml:space="preserve">
+    <value>Über</value>
+  </data>
   <data name="Menu_Sys_Sep3.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>141, 6</value>
   </data>
   <data name="Menu_Sys_Exit.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>144, 22</value>
+  </data>
+  <data name="Menu_Sys_Exit.Text" xml:space="preserve">
+    <value>Ausgang</value>
   </data>
   <data name="ContextMenu_Systray.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>145, 110</value>
@@ -13783,6 +13831,9 @@
         AAB+wwAAAIEAAMPbAADn2wAA
 </value>
   </data>
+  <data name="NotifyIcon.Text" xml:space="preserve">
+    <value>NotifyIcon1</value>
+  </data>
   <data name="NotifyIcon.Visible" xml:space="preserve" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -13960,6 +14011,9 @@
   <data name="Lbl_Firmware.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
+  <data name="Lbl_Firmware.Text" xml:space="preserve">
+    <value>Firmware:</value>
+  </data>
   <data name="Lbl_Serial.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 260</value>
   </data>
@@ -13968,6 +14022,9 @@
   </data>
   <data name="Lbl_Serial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>7</value>
+  </data>
+  <data name="Lbl_Serial.Text" xml:space="preserve">
+    <value>Seriennummer:</value>
   </data>
   <data name="Lbl_Name.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 212</value>
@@ -13978,6 +14035,9 @@
   <data name="Lbl_Name.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
+  <data name="Lbl_Name.Text" xml:space="preserve">
+    <value>Name :</value>
+  </data>
   <data name="Lbl_Mfr.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 164</value>
   </data>
@@ -13986,6 +14046,9 @@
   </data>
   <data name="Lbl_Mfr.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="Lbl_Mfr.Text" xml:space="preserve">
+    <value>Hersteller:</value>
   </data>
   <data name="Lbl_RTime.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 116</value>
@@ -13996,6 +14059,9 @@
   <data name="Lbl_RTime.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="Lbl_RTime.Text" xml:space="preserve">
+    <value>Verbleibende Zeit :</value>
+  </data>
   <data name="Lbl_BL.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 92</value>
   </data>
@@ -14004,6 +14070,9 @@
   </data>
   <data name="Lbl_BL.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="Lbl_BL.Text" xml:space="preserve">
+    <value>USV-Batterie schwach</value>
   </data>
   <data name="Lbl_OLoad.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 68</value>
@@ -14014,6 +14083,9 @@
   <data name="Lbl_OLoad.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="Lbl_OLoad.Text" xml:space="preserve">
+    <value>USV-Überlastung</value>
+  </data>
   <data name="Lbl_OB.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 44</value>
   </data>
@@ -14023,6 +14095,9 @@
   <data name="Lbl_OB.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="Lbl_OB.Text" xml:space="preserve">
+    <value>USV im Akkubetrieb</value>
+  </data>
   <data name="Lbl_OL.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 20</value>
   </data>
@@ -14031,6 +14106,9 @@
   </data>
   <data name="Lbl_OL.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="Lbl_OL.Text" xml:space="preserve">
+    <value>USV angeschlossen</value>
   </data>
   <data name="GB_Status.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>12, 27</value>
@@ -14068,6 +14146,9 @@
   <data name="Lbl_BattCh_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Lbl_BattCh_Dial.Text" xml:space="preserve">
+    <value>Batterieladung</value>
+  </data>
   <data name="Lbl_BattCh_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
@@ -14100,6 +14181,9 @@
   </data>
   <data name="Lbl_InF_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="Lbl_InF_Dial.Text" xml:space="preserve">
+    <value>Eingangsfrequenz</value>
   </data>
   <data name="Lbl_InF_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -14134,6 +14218,9 @@
   <data name="Lbl_OutV_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Lbl_OutV_Dial.Text" xml:space="preserve">
+    <value>Ausgangsspannung</value>
+  </data>
   <data name="Lbl_OutV_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
@@ -14167,6 +14254,9 @@
   <data name="Lbl_Load_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Lbl_Load_Dial.Text" xml:space="preserve">
+    <value>USV laden</value>
+  </data>
   <data name="Lbl_Load_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
@@ -14199,6 +14289,9 @@
   </data>
   <data name="Lbl_BattV_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="Lbl_BattV_Dial.Text" xml:space="preserve">
+    <value>Batteriespannung</value>
   </data>
   <data name="Lbl_BattV_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -14410,6 +14503,9 @@
   <data name="Lbl_InV_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Lbl_InV_Dial.Text" xml:space="preserve">
+    <value>Eingangsspannung</value>
+  </data>
   <data name="Lbl_InV_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
@@ -14524,4 +14620,28 @@
   <metadata name="CB_CurrentLog.Locked" xml:space="preserve" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="Lbl_BL.MaximumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_BL.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OLoad.MaximumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OLoad.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OB.MaximumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OB.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OL.MaximumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OL.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
 </root>

@@ -7077,16 +7077,16 @@
     <value>Settings</value>
   </data>
   <data name="Menu_About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>144, 22</value>
   </data>
   <data name="Menu_About.Text" xml:space="preserve">
     <value>About</value>
   </data>
   <data name="Menu_Help_Sep1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>141, 6</value>
   </data>
   <data name="Menu_Update.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>144, 22</value>
   </data>
   <data name="Menu_Update.Text" xml:space="preserve">
     <value>Verify Update</value>
@@ -7104,7 +7104,7 @@
     <value>0, 24</value>
   </data>
   <data name="Main_Menu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 24</value>
+    <value>231, 24</value>
   </data>
   <data name="Main_Menu.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -7622,8 +7622,14 @@
   <data name="Lbl_BL.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 92</value>
   </data>
+  <data name="Lbl_BL.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_BL.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
   <data name="Lbl_BL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 13</value>
+    <value>140, 13</value>
   </data>
   <data name="Lbl_BL.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -7649,8 +7655,14 @@
   <data name="Lbl_OLoad.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 68</value>
   </data>
+  <data name="Lbl_OLoad.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OLoad.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
   <data name="Lbl_OLoad.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
+    <value>140, 13</value>
   </data>
   <data name="Lbl_OLoad.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -7676,8 +7688,14 @@
   <data name="Lbl_OB.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 44</value>
   </data>
+  <data name="Lbl_OB.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OB.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
   <data name="Lbl_OB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 13</value>
+    <value>140, 13</value>
   </data>
   <data name="Lbl_OB.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -7703,8 +7721,14 @@
   <data name="Lbl_OL.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 20</value>
   </data>
+  <data name="Lbl_OL.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OL.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
   <data name="Lbl_OL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 13</value>
+    <value>140, 13</value>
   </data>
   <data name="Lbl_OL.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

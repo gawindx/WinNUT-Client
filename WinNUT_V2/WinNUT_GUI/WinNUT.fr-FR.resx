@@ -14011,6 +14011,9 @@
   <data name="Lbl_Firmware.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
+  <data name="Lbl_Firmware.Text" xml:space="preserve">
+    <value>Firmware :</value>
+  </data>
   <data name="Lbl_Serial.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 260</value>
   </data>
@@ -14019,6 +14022,9 @@
   </data>
   <data name="Lbl_Serial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>7</value>
+  </data>
+  <data name="Lbl_Serial.Text" xml:space="preserve">
+    <value>Serial :</value>
   </data>
   <data name="Lbl_Name.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 212</value>
@@ -14029,6 +14035,9 @@
   <data name="Lbl_Name.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
+  <data name="Lbl_Name.Text" xml:space="preserve">
+    <value>Nom :</value>
+  </data>
   <data name="Lbl_Mfr.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 164</value>
   </data>
@@ -14037,6 +14046,9 @@
   </data>
   <data name="Lbl_Mfr.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="Lbl_Mfr.Text" xml:space="preserve">
+    <value>Fabricant :</value>
   </data>
   <data name="Lbl_RTime.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 116</value>
@@ -14047,6 +14059,9 @@
   <data name="Lbl_RTime.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="Lbl_RTime.Text" xml:space="preserve">
+    <value>Temps de Sauvegarde :</value>
+  </data>
   <data name="Lbl_BL.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 92</value>
   </data>
@@ -14055,6 +14070,9 @@
   </data>
   <data name="Lbl_BL.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="Lbl_BL.Text" xml:space="preserve">
+    <value>Batteries Basse UPS</value>
   </data>
   <data name="Lbl_OLoad.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 68</value>
@@ -14065,6 +14083,9 @@
   <data name="Lbl_OLoad.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="Lbl_OLoad.Text" xml:space="preserve">
+    <value>Surcharge UPS</value>
+  </data>
   <data name="Lbl_OB.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 44</value>
   </data>
@@ -14074,6 +14095,9 @@
   <data name="Lbl_OB.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="Lbl_OB.Text" xml:space="preserve">
+    <value>UPS Sur Batteries</value>
+  </data>
   <data name="Lbl_OL.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>6, 20</value>
   </data>
@@ -14082,6 +14106,9 @@
   </data>
   <data name="Lbl_OL.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="Lbl_OL.Text" xml:space="preserve">
+    <value>UPS Sur Secteur</value>
   </data>
   <data name="GB_Status.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
     <value>12, 27</value>
@@ -14119,6 +14146,9 @@
   <data name="Lbl_BattCh_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Lbl_BattCh_Dial.Text" xml:space="preserve">
+    <value>Charge Batterie</value>
+  </data>
   <data name="Lbl_BattCh_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
@@ -14151,6 +14181,9 @@
   </data>
   <data name="Lbl_InF_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="Lbl_InF_Dial.Text" xml:space="preserve">
+    <value>Fréquence d'entrée</value>
   </data>
   <data name="Lbl_InF_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -14185,6 +14218,9 @@
   <data name="Lbl_OutV_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Lbl_OutV_Dial.Text" xml:space="preserve">
+    <value>Tension de Sortie</value>
+  </data>
   <data name="Lbl_OutV_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
@@ -14218,6 +14254,9 @@
   <data name="Lbl_Load_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Lbl_Load_Dial.Text" xml:space="preserve">
+    <value>Charge UPS</value>
+  </data>
   <data name="Lbl_Load_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
@@ -14250,6 +14289,9 @@
   </data>
   <data name="Lbl_BattV_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="Lbl_BattV_Dial.Text" xml:space="preserve">
+    <value>Tension de Batterie</value>
   </data>
   <data name="Lbl_BattV_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -14461,6 +14503,9 @@
   <data name="Lbl_InV_Dial.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="Lbl_InV_Dial.Text" xml:space="preserve">
+    <value>Tension d'Entrée</value>
+  </data>
   <data name="Lbl_InV_Dial.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
@@ -14575,4 +14620,28 @@
   <metadata name="CB_CurrentLog.Locked" xml:space="preserve" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="Lbl_BL.MaximumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_BL.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OLoad.MaximumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OLoad.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OB.MaximumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OB.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OL.MaximumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
+  <data name="Lbl_OL.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>140, 13</value>
+  </data>
 </root>
