@@ -39,12 +39,7 @@ Public Class UPS_Network
     Private ReaderStream As System.IO.StreamReader
     Private WriterStream As System.IO.StreamWriter
     Private ShutdownStatus As Boolean = False
-    Public Enum LogLvl
-        LOG_NOTICE
-        LOG_WARNING
-        LOG_ERROR
-        LOG_DEBUG
-    End Enum
+    Private Const CosPhi As Double = 0.6
 
     Public Sub New(ByRef LogFile As Logger)
         Me.Server = ""
@@ -507,12 +502,12 @@ Public Class UPS_Network
                 Me.OutputV = Double.Parse(GetUPSVar("output.voltage", Me.UPS_InputV), ciClone)
                 Me.Load = Double.Parse(GetUPSVar("ups.load", 100), ciClone)
                 Me.Status = GetUPSVar("ups.status", "OL")
-                Me.OutPower = Double.Parse(GetUPSVar("ups.realpower.nominal", 0), ciClone)
+                Me.OutPower = Double.Parse((GetUPSVar("ups.realpower.nominal", 0)), ciClone)
                 If Me.OutPower = 0 Then
                     Me.InputA = Double.Parse(GetUPSVar("ups.current.nominal", 1), ciClone)
-                    Me.OutPower = Math.Round(Me.UPS_InputV * 0.95 * Me.UPS_InputA)
+                    Me.OutPower = Math.Round(Me.UPS_InputV * 0.95 * Me.UPS_InputA * CosPhi)
                 Else
-                    Me.OutPower = Math.Round((Me.UPS_OutPower / 0.6) * (Me.UPS_Load / 100))
+                    Me.OutPower = Math.Round(Me.UPS_OutPower * (Me.UPS_Load / 100))
                 End If
                 Dim PowerDivider As Double = 0.5
                 Select Case Me.Load

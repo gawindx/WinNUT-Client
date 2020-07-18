@@ -210,16 +210,12 @@
     <EmbeddedResource Include="Pref_Gui.de-DE.resx">
       <DependentUpon>Pref_Gui.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pref_Gui.en-US.resx">
-      <DependentUpon>Pref_Gui.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pref_Gui.fr-FR.resx">
       <DependentUpon>Pref_Gui.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pref_Gui.resx">
       <DependentUpon>Pref_Gui.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="My Project\Resources.en-US.resx" />
     <EmbeddedResource Include="Shutdown Gui.de-DE.resx">
       <DependentUpon>Shutdown Gui.vb</DependentUpon>
     </EmbeddedResource>
@@ -238,19 +234,10 @@
     <EmbeddedResource Include="Update_Gui.resx">
       <DependentUpon>Update_Gui.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinNUT.aa.resx">
-      <DependentUpon>WinNUT.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="WinNUT.de-DE.resx">
       <DependentUpon>WinNUT.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinNUT.en-US.resx">
-      <DependentUpon>WinNUT.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="WinNUT.fr-FR.resx">
-      <DependentUpon>WinNUT.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinNUT.fr.resx">
       <DependentUpon>WinNUT.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinNUT.resx">

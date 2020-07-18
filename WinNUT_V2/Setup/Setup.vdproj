@@ -33,12 +33,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_68A44B9517554BCD9494CCF7F8C827AE"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_70DBA11C2BF449198BA594449914C1BC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -89,12 +83,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E23C19B9EA0547AC8A040F7465F1F220"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_68A44B9517554BCD9494CCF7F8C827AE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -166,6 +154,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -265,37 +261,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_68A44B9517554BCD9494CCF7F8C827AE"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WinNUT-client.resources, Version=2.0.0.0, Culture=en-US, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_68A44B9517554BCD9494CCF7F8C827AE"
-                    {
-                    "Name" = "8:WinNUT-client.resources.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\WinNUT_GUI\\bin\\Debug\\en-US\\WinNUT-client.resources.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_FD29241D1EBF4C4299B20BD32124C435"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9EAF40792DC592F03FDD4F11DDEF89E4"
@@ -469,17 +434,6 @@
                         {
                         }
                     }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_FD29241D1EBF4C4299B20BD32124C435"
-                    {
-                    "Name" = "8:en-US"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_4BFF6518E6264337AEF7CE6E8CB1F0DA"
-                        "Folders"
-                        {
-                        }
-                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_DB434D603D254A8799A657820BC92B20"
@@ -519,16 +473,16 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup"
-        "ProductCode" = "8:{F08D73A2-9DE4-4103-B41A-A8CFA0D4802C}"
-        "PackageCode" = "8:{B1C69846-3680-4921-AB64-D029D3BA475F}"
+        "ProductName" = "8:WinNUT-Setup"
+        "ProductCode" = "8:{FE135640-6135-4325-B334-AF0A2B8B052E}"
+        "PackageCode" = "8:{4FDA3FDA-A6BF-4E6B-AD30-833C8DD93758}"
         "UpgradeCode" = "8:{7EA17151-76E7-4E29-8F6A-621C1B4144C2}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.0.0"
+        "ProductVersion" = "8:2.0.1"
         "Manufacturer" = "8:Gawindx"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1084,7 +1038,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_70DBA11C2BF449198BA594449914C1BC"
             {
-            "SourcePath" = "8:..\\WInNUT_GUI\\obj\\Debug\\WinNUT-client.exe"
+            "SourcePath" = "8:..\\WInNUT_GUI\\obj\\Release\\WinNUT-client.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7A1917372AF14D75845D775AAEB7CD48"

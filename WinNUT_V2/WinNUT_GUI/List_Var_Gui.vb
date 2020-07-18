@@ -64,11 +64,13 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer_Update_List.Tick
         Dim SelectedNode As TreeNode = TView_UPSVar.SelectedNode
         Dim UPSNAme = WinNUT.UPS_Network.NutUPS
-        If SelectedNode IsNot Nothing And SelectedNode.Parent IsNot Nothing Then
-            If SelectedNode.Parent.Text <> UPSNAme And SelectedNode.Nodes.Count = 0 Then
-                Dim VarName = Strings.Replace(TView_UPSVar.SelectedNode.FullPath, WinNUT.UPS_Network.NutUPS & ".", "")
-                LogFile.LogTracing("Update {VarName}", LogLvl.LOG_DEBUG, Me)
-                Lbl_V_Value.Text = WinNUT.UPS_Network.GetUPSVar(VarName)
+        If SelectedNode IsNot Nothing Then
+            If SelectedNode.Parent IsNot Nothing Then
+                If SelectedNode.Parent.Text <> UPSNAme And SelectedNode.Nodes.Count = 0 Then
+                    Dim VarName = Strings.Replace(TView_UPSVar.SelectedNode.FullPath, WinNUT.UPS_Network.NutUPS & ".", "")
+                    LogFile.LogTracing("Update {VarName}", LogLvl.LOG_DEBUG, Me)
+                    Lbl_V_Value.Text = WinNUT.UPS_Network.GetUPSVar(VarName)
+                End If
             End If
         End If
     End Sub

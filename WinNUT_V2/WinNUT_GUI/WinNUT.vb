@@ -4,6 +4,7 @@
     LOG_ERROR
     LOG_DEBUG
 End Enum
+
 Public Class WinNUT
     Public WithEvents LogFile As New Logger(False, 0)
     Public LogLvls As Logger.LogLvl
@@ -92,6 +93,7 @@ Public Class WinNUT
             LogFile.LogTracing("Initialisation Params Complete", LogLvl.LOG_DEBUG, Me)
             LogFile.LogTracing("Loaded Params Complete", LogLvl.LOG_DEBUG, Me)
         End If
+
         'Init Systray
         Me.NotifyIcon.Text = WinNUT_Globals.LongProgramName & " - " & WinNUT_Globals.ProgramVersion
         Me.NotifyIcon.Visible = False
@@ -197,7 +199,6 @@ Public Class WinNUT
         'Initializes the state of the NotifyICon, the connection to the Nut server and the application icons
         NotifyIcon.Visible = False
         NotifyIcon.Icon = GetIcon(Start_Tray_Icon)
-        Me.WindowState = FormWindowState.Minimized
         Dim NotifyStr As String
         NotifyStr = WinNUT_Globals.LongProgramName & " - " & WinNUT_Globals.ProgramVersion & vbNewLine
         NotifyStr &= "Not Connected"
@@ -229,7 +230,6 @@ Public Class WinNUT
             Case Microsoft.Win32.PowerModes.Suspend
                 UPS_Network.Disconnect()
                 RemoveHandler Microsoft.Win32.SystemEvents.PowerModeChanged, AddressOf SystemEvents_PowerModeChanged
-                End
         End Select
     End Sub
 
@@ -239,7 +239,6 @@ Public Class WinNUT
         If WinNUT_Params.Arr_Reg_Key.Item("MinimizeOnStart") = True Then
             LogFile.LogTracing("Minimize WinNut On Start", LogLvl.LOG_DEBUG, Me)
             Me.WindowState = FormWindowState.Minimized
-            Me.Visible = False
             Me.NotifyIcon.Visible = True
         Else
             LogFile.LogTracing("Show WinNut Main Gui", LogLvl.LOG_DEBUG, Me)
@@ -299,14 +298,7 @@ Public Class WinNUT
         HasFocus = False
     End Sub
 
-    Private Sub ContextMenu_Systray_DoubleClick(sender As Object, e As EventArgs) Handles ContextMenu_Systray.DoubleClick
-        LogFile.LogTracing("Restore Main Gui On Mouse Double Click Contextual Menu Notify Icon", LogLvl.LOG_DEBUG, Me)
-        Me.Visible = True
-        Me.NotifyIcon.Visible = False
-        Me.WindowState = FormWindowState.Normal
-    End Sub
-
-    Private Sub NotifyIcon_DoubleClick(sender As Object, e As EventArgs) Handles NotifyIcon.DoubleClick, NotifyIcon.MouseDoubleClick
+    Private Sub NotifyIcon_DoubleClick(sender As Object, e As EventArgs) Handles NotifyIcon.DoubleClick
         LogFile.LogTracing("Restore Main Gui On Double Click Notify Icon", LogLvl.LOG_DEBUG, Me)
         Me.Visible = True
         Me.NotifyIcon.Visible = False
