@@ -1,5 +1,8 @@
 History:
 Version 2.0.0.0
+Fix : several problems when loading WinNUt as well as an incorrect value for the instantaneous power displayed on the graph of the instantaneous load (Thanks to Ririx02)
+
+Version 2.0.0.0
 Complete rewrite of WinNUT in Visual Basic (the .Net Framework 4.5 is required to run WInNUT)
 Modification of the graphic part using the AGauge component (https://github.com/Code-Artist/AGauge) under MIT license.
 The AGauge component has been modified to adapt it to the needs of WinNUT and all the sources are supplied with WinNUT.
