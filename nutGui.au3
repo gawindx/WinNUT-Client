@@ -892,6 +892,12 @@ Func updateGui()
 				If GetOption("VerifyBranch") == 2 Then
 					$sArg = "Dev"
 				EndIf
+				If Number(StringReplace($HighestVersion, ".", "")) > 2000 Then
+					If $sArg <> "" Then
+						$sArg &= " "
+					EndIF
+					$sArg &= StringFormat("beta %s", $HighestVersion)
+				EndIF
 				Local $hActive = WinGetHandle("[ACTIVE]")
 				Local $ShellUpdater = ShellExecute(@Scriptdir & "\Resources\WinNUT-Updater.exe", $sArg, @Scriptdir & "\Resources\", $SHEX_OPEN, @SW_MAXIMIZE)
 				Local $UpdaterPath = @Scriptdir & "\Resources\WinNUT-Updater.exe"

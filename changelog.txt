@@ -1,34 +1,4 @@
 History:
-<<<<<<< Updated upstream
-=======
-Version 2.0.2.0
-Fix : All hard-coded translations are translated
-Fix : The log file is now correctly created
-
-Version 2.0.1.0
-Fix : several problems when loading WinNUt as well as an incorrect value for the instantaneous power displayed on the graph of the instantaneous load (Thanks to Ririx02)
-
-Version 2.0.0.0
-Complete rewrite of WinNUT in Visual Basic (the .Net Framework 4.5 is required to run WInNUT)
-Modification of the graphic part using the AGauge component (https://github.com/Code-Artist/AGauge) under MIT license.
-The AGauge component has been modified to adapt it to the needs of WinNUT and all the sources are supplied with WinNUT.
-For the automatic import of the Ini file, the Class written by L. Jerabek was used 
-   (https://www.codeproject.com/Articles/21896/INI-Reader-Writer-Class-for-C-VB-NET-and-VBScript)
-All the functions present in the AutoIt version are still present in V2 with some additions / modifications:
-
-- Possibilities to export all variables from the UPS to the clipboard (from the "UPS variable" window)
-- It is no longer necessary to run WinNUT as administrator
-- The configuration of WinNUT is no longer in an ini file but directly stored in the registry (CURRENT_USER)
-- Ability to automatically import your old config file (ups.ini). The import is automatic when WinNut is launched 
-  if an ups.in file is present in the same directory as the executable.
-- The Update part no longer uses a second program to perform the update, the releases being in the form of an msi file, 
-  WinNUT is closed during the update and then reopened once the new version is installed.
-- It is now possible to uninstall WinNUT from the "Program / Functionality" part of Windows
-- WinNUT no longer suffers from detection as a Virus since it is no longer developed under AutoIT
-- WinNUT is also natively multi-language, so it is no longer necessary to select the language from the interface.
-  The default language, however, is always EN-Us in case your language is not supported.
-  An Xls file is available to send me a translation in a new language.
-  This will require an addition in a new build and therefore an update of WinNut
 
 Version 1.8.0.3
 Change : WinNUT is ready to update to version 2
@@ -38,7 +8,6 @@ Fix : Correction of a bad state of the UPS when the return value is not only "OL
 
 Version 1.8.0.1
 Fix : Rounded Value for second displayed value in Graph
->>>>>>> Stashed changes
 
 Version 1.8.0.0
 Added : Compatibility with IPV6 (Experimental)

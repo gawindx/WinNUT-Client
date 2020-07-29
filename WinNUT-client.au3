@@ -1,4 +1,4 @@
-#pragma compile(FileVersion, 1.8.0.0)
+#pragma compile(FileVersion, 1.8.0.3)
 #pragma compile(Icon, .\images\Ico\WinNut.ico)
 #pragma compile(Out, .\Build\WinNUT-client.exe)
 #pragma compile(Compression, 9)
