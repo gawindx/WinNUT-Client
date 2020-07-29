@@ -37,4 +37,4 @@ This process is fully integrated and no longer requires a second executable.
 
 WinNUT uses:
 - a modified version of AGauge initially developed by [Code-Artist](https://github.com/Code-Artist/AGauge) and under MIT license
-- LA Class IniReader developed by [Ludvik Jerabek](https://www.codeproject.com/Articles/21896/INI-Reader-Writer-Class-for-C-VB-NET-and-VBScript)
+- Class IniReader developed by [Ludvik Jerabek](https://www.codeproject.com/Articles/21896/INI-Reader-Writer-Class-for-C-VB-NET-and-VBScript)
