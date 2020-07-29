@@ -1,0 +1,340 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+WinNUT-client
+</name>
+</assembly>
+<members>
+<member name="T:WinNUT_client.My.Resources.Resources">
+<summary>
+  Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.ResourceManager">
+<summary>
+  Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Culture">
+<summary>
+  Remplace la propriété CurrentUICulture du thread actuel pour toutes
+  les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1025">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1026">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1028">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1032">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1040">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1057">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1058">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1060">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1064">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1072">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1079">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1080">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1092">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1096">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1104">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1121">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1122">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1124">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1128">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1136">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1152">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1216">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1280">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._1344">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._2001">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources._2002">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.App_Event_Str_01">
+<summary>
+  Recherche une chaîne localisée semblable à Application shut down at.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Delete_LogFile_24x24">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_01">
+<summary>
+  Recherche une chaîne localisée semblable à Old ups.ini imported
+Ini File Moved to {0}.old.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_02">
+<summary>
+  Recherche une chaîne localisée semblable à Reconnection In Progress.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_03">
+<summary>
+  Recherche une chaîne localisée semblable à Try {0} of {1}.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_04">
+<summary>
+  Recherche une chaîne localisée semblable à Not Connected.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_05">
+<summary>
+  Recherche une chaîne localisée semblable à Connected.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_06">
+<summary>
+  Recherche une chaîne localisée semblable à On Line.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_07">
+<summary>
+  Recherche une chaîne localisée semblable à On Battery ({0}%).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_08">
+<summary>
+  Recherche une chaîne localisée semblable à Low Battery.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_09">
+<summary>
+  Recherche une chaîne localisée semblable à Battery OK.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Shutdown_Str_01">
+<summary>
+  Recherche une chaîne localisée semblable à Battery_Charge : {WinNUT.UPS_BattCh}
+Remaining Time : {WinNUT.Lbl_VRTime.Text}.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Update_Str_01">
+<summary>
+  Recherche une chaîne localisée semblable à Update Available : Version {0}.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Update_Str_02">
+<summary>
+  Recherche une chaîne localisée semblable à Show ChangeLog.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Update_Str_03">
+<summary>
+  Recherche une chaîne localisée semblable à Hide ChangeLog.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Update_Str_04">
+<summary>
+  Recherche une chaîne localisée semblable à Update WinNUT-Client Now?
+Ok to Close WinNut and Install New Version
+Cancel to Save Msi and Install Later.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Update_Str_05">
+<summary>
+  Recherche une chaîne localisée semblable à Download New Version from :.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.GitHub_URL">
+<summary>
+  Recherche une chaîne localisée semblable à https://github.com/gawindx/WinNUT-Client.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Log_Str_01">
+<summary>
+  Recherche une chaîne localisée semblable à WinNut Preferences Changed.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Log_Str_02">
+<summary>
+  Recherche une chaîne localisée semblable à Connection to Nut Host {0}:{1} Established.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Log_Str_03">
+<summary>
+  Recherche une chaîne localisée semblable à Connection to Nut Host {0}:{1} Failed.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Log_Str_04">
+<summary>
+  Recherche une chaîne localisée semblable à Automatic Reconnection.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Log_Str_05">
+<summary>
+  Recherche une chaîne localisée semblable à Disconnected from Nut Host.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Log_Str_06">
+<summary>
+  Recherche une chaîne localisée semblable à Try Reconnect {0} / {1}.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Log_Str_07">
+<summary>
+  Recherche une chaîne localisée semblable à Max Retry reached. Wait for manual Reconnection.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Log_Str_08">
+<summary>
+  Recherche une chaîne localisée semblable à Conditions met for launching the Extinguishing Process.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Log_Str_09">
+<summary>
+  Recherche une chaîne localisée semblable à Cancellation of the Extinguishing Process.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Log_Str_10">
+<summary>
+  Recherche une chaîne localisée semblable à No Update Available.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Log_Str_11">
+<summary>
+  Recherche une chaîne localisée semblable à Version {0} Available.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.LongProgramName">
+<summary>
+  Recherche une chaîne localisée semblable à Windows NUT Client.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.ProgramName">
+<summary>
+  Recherche une chaîne localisée semblable à WinNUT.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.ProgramVersion">
+<summary>
+  Recherche une chaîne localisée semblable à 2.0.2.0.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.ups_104x104">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.ViewLogFile_24x24">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.WinNut">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.WinNUT_Updater">
+<summary>
+  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+</summary>
+</member>
+</members>
+</doc>
