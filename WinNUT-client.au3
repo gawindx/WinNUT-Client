@@ -1,4 +1,4 @@
-#pragma compile(FileVersion, 1.8.0.2)
+#pragma compile(FileVersion, 1.8.0.3)
 #pragma compile(Icon, .\images\Ico\WinNut.ico)
 #pragma compile(Out, .\Build\WinNUT-client.exe)
 #pragma compile(Compression, 9)
@@ -463,7 +463,7 @@ Func Update()
 		$ReconnectTry = 0
 		GUICtrlSetState($DisconnectMenu, $GUI_ENABLE)
 	EndIf
-	if StringLeft($upsstatus, 2) = "OL" Then
+	If StringLeft($upsstatus, 2) = "OL" Then
 		WriteLog("UPS Status Is OL", $LOG2FILE, $DBG_WARNING)
 		SetColor($green, $wPanel, $upsonline)
 		SetColor(0xffffff, $wPanel, $upsonbatt)

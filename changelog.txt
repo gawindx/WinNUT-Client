@@ -5,6 +5,15 @@ Fix : Correction of a bad state of the UPS when the return value is not only "OL
 Version 1.8.0.1
 Fix : Rounded Value for second displayed value in Graph
 
+Version 1.8.0.3
+Change : WinNUT is ready to update to version 2
+
+Version 1.8.0.2
+Fix : Correction of a bad state of the UPS when the return value is not only "OL"
+
+Version 1.8.0.1
+Fix : Rounded Value for second displayed value in Graph
+
 Version 1.8.0.0
 Added : Compatibility with IPV6 (Experimental)
 Added : Capacity to update directly from WinNut (Addition of an executable Updater packaged in WinNUT and therefore installed with WinNut on its first launch)
