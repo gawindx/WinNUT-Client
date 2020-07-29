@@ -1,8 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Win32Resource>C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_Icons\WinNUT_Icon_Library.res</Win32Resource>
-  </PropertyGroup>
-
-</Project>

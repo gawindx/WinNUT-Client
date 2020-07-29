@@ -1,0 +1,5 @@
+C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_V2\AGauge_mod\bin\Release\AGauge.dll
+C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_V2\AGauge_mod\bin\Release\AGauge.pdb
+C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_V2\AGauge_mod\obj\Release\AGauge.csproj.CoreCompileInputs.cache
+C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_V2\AGauge_mod\obj\Release\AGauge.dll
+C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\WinNUT_V2\AGauge_mod\obj\Release\AGauge.pdb
