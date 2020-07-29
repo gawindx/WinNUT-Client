@@ -380,8 +380,8 @@ Func UpdateValue(ByRef $needle, $value, $label, $whandle, $min = 170, $max = 270
 	Local $arrvalue[2] = [ControlGetText($whandle,'', $whandle), $value]
 	Local $arr[2] = ["GuiCtrlSetData : %s->%s", $arrvalue]
 	WriteLog($arr, $LOG2FILE, $DBG_DEBUG)
+	$value = Round($value)
 	If $Text_And_Graph Then
-		$value = Round($value)
 		If $value < $min Then
 			$value = $min
 		EndIf
@@ -463,7 +463,7 @@ Func Update()
 		$ReconnectTry = 0
 		GUICtrlSetState($DisconnectMenu, $GUI_ENABLE)
 	EndIf
-	If $upsstatus == "OL" Then
+	If StringLeft($upsstatus, 2) = "OL" Then
 		WriteLog("UPS Status Is OL", $LOG2FILE, $DBG_WARNING)
 		SetColor($green, $wPanel, $upsonline)
 		SetColor(0xffffff, $wPanel, $upsonbatt)
