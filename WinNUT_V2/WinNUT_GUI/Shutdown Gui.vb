@@ -101,7 +101,7 @@
                 NewValue = 100
             End If
             Shutdown_PBar.Value = NewValue
-            lbl_UPSStatus.Text = "Battery_Charge : " & WinNUT.UPS_BattCh & vbNewLine & "Remaining Time : " & WinNUT.Lbl_VRTime.Text
+            lbl_UPSStatus.Text = String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_SHUT_STAT), WinNUT.UPS_BattCh, WinNUT.Lbl_VRTime.Text)
         End If
     End Sub
 

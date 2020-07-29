@@ -1,11 +1,10 @@
 ﻿Public Class Update_Gui
     Private ChangeLogByteSize As Long
-    Private MSIByteSize As Long
     Private LogFile As Logger
     Private Const URLStable As String = "https://raw.githubusercontent.com/gawindx/WinNUT-Client/master/changelog.txt"
     Private Const URLDev As String = "https://raw.githubusercontent.com/gawindx/WinNUT-Client/Dev/changelog.txt"
-    Private MSIStable As String = "https://github.com/gawindx/WinNUT-Client/releases/download/v{0}/WinNUT-Setup.msi"
-    Private MSIDev As String = "https://github.com/gawindx/WinNUT-Client/releases/download/v{0}-dev/WinNUT-Setup.msi"
+    Private ReadOnly MSIStable As String = "https://github.com/gawindx/WinNUT-Client/releases/download/v{0}/WinNUT-Setup.msi"
+    Private ReadOnly MSIDev As String = "https://github.com/gawindx/WinNUT-Client/releases/download/v{0}-dev/WinNUT-Setup.msi"
     Private WithEvents WebC As New System.Net.WebClient
     Private ChangeLogFile As Object
     Private sChangeLog As String
@@ -38,6 +37,8 @@
     End Sub
 
     Public Function GetDownloadSize(ByVal URL As String) As Long
+        Net.ServicePointManager.Expect100Continue = True
+        Net.ServicePointManager.SecurityProtocol = Net.SecurityProtocolType.Tls12
         Dim Req As Net.WebRequest = Net.WebRequest.Create(URL)
         Req.Method = Net.WebRequestMethods.Http.Head
         Using Resp = Req.GetResponse()
@@ -48,7 +49,6 @@
         LogFile.LogTracing("Verify Update", LogLvl.LOG_DEBUG, Me)
         If WinNUT_Params.Arr_Reg_Key.Item("VerifyUpdate") Or Me.ManualUpdate Then
             Dim DelayVerif As DateInterval = DateInterval.Month
-            Dim Bidule = WinNUT_Params.Arr_Reg_Key.Item("DelayBetweenEachVerification")
             Select Case WinNUT_Params.Arr_Reg_Key.Item("DelayBetweenEachVerification")
                 Case 0
                     DelayVerif = DateInterval.Day
@@ -94,7 +94,6 @@
             Dim HighestVersion As Integer = Nothing
             srFileReader = System.IO.File.OpenText(ChangeLogFile)
             Dim ActualVersion As Integer = CInt(Strings.Replace(WinNUT_Globals.ProgramVersion, ".", ""))
-            ActualVersion = 1600
             Do
                 sInputLine = srFileReader.ReadLine()
                 If Strings.InStr(sInputLine, "History") = 0 Then
@@ -162,10 +161,10 @@
                         Me.sChangeLog &= Line & vbNewLine
                     Next
                     Me.HasUpdate = True
-                    LogFile.LogTracing(Format("New Version Available : {0}", HighestVersion), LogLvl.LOG_DEBUG, Me)
+                    LogFile.LogTracing(Strings.Format("New Version Available : {0}", HighestVersion), LogLvl.LOG_DEBUG, Me, Strings.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_UPDATE), HighestVersion))
                 Else
                     HighestVersion = Nothing
-                    LogFile.LogTracing("No Update Available", LogLvl.LOG_DEBUG, Me)
+                    LogFile.LogTracing("No Update Available", LogLvl.LOG_DEBUG, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_NO_UPDATE))
 
                 End If
             End If
@@ -187,13 +186,12 @@
     Private Sub Update_Gui_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         TB_ChgLog.Text = sChangeLog
         TB_ChgLog.Visible = False
-        Lbl.Text = String.Format("Update Available : Version {0}", Me.NewVersion)
+        Lbl.Text = String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_UP_AVAIL), Me.NewVersion)
         GB1.Size = New Point(GB1.Size.Width, GB1.Size.Height - 160)
         Update_Btn.Location = New Point(Update_Btn.Location.X, Update_Btn.Location.Y - 160)
         ShowLog_Button.Location = New Point(ShowLog_Button.Location.X, ShowLog_Button.Location.Y - 160)
         Close_Btn.Location = New Point(Close_Btn.Location.X, Close_Btn.Location.Y - 160)
         Me.Size = New Point(Me.Size.Width, Me.Size.Height - 160)
-
     End Sub
 
     Private Sub Close_Btn_Click(sender As Object, e As EventArgs) Handles Close_Btn.Click
@@ -203,7 +201,7 @@
     Private Sub ShowLog_Button_Click(sender As Object, e As EventArgs) Handles ShowLog_Button.Click
         If TB_ChgLog.Visible Then
             TB_ChgLog.Visible = False
-            ShowLog_Button.Text = "Show ChangeLog"
+            ShowLog_Button.Text = WinNUT_Globals.StrLog.Item(AppResxStr.STR_UP_SHOW)
             GB1.Size = New Point(GB1.Size.Width, GB1.Size.Height - 160)
             Update_Btn.Location = New Point(Update_Btn.Location.X, Update_Btn.Location.Y - 160)
             ShowLog_Button.Location = New Point(ShowLog_Button.Location.X, ShowLog_Button.Location.Y - 160)
@@ -211,7 +209,7 @@
             Me.Size = New Point(Me.Size.Width, Me.Size.Height - 160)
         Else
             TB_ChgLog.Visible = True
-            ShowLog_Button.Text = "Hide ChangeLog"
+            ShowLog_Button.Text = WinNUT_Globals.StrLog.Item(AppResxStr.STR_UP_SHOW)
             GB1.Size = New Point(GB1.Size.Width, GB1.Size.Height + 160)
             Update_Btn.Location = New Point(Update_Btn.Location.X, Update_Btn.Location.Y + 160)
             ShowLog_Button.Location = New Point(ShowLog_Button.Location.X, ShowLog_Button.Location.Y + 160)
@@ -222,7 +220,6 @@
 
     Private Sub Update_Btn_Click(sender As Object, e As EventArgs) Handles Update_Btn.Click
         Dim MSIURL As String = Nothing
-        Me.NewVersion = "2.0.0.0"
         If WinNUT_Params.Arr_Reg_Key.Item("StableOrDevBranch") = 0 Then
             MSIURL = String.Format(Me.MSIStable, Me.NewVersion)
         Else
@@ -251,11 +248,10 @@
         With Dlbl
             .Location = New Point(12, 20)
             .TextAlign = ContentAlignment.MiddleCenter
-            .Text = "Download New Version from :" & vbNewLine & MSIURL
+            .Text = WinNUT_Globals.StrLog.Item(AppResxStr.STR_UP_DOWNFROM) & vbNewLine & MSIURL
             .Size = New Point(280, (.Size.Height * 2))
         End With
         Download_Form.Show()
-        'Me.MSIByteSize = GetDownloadSize(MSIURL)
         Dim MSIFile = System.IO.Path.GetTempPath() + "WinNUT_" & Me.NewVersion & "_Setup.msi"
 
         Using WebC = New Net.WebClient
@@ -265,25 +261,16 @@
             WebC.QueryString.Add("FileName", MSIFile)
             WebC.DownloadFileAsync(New Uri(MSIURL), MSIFile)
         End Using
-
-
     End Sub
 
     Private Sub Update_DPBar(sender As Object, e As System.Net.DownloadProgressChangedEventArgs)
         DPBar.Value = 90 * (e.ProgressPercentage / 100)
-        Dim BytesToReceive = e.TotalBytesToReceive
-        If BytesToReceive = 0 Then
-            BytesToReceive = Me.MSIByteSize
-        End If
-        DPBar.Text = String.Format("{0:N}Kb / {1:N}Kb", (e.BytesReceived / 1024), (BytesToReceive / 1024))
+        DPBar.Text = String.Format("{0:N}Kb / {1:N}Kb", (e.BytesReceived / 1024), (e.TotalBytesToReceive / 1024))
     End Sub
 
     Private Sub New_Version_Downloaded(sender As Object, e As System.ComponentModel.AsyncCompletedEventArgs)
         Dim Filename = sender.QueryString.Item("FileName")
-        Dim Question As String = "Update WinNUT-Client Now?" & vbNewLine
-        Question &= "Ok to Close WinNut and Install New Version" & vbNewLine
-        Question &= "Cancel to Save Msi and Install Later"
-        Select Case MsgBox(Question, vbOKCancel, "Update Now")
+        Select Case MsgBox(WinNUT_Globals.StrLog.Item(AppResxStr.STR_UP_UPMSG), vbOKCancel, "Update Now")
             Case vbOK
                 DPBar.Value = 100
                 Process.Start(Filename)

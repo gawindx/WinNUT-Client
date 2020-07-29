@@ -93,10 +93,6 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AGauge, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\AGauge_mod\bin\Debug\AGauge.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -320,6 +316,12 @@
   <ItemGroup>
     <XliffResource Include="MultilingualResources\WinNUT-client.de-DE.xlf" />
     <XliffResource Include="MultilingualResources\WinNUT-client.fr-FR.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AGauge_mod\AGauge.csproj">
+      <Project>{cbdb1d25-5a95-43d4-a958-bf6ae65c6c3f}</Project>
+      <Name>AGauge</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />

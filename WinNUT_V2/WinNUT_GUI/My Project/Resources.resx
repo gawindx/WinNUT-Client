@@ -196,11 +196,96 @@
   <data name="2002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2002_Delete_LogFile.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="App_Event_Str_01" xml:space="preserve">
+    <value>Application shut down at</value>
+  </data>
   <data name="Delete_LogFile_24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Delete_LogFile_24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Frm_Main_Str_01" xml:space="preserve">
+    <value>Old ups.ini imported
+Ini File Moved to {0}.old</value>
+  </data>
+  <data name="Frm_Main_Str_02" xml:space="preserve">
+    <value>Reconnection In Progress</value>
+  </data>
+  <data name="Frm_Main_Str_03" xml:space="preserve">
+    <value>Try {0} of {1}</value>
+  </data>
+  <data name="Frm_Main_Str_04" xml:space="preserve">
+    <value>Not Connected</value>
+  </data>
+  <data name="Frm_Main_Str_05" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="Frm_Main_Str_06" xml:space="preserve">
+    <value>On Line</value>
+  </data>
+  <data name="Frm_Main_Str_07" xml:space="preserve">
+    <value>On Battery ({0}%)</value>
+  </data>
+  <data name="Frm_Main_Str_08" xml:space="preserve">
+    <value>Low Battery</value>
+  </data>
+  <data name="Frm_Main_Str_09" xml:space="preserve">
+    <value>Battery OK</value>
+  </data>
+  <data name="Frm_Shutdown_Str_01" xml:space="preserve">
+    <value>Battery_Charge : {WinNUT.UPS_BattCh}
+Remaining Time : {WinNUT.Lbl_VRTime.Text}</value>
+  </data>
+  <data name="Frm_Update_Str_01" xml:space="preserve">
+    <value>Update Available : Version {0}</value>
+  </data>
+  <data name="Frm_Update_Str_02" xml:space="preserve">
+    <value>Show ChangeLog</value>
+  </data>
+  <data name="Frm_Update_Str_03" xml:space="preserve">
+    <value>Hide ChangeLog</value>
+  </data>
+  <data name="Frm_Update_Str_04" xml:space="preserve">
+    <value>Update WinNUT-Client Now?
+Ok to Close WinNut and Install New Version
+Cancel to Save Msi and Install Later</value>
+  </data>
+  <data name="Frm_Update_Str_05" xml:space="preserve">
+    <value>Download New Version from :</value>
+  </data>
   <data name="GitHub_URL" xml:space="preserve">
     <value>https://github.com/gawindx/WinNUT-Client</value>
+  </data>
+  <data name="Log_Str_01" xml:space="preserve">
+    <value>WinNut Preferences Changed</value>
+  </data>
+  <data name="Log_Str_02" xml:space="preserve">
+    <value>Connection to Nut Host {0}:{1} Established</value>
+  </data>
+  <data name="Log_Str_03" xml:space="preserve">
+    <value>Connection to Nut Host {0}:{1} Failed</value>
+  </data>
+  <data name="Log_Str_04" xml:space="preserve">
+    <value>Automatic Reconnection</value>
+  </data>
+  <data name="Log_Str_05" xml:space="preserve">
+    <value>Disconnected from Nut Host</value>
+  </data>
+  <data name="Log_Str_06" xml:space="preserve">
+    <value>Try Reconnect {0} / {1}</value>
+  </data>
+  <data name="Log_Str_07" xml:space="preserve">
+    <value>Max Retry reached. Wait for manual Reconnection</value>
+  </data>
+  <data name="Log_Str_08" xml:space="preserve">
+    <value>Conditions met for launching the Extinguishing Process</value>
+  </data>
+  <data name="Log_Str_09" xml:space="preserve">
+    <value>Cancellation of the Extinguishing Process</value>
+  </data>
+  <data name="Log_Str_10" xml:space="preserve">
+    <value>No Update Available</value>
+  </data>
+  <data name="Log_Str_11" xml:space="preserve">
+    <value>Version {0} Available</value>
   </data>
   <data name="LongProgramName" xml:space="preserve">
     <value>Windows NUT Client</value>
@@ -209,7 +294,7 @@
     <value>WinNUT</value>
   </data>
   <data name="ProgramVersion" xml:space="preserve">
-    <value>2.0.1.0</value>
+    <value>2.0.2.0</value>
   </data>
   <data name="ups_104x104" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ups_104x104.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

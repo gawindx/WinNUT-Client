@@ -1,14 +1,9 @@
 ﻿Public Class About_Gui
     Private LogFile As Logger
-    Public Enum LogLvl
-        LOG_NOTICE
-        LOG_WARNING
-        LOG_ERROR
-        LOG_DEBUG
-    End Enum
     Private Sub About_Gui_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Lbl_ProgNameVersion.Text = WinNUT_Globals.LongProgramName & vbNewLine & "Version " & WinNUT_Globals.ProgramVersion
-        Lbl_Copyright_2019.Text = "Copyright Gawinx (Decaux Nicolas)" & vbNewLine & "2019-" & Now.Year
+        Lbl_Copyright_2019.Text = Strings.Replace(WinNUT_Globals.Copyright, "©", vbNewLine & "©")
+        LkLbl_Github.Text = WinNUT_Globals.GitHubURL
         Me.Icon = WinNUT.Icon
         Me.LogFile = WinNUT.LogFile
         LogFile.LogTracing("Load About Gui", LogLvl.LOG_DEBUG, Me)

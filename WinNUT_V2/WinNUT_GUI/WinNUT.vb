@@ -4,10 +4,53 @@
     LOG_ERROR
     LOG_DEBUG
 End Enum
+Public Enum AppIconIdx
+    IDX_BATT_0 = 1
+    IDX_BATT_25 = 2
+    IDX_BATT_50 = 4
+    IDX_BATT_75 = 8
+    IDX_BATT_100 = 16
+    IDX_OL = 32
+    WIN_DARK = 64
+    IDX_ICO_OFFLINE = 128
+    IDX_ICO_RETRY = 256
+    IDX_ICO_VIEWLOG = 2001
+    IDX_ICO_DELETELOG = 2002
+    IDX_OFFSET = 1024
+End Enum
 
+Public Enum AppResxStr
+    STR_MAIN_OLDINI = 0
+    STR_MAIN_RECONNECT = 1
+    STR_MAIN_RETRY = 2
+    STR_MAIN_NOTCONN = 3
+    STR_MAIN_CONN = 4
+    STR_MAIN_OL = 5
+    STR_MAIN_OB = 6
+    STR_MAIN_LOWBAT = 7
+    STR_MAIN_BATOK = 8
+    STR_UP_AVAIL = 9
+    STR_UP_SHOW = 10
+    STR_UP_HIDE = 11
+    STR_UP_UPMSG = 12
+    STR_UP_DOWNFROM = 13
+    STR_SHUT_STAT = 14
+    STR_APP_SHUT = 15
+    STR_LOG_PREFS = 16
+    STR_LOG_CONNECTED = 17
+    STR_LOG_CON_FAILED = 18
+    STR_LOG_CON_RETRY = 19
+    STR_LOG_LOGOFF = 20
+    STR_LOG_NEW_RETRY = 21
+    STR_LOG_STOP_RETRY = 22
+    STR_LOG_SHUT_START = 23
+    STR_LOG_SHUT_STOP = 24
+    STR_LOG_NO_UPDATE = 25
+    STR_LOG_UPDATE = 26
+End Enum
 Public Class WinNUT
-    Public WithEvents LogFile As New Logger(False, 0)
-    Public LogLvls As Logger.LogLvl
+    Public Shared WithEvents LogFile As New Logger(False, 0)
+    Public LogLvls As LogLvl
     Public WithEvents UPS_Network As New UPS_Network(LogFile)
     Public UPS_Mfr As String
     Public UPS_Model As String
@@ -24,28 +67,14 @@ Public Class WinNUT
     Public UPS_Status As String
     Public UPS_OutPower As Double
     Public UPS_InputA As Double
-    Private LastAppIconIdx As Integer
+    Private LastAppIconIdx As Integer = -1
     Private ActualAppIconIdx As Integer
     Private WinDarkMode As Boolean = False
     Private AppDarkMode As Boolean = False
     Private HasFocus As Boolean = True
-    Private frmBuild As Form
     Private mUpdate As Boolean = False
     Declare Function SetSystemPowerState Lib "kernel32" (ByVal fSuspend As Integer, ByVal fForce As Integer) As Integer
-    Public Enum AppIconIdx
-        IDX_BATT_0 = 1
-        IDX_BATT_25 = 2
-        IDX_BATT_50 = 4
-        IDX_BATT_75 = 8
-        IDX_BATT_100 = 16
-        IDX_OL = 32
-        WIN_DARK = 64
-        IDX_ICO_OFFLINE = 128
-        IDX_ICO_RETRY = 256
-        IDX_ICO_VIEWLOG = 2001
-        IDX_ICO_DELETELOG = 2002
-        IDX_OFFSET = 1024
-    End Enum
+
     Public Property UpdateMethod() As String
         Get
             If Me.mUpdate Then
@@ -59,6 +88,7 @@ Public Class WinNUT
             Me.mUpdate = Value
         End Set
     End Property
+
     Private Sub WinNUT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler Microsoft.Win32.SystemEvents.PowerModeChanged, AddressOf SystemEvents_PowerModeChanged
 
@@ -83,7 +113,7 @@ Public Class WinNUT
             If WinNUT_Params.ImportIni(IniFile) Then
                 LogFile.LogTracing("Import Old IniFile : Success", LogLvl.LOG_DEBUG, Me)
                 My.Computer.FileSystem.MoveFile(IniFile, IniFile & ".old")
-                MsgBox("Old ups.ini imported" & vbNewLine & "Ini File Moved to " & IniFile & ".old")
+                MsgBox(String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_OLDINI), IniFile))
             Else
                 LogFile.LogTracing("Failed To import old IniFile", LogLvl.LOG_DEBUG, Me)
                 LogFile.LogTracing("Initialisation Params Complete", LogLvl.LOG_DEBUG, Me)
@@ -97,7 +127,7 @@ Public Class WinNUT
         'Init Systray
         Me.NotifyIcon.Text = WinNUT_Globals.LongProgramName & " - " & WinNUT_Globals.ProgramVersion
         Me.NotifyIcon.Visible = False
-        LogFile.LogTracing("NotifyIcons Initialised", 1, Me)
+        LogFile.LogTracing("NotifyIcons Initialised", LogLvl.LOG_DEBUG, Me)
 
         'Init Connexion to UPS
         UPS_Network.NutHost = WinNUT_Params.Arr_Reg_Key.Item("ServerAddress")
@@ -203,7 +233,7 @@ Public Class WinNUT
         NotifyStr = WinNUT_Globals.LongProgramName & " - " & WinNUT_Globals.ProgramVersion & vbNewLine
         NotifyStr &= "Not Connected"
         Me.NotifyIcon.Text = NotifyStr
-        LogFile.LogTracing("NotifyIcon Text => " & NotifyStr, LogLvl.LOG_DEBUG, Me)
+        LogFile.LogTracing("NotifyIcon Text => " & vbNewLine & NotifyStr, LogLvl.LOG_DEBUG, Me)
         LogFile.LogTracing("Init Connexion to NutServer", LogLvl.LOG_DEBUG, Me)
         UPS_Network.Connect()
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
@@ -304,6 +334,7 @@ Public Class WinNUT
         Me.NotifyIcon.Visible = False
         Me.WindowState = FormWindowState.Normal
     End Sub
+
     Private Sub WinNUT_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         If sender.WindowState = FormWindowState.Minimized Then
             If WinNUT_Params.Arr_Reg_Key.Item("MinimizeToTray") = True Then
@@ -325,11 +356,15 @@ Public Class WinNUT
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
         UpdateIcon_NotifyIcon()
         NotifyStr = "WinNUT - " & WinNUT_Globals.ProgramVersion & vbNewLine
-        NotifyStr &= "Reconnection In Progress" & vbNewLine
-        NotifyStr &= String.Format("Try {0} of {1}", UPS_Network.UPS_Retry, UPS_Network.UPS_MaxRetry) & vbNewLine
+        NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_RECONNECT) & vbNewLine
+        NotifyStr &= String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_RETRY), UPS_Network.UPS_Retry, UPS_Network.UPS_MaxRetry) & vbNewLine
         Me.NotifyIcon.Text = NotifyStr
-        LogFile.LogTracing("NotifyIcon Text => " & NotifyStr, LogLvl.LOG_DEBUG, Me)
-        NotifyStr = Nothing
+        LogFile.LogTracing("NotifyIcon Text => " & vbNewLine & NotifyStr, LogLvl.LOG_DEBUG, Me)
+    End Sub
+
+    Private Sub Reconnect_NotifyIcon() Handles UPS_Network.Connected
+        LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
+        UpdateIcon_NotifyIcon()
     End Sub
 
     Private Sub Deconnected_NotifyIcon() Handles UPS_Network.Deconnected
@@ -338,10 +373,9 @@ Public Class WinNUT
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
         UpdateIcon_NotifyIcon()
         NotifyStr = WinNUT_Globals.LongProgramName & " - " & WinNUT_Globals.ProgramVersion & vbNewLine
-        NotifyStr &= "Not Connected"
+        NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_NOTCONN)
         Me.NotifyIcon.Text = NotifyStr
-        LogFile.LogTracing("NotifyIcon Text => " & NotifyStr, LogLvl.LOG_DEBUG, Me)
-        NotifyStr = Nothing
+        LogFile.LogTracing("NotifyIcon Text => " & vbNewLine & NotifyStr, LogLvl.LOG_DEBUG, Me)
     End Sub
 
     Private Sub Menu_About_Click(sender As Object, e As EventArgs) Handles Menu_About.Click
@@ -465,25 +499,23 @@ Public Class WinNUT
             Lbl_VRTime.Text = iSpan.Hours.ToString.PadLeft(2, "0"c) & ":" &
                                     iSpan.Minutes.ToString.PadLeft(2, "0"c) & ":" &
                                     iSpan.Seconds.ToString.PadLeft(2, "0"c)
-            iSpan = Nothing
         End If
         Dim NotifyStr As String
         NotifyStr = "WinNUT - " & WinNUT_Globals.ProgramVersion & vbNewLine
-        NotifyStr &= "Connected" & vbNewLine
+        NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_CONN) & vbNewLine
         If UPS_Network.UPS_Status = "OL" Then
-            NotifyStr &= "On Line" & vbNewLine
+            NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_OL) & vbNewLine
         Else
-            NotifyStr &= "On Battery " & "(" & UPS_Network.UPS_BattCh & "%)" & vbNewLine
+            NotifyStr &= String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_OB), UPS_Network.UPS_BattCh) & vbNewLine
         End If
         Select Case UPS_Network.UPS_BattCh
             Case 0 To 40
-                NotifyStr &= "Low Battery"
+                NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_LOWBAT)
             Case 41 To 100
-                NotifyStr &= "Battery OK"
+                NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_BATOK)
         End Select
         Me.NotifyIcon.Text = NotifyStr
-        LogFile.LogTracing("NotifyIcon Text => " & NotifyStr, LogLvl.LOG_DEBUG, Me)
-        NotifyStr = Nothing
+        LogFile.LogTracing("NotifyIcon Text => " & vbNewLine & NotifyStr, LogLvl.LOG_DEBUG, Me)
 
         LogFile.LogTracing("Update Dial", LogLvl.LOG_DEBUG, Me)
         AG_InV.Value1 = Me.UPS_InputV
@@ -548,8 +580,6 @@ Public Class WinNUT
         Me.Icon = GetIcon(TmpGuiIDX)
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
         UpdateIcon_NotifyIcon()
-        Tmp_App_Mode = Nothing
-        TmpGuiIDX = Nothing
     End Sub
 
     Private Sub WinNUT_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
@@ -565,12 +595,10 @@ Public Class WinNUT
         Me.Icon = GetIcon(TmpGuiIDX)
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
         UpdateIcon_NotifyIcon()
-        Tmp_App_Mode = Nothing
-        TmpGuiIDX = Nothing
     End Sub
 
     Public Sub WinNUT_PrefsChanged()
-        LogFile.LogTracing("WinNut Preferences Changed", LogLvl.LOG_NOTICE, Me)
+        LogFile.LogTracing("WinNut Preferences Changed", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_PREFS))
         Dim NeedReconnect As Boolean = False
         If WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect") <> UPS_Network.AutoReconnect Then
             If WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect") Then
@@ -598,7 +626,7 @@ Public Class WinNUT
         UPS_Network.Battery_Limit = WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitBatteryCharge")
         UPS_Network.Backup_Limit = WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitUPSRemainTime")
         If NeedReconnect And UPS_Network.IsConnected Then
-            LogFile.LogTracing("Connection parameter Changed. Force Disconnect", LogLvl.LOG_DEBUG, Me)
+            LogFile.LogTracing("Connection parameters Changed. Force Disconnect", LogLvl.LOG_DEBUG, Me)
             UPS_Network.Disconnect(True)
             ReInitDisplayValues()
             ActualAppIconIdx = AppIconIdx.IDX_ICO_OFFLINE
@@ -686,16 +714,10 @@ Public Class WinNUT
             Dim TmpTrayIDX = ActualAppIconIdx Or Tmp_Win_Mode
             LogFile.LogTracing("New Icon Value For Systray : " & TmpTrayIDX.ToString, LogLvl.LOG_DEBUG, Me)
             LogFile.LogTracing("New Icon Value For Gui : " & TmpGuiIDX.ToString, LogLvl.LOG_DEBUG, Me)
-            If NotifyIcon.Visible Then
-                NotifyIcon.Icon = GetIcon(TmpTrayIDX)
-            End If
+            NotifyIcon.Icon = GetIcon(TmpTrayIDX)
             Me.Icon = GetIcon(TmpGuiIDX)
             LastAppIconIdx = ActualAppIconIdx
-            TmpGuiIDX = Nothing
-            TmpTrayIDX = Nothing
         End If
-        Tmp_Win_Mode = Nothing
-        Tmp_App_Mode = Nothing
     End Sub
 
     Private Function GetIcon(ByVal IconIdx As Integer) As Icon
@@ -760,14 +782,14 @@ Public Class WinNUT
         HasFocus = False
     End Sub
 
-    Private Sub Update_InstantLog() Handles LogFile.NewData
+    Public Shared Sub Update_InstantLog(ByVal sender As System.Object) Handles LogFile.NewData
         Dim Message As String = LogFile.CurrentLogData
-        LogFile.LogTracing("New Log to CB_Current Log : " & Message, LogLvl.LOG_DEBUG, Me)
-        CB_CurrentLog.Items.Insert(0, Message)
-        CB_CurrentLog.SelectedIndex = 0
-        If CB_CurrentLog.Items.Count > 10 Then
-            For i = 10 To (CB_CurrentLog.Items.Count - 1) Step 1
-                CB_CurrentLog.Items.Remove(i)
+        LogFile.LogTracing("New Log to CB_Current Log : " & Message, LogLvl.LOG_DEBUG, sender.ToString)
+        WinNUT.CB_CurrentLog.Items.Insert(0, Message)
+        WinNUT.CB_CurrentLog.SelectedIndex = 0
+        If WinNUT.CB_CurrentLog.Items.Count > 10 Then
+            For i = 10 To (WinNUT.CB_CurrentLog.Items.Count - 1) Step 1
+                WinNUT.CB_CurrentLog.Items.Remove(i)
             Next
         End If
     End Sub
@@ -782,6 +804,7 @@ Public Class WinNUT
             HasFocus = False
         End If
     End Sub
+
     Private Sub Stop_Shutdown_Event() Handles UPS_Network.Stop_Shutdown
         Shutdown_Gui.Shutdown_Timer.Stop()
         Shutdown_Gui.Shutdown_Timer.Enabled = False
@@ -790,6 +813,7 @@ Public Class WinNUT
         Shutdown_Gui.Hide()
         Shutdown_Gui.Close()
     End Sub
+
     Public Sub Shutdown_Action()
         Select Case WinNUT_Params.Arr_Reg_Key.Item("TypeOfStop")
             Case 0
@@ -807,10 +831,10 @@ Public Class WinNUT
         th.SetApartmentState(System.Threading.ApartmentState.STA)
         th.Start(Me.UpdateMethod)
     End Sub
+
     Public Sub Run_Update(ByVal data As Object)
         Dim frmBuild As Update_Gui = New Update_Gui(data) ' Must be created on this thread!
         Application.Run(frmBuild)
-        frmBuild = Nothing
     End Sub
 End Class
 

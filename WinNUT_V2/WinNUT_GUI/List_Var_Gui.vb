@@ -1,14 +1,7 @@
 ﻿Public Class List_Var_Gui
     Private List_Var_Datas As List(Of UPS_Var_Node)
-    Private LogFile As Logger
-    Public Enum LogLvl
-        LOG_NOTICE
-        LOG_WARNING
-        LOG_ERROR
-        LOG_DEBUG
-    End Enum
+    Private Shared LogFile As Logger
     Private Sub List_Var_Gui_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.LogFile = WinNUT.LogFile
         LogFile.LogTracing("Load List Var Gui", LogLvl.LOG_DEBUG, Me)
         Me.Icon = WinNUT.Icon
         Me.PopulateTreeView()

@@ -321,6 +321,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Recherche une chaîne localisée semblable à Application shut down at.
+        '''</summary>
+        Public ReadOnly Property App_Event_Str_01() As String
+            Get
+                Return ResourceManager.GetString("App_Event_Str_01", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
         '''</summary>
         Public ReadOnly Property Delete_LogFile_24x24() As System.Drawing.Bitmap
@@ -331,11 +340,249 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Recherche une chaîne localisée semblable à Old ups.ini imported
+        '''Ini File Moved to {0}.old.
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_01() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_01", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Reconnection In Progress.
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_02() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_02", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Try {0} of {1}.
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_03() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_03", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Not Connected.
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_04() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_04", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Connected.
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_05() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_05", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à On Line.
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_06() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_06", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à On Battery ({0}%).
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_07() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_07", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Low Battery.
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_08() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_08", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Battery OK.
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_09() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_09", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Battery_Charge : {WinNUT.UPS_BattCh}
+        '''Remaining Time : {WinNUT.Lbl_VRTime.Text}.
+        '''</summary>
+        Public ReadOnly Property Frm_Shutdown_Str_01() As String
+            Get
+                Return ResourceManager.GetString("Frm_Shutdown_Str_01", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Update Available : Version {0}.
+        '''</summary>
+        Public ReadOnly Property Frm_Update_Str_01() As String
+            Get
+                Return ResourceManager.GetString("Frm_Update_Str_01", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Show ChangeLog.
+        '''</summary>
+        Public ReadOnly Property Frm_Update_Str_02() As String
+            Get
+                Return ResourceManager.GetString("Frm_Update_Str_02", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Hide ChangeLog.
+        '''</summary>
+        Public ReadOnly Property Frm_Update_Str_03() As String
+            Get
+                Return ResourceManager.GetString("Frm_Update_Str_03", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Update WinNUT-Client Now?
+        '''Ok to Close WinNut and Install New Version
+        '''Cancel to Save Msi and Install Later.
+        '''</summary>
+        Public ReadOnly Property Frm_Update_Str_04() As String
+            Get
+                Return ResourceManager.GetString("Frm_Update_Str_04", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Download New Version from :.
+        '''</summary>
+        Public ReadOnly Property Frm_Update_Str_05() As String
+            Get
+                Return ResourceManager.GetString("Frm_Update_Str_05", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Recherche une chaîne localisée semblable à https://github.com/gawindx/WinNUT-Client.
         '''</summary>
         Public ReadOnly Property GitHub_URL() As String
             Get
                 Return ResourceManager.GetString("GitHub_URL", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à WinNut Preferences Changed.
+        '''</summary>
+        Public ReadOnly Property Log_Str_01() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_01", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Connection to Nut Host {0}:{1} Established.
+        '''</summary>
+        Public ReadOnly Property Log_Str_02() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_02", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Connection to Nut Host {0}:{1} Failed.
+        '''</summary>
+        Public ReadOnly Property Log_Str_03() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_03", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Automatic Reconnection.
+        '''</summary>
+        Public ReadOnly Property Log_Str_04() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_04", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Disconnected from Nut Host.
+        '''</summary>
+        Public ReadOnly Property Log_Str_05() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_05", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Try Reconnect {0} / {1}.
+        '''</summary>
+        Public ReadOnly Property Log_Str_06() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_06", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Max Retry reached. Wait for manual Reconnection.
+        '''</summary>
+        Public ReadOnly Property Log_Str_07() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_07", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Conditions met for launching the Extinguishing Process.
+        '''</summary>
+        Public ReadOnly Property Log_Str_08() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_08", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Cancellation of the Extinguishing Process.
+        '''</summary>
+        Public ReadOnly Property Log_Str_09() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_09", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à No Update Available.
+        '''</summary>
+        Public ReadOnly Property Log_Str_10() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_10", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Version {0} Available.
+        '''</summary>
+        Public ReadOnly Property Log_Str_11() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_11", resourceCulture)
             End Get
         End Property
         
@@ -358,7 +605,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à 2.0.1.0.
+        '''  Recherche une chaîne localisée semblable à 2.0.2.0.
         '''</summary>
         Public ReadOnly Property ProgramVersion() As String
             Get

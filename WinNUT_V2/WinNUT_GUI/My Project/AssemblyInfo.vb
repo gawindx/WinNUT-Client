@@ -10,11 +10,11 @@ Imports System.Runtime.InteropServices
 ' Vérifiez les valeurs des attributs de l'assembly
 
 <Assembly: AssemblyTitle("WinNUT-client")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("WInNUT-client")>
-<Assembly: AssemblyCopyright("Copyright ©  2020")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyDescription("Windows NUT Client")>
+<Assembly: AssemblyCompany("Gawindx")>
+<Assembly: AssemblyProduct("WinNUT")>
+<Assembly: AssemblyCopyright("Copyright Gawinx (Decaux Nicolas) ©  2019-2020")>
+<Assembly: AssemblyTrademark("https://github.com/gawindx/WinNUT-Client")>
 
 <Assembly: ComVisible(False)>
 
@@ -32,6 +32,6 @@ Imports System.Runtime.InteropServices
 ' en utilisant '*', comme indiqué ci-dessous :
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("2.0.1.0")>
-<Assembly: AssemblyFileVersion("2.0.1.0")>
+<Assembly: AssemblyVersion("2.0.2.0")>
+<Assembly: AssemblyFileVersion("2.0.2.0")>
 <Assembly: NeutralResourcesLanguage("en-US")>

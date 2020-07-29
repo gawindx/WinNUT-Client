@@ -1,4 +1,9 @@
 History:
+Version 2.0.2.0
+Fix : All hard-coded translations are translated
+Fix : The log file is now correctly created
+Added : Some Translations
+
 Version 2.0.1.0
 Fix : several problems when loading WinNUt as well as an incorrect value for the instantaneous power displayed on the graph of the instantaneous load (Thanks to Ririx02)
 
@@ -23,6 +28,9 @@ All the functions present in the AutoIt version are still present in V2 with som
   The default language, however, is always EN-Us in case your language is not supported.
   An Xls file is available to send me a translation in a new language.
   This will require an addition in a new build and therefore an update of WinNut
+
+Version 1.8.0.3
+Change : WinNUT is ready to update to version 2
 
 Version 1.8.0.2
 Fix : Correction of a bad state of the UPS when the return value is not only "OL"

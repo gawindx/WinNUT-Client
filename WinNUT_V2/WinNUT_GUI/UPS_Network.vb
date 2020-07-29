@@ -29,8 +29,8 @@ Public Class UPS_Network
     Private Low_Backup As Integer
     Private LConnect As Boolean = False
     Private AReconnect As Boolean = False
-    Private MaxRetry As Integer = 1
-    Private Retry As Integer = 1
+    Private MaxRetry As Integer = 30
+    Private Retry As Integer = 0
     Private Update_Nut As New Timer
     Private Reconnect_Nut As New Timer
     Private NutSocket As System.Net.Sockets.Socket
@@ -261,7 +261,7 @@ Public Class UPS_Network
     End Property
 
     Public Event LostConnect()
-    Public Event Reconnected()
+    Public Event Connected()
     Public Event DataUpdated()
     Public Event NewRetry()
     Public Event Deconnected()
@@ -284,25 +284,31 @@ Public Class UPS_Network
                 Update_Nut.Interval = Me.Delay
                 Update_Nut.Start()
                 Me.LConnect = False
-                LogFile.LogTracing("Connection to Nu Host Established", LogLvl.LOG_NOTICE, Me)
+                LogFile.LogTracing("Connection to Nut Host Established", LogLvl.LOG_NOTICE, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CONNECTED), Me.Server, Me.Port))
+                RaiseEvent Connected()
+                Retrieve_UPS_Data(Nothing, Nothing)
             End If
         Catch Excep As Exception
-            LogFile.LogTracing("Error When Connection to Nut Host : " & Excep.Message, LogLvl.LOG_ERROR, Me)
-            Me.ConnectionStatus = False
-            If Me.AReconnect Then
-                LogFile.LogTracing("Autoreconnect Enable. Run Autoreconnect Process", LogLvl.LOG_DEBUG, Me)
-                Reconnect_Nut.Enabled = True
-                Reconnect_Nut.Start()
-                Update_Nut.Stop()
-                Update_Nut.Enabled = False
-                RaiseEvent LostConnect()
-            End If
+            Enter_Reconnect_Process(Excep, "Error When Connection to Nut Host : ")
         End Try
     End Sub
 
+    Public Sub Enter_Reconnect_Process(ByVal Excep As Exception, ByVal Message As String)
+        LogFile.LogTracing(Message & Excep.Message, LogLvl.LOG_ERROR, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_FAILED), Me.Server, Me.Port))
+        Me.ConnectionStatus = False
+        Me.LConnect = True
+        If Me.AReconnect Then
+            LogFile.LogTracing("Autoreconnect Enable. Run Autoreconnect Process", LogLvl.LOG_DEBUG, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_RETRY))
+            Reconnect_Nut.Enabled = True
+            Reconnect_Nut.Start()
+            Update_Nut.Stop()
+            Update_Nut.Enabled = False
+            RaiseEvent LostConnect()
+        End If
+    End Sub
     Public Sub Disconnect(Optional ByVal ForceDisconnect = False)
         If Not Me.ConnectionStatus Or ForceDisconnect Then
-            LogFile.LogTracing("Deconnect from Nut Host", LogLvl.LOG_NOTICE, Me)
+            LogFile.LogTracing("Deconnect from Nut Host", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_LOGOFF))
             If ForceDisconnect Then
                 LogFile.LogTracing("Force Disconnect", LogLvl.LOG_WARNING, Me)
             Else
@@ -354,17 +360,8 @@ Public Class UPS_Network
                 End If
             End If
         Catch Excep As Exception
-            LogFile.LogTracing("Error When Retrieving GetUPSVar : " & Excep.Message, LogLvl.LOG_ERROR, Me)
             Me.Disconnect(True)
-            Me.LConnect = True
-            If Me.AReconnect Then
-                LogFile.LogTracing("Autoreconnect Enable. Run Autoreconnect Process", LogLvl.LOG_NOTICE, Me)
-                Reconnect_Nut.Enabled = True
-                Reconnect_Nut.Start()
-                Update_Nut.Stop()
-                Update_Nut.Enabled = False
-            End If
-            RaiseEvent LostConnect()
+            Enter_Reconnect_Process(Excep, "Error When Retrieving GetUPSVar : ")
             Return Nothing
         End Try
     End Function
@@ -393,17 +390,8 @@ Public Class UPS_Network
                 End If
             End If
         Catch Excep As Exception
-            LogFile.LogTracing("Error When Retrieving GetUPSDescVar : " & Excep.Message, LogLvl.LOG_ERROR, Me)
             Me.Disconnect(True)
-            Me.LConnect = True
-            If Me.AReconnect Then
-                LogFile.LogTracing("Autoreconnect Enable. Run Autoreconnect Process", LogLvl.LOG_NOTICE, Me)
-                Reconnect_Nut.Enabled = True
-                Reconnect_Nut.Start()
-                Update_Nut.Stop()
-                Update_Nut.Enabled = False
-            End If
-            RaiseEvent LostConnect()
+            Enter_Reconnect_Process(Excep, "Error When Retrieving GetUPSDescVar : ")
             Return Nothing
         End Try
     End Function
@@ -450,17 +438,8 @@ Public Class UPS_Network
                 Return List_Result
             End If
         Catch Excep As Exception
-            LogFile.LogTracing("Error When Retieving ListUPSVars : " & Excep.Message, LogLvl.LOG_ERROR, Me)
             Me.Disconnect(True)
-            Me.LConnect = True
-            If Me.AReconnect Then
-                LogFile.LogTracing("Autoreconnect Enable. Run Autoreconnect Process", LogLvl.LOG_NOTICE, Me)
-                Reconnect_Nut.Enabled = True
-                Reconnect_Nut.Start()
-                Update_Nut.Stop()
-                Update_Nut.Enabled = False
-            End If
-            RaiseEvent LostConnect()
+            Enter_Reconnect_Process(Excep, "Error When Retieving ListUPSVars : ")
             Return Nothing
         End Try
     End Function
@@ -527,28 +506,19 @@ Public Class UPS_Network
                 RaiseEvent DataUpdated()
                 If Not Me.Status.Trim().StartsWith("OL") And (Me.BattCh <= Me.Low_Batt Or Me.BattRuntime <= Me.Backup_Limit) And Not ShutdownStatus Then
                     'If (Me.BattCh <= Me.Low_Batt Or Me.BattRuntime <= Me.Backup_Limit) And Not ShutdownStatus Then
-                    LogFile.LogTracing("Stop condition reached", LogLvl.LOG_NOTICE, Me)
+                    LogFile.LogTracing("Stop condition reached", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_SHUT_START))
                     RaiseEvent Shutdown_Condition()
                     ShutdownStatus = True
                 ElseIf ShutdownStatus And Me.Status.Trim().StartsWith("OL") Then
                     'ElseIf ShutdownStatus Then
-                    LogFile.LogTracing("Stop condition Canceled", LogLvl.LOG_NOTICE, Me)
+                    LogFile.LogTracing("Stop condition Canceled", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_SHUT_STOP))
                     ShutdownStatus = False
                     RaiseEvent Stop_Shutdown()
                 End If
             End If
         Catch Excep As Exception
-            LogFile.LogTracing("Error When Retrieve_UPS_Data : " & Excep.Message, LogLvl.LOG_ERROR, Me)
             Me.Disconnect(True)
-            Me.LConnect = True
-            If Me.AReconnect Then
-                LogFile.LogTracing("Autoreconnect Enable. Run Autoreconnect Process", LogLvl.LOG_NOTICE, Me)
-                Reconnect_Nut.Enabled = True
-                Reconnect_Nut.Start()
-                Update_Nut.Stop()
-                Update_Nut.Enabled = False
-            End If
-            RaiseEvent LostConnect()
+            Enter_Reconnect_Process(Excep, "Error When Retrieve_UPS_Data : ")
         End Try
     End Sub
 
@@ -556,19 +526,21 @@ Public Class UPS_Network
         Me.Retry += 1
         If Me.Retry <= Me.MaxRetry Then
             RaiseEvent NewRetry()
-            LogFile.LogTracing("Try Reconnect {Me.Retry} / {Me.MaxRetry}", LogLvl.LOG_NOTICE, Me)
+            LogFile.LogTracing(String.Format("Try Reconnect {0} / {1}", Me.Retry, Me.MaxRetry), LogLvl.LOG_NOTICE, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_NEW_RETRY), Me.Retry, Me.MaxRetry))
             Me.Connect()
             If Me.IsConnected Then
                 LogFile.LogTracing("Nut Host Reconnected", LogLvl.LOG_DEBUG, Me)
                 Reconnect_Nut.Enabled = False
                 Reconnect_Nut.Stop()
+                Me.Retry = 0
                 Update_Nut.Start()
                 Update_Nut.Enabled = True
                 Me.LConnect = False
-                RaiseEvent Reconnected()
+                RaiseEvent Connected()
+                Retrieve_UPS_Data(Nothing, Nothing)
             End If
         Else
-            LogFile.LogTracing("Max Retry reached. Stop Process Autoreconnect and wait for manual Reconnection", LogLvl.LOG_ERROR, Me)
+            LogFile.LogTracing("Max Retry reached. Stop Process Autoreconnect and wait for manual Reconnection", LogLvl.LOG_ERROR, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_STOP_RETRY))
             Reconnect_Nut.Enabled = False
             Reconnect_Nut.Stop()
             RaiseEvent Deconnected()

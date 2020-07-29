@@ -68,7 +68,7 @@
         WinNUT.LogFile.LogLevel = Cbx_LogLevel.SelectedIndex
 
         WinNUT.LogFile.LogTracing("Pref_Gui Params Saved", 1, Me)
-        If My.Computer.FileSystem.FileExists(WinNUT_Globals.LogFile) Then
+        If My.Computer.FileSystem.FileExists(WinNUT_Globals.LogFilePath) Then
             Btn_ViewLog.Enabled = True
             Btn_DeleteLog.Enabled = True
         Else
@@ -264,7 +264,7 @@
     End Sub
 
     Private Sub TabControl_Options_Selecting(sender As Object, e As TabControlCancelEventArgs) Handles TabControl_Options.Selecting
-        If My.Computer.FileSystem.FileExists(WinNUT_Globals.LogFile) Then
+        If My.Computer.FileSystem.FileExists(WinNUT_Globals.LogFilePath) Then
             Btn_ViewLog.Enabled = True
             Btn_DeleteLog.Enabled = True
         Else
@@ -275,9 +275,9 @@
 
     Private Sub Btn_DeleteLog_Click(sender As Object, e As EventArgs) Handles Btn_DeleteLog.Click
         LogFile.LogTracing("Delete LogFile", LogLvl.LOG_DEBUG, Me)
-        If My.Computer.FileSystem.FileExists(WinNUT_Globals.LogFile) Then
+        If My.Computer.FileSystem.FileExists(WinNUT_Globals.LogFilePath) Then
             WinNUT.LogFile.WriteLog = False
-            My.Computer.FileSystem.DeleteFile(WinNUT_Globals.LogFile)
+            My.Computer.FileSystem.DeleteFile(WinNUT_Globals.LogFilePath)
             WinNUT.LogFile.WriteLog = WinNUT_Params.Arr_Reg_Key.Item("UseLogFile")
             Btn_ViewLog.Enabled = True
             Btn_DeleteLog.Enabled = True
@@ -291,8 +291,8 @@
 
     Private Sub Btn_ViewLog_Click(sender As Object, e As EventArgs) Handles Btn_ViewLog.Click
         LogFile.LogTracing("Show LogFile", LogLvl.LOG_DEBUG, Me)
-        If My.Computer.FileSystem.FileExists(WinNUT_Globals.LogFile) Then
-            Process.Start(WinNUT_Globals.LogFile)
+        If My.Computer.FileSystem.FileExists(WinNUT_Globals.LogFilePath) Then
+            Process.Start(WinNUT_Globals.LogFilePath)
         Else
             LogFile.LogTracing("LogFile does not exists", LogLvl.LOG_WARNING, Me)
             Btn_ViewLog.Enabled = False

@@ -95,7 +95,7 @@ Partial Class About_Gui
         Me.Lbl_Copyright_2006.Name = "Lbl_Copyright_2006"
         Me.Lbl_Copyright_2006.Size = New System.Drawing.Size(137, 26)
         Me.Lbl_Copyright_2006.TabIndex = 2
-        Me.Lbl_Copyright_2006.Text = "Copyright Michael Liberman" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2006-2007"
+        Me.Lbl_Copyright_2006.Text = "Copyright Michael Liberman" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "©  2006-2007"
         '
         'Lbl_ProgNameVersion
         '
@@ -108,7 +108,7 @@ Partial Class About_Gui
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.WInNUT_client.My.Resources.Resources.ups_104x104
+        Me.PictureBox1.Image = Global.WinNUT_client.My.Resources.Resources.ups_104x104
         Me.PictureBox1.Location = New System.Drawing.Point(8, 12)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(104, 104)

@@ -16,7 +16,7 @@
     <value>WinNUT</value>
   </data>
   <data name="ProgramVersion" xml:space="preserve">
-    <value>2.0.1.0</value>
+    <value>2.0.2.0</value>
   </data>
   <data name="LongProgramName" xml:space="preserve">
     <value>Windows NUT Client</value>
@@ -116,5 +116,90 @@
   </data>
   <data name="GitHub_URL" xml:space="preserve">
     <value>https://github.com/gawindx/WinNUT-Client</value>
+  </data>
+  <data name="App_Event_Str_01" xml:space="preserve">
+    <value>Anwendung heruntergefahren um </value>
+  </data>
+  <data name="Frm_Shutdown_Str_01" xml:space="preserve">
+    <value>Batterieladung: {WinNUT.UPS_BattCh}
+Verbleibende Zeit: {WinNUT.Lbl_VRTime.Text}</value>
+  </data>
+  <data name="Frm_Update_Str_01" xml:space="preserve">
+    <value>Update verfügbar : Version {0}</value>
+  </data>
+  <data name="Frm_Update_Str_02" xml:space="preserve">
+    <value>ChangeLog anzeigen</value>
+  </data>
+  <data name="Frm_Update_Str_03" xml:space="preserve">
+    <value>ChangeLog ausblenden</value>
+  </data>
+  <data name="Frm_Update_Str_04" xml:space="preserve">
+    <value>WinNUT-Client jetzt aktualisieren?
+Ok, um WinNut zu schließen und neue Version zu installieren
+Abbrechen, um Msi zu speichern und später zu installieren</value>
+  </data>
+  <data name="Frm_Update_Str_05" xml:space="preserve">
+    <value>Neue Version herunterladen von :</value>
+  </data>
+  <data name="Frm_Main_Str_01" xml:space="preserve">
+    <value>Alte ups.ini importiert
+Ini-Datei nach {0} .old verschoben</value>
+  </data>
+  <data name="Frm_Main_Str_02" xml:space="preserve">
+    <value>Wiederverbindung läuft</value>
+  </data>
+  <data name="Frm_Main_Str_03" xml:space="preserve">
+    <value>Versuchen Sie {0} von {1}</value>
+  </data>
+  <data name="Frm_Main_Str_04" xml:space="preserve">
+    <value>Nicht verbunden</value>
+  </data>
+  <data name="Frm_Main_Str_05" xml:space="preserve">
+    <value>in Verbindung gebracht</value>
+  </data>
+  <data name="Frm_Main_Str_06" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="Frm_Main_Str_07" xml:space="preserve">
+    <value>Batterie ({0}%)</value>
+  </data>
+  <data name="Frm_Main_Str_08" xml:space="preserve">
+    <value>Niedriger Batteriestatus</value>
+  </data>
+  <data name="Frm_Main_Str_09" xml:space="preserve">
+    <value>Batterie OK</value>
+  </data>
+  <data name="Log_Str_01" xml:space="preserve">
+    <value>WinNut-Einstellungen geändert</value>
+  </data>
+  <data name="Log_Str_02" xml:space="preserve">
+    <value>Verbindung zum Nut Host {0}:{1} hergestellt</value>
+  </data>
+  <data name="Log_Str_03" xml:space="preserve">
+    <value>Verbindung zum Nut-Host {0}:{1} fehlgeschlagen</value>
+  </data>
+  <data name="Log_Str_04" xml:space="preserve">
+    <value>Automatische Wiederverbindung</value>
+  </data>
+  <data name="Log_Str_05" xml:space="preserve">
+    <value>Vom Nut Host getrennt</value>
+  </data>
+  <data name="Log_Str_06" xml:space="preserve">
+    <value>Versuchen Sie erneut, {0} / {1} zu verbinden</value>
+  </data>
+  <data name="Log_Str_07" xml:space="preserve">
+    <value>Max Retry erreicht. Warten Sie auf die manuelle Wiederverbindung</value>
+  </data>
+  <data name="Log_Str_08" xml:space="preserve">
+    <value>Voraussetzungen für den Start des Löschprozesses</value>
+  </data>
+  <data name="Log_Str_09" xml:space="preserve">
+    <value>Aufhebung des Löschprozesses</value>
+  </data>
+  <data name="Log_Str_10" xml:space="preserve">
+    <value>Kein Update verfügbar</value>
+  </data>
+  <data name="Log_Str_11" xml:space="preserve">
+    <value>Version {0} Verfügbar</value>
   </data>
 </root>
