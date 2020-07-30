@@ -52,6 +52,7 @@ Public Class WinNUT
     Public Shared WithEvents LogFile As New Logger(False, 0)
     Public LogLvls As LogLvl
     Public WithEvents UPS_Network As New UPS_Network(LogFile)
+    Public WithEvents FrmBuild As Update_Gui
     Public UPS_Mfr As String
     Public UPS_Model As String
     Public UPS_Serial As String
@@ -243,10 +244,15 @@ Public Class WinNUT
 
         'Run Update
         If WinNUT_Params.Arr_Reg_Key.Item("VerifyUpdate") = True And WinNUT_Params.Arr_Reg_Key.Item("VerifyUpdateAtStart") = True Then
-            Dim th As System.Threading.Thread = New Threading.Thread(New System.Threading.ParameterizedThreadStart(AddressOf Run_Update))
+            LogFile.LogTracing("Run Automatic Update", LogLvl.LOG_DEBUG, Me)
+            Dim Update_Frm = New Update_Gui()
+            Update_Frm.Activate()
+            Update_Frm.Visible = True
+            HasFocus = False
+            'Dim th As System.Threading.Thread = New Threading.Thread(New System.Threading.ParameterizedThreadStart(AddressOf Run_Update))
 
-            th.SetApartmentState(System.Threading.ApartmentState.STA)
-            th.Start(Me.UpdateMethod)
+            'th.SetApartmentState(System.Threading.ApartmentState.STA)
+            'th.Start(Me.UpdateMethod)
         End If
     End Sub
 
@@ -827,14 +833,19 @@ Public Class WinNUT
 
     Private Sub Menu_Update_Click(sender As Object, e As EventArgs) Handles Menu_Update.Click
         Me.mUpdate = True
-        Dim th As System.Threading.Thread = New Threading.Thread(New System.Threading.ParameterizedThreadStart(AddressOf Run_Update))
-        th.SetApartmentState(System.Threading.ApartmentState.STA)
-        th.Start(Me.UpdateMethod)
+        'Dim th As System.Threading.Thread = New Threading.Thread(New System.Threading.ParameterizedThreadStart(AddressOf Run_Update))
+        'th.SetApartmentState(System.Threading.ApartmentState.STA)
+        'th.Start(Me.UpdateMethod)
+        LogFile.LogTracing("Open About Gui From Menu", LogLvl.LOG_DEBUG, Me)
+        Dim Update_Frm = New Update_Gui(Me.mUpdate)
+        Update_Frm.Activate()
+        Update_Frm.Visible = True
+        HasFocus = False
     End Sub
 
-    Public Sub Run_Update(ByVal data As Object)
-        Dim frmBuild As Update_Gui = New Update_Gui(data) ' Must be created on this thread!
-        Application.Run(frmBuild)
-    End Sub
+    'Public Sub Run_Update(ByVal data As Object)
+    '    FrmBuild = New Update_Gui(data) ' Must be created on this thread!
+    '    Application.Run(FrmBuild)
+    'End Sub
 End Class
 

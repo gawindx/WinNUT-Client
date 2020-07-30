@@ -1,4 +1,8 @@
 History:
+Version 2.0.3.0
+Fix : Application crash when opening the 'UPS Variable' window
+Fix : No feedback when checking for update (manual or automatic)
+
 Version 2.0.2.0
 Fix : All hard-coded translations are translated
 Fix : The log file is now correctly created

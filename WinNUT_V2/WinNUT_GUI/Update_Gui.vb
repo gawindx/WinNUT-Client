@@ -1,6 +1,6 @@
 ﻿Public Class Update_Gui
     Private ChangeLogByteSize As Long
-    Private LogFile As Logger
+    Public Shared WithEvents LogFile As Logger
     Private Const URLStable As String = "https://raw.githubusercontent.com/gawindx/WinNUT-Client/master/changelog.txt"
     Private Const URLDev As String = "https://raw.githubusercontent.com/gawindx/WinNUT-Client/Dev/changelog.txt"
     Private ReadOnly MSIStable As String = "https://github.com/gawindx/WinNUT-Client/releases/download/v{0}/WinNUT-Setup.msi"
@@ -31,7 +31,7 @@
             MyBase.SetVisibleCore(False)
             WinNUT.NotifyIcon.Visible = False
             Me.Icon = WinNUT.Icon
-            Me.LogFile = WinNUT.LogFile
+            LogFile = WinNUT.LogFile
             VerifyUpdate()
         End If
     End Sub
@@ -175,7 +175,7 @@
         Try
             My.Computer.FileSystem.DeleteFile(ChangeLogFile)
         Catch excep As Exception
-            LogFile.LogTracing(excep.Message, LogLvl.LOG_ERROR, Me)
+            WinNUT.LogFile.LogTracing(excep.Message, LogLvl.LOG_ERROR, Me)
         End Try
         WinNUT_Params.Arr_Reg_Key.Item("LastDateVerification") = Now.ToString
         WinNUT_Params.Save_Params()

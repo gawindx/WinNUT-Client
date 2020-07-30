@@ -605,7 +605,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à 2.0.2.0.
+        '''  Recherche une chaîne localisée semblable à 2.0.3.0.
         '''</summary>
         Public ReadOnly Property ProgramVersion() As String
             Get

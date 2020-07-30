@@ -1,14 +1,14 @@
 ﻿Public Class List_Var_Gui
     Private List_Var_Datas As List(Of UPS_Var_Node)
-    Private Shared LogFile As Logger
+    Private LogFile As Logger
     Private Sub List_Var_Gui_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.LogFile = WinNUT.LogFile
         LogFile.LogTracing("Load List Var Gui", LogLvl.LOG_DEBUG, Me)
         Me.Icon = WinNUT.Icon
         Me.PopulateTreeView()
     End Sub
     Private Sub PopulateTreeView()
         LogFile.LogTracing("Populate TreeView", LogLvl.LOG_DEBUG, Me)
-        Me.Icon = WinNUT.Icon
         List_Var_Datas = WinNUT.UPS_Network.ListUPSVars()
         TView_UPSVar.Nodes.Clear()
         TView_UPSVar.Nodes.Add(WinNUT_Params.Arr_Reg_Key.Item("UPSName"), WinNUT_Params.Arr_Reg_Key.Item("UPSName"))
@@ -79,7 +79,6 @@
         Lbl_V_Value.Text = ""
         Lbl_D_Value.Text = ""
         TView_UPSVar.Nodes.Clear()
-        Me.Refresh()
         Me.PopulateTreeView()
     End Sub
 
