@@ -301,21 +301,6 @@ Cancel to Save Msi and Install Later.
   Recherche une chaîne localisée semblable à Version {0} Available.
 </summary>
 </member>
-<member name="P:WinNUT_client.My.Resources.Resources.LongProgramName">
-<summary>
-  Recherche une chaîne localisée semblable à Windows NUT Client.
-</summary>
-</member>
-<member name="P:WinNUT_client.My.Resources.Resources.ProgramName">
-<summary>
-  Recherche une chaîne localisée semblable à WinNUT.
-</summary>
-</member>
-<member name="P:WinNUT_client.My.Resources.Resources.ProgramVersion">
-<summary>
-  Recherche une chaîne localisée semblable à 2.0.3.0.
-</summary>
-</member>
 <member name="P:WinNUT_client.My.Resources.Resources.ups_104x104">
 <summary>
   Recherche une ressource localisée de type System.Drawing.Bitmap.

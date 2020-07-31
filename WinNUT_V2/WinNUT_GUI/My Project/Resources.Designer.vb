@@ -587,33 +587,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à Windows NUT Client.
-        '''</summary>
-        Public ReadOnly Property LongProgramName() As String
-            Get
-                Return ResourceManager.GetString("LongProgramName", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Recherche une chaîne localisée semblable à WinNUT.
-        '''</summary>
-        Public ReadOnly Property ProgramName() As String
-            Get
-                Return ResourceManager.GetString("ProgramName", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Recherche une chaîne localisée semblable à 2.0.3.0.
-        '''</summary>
-        Public ReadOnly Property ProgramVersion() As String
-            Get
-                Return ResourceManager.GetString("ProgramVersion", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
         '''</summary>
         Public ReadOnly Property ups_104x104() As System.Drawing.Bitmap

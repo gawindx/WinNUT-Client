@@ -94,7 +94,6 @@
             Dim HighestVersion As Integer = Nothing
             srFileReader = System.IO.File.OpenText(ChangeLogFile)
             Dim ActualVersion As Integer = CInt(Strings.Replace(WinNUT_Globals.ProgramVersion, ".", ""))
-            ActualVersion = 2020
             Do
                 sInputLine = srFileReader.ReadLine()
                 If Strings.InStr(sInputLine, "History") = 0 Then

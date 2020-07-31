@@ -50,19 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cdcRfHUCfx7Pe0IQ3KwjoQMcnPwlQhKZMoefkQuOwr0=</dsig:DigestValue>
+        <dsig:DigestValue>6PmfWfDOSPZj1ZMDKhQPct4ylDdpvm1JOf8+/TMzm3Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WinNUT-client.exe" size="4103680">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WinNUT-client.exe" size="4103168">
       <assemblyIdentity name="WinNUT-client" version="2.0.3.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EG8FiwjyP6sbaZW19x+6RQWGTVw/8H+9sDARf7yMJcU=</dsig:DigestValue>
+        <dsig:DigestValue>52CkRK/92PZwV7qeDKSSKbEznd3PmdL25jKIYJIrmTw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,19 +74,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kYwEd0udlWOO4Fl+iamGERnkGE5D6+frmsBihWEpy/k=</dsig:DigestValue>
+        <dsig:DigestValue>4JlFVW6EgYJVPP7jdsH0hQJl5JnaFv3VmPLId/VWZ84=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fr-FR\WinNUT-client.resources.dll" size="3501568">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="fr-FR\WinNUT-client.resources.dll" size="3501056">
       <assemblyIdentity name="WinNUT-client.resources" version="2.0.3.0" language="fr-FR" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lydaWI02G1O3PI57LNSkOtQsG2D1woSTnY6QqGkV8YU=</dsig:DigestValue>
+        <dsig:DigestValue>GuFvV1B2visjX4+TJy4eijtfsnOWFsCaJzytHKQI5Q0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

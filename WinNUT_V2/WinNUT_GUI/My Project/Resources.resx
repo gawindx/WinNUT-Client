@@ -287,15 +287,6 @@ Cancel to Save Msi and Install Later</value>
   <data name="Log_Str_11" xml:space="preserve">
     <value>Version {0} Available</value>
   </data>
-  <data name="LongProgramName" xml:space="preserve">
-    <value>Windows NUT Client</value>
-  </data>
-  <data name="ProgramName" xml:space="preserve">
-    <value>WinNUT</value>
-  </data>
-  <data name="ProgramVersion" xml:space="preserve">
-    <value>2.0.3.0</value>
-  </data>
   <data name="ups_104x104" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ups_104x104.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
