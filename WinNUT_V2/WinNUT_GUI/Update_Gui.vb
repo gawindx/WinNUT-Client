@@ -94,6 +94,7 @@
             Dim HighestVersion As Integer = Nothing
             srFileReader = System.IO.File.OpenText(ChangeLogFile)
             Dim ActualVersion As Integer = CInt(Strings.Replace(WinNUT_Globals.ProgramVersion, ".", ""))
+            ActualVersion = 2020
             Do
                 sInputLine = srFileReader.ReadLine()
                 If Strings.InStr(sInputLine, "History") = 0 Then
@@ -161,7 +162,7 @@
                         Me.sChangeLog &= Line & vbNewLine
                     Next
                     Me.HasUpdate = True
-                    LogFile.LogTracing(Strings.Format("New Version Available : {0}", HighestVersion), LogLvl.LOG_DEBUG, Me, Strings.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_UPDATE), HighestVersion))
+                    LogFile.LogTracing(String.Format("New Version Available : {0}", Me.NewVersion), LogLvl.LOG_DEBUG, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_UPDATE), Me.NewVersion))
                 Else
                     HighestVersion = Nothing
                     LogFile.LogTracing("No Update Available", LogLvl.LOG_DEBUG, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_NO_UPDATE))
