@@ -1,7 +1,0 @@
-*.ini
-Build/Language
-Build/Resources
-Build/log.txt
-Build/ups.ini
-WinNUT_Icons.dll
-Log.txt
