@@ -14644,4 +14644,10 @@
   <data name="Lbl_OL.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
     <value>140, 13</value>
   </data>
+  <data name="Menu_Import_Ini.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="Menu_Import_Ini.Text" xml:space="preserve">
+    <value>Ini-Datei importieren (v1.x)</value>
+  </data>
 </root>

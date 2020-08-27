@@ -112,8 +112,8 @@
     <value>Anwendung heruntergefahren um </value>
   </data>
   <data name="Frm_Shutdown_Str_01" xml:space="preserve">
-    <value>Batterieladung: {WinNUT.UPS_BattCh}
-Verbleibende Zeit: {WinNUT.Lbl_VRTime.Text}</value>
+    <value>Batterieladung: {0}
+Verbleibende Zeit: {1}</value>
   </data>
   <data name="Frm_Update_Str_01" xml:space="preserve">
     <value>Update verfügbar : Version {0}</value>
@@ -134,31 +134,31 @@ Abbrechen, um Msi zu speichern und später zu installieren</value>
   </data>
   <data name="Frm_Main_Str_01" xml:space="preserve">
     <value>Alte ups.ini importiert
-Ini-Datei nach {0} .old verschoben</value>
+Ini-Datei nach {0}.old verschoben</value>
   </data>
   <data name="Frm_Main_Str_02" xml:space="preserve">
-    <value>Wiederverbindung läuft</value>
+    <value>Alte ups.ini importiert</value>
   </data>
   <data name="Frm_Main_Str_03" xml:space="preserve">
-    <value>Versuchen Sie {0} von {1}</value>
+    <value>Wiederverbindung läuft</value>
   </data>
   <data name="Frm_Main_Str_04" xml:space="preserve">
-    <value>Nicht verbunden</value>
+    <value>Versuchen Sie {0} von {1}</value>
   </data>
   <data name="Frm_Main_Str_05" xml:space="preserve">
-    <value>in Verbindung gebracht</value>
+    <value>Nicht verbunden</value>
   </data>
   <data name="Frm_Main_Str_06" xml:space="preserve">
-    <value>Online</value>
+    <value>In Verbindung gebracht</value>
   </data>
   <data name="Frm_Main_Str_07" xml:space="preserve">
-    <value>Batterie ({0}%)</value>
+    <value>Online</value>
   </data>
   <data name="Frm_Main_Str_08" xml:space="preserve">
-    <value>Niedriger Batteriestatus</value>
+    <value>Batterie ({0}%)</value>
   </data>
   <data name="Frm_Main_Str_09" xml:space="preserve">
-    <value>Batterie OK</value>
+    <value>Niedriger Batteriestatus</value>
   </data>
   <data name="Log_Str_01" xml:space="preserve">
     <value>WinNut-Einstellungen geändert</value>
@@ -192,5 +192,17 @@ Ini-Datei nach {0} .old verschoben</value>
   </data>
   <data name="Log_Str_11" xml:space="preserve">
     <value>Version {0} Verfügbar</value>
+  </data>
+  <data name="Frm_Main_Str_10" xml:space="preserve">
+    <value>Batterie OK</value>
+  </data>
+  <data name="Frm_Main_Str_11" xml:space="preserve">
+    <value>Unbekannter USV-Name</value>
+  </data>
+  <data name="Frm_Main_Str_12" xml:space="preserve">
+    <value>Verlorene Verbindung zu {0}:{1}</value>
+  </data>
+  <data name="Frm_Main_Str_13" xml:space="preserve">
+    <value>Falsche Login-ID (Benutzername oder Passwort)</value>
   </data>
 </root>

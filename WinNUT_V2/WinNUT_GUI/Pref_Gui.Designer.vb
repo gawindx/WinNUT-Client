@@ -26,6 +26,11 @@ Partial Class Pref_Gui
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Pref_Gui))
         Me.TabControl_Options = New System.Windows.Forms.TabControl()
         Me.Tab_Connexion = New System.Windows.Forms.TabPage()
+        Me.Tb_Pwd_Nut = New System.Windows.Forms.TextBox()
+        Me.Tb_Login_Nut = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Lbl_Pwd_Nut = New System.Windows.Forms.Label()
+        Me.Lbl_Login_Nut = New System.Windows.Forms.Label()
         Me.Tb_Delay_Com = New System.Windows.Forms.TextBox()
         Me.Tb_UPS_Name = New System.Windows.Forms.TextBox()
         Me.Tb_Port = New System.Windows.Forms.TextBox()
@@ -111,6 +116,11 @@ Partial Class Pref_Gui
         '
         'Tab_Connexion
         '
+        Me.Tab_Connexion.Controls.Add(Me.Tb_Pwd_Nut)
+        Me.Tab_Connexion.Controls.Add(Me.Tb_Login_Nut)
+        Me.Tab_Connexion.Controls.Add(Me.Label3)
+        Me.Tab_Connexion.Controls.Add(Me.Lbl_Pwd_Nut)
+        Me.Tab_Connexion.Controls.Add(Me.Lbl_Login_Nut)
         Me.Tab_Connexion.Controls.Add(Me.Tb_Delay_Com)
         Me.Tab_Connexion.Controls.Add(Me.Tb_UPS_Name)
         Me.Tab_Connexion.Controls.Add(Me.Tb_Port)
@@ -123,6 +133,33 @@ Partial Class Pref_Gui
         resources.ApplyResources(Me.Tab_Connexion, "Tab_Connexion")
         Me.Tab_Connexion.Name = "Tab_Connexion"
         Me.Tab_Connexion.UseVisualStyleBackColor = True
+        '
+        'Tb_Pwd_Nut
+        '
+        resources.ApplyResources(Me.Tb_Pwd_Nut, "Tb_Pwd_Nut")
+        Me.Tb_Pwd_Nut.Name = "Tb_Pwd_Nut"
+        Me.Pref_TlTip.SetToolTip(Me.Tb_Pwd_Nut, resources.GetString("Tb_Pwd_Nut.ToolTip"))
+        '
+        'Tb_Login_Nut
+        '
+        resources.ApplyResources(Me.Tb_Login_Nut, "Tb_Login_Nut")
+        Me.Tb_Login_Nut.Name = "Tb_Login_Nut"
+        Me.Pref_TlTip.SetToolTip(Me.Tb_Login_Nut, resources.GetString("Tb_Login_Nut.ToolTip"))
+        '
+        'Label3
+        '
+        resources.ApplyResources(Me.Label3, "Label3")
+        Me.Label3.Name = "Label3"
+        '
+        'Lbl_Pwd_Nut
+        '
+        resources.ApplyResources(Me.Lbl_Pwd_Nut, "Lbl_Pwd_Nut")
+        Me.Lbl_Pwd_Nut.Name = "Lbl_Pwd_Nut"
+        '
+        'Lbl_Login_Nut
+        '
+        resources.ApplyResources(Me.Lbl_Login_Nut, "Lbl_Login_Nut")
+        Me.Lbl_Login_Nut.Name = "Lbl_Login_Nut"
         '
         'Tb_Delay_Com
         '
@@ -647,4 +684,9 @@ Partial Class Pref_Gui
     Friend WithEvents Lbl_Delay_Verif As Label
     Friend WithEvents Cb_Update_At_Start As CheckBox
     Friend WithEvents Cb_Verify_Update As CheckBox
+    Friend WithEvents Tb_Pwd_Nut As TextBox
+    Friend WithEvents Tb_Login_Nut As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Lbl_Pwd_Nut As Label
+    Friend WithEvents Lbl_Login_Nut As Label
 End Class

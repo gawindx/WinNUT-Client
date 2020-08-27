@@ -7,14 +7,14 @@
     <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="WinNUT-client.exe.manifest" size="7027">
+    <dependentAssembly dependencyType="install" codebase="WinNUT-client.exe.manifest" size="7437">
       <assemblyIdentity name="WinNUT-client.exe" version="2.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>1z1xCfgFq7mJVFVpHn47sHqtMb/KBkm9zkwaMJDbzXc=</dsig:DigestValue>
+        <dsig:DigestValue>B6KNXptwqRj3r2XS9m5AHPegz1JSBc9mgRDiXMqAnYI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -10,6 +10,10 @@
     Private Sub PopulateTreeView()
         LogFile.LogTracing("Populate TreeView", LogLvl.LOG_DEBUG, Me)
         List_Var_Datas = WinNUT.UPS_Network.ListUPSVars()
+        If List_Var_Datas Is Nothing Then
+            LogFile.LogTracing("ListUPSVars return Nothing Value", LogLvl.LOG_DEBUG, Me)
+            Return
+        End If
         TView_UPSVar.Nodes.Clear()
         TView_UPSVar.Nodes.Add(WinNUT_Params.Arr_Reg_Key.Item("UPSName"), WinNUT_Params.Arr_Reg_Key.Item("UPSName"))
         Dim TreeChild As New TreeNode

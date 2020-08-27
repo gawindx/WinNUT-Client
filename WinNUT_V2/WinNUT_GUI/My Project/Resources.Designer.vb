@@ -350,7 +350,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à Reconnection In Progress.
+        '''  Recherche une chaîne localisée semblable à Old ups.ini imported.
         '''</summary>
         Public ReadOnly Property Frm_Main_Str_02() As String
             Get
@@ -359,7 +359,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à Try {0} of {1}.
+        '''  Recherche une chaîne localisée semblable à Reconnection In Progress.
         '''</summary>
         Public ReadOnly Property Frm_Main_Str_03() As String
             Get
@@ -368,7 +368,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à Not Connected.
+        '''  Recherche une chaîne localisée semblable à Try {0} of {1}.
         '''</summary>
         Public ReadOnly Property Frm_Main_Str_04() As String
             Get
@@ -377,7 +377,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à Connected.
+        '''  Recherche une chaîne localisée semblable à Not Connected.
         '''</summary>
         Public ReadOnly Property Frm_Main_Str_05() As String
             Get
@@ -386,7 +386,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à On Line.
+        '''  Recherche une chaîne localisée semblable à Connected.
         '''</summary>
         Public ReadOnly Property Frm_Main_Str_06() As String
             Get
@@ -395,7 +395,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à On Battery ({0}%).
+        '''  Recherche une chaîne localisée semblable à On Line.
         '''</summary>
         Public ReadOnly Property Frm_Main_Str_07() As String
             Get
@@ -404,7 +404,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à Low Battery.
+        '''  Recherche une chaîne localisée semblable à On Battery ({0}%).
         '''</summary>
         Public ReadOnly Property Frm_Main_Str_08() As String
             Get
@@ -413,7 +413,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à Battery OK.
+        '''  Recherche une chaîne localisée semblable à Low Battery.
         '''</summary>
         Public ReadOnly Property Frm_Main_Str_09() As String
             Get
@@ -422,8 +422,44 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à Battery_Charge : {WinNUT.UPS_BattCh}
-        '''Remaining Time : {WinNUT.Lbl_VRTime.Text}.
+        '''  Recherche une chaîne localisée semblable à Battery OK.
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_10() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_10", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Unknown UPS Name.
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_11() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_11", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Lost Connect To {0}:{1}.
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_12() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_12", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Wrong Login ID (Username or Password).
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_13() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_13", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Battery_Charge : {0}
+        '''Remaining Time : {1}.
         '''</summary>
         Public ReadOnly Property Frm_Shutdown_Str_01() As String
             Get

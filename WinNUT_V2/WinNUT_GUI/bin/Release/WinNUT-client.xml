@@ -170,48 +170,68 @@ Ini File Moved to {0}.old.
 </member>
 <member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_02">
 <summary>
-  Recherche une chaîne localisée semblable à Reconnection In Progress.
+  Recherche une chaîne localisée semblable à Old ups.ini imported.
 </summary>
 </member>
 <member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_03">
 <summary>
-  Recherche une chaîne localisée semblable à Try {0} of {1}.
+  Recherche une chaîne localisée semblable à Reconnection In Progress.
 </summary>
 </member>
 <member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_04">
 <summary>
-  Recherche une chaîne localisée semblable à Not Connected.
+  Recherche une chaîne localisée semblable à Try {0} of {1}.
 </summary>
 </member>
 <member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_05">
 <summary>
-  Recherche une chaîne localisée semblable à Connected.
+  Recherche une chaîne localisée semblable à Not Connected.
 </summary>
 </member>
 <member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_06">
 <summary>
-  Recherche une chaîne localisée semblable à On Line.
+  Recherche une chaîne localisée semblable à Connected.
 </summary>
 </member>
 <member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_07">
 <summary>
-  Recherche une chaîne localisée semblable à On Battery ({0}%).
+  Recherche une chaîne localisée semblable à On Line.
 </summary>
 </member>
 <member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_08">
 <summary>
-  Recherche une chaîne localisée semblable à Low Battery.
+  Recherche une chaîne localisée semblable à On Battery ({0}%).
 </summary>
 </member>
 <member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_09">
 <summary>
+  Recherche une chaîne localisée semblable à Low Battery.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_10">
+<summary>
   Recherche une chaîne localisée semblable à Battery OK.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_11">
+<summary>
+  Recherche une chaîne localisée semblable à Unknown UPS Name.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_12">
+<summary>
+  Recherche une chaîne localisée semblable à Lost Connect To {0}:{1}.
+</summary>
+</member>
+<member name="P:WinNUT_client.My.Resources.Resources.Frm_Main_Str_13">
+<summary>
+  Recherche une chaîne localisée semblable à Wrong Login ID (Username or Password).
 </summary>
 </member>
 <member name="P:WinNUT_client.My.Resources.Resources.Frm_Shutdown_Str_01">
 <summary>
-  Recherche une chaîne localisée semblable à Battery_Charge : {WinNUT.UPS_BattCh}
-Remaining Time : {WinNUT.Lbl_VRTime.Text}.
+  Recherche une chaîne localisée semblable à Battery_Charge : {0}
+Remaining Time : {1}.
 </summary>
 </member>
 <member name="P:WinNUT_client.My.Resources.Resources.Frm_Update_Str_01">

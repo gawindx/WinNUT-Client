@@ -16,15 +16,8 @@
   </CacheFile>
   <CacheFile>
     <FileName>Pref_Gui.resx</FileName>
-    <Checksum>915010416172282010221532237623257151110</Checksum>
-    <ModifiedTime>2020-07-29T12:50:44.8826663</ModifiedTime>
-    <CacheFileType>NeutralResource</CacheFileType>
-    <WarningMessage />
-  </CacheFile>
-  <CacheFile>
-    <FileName>Shutdown Gui.resx</FileName>
-    <Checksum>234742012421452182486230233375212837235116</Checksum>
-    <ModifiedTime>2020-07-29T12:50:44.9246683</ModifiedTime>
+    <Checksum>1752511911904613995227128224965915125227175</Checksum>
+    <ModifiedTime>2020-08-20T12:54:05.9791211</ModifiedTime>
     <CacheFileType>NeutralResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
@@ -37,127 +30,134 @@
   </CacheFile>
   <CacheFile>
     <FileName>WinNUT.resx</FileName>
-    <Checksum>5024121268461932394972311172201381589147</Checksum>
-    <ModifiedTime>2020-07-29T12:50:44.9506704</ModifiedTime>
+    <Checksum>36452311124522820910522927861921191171439</Checksum>
+    <ModifiedTime>2020-08-27T18:36:54.9500819</ModifiedTime>
     <CacheFileType>NeutralResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>My Project\Resources.resx</FileName>
-    <Checksum>1651842201491526921315415817111521311437193129</Checksum>
-    <ModifiedTime>2020-07-31T02:10:28.9745017</ModifiedTime>
+    <Checksum>23019362143013320318262064425597213248117</Checksum>
+    <ModifiedTime>2020-08-26T20:25:43.0184724</ModifiedTime>
     <CacheFileType>NeutralResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>MultilingualResources\WinNUT-client.de-DE.xlf</FileName>
-    <Checksum>49237215974112612967128254227118510211784</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.4502875+02:00</ModifiedTime>
+    <Checksum>50130100163112952411252011751102272251925248</Checksum>
+    <ModifiedTime>2020-08-27T18:56:30.1632751+02:00</ModifiedTime>
     <CacheFileType>XliffResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>About_Gui.de-DE.resx</FileName>
     <Checksum>20215430156681274818206230180166145203170116</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.4802601+02:00</ModifiedTime>
+    <ModifiedTime>2020-08-27T18:56:35.9545008+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>List_Var_Gui.de-DE.resx</FileName>
     <Checksum>7019158351464033126936224920017321245181</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.4592588+02:00</ModifiedTime>
+    <ModifiedTime>2020-08-27T18:56:35.936501+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>My Project\Resources.de-DE.resx</FileName>
-    <Checksum>6971182312315117553782252307514716219065</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.4592588+02:00</ModifiedTime>
+    <Checksum>945392727711915414416231304619211712160</Checksum>
+    <ModifiedTime>2020-08-27T18:56:35.9375011+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>Pref_Gui.de-DE.resx</FileName>
-    <Checksum>136247154231351065611281322543410416578111</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.4842592+02:00</ModifiedTime>
-    <CacheFileType>LanguageResource</CacheFileType>
-    <WarningMessage />
-  </CacheFile>
-  <CacheFile>
-    <FileName>Shutdown Gui.de-DE.resx</FileName>
-    <Checksum>2351615719626153138153249118720899788942</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.4592588+02:00</ModifiedTime>
+    <Checksum>952059261869133137221662515821144118232</Checksum>
+    <ModifiedTime>2020-08-27T18:56:35.9574994+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>Update_Gui.de-DE.resx</FileName>
     <Checksum>16317720010911320316122794196243502443086184</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.4592588+02:00</ModifiedTime>
+    <ModifiedTime>2020-08-27T18:56:35.9375011+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>WinNUT.de-DE.resx</FileName>
-    <Checksum>52692073722021015412712110712917611920488215</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.4982592+02:00</ModifiedTime>
+    <Checksum>208155154967048332331671015382255180119225</Checksum>
+    <ModifiedTime>2020-08-27T18:56:35.9655311+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>MultilingualResources\WinNUT-client.fr-FR.xlf</FileName>
-    <Checksum>207125127782481680251871611626347135147</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.8002595+02:00</ModifiedTime>
+    <Checksum>1912472013237253109611662012471418724574254</Checksum>
+    <ModifiedTime>2020-08-27T18:54:37.7210045+02:00</ModifiedTime>
     <CacheFileType>XliffResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>About_Gui.fr-FR.resx</FileName>
     <Checksum>20215430156681274818206230180166145203170116</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.8232594+02:00</ModifiedTime>
+    <ModifiedTime>2020-08-27T18:55:55.7783896+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>List_Var_Gui.fr-FR.resx</FileName>
     <Checksum>7019158351464033126936224920017321245181</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.8022605+02:00</ModifiedTime>
+    <ModifiedTime>2020-08-27T18:55:55.7583881+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>My Project\Resources.fr-FR.resx</FileName>
-    <Checksum>421191222215231647717522855225120125215174</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.8022605+02:00</ModifiedTime>
+    <Checksum>4521512664662012381631404477229521139881</Checksum>
+    <ModifiedTime>2020-08-27T18:55:55.7593883+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>Pref_Gui.fr-FR.resx</FileName>
-    <Checksum>19224055146209237720930761764517811415</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.8252604+02:00</ModifiedTime>
-    <CacheFileType>LanguageResource</CacheFileType>
-    <WarningMessage />
-  </CacheFile>
-  <CacheFile>
-    <FileName>Shutdown Gui.fr-FR.resx</FileName>
-    <Checksum>2351615719626153138153249118720899788942</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.8062637+02:00</ModifiedTime>
+    <Checksum>16015721911010533581042386724717816515141105</Checksum>
+    <ModifiedTime>2020-08-27T18:55:55.8013882+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>Update_Gui.fr-FR.resx</FileName>
     <Checksum>8213852231909421433262412514013033195118</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.8062637+02:00</ModifiedTime>
+    <ModifiedTime>2020-08-27T18:55:55.7593883+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>
   <CacheFile>
     <FileName>WinNUT.fr-FR.resx</FileName>
-    <Checksum>205154167761598187322485718521172536325</Checksum>
-    <ModifiedTime>2020-07-31T02:10:35.8402605+02:00</ModifiedTime>
+    <Checksum>904213114096167329157246812101101058130</Checksum>
+    <ModifiedTime>2020-08-27T18:55:55.8023889+02:00</ModifiedTime>
+    <CacheFileType>LanguageResource</CacheFileType>
+    <WarningMessage />
+  </CacheFile>
+  <CacheFile>
+    <FileName>Shutdown_Gui.resx</FileName>
+    <Checksum>17425314142041649210323317851618286</Checksum>
+    <ModifiedTime>2020-08-26T19:52:52.4170295</ModifiedTime>
+    <CacheFileType>NeutralResource</CacheFileType>
+    <WarningMessage />
+  </CacheFile>
+  <CacheFile>
+    <FileName>Shutdown_Gui.de-DE.resx</FileName>
+    <Checksum>172157189320351341758602014416194235</Checksum>
+    <ModifiedTime>2020-08-27T18:56:35.9375011+02:00</ModifiedTime>
+    <CacheFileType>LanguageResource</CacheFileType>
+    <WarningMessage />
+  </CacheFile>
+  <CacheFile>
+    <FileName>Shutdown_Gui.fr-FR.resx</FileName>
+    <Checksum>501881571611241802242556417878185225130244151</Checksum>
+    <ModifiedTime>2020-08-27T18:55:55.7583881+02:00</ModifiedTime>
     <CacheFileType>LanguageResource</CacheFileType>
     <WarningMessage />
   </CacheFile>

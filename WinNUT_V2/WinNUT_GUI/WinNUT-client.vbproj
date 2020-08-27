@@ -31,6 +31,9 @@
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetPlatformVersion>10.0.18362</TargetPlatformVersion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -47,7 +50,7 @@
     <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>WinNUT-client.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
@@ -74,7 +77,7 @@
     <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>WinNut.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\WinNut.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -97,12 +100,16 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="Windows.Data" />
+    <Reference Include="Windows.Foundation" />
+    <Reference Include="Windows.UI" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -126,6 +133,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="ToastPopup.vb" />
     <Compile Include="CProgressBar.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -136,10 +144,10 @@
     <Compile Include="Update_Gui.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Shutdown Gui.Designer.vb">
-      <DependentUpon>Shutdown Gui.vb</DependentUpon>
+    <Compile Include="Shutdown_Gui.Designer.vb">
+      <DependentUpon>Shutdown_Gui.vb</DependentUpon>
     </Compile>
-    <Compile Include="Shutdown Gui.vb">
+    <Compile Include="Shutdown_Gui.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="List_Var_Gui.Designer.vb">
@@ -212,14 +220,14 @@
     <EmbeddedResource Include="Pref_Gui.resx">
       <DependentUpon>Pref_Gui.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Shutdown Gui.de-DE.resx">
-      <DependentUpon>Shutdown Gui.vb</DependentUpon>
+    <EmbeddedResource Include="Shutdown_Gui.de-DE.resx">
+      <DependentUpon>Shutdown_Gui.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Shutdown Gui.fr-FR.resx">
-      <DependentUpon>Shutdown Gui.vb</DependentUpon>
+    <EmbeddedResource Include="Shutdown_Gui.fr-FR.resx">
+      <DependentUpon>Shutdown_Gui.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Shutdown Gui.resx">
-      <DependentUpon>Shutdown Gui.vb</DependentUpon>
+    <EmbeddedResource Include="Shutdown_Gui.resx">
+      <DependentUpon>Shutdown_Gui.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Update_Gui.de-DE.resx">
       <DependentUpon>Update_Gui.vb</DependentUpon>

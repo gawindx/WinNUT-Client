@@ -207,32 +207,44 @@
 Ini File Moved to {0}.old</value>
   </data>
   <data name="Frm_Main_Str_02" xml:space="preserve">
-    <value>Reconnection In Progress</value>
+    <value>Old ups.ini imported</value>
   </data>
   <data name="Frm_Main_Str_03" xml:space="preserve">
-    <value>Try {0} of {1}</value>
+    <value>Reconnection In Progress</value>
   </data>
   <data name="Frm_Main_Str_04" xml:space="preserve">
-    <value>Not Connected</value>
+    <value>Try {0} of {1}</value>
   </data>
   <data name="Frm_Main_Str_05" xml:space="preserve">
-    <value>Connected</value>
+    <value>Not Connected</value>
   </data>
   <data name="Frm_Main_Str_06" xml:space="preserve">
-    <value>On Line</value>
+    <value>Connected</value>
   </data>
   <data name="Frm_Main_Str_07" xml:space="preserve">
-    <value>On Battery ({0}%)</value>
+    <value>On Line</value>
   </data>
   <data name="Frm_Main_Str_08" xml:space="preserve">
-    <value>Low Battery</value>
+    <value>On Battery ({0}%)</value>
   </data>
   <data name="Frm_Main_Str_09" xml:space="preserve">
+    <value>Low Battery</value>
+  </data>
+  <data name="Frm_Main_Str_10" xml:space="preserve">
     <value>Battery OK</value>
   </data>
+  <data name="Frm_Main_Str_11" xml:space="preserve">
+    <value>Unknown UPS Name</value>
+  </data>
+  <data name="Frm_Main_Str_12" xml:space="preserve">
+    <value>Lost Connect To {0}:{1}</value>
+  </data>
+  <data name="Frm_Main_Str_13" xml:space="preserve">
+    <value>Wrong Login ID (Username or Password)</value>
+  </data>
   <data name="Frm_Shutdown_Str_01" xml:space="preserve">
-    <value>Battery_Charge : {WinNUT.UPS_BattCh}
-Remaining Time : {WinNUT.Lbl_VRTime.Text}</value>
+    <value>Battery_Charge : {0}
+Remaining Time : {1}</value>
   </data>
   <data name="Frm_Update_Str_01" xml:space="preserve">
     <value>Update Available : Version {0}</value>

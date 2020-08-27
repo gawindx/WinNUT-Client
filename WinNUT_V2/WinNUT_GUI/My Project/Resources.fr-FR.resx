@@ -112,8 +112,8 @@
     <value>Application arrêtée à </value>
   </data>
   <data name="Frm_Shutdown_Str_01" xml:space="preserve">
-    <value>Charge Batterie : {WinNUT.UPS_BattCh}
-Temps restant : {WinNUT.Lbl_VRTime.Text}</value>
+    <value>Charge Batterie : {0}
+Temps restant : {1}</value>
   </data>
   <data name="Frm_Update_Str_01" xml:space="preserve">
     <value>Mise à jour disponible : version {0}</value>
@@ -133,32 +133,32 @@ Annuler pour enregistrer Msi et installer plus tard</value>
     <value>Téléchargez la nouvelle version depuis :</value>
   </data>
   <data name="Frm_Main_Str_01" xml:space="preserve">
-    <value>Ancien ups.ini importé
-Fichier Ini déplacé vers {0} .old</value>
+    <value>Ancien Fichier "ups.ini" importé
+Fichier Ini déplacé vers {0}.old</value>
   </data>
   <data name="Frm_Main_Str_02" xml:space="preserve">
-    <value>Reconnexion en cours</value>
+    <value>Ancien Fichier "ups.ini" importé</value>
   </data>
   <data name="Frm_Main_Str_03" xml:space="preserve">
-    <value>Essai {0} sur {1}</value>
+    <value>Reconnexion en cours</value>
   </data>
   <data name="Frm_Main_Str_04" xml:space="preserve">
-    <value>Non connecté</value>
+    <value>Essai {0} sur {1}</value>
   </data>
   <data name="Frm_Main_Str_05" xml:space="preserve">
-    <value>Connecté</value>
+    <value>Non connecté</value>
   </data>
   <data name="Frm_Main_Str_06" xml:space="preserve">
-    <value>Sur Secteur</value>
+    <value>Connecté</value>
   </data>
   <data name="Frm_Main_Str_07" xml:space="preserve">
-    <value>Sur Batterie ({0}%)</value>
+    <value>Sur Secteur</value>
   </data>
   <data name="Frm_Main_Str_08" xml:space="preserve">
-    <value>Batterie Basse</value>
+    <value>Sur Batterie ({0}%)</value>
   </data>
   <data name="Frm_Main_Str_09" xml:space="preserve">
-    <value>Batterie OK</value>
+    <value>Batterie Basse</value>
   </data>
   <data name="Log_Str_01" xml:space="preserve">
     <value>Préférences de WinNUT Modifiées</value>
@@ -192,5 +192,17 @@ Fichier Ini déplacé vers {0} .old</value>
   </data>
   <data name="Log_Str_11" xml:space="preserve">
     <value>Version {0} disponible</value>
+  </data>
+  <data name="Frm_Main_Str_10" xml:space="preserve">
+    <value>Batterie OK</value>
+  </data>
+  <data name="Frm_Main_Str_11" xml:space="preserve">
+    <value>Nom UPS Inconnu</value>
+  </data>
+  <data name="Frm_Main_Str_12" xml:space="preserve">
+    <value>Connexion perdue à {0}:{1}</value>
+  </data>
+  <data name="Frm_Main_Str_13" xml:space="preserve">
+    <value>ID de connexion incorrect (nom d'utilisateur ou mot de passe)</value>
   </data>
 </root>

@@ -9,6 +9,8 @@
             .Add("Port", 0)
             .Add("UPSName", "")
             .Add("Delay", 0)
+            .Add("NutLogin", "")
+            .Add("NutPassword", "")
             .Add("AutoReconnect", vbFalse)
             .Add("MinInputVoltage", 0)
             .Add("MaxInputVoltage", 0)
@@ -56,6 +58,8 @@
             .Add("Port", 3493)
             .Add("UPSName", "UPSName")
             .Add("Delay", 5000)
+            .Add("NutLogin", "")
+            .Add("NutPassword", "")
             .Add("AutoReconnect", vbFalse)
         End With
         With Arr_Reg_Calibration

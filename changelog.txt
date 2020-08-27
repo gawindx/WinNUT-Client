@@ -1,4 +1,22 @@
 History:
+Version 2.0.4.0
+Added: EXPERIMENTAL - Connection function to the nut server with identification and password.
+Fix : When the "Minimize to tray" option is disabled but the "Start Minimized" and "close to tray" options are active, 
+reducing or closing sends the application to the systray without the possibility of having access to the icon notification
+Fix : When the name of the UPS in the parameters is incorrect, it is no longer possible to display the UPS variable information window.
+Fix : Fixed a typo preventing shutdown at the end of the timeout
+Fix/Added : When the name of the UPS in the parameters is incorrect, the connection is not established and a notification is displayed for 10 seconds.
+Added : When the application is minimized in the systray and a change of connection state to the Nut server or a change of state of the UPS 
+occurs, a notification popup is displayed for 10 seconds.
+Added : When the application is minimized without being sent to the systray (in task bar), the connection and battery status is displayed 
+in the text of the window in order to be quickly visualized when the application icon is hovered in the task bar.
+Changed : The application icon has been modified to add an outline to the white shape in order to be visible when it is on a white background
+Changed : The arrows of the icon displayed during reconnection are now in yellow to be more visible due to their small size.
+Changed : The import of an old Ini file has been modified. The function is no longer automatic due to a problem with access rights to the 
+default installation directory. The import is now started manually from the File menu
+Changed : The behavior of the extinction count progress bar has been corrected and behaves in a more fluid and consistent way
+Changed : Restoring the main window from the notification icon only requires a single click (double click previously required)
+
 Version 2.0.3.0
 Fix : Application crash when opening the 'UPS Variable' window
 Fix : No feedback when checking for update (manual or automatic)

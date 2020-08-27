@@ -10,6 +10,8 @@ Public Class UPS_Network
     Private Port As Integer
     Private UPSName As String
     Private Delay As Integer
+    Private Login As String
+    Private Password As String
     Private Mfr As String
     Private Model As String
     Private Serial As String
@@ -39,6 +41,8 @@ Public Class UPS_Network
     Private ReaderStream As System.IO.StreamReader
     Private WriterStream As System.IO.StreamWriter
     Private ShutdownStatus As Boolean = False
+    Private Unknown_UPS_Name As Boolean = False
+    Private Invalid_Auth_Data As Boolean = False
     Private Const CosPhi As Double = 0.6
 
     Public Sub New(ByRef LogFile As Logger)
@@ -87,6 +91,24 @@ Public Class UPS_Network
         End Get
         Set(ByVal Value As Integer)
             Me.Delay = Value
+        End Set
+    End Property
+
+    Public Property NutLogin() As String
+        Get
+            Return Me.Login
+        End Get
+        Set(ByVal Value As String)
+            Me.Login = Value
+        End Set
+    End Property
+
+    Public Property NutPassword() As String
+        Get
+            Return Me.Password
+        End Get
+        Set(ByVal Value As String)
+            Me.Password = Value
         End Set
     End Property
     Public Property AutoReconnect() As Boolean
@@ -260,6 +282,7 @@ Public Class UPS_Network
         End Set
     End Property
 
+    Public Event Unknown_UPS()
     Public Event LostConnect()
     Public Event Connected()
     Public Event DataUpdated()
@@ -267,17 +290,28 @@ Public Class UPS_Network
     Public Event Deconnected()
     Public Event Shutdown_Condition()
     Public Event Stop_Shutdown()
+    Public Event InvalidLogin()
+
     Public Sub Connect()
         Try
-            LogFile.LogTracing("Open List Var Gui", LogLvl.LOG_DEBUG, Me)
+            LogFile.LogTracing("Connect To Nut Server", LogLvl.LOG_DEBUG, Me)
             If Me.Server <> "" And Me.Port <> 0 And Me.Delay <> 0 And Me.UPSName <> "" Then
                 Me.NutSocket = New System.Net.Sockets.Socket(Net.Sockets.AddressFamily.InterNetwork, Net.Sockets.ProtocolType.IP)
                 Me.NutTCP = New Net.Sockets.TcpClient(Me.Server, Me.Port)
                 Me.NutStream = NutTCP.GetStream
                 Me.ReaderStream = New IO.StreamReader(NutStream)
                 Me.WriterStream = New IO.StreamWriter(NutStream)
+                If Me.Login <> "" And Me.Password <> "" Then
+                    If Not AuthLogin() Then
+                        Me.Invalid_Auth_Data = True
+                        Throw New System.Exception("Failed authentication to Nut server.")
+                    End If
+                End If
                 Me.ConnectionStatus = True
                 Me.Mfr = GetUPSVar("ups.mfr", "Unknown")
+                If Me.Unknown_UPS_Name Then
+                    Throw New System.Exception("Unknown UPS Name.")
+                End If
                 Me.Model = GetUPSVar("ups.model", "Unknown")
                 Me.Serial = GetUPSVar("ups.serial", "Unknown")
                 Me.Firmware = GetUPSVar("ups.firmware", "Unknown")
@@ -294,21 +328,26 @@ Public Class UPS_Network
     End Sub
 
     Public Sub Enter_Reconnect_Process(ByVal Excep As Exception, ByVal Message As String)
-        LogFile.LogTracing(Message & Excep.Message, LogLvl.LOG_ERROR, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_FAILED), Me.Server, Me.Port))
         Me.ConnectionStatus = False
-        Me.LConnect = True
-        If Me.AReconnect Then
-            LogFile.LogTracing("Autoreconnect Enable. Run Autoreconnect Process", LogLvl.LOG_DEBUG, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_RETRY))
-            Reconnect_Nut.Enabled = True
-            Reconnect_Nut.Start()
-            Update_Nut.Stop()
-            Update_Nut.Enabled = False
-            RaiseEvent LostConnect()
+        If Not Me.Unknown_UPS_Name And Not Me.Invalid_Auth_Data Then
+            LogFile.LogTracing(Message & Excep.Message, LogLvl.LOG_ERROR, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_FAILED), Me.Server, Me.Port))
+            Me.LConnect = True
+            If Me.AReconnect Then
+                LogFile.LogTracing("Autoreconnect Enable. Run Autoreconnect Process", LogLvl.LOG_DEBUG, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_RETRY))
+                Reconnect_Nut.Enabled = True
+                Reconnect_Nut.Start()
+                Update_Nut.Stop()
+                Update_Nut.Enabled = False
+                RaiseEvent LostConnect()
+            End If
         End If
     End Sub
-    Public Sub Disconnect(Optional ByVal ForceDisconnect = False)
+
+    Public Sub Disconnect(Optional ByVal ForceDisconnect = False, Optional ByVal DisableAutoRetry = False)
         If Not Me.ConnectionStatus Or ForceDisconnect Then
-            LogFile.LogTracing("Deconnect from Nut Host", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_LOGOFF))
+            If Not Me.Unknown_UPS_Name And Not Me.Invalid_Auth_Data Then
+                LogFile.LogTracing("Deconnect from Nut Host", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_LOGOFF))
+            End If
             If ForceDisconnect Then
                 LogFile.LogTracing("Force Disconnect", LogLvl.LOG_WARNING, Me)
             Else
@@ -324,10 +363,14 @@ Public Class UPS_Network
             Me.Firmware = ""
             Update_Nut.Stop()
             Update_Nut.Enabled = False
-            If Me.AReconnect Then
-                RaiseEvent NewRetry()
-            Else
-                RaiseEvent Deconnected()
+            If Not Me.Unknown_UPS_Name And Not Me.Invalid_Auth_Data Then
+                If Not DisableAutoRetry Then
+                    If Me.AReconnect Then
+                        RaiseEvent NewRetry()
+                    Else
+                        RaiseEvent Deconnected()
+                    End If
+                End If
             End If
         End If
     End Sub
@@ -345,6 +388,12 @@ Public Class UPS_Network
                     Threading.Thread.Sleep(post_send_delay)
                 End If
                 Dim DataResult As String = Me.ReaderStream.ReadLine()
+                If DataResult = "ERR UNKNOWN-UPS" Then
+                    Me.Unknown_UPS_Name = True
+                    RaiseEvent Unknown_UPS()
+                    Throw New System.Exception("Unknown UPS Name.")
+                End If
+                Me.Unknown_UPS_Name = False
                 If InStr(DataResult, "ERR") <> 0 And Fallback_value <> "" Then
                     LogFile.LogTracing("Apply Fallback Value when retrieving " & varNAme, LogLvl.LOG_WARNING, Me)
                     DataResult = "VAR " & Me.UPSName & " " & varNAme & " " & """" & Fallback_value & """"
@@ -363,6 +412,37 @@ Public Class UPS_Network
             Me.Disconnect(True)
             Enter_Reconnect_Process(Excep, "Error When Retrieving GetUPSVar : ")
             Return Nothing
+        End Try
+    End Function
+
+    Public Function AuthLogin() As Boolean
+        Try
+            LogFile.LogTracing("Enter AuthLogin", LogLvl.LOG_DEBUG, Me)
+            Dim SendData = "USERNAME " & Me.Login & vbCr
+            Me.WriterStream.WriteLine(SendData)
+            Me.WriterStream.Flush()
+            Dim DataResult As String = Me.ReaderStream.ReadLine()
+            If DataResult = "ERR INVALID-USERNAME" And Not DataResult = "OK" Then
+                Me.Invalid_Auth_Data = True
+                RaiseEvent InvalidLogin()
+                Throw New System.Exception("Invalid Username.")
+            End If
+            Me.Invalid_Auth_Data = False
+            SendData = "PASSWORD " & Me.Password & vbCr
+            Me.WriterStream.WriteLine(SendData)
+            Me.WriterStream.Flush()
+            DataResult = Me.ReaderStream.ReadLine()
+            If DataResult = "ERR INVALID-PASSWORD" And Not DataResult = "OK" Then
+                Me.Invalid_Auth_Data = True
+                RaiseEvent InvalidLogin()
+                Throw New System.Exception("Invalid Password.")
+            End If
+            Me.Invalid_Auth_Data = False
+            Return True
+        Catch Excep As Exception
+            Me.Disconnect(True)
+            Enter_Reconnect_Process(Excep, "Error When Authentifying ")
+            Return False
         End Try
     End Function
 
@@ -395,6 +475,7 @@ Public Class UPS_Network
             Return Nothing
         End Try
     End Function
+
     Public Function ListUPSVars() As List(Of UPS_Var_Node)
         Dim List_Datas As New List(Of String)
         Try
@@ -443,7 +524,9 @@ Public Class UPS_Network
             Return Nothing
         End Try
     End Function
+
     Private Function CheckErr(ByVal NutResp As String)
+
         If Strings.Left(NutResp, 3) = "ERR" Then
             Dim StrArray = Strings.Split(NutResp, " ")
             If StrArray.Count < 2 Then
@@ -505,12 +588,10 @@ Public Class UPS_Network
                 End If
                 RaiseEvent DataUpdated()
                 If Not Me.Status.Trim().StartsWith("OL") And (Me.BattCh <= Me.Low_Batt Or Me.BattRuntime <= Me.Backup_Limit) And Not ShutdownStatus Then
-                    'If (Me.BattCh <= Me.Low_Batt Or Me.BattRuntime <= Me.Backup_Limit) And Not ShutdownStatus Then
                     LogFile.LogTracing("Stop condition reached", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_SHUT_START))
                     RaiseEvent Shutdown_Condition()
                     ShutdownStatus = True
                 ElseIf ShutdownStatus And Me.Status.Trim().StartsWith("OL") Then
-                    'ElseIf ShutdownStatus Then
                     LogFile.LogTracing("Stop condition Canceled", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_SHUT_STOP))
                     ShutdownStatus = False
                     RaiseEvent Stop_Shutdown()
@@ -524,7 +605,7 @@ Public Class UPS_Network
 
     Private Sub Reconnect_UPS(sender As Object, e As EventArgs)
         Me.Retry += 1
-        If Me.Retry <= Me.MaxRetry Then
+        If Me.Retry <= Me.MaxRetry And Not Me.Unknown_UPS_Name Then
             RaiseEvent NewRetry()
             LogFile.LogTracing(String.Format("Try Reconnect {0} / {1}", Me.Retry, Me.MaxRetry), LogLvl.LOG_NOTICE, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_NEW_RETRY), Me.Retry, Me.MaxRetry))
             Me.Connect()
@@ -538,6 +619,15 @@ Public Class UPS_Network
                 Me.LConnect = False
                 RaiseEvent Connected()
                 Retrieve_UPS_Data(Nothing, Nothing)
+            End If
+        ElseIf Me.Unknown_UPS_Name Or Me.Invalid_Auth_Data Then
+            Reconnect_Nut.Enabled = False
+            Reconnect_Nut.Stop()
+            If Me.Unknown_UPS_Name Then
+                RaiseEvent Unknown_UPS()
+            End If
+            If Me.Invalid_Auth_Data Then
+                RaiseEvent InvalidLogin()
             End If
         Else
             LogFile.LogTracing("Max Retry reached. Stop Process Autoreconnect and wait for manual Reconnection", LogLvl.LOG_ERROR, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_STOP_RETRY))

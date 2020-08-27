@@ -7823,7 +7823,7 @@ Valeur acceptée: adresse IPV4 / IPV6 / FQDN.</value>
     <value>Activer la connexion / reconnexion automatique</value>
   </data>
   <data name="Cbx_Freq_Input.ToolTip" xml:space="preserve">
-    <value>Sets the input frequency if not supplied by the UPS.</value>
+    <value>Règle la fréquence d'entrée si elle n'est pas fournie par l'onduleur.</value>
   </data>
   <data name="Tb_BattV_Max.ToolTip" xml:space="preserve">
     <value>Tension maximale de la batterie.
@@ -7920,7 +7920,7 @@ Valeur acceptée: valeur numérique de 0 à 3600.</value>
 Valeur acceptée: valeur numérique de 0 à 100.</value>
   </data>
   <data name="Cbx_Branch_Update.ToolTip" xml:space="preserve">
-    <value>Utilisez la branche Stable ou Develop lors de la vérification.</value>
+    <value>Utilisez la branche Stable ou Dev lors de la vérification.</value>
   </data>
   <data name="Cbx_Delay_Verif.ToolTip" xml:space="preserve">
     <value>Fréquence de vérification.</value>
@@ -7930,5 +7930,85 @@ Valeur acceptée: valeur numérique de 0 à 100.</value>
   </data>
   <data name="Cb_Verify_Update.ToolTip" xml:space="preserve">
     <value>Vérifiez les mises à jour.</value>
+  </data>
+  <data name="Tb_Pwd_Nut.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>154, 191</value>
+  </data>
+  <data name="Tb_Pwd_Nut.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>162, 20</value>
+  </data>
+  <data name="Tb_Pwd_Nut.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="Tb_Pwd_Nut.ToolTip" xml:space="preserve">
+    <value>Temps entre chaque mise à jour des données de l'onduleur (par défaut = 5000).
+Valeur acceptée: valeur numérique de 1 à 60 000 ms.</value>
+  </data>
+  <data name="Tb_Login_Nut.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>154, 161</value>
+  </data>
+  <data name="Tb_Login_Nut.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>162, 20</value>
+  </data>
+  <data name="Tb_Login_Nut.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="Tb_Login_Nut.ToolTip" xml:space="preserve">
+    <value>Temps entre chaque mise à jour des données de l'onduleur (par défaut = 5000).
+Valeur acceptée: valeur numérique de 1 à 60 000 ms.</value>
+  </data>
+  <data name="Label3.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label3.ImeMode" xml:space="preserve" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Label3.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>6, 132</value>
+  </data>
+  <data name="Label3.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>300, 13</value>
+  </data>
+  <data name="Label3.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Identifiants de connexion au server Nut (laisser vide si non requis)</value>
+  </data>
+  <data name="Lbl_Pwd_Nut.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_Pwd_Nut.ImeMode" xml:space="preserve" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lbl_Pwd_Nut.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>6, 192</value>
+  </data>
+  <data name="Lbl_Pwd_Nut.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>53, 13</value>
+  </data>
+  <data name="Lbl_Pwd_Nut.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="Lbl_Pwd_Nut.Text" xml:space="preserve">
+    <value>Mot de Passe</value>
+  </data>
+  <data name="Lbl_Login_Nut.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_Login_Nut.ImeMode" xml:space="preserve" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lbl_Login_Nut.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>6, 162</value>
+  </data>
+  <data name="Lbl_Login_Nut.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="Lbl_Login_Nut.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="Lbl_Login_Nut.Text" xml:space="preserve">
+    <value>Identifiant</value>
   </data>
 </root>

@@ -35,6 +35,7 @@ Partial Class WinNUT
         Me.Menu_Sys_Exit = New System.Windows.Forms.ToolStripMenuItem()
         Me.Main_Menu = New System.Windows.Forms.MenuStrip()
         Me.Menu_File = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_Import_Ini = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_UPS_Var = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_Quit = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_Connection = New System.Windows.Forms.ToolStripMenuItem()
@@ -148,9 +149,14 @@ Partial Class WinNUT
         '
         'Menu_File
         '
-        Me.Menu_File.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_UPS_Var, Me.Menu_Quit})
+        Me.Menu_File.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_Import_Ini, Me.Menu_UPS_Var, Me.Menu_Quit})
         Me.Menu_File.Name = "Menu_File"
         resources.ApplyResources(Me.Menu_File, "Menu_File")
+        '
+        'Menu_Import_Ini
+        '
+        Me.Menu_Import_Ini.Name = "Menu_Import_Ini"
+        resources.ApplyResources(Me.Menu_Import_Ini, "Menu_Import_Ini")
         '
         'Menu_UPS_Var
         '
@@ -799,4 +805,5 @@ Partial Class WinNUT
     Friend WithEvents AG_InF As AGauge
     Friend WithEvents Lbl_InF_Dial As Label
     Friend WithEvents CB_CurrentLog As ComboBox
+    Friend WithEvents Menu_Import_Ini As ToolStripMenuItem
 End Class
