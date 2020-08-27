@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="1025" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1025.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1026" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1026.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1028" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1028.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1032" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1032.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1040" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1040.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1057" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1057.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1058" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1058.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1060" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1060.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1064" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1064.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1072" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1072.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1079" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1079.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1080" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1080.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1092" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1092.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1096" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1096.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1104" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1104.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1121" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1121.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1122" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1122.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1124" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1124.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1128" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1128.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1136" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1136.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1152" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1152.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1216" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1216.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1280" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1280.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1344" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1344.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="2001" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2001_ViewLogFile.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="2002" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2002_Delete_LogFile.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WinNut" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WinNut.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WinNUT_Updater" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WinNUT-Updater.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Delete_LogFile_24x24" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete_LogFile_24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ViewLogFile_24x24" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ViewLogFile_24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ups_104x104" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ups_104x104.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GitHub_URL" xml:space="preserve">
+    <value>https://github.com/gawindx/WinNUT-Client</value>
+  </data>
+  <data name="App_Event_Str_01" xml:space="preserve">
+    <value>Anwendung heruntergefahren um </value>
+  </data>
+  <data name="Frm_Shutdown_Str_01" xml:space="preserve">
+    <value>Batterieladung: {0}
+Verbleibende Zeit: {1}</value>
+  </data>
+  <data name="Frm_Update_Str_01" xml:space="preserve">
+    <value>Update verfügbar : Version {0}</value>
+  </data>
+  <data name="Frm_Update_Str_02" xml:space="preserve">
+    <value>ChangeLog anzeigen</value>
+  </data>
+  <data name="Frm_Update_Str_03" xml:space="preserve">
+    <value>ChangeLog ausblenden</value>
+  </data>
+  <data name="Frm_Update_Str_04" xml:space="preserve">
+    <value>WinNUT-Client jetzt aktualisieren?
+Ok, um WinNut zu schließen und neue Version zu installieren
+Abbrechen, um Msi zu speichern und später zu installieren</value>
+  </data>
+  <data name="Frm_Update_Str_05" xml:space="preserve">
+    <value>Neue Version herunterladen von :</value>
+  </data>
+  <data name="Frm_Main_Str_01" xml:space="preserve">
+    <value>Alte ups.ini importiert
+Ini-Datei nach {0}.old verschoben</value>
+  </data>
+  <data name="Frm_Main_Str_02" xml:space="preserve">
+    <value>Alte ups.ini importiert</value>
+  </data>
+  <data name="Frm_Main_Str_03" xml:space="preserve">
+    <value>Wiederverbindung läuft</value>
+  </data>
+  <data name="Frm_Main_Str_04" xml:space="preserve">
+    <value>Versuchen Sie {0} von {1}</value>
+  </data>
+  <data name="Frm_Main_Str_05" xml:space="preserve">
+    <value>Nicht verbunden</value>
+  </data>
+  <data name="Frm_Main_Str_06" xml:space="preserve">
+    <value>In Verbindung gebracht</value>
+  </data>
+  <data name="Frm_Main_Str_07" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="Frm_Main_Str_08" xml:space="preserve">
+    <value>Batterie ({0}%)</value>
+  </data>
+  <data name="Frm_Main_Str_09" xml:space="preserve">
+    <value>Niedriger Batteriestatus</value>
+  </data>
+  <data name="Log_Str_01" xml:space="preserve">
+    <value>WinNut-Einstellungen geändert</value>
+  </data>
+  <data name="Log_Str_02" xml:space="preserve">
+    <value>Verbindung zum Nut Host {0}:{1} hergestellt</value>
+  </data>
+  <data name="Log_Str_03" xml:space="preserve">
+    <value>Verbindung zum Nut-Host {0}:{1} fehlgeschlagen</value>
+  </data>
+  <data name="Log_Str_04" xml:space="preserve">
+    <value>Automatische Wiederverbindung</value>
+  </data>
+  <data name="Log_Str_05" xml:space="preserve">
+    <value>Vom Nut Host getrennt</value>
+  </data>
+  <data name="Log_Str_06" xml:space="preserve">
+    <value>Versuchen Sie erneut, {0} / {1} zu verbinden</value>
+  </data>
+  <data name="Log_Str_07" xml:space="preserve">
+    <value>Max Retry erreicht. Warten Sie auf die manuelle Wiederverbindung</value>
+  </data>
+  <data name="Log_Str_08" xml:space="preserve">
+    <value>Voraussetzungen für den Start des Löschprozesses</value>
+  </data>
+  <data name="Log_Str_09" xml:space="preserve">
+    <value>Aufhebung des Löschprozesses</value>
+  </data>
+  <data name="Log_Str_10" xml:space="preserve">
+    <value>Kein Update verfügbar</value>
+  </data>
+  <data name="Log_Str_11" xml:space="preserve">
+    <value>Version {0} Verfügbar</value>
+  </data>
+  <data name="Frm_Main_Str_10" xml:space="preserve">
+    <value>Batterie OK</value>
+  </data>
+  <data name="Frm_Main_Str_11" xml:space="preserve">
+    <value>Unbekannter USV-Name</value>
+  </data>
+  <data name="Frm_Main_Str_12" xml:space="preserve">
+    <value>Verlorene Verbindung zu {0}:{1}</value>
+  </data>
+  <data name="Frm_Main_Str_13" xml:space="preserve">
+    <value>Falsche Login-ID (Benutzername oder Passwort)</value>
+  </data>
+</root>

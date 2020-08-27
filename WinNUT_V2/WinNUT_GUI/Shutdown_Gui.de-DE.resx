@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="Run_Timer.TrayLocation" xml:space="preserve" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>264, 20</value>
+  </metadata>
+  <data name="Grace_Button.Font" xml:space="preserve" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt, style=Bold</value>
+  </data>
+  <data name="Grace_Button.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>10, 70</value>
+  </data>
+  <data name="Grace_Button.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>195, 74</value>
+  </data>
+  <data name="Grace_Button.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="Grace_Button.Text" xml:space="preserve">
+    <value>Grace Time</value>
+  </data>
+  <data name="ShutDown_Btn.Font" xml:space="preserve" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt, style=Bold</value>
+  </data>
+  <data name="ShutDown_Btn.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>216, 70</value>
+  </data>
+  <data name="ShutDown_Btn.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>195, 74</value>
+  </data>
+  <data name="ShutDown_Btn.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ShutDown_Btn.Text" xml:space="preserve">
+    <value>Sofortiges Herunterfahren</value>
+  </data>
+  <data name="lbl_UPSStatus.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbl_UPSStatus.Font" xml:space="preserve" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14.25pt</value>
+  </data>
+  <data name="lbl_UPSStatus.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>10, 10</value>
+  </data>
+  <data name="lbl_UPSStatus.MaximumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>400, 50</value>
+  </data>
+  <data name="lbl_UPSStatus.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>400, 50</value>
+  </data>
+  <data name="lbl_UPSStatus.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>400, 50</value>
+  </data>
+  <data name="lbl_UPSStatus.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lbl_UPSStatus.Text" xml:space="preserve">
+    <value>Batterieladung: {WinNUT.UPS_BattCh}
+Verbleibende Zeit: {WinNUT.Lbl_VRTime.Text}</value>
+  </data>
+  <data name="lbl_UPSStatus.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" xml:space="preserve" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>422, 184</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Aussterben im Gange</value>
+  </data>
+  <metadata name="$this.Localizable" xml:space="preserve" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>

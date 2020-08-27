@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{194AB29D-1F80-497B-86BE-4F35DACBA6BC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>WinNUT_client.My.MyApplication</StartupObject>
+    <RootNamespace>WinNUT_client</RootNamespace>
+    <AssemblyName>WinNUT-client</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\Nicolas\OneDrive\Documents\GitHub\WinNUT-Client\Releases\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetPlatformVersion>10.0.18362</TargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>WinNUT-client.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>WinNUT-client.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Label="MultilingualAppToolkit">
+    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
+    <MultilingualFallbackLanguage>fr</MultilingualFallbackLanguage>
+    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
+    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\WinNut.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>C19146538F0D20A60911FD278DFBE5B16AC3C499</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WinNUT-client_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Windows.Data" />
+    <Reference Include="Windows.Foundation" />
+    <Reference Include="Windows.UI" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Logging" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About_Gui.Designer.vb">
+      <DependentUpon>About_Gui.vb</DependentUpon>
+    </Compile>
+    <Compile Include="About_Gui.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="ToastPopup.vb" />
+    <Compile Include="CProgressBar.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IniFileVb.vb" />
+    <Compile Include="Update_Gui.Designer.vb">
+      <DependentUpon>Update_Gui.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Update_Gui.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shutdown_Gui.Designer.vb">
+      <DependentUpon>Shutdown_Gui.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Shutdown_Gui.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="List_Var_Gui.Designer.vb">
+      <DependentUpon>List_Var_Gui.vb</DependentUpon>
+    </Compile>
+    <Compile Include="List_Var_Gui.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logger.vb" />
+    <Compile Include="UPS_Network.vb" />
+    <Compile Include="WinNUT_Globals.vb" />
+    <Compile Include="Pref_Gui.Designer.vb">
+      <DependentUpon>Pref_Gui.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pref_Gui.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinNUT_Params.vb" />
+    <Compile Include="WinNUT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinNUT.Designer.vb">
+      <DependentUpon>WinNUT.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="About_Gui.de-DE.resx">
+      <DependentUpon>About_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="About_Gui.fr-FR.resx">
+      <DependentUpon>About_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="About_Gui.resx">
+      <DependentUpon>About_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="List_Var_Gui.de-DE.resx">
+      <DependentUpon>List_Var_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="List_Var_Gui.fr-FR.resx">
+      <DependentUpon>List_Var_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="List_Var_Gui.resx">
+      <DependentUpon>List_Var_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.de-DE.resx" />
+    <EmbeddedResource Include="My Project\Resources.fr-FR.resx" />
+    <EmbeddedResource Include="Pref_Gui.de-DE.resx">
+      <DependentUpon>Pref_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pref_Gui.fr-FR.resx">
+      <DependentUpon>Pref_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pref_Gui.resx">
+      <DependentUpon>Pref_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shutdown_Gui.de-DE.resx">
+      <DependentUpon>Shutdown_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shutdown_Gui.fr-FR.resx">
+      <DependentUpon>Shutdown_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shutdown_Gui.resx">
+      <DependentUpon>Shutdown_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Gui.de-DE.resx">
+      <DependentUpon>Update_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Gui.fr-FR.resx">
+      <DependentUpon>Update_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Gui.resx">
+      <DependentUpon>Update_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinNUT.de-DE.resx">
+      <DependentUpon>WinNUT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinNUT.fr-FR.resx">
+      <DependentUpon>WinNUT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinNUT.resx">
+      <DependentUpon>WinNUT.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>PublicVbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="WinNUT-client_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1025.ico" />
+    <None Include="Resources\1026.ico" />
+    <None Include="Resources\1028.ico" />
+    <None Include="Resources\1032.ico" />
+    <None Include="Resources\1040.ico" />
+    <None Include="Resources\1057.ico" />
+    <None Include="Resources\1058.ico" />
+    <None Include="Resources\1060.ico" />
+    <None Include="Resources\1064.ico" />
+    <None Include="Resources\1072.ico" />
+    <None Include="Resources\1079.ico" />
+    <None Include="Resources\1080.ico" />
+    <None Include="Resources\1092.ico" />
+    <None Include="Resources\1096.ico" />
+    <None Include="Resources\1104.ico" />
+    <None Include="Resources\1121.ico" />
+    <None Include="Resources\1122.ico" />
+    <None Include="Resources\1124.ico" />
+    <None Include="Resources\1128.ico" />
+    <None Include="Resources\1136.ico" />
+    <None Include="Resources\1152.ico" />
+    <None Include="Resources\1216.ico" />
+    <None Include="Resources\1280.ico" />
+    <None Include="Resources\1344.ico" />
+    <None Include="Resources\2001_ViewLogFile.ico" />
+    <None Include="Resources\2002_Delete_LogFile.ico" />
+    <None Include="Resources\WinNut.ico" />
+    <None Include="Resources\WinNUT-Updater.ico" />
+    <None Include="Resources\2001_ViewLogFile.png" />
+    <None Include="Resources\2002_Delete_LogFile.png" />
+    <None Include="Resources\ViewLogFile_32x32.png" />
+    <None Include="Resources\Delete_LogFile_32x32.png" />
+    <None Include="Resources\ViewLogFile_24x24.png" />
+    <None Include="Resources\Delete_LogFile_24x24.png" />
+    <None Include="Resources\ups.png" />
+    <None Include="Resources\ups_104x104.png" />
+    <None Include="Resources\ups_104x104.bmp" />
+    <Content Include="WinNut.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <XliffResource Include="MultilingualResources\WinNUT-client.de-DE.xlf" />
+    <XliffResource Include="MultilingualResources\WinNUT-client.fr-FR.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AGauge_mod\AGauge.csproj">
+      <Project>{cbdb1d25-5a95-43d4-a958-bf6ae65c6c3f}</Project>
+      <Name>AGauge</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.ResxResources.targets')" />
+  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.ResxResources.targets')" Label="MultilingualAppToolkit">
+    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
+  </Target>
+</Project>
