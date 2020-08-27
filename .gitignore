@@ -361,6 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-WinNUT_V2/.vs/WinNUT_V2/v16/.suo
 *.pdb
 *.msi
+WinNUT_V2/.vs
