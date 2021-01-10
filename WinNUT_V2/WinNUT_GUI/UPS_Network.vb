@@ -45,6 +45,34 @@ Public Class UPS_Network
     Private Invalid_Auth_Data As Boolean = False
     Private Const CosPhi As Double = 0.6
 
+    ' Define possible responses according to NUT protcol v1.2
+    Enum NUTResponse
+        OK
+        ACCESSDENIED
+        UNKNOWNUPS
+        VARNOTSUPPORTED
+        CMDNOTSUPPORTED
+        INVALIDARGUMENT
+        INSTCMDFAILED
+        SETFAILED
+        [READONLY]
+        TOOLONG
+        FEATURENOTSUPPORTED
+        FEATURENOTCONFIGURED
+        ALREADYSSLMODE
+        DRIVERNOTCONNECTED
+        DATASTALE
+        ALREADYLOGGEDIN
+        INVALIDPASSWORD
+        ALREADYSETPASSWORD
+        INVALIDUSERNAME
+        ALREADYSETUSERNAME
+        USERNAMEREQUIRED
+        PASSWORDREQUIRED
+        UNKNOWNCOMMAND
+        INVALIDVALUE
+    End Enum
+
     Public Sub New(ByRef LogFile As Logger)
         Me.Server = ""
         Me.UPSName = ""
