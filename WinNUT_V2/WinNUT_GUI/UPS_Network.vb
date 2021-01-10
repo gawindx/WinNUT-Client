@@ -354,9 +354,17 @@ Public Class UPS_Network
                 LogFile.LogTracing("Normal Disconnect", LogLvl.LOG_WARNING, Me)
             End If
             Me.ConnectionStatus = False
-            Me.WriterStream.Close()
-            Me.ReaderStream.Close()
-            Me.NutStream.Close()
+
+            If Me.WriterStream IsNot Nothing Then
+                Me.WriterStream.Close()
+            End If
+            If Me.ReaderStream IsNot Nothing Then
+                Me.ReaderStream.Close()
+            End If
+            If Me.NutStream IsNot Nothing Then
+                Me.NutStream.Close()
+            End If
+
             Me.Mfr = ""
             Me.Model = ""
             Me.Serial = ""
