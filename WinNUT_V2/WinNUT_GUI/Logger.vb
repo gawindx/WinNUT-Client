@@ -1,6 +1,7 @@
 ﻿Public Class Logger
     Private ReadOnly LogFile As New FileLogTraceListener()
     Private ReadOnly TEventCache As New TraceEventCache()
+    ' Enable writing to a log file.
     Public WriteLogValue As Boolean
     Public LogLevelValue As LogLvl
     Private L_CurrentLogData As String
@@ -51,6 +52,13 @@
         Dim Pid = TEventCache.ProcessId
         Dim SenderName = sender.GetType.Name
         Dim EventTime = TEventCache.DateTime.ToLocalTime
+        Dim FinalMsg = EventTime & " " & Pid & " " & " " & SenderName & " : " & message
+
+        ' Always write log messages to the attached debug messages window.
+#If DEBUG Then
+        Debug.WriteLine(FinalMsg)
+#End If
+
         If Me.WriteLogValue Then
             If Me.LogLevel >= LvlError Then
                 LogFile.WriteLine(EventTime & " " & Pid & " " & " " & SenderName & " : " & message)
