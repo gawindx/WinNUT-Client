@@ -354,9 +354,15 @@ Public Class UPS_Network
                 LogFile.LogTracing("Normal Disconnect", LogLvl.LOG_WARNING, Me)
             End If
             Me.ConnectionStatus = False
-            Me.WriterStream.Close()
-            Me.ReaderStream.Close()
-            Me.NutStream.Close()
+
+            Try
+                Me.WriterStream.Close()
+                Me.ReaderStream.Close()
+                Me.NutStream.Close()
+            Catch Ex As Exception
+                LogFile.LogTracing("Error closing streams: " + Ex.Message, LogLvl.LOG_WARNING, Me)
+            End Try
+
             Me.Mfr = ""
             Me.Model = ""
             Me.Serial = ""
