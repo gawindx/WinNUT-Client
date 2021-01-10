@@ -355,13 +355,15 @@ Public Class UPS_Network
             End If
             Me.ConnectionStatus = False
 
-            Try
+            If Me.WriterStream IsNot Nothing Then
                 Me.WriterStream.Close()
+            End If
+            If Me.ReaderStream IsNot Nothing Then
                 Me.ReaderStream.Close()
+            End If
+            If Me.NutStream IsNot Nothing Then
                 Me.NutStream.Close()
-            Catch Ex As Exception
-                LogFile.LogTracing("Error closing streams: " + Ex.Message, LogLvl.LOG_WARNING, Me)
-            End Try
+            End If
 
             Me.Mfr = ""
             Me.Model = ""
