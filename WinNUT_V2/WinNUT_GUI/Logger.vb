@@ -59,10 +59,8 @@
         Debug.WriteLine(FinalMsg)
 #End If
 
-        If Me.WriteLogValue Then
-            If Me.LogLevel >= LvlError Then
-                LogFile.WriteLine(EventTime & " " & Pid & " " & " " & SenderName & " : " & message)
-            End If
+        If Me.WriteLogValue AndAlso Me.LogLevel >= LvlError Then
+            LogFile.WriteLine(FinalMsg)
         End If
         'If LvlError = LogLvl.LOG_NOTICE Then
         If LogToDisplay IsNot Nothing Then
