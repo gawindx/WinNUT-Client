@@ -458,6 +458,8 @@ Public Class UPS_Network
             Me.WriterStream.WriteLine(SendData)
             Me.WriterStream.Flush()
             Dim DataResult As String = Me.ReaderStream.ReadLine()
+            Dim NUTResult = EnumResponse(DataResult)
+
             If DataResult = "ERR INVALID-USERNAME" And Not DataResult = "OK" Then
                 Me.Invalid_Auth_Data = True
                 RaiseEvent InvalidLogin()
@@ -480,6 +482,24 @@ Public Class UPS_Network
             Enter_Reconnect_Process(Excep, "Error When Authentifying ")
             Return False
         End Try
+    End Function
+
+    ' Parse and enumerate a NUT protocol response.
+    Function EnumResponse(ByVal Response As String) As NUTResponse
+        ' Remove hyphens to prepare for parsing.
+        Dim SanitisedString = Response.Replace("-", String.Empty)
+        ' Break the response down so we can get specifics.
+        Dim SplitString = SanitisedString.Split(" "c)
+
+        Select Case SplitString(0)
+            Case "OK"
+                Return NUTResponse.OK
+            Case "ERR"
+                Return DirectCast([Enum].Parse(GetType(NUTResponse), SplitString(1)), NUTResponse)
+            Case Else
+                ' We don't recognize the response, throw an error.
+                Throw New Exception("Unknown response from NUT server: " & Response)
+        End Select
     End Function
 
     Public Function GetUPSDescVar(ByVal VarName As String) As String
