@@ -337,7 +337,7 @@ Public Class UPS_Network
                 End If
                 Me.ConnectionStatus = True
                 Me.Mfr = GetUPSVar("ups.mfr", "Unknown")
-                If Me.Unknown_UPS_Name Then
+                If Me.Unknown_UPS_Name Then 'TODO: Use LIST UPS protocol command to get valid UPSs.
                     Throw New System.Exception("Unknown UPS Name.")
                 End If
                 Me.Model = GetUPSVar("ups.model", "Unknown")
