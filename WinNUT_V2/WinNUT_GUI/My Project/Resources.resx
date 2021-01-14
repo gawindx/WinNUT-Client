@@ -273,7 +273,7 @@ Cancel to Save Msi and Install Later</value>
     <value>Connection to Nut Host {0}:{1} Established</value>
   </data>
   <data name="Log_Str_03" xml:space="preserve">
-    <value>Connection to Nut Host {0}:{1} Failed</value>
+    <value>Connection to Nut Host {0}:{1} Failed: {2}</value>
   </data>
   <data name="Log_Str_04" xml:space="preserve">
     <value>Automatic Reconnection</value>

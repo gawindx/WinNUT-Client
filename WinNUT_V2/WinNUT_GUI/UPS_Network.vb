@@ -357,8 +357,8 @@ Public Class UPS_Network
 
     Public Sub Enter_Reconnect_Process(ByVal Excep As Exception, ByVal Message As String)
         Me.ConnectionStatus = False
-        LogFile.LogTracing(Message & Excep.Message, LogLvl.LOG_ERROR, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_FAILED) & ": " & Excep.Message, Me.Server, Me.Port))
         If Not Me.Unknown_UPS_Name And Not Me.Invalid_Auth_Data Then
+            LogFile.LogTracing(Message & Excep.Message, LogLvl.LOG_ERROR, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_FAILED), Me.Server, Me.Port, Excep.Message))
             Me.LConnect = True
             If Me.AReconnect Then
                 LogFile.LogTracing("Autoreconnect Enable. Run Autoreconnect Process", LogLvl.LOG_DEBUG, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_RETRY))
@@ -492,7 +492,7 @@ Public Class UPS_Network
             Return True
         Catch Excep As Exception
             Me.Disconnect(True)
-            Enter_Reconnect_Process(Excep, "Error When Authentifying ")
+            LogFile.LogTracing(Excep.Message, LogLvl.LOG_ERROR, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_FAILED), Me.Server, Me.Port, Excep.Message))
             Return False
         End Try
     End Function
