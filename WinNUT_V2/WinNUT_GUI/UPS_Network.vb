@@ -357,8 +357,8 @@ Public Class UPS_Network
 
     Public Sub Enter_Reconnect_Process(ByVal Excep As Exception, ByVal Message As String)
         Me.ConnectionStatus = False
+        LogFile.LogTracing(Message & Excep.Message, LogLvl.LOG_ERROR, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_FAILED) & ": " & Excep.Message, Me.Server, Me.Port))
         If Not Me.Unknown_UPS_Name And Not Me.Invalid_Auth_Data Then
-            LogFile.LogTracing(Message & Excep.Message, LogLvl.LOG_ERROR, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_FAILED), Me.Server, Me.Port))
             Me.LConnect = True
             If Me.AReconnect Then
                 LogFile.LogTracing("Autoreconnect Enable. Run Autoreconnect Process", LogLvl.LOG_DEBUG, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_RETRY))
@@ -454,11 +454,24 @@ Public Class UPS_Network
     Public Function AuthLogin() As Boolean
         Try
             LogFile.LogTracing("Enter AuthLogin", LogLvl.LOG_DEBUG, Me)
-            Dim SendData = "USERNAME " & Me.Login & vbCr
-            Me.WriterStream.WriteLine(SendData)
+            Dim SendData = "USERNAME " & Me.Login & vbCr 'TODO: Is carriage return necessary?
+            Me.WriterStream.WriteLine(SendData) 'TODO: Move to generic request/response functions?
             Me.WriterStream.Flush()
             Dim DataResult As String = Me.ReaderStream.ReadLine()
             Dim NUTResult = EnumResponse(DataResult)
+
+            If NUTResult <> NUTResponse.OK Then
+                If NUTResult = NUTResponse.INVALIDUSERNAME Then
+                    Me.Invalid_Auth_Data = True
+                    RaiseEvent InvalidLogin()
+                    Throw New Exception("Invalid Username.")
+                ElseIf NUTResult = NUTResponse.ACCESSDENIED Then
+                    Throw New Exception("Access is denied.")
+                Else
+                    Me.AReconnect = False
+                    Throw New Exception("Unhandled login error: " & DataResult)
+                End If
+            End If
 
             If DataResult = "ERR INVALID-USERNAME" And Not DataResult = "OK" Then
                 Me.Invalid_Auth_Data = True
