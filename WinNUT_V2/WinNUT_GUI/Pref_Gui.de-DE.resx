@@ -12,377 +12,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Tb_Delay_Com.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>154, 101</value>
-  </data>
-  <data name="Tb_Delay_Com.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>162, 20</value>
-  </data>
-  <data name="Tb_Delay_Com.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="Tb_UPS_Name.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>154, 71</value>
-  </data>
-  <data name="Tb_UPS_Name.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>162, 20</value>
-  </data>
-  <data name="Tb_UPS_Name.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="Tb_Port.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>154, 41</value>
-  </data>
-  <data name="Tb_Port.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>162, 20</value>
-  </data>
-  <data name="Tb_Port.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="Tb_Server_IP.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>154, 11</value>
-  </data>
-  <data name="Tb_Server_IP.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>162, 20</value>
-  </data>
-  <data name="Tb_Server_IP.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="Cb_Reconnect.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Cb_Reconnect.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>66, 211</value>
-  </data>
-  <data name="Cb_Reconnect.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>250, 0</value>
-  </data>
-  <data name="Cb_Reconnect.RightToLeft" xml:space="preserve" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>Yes</value>
-  </data>
-  <data name="Cb_Reconnect.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>250, 17</value>
-  </data>
-  <data name="Cb_Reconnect.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
   <data name="Cb_Reconnect.Text" xml:space="preserve">
     <value>Stellen Sie die Verbindung wieder her</value>
-  </data>
-  <data name="Lbl_Delay_Com.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Delay_Com.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 102</value>
-  </data>
-  <data name="Lbl_Delay_Com.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
-  </data>
-  <data name="Lbl_Delay_Com.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>3</value>
   </data>
   <data name="Lbl_Delay_Com.Text" xml:space="preserve">
     <value>Verzögern</value>
   </data>
-  <data name="Lbl_Name_UPS.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Name_UPS.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 72</value>
-  </data>
-  <data name="Lbl_Name_UPS.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>60, 13</value>
-  </data>
-  <data name="Lbl_Name_UPS.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
   <data name="Lbl_Name_UPS.Text" xml:space="preserve">
     <value>UPS Name</value>
-  </data>
-  <data name="Lbl_Port.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Port.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="Lbl_Port.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>52, 13</value>
-  </data>
-  <data name="Lbl_Port.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>1</value>
   </data>
   <data name="Lbl_Port.Text" xml:space="preserve">
     <value>NUT Port</value>
   </data>
-  <data name="Lbl_Server_IP.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Server_IP.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 12</value>
-  </data>
-  <data name="Lbl_Server_IP.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
-  </data>
-  <data name="Lbl_Server_IP.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="Lbl_Server_IP.Text" xml:space="preserve">
     <value>NUT Host</value>
-  </data>
-  <data name="Lbl_Server_IP.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="Tab_Connexion.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="Tab_Connexion.Padding" xml:space="preserve" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="Tab_Connexion.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>322, 234</value>
-  </data>
-  <data name="Tab_Connexion.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="Tab_Connexion.Text" xml:space="preserve">
     <value>Verbindung</value>
   </data>
-  <data name="Cbx_Freq_Input.Items" xml:space="preserve">
-    <value>50</value>
-  </data>
-  <data name="Cbx_Freq_Input.Items1" xml:space="preserve">
-    <value>60</value>
-  </data>
-  <data name="Cbx_Freq_Input.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>265, 71</value>
-  </data>
-  <data name="Cbx_Freq_Input.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>50, 21</value>
-  </data>
-  <data name="Cbx_Freq_Input.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="Tb_BattV_Max.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>265, 191</value>
-  </data>
-  <data name="Tb_BattV_Max.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="Tb_BattV_Max.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="Tb_Load_Max.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>265, 161</value>
-  </data>
-  <data name="Tb_Load_Max.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="Tb_Load_Max.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="Tb_OutV_Max.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>265, 131</value>
-  </data>
-  <data name="Tb_OutV_Max.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="Tb_OutV_Max.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="Tb_InF_Max.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>265, 101</value>
-  </data>
-  <data name="Tb_InF_Max.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="Tb_InF_Max.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="Tb_BattV_Min.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>179, 191</value>
-  </data>
-  <data name="Tb_BattV_Min.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="Tb_BattV_Min.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="Tb_Load_Min.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>179, 161</value>
-  </data>
-  <data name="Tb_Load_Min.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="Tb_Load_Min.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="Tb_OutV_Min.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>179, 131</value>
-  </data>
-  <data name="Tb_OutV_Min.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="Tb_OutV_Min.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="Tb_InF_Min.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>179, 101</value>
-  </data>
-  <data name="Tb_InF_Min.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="Tb_InF_Min.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="Tb_InV_Max.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>265, 41</value>
-  </data>
-  <data name="Tb_InV_Max.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="Tb_InV_Max.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="Tb_InV_Min.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>179, 41</value>
-  </data>
-  <data name="Tb_InV_Min.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="Tb_InV_Min.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="Lbl_Maxi.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Maxi.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>274, 12</value>
-  </data>
-  <data name="Lbl_Maxi.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>27, 13</value>
-  </data>
-  <data name="Lbl_Maxi.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
   <data name="Lbl_Maxi.Text" xml:space="preserve">
     <value>Max</value>
-  </data>
-  <data name="Lbl_Mini.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Mini.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>191, 12</value>
-  </data>
-  <data name="Lbl_Mini.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>24, 13</value>
-  </data>
-  <data name="Lbl_Mini.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>6</value>
   </data>
   <data name="Lbl_Mini.Text" xml:space="preserve">
     <value>Min</value>
   </data>
-  <data name="Lbl_BattV.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_BattV.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 192</value>
-  </data>
-  <data name="Lbl_BattV.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>79, 13</value>
-  </data>
-  <data name="Lbl_BattV.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="Lbl_BattV.Text" xml:space="preserve">
     <value>Batteriespannung</value>
-  </data>
-  <data name="Lbl_LoadUPS.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_LoadUPS.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 162</value>
-  </data>
-  <data name="Lbl_LoadUPS.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
-  </data>
-  <data name="Lbl_LoadUPS.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>4</value>
   </data>
   <data name="Lbl_LoadUPS.Text" xml:space="preserve">
     <value>USV laden</value>
   </data>
-  <data name="Lbl_OutputV.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_OutputV.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 132</value>
-  </data>
-  <data name="Lbl_OutputV.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>78, 13</value>
-  </data>
-  <data name="Lbl_OutputV.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="Lbl_OutputV.Text" xml:space="preserve">
     <value>Ausgangsspannung</value>
-  </data>
-  <data name="Lbl_InputF.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_InputF.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 102</value>
-  </data>
-  <data name="Lbl_InputF.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>84, 13</value>
-  </data>
-  <data name="Lbl_InputF.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>2</value>
   </data>
   <data name="Lbl_InputF.Text" xml:space="preserve">
     <value>Eingangsfrequenz</value>
   </data>
-  <data name="Lbl_PowerF.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_PowerF.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 72</value>
-  </data>
-  <data name="Lbl_PowerF.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>92, 13</value>
-  </data>
-  <data name="Lbl_PowerF.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="Lbl_PowerF.Text" xml:space="preserve">
     <value>Frequenzversorgung.</value>
   </data>
-  <data name="Lbl_InputV.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_InputV.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="Lbl_InputV.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>70, 13</value>
-  </data>
-  <data name="Lbl_InputV.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="Lbl_InputV.Text" xml:space="preserve">
     <value>Eingangsspannung</value>
-  </data>
-  <data name="Tab_Calibrage.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="Tab_Calibrage.Padding" xml:space="preserve" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="Tab_Calibrage.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>322, 234</value>
-  </data>
-  <data name="Tab_Calibrage.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>1</value>
   </data>
   <data name="Tab_Calibrage.Text" xml:space="preserve">
     <value>Kalibrierung</value>
@@ -399,233 +69,32 @@
   <data name="Cbx_LogLevel.Items3" xml:space="preserve">
     <value>Debuggen</value>
   </data>
-  <data name="Cbx_LogLevel.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>190, 161</value>
-  </data>
-  <data name="Cbx_LogLevel.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>122, 21</value>
-  </data>
-  <data name="Cbx_LogLevel.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="Btn_DeleteLog.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>278, 122</value>
-  </data>
-  <data name="Btn_DeleteLog.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>34, 34</value>
-  </data>
-  <data name="Btn_DeleteLog.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="Btn_ViewLog.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>236, 122</value>
-  </data>
-  <data name="Btn_ViewLog.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>34, 34</value>
-  </data>
-  <data name="Btn_ViewLog.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="Lbl_LevelLog.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_LevelLog.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 162</value>
-  </data>
-  <data name="Lbl_LevelLog.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>70, 13</value>
-  </data>
-  <data name="Lbl_LevelLog.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="Lbl_LevelLog.Text" xml:space="preserve">
     <value>Protokollierungsstufe</value>
-  </data>
-  <data name="CB_Use_Logfile.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CB_Use_Logfile.CheckAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="CB_Use_Logfile.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 132</value>
-  </data>
-  <data name="CB_Use_Logfile.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>220, 0</value>
-  </data>
-  <data name="CB_Use_Logfile.RightToLeft" xml:space="preserve" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="CB_Use_Logfile.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>220, 17</value>
-  </data>
-  <data name="CB_Use_Logfile.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>4</value>
   </data>
   <data name="CB_Use_Logfile.Text" xml:space="preserve">
     <value>LogFile erstellen</value>
   </data>
-  <data name="CB_Start_W_Win.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CB_Start_W_Win.CheckAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="CB_Start_W_Win.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 102</value>
-  </data>
-  <data name="CB_Start_W_Win.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>220, 0</value>
-  </data>
-  <data name="CB_Start_W_Win.RightToLeft" xml:space="preserve" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="CB_Start_W_Win.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>220, 17</value>
-  </data>
-  <data name="CB_Start_W_Win.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="CB_Start_W_Win.Text" xml:space="preserve">
     <value>Starte mit Windows</value>
-  </data>
-  <data name="CB_Close_Tray.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CB_Close_Tray.CheckAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="CB_Close_Tray.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 72</value>
-  </data>
-  <data name="CB_Close_Tray.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>220, 0</value>
-  </data>
-  <data name="CB_Close_Tray.RightToLeft" xml:space="preserve" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="CB_Close_Tray.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>220, 17</value>
-  </data>
-  <data name="CB_Close_Tray.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>2</value>
   </data>
   <data name="CB_Close_Tray.Text" xml:space="preserve">
     <value>In der Nähe von Tablett</value>
   </data>
-  <data name="CB_Start_Mini.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CB_Start_Mini.CheckAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="CB_Start_Mini.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="CB_Start_Mini.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>220, 0</value>
-  </data>
-  <data name="CB_Start_Mini.RightToLeft" xml:space="preserve" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="CB_Start_Mini.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>220, 17</value>
-  </data>
-  <data name="CB_Start_Mini.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="CB_Start_Mini.Text" xml:space="preserve">
     <value>Minimiert starten</value>
-  </data>
-  <data name="CB_Systray.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CB_Systray.CheckAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="CB_Systray.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 12</value>
-  </data>
-  <data name="CB_Systray.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>220, 0</value>
-  </data>
-  <data name="CB_Systray.RightToLeft" xml:space="preserve" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="CB_Systray.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>220, 17</value>
-  </data>
-  <data name="CB_Systray.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="CB_Systray.Text" xml:space="preserve">
     <value>Minimize to tray</value>
   </data>
-  <data name="Tab_Miscellanous.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="Tab_Miscellanous.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>322, 234</value>
-  </data>
-  <data name="Tab_Miscellanous.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="Tab_Miscellanous.Text" xml:space="preserve">
     <value>Verschiedenes</value>
-  </data>
-  <data name="Lbl_Percent.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Percent.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>297, 12</value>
-  </data>
-  <data name="Lbl_Percent.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>15, 13</value>
-  </data>
-  <data name="Lbl_Percent.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>14</value>
   </data>
   <data name="Lbl_Percent.Text" xml:space="preserve">
     <value>%</value>
   </data>
-  <data name="Tb_GraceTime.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>240, 191</value>
-  </data>
-  <data name="Tb_GraceTime.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="Tb_GraceTime.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="Cb_ExtendTime.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Cb_ExtendTime.CheckAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="Cb_ExtendTime.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 162</value>
-  </data>
-  <data name="Cb_ExtendTime.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>284, 0</value>
-  </data>
-  <data name="Cb_ExtendTime.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>284, 17</value>
-  </data>
-  <data name="Cb_ExtendTime.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
   <data name="Cb_ExtendTime.Text" xml:space="preserve">
     <value>Erweiterte Abschaltzeit zulassen</value>
-  </data>
-  <data name="Tb_Delay_Stop.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>240, 131</value>
-  </data>
-  <data name="Tb_Delay_Stop.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="Tb_Delay_Stop.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>11</value>
   </data>
   <data name="Cbx_TypeStop.Items" xml:space="preserve">
     <value>Shutdown</value>
@@ -636,139 +105,25 @@
   <data name="Cbx_TypeStop.Items2" xml:space="preserve">
     <value>Überwintern</value>
   </data>
-  <data name="Cbx_TypeStop.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>181, 101</value>
-  </data>
-  <data name="Cbx_TypeStop.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="Cbx_TypeStop.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="Cb_ImmediateStop.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Cb_ImmediateStop.CheckAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="Cb_ImmediateStop.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 72</value>
-  </data>
-  <data name="Cb_ImmediateStop.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>284, 0</value>
-  </data>
-  <data name="Cb_ImmediateStop.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>284, 17</value>
-  </data>
-  <data name="Cb_ImmediateStop.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
   <data name="Cb_ImmediateStop.Text" xml:space="preserve">
     <value>Sofortige Stoppaktion</value>
-  </data>
-  <data name="Tb_BattLimit_Time.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>240, 41</value>
-  </data>
-  <data name="Tb_BattLimit_Time.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="Tb_BattLimit_Time.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="Tb_BattLimit_Load.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>240, 11</value>
-  </data>
-  <data name="Tb_BattLimit_Load.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="Tb_BattLimit_Load.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="Lbl_GraceTime.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_GraceTime.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 192</value>
-  </data>
-  <data name="Lbl_GraceTime.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>155, 13</value>
-  </data>
-  <data name="Lbl_GraceTime.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>6</value>
   </data>
   <data name="Lbl_GraceTime.Text" xml:space="preserve">
     <value>Grace Verzögerung beim Herunterfahren (Sek.)</value>
   </data>
-  <data name="Lbl_Delay_Stop.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Delay_Stop.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 132</value>
-  </data>
-  <data name="Lbl_Delay_Stop.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>123, 13</value>
-  </data>
-  <data name="Lbl_Delay_Stop.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
   <data name="Lbl_Delay_Stop.Text" xml:space="preserve">
     <value>Verzögerung beim Herunterfahren (Sek.)</value>
   </data>
-  <data name="Lbl_StopType.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_StopType.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 102</value>
-  </data>
-  <data name="Lbl_StopType.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>68, 13</value>
-  </data>
-  <data name="Lbl_StopType.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="Lbl_StopType.Text" xml:space="preserve">
     <value>Art des Stopps</value>
-  </data>
-  <data name="Lbl_BattLimit_Time.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_BattLimit_Time.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="Lbl_BattLimit_Time.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>178, 13</value>
-  </data>
-  <data name="Lbl_BattLimit_Time.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>1</value>
   </data>
   <data name="Lbl_BattLimit_Time.Text" xml:space="preserve">
     <value>Herunterfahren, wenn die Laufzeit
 niedriger als (Sek.)</value>
   </data>
-  <data name="Lbl_BattLimit_Load.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_BattLimit_Load.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 12</value>
-  </data>
-  <data name="Lbl_BattLimit_Load.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>150, 13</value>
-  </data>
-  <data name="Lbl_BattLimit_Load.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="Lbl_BattLimit_Load.Text" xml:space="preserve">
     <value>Herunterfahren, wenn die Batterie
 niedriger als ist</value>
-  </data>
-  <data name="Tab_Shutdown.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="Tab_Shutdown.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>322, 234</value>
-  </data>
-  <data name="Tab_Shutdown.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>2</value>
   </data>
   <data name="Tab_Shutdown.Text" xml:space="preserve">
     <value>Optionen zum Herunterfahren</value>
@@ -779,15 +134,6 @@ niedriger als ist</value>
   <data name="Cbx_Branch_Update.Items1" xml:space="preserve">
     <value>Entwicklung</value>
   </data>
-  <data name="Cbx_Branch_Update.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>196, 101</value>
-  </data>
-  <data name="Cbx_Branch_Update.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>120, 21</value>
-  </data>
-  <data name="Cbx_Branch_Update.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="Cbx_Delay_Verif.Items" xml:space="preserve">
     <value>Täglich</value>
   </data>
@@ -797,149 +143,29 @@ niedriger als ist</value>
   <data name="Cbx_Delay_Verif.Items2" xml:space="preserve">
     <value>Monatlich</value>
   </data>
-  <data name="Cbx_Delay_Verif.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>196, 71</value>
-  </data>
-  <data name="Cbx_Delay_Verif.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>120, 21</value>
-  </data>
-  <data name="Cbx_Delay_Verif.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="Lbl_Branch_Update.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Branch_Update.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 102</value>
-  </data>
-  <data name="Lbl_Branch_Update.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>111, 13</value>
-  </data>
-  <data name="Lbl_Branch_Update.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="Lbl_Branch_Update.Text" xml:space="preserve">
     <value>Stabiler oder Entwicklungszweig</value>
-  </data>
-  <data name="Lbl_Delay_Verif.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Delay_Verif.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 72</value>
-  </data>
-  <data name="Lbl_Delay_Verif.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>134, 13</value>
-  </data>
-  <data name="Lbl_Delay_Verif.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>2</value>
   </data>
   <data name="Lbl_Delay_Verif.Text" xml:space="preserve">
     <value>Verzögerung zwischen der Überprüfung</value>
   </data>
-  <data name="Cb_Update_At_Start.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Cb_Update_At_Start.CheckAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="Cb_Update_At_Start.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="Cb_Update_At_Start.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>310, 0</value>
-  </data>
-  <data name="Cb_Update_At_Start.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>310, 17</value>
-  </data>
-  <data name="Cb_Update_At_Start.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="Cb_Update_At_Start.Text" xml:space="preserve">
     <value>Überprüfen Sie das Update beim Start</value>
-  </data>
-  <data name="Cb_Verify_Update.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Cb_Verify_Update.CheckAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="Cb_Verify_Update.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 12</value>
-  </data>
-  <data name="Cb_Verify_Update.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>310, 0</value>
-  </data>
-  <data name="Cb_Verify_Update.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>310, 17</value>
-  </data>
-  <data name="Cb_Verify_Update.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="Cb_Verify_Update.Text" xml:space="preserve">
     <value>Überprüfen Sie das Update</value>
   </data>
-  <data name="Tab_Update.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="Tab_Update.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>322, 234</value>
-  </data>
-  <data name="Tab_Update.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
   <data name="Tab_Update.Text" xml:space="preserve">
     <value>Aktualisieren</value>
-  </data>
-  <data name="TabControl_Options.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="TabControl_Options.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>330, 260</value>
-  </data>
-  <data name="TabControl_Options.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="Btn_Ok.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>105, 278</value>
-  </data>
-  <data name="Btn_Ok.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="Btn_Ok.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>1</value>
   </data>
   <data name="Btn_Ok.Text" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="Btn_Apply.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>186, 278</value>
-  </data>
-  <data name="Btn_Apply.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="Btn_Apply.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
   <data name="Btn_Apply.Text" xml:space="preserve">
     <value>Anwenden</value>
   </data>
-  <data name="Btn_Cancel.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>267, 278</value>
-  </data>
-  <data name="Btn_Cancel.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="Btn_Cancel.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="Btn_Cancel.Text" xml:space="preserve">
     <value>Stornieren</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" xml:space="preserve" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>354, 311</value>
   </data>
   <data name="$this.Icon" xml:space="preserve" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -7792,15 +7018,6 @@ niedriger als ist</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Optionen</value>
   </data>
-  <metadata name="$this.Localizable" xml:space="preserve" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="Tb_Port.MaxLength" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <metadata name="Pref_TlTip.TrayLocation" xml:space="preserve" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="Tb_Delay_Com.ToolTip" xml:space="preserve">
     <value>Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5000).
 Akzeptierter Wert: Numerischer Wert von 1 bis 60.000 ms.</value>
@@ -7929,82 +7146,19 @@ Akzeptierter Wert: Numerischer Wert von 0 bis 100.</value>
   <data name="Cb_Verify_Update.ToolTip" xml:space="preserve">
     <value>Auf Updates prüfen.</value>
   </data>
-  <data name="Tb_Pwd_Nut.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>154, 191</value>
-  </data>
-  <data name="Tb_Pwd_Nut.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>162, 20</value>
-  </data>
-  <data name="Tb_Pwd_Nut.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
   <data name="Tb_Pwd_Nut.ToolTip" xml:space="preserve">
     <value>Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5000).
 Akzeptierter Wert: Numerischer Wert von 1 bis 60.000 ms.</value>
-  </data>
-  <data name="Tb_Login_Nut.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>154, 161</value>
-  </data>
-  <data name="Tb_Login_Nut.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>162, 20</value>
-  </data>
-  <data name="Tb_Login_Nut.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>12</value>
   </data>
   <data name="Tb_Login_Nut.ToolTip" xml:space="preserve">
     <value>Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5000).
 Akzeptierter Wert: Numerischer Wert von 1 bis 60.000 ms.</value>
   </data>
-  <data name="Label3.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Label3.ImeMode" xml:space="preserve" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="Label3.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 132</value>
-  </data>
-  <data name="Label3.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>300, 13</value>
-  </data>
-  <data name="Label3.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
   <data name="Label3.Text" xml:space="preserve">
     <value>Anmeldeinformationen beim Nut-Server (leer lassen, wenn nicht erforderlich)</value>
   </data>
-  <data name="Lbl_Pwd_Nut.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Pwd_Nut.ImeMode" xml:space="preserve" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="Lbl_Pwd_Nut.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 192</value>
-  </data>
-  <data name="Lbl_Pwd_Nut.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
-  </data>
-  <data name="Lbl_Pwd_Nut.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
   <data name="Lbl_Pwd_Nut.Text" xml:space="preserve">
     <value>Passwort</value>
-  </data>
-  <data name="Lbl_Login_Nut.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Login_Nut.ImeMode" xml:space="preserve" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="Lbl_Login_Nut.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 162</value>
-  </data>
-  <data name="Lbl_Login_Nut.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>33, 13</value>
-  </data>
-  <data name="Lbl_Login_Nut.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>9</value>
   </data>
   <data name="Lbl_Login_Nut.Text" xml:space="preserve">
     <value>Anmeldung</value>

@@ -12,106 +12,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TB_ChgLog.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="TB_ChgLog.Multiline" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TB_ChgLog.ScrollBars" xml:space="preserve" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="TB_ChgLog.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>500, 160</value>
-  </data>
-  <data name="TB_ChgLog.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="Lbl.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl.Font" xml:space="preserve" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
-  </data>
-  <data name="Lbl.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>6, 16</value>
-  </data>
-  <data name="Lbl.MaximumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>500, 20</value>
-  </data>
-  <data name="Lbl.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>500, 20</value>
-  </data>
-  <data name="Lbl.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>500, 20</value>
-  </data>
-  <data name="Lbl.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="Lbl.Text" xml:space="preserve">
     <value>Update verfügbar: Version {0}</value>
-  </data>
-  <data name="Lbl.TextAlign" xml:space="preserve" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="GB1.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="GB1.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>513, 212</value>
-  </data>
-  <data name="GB1.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="Update_Btn.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>18, 230</value>
-  </data>
-  <data name="Update_Btn.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>145, 23</value>
-  </data>
-  <data name="Update_Btn.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>2</value>
   </data>
   <data name="Update_Btn.Text" xml:space="preserve">
     <value>Aktualisieren</value>
   </data>
-  <data name="ShowLog_Button.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>196, 230</value>
-  </data>
-  <data name="ShowLog_Button.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>145, 23</value>
-  </data>
-  <data name="ShowLog_Button.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="ShowLog_Button.Text" xml:space="preserve">
     <value>ChangeLog anzeigen</value>
-  </data>
-  <data name="Close_Btn.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
-    <value>374, 230</value>
-  </data>
-  <data name="Close_Btn.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>145, 23</value>
-  </data>
-  <data name="Close_Btn.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
-    <value>4</value>
   </data>
   <data name="Close_Btn.Text" xml:space="preserve">
     <value>Schließen</value>
   </data>
-  <data name="$this.AutoScaleDimensions" xml:space="preserve" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
-    <value>536, 264</value>
-  </data>
-  <data name="$this.StartPosition" xml:space="preserve" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Aktualisieren</value>
   </data>
-  <metadata name="$this.Localizable" xml:space="preserve" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>

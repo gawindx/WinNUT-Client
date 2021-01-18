@@ -135,18 +135,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5D9F4510FB2E1DB827C759849D2C05EF"
-        "OwnerKey" = "8:_314CE5030A4040E69371869B1C94AA16"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5D9F4510FB2E1DB827C759849D2C05EF"
-        "OwnerKey" = "8:_99295A60B760C5A7B2A217EF6A2482C4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5F45EF116DEF98C6EB00FE13ECFD9E23"
         "OwnerKey" = "8:_70DBA11C2BF449198BA594449914C1BC"
         "MsmSig" = "8:_UNDEFINED"
@@ -316,12 +304,6 @@
         "Entry"
         {
         "MsmKey" = "8:_97F8FD3ED528CFC36C938FB3E780A869"
-        "OwnerKey" = "8:_70DBA11C2BF449198BA594449914C1BC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_99295A60B760C5A7B2A217EF6A2482C4"
         "OwnerKey" = "8:_70DBA11C2BF449198BA594449914C1BC"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -563,12 +545,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E8BB0E2A241C1023B684B55FEB5B745F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_99295A60B760C5A7B2A217EF6A2482C4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1458,26 +1434,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D9F4510FB2E1DB827C759849D2C05EF"
-            {
-            "SourcePath" = "8:AGauge.tlb"
-            "TargetName" = "8:AGauge.tlb"
-            "Tag" = "8:"
-            "Folder" = "8:_7A1917372AF14D75845D775AAEB7CD48"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:2"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5F45EF116DEF98C6EB00FE13ECFD9E23"
             {
             "AssemblyRegister" = "3:1"
@@ -1846,7 +1802,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -2188,37 +2144,6 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_99295A60B760C5A7B2A217EF6A2482C4"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AGauge, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_99295A60B760C5A7B2A217EF6A2482C4"
-                    {
-                    "Name" = "8:AGauge.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:AGauge.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_7A1917372AF14D75845D775AAEB7CD48"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -2980,22 +2905,22 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WinNUT-Setup"
-        "ProductCode" = "8:{2C5E3DF9-9CF4-4251-99BE-1086960205BD}"
-        "PackageCode" = "8:{FF3A0DCD-1D17-4B41-8830-1C17CED15D93}"
+        "ProductCode" = "8:{8FD70CC7-6A88-4FB5-9163-8ED103AF4113}"
+        "PackageCode" = "8:{22515A7F-BC0B-40F4-9534-1AD7728457D0}"
         "UpgradeCode" = "8:{7EA17151-76E7-4E29-8F6A-621C1B4144C2}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.0.4"
+        "ProductVersion" = "8:2.0.5"
         "Manufacturer" = "8:Gawindx"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:WinNUT-Setup"
-        "Subject" = "8:WinNut-Client v2.0.4.0"
+        "Subject" = "8:WinNut-Client v2.0.5.0"
         "ARPCONTACT" = "8:Gawindx"
-        "Keywords" = "8:WinNUT v2.0.4.0"
+        "Keywords" = "8:WinNUT v2.0.5.0"
         "ARPCOMMENTS" = "8:Windows NUT Client"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:"
@@ -3544,7 +3469,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_314CE5030A4040E69371869B1C94AA16"
             {
-            "SourcePath" = "8:..\\AGauge_mod\\obj\\Release\\AGauge.dll"
+            "SourcePath" = "8:..\\AGauge_mod\\obj\\Debug\\AGauge.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7A1917372AF14D75845D775AAEB7CD48"
@@ -3572,7 +3497,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_70DBA11C2BF449198BA594449914C1BC"
             {
-            "SourcePath" = "8:..\\WInNUT_GUI\\obj\\Release\\WinNUT-client.exe"
+            "SourcePath" = "8:..\\WInNUT_GUI\\obj\\Debug\\WinNUT-client.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7A1917372AF14D75845D775AAEB7CD48"

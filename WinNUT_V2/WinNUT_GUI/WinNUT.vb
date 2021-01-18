@@ -82,6 +82,7 @@ Public Class WinNUT
     Private AppDarkMode As Boolean = False
     Private HasFocus As Boolean = True
     Private mUpdate As Boolean = False
+    Private FormText As String
     Private Event On_Battery()
     Private Event On_Line()
     Private Event UpdateNotifyIconStr(ByVal Reason As String, ByVal Message As String)
@@ -357,19 +358,7 @@ Public Class WinNUT
                 Me.NotifyIcon.Visible = True
             End If
             If Me.NotifyIcon.Visible = False Then
-                Dim FormText As String = "WinNUT - Bat: " & Me.UPS_BattCh & "% - " & WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_CONN) & " - "
-                If UPS_Network.UPS_Status = "OL" Then
-                    FormText &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_OL) & " - "
-                Else
-                    FormText &= String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_OB), UPS_Network.UPS_BattCh) & " - "
-                End If
-                Select Case UPS_Network.UPS_BattCh
-                    Case 0 To 40
-                        FormText &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_LOWBAT)
-                    Case 41 To 100
-                        FormText &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_BATOK)
-                End Select
-                Me.Text = FormText
+                Me.Text = Me.FormText
             Else
                 Me.Text = "WinNUT"
             End If
@@ -414,7 +403,7 @@ Public Class WinNUT
                 FormText &= " - Bat: " & Me.UPS_BattCh & "% - " & WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_RECONNECT) & " - " & Message
             Case "Connected"
                 NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_CONN)
-                FormText &= " - Bat: " & Me.UPS_BattCh & "% - " & WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_NOTCONN)
+                FormText &= " - Bat: " & Me.UPS_BattCh & "% - " & WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_CONN)
             Case "Deconnected"
                 NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_NOTCONN)
                 FormText &= " - " & WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_NOTCONN)
@@ -427,7 +416,7 @@ Public Class WinNUT
             Case "Update Data"
                 FormText &= " - Bat: " & Me.UPS_BattCh & "% - " & WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_CONN) & " - "
                 NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_CONN) & vbNewLine
-                If UPS_Network.UPS_Status = "OL" Then
+                If Me.UPS_Status.Trim().StartsWith("OL") Then
                     NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_OL) & vbNewLine
                     FormText &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_OL) & " - "
                 Else
@@ -449,6 +438,7 @@ Public Class WinNUT
         Else
             Me.Text = WinNUT_Globals.LongProgramName
         End If
+        Me.FormText = FormText
 
         LogFile.LogTracing("NotifyIcon Text => " & vbNewLine & NotifyStr, LogLvl.LOG_DEBUG, Me)
     End Sub
@@ -620,6 +610,7 @@ Public Class WinNUT
         ActualAppIconIdx = AppIconIdx.IDX_ICO_OFFLINE
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
         UpdateIcon_NotifyIcon()
+        RaiseEvent UpdateNotifyIconStr("Deconnected", Nothing)
     End Sub
 
     Private Sub ReInitDisplayValues()
@@ -915,7 +906,7 @@ Public Class WinNUT
     Public Sub Shutdown_Action()
         Select Case WinNUT_Params.Arr_Reg_Key.Item("TypeOfStop")
             Case 0
-                Process.Start("C:\WINDOWS\system32\Shutdown.exe", "-s -t 0")
+                Process.Start("C:\WINDOWS\system32\Shutdown.exe", "-f -s -t 0")
             Case 1
                 SetSystemPowerState(True, 0)
             Case 2

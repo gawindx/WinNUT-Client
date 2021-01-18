@@ -167,7 +167,7 @@ Fichier Ini déplacé vers {0}.old</value>
     <value>Connexion au Serveur NUT {0}:{1} établie</value>
   </data>
   <data name="Log_Str_03" xml:space="preserve">
-    <value>Connexion au Serveur NUT {0}:{1} échouée</value>
+    <value>Connexion au Serveur NUT {0}:{1} échouée : {2}</value>
   </data>
   <data name="Log_Str_04" xml:space="preserve">
     <value>Re-connexion Automatique</value>
