@@ -1,149 +1,146 @@
-﻿Message;Translate
-;
-About;关于
-Activate automatic connection / reconnection;启用自动连接/重连
-Additional grace period limit. Accepted value: Numeric value from 0 to 3600.;额外的宽限期限制。允许值：0-3600 之间的数值。
-Alert;警告
-Allow additional time during the shutdown procedure. Note: This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!;在关机过程中允许的额外时间。 注意: 这段额外时间可能超过 UPS 的续航时间 - 谨慎使用！！！
-Allow Extended Shutdown Time;允许的延时关机时间
-Application shut down at;应用程序被关闭于
-Apply;应用
-Automatic Reconnection;自动重连
-Battery Charge;电池电量
-Battery OK;电池正常
-Battery_Charge : {0} Remaining Time : {1};电池电量 : {0} 续航时间 : {1}
-Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text};电池电量 : {WinNUT.UPS_BattCh} 续航时间 : {WinNUT.Lbl_VRTime.Text}
-Battery Voltage;电池电压
-Calibration;校准
-Cancel;取消
-Cancellation of the Extinguishing Process;取消关机进程
-Check for updates.;检查更新。
-Checks for updates at startup.;在启动时检查更新。
-Close;关闭
-Close to Tray;关闭时缩小至托盘
-Conditions met for launching the Extinguishing Process;触发关机进程所需的条件
-Connected;已连接
-Connection;连接
-Connection to Nut Host {0}:{1} Established;至 Nut 主机 {0}:{1} 的连接建立成功
-Connection to Nut Host {0}:{1} Failed: {2};至 Nut 主机 {0}:{1} 的连接建立失败: {2}
-"Create a log file (""WinNUT-client.log"" file in the WinNUT installation directory).";"创建日志文件（""WinNUT-client.log"" 文件位于 WinNUT 的安装目录）。"
-Create LogFile;创建日志文件
-Daily;每天
-Debug;诊断
-Delay;延时
-Delay Between Verification;每次检验的延时
-Delay to Shutdown (sec);关机的延时（秒）
-Delete log file.;删除日志文件。
-Devellopement;开发版
-Disconnect;断开连接
-Disconnected from Nut Host;从 Nut 主机断开了连接。
-Download New Version from :;下载了新版本于：
-Error;错误
-Exit;退出
-Extinction In Progress;灭绝进行中
-File;文件
-Firmware :;固件：
-Frequency of verification.;验证的频率。
-Frequency Supply;供电频率
-Grace Delay to Shutdown (sec);关机的宽限延时（秒）：
-Grace Time;宽限时间
-Help;帮助
-Hibernate;休眠
-Hide ChangeLog;隐藏更新日志
-Immediate Shutdown;立即关机
-Immediate stop action;即时停机操作
-Import Ini File (v1.x);导入 Ini 文件（v1.x 版本）
-Input Frequency;输入频率
-Input Voltage;输入电压
-Log file log level;日志记录等级
-Logging level;日志等级
-Logging level.;日志等级。
-Login;登录
-Login credentials to the Nut server (leave blank if not required);Nut服务器的登录凭据（如果不需要，请留空）
-Lost Connect To {0}:{1};与断开连接{0}：{1}
-Low Battery;低电池电量
-Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.;触发停机流程的最低续航时间。 接受值：0-3600 之间的数值。
-Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.;触发停机流程的最低电池电量百分比。 接受值：0-100 之间的数值。
-Manufacturer :;制造商：
-Max;最高
-Max Retry reached. Wait for manual Reconnection;达到最大重试次数。等待手动重连。
-Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.;最高电池电压。 接受值：0-100 之间的数值。
-Maximum input frequency. Accepted value: Numeric value from 0 to 100.;最高输入频率。 接受值：0-100 之间的数值。
-Maximum input voltage. Accepted value: Numeric value from 0 to 999.;最高输入电压。 接收值：0-999 之间的数值。
-Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.;最高 UPS 电量等级。 接受值：0-100 之间的数值。
-Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.;最高输出电压。 接收值：0-999 之间的数值。
-Min;最低
-Minimize to tray;缩小至任务栏。
-Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.;最低电池电压。 接受值：0-100 之间的数值。
-Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.;最低 UPS 电量等级。 接受值：0-100 之间的数值。
-Minimum input frequency. Accepted value: Numeric value from 0 to 100.;最低输入频率。 接受值：0-100 之间的数值。
-Minimum input voltage. Accepted value: Numeric value from 0 to 999.;最低输入电压。 接收值：0-999 之间的数值。
-Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.;最低输出电压。 接收值：0-999 之间的数值。
-Miscellanous;杂项
-Monthly;每月
-Name :;名称：
-No Update Available;没有可用的更新
-Not Connected;未连接
-Notice;注意
-NUT host;NUT 主机
-NUT Port;NUT 端口
-Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.;Nut 服务器地址。 接收值：IPv4/IPv6/FQDN 地址
-Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.;Nut 服务器端口（默认为3493）。 接收值：1-65535 之间的数值。
-Ok;好的
-Old ups.ini imported;导入了旧的 ups.ini
-Old ups.ini imported Ini File Moved to {0}.old;导入了旧的 ups.ini Ini 文件重命名为 {0}.old
-On Battery ({0}%);使用电池中 ({0}%)
-On Line;使用市电中
-Open the log file.;打开日志文件。
-Options;选项
-Output Voltage;输出电压
-Password;密码
-Reconnect;重新连接
-Reconnection In Progress;重连中
-Reduced to the taskbar or Systray.;缩小至任务栏或系统托盘。
-Re-establish connection;重新建立连接
-Remaining Time :;剩余时间：
-Sends in Systray at closing.;关闭时缩小至托盘。
-Serial :;序列号：
-Sets the input frequency if not supplied by the UPS.;设置输入频率（如果UPS未提供）
-Settings;设置
-Show ChangeLog;显示更新日志
-Shutdown;关机
-Shutdown if battery lower than;如果电池低于百分比则关机
-Shutdown if runtime lower than (sec);如果续航时间低于则关机
-Shutdown Options;关机选项
-Sleep;睡眠
-Stable;稳定
-Stable Or Dev Branch;稳定或开发分支
-Start Minimized;启动时最小化
-Start with Windows;随 Windows 启动
-Starts the shutdown procedure immediately or timed.;立刻或延时启动关机流程。
-Starts WinNut Minimized.;启动时最小化 WinNUT。
-Starts WinNUT when Windows starts.;随 Windows 启动 WinNUT。
-Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.;停机流程延时。 接受值：0-3600 秒之间的数值。
-Time between each update of UPS data (default = 5000). Accepted value: Numerical value from 1 to 60,000 ms.;UPS 数据更新间隔（默认为 5000）。 接受值：1-60000 毫秒之间的数值。
-Try {0} of {1};尝试 {1} 的 {0}
-Try Reconnect {0} / {1};尝试重连 {0} / {1}
-Type of Stop;停机类型
-Type of stop at the end of the stop procedure.;停机流程结束时的停机类型
-Unknown UPS Name;未知的 UPS 名称
-Update;更新
-Update Available : Version {0};可用的新版本：{0}
-Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later;"立即更新WinNUT-Client吗？
-单击确定以关闭WinNut并安装新版本
-取消以保存Msi并稍后安装"
-UPS Battery Low;UPS 电池电量低
-UPS Load;UPS 负载
-UPS Name;UPS 名称
-UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.;监控的 UPS 名称。 允许值：在 UPS 的 Nut 服务端所配置的名称。
-UPS On Battery;UPS 使用电池工作
-UPS On Line;UPS 已接入市电
-UPS Overload;UPS 过载
-UPS Variable;UPS 变量
-Use the Stable or Devellop branch during verification.;在验证期间使用稳定或开发分支。
-Verify Update;验证更新
-Verify Update At Start;在启动时验证更新
-Version {0} Available;新版本 {0} 可以更新
-Weekly;每周
-WinNut Preferences Changed;WinNut 设置已修改
-Wrong Login ID (Username or Password);错误的登录凭据（用户名或密码）
+﻿Message,Translate
+About,关于
+Activate automatic connection / reconnection,启用自动连接/重连
+Additional grace period limit. Accepted value: Numeric value from 0 to 3600.,额外的宽限期限制。允许值：0-3600 之间的数值。
+Alert,警告
+Allow additional time during the shutdown procedure. Note: This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!,在关机过程中允许的额外时间。 注意: 这段额外时间可能超过 UPS 的续航时间 - 谨慎使用！！！
+Allow Extended Shutdown Time,允许的延时关机时间
+Application shut down at,应用程序被关闭于
+Apply,应用
+Automatic Reconnection,自动重连
+Battery Charge,电池电量
+Battery OK,电池正常
+Battery_Charge : {0} Remaining Time : {1},电池电量 : {0} 续航时间 : {1}
+Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text},电池电量 : {WinNUT.UPS_BattCh} 续航时间 : {WinNUT.Lbl_VRTime.Text}
+Battery Voltage,电池电压
+Calibration,校准
+Cancel,取消
+Cancellation of the Extinguishing Process,取消关机进程
+Check for updates.,检查更新。
+Checks for updates at startup.,在启动时检查更新。
+Close,关闭
+Close to Tray,关闭时缩小至托盘
+Conditions met for launching the Extinguishing Process,触发关机进程所需的条件
+Connected,已连接
+Connection,连接
+Connection to Nut Host {0}:{1} Established,至 Nut 主机 {0}:{1} 的连接建立成功
+Connection to Nut Host {0}:{1} Failed: {2},至 Nut 主机 {0}:{1} 的连接建立失败: {2}
+Create a log file (WinNUT-client.log file in the WinNUT installation directory).,创建日志文件（WinNUT-client.log 文件位于 WinNUT 的安装目录）。
+Create LogFile,创建日志文件
+Daily,每天
+Debug,诊断
+Delay,延时
+Delay Between Verification,每次检验的延时
+Delay to Shutdown (sec),关机的延时（秒）
+Delete log file.,删除日志文件。
+Devellopement,开发版
+Disconnect,断开连接
+Disconnected from Nut Host,从 Nut 主机断开了连接。
+Download New Version from :,下载了新版本于：
+Error,错误
+Exit,退出
+Extinction In Progress,灭绝进行中
+File,文件
+Firmware :,固件：
+Frequency of verification.,验证的频率。
+Frequency Supply,供电频率
+Grace Delay to Shutdown (sec),关机的宽限延时（秒）：
+Grace Time,宽限时间
+Help,帮助
+Hibernate,休眠
+Hide ChangeLog,隐藏更新日志
+Immediate Shutdown,立即关机
+Immediate stop action,即时停机操作
+Import Ini File (v1.x),导入 Ini 文件（v1.x 版本）
+Input Frequency,输入频率
+Input Voltage,输入电压
+Log file log level,日志记录等级
+Logging level,日志等级
+Logging level.,日志等级。
+Login,登录
+Login credentials to the Nut server (leave blank if not required),Nut服务器的登录凭据（如果不需要，请留空）
+Lost Connect To {0}:{1},与断开连接{0}：{1}
+Low Battery,低电池电量
+Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.,触发停机流程的最低续航时间。 接受值：0-3600 之间的数值。
+Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.,触发停机流程的最低电池电量百分比。 接受值：0-100 之间的数值。
+Manufacturer :,制造商：
+Max,最高
+Max Retry reached. Wait for manual Reconnection,达到最大重试次数。等待手动重连。
+Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.,最高电池电压。 接受值：0-100 之间的数值。
+Maximum input frequency. Accepted value: Numeric value from 0 to 100.,最高输入频率。 接受值：0-100 之间的数值。
+Maximum input voltage. Accepted value: Numeric value from 0 to 999.,最高输入电压。 接收值：0-999 之间的数值。
+Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,最高 UPS 电量等级。 接受值：0-100 之间的数值。
+Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,最高输出电压。 接收值：0-999 之间的数值。
+Min,最低
+Minimize to tray,缩小至任务栏。
+Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,最低电池电压。 接受值：0-100 之间的数值。
+Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,最低 UPS 电量等级。 接受值：0-100 之间的数值。
+Minimum input frequency. Accepted value: Numeric value from 0 to 100.,最低输入频率。 接受值：0-100 之间的数值。
+Minimum input voltage. Accepted value: Numeric value from 0 to 999.,最低输入电压。 接收值：0-999 之间的数值。
+Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,最低输出电压。 接收值：0-999 之间的数值。
+Miscellanous,杂项
+Monthly,每月
+Name :,名称：
+No Update Available,没有可用的更新
+Not Connected,未连接
+Notice,注意
+NUT host,NUT 主机
+NUT Port,NUT 端口
+Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Nut 服务器地址。 接收值：IPv4/IPv6/FQDN 地址
+Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Nut 服务器端口（默认为3493）。 接收值：1-65535 之间的数值。
+Ok,好的
+Old ups.ini imported,导入了旧的 ups.ini
+Old ups.ini imported Ini File Moved to {0}.old,导入了旧的 ups.ini Ini 文件重命名为 {0}.old
+On Battery ({0}%),使用电池中 ({0}%)
+On Line,使用市电中
+Open the log file.,打开日志文件。
+Options,选项
+Output Voltage,输出电压
+Password,密码
+Reconnect,重新连接
+Reconnection In Progress,重连中
+Reduced to the taskbar or Systray.,缩小至任务栏或系统托盘。
+Re-establish connection,重新建立连接
+Remaining Time :,剩余时间：
+Sends in Systray at closing.,关闭时缩小至托盘。
+Serial :,序列号：
+Sets the input frequency if not supplied by the UPS.,设置输入频率（如果UPS未提供）
+Settings,设置
+Show ChangeLog,显示更新日志
+Shutdown,关机
+Shutdown if battery lower than,如果电池低于百分比则关机
+Shutdown if runtime lower than (sec),如果续航时间低于则关机
+Shutdown Options,关机选项
+Sleep,睡眠
+Stable,稳定
+Stable Or Dev Branch,稳定或开发分支
+Start Minimized,启动时最小化
+Start with Windows,随 Windows 启动
+Starts the shutdown procedure immediately or timed.,立刻或延时启动关机流程。
+Starts WinNut Minimized.,启动时最小化 WinNUT。
+Starts WinNUT when Windows starts.,随 Windows 启动 WinNUT。
+Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,停机流程延时。 接受值：0-3600 秒之间的数值。
+Time between each update of UPS data (default = 5000). Accepted value: Numerical value from 1 to 60000 ms.,UPS 数据更新间隔（默认为 5000）。 接受值：1-60000 毫秒之间的数值。
+Try {0} of {1},尝试 {1} 的 {0}
+Try Reconnect {0} / {1},尝试重连 {0} / {1}
+Type of Stop,停机类型
+Type of stop at the end of the stop procedure.,停机流程结束时的停机类型
+Unknown UPS Name,未知的 UPS 名称
+Update,更新
+Update Available : Version {0},可用的新版本：{0}
+Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,立即更新WinNUT-Client吗？单击确定以关闭WinNut并安装新版本 取消以保存Msi并稍后安装
+UPS Battery Low,UPS 电池电量低
+UPS Load,UPS 负载
+UPS Name,UPS 名称
+UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,监控的 UPS 名称。 允许值：在 UPS 的 Nut 服务端所配置的名称。
+UPS On Battery,UPS 使用电池工作
+UPS On Line,UPS 已接入市电
+UPS Overload,UPS 过载
+UPS Variable,UPS 变量
+Use the Stable or Devellop branch during verification.,在验证期间使用稳定或开发分支。
+Verify Update,验证更新
+Verify Update At Start,在启动时验证更新
+Version {0} Available,新版本 {0} 可以更新
+Weekly,每周
+WinNut Preferences Changed,WinNut 设置已修改
+Wrong Login ID (Username or Password),错误的登录凭据（用户名或密码）

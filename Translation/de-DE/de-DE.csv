@@ -1,198 +1,146 @@
-﻿Message;Translation
-;
-About;Über
-Activate automatic connection / reconnection;Aktivieren Sie die automatische Verbindung / Wiederverbindung
-"Additional grace period limit.
-Accepted value: Numeric value from 0 to 3600.";"Zusätzliche Nachfrist.
-Akzeptierter Wert: Numerischer Wert von 0 bis 3600."
-Alert;Aufmerksam
-"Allow additional time during the shutdown procedure.
-Note:
-This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!";"Warten Sie während des Herunterfahrens zusätzliche Zeit.
-Hinweis:
-Diese zusätzliche Zeit kann über die USV-Sicherungszeit hinausgehen - MIT VORSICHT VERWENDEN !!!"
-Allow Extended Shutdown Time;Erweiterte Abschaltzeit zulassen
-Application shut down at;Anwendung heruntergefahren um
-Apply;Anwenden
-Automatic Reconnection;Automatische Wiederverbindung
-Battery Charge;Batterieladung
-Battery OK;Batterie OK
-Battery Voltage;Batteriespannung
-"Battery_Charge : {0}
-Remaining Time : {1}";"Batterieladung: {0}
-Verbleibende Zeit: {1}"
-"Battery_Charge : {WinNUT.UPS_BattCh}
-Remaining Time : {WinNUT.Lbl_VRTime.Text}";"Batterieladung: {WinNUT.UPS_BattCh}
-Verbleibende Zeit: {WinNUT.Lbl_VRTime.Text}"
-Calibration;Kalibrierung
-Cancel;Stornieren
-Cancellation of the Extinguishing Process;Aufhebung des Löschprozesses
-Check for updates.;Auf Updates prüfen.
-Checks for updates at startup.;Sucht beim Start nach Updates.
-Close;Schließen
-Close to Tray;In der Nähe von Tablett
-Conditions met for launching the Extinguishing Process;Voraussetzungen für den Start des Löschprozesses
-Connected;In Verbindung gebracht
-Connection;Verbindung
-Connection to Nut Host {0}:{1} Established;Verbindung zum Nut Host {0}:{1} hergestellt
-Connection to Nut Host {0}:{1} Failed: {2};Verbindung zum Nut-Host {0}:{1} fehlgeschlagen: {2}
-"Create a log file (""WinNUT-client.log"" file in the WinNUT installation directory).";"Erstellen Sie eine Protokolldatei (Datei ""WinNUT-client.log"" im WinNUT-Installationsverzeichnis)."
-Create LogFile;LogFile erstellen
-Daily;Täglich
-Debug;Debuggen
-Delay;Verzögern
-Delay Between Verification;Verzögerung zwischen der Überprüfung
-Delay to Shutdown (sec);Verzögerung beim Herunterfahren (Sek.)
-Delete log file.;Protokolldatei löschen.
-Devellopement;Entwicklung
-Disconnect;Trennen
-Disconnected from Nut Host;Vom Nut Host getrennt
-Download New Version from :;Neue Version herunterladen von :
-Error;Error
-Exit;Ausgang
-Extinction In Progress;Aussterben im Gange
-File;Datei
-Firmware :;Firmware:
-Frequency of verification.;Häufigkeit der Überprüfung.
-Frequency Supply;Frequenzversorgung.
-Grace Delay to Shutdown (sec);Grace Verzögerung beim Herunterfahren (Sek.)
-Grace Time;Grace Time
-Help;Hilfe
-Hibernate;Überwintern
-Hide ChangeLog;ChangeLog ausblenden
-Immediate Shutdown;Sofortiges Herunterfahren
-Immediate stop action;Sofortige Stoppaktion
-Import Ini File (v1.x);Ini-Datei importieren (v1.x)
-Input Frequency;Eingangsfrequenz
-Input Voltage;Eingangsspannung
-Log file log level;Protokolldatei Protokollstufe
-Logging level;Protokollierungsstufe
-Logging level.;Protokollierungsstufe.
-Login;Anmeldung
-Login credentials to the Nut server (leave blank if not required);Anmeldeinformationen beim Nut-Server (leer lassen, wenn nicht erforderlich)
-Lost Connect To {0}:{1};Verlorene Verbindung zu {0}:{1}
-Low Battery;Niedriger Batteriestatus
-"Lower backup time limit triggering the shutdown procedure.
-Accepted value: Numeric value from 0 to 3600.";"Unteres Backup-Zeitlimit, das das Herunterfahren auslöst.
-Akzeptierter Wert: Numerischer Wert von 0 bis 3600."
-"Lower limit of the battery level triggering the shutdown procedure.
-Accepted value: Numeric value from 0 to 100.";"Untergrenze des Batteriestands, der den Abschaltvorgang auslöst.
-Akzeptierter Wert: Numerischer Wert von 0 bis 100."
-Manufacturer :;Hersteller:
-Max;Max
-Max Retry reached. Wait for manual Reconnection;Max Retry erreicht. Warten Sie auf die manuelle Wiederverbindung
-"Maximum Battery Voltage.
-Accepted value: Numeric value from 0 to 100.";"Maximale Batteriespannung.
-Akzeptierter Wert: Numerischer Wert von 0 bis 100."
-"
-Maximum input frequency.
-Accepted value: Numeric value from 0 to 100.";"Maximale Eingangsfrequenz.
-Akzeptierter Wert: Numerischer Wert von 0 bis 100."
-"Maximum input voltage.
-Accepted value: Numeric value from 0 to 999.";"Maximale Eingangsspannung.
-Akzeptierter Wert: Numerischer Wert von 0 bis 999."
-"Maximum Load Level of the UPS.
-Accepted value: Numeric value from 0 to 100.";"Maximaler Lastpegel der USV.
-Akzeptierter Wert: Numerischer Wert von 0 bis 100."
-"Maximum Output Voltage.
-Accepted value: Numeric value from 0 to 999.";"Maximale Ausgangsspannung.
-Akzeptierter Wert: Numerischer Wert von 0 bis 999."
-Min;Min
-Minimize to tray;Minimize to tray
-"Minimum Battery Voltage.
-Accepted value: Numeric value from 0 to 100.";"Minimale Batteriespannung.
-Akzeptierter Wert: Numerischer Wert von 0 bis 100."
-"Minimum Charge Level of the UPS.
-Accepted value: Numeric value from 0 to 100.";"Mindestladezustand der USV.
-Akzeptierter Wert: Numerischer Wert von 0 bis 100."
-"Minimum input frequency.
-Accepted value: Numeric value from 0 to 100.";"Minimale Eingangsfrequenz.
-Akzeptierter Wert: Numerischer Wert von 0 bis 100."
-"Minimum input voltage.
-Accepted value: Numeric value from 0 to 999.";"Minimale Eingangsspannung.
-Akzeptierter Wert: Numerischer Wert von 0 bis 999."
-"Minimum Output Voltage.
-Accepted value: Numeric value from 0 to 999.";"Minimale Ausgangsspannung.
-Akzeptierter Wert: Numerischer Wert von 0 bis 999."
-Miscellanous;Verschiedenes
-Monthly;Monatlich
-Name :;Name :
-No Update Available;Kein Update verfügbar
-Not Connected;Nicht verbunden
-Notice;Notice
-NUT host;NUT Host
-NUT Port;NUT Port
-"Nut server address.
-Accepted value: IPV4 / IPV6 / FQDN address.";"Nut Server Adresse.
-Akzeptierter Wert: IPV4 / IPV6 / FQDN-Adresse."
-"Nut Server Port Number (default = 3493).
-Accepted value: Numeric value from 1 to 65535.";"Nut Server Port Number (Standard = 3493).
-Akzeptierter Wert: Numerischer Wert von 1 bis 65535."
-Ok;OK
-Old ups.ini imported;Alte ups.ini importiert
-"Old ups.ini imported
-Ini File Moved to {0}.old";"Alte ups.ini importiert
-Ini-Datei nach {0}.old verschoben"
-On Battery ({0}%);Batterie ({0}%)
-On Line;Online
-Open the log file.;Öffnen Sie die Protokolldatei.
-Options;Optionen
-Output Voltage;Ausgangsspannung
-Password;Passwort
-Reconnect;Erneut verbinden
-Reconnection In Progress;Wiederverbindung läuft
-Reduced to the taskbar or Systray.;Reduziert auf die Taskleiste oder Systray.
-Re-establish connection;Stellen Sie die Verbindung wieder her
-Remaining Time :;Verbleibende Zeit :
-Sends in Systray at closing.;Sendet beim Schließen in Systray.
-Serial :;Seriennummer:
-Sets the input frequency if not supplied by the UPS.;Legt die Eingangsfrequenz fest, wenn diese nicht von der USV geliefert wird.
-Settings;die Einstellungen
-Show ChangeLog;ChangeLog anzeigen
-Shutdown;Shutdown
-Shutdown if battery lower than;Herunterfahren, wenn die Batterie niedriger als ist
-Shutdown if runtime lower than (sec);Herunterfahren, wenn die Laufzeit niedriger als (Sek.)
-Shutdown Options;Optionen zum Herunterfahren
-Sleep;Schlaf
-Stable;Stabil
-Stable Or Dev Branch;Stabiler oder Entwicklungszweig
-Start Minimized;Minimiert starten
-Start with Windows;Starte mit Windows
-Starts the shutdown procedure immediately or timed.;Startet das Herunterfahren sofort oder zeitgesteuert.
-Starts WinNut Minimized.;Startet WinNut Minimized.
-Starts WinNUT when Windows starts.;Startet WinNUT beim Start von Windows.
-"Stop procedure delay if delayed.
-Accepted value: Numeric value from 0 to 3600.";"Stoppen Sie die Prozedurverzögerung, wenn sie verzögert ist.
-Akzeptierter Wert: Numerischer Wert von 0 bis 3600."
-"Time between each update of UPS data (default = 5000).
-Accepted value: Numerical value from 1 to 60,000 ms.";"Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5000).
-Akzeptierter Wert: Numerischer Wert von 1 bis 60.000 ms."
-Try {0} of {1};Versuchen Sie {0} von {1}
-Try Reconnect {0} / {1};Versuchen Sie erneut, {0} / {1} zu verbinden
-Type of Stop;Art des Stopps
-Type of stop at the end of the stop procedure.;Art des Stopps am Ende des Stoppvorgangs.
-Unknown UPS Name;Unbekannter USV-Name
-Update;Aktualisieren
-Update Available : Version {0};Update verfügbar : Version {0}
-"Update WinNUT-Client Now?
-Ok to Close WinNut and Install New Version
-Cancel to Save Msi and Install Later";"WinNUT-Client jetzt aktualisieren?
-Ok, um WinNut zu schließen und neue Version zu installieren
-Abbrechen, um Msi zu speichern und später zu installieren"
-UPS Battery Low;USV-Batterie schwach
-UPS Load;USV laden
-UPS Name;UPS Name
-"UPS name to monitor.
-Accepted Value: Name of the UPS configured in the Nut server.";"Zu überwachender USV-Name.
-Akzeptierter Wert: Name der auf dem Nut-Server konfigurierten USV."
-UPS On Battery;USV im Akkubetrieb
-UPS On Line;USV angeschlossen
-UPS Overload;USV-Überlastung
-UPS Variable;USV-Variable
-Use the Stable or Devellop branch during verification.;"Verwenden Sie während der Überprüfung den Zweig ""Stabil"" oder ""Entwickeln""."
-Verify Update;Überprüfen Sie das Update
-Verify Update At Start;Überprüfen Sie das Update beim Start
-Version {0} Available;Version {0} Verfügbar
-Weekly;Wöchentlich
-WinNut Preferences Changed;WinNut-Einstellungen geändert
-Wrong Login ID (Username or Password);Falsche Login-ID (Benutzername oder Passwort)
+﻿﻿Message,Translation
+About,Über
+Activate automatic connection / reconnection,Aktivieren Sie die automatische Verbindung / Wiederverbindung
+Additional grace period limit. Accepted value: Numeric value from 0 to 3600.,Zusätzliche Nachfrist. Akzeptierter Wert: Numerischer Wert von 0 bis 3600.
+Alert,Aufmerksam
+Allow additional time during the shutdown procedure.Note:This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!,Warten Sie während des Herunterfahrens zusätzliche Zeit.Hinweis:Diese zusätzliche Zeit kann über die USV-Sicherungszeit hinausgehen - MIT VORSICHT VERWENDEN !!!
+Allow Extended Shutdown Time,Erweiterte Abschaltzeit zulassen
+Application shut down at,Anwendung heruntergefahren um
+Apply,Anwenden
+Automatic Reconnection,Automatische Wiederverbindung
+Battery Charge,Batterieladung
+Battery OK,Batterie OK
+Battery Voltage,Batteriespannung
+Battery_Charge : {0} Remaining Time : {1},Batterieladung: {0} Verbleibende Zeit: {1}
+Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text},Batterieladung: {WinNUT.UPS_BattCh} Verbleibende Zeit: {WinNUT.Lbl_VRTime.Text}
+Calibration,Kalibrierung
+Cancel,Stornieren
+Cancellation of the Extinguishing Process,Aufhebung des Löschprozesses
+Check for updates.,Auf Updates prüfen.
+Checks for updates at startup.,Sucht beim Start nach Updates.
+Close,Schließen
+Close to Tray,In der Nähe von Tablett
+Conditions met for launching the Extinguishing Process,Voraussetzungen für den Start des Löschprozesses
+Connected,In Verbindung gebracht
+Connection,Verbindung
+Connection to Nut Host {0}:{1} Established,Verbindung zum Nut Host {0}:{1} hergestellt
+Connection to Nut Host {0}:{1} Failed: {2},Verbindung zum Nut-Host {0}:{1} fehlgeschlagen: {2}
+Create a log file (WinNUT-client.log file in the WinNUT installation directory).,Erstellen Sie eine Protokolldatei (Datei WinNUT-client.log im WinNUT-Installationsverzeichnis).
+Create LogFile,LogFile erstellen
+Daily,Täglich
+Debug,Debuggen
+Delay,Verzögern
+Delay Between Verification,Verzögerung zwischen der Überprüfung
+Delay to Shutdown (sec),Verzögerung beim Herunterfahren (Sek.)
+Delete log file.,Protokolldatei löschen.
+Devellopement,Entwicklung
+Disconnect,Trennen
+Disconnected from Nut Host,Vom Nut Host getrennt
+Download New Version from :,Neue Version herunterladen von :
+Error,Error
+Exit,Ausgang
+Extinction In Progress,Aussterben im Gange
+File,Datei
+Firmware :,Firmware:
+Frequency of verification.,Häufigkeit der Überprüfung.
+Frequency Supply,Frequenzversorgung.
+Grace Delay to Shutdown (sec),Grace Verzögerung beim Herunterfahren (Sek.)
+Grace Time,Grace Time
+Help,Hilfe
+Hibernate,Überwintern
+Hide ChangeLog,ChangeLog ausblenden
+Immediate Shutdown,Sofortiges Herunterfahren
+Immediate stop action,Sofortige Stoppaktion
+Import Ini File (v1.x),Ini-Datei importieren (v1.x)
+Input Frequency,Eingangsfrequenz
+Input Voltage,Eingangsspannung
+Log file log level,Protokolldatei Protokollstufe
+Logging level,Protokollierungsstufe
+Logging level.,Protokollierungsstufe.
+Login,Anmeldung
+Login credentials to the Nut server (leave blank if not required),Anmeldeinformationen beim Nut-Server (leer lassen wenn nicht erforderlich)
+Lost Connect To {0}:{1},Verlorene Verbindung zu {0}:{1}
+Low Battery,Niedriger Batteriestatus
+Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.,Unteres Backup-Zeitlimit das das Herunterfahren auslöst. Akzeptierter Wert: Numerischer Wert von 0 bis 3600.
+Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.,Untergrenze des Batteriestands der den Abschaltvorgang auslöst. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
+Manufacturer :,Hersteller:
+Max,Max
+Max Retry reached. Wait for manual Reconnection,Max Retry erreicht. Warten Sie auf die manuelle Wiederverbindung
+Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Maximale Batteriespannung. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
+Maximum input frequency. Accepted value: Numeric value from 0 to 100.,Maximale Eingangsfrequenz. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
+Maximum input voltage. Accepted value: Numeric value from 0 to 999.,Maximale Eingangsspannung. Akzeptierter Wert: Numerischer Wert von 0 bis 999.
+Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,Maximaler Lastpegel der USV. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
+Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,Maximale Ausgangsspannung. Akzeptierter Wert: Numerischer Wert von 0 bis 999.
+Min,Min
+Minimize to tray,Minimize to tray
+Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Minimale Batteriespannung. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
+Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,Mindestladezustand der USV. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
+Minimum input frequency. Accepted value: Numeric value from 0 to 100.,Minimale Eingangsfrequenz. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
+Minimum input voltage. Accepted value: Numeric value from 0 to 999.,Minimale Eingangsspannung. Akzeptierter Wert: Numerischer Wert von 0 bis 999.
+Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,Minimale Ausgangsspannung. Akzeptierter Wert: Numerischer Wert von 0 bis 999.
+Miscellanous,Verschiedenes
+Monthly,Monatlich
+Name :,Name :
+No Update Available,Kein Update verfügbar
+Not Connected,Nicht verbunden
+Notice,Notice
+NUT host,NUT Host
+NUT Port,NUT Port
+Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Nut Server Adresse. Akzeptierter Wert: IPV4 / IPV6 / FQDN-Adresse.
+Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Nut Server Port Number (Standard = 3493). Akzeptierter Wert: Numerischer Wert von 1 bis 65535.
+Ok,OK
+Old ups.ini imported,Alte ups.ini importiert
+Old ups.ini imported Ini File Moved to {0}.old,Alte ups.ini importiert Ini-Datei nach {0}.old verschoben
+On Battery ({0}%),Batterie ({0}%)
+On Line,Online
+Open the log file.,Öffnen Sie die Protokolldatei.
+Options,Optionen
+Output Voltage,Ausgangsspannung
+Password,Passwort
+Reconnect,Erneut verbinden
+Reconnection In Progress,Wiederverbindung läuft
+Reduced to the taskbar or Systray.,Reduziert auf die Taskleiste oder Systray.
+Re-establish connection,Stellen Sie die Verbindung wieder her
+Remaining Time :,Verbleibende Zeit :
+Sends in Systray at closing.,Sendet beim Schließen in Systray.
+Serial :,Seriennummer:
+Sets the input frequency if not supplied by the UPS.,Legt die Eingangsfrequenz fest wenn diese nicht von der USV geliefert wird.
+Settings,die Einstellungen
+Show ChangeLog,ChangeLog anzeigen
+Shutdown,Shutdown
+Shutdown if battery lower than,Herunterfahren wenn die Batterie niedriger als ist
+Shutdown if runtime lower than (sec),Herunterfahren wenn die Laufzeit niedriger als (Sek.)
+Shutdown Options,Optionen zum Herunterfahren
+Sleep,Schlaf
+Stable,Stabil
+Stable Or Dev Branch,Stabiler oder Entwicklungszweig
+Start Minimized,Minimiert starten
+Start with Windows,Starte mit Windows
+Starts the shutdown procedure immediately or timed.,Startet das Herunterfahren sofort oder zeitgesteuert.
+Starts WinNut Minimized.,Startet WinNut Minimized.
+Starts WinNUT when Windows starts.,Startet WinNUT beim Start von Windows.
+Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,Stoppen Sie die Prozedurverzögerung wenn sie verzögert ist. Akzeptierter Wert: Numerischer Wert von 0 bis 3600.
+Time between each update of UPS data (default = 5000). Accepted value: Numerical value from 1 to 60000 ms.,Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5000). Akzeptierter Wert: Numerischer Wert von 1 bis 60000 ms.
+Try {0} of {1},Versuchen Sie {0} von {1}
+Try Reconnect {0} / {1},Versuchen Sie erneut {0} / {1} zu verbinden
+Type of Stop,Art des Stopps
+Type of stop at the end of the stop procedure.,Art des Stopps am Ende des Stoppvorgangs.
+Unknown UPS Name,Unbekannter USV-Name
+Update,Aktualisieren
+Update Available : Version {0},Update verfügbar : Version {0}
+Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,WinNUT-Client jetzt aktualisieren? Ok um WinNut zu chließen und neue Version zu installieren Abbrechen um Msi zu speichern und später zu installieren
+UPS Battery Low,USV-Batterie schwach
+UPS Load,USV laden
+UPS Name,UPS Name
+UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,Zu überwachender USV-Name. Akzeptierter Wert: Name der auf dem Nut-Server konfigurierten USV.
+UPS On Battery,USV im Akkubetrieb
+UPS On Line,USV angeschlossen
+UPS Overload,USV-Überlastung
+UPS Variable,USV-Variable
+Use the Stable or Devellop branch during verification.,Verwenden Sie während der Überprüfung den Zweig Stabil oder Entwickeln.
+Verify Update,Überprüfen Sie das Update
+Verify Update At Start,Überprüfen Sie das Update beim Start
+Version {0} Available,Version {0} Verfügbar
+Weekly,Wöchentlich
+WinNut Preferences Changed,WinNut-Einstellungen geändert
+Wrong Login ID (Username or Password),Falsche Login-ID (Benutzername oder Passwort)
