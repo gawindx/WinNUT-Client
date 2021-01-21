@@ -21,7 +21,7 @@
     Public Sub SendToast(ByVal ToastParts As String())
         'Get a toast XML template
         Dim TemplateToast As Windows.UI.Notifications.ToastTemplateType
-        If ToastParts.Count = 3 Then
+        If ToastParts.Count >= 3 Then
             TemplateToast = Windows.UI.Notifications.ToastTemplateType.ToastText04
         Else
             TemplateToast = Windows.UI.Notifications.ToastTemplateType.ToastText02
@@ -31,7 +31,7 @@
 
         'Fill in the text elements
         Dim stringElements As Windows.Data.Xml.Dom.XmlNodeList = toastXml.GetElementsByTagName("text")
-        For i = 0 To ((ToastParts.Count - 1) Or (stringElements.Count - 1)) Step 1
+        For i = 0 To ((ToastParts.Count - 1) And (stringElements.Count - 1)) Step 1
             stringElements.Item(i).InnerText = ToastParts.ElementAt(i)
         Next
 
