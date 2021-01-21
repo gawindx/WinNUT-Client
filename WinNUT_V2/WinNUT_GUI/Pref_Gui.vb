@@ -169,12 +169,14 @@
             Tb_Delay_Stop.Enabled = False
         Else
             Tb_Delay_Stop.Enabled = True
+            Number_Validating(Tb_Delay_Stop, New System.ComponentModel.CancelEventArgs())
         End If
     End Sub
 
     Private Sub Cb_ExtendTime_CheckedChanged(sender As Object, e As EventArgs) Handles Cb_ExtendTime.CheckedChanged
         If Cb_ExtendTime.Checked Then
             Tb_GraceTime.Enabled = True
+            Number_Validating(Tb_GraceTime, New System.ComponentModel.CancelEventArgs())
         Else
             Tb_GraceTime.Enabled = False
         End If
@@ -211,8 +213,12 @@
             Case "Tb_Load_Min", "Tb_Load_Max", "Tb_InF_Min", "Tb_InF_Max", "Tb_BattLimit_Load"
                 MinValue = 0
                 MaxValue = 100
-            Case "Tb_GraceTime", "Tb_Delay_Stop", "Tb_BattLimit_Time"
+            Case "Tb_BattLimit_Time"
                 MinValue = 0
+                MaxValue = 3600
+                'Min value has to be 1 as 0 can't be assigned to a timer interval (used in Shutdown_Gui)
+            Case "Tb_GraceTime", "Tb_Delay_Stop"
+                MinValue = 1
                 MaxValue = 3600
         End Select
 
