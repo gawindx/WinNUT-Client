@@ -1,13 +1,13 @@
 History:
 
-Version 2.0.5.0
-Changed : Some changes on how logs work (Thanks to tgp1994)
-Fix : app crash when disconnecting with null streams (Thanks to tgp1994) (Issue #48)
-Fix : Correction of a bad state of the Notify Icon Text when the return value of ups status is not only "OL" (Issue #45)
-Fix : Add -f parameter to force shutdown (Issue #46)
-Added : Some modifications provided by tgp1994
-Added : Addition of a directory containing the translations at the repository level.
-		Makes it easier to submit a new translation (or correction) via a fork / pull request (nonPointer idea - issue # 35)
+#Version 2.0.5.0
+#Changed : Some changes on how logs work (Thanks to tgp1994)
+#Fix : app crash when disconnecting with null streams (Thanks to tgp1994) (Issue #48)
+#Fix : Correction of a bad state of the Notify Icon Text when the return value of ups status is not only "OL" (Issue #45)
+#Fix : Add -f parameter to force shutdown (Issue #46)
+#Added : Some modifications provided by tgp1994
+#Added : Addition of a directory containing the translations at the repository level.
+#		Makes it easier to submit a new translation (or correction) via a fork / pull request (nonPointer idea - issue # 35)
 
 Version 2.0.4.0
 Added: EXPERIMENTAL - Connection function to the nut server with identification and password.
