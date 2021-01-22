@@ -7160,4 +7160,13 @@
   <data name="$this.Text" xml:space="preserve">
     <value>选项</value>
   </data>
+  <data name="Cbx_Freq_Source.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>174, 71</value>
+  </data>
+  <data name="Cbx_Freq_Source.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="Cbx_Freq_Source.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
 </root>

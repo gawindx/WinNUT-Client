@@ -622,13 +622,14 @@ Public Class UPS_Network
         Try
             LogFile.LogTracing("Enter Retrieve_UPS_Data", LogLvl.LOG_DEBUG, Me)
             If Not Me.LConnect Then
-                Dim InputF_Fallback = 50 + CInt(WinNUT_Params.Arr_Reg_Key.Item("FrequencySupply")) * 10
+                Dim Freq_Fallback = 50 + CInt(WinNUT_Params.Arr_Reg_Key.Item("FrequencySupply")) * 10
+                Dim FreqSource = If(CBool(WinNUT_Params.Arr_Reg_Key.Item("FrequencySource")), "output", "input")
 
                 Me.BattCh = Double.Parse(GetUPSVar("battery.charge", 255, 50), ciClone)
                 Me.BattV = Double.Parse(GetUPSVar("battery.voltage", 12), ciClone)
                 Me.BattRuntime = Double.Parse(GetUPSVar("battery.runtime", 86400), ciClone)
                 Me.BattCapacity = Double.Parse(GetUPSVar("battery.capacity", 7), ciClone)
-                Me.InputF = Double.Parse(GetUPSVar("input.frequency", InputF_Fallback), ciClone)
+                Me.InputF = Double.Parse(GetUPSVar(FreqSource + ".frequency", Freq_Fallback), ciClone)
                 Me.InputV = Double.Parse(GetUPSVar("input.voltage", 220), ciClone)
                 Me.OutputV = Double.Parse(GetUPSVar("output.voltage", Me.UPS_InputV), ciClone)
                 Me.Load = Double.Parse(GetUPSVar("ups.load", 100), ciClone)

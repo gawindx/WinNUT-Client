@@ -95,6 +95,7 @@ Partial Class Pref_Gui
         Me.Btn_Apply = New System.Windows.Forms.Button()
         Me.Btn_Cancel = New System.Windows.Forms.Button()
         Me.Pref_TlTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Cbx_Freq_Source = New System.Windows.Forms.ComboBox()
         Me.TabControl_Options.SuspendLayout()
         Me.Tab_Connexion.SuspendLayout()
         Me.Tab_Calibrage.SuspendLayout()
@@ -214,6 +215,7 @@ Partial Class Pref_Gui
         '
         'Tab_Calibrage
         '
+        Me.Tab_Calibrage.Controls.Add(Me.Cbx_Freq_Source)
         Me.Tab_Calibrage.Controls.Add(Me.Cbx_Freq_Input)
         Me.Tab_Calibrage.Controls.Add(Me.Tb_BattV_Max)
         Me.Tab_Calibrage.Controls.Add(Me.Tb_Load_Max)
@@ -592,6 +594,14 @@ Partial Class Pref_Gui
         Me.Btn_Cancel.UseVisualStyleBackColor = True
         Me.Btn_Cancel.UseWaitCursor = True
         '
+        'Cbx_Freq_Source
+        '
+        Me.Cbx_Freq_Source.FormattingEnabled = True
+        Me.Cbx_Freq_Source.Items.AddRange(New Object() {resources.GetString("Cbx_Freq_Source.Items"), resources.GetString("Cbx_Freq_Source.Items1")})
+        resources.ApplyResources(Me.Cbx_Freq_Source, "Cbx_Freq_Source")
+        Me.Cbx_Freq_Source.Name = "Cbx_Freq_Source"
+        Me.Pref_TlTip.SetToolTip(Me.Cbx_Freq_Source, resources.GetString("Cbx_Freq_Source.ToolTip"))
+        '
         'Pref_Gui
         '
         resources.ApplyResources(Me, "$this")
@@ -689,4 +699,5 @@ Partial Class Pref_Gui
     Friend WithEvents Label3 As Label
     Friend WithEvents Lbl_Pwd_Nut As Label
     Friend WithEvents Lbl_Login_Nut As Label
+    Friend WithEvents Cbx_Freq_Source As ComboBox
 End Class

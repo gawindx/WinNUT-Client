@@ -7163,4 +7163,13 @@ Akzeptierter Wert: Numerischer Wert von 1 bis 60.000 ms.</value>
   <data name="Lbl_Login_Nut.Text" xml:space="preserve">
     <value>Anmeldung</value>
   </data>
+  <data name="Cbx_Freq_Source.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>174, 71</value>
+  </data>
+  <data name="Cbx_Freq_Source.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="Cbx_Freq_Source.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
 </root>

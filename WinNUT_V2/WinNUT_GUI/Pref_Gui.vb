@@ -22,6 +22,7 @@
         WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect") = Cb_Reconnect.Checked
         WinNUT_Params.Arr_Reg_Key.Item("MinInputVoltage") = CInt(Tb_InV_Min.Text)
         WinNUT_Params.Arr_Reg_Key.Item("MaxInputVoltage") = CInt(Tb_InV_Max.Text)
+        WinNUT_Params.Arr_Reg_Key.Item("FrequencySource") = Cbx_Freq_Source.SelectedIndex
         WinNUT_Params.Arr_Reg_Key.Item("FrequencySupply") = Cbx_Freq_Input.SelectedIndex
         WinNUT_Params.Arr_Reg_Key.Item("MinInputFrequency") = CInt(Tb_InF_Min.Text)
         WinNUT_Params.Arr_Reg_Key.Item("MaxInputFrequency") = CInt(Tb_InF_Max.Text)
@@ -99,6 +100,7 @@
         Cb_Reconnect.Checked = WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect")
         Tb_InV_Min.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("MinInputVoltage"))
         Tb_InV_Max.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("MaxInputVoltage"))
+        Cbx_Freq_Source.SelectedIndex = WinNUT_Params.Arr_Reg_Key.Item("FrequencySource")
         Cbx_Freq_Input.SelectedIndex = WinNUT_Params.Arr_Reg_Key.Item("FrequencySupply")
         Tb_InF_Min.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("MinInputFrequency"))
         Tb_InF_Max.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("MaxInputFrequency"))
