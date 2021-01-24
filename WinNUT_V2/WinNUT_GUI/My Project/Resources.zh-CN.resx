@@ -44,7 +44,7 @@ Ini 文件重命名为 {0}.old</value>
     <value>使用电池中 ({0}%)</value>
   </data>
   <data name="Frm_Main_Str_09" xml:space="preserve">
-    <value>低电池电量</value>
+    <value>电池电量过低</value>
   </data>
   <data name="Frm_Main_Str_10" xml:space="preserve">
     <value>电池正常</value>
@@ -53,14 +53,14 @@ Ini 文件重命名为 {0}.old</value>
     <value>未知的 UPS 名称</value>
   </data>
   <data name="Frm_Main_Str_12" xml:space="preserve">
-    <value>与断开连接{0}：{1}</value>
+    <value>断开了至 {0} 的连接：{1}</value>
   </data>
   <data name="Frm_Main_Str_13" xml:space="preserve">
     <value>错误的登录凭据（用户名或密码）</value>
   </data>
   <data name="Frm_Shutdown_Str_01" xml:space="preserve">
     <value>电池电量 : {0}
-续航时间 : {1}</value>
+剩余时间 : {1}</value>
   </data>
   <data name="Frm_Update_Str_01" xml:space="preserve">
     <value>可用的新版本：{0}</value>
@@ -73,8 +73,8 @@ Ini 文件重命名为 {0}.old</value>
   </data>
   <data name="Frm_Update_Str_04" xml:space="preserve">
     <value>立即更新WinNUT-Client吗？
-单击确定以关闭WinNut并安装新版本
-取消以保存Msi并稍后安装</value>
+单击确定以关闭WinNut并安装新版本 
+取消以保存 Msi 并于稍后安装</value>
   </data>
   <data name="Frm_Update_Str_05" xml:space="preserve">
     <value>下载了新版本于：</value>
@@ -101,7 +101,7 @@ Ini 文件重命名为 {0}.old</value>
     <value>达到最大重试次数。等待手动重连。</value>
   </data>
   <data name="Log_Str_08" xml:space="preserve">
-    <value>触发关机进程所需的条件</value>
+    <value>触发关机流程所需满足的条件</value>
   </data>
   <data name="Log_Str_09" xml:space="preserve">
     <value>取消关机进程</value>

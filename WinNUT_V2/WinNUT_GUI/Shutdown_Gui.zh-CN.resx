@@ -20,9 +20,9 @@
   </data>
   <data name="lbl_UPSStatus.Text" xml:space="preserve">
     <value>电池电量 : {WinNUT.UPS_BattCh}
-续航时间 : {WinNUT.Lbl_VRTime.Text}</value>
+剩余时间 : {WinNUT.Lbl_VRTime.Text}</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>灭绝进行中</value>
+    <value>正在关机</value>
   </data>
 </root>

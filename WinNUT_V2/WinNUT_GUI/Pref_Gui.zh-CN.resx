@@ -20,43 +20,43 @@
   </data>
   <data name="Tb_BattV_Max.ToolTip" xml:space="preserve">
     <value>最高电池电压。
-接受值：0-100 之间的数值。</value>
+取值：0-100 之间的数值。</value>
   </data>
   <data name="Tb_Load_Max.ToolTip" xml:space="preserve">
     <value>最高 UPS 电量等级。
-接受值：0-100 之间的数值。</value>
+取值：0-100 之间的数值。</value>
   </data>
   <data name="Tb_OutV_Max.ToolTip" xml:space="preserve">
     <value>最高输出电压。
-接收值：0-999 之间的数值。</value>
+取值：0-999 之间的数值。</value>
   </data>
   <data name="Tb_InF_Max.ToolTip" xml:space="preserve">
     <value>最高输入频率。
-接受值：0-100 之间的数值。</value>
+取值：0-100 之间的数值。</value>
   </data>
   <data name="Tb_BattV_Min.ToolTip" xml:space="preserve">
     <value>最低电池电压。
-接受值：0-100 之间的数值。</value>
+取值：0-100 之间的数值。</value>
   </data>
   <data name="Tb_Load_Min.ToolTip" xml:space="preserve">
     <value>最低 UPS 电量等级。
-接受值：0-100 之间的数值。</value>
+取值：0-100 之间的数值。</value>
   </data>
   <data name="Tb_OutV_Min.ToolTip" xml:space="preserve">
     <value>最低输出电压。
-接收值：0-999 之间的数值。</value>
+取值：0-999 之间的数值。</value>
   </data>
   <data name="Tb_InF_Min.ToolTip" xml:space="preserve">
     <value>最低输入频率。
-接受值：0-100 之间的数值。</value>
+取值：0-100 之间的数值。</value>
   </data>
   <data name="Tb_InV_Max.ToolTip" xml:space="preserve">
     <value>最高输入电压。
-接收值：0-999 之间的数值。</value>
+取值：0-999 之间的数值。</value>
   </data>
   <data name="Tb_InV_Min.ToolTip" xml:space="preserve">
     <value>最低输入电压。
-接收值：0-999 之间的数值。</value>
+取值：0-999 之间的数值。</value>
   </data>
   <data name="Lbl_Maxi.Text" xml:space="preserve">
     <value>最高</value>
@@ -86,7 +86,7 @@
     <value>校准</value>
   </data>
   <data name="Tab_Miscellanous.Text" xml:space="preserve">
-    <value>杂项</value>
+    <value>其他</value>
   </data>
   <data name="Tab_Shutdown.Text" xml:space="preserve">
     <value>关机选项</value>
@@ -96,11 +96,11 @@
   </data>
   <data name="Tb_Pwd_Nut.ToolTip" xml:space="preserve">
     <value>UPS 数据更新间隔（默认为 5000）。
-接受值：1-60000 毫秒之间的数值。</value>
+取值：1-60000 毫秒之间的数值。</value>
   </data>
   <data name="Tb_Login_Nut.ToolTip" xml:space="preserve">
     <value>UPS 数据更新间隔（默认为 5000）。
-接受值：1-60000 毫秒之间的数值。</value>
+取值：1-60000 毫秒之间的数值。</value>
   </data>
   <data name="Label3.Text" xml:space="preserve">
     <value>Nut服务器的登录凭据（如果不需要，请留空）</value>
@@ -113,19 +113,19 @@
   </data>
   <data name="Tb_Delay_Com.ToolTip" xml:space="preserve">
     <value>UPS 数据更新间隔（默认为 5000）。
-接受值：1-60000 毫秒之间的数值。</value>
+取值：1-60000 毫秒之间的数值。</value>
   </data>
   <data name="Tb_UPS_Name.ToolTip" xml:space="preserve">
     <value>监控的 UPS 名称。
 允许值：在 UPS 的 Nut 服务端所配置的名称。</value>
   </data>
   <data name="Tb_Port.ToolTip" xml:space="preserve">
-    <value>Nut 服务器端口（默认为3493）。
-接收值：1-65535 之间的数值。</value>
+    <value>Nut 服务Nut 服务器端口（默认为3493）。
+取值：1-65535 之间的数值</value>
   </data>
   <data name="Tb_Server_IP.ToolTip" xml:space="preserve">
-    <value>Nut 服务器地址。
-接收值：IPv4/IPv6/FQDN 地址</value>
+    <value>服务器地址。
+取值：IPv4/IPv6/FQDN 地址</value>
   </data>
   <data name="Cb_Reconnect.Text" xml:space="preserve">
     <value>重新建立连接</value>
@@ -155,7 +155,7 @@
     <value>错误</value>
   </data>
   <data name="Cbx_LogLevel.Items3" xml:space="preserve">
-    <value>诊断</value>
+    <value>调试</value>
   </data>
   <data name="Cbx_LogLevel.ToolTip" xml:space="preserve">
     <value>日志等级。</value>
@@ -179,7 +179,7 @@
     <value>创建日志文件（""WinNUT-client.log"" 文件位于 WinNUT 的安装目录）。</value>
   </data>
   <data name="CB_Start_W_Win.Text" xml:space="preserve">
-    <value>随 Windows 启动</value>
+    <value>随 Windows 启动当前应用</value>
   </data>
   <data name="CB_Start_W_Win.ToolTip" xml:space="preserve">
     <value>随 Windows 启动 WinNUT。</value>
@@ -188,10 +188,10 @@
     <value>关闭时缩小至托盘</value>
   </data>
   <data name="CB_Close_Tray.ToolTip" xml:space="preserve">
-    <value>关闭时缩小至托盘。</value>
+    <value>关闭程序时缩小至托盘。</value>
   </data>
   <data name="CB_Start_Mini.Text" xml:space="preserve">
-    <value>启动时最小化</value>
+    <value>启动时最小化当前应用</value>
   </data>
   <data name="CB_Start_Mini.ToolTip" xml:space="preserve">
     <value>启动时最小化 WinNUT。</value>
@@ -206,7 +206,7 @@
     <value>%</value>
   </data>
   <data name="Tb_GraceTime.ToolTip" xml:space="preserve">
-    <value>额外的宽限期限制。允许值：0-3600 之间的数值。</value>
+    <value>额外的宽限期限制。取值：0-3600。</value>
   </data>
   <data name="Cb_ExtendTime.Text" xml:space="preserve">
     <value>允许的延时关机时间</value>
@@ -218,7 +218,7 @@
   </data>
   <data name="Tb_Delay_Stop.ToolTip" xml:space="preserve">
     <value>停机流程延时。
-接受值：0-3600 秒之间的数值。</value>
+取值：0-3600 秒之间的数值。</value>
   </data>
   <data name="Cbx_TypeStop.Items" xml:space="preserve">
     <value>关机</value>
@@ -236,21 +236,21 @@
     <value>即时停机操作</value>
   </data>
   <data name="Cb_ImmediateStop.ToolTip" xml:space="preserve">
-    <value>立刻或延时启动关机流程。</value>
+    <value>立刻或定时执行关机流程。</value>
   </data>
   <data name="Tb_BattLimit_Time.ToolTip" xml:space="preserve">
     <value>触发停机流程的最低续航时间。
-接受值：0-3600 之间的数值。</value>
+取值：0-3600 之间的数值。</value>
   </data>
   <data name="Tb_BattLimit_Load.ToolTip" xml:space="preserve">
     <value>触发停机流程的最低电池电量百分比。
-接受值：0-100 之间的数值。</value>
+取值：0-100 之间的数值。</value>
   </data>
   <data name="Lbl_GraceTime.Text" xml:space="preserve">
     <value>关机的宽限延时（秒）：</value>
   </data>
   <data name="Lbl_Delay_Stop.Text" xml:space="preserve">
-    <value>关机的延时（秒）</value>
+    <value>延时关机（秒）</value>
   </data>
   <data name="Lbl_StopType.Text" xml:space="preserve">
     <value>停机类型</value>
@@ -280,7 +280,7 @@
     <value>每月</value>
   </data>
   <data name="Cbx_Delay_Verif.ToolTip" xml:space="preserve">
-    <value>验证的频率。</value>
+    <value>验证频率。</value>
   </data>
   <data name="Lbl_Branch_Update.Text" xml:space="preserve">
     <value>稳定或开发分支</value>
@@ -298,7 +298,7 @@
     <value>验证更新</value>
   </data>
   <data name="Cb_Verify_Update.ToolTip" xml:space="preserve">
-    <value>检查更新。</value>
+    <value>检查应用更新。</value>
   </data>
   <data name="Btn_Ok.Text" xml:space="preserve">
     <value>好的</value>
