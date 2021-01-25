@@ -652,6 +652,10 @@ Public Class UPS_Network
                     Me.BattCh = Math.Floor((Me.BattV - (11.6 * nBatt)) / (0.02 * nBatt))
                 End If
                 If Me.BattRuntime >= 86400 Then
+                    'If Load is 0, the calculation results in infinity. This causes an exception in DataUpdated(), causing Me.Disconnect to run in the exception handler below.
+                    'Thus a connection is established, but is forcefully disconneced almost immediately. This cycle repeats on each connect until load is <> 0
+                    '(Example: I have a 0% load if only Pi, Microtik Router, Wifi AP and switches are running)
+                    Me.Load = If(Me.Load <> 0, Me.Load, 0.1)
                     Dim BattInstantCurrent = (Me.OutputV * Me.Load) / (Me.BattV * 100)
                     Me.BattRuntime = Math.Floor(Me.BattCapacity * 0.6 * Me.BattCh * (1 - PowerDivider) * 3600 / (BattInstantCurrent * 100))
                 End If

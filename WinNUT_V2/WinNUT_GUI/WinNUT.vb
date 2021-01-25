@@ -521,12 +521,6 @@ Public Class WinNUT
             Lbl_VSerial.Text = Me.UPS_Serial
             Lbl_VFirmware.Text = Me.UPS_Firmware
         End If
-        If Me.UPS_Status = "OL" And UPS_Network.UPS_Status = "OB" Then
-            RaiseEvent On_Battery()
-        End If
-        If Me.UPS_Status = "OB" And UPS_Network.UPS_Status = "OL" Then
-            RaiseEvent On_Line()
-        End If
         Me.UPS_BattCh = UPS_Network.UPS_BattCh
         Me.UPS_BattV = UPS_Network.UPS_BattV
         Me.UPS_BattRuntime = UPS_Network.UPS_BattRuntime
@@ -601,6 +595,12 @@ Public Class WinNUT
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
         UpdateIcon_NotifyIcon()
         RaiseEvent UpdateNotifyIconStr("Update Data", Nothing)
+        If Me.UPS_Status = "OL" And UPS_Network.UPS_Status = "OB" Then
+            RaiseEvent On_Battery()
+        End If
+        If Me.UPS_Status = "OB" And UPS_Network.UPS_Status = "OL" Then
+            RaiseEvent On_Line()
+        End If
     End Sub
 
     Private Sub Menu_Disconnect_Click(sender As Object, e As EventArgs) Handles Menu_Disconnect.Click

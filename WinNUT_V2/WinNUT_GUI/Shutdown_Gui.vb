@@ -24,12 +24,21 @@
         LogFile.LogTracing("Load ShutDown Gui", LogLvl.LOG_DEBUG, Me)
         Me.Grace_Timer.Enabled = False
         Me.Grace_Timer.Stop()
-        Me.Grace_Timer.Interval = (WinNUT_Params.Arr_Reg_Key.Item("ExtendedShutdownDelay") * 1000)
+        'If ExtendedShutdownDelay = 0 (the default value), the next line fails and the whole shutdown sequence fails - Thus no shutdown
+        'Moved next line lower down
+        'Me.Grace_Timer.Interval = (WinNUT_Params.Arr_Reg_Key.Item("ExtendedShutdownDelay") * 1000)
         Shutdown_Timer.Interval = (WinNUT_Params.Arr_Reg_Key.Item("DelayToShutdown") * 1000)
         Me.STimer = WinNUT_Params.Arr_Reg_Key.Item("DelayToShutdown")
         Me.Remained = Me.STimer
         If WinNUT_Params.Arr_Reg_Key.Item("AllowExtendedShutdownDelay") Then
             Grace_Button.Enabled = True
+            'Moved here so it is only used if grace period is allowed
+            Try
+                Me.Grace_Timer.Interval = (WinNUT_Params.Arr_Reg_Key.Item("ExtendedShutdownDelay") * 1000)
+            Catch ex As Exception
+                'Disable Grace peroid option if Interval is set to 0
+                Grace_Button.Enabled = False
+            End Try
         Else
             Grace_Button.Enabled = False
         End If
