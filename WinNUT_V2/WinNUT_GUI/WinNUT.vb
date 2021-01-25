@@ -152,7 +152,6 @@ Public Class WinNUT
         UPS_Network.AutoReconnect = WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect")
         UPS_Network.Battery_Limit = WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitBatteryCharge")
         UPS_Network.Backup_Limit = WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitUPSRemainTime")
-        Lbl_InF_Dial.Text = If(CBool(WinNUT_Params.Arr_Reg_Key.Item("FrequencySource")), My.Resources.Frm_Main_Str_FreqSourceOut, My.Resources.Frm_Main_Str_FreqSourceIn)
 
         'Force Positionning Text Label Because Unknow auto positionning property ???
         Lbl_RTime.Location = New Point(6, 116)
@@ -732,7 +731,6 @@ Public Class WinNUT
                 LogFile.LogTracing("Parameter Dial Input Voltage Updated", LogLvl.LOG_DEBUG, Me)
             End If
         End With
-        Lbl_InF_Dial.Text = If(CBool(WinNUT_Params.Arr_Reg_Key.Item("FrequencySource")), My.Resources.Frm_Main_Str_FreqSourceOut, My.Resources.Frm_Main_Str_FreqSourceIn)
         With AG_InF
             If (.MaxValue <> WinNUT_Params.Arr_Reg_Key.Item("MaxInputFrequency")) Or (.MinValue <> WinNUT_Params.Arr_Reg_Key.Item("MinInputFrequency")) Then
                 LogFile.LogTracing("Parameter Dial Input Frequency Need to be Updated", LogLvl.LOG_DEBUG, Me)

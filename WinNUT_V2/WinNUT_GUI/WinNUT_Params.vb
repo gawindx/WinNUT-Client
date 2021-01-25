@@ -14,7 +14,6 @@
             .Add("AutoReconnect", vbFalse)
             .Add("MinInputVoltage", 0)
             .Add("MaxInputVoltage", 0)
-            .Add("FrequencySource", 0)
             .Add("FrequencySupply", 1)
             .Add("MinInputFrequency", 0)
             .Add("MaxInputFrequency", 0)
@@ -66,7 +65,6 @@
         With Arr_Reg_Calibration
             .Add("MinInputVoltage", 210)
             .Add("MaxInputVoltage", 270)
-            .Add("FrequencySource", 0)
             .Add("FrequencySupply", 0)
             .Add("MinInputFrequency", 40)
             .Add("MaxInputFrequency", 60)

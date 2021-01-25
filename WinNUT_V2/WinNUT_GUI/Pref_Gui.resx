@@ -315,39 +315,6 @@
   <data name="&gt;&gt;Tab_Connexion.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Cbx_Freq_Source.Items" xml:space="preserve">
-    <value>Input</value>
-  </data>
-  <data name="Cbx_Freq_Source.Items1" xml:space="preserve">
-    <value>Output</value>
-  </data>
-  <data name="Cbx_Freq_Source.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 71</value>
-  </data>
-  <data name="Cbx_Freq_Source.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
-  </data>
-  <data name="Cbx_Freq_Source.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <metadata name="Pref_TlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="Cbx_Freq_Source.ToolTip" xml:space="preserve">
-    <value>The frequency information for the selected source is displayed</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Freq_Source.Name" xml:space="preserve">
-    <value>Cbx_Freq_Source</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Freq_Source.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Freq_Source.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Freq_Source.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="Cbx_Freq_Input.Items" xml:space="preserve">
     <value>50</value>
   </data>
@@ -355,14 +322,17 @@
     <value>60</value>
   </data>
   <data name="Cbx_Freq_Input.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 71</value>
+    <value>265, 71</value>
   </data>
   <data name="Cbx_Freq_Input.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
+    <value>50, 21</value>
   </data>
   <data name="Cbx_Freq_Input.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
+  <metadata name="Pref_TlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="Cbx_Freq_Input.ToolTip" xml:space="preserve">
     <value>Sets the input frequency if not supplied by the UPS.</value>
   </data>
@@ -376,13 +346,13 @@
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Cbx_Freq_Input.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="Tb_BattV_Max.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 191</value>
+    <value>265, 191</value>
   </data>
   <data name="Tb_BattV_Max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="Tb_BattV_Max.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -401,13 +371,13 @@ Accepted value: Numeric value from 0 to 100.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Tb_BattV_Max.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="Tb_Load_Max.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 161</value>
+    <value>265, 161</value>
   </data>
   <data name="Tb_Load_Max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="Tb_Load_Max.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -426,13 +396,13 @@ Accepted value: Numeric value from 0 to 100.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Tb_Load_Max.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="Tb_OutV_Max.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 131</value>
+    <value>265, 131</value>
   </data>
   <data name="Tb_OutV_Max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="Tb_OutV_Max.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -451,13 +421,13 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Tb_OutV_Max.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="Tb_InF_Max.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 101</value>
+    <value>265, 101</value>
   </data>
   <data name="Tb_InF_Max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="Tb_InF_Max.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -476,13 +446,13 @@ Accepted value: Numeric value from 0 to 100.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Tb_InF_Max.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="Tb_BattV_Min.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 191</value>
+    <value>179, 191</value>
   </data>
   <data name="Tb_BattV_Min.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="Tb_BattV_Min.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -501,13 +471,13 @@ Accepted value: Numeric value from 0 to 100.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Tb_BattV_Min.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="Tb_Load_Min.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 161</value>
+    <value>179, 161</value>
   </data>
   <data name="Tb_Load_Min.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="Tb_Load_Min.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -526,13 +496,13 @@ Accepted value: Numeric value from 0 to 100.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Tb_Load_Min.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="Tb_OutV_Min.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 131</value>
+    <value>179, 131</value>
   </data>
   <data name="Tb_OutV_Min.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="Tb_OutV_Min.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -551,13 +521,13 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Tb_OutV_Min.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="Tb_InF_Min.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 101</value>
+    <value>179, 101</value>
   </data>
   <data name="Tb_InF_Min.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="Tb_InF_Min.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -576,13 +546,13 @@ Accepted value: Numeric value from 0 to 100.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Tb_InF_Min.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="Tb_InV_Max.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 41</value>
+    <value>265, 41</value>
   </data>
   <data name="Tb_InV_Max.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="Tb_InV_Max.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -601,13 +571,13 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Tb_InV_Max.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="Tb_InV_Min.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 41</value>
+    <value>179, 41</value>
   </data>
   <data name="Tb_InV_Min.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+    <value>51, 20</value>
   </data>
   <data name="Tb_InV_Min.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -626,7 +596,7 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Tb_InV_Min.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="Lbl_Maxi.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -653,7 +623,7 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Lbl_Maxi.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="Lbl_Mini.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -680,7 +650,7 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Lbl_Mini.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="Lbl_BattV.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -707,7 +677,7 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Lbl_BattV.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="Lbl_LoadUPS.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -734,7 +704,7 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Lbl_LoadUPS.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>14</value>
   </data>
   <data name="Lbl_OutputV.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -761,7 +731,7 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Lbl_OutputV.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>15</value>
   </data>
   <data name="Lbl_InputF.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -770,13 +740,13 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>6, 102</value>
   </data>
   <data name="Lbl_InputF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 13</value>
+    <value>84, 13</value>
   </data>
   <data name="Lbl_InputF.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="Lbl_InputF.Text" xml:space="preserve">
-    <value>Frequency</value>
+    <value>Input Frequency</value>
   </data>
   <data name="&gt;&gt;Lbl_InputF.Name" xml:space="preserve">
     <value>Lbl_InputF</value>
@@ -788,7 +758,7 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Lbl_InputF.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>16</value>
   </data>
   <data name="Lbl_PowerF.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -815,7 +785,7 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Lbl_PowerF.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>17</value>
   </data>
   <data name="Lbl_InputV.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -842,7 +812,7 @@ Accepted value: Numeric value from 0 to 999.</value>
     <value>Tab_Calibrage</value>
   </data>
   <data name="&gt;&gt;Lbl_InputV.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>18</value>
   </data>
   <data name="Tab_Calibrage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

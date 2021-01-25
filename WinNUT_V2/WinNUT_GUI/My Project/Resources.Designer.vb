@@ -458,24 +458,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à Fréquence d'entrée : {0}
-        '''</summary>
-        Public ReadOnly Property Frm_Main_Str_FreqSourceIn() As String
-            Get
-                Return ResourceManager.GetString("Frm_Main_Str_FreqSourceIn", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Recherche une chaîne localisée semblable à Fréquence de sortie : {0}
-        '''</summary>
-        Public ReadOnly Property Frm_Main_Str_FreqSourceOut() As String
-            Get
-                Return ResourceManager.GetString("Frm_Main_Str_FreqSourceOut", resourceCulture)
-            End Get
-        End Property
-                
-        '''<summary>
         '''  Recherche une chaîne localisée semblable à Battery_Charge : {0}
         '''Remaining Time : {1}.
         '''</summary>
