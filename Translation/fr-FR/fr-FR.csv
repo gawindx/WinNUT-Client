@@ -1,146 +1,154 @@
-﻿Message,Translation
-About,A Propos
-Activate automatic connection / reconnection,Activer la connexion / reconnexion automatique
-Additional grace period limit. Accepted value: Numeric value from 0 to 3600.,Limite de délai de grâce supplémentaire. Valeur acceptée: valeur numérique de 0 à 3600.
-Alert,Alerte
-Allow additional time during the shutdown procedure. Note: This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!,Accordez du temps supplémentaire pendant la procédure d'arrêt. Remarque: Ce temps supplémentaire pourrait dépasser le temps de sauvegarde de l'onduleur - À UTILISER AVEC PRECAUTION !!!
-Allow Extended Shutdown Time,Autorise un temps supplémentaire
-Application shut down at,Application arrêtée à 
-Apply,Appliquer
-Automatic Reconnection,Re-connexion Automatique
-Battery Charge,Charge Batterie
-Battery OK,Batterie OK
-Battery Voltage,Tension de Batterie
-Battery_Charge : {0} Remaining Time : {1},Charge Batterie : {0} Temps restant : {1}
-Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text},Charge batterie: {WinNUT.UPS_BattCh} Temps restant: {WinNUT.Lbl_VRTime.Text}
-Calibration,Calibrage
-Cancel,Annuler
-Cancellation of the Extinguishing Process,Annulation du Processus d'Extinction
-Check for updates.,Vérifiez les mises à jour.
-Checks for updates at startup.,Vérifie les mises à jour au démarrage.
-Close,Fermer
-Close to Tray,Fermer vers la Barre de Tâche
-Conditions met for launching the Extinguishing Process,Conditions atteintes pour le lancement du Processus d'Extinction
-Connected,Connecté
-Connection,Connexion
-Connection to Nut Host {0}:{1} Established,Connexion au Serveur NUT {0}:{1} établie
-Connection to Nut Host {0}:{1} Failed: {2},Connexion au Serveur NUT {0}:{1} échouée : {2}
-Create a log file (WinNUT-client.log file in the WinNUT installation directory).,Créez un fichier journal (fichier WinNUT-client.log dans le répertoire d'installation de WinNUT).
-Create LogFile,Créer Fichier Journal
-Daily,Quotidien
-Debug,Débogue
-Delay,Intervalle
-Delay Between Verification,Délai entre vérification
-Delay to Shutdown (sec),Temporiser l'Arrêt (sec)
-Delete log file.,Supprimer le fichier journal.
-Development,Développement
-Disconnect,Déconnecter
-Disconnected from Nut Host,Déconnectée du serveur NUT
-Download New Version from :,Téléchargez la nouvelle version depuis :
-Error,Erreur
-Exit,Quitter
-Extinction In Progress,Extinction en cours
-File,Fichier
-Firmware :,Firmware :
-Frequency of verification.,Fréquence de vérification.
-Frequency Supply,Fréquence Alimentation
-Grace Delay to Shutdown (sec),Temps supplémentaire (sec)
-Grace Time,Temps de grâce
-Help,Aide
-Hibernate,Mise en Veille Prolongée
-Hide ChangeLog,Cacher ChangeLog
-Immediate Shutdown,Arrêt immédiat
-Immediate stop action,Action d'arrêt Immediate
-Import Ini File (v1.x),Import Fichier Ini (v1.x)
-Input Frequency,Fréquence d'entrée
-Input Voltage,Tension d'Entrée
-Log file log level,Niveau de journalisation du fichier journal
-Logging level,Niveau de Journalisation
-Logging level.,Niveau de Journalisation
-Login,Identifiant
-Login credentials to the Nut server (leave blank if not required),Identifiants de connexion au server Nut (laisser vide si non requis)
-Lost Connect To {0}:{1},Connexion perdue à {0}:{1}
-Low Battery,Batterie Basse
-Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.,Délai de sauvegarde inférieur déclenchant la procédure d'arrêt. Valeur acceptée: valeur numérique de 0 à 3600.
-Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.,Limite inférieure du niveau de la batterie déclenchant la procédure d'arrêt. Valeur acceptée: valeur numérique de 0 à 100.
-Manufacturer :,Fabricant :
-Max,Maxi
-Max Retry reached. Wait for manual Reconnection,Nombre maximale d'essai atteint. En attente de reconnexion manuelle
-Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Tension maximale de la batterie. Valeur acceptée: valeur numérique de 0 à 100.
-Maximum input frequency. Accepted value: Numeric value from 0 to 100.,Fréquence d'entrée maximale. Valeur acceptée: valeur numérique de 0 à 100.
-Maximum input voltage. Accepted value: Numeric value from 0 to 999.,Tension d'entrée maximale. Valeur acceptée: valeur numérique de 0 à 999.
-Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,Niveau de charge maximum de l'onduleur. Valeur acceptée: valeur numérique de 0 à 100.
-Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,Tension de sortie maximale. Valeur acceptée: valeur numérique de 0 à 999.
-Min,Mini
-Minimize to tray,Réduire en Barre de Tâche
-Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Tension minimale de la batterie. Valeur acceptée: valeur numérique de 0 à 100.
-Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,Niveau de charge minimum de l'onduleur. Valeur acceptée: valeur numérique de 0 à 100.
-Minimum input frequency. Accepted value: Numeric value from 0 to 100.,Fréquence d'entrée minimale. Valeur acceptée: valeur numérique de 0 à 100.
-Minimum input voltage. Accepted value: Numeric value from 0 to 999.,Tension d'entrée minimale. Valeur acceptée: valeur numérique de 0 à 999.
-Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,Tension de sortie minimale. Valeur acceptée: valeur numérique de 0 à 999.
-Miscellanous,Divers
-Monthly,Mensuelle
-Name :,Nom :
-No Update Available,Pas de mise a jour disponible
-Not Connected,Non connecté
-Notice,Remarque
-NUT host,Serveur NUT
-NUT Port,Port NUT
-Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Adresse du serveur Nut. Valeur acceptée: adresse IPV4 / IPV6 / FQDN.
-Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Numéro de port du serveur Nut (par défaut = 3493). Valeur acceptée: valeur numérique de 1 à 65535.
-Ok,
-Old ups.ini imported,Ancien Fichier ups.ini importé
-Old ups.ini imported Ini File Moved to {0}.old,Fichier Ini déplacé vers {0}.old
-On Battery ({0}%),Sur Batterie ({0}%)
-On Line,Sur Secteur
-Open the log file.,Ouvrez le fichier journal.
-Options,Préférences
-Output Voltage,Tension de Sortie
-Password,Mot de Passe
-Reconnect,Re-Connecter
-Reconnection In Progress,Reconnexion en cours
-Reduced to the taskbar or Systray.,Réduit à la barre des tâches ou Systray.
-Re-establish connection,Reconnecter
-Remaining Time :,Temps de Sauvegarde :
-Sends in Systray at closing.,Envoie dans le Systray à la fermeture.
-Serial :,Serial :
-Sets the input frequency if not supplied by the UPS.,Règle la fréquence d'entrée si elle n'est pas fournie par l'onduleur.
-Settings,Réglages
-Show ChangeLog,Afficher ChangeLog
-Shutdown,Mise à l'arrêt
-Shutdown if battery lower than,Arrêter si le niveau de batterie est inférieur à
-Shutdown if runtime lower than (sec),Arrêter si le temps de maintien est inférieur à (secondes)
-Shutdown Options,Options d'Arrêt
-Sleep,Mise en Veille
-Stable,Stable
-Stable Or Dev Branch,Branche Stable ou Développement
-Start Minimized,Démarrer Réduit
-Start with Windows,Démmarrer avec Windows
-Starts the shutdown procedure immediately or timed.,Démarre la procédure d'arrêt immédiatement ou temporisée.
-Starts WinNut Minimized.,Démarre WinNut minimisé.
-Starts WinNUT when Windows starts.,Démarre WinNUT au démarrage de Windows.
-Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,Arrêter le délai de la procédure en cas de retard. Valeur acceptée: valeur numérique de 0 à 3600.
-Time between each update of UPS data (default = 5000). Accepted value: Numerical value from 1 to 60000 ms.,Temps entre chaque mise à jour des données UPS (par défaut = 5000). Valeur acceptée: valeur numérique de 1 à 60000 ms.
-Try {0} of {1},Essai {0} sur {1}
-Try Reconnect {0} / {1},Tentative de reconnexion {0} / {1}
-Type of Stop,Type d'Arrêt
-Type of stop at the end of the stop procedure.,Type d'arrêt à la fin de la procédure d'arrêt.
-Unknown UPS Name,Nom UPS Inconnu
-Update,Mise à jour
-Update Available : Version {0},Mise à jour disponible : version {0}
-Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,Mettre à jour WinNUT-Client maintenant? Annuler pour enregistrer Msi et installer plus tard Ok pour fermer WinNut et installer une nouvelle version
-UPS Battery Low,Batteries Basse UPS
-UPS Load,Charge UPS
-UPS Name,Nom UPS
-UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,Nom de l'onduleur à surveiller. Valeur acceptée: nom de l'onduleur configuré dans le serveur Nut.
-UPS On Battery,UPS Sur Batteries
-UPS On Line,UPS Sur Secteur
-UPS Overload,Surcharge UPS
-UPS Variable,Variable de l'UPS
-Use the Stable or Devellop branch during verification.,Utilisez la branche Stable ou Dev lors de la vérification.
-Verify Update,Vérifier la mise à jour
-Verify Update At Start,Vérifier la mise à jour au Démarrage
-Version {0} Available,Version {0} disponible
-Weekly,Hebdomadaire
-WinNut Preferences Changed,Préférences de WinNUT Modifiées
-Wrong Login ID (Username or Password),ID de connexion incorrect (nom d'utilisateur ou mot de passe)
+﻿Status,Translator,Message,Translation
+Valid,Gawindx,About,A Propos
+Valid,Gawindx,Activate automatic connection / reconnection,Activer la connexion / reconnexion automatique
+Valid,Gawindx,Additional grace period limit. Accepted value: Numeric value from 0 to 3600.,Limite de délai de grâce supplémentaire. Valeur acceptée: valeur numérique de 0 à 3600.
+Valid,Gawindx,Alert,Alerte
+Valid,Gawindx,Allow additional time during the shutdown procedure. Note: This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!,Accordez du temps supplémentaire pendant la procédure d'arrêt. Remarque: Ce temps supplémentaire pourrait dépasser le temps de sauvegarde de l'onduleur - À UTILISER AVEC PRECAUTION !!!
+Valid,Gawindx,Allow Extended Shutdown Time,Autorise un temps supplémentaire
+Valid,Gawindx,Application shut down at,Application arrêtée à 
+Valid,Gawindx,Apply,Appliquer
+Valid,Gawindx,Automatic Reconnection,Re-connexion Automatique
+Valid,Gawindx,Battery Charge,Charge Batterie
+Valid,Gawindx,Battery OK,Batterie OK
+Valid,Gawindx,Battery Voltage,Tension de Batterie
+Valid,Gawindx,Battery_Charge : {0} Remaining Time : {1},Charge Batterie : {0} Temps restant : {1}
+Valid,Gawindx,Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text},Charge batterie: {WinNUT.UPS_BattCh} Temps restant: {WinNUT.Lbl_VRTime.Text}
+Valid,Gawindx,Calibration,Calibrage
+Valid,Gawindx,Cancel,Annuler
+Valid,Gawindx,Cancellation of the Extinguishing Process,Annulation du Processus d'Extinction
+Valid,Gawindx,Check for updates.,Vérifiez les mises à jour.
+Valid,Gawindx,Checks for updates at startup.,Vérifie les mises à jour au démarrage.
+Valid,Gawindx,Clear,Vider
+Valid,Gawindx,Close,Fermer
+Valid,Gawindx,Close to Tray,Fermer vers la Barre de Tâche
+Valid,Gawindx,Conditions met for launching the Extinguishing Process,Conditions atteintes pour le lancement du Processus d'Extinction
+Valid,Gawindx,Connected,Connecté
+Valid,Gawindx,Connection,Connexion
+Valid,Gawindx,Connection to Nut Host {0}:{1} Established,Connexion au Serveur NUT {0}:{1} établie
+Valid,Gawindx,Connection to Nut Host {0}:{1} Failed: {2},Connexion au Serveur NUT {0}:{1} échouée : {2}
+Valid,Gawindx,Copy,Copier
+Valid,Gawindx,Create a log file (WinNUT-client.log file in the WinNUT installation directory).,Créez un fichier journal (fichier WinNUT-client.log dans le répertoire d'installation de WinNUT).
+Valid,Gawindx,Create LogFile,Créer Fichier Journal
+Valid,Gawindx,Daily,Quotidien
+Valid,Gawindx,Debug,Débogue
+Valid,Gawindx,Delay,Intervalle
+Valid,Gawindx,Delay Between Verification,Délai entre vérification
+Valid,Gawindx,Delay to Shutdown (sec),Temporiser l'Arrêt (sec)
+Valid,Gawindx,Delete log file.,Supprimer le fichier journal.
+Valid,Gawindx,Description :,Description :
+Valid,Gawindx,Devellopement,Développement
+Valid,Gawindx,Disconnect,Déconnecter
+Valid,Gawindx,Disconnected from Nut Host,Déconnectée du serveur NUT
+Valid,Gawindx,Download New Version from :,Téléchargez la nouvelle version depuis :
+Valid,Gawindx,Error,Erreur
+Valid,Gawindx,Exit,Quitter
+Valid,Gawindx,Extinction In Progress,Extinction en cours
+Valid,Gawindx,File,Fichier
+Valid,Gawindx,Firmware :,Firmware :
+Valid,Gawindx,Frequency,Fréquence
+Valid,Gawindx,Frequency of verification.,Fréquence de vérification.
+Valid,Gawindx,Frequency Supply,Fréquence Alimentation
+Valid,Gawindx,Grace Delay to Shutdown (sec),Temps supplémentaire (sec)
+Valid,Gawindx,Grace Time,Temps de grâce
+Valid,Gawindx,Help,Aide
+Valid,Gawindx,Hibernate,Mise en Veille Prolongée
+Valid,Gawindx,Hide ChangeLog,Cacher ChangeLog
+Valid,Gawindx,Immediate Shutdown,Arrêt immédiat
+Valid,Gawindx,Immediate stop action,Action d'arrêt Immediate
+Valid,Gawindx,Import Ini File (v1.x),Import Fichier Ini (v1.x)
+Valid,Gawindx,Input Frequency,Fréquence d'entrée
+Valid,Gawindx,Input Voltage,Tension d'Entrée
+Valid,Gawindx,Item Properties,Propriétés
+Valid,Gawindx,List UPS Variables,Liste des Variables de L'UPS
+Valid,Gawindx,Log file log level,Niveau de journalisation du fichier journal
+Valid,Gawindx,Logging level,Niveau de Journalisation
+Valid,Gawindx,Logging level.,Niveau de Journalisation
+Valid,Gawindx,Login,Identifiant
+Valid,Gawindx,Login credentials to the Nut server (leave blank if not required),Identifiants de connexion au server Nut (laisser vide si non requis)
+Valid,Gawindx,Lost Connect To {0}:{1},Connexion perdue à {0}:{1}
+Valid,Gawindx,Low Battery,Batterie Basse
+Valid,Gawindx,Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.,Délai de sauvegarde inférieur déclenchant la procédure d'arrêt. Valeur acceptée: valeur numérique de 0 à 3600.
+Valid,Gawindx,Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.,Limite inférieure du niveau de la batterie déclenchant la procédure d'arrêt. Valeur acceptée: valeur numérique de 0 à 100.
+Valid,Gawindx,Manufacturer :,Fabricant :
+Valid,Gawindx,Max,Maxi
+Valid,Gawindx,Max Retry reached. Wait for manual Reconnection,Nombre maximale d'essai atteint. En attente de reconnexion manuelle
+Valid,Gawindx,Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Tension maximale de la batterie. Valeur acceptée: valeur numérique de 0 à 100.
+Valid,Gawindx,Maximum input frequency. Accepted value: Numeric value from 0 to 100.,Fréquence d'entrée maximale. Valeur acceptée: valeur numérique de 0 à 100.
+Valid,Gawindx,Maximum input voltage. Accepted value: Numeric value from 0 to 999.,Tension d'entrée maximale. Valeur acceptée: valeur numérique de 0 à 999.
+Valid,Gawindx,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,Niveau de charge maximum de l'onduleur. Valeur acceptée: valeur numérique de 0 à 100.
+Valid,Gawindx,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,Tension de sortie maximale. Valeur acceptée: valeur numérique de 0 à 999.
+Valid,Gawindx,Min,Mini
+Valid,Gawindx,Minimize to tray,Réduire en Barre de Tâche
+Valid,Gawindx,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Tension minimale de la batterie. Valeur acceptée: valeur numérique de 0 à 100.
+Valid,Gawindx,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,Niveau de charge minimum de l'onduleur. Valeur acceptée: valeur numérique de 0 à 100.
+Valid,Gawindx,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,Fréquence d'entrée minimale. Valeur acceptée: valeur numérique de 0 à 100.
+Valid,Gawindx,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,Tension d'entrée minimale. Valeur acceptée: valeur numérique de 0 à 999.
+Valid,Gawindx,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,Tension de sortie minimale. Valeur acceptée: valeur numérique de 0 à 999.
+Valid,Gawindx,Miscellanous,Divers
+Valid,Gawindx,Monthly,Mensuelle
+Valid,Gawindx,Name :,Nom :
+Valid,Gawindx,No Update Available,Pas de mise a jour disponible
+Valid,Gawindx,Not Connected,Non connecté
+Valid,Gawindx,Notice,Remarque
+Valid,Gawindx,NUT host,Serveur NUT
+Valid,Gawindx,NUT Port,Port NUT
+Valid,Gawindx,Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Adresse du serveur Nut. Valeur acceptée: adresse IPV4 / IPV6 / FQDN.
+Valid,Gawindx,Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Numéro de port du serveur Nut (par défaut = 3493). Valeur acceptée: valeur numérique de 1 à 65535.
+Valid,Gawindx,Ok,Ok
+Valid,Gawindx,Old ups.ini imported,Ancien Fichier ups.ini importé
+Valid,Gawindx,Old ups.ini imported Ini File Moved to {0}.old,Fichier Ini déplacé vers {0}.old
+Valid,Gawindx,On Battery ({0}%),Sur Batterie ({0}%)
+Valid,Gawindx,On Line,Sur Secteur
+Valid,Gawindx,Open the log file.,Ouvrez le fichier journal.
+Valid,Gawindx,Options,Préférences
+Valid,Gawindx,Output Voltage,Tension de Sortie
+Valid,Gawindx,Password,Mot de Passe
+Valid,Gawindx,Reconnect,Re-Connecter
+Valid,Gawindx,Reconnection In Progress,Reconnexion en cours
+Valid,Gawindx,Reduced to the taskbar or Systray.,Réduit à la barre des tâches ou Systray.
+Valid,Gawindx,Re-establish connection,Reconnecter
+Valid,Gawindx,Reload,Recharger
+Valid,Gawindx,Remaining Time :,Temps de Sauvegarde :
+Valid,Gawindx,Sends in Systray at closing.,Envoie dans le Systray à la fermeture.
+Valid,Gawindx,Serial :,Serial :
+Valid,Gawindx,Sets the input frequency if not supplied by the UPS.,Règle la fréquence d'entrée si elle n'est pas fournie par l'onduleur.
+Valid,Gawindx,Settings,Réglages
+Valid,Gawindx,Show ChangeLog,Afficher ChangeLog
+Valid,Gawindx,Shutdown,Mise à l'arrêt
+Valid,Gawindx,Shutdown if battery lower than,Arrêter si le niveau de batterie est inférieur à
+Valid,Gawindx,Shutdown if runtime lower than (sec),Arrêter si le temps de maintien est inférieur à (secondes)
+Valid,Gawindx,Shutdown Options,Options d'Arrêt
+Valid,Gawindx,Sleep,Mise en Veille
+Valid,Gawindx,Stable,Stable
+Valid,Gawindx,Stable Or Dev Branch,Branche Stable ou Développement
+Valid,Gawindx,Start Minimized,Démarrer Réduit
+Valid,Gawindx,Start with Windows,Démmarrer avec Windows
+Valid,Gawindx,Starts the shutdown procedure immediately or timed.,Démarre la procédure d'arrêt immédiatement ou temporisée.
+Valid,Gawindx,Starts WinNut Minimized.,Démarre WinNut minimisé.
+Valid,Gawindx,Starts WinNUT when Windows starts.,Démarre WinNUT au démarrage de Windows.
+Valid,Gawindx,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,Arrêter le délai de la procédure en cas de retard. Valeur acceptée: valeur numérique de 0 à 3600.
+Valid,Gawindx,Time between each update of UPS data (default = 5000). Accepted value: Numerical value from 1 to 60000 ms.,Temps entre chaque mise à jour des données UPS (par défaut = 5000). Valeur acceptée: valeur numérique de 1 à 60000 ms.
+Valid,Gawindx,Try {0} of {1},Essai {0} sur {1}
+Valid,Gawindx,Try Reconnect {0} / {1},Tentative de reconnexion {0} / {1}
+Valid,Gawindx,Type of Stop,Type d'Arrêt
+Valid,Gawindx,Type of stop at the end of the stop procedure.,Type d'arrêt à la fin de la procédure d'arrêt.
+Valid,Gawindx,Unknown UPS Name,Nom UPS Inconnu
+Valid,Gawindx,Update,Mise à jour
+Valid,Gawindx,Update Available : Version {0},Mise à jour disponible : version {0}
+Valid,Gawindx,Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,Mettre à jour WinNUT-Client maintenant? Annuler pour enregistrer Msi et installer plus tard Ok pour fermer WinNut et installer une nouvelle version
+Valid,Gawindx,UPS Battery Low,Batteries Basse UPS
+Valid,Gawindx,UPS Load,Charge UPS
+Valid,Gawindx,UPS Name,Nom UPS
+Valid,Gawindx,UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,Nom de l'onduleur à surveiller. Valeur acceptée: nom de l'onduleur configuré dans le serveur Nut.
+Valid,Gawindx,UPS On Battery,UPS Sur Batteries
+Valid,Gawindx,UPS On Line,UPS Sur Secteur
+Valid,Gawindx,UPS Overload,Surcharge UPS
+Valid,Gawindx,UPS Variable,Variable de l'UPS
+Valid,Gawindx,Use the Stable or Devellop branch during verification.,Utilisez la branche Stable ou Dev lors de la vérification.
+Valid,Gawindx,Value :,Valeur :
+Valid,Gawindx,Verify Update,Vérifier la mise à jour
+Valid,Gawindx,Verify Update At Start,Vérifier la mise à jour au Démarrage
+Valid,Gawindx,Version {0} Available,Version {0} disponible
+Valid,Gawindx,Weekly,Hebdomadaire
+Valid,Gawindx,WinNut Preferences Changed,Préférences de WinNUT Modifiées
+Valid,Gawindx,Wrong Login ID (Username or Password),ID de connexion incorrect (nom d'utilisateur ou mot de passe)
