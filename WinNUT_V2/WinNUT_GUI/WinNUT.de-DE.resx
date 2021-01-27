@@ -6933,7 +6933,7 @@
     <value>Batterieladung</value>
   </data>
   <data name="Lbl_InF_Dial.Text" xml:space="preserve">
-    <value>Eingangsfrequenz</value>
+    <value>Frequenz</value>
   </data>
   <data name="Lbl_OutV_Dial.Text" xml:space="preserve">
     <value>Ausgangsspannung</value>

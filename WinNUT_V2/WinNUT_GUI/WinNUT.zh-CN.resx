@@ -100,6 +100,6 @@
     <value>电池电压</value>
   </data>
   <data name="Lbl_InF_Dial.Text" xml:space="preserve">
-    <value>输入频率</value>
+    <value>频率</value>
   </data>
 </root>

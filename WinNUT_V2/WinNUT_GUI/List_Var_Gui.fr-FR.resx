@@ -12,4 +12,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Lbl_D.Text" xml:space="preserve">
+    <value>Description :</value>
+  </data>
+  <data name="Lbl_V.Text" xml:space="preserve">
+    <value>Valeur :</value>
+  </data>
+  <data name="Lbl_Name.Text" xml:space="preserve">
+    <value>Nom :</value>
+  </data>
+  <data name="GB1.Text" xml:space="preserve">
+    <value>Propriétés</value>
+  </data>
+  <data name="Btn_Reload.Text" xml:space="preserve">
+    <value>Recharger</value>
+  </data>
+  <data name="Btn_Clear.Text" xml:space="preserve">
+    <value>Vider</value>
+  </data>
+  <data name="Btn_Close.Text" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="Btn_Clip.Text" xml:space="preserve">
+    <value>Copier</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Variable de L'UPS</value>
+  </data>
 </root>

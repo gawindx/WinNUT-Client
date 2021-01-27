@@ -23,6 +23,7 @@ Partial Class List_Var_Gui
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(List_Var_Gui))
         Me.TView_UPSVar = New System.Windows.Forms.TreeView()
         Me.GB1 = New System.Windows.Forms.GroupBox()
         Me.Lbl_D_Value = New System.Windows.Forms.Label()
@@ -41,11 +42,9 @@ Partial Class List_Var_Gui
         '
         'TView_UPSVar
         '
-        Me.TView_UPSVar.Location = New System.Drawing.Point(6, 6)
+        resources.ApplyResources(Me.TView_UPSVar, "TView_UPSVar")
         Me.TView_UPSVar.Name = "TView_UPSVar"
         Me.TView_UPSVar.PathSeparator = "."
-        Me.TView_UPSVar.Size = New System.Drawing.Size(360, 170)
-        Me.TView_UPSVar.TabIndex = 0
         '
         'GB1
         '
@@ -55,96 +54,60 @@ Partial Class List_Var_Gui
         Me.GB1.Controls.Add(Me.Lbl_D)
         Me.GB1.Controls.Add(Me.Lbl_V)
         Me.GB1.Controls.Add(Me.Lbl_Name)
-        Me.GB1.Location = New System.Drawing.Point(6, 182)
+        resources.ApplyResources(Me.GB1, "GB1")
         Me.GB1.Name = "GB1"
-        Me.GB1.Size = New System.Drawing.Size(360, 110)
-        Me.GB1.TabIndex = 1
         Me.GB1.TabStop = False
-        Me.GB1.Text = "Item Properties"
         '
         'Lbl_D_Value
         '
-        Me.Lbl_D_Value.AutoSize = True
+        resources.ApplyResources(Me.Lbl_D_Value, "Lbl_D_Value")
         Me.Lbl_D_Value.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Lbl_D_Value.Location = New System.Drawing.Point(100, 80)
-        Me.Lbl_D_Value.MinimumSize = New System.Drawing.Size(250, 0)
         Me.Lbl_D_Value.Name = "Lbl_D_Value"
-        Me.Lbl_D_Value.Size = New System.Drawing.Size(250, 15)
-        Me.Lbl_D_Value.TabIndex = 5
         '
         'Lbl_V_Value
         '
-        Me.Lbl_V_Value.AutoSize = True
+        resources.ApplyResources(Me.Lbl_V_Value, "Lbl_V_Value")
         Me.Lbl_V_Value.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Lbl_V_Value.Location = New System.Drawing.Point(100, 50)
-        Me.Lbl_V_Value.MinimumSize = New System.Drawing.Size(250, 0)
         Me.Lbl_V_Value.Name = "Lbl_V_Value"
-        Me.Lbl_V_Value.Size = New System.Drawing.Size(250, 15)
-        Me.Lbl_V_Value.TabIndex = 4
         '
         'Lbl_N_Value
         '
-        Me.Lbl_N_Value.AutoSize = True
+        resources.ApplyResources(Me.Lbl_N_Value, "Lbl_N_Value")
         Me.Lbl_N_Value.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Lbl_N_Value.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Lbl_N_Value.Location = New System.Drawing.Point(100, 20)
-        Me.Lbl_N_Value.MinimumSize = New System.Drawing.Size(250, 0)
         Me.Lbl_N_Value.Name = "Lbl_N_Value"
-        Me.Lbl_N_Value.Size = New System.Drawing.Size(250, 15)
-        Me.Lbl_N_Value.TabIndex = 3
         '
         'Lbl_D
         '
-        Me.Lbl_D.AutoSize = True
-        Me.Lbl_D.Location = New System.Drawing.Point(6, 80)
+        resources.ApplyResources(Me.Lbl_D, "Lbl_D")
         Me.Lbl_D.Name = "Lbl_D"
-        Me.Lbl_D.Size = New System.Drawing.Size(66, 13)
-        Me.Lbl_D.TabIndex = 2
-        Me.Lbl_D.Text = "Description :"
         '
         'Lbl_V
         '
-        Me.Lbl_V.AutoSize = True
-        Me.Lbl_V.Location = New System.Drawing.Point(6, 50)
+        resources.ApplyResources(Me.Lbl_V, "Lbl_V")
         Me.Lbl_V.Name = "Lbl_V"
-        Me.Lbl_V.Size = New System.Drawing.Size(40, 13)
-        Me.Lbl_V.TabIndex = 1
-        Me.Lbl_V.Text = "Value :"
         '
         'Lbl_Name
         '
-        Me.Lbl_Name.AutoSize = True
-        Me.Lbl_Name.Location = New System.Drawing.Point(6, 20)
+        resources.ApplyResources(Me.Lbl_Name, "Lbl_Name")
         Me.Lbl_Name.Name = "Lbl_Name"
-        Me.Lbl_Name.Size = New System.Drawing.Size(41, 13)
-        Me.Lbl_Name.TabIndex = 0
-        Me.Lbl_Name.Text = "Name :"
         '
         'Btn_Reload
         '
-        Me.Btn_Reload.Location = New System.Drawing.Point(9, 300)
+        resources.ApplyResources(Me.Btn_Reload, "Btn_Reload")
         Me.Btn_Reload.Name = "Btn_Reload"
-        Me.Btn_Reload.Size = New System.Drawing.Size(75, 23)
-        Me.Btn_Reload.TabIndex = 2
-        Me.Btn_Reload.Text = "Reload"
         Me.Btn_Reload.UseVisualStyleBackColor = True
         '
         'Btn_Clear
         '
-        Me.Btn_Clear.Location = New System.Drawing.Point(102, 300)
+        resources.ApplyResources(Me.Btn_Clear, "Btn_Clear")
         Me.Btn_Clear.Name = "Btn_Clear"
-        Me.Btn_Clear.Size = New System.Drawing.Size(75, 23)
-        Me.Btn_Clear.TabIndex = 3
-        Me.Btn_Clear.Text = "Clear"
         Me.Btn_Clear.UseVisualStyleBackColor = True
         '
         'Btn_Close
         '
-        Me.Btn_Close.Location = New System.Drawing.Point(289, 300)
+        resources.ApplyResources(Me.Btn_Close, "Btn_Close")
         Me.Btn_Close.Name = "Btn_Close"
-        Me.Btn_Close.Size = New System.Drawing.Size(75, 23)
-        Me.Btn_Close.TabIndex = 4
-        Me.Btn_Close.Text = "Close"
         Me.Btn_Close.UseVisualStyleBackColor = True
         '
         'Timer_Update_List
@@ -154,18 +117,14 @@ Partial Class List_Var_Gui
         '
         'Btn_Clip
         '
-        Me.Btn_Clip.Location = New System.Drawing.Point(197, 300)
+        resources.ApplyResources(Me.Btn_Clip, "Btn_Clip")
         Me.Btn_Clip.Name = "Btn_Clip"
-        Me.Btn_Clip.Size = New System.Drawing.Size(75, 23)
-        Me.Btn_Clip.TabIndex = 5
-        Me.Btn_Clip.Text = "To Clipboard"
         Me.Btn_Clip.UseVisualStyleBackColor = True
         '
         'List_Var_Gui
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(374, 336)
         Me.Controls.Add(Me.Btn_Clip)
         Me.Controls.Add(Me.Btn_Close)
         Me.Controls.Add(Me.Btn_Clear)
@@ -175,7 +134,6 @@ Partial Class List_Var_Gui
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "List_Var_Gui"
-        Me.Text = "List UPS Variables"
         Me.GB1.ResumeLayout(False)
         Me.GB1.PerformLayout()
         Me.ResumeLayout(False)

@@ -6933,7 +6933,7 @@
     <value>Charge Batterie</value>
   </data>
   <data name="Lbl_InF_Dial.Text" xml:space="preserve">
-    <value>Fréquence d'entrée</value>
+    <value>Fréquence</value>
   </data>
   <data name="Lbl_OutV_Dial.Text" xml:space="preserve">
     <value>Tension de Sortie</value>

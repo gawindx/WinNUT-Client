@@ -8295,7 +8295,7 @@
     <value>0</value>
   </data>
   <data name="Lbl_InF_Dial.Text" xml:space="preserve">
-    <value>Input Frequency</value>
+    <value>Frequency</value>
   </data>
   <data name="Lbl_InF_Dial.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>

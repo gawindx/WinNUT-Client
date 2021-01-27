@@ -411,8 +411,12 @@ Public Class WinNUT
                 NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_UNKNOWN_UPS)
                 FormText &= " - " & WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_UNKNOWN_UPS)
             Case "Lost Connect"
-                NotifyStr &= String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_LOSTCONNECT), UPS_Network.NutHost, UPS_Network.NutPort)
-                FormText &= " - " & String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_LOSTCONNECT), UPS_Network.NutHost, UPS_Network.NutPort)
+                Dim TmpStr = String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_LOSTCONNECT), UPS_Network.NutHost, UPS_Network.NutPort)
+                FormText &= " - " & TmpStr
+                If (NotifyStr.Length + TmpStr.Length) > 64 Then
+                    TmpStr = TmpStr.Substring(0, (64 - NotifyStr.Length - 4)) & "..."
+                End If
+                NotifyStr &= TmpStr
             Case "Update Data"
                 FormText &= " - Bat: " & Me.UPS_BattCh & "% - " & WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_CONN) & " - "
                 NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_CONN) & vbNewLine
@@ -525,7 +529,7 @@ Public Class WinNUT
         Me.UPS_BattV = UPS_Network.UPS_BattV
         Me.UPS_BattRuntime = UPS_Network.UPS_BattRuntime
         Me.UPS_BattCapacity = UPS_Network.UPS_BattCapacity
-        Me.UPS_InputF = UPS_Network.UPS_InputF
+        Me.UPS_InputF = UPS_Network.UPS_PowerFreq
         Me.UPS_InputV = UPS_Network.UPS_InputV
         Me.UPS_OutputV = UPS_Network.UPS_OutputV
         Me.UPS_Load = UPS_Network.UPS_Load

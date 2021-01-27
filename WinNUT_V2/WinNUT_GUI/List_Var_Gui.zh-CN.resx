@@ -12,4 +12,148 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TView_UPSVar.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="TView_UPSVar.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>360, 170</value>
+  </data>
+  <data name="TView_UPSVar.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="Lbl_D_Value.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_D_Value.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>100, 80</value>
+  </data>
+  <data name="Lbl_D_Value.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>250, 0</value>
+  </data>
+  <data name="Lbl_D_Value.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>250, 15</value>
+  </data>
+  <data name="Lbl_D_Value.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="Lbl_V_Value.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_V_Value.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>100, 50</value>
+  </data>
+  <data name="Lbl_V_Value.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>250, 0</value>
+  </data>
+  <data name="Lbl_V_Value.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>250, 15</value>
+  </data>
+  <data name="Lbl_V_Value.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="Lbl_N_Value.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_N_Value.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="Lbl_N_Value.MinimumSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>250, 0</value>
+  </data>
+  <data name="Lbl_N_Value.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>250, 15</value>
+  </data>
+  <data name="Lbl_N_Value.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="Lbl_D.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_D.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>6, 80</value>
+  </data>
+  <data name="Lbl_D.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
+  </data>
+  <data name="Lbl_D.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="Lbl_V.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_V.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>6, 50</value>
+  </data>
+  <data name="Lbl_V.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="Lbl_V.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Lbl_Name.AutoSize" xml:space="preserve" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_Name.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>6, 20</value>
+  </data>
+  <data name="Lbl_Name.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
+  </data>
+  <data name="Lbl_Name.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="GB1.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>6, 182</value>
+  </data>
+  <data name="GB1.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>360, 110</value>
+  </data>
+  <data name="GB1.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Btn_Reload.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>9, 300</value>
+  </data>
+  <data name="Btn_Reload.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="Btn_Reload.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="Btn_Clear.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>102, 300</value>
+  </data>
+  <data name="Btn_Clear.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="Btn_Clear.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="Btn_Close.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>289, 300</value>
+  </data>
+  <data name="Btn_Close.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="Btn_Close.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="Btn_Clip.Location" xml:space="preserve" type="System.Drawing.Point, System.Drawing">
+    <value>197, 300</value>
+  </data>
+  <data name="Btn_Clip.Size" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="Btn_Clip.TabIndex" xml:space="preserve" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" xml:space="preserve" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" xml:space="preserve" type="System.Drawing.Size, System.Drawing">
+    <value>374, 336</value>
+  </data>
+  <metadata name="$this.Localizable" xml:space="preserve" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

@@ -20,7 +20,7 @@ Public Class UPS_Network
     Private BattV As Double
     Private BattRuntime As Double
     Private BattCapacity As Double
-    Private InputF As Double
+    Private PowerFreq As Double
     Private InputV As Double
     Private OutputV As Double
     Private Load As Double
@@ -220,12 +220,12 @@ Public Class UPS_Network
             Me.BattCapacity = Value
         End Set
     End Property
-    Public Property UPS_InputF() As Double
+    Public Property UPS_PowerFreq() As Double
         Get
-            Return Me.InputF
+            Return Me.PowerFreq
         End Get
         Set(ByVal Value As Double)
-            Me.InputF = Value
+            Me.PowerFreq = Value
         End Set
     End Property
     Public Property UPS_InputV() As Double
@@ -411,7 +411,7 @@ Public Class UPS_Network
         End If
     End Sub
 
-    Public Function GetUPSVar(ByVal varNAme As String, Optional ByVal Fallback_value As String = "", Optional ByVal post_send_delay As Integer = vbNull) As String
+    Public Function GetUPSVar(ByVal varNAme As String, Optional ByVal Fallback_value As Object = "", Optional ByVal post_send_delay As Integer = vbNull) As String
         Try
             LogFile.LogTracing("Enter GetUPSVar", LogLvl.LOG_DEBUG, Me)
             If Not Me.ConnectionStatus Then
@@ -430,7 +430,7 @@ Public Class UPS_Network
                     Throw New System.Exception("Unknown UPS Name.")
                 End If
                 Me.Unknown_UPS_Name = False
-                If InStr(DataResult, "ERR") <> 0 And Fallback_value <> "" Then
+                If InStr(DataResult, "ERR") <> 0 And Not String.IsNullOrEmpty(Fallback_value) Then
                     LogFile.LogTracing("Apply Fallback Value when retrieving " & varNAme, LogLvl.LOG_WARNING, Me)
                     DataResult = "VAR " & Me.UPSName & " " & varNAme & " " & """" & Fallback_value & """"
                 ElseIf DataResult = "" Then
@@ -622,13 +622,13 @@ Public Class UPS_Network
         Try
             LogFile.LogTracing("Enter Retrieve_UPS_Data", LogLvl.LOG_DEBUG, Me)
             If Not Me.LConnect Then
-                Dim InputF_Fallback = 50 + CInt(WinNUT_Params.Arr_Reg_Key.Item("FrequencySupply")) * 10
+                Dim Freq_Fallback = Double.Parse(GetUPSVar("output.frequency.nominal", (50 + CInt(WinNUT_Params.Arr_Reg_Key.Item("FrequencySupply")) * 10)), ciClone)
 
                 Me.BattCh = Double.Parse(GetUPSVar("battery.charge", 255, 50), ciClone)
                 Me.BattV = Double.Parse(GetUPSVar("battery.voltage", 12), ciClone)
                 Me.BattRuntime = Double.Parse(GetUPSVar("battery.runtime", 86400), ciClone)
                 Me.BattCapacity = Double.Parse(GetUPSVar("battery.capacity", 7), ciClone)
-                Me.InputF = Double.Parse(GetUPSVar("input.frequency", InputF_Fallback), ciClone)
+                Me.PowerFreq = Double.Parse(GetUPSVar("input.frequency", Freq_Fallback), ciClone)
                 Me.InputV = Double.Parse(GetUPSVar("input.voltage", 220), ciClone)
                 Me.OutputV = Double.Parse(GetUPSVar("output.voltage", Me.UPS_InputV), ciClone)
                 Me.Load = Double.Parse(GetUPSVar("ups.load", 100), ciClone)

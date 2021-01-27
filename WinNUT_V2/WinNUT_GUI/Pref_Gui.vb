@@ -216,11 +216,15 @@
             Case "Tb_BattLimit_Time"
                 MinValue = 0
                 MaxValue = 3600
-                'Min value has to be 1 as 0 can't be assigned to a timer interval (used in Shutdown_Gui)
+            'Min value has to be 1 as 0 can't be assigned to a timer interval (used in Shutdown_Gui)
             Case "Tb_GraceTime", "Tb_Delay_Stop"
                 MinValue = 1
                 MaxValue = 3600
         End Select
+
+        If sender.Text = "" Then
+            sender.Text = MinValue
+        End If
 
         If Integer.TryParse(sender.Text, Result) Then
             If (Result >= MinValue And Result <= MaxValue) Then
