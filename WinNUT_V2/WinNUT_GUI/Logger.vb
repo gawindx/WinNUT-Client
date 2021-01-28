@@ -51,12 +51,12 @@
     Public Sub LogTracing(ByVal message As String, ByVal LvlError As Int16, sender As Object, Optional ByVal LogToDisplay As String = Nothing)
         Dim Pid = TEventCache.ProcessId
         Dim SenderName = sender.GetType.Name
-        Dim EventTime = TEventCache.DateTime.ToLocalTime
-        Dim FinalMsg = EventTime & " " & Pid & " " & " " & SenderName & " : " & message
+        Dim EventTime = Now.ToLocalTime
+        Dim FinalMsg = EventTime & "Pid: " & Pid & " " & SenderName & " : " & message
 
         ' Always write log messages to the attached debug messages window.
 #If DEBUG Then
-        Debug.WriteLine(FinalMsg)
+       Debug.WriteLine(FinalMsg)
 #End If
 
         If Me.WriteLogValue AndAlso Me.LogLevel >= LvlError Then
