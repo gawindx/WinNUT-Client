@@ -620,15 +620,19 @@ Public Class UPS_Network
         Dim ciClone As System.Globalization.CultureInfo = CType(System.Globalization.CultureInfo.InvariantCulture.Clone(), System.Globalization.CultureInfo)
         ciClone.NumberFormat.NumberDecimalSeparator = "."
         Try
+            Static Freq_Fallback As Double
             LogFile.LogTracing("Enter Retrieve_UPS_Data", LogLvl.LOG_DEBUG, Me)
             If Not Me.LConnect Then
-                Dim Freq_Fallback = Double.Parse(GetUPSVar("output.frequency.nominal", (50 + CInt(WinNUT_Params.Arr_Reg_Key.Item("FrequencySupply")) * 10)), ciClone)
+
+                If Freq_Fallback = 0 Then
+                    Freq_Fallback = Double.Parse(GetUPSVar("output.frequency.nominal", (50 + CInt(WinNUT_Params.Arr_Reg_Key.Item("FrequencySupply")) * 10)), ciClone)
+                End If
 
                 Me.BattCh = Double.Parse(GetUPSVar("battery.charge", 255, 50), ciClone)
                 Me.BattV = Double.Parse(GetUPSVar("battery.voltage", 12), ciClone)
                 Me.BattRuntime = Double.Parse(GetUPSVar("battery.runtime", 86400), ciClone)
                 Me.BattCapacity = Double.Parse(GetUPSVar("battery.capacity", 7), ciClone)
-                Me.PowerFreq = Double.Parse(GetUPSVar("input.frequency", Freq_Fallback), ciClone)
+                Me.PowerFreq = Double.Parse(GetUPSVar("input.frequency", Double.Parse(GetUPSVar("output.frequency", Freq_Fallback), ciClone)), ciClone)
                 Me.InputV = Double.Parse(GetUPSVar("input.voltage", 220), ciClone)
                 Me.OutputV = Double.Parse(GetUPSVar("output.voltage", Me.UPS_InputV), ciClone)
                 Me.Load = Double.Parse(GetUPSVar("ups.load", 100), ciClone)
