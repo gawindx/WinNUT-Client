@@ -1,6 +1,5 @@
 ## History:
 
-
 ### Version 2.0.7706
 #### Fix : 
   - App crash when disconnecting with null streams (Thanks to tgp1994) (Issue #48)
@@ -14,12 +13,10 @@
   - In the case of a left click on the systray icon, WinNUT was restored to its original size and the context menu was opened at the same time.
   This behavior has been corrected and only the context menu opens.
   Restoring the WinNUT window to its original size is caused by a single or double click only.
-
 #### Added : 
   - Addition of a directory containing the translations at the repository level.
 	Makes it easier to submit a new translation (or correction) via a fork / pull request (nonPointer idea - issue #35)
   - Translation of the "List UPS Variable's" interface (translation forgot during v2.0)
-
 #### Changed :
   - Some changes on how logs work (Thanks to tgp1994)
   - Modification of the code to recover the power supply frequency of the UPS when it only provides the output frequency (modification made in response to an unsuccessful commit of pull requests #55 - problem encountered by jcsmook)
@@ -33,20 +30,16 @@
     [Major Version].[Minor Version].[Automatic Build Version].[Automatic Revision Version]
   - Complete syntax review of Changelog.txt file
 
-
 ### Version 2.0.4.0
-
 #### Fix : 
   - When the "Minimize to tray" option is disabled but the "Start Minimized" and "close to tray" options are active, reducing or closing sends the application to the systray without the possibility of having access to the icon notification
   - When the name of the UPS in the parameters is incorrect, it is no longer possible to display the UPS variable information window.
   - Fixed a typo preventing shutdown at the end of the timeout
   - When the name of the UPS in the parameters is incorrect, the connection is not established and a notification is displayed for 10 seconds.
-
 #### Added :
   - EXPERIMENTAL - Connection function to the nut server with identification and password.
   - When the application is minimized in the systray and a change of connection state to the Nut server or a change of state of the UPS occurs, a notification popup is displayed for 10 seconds.
   - When the application is minimized without being sent to the systray (in task bar), the connection and battery status is displayed in the text of the window in order to be quickly visualized when the application icon is hovered in the task bar.
-
 #### Changed :
   - The application icon has been modified to add an outline to the white shape in order to be visible when it is on a white background
   - The arrows of the icon displayed during reconnection are now in yellow to be more visible due to their small size.
@@ -54,30 +47,23 @@
   - The behavior of the extinction count progress bar has been corrected and behaves in a more fluid and consistent way
   - Restoring the main window from the notification icon only requires a single click (double click previously required)
 
-
 ### Version 2.0.3.0
-
 #### Fix : 
   - Application crash when opening the 'UPS Variable' window
   - No feedback when checking for update (manual or automatic)
 
 ### Version 2.0.2.0
-
 #### Fix :
   - All hard-coded translations are translated
   - The log file is now correctly created
-
 #### Added :
   - Some Translations
 
 ### Version 2.0.1.0
-
 #### Fix : 
   - Several problems when loading WinNUt as well as an incorrect value for the instantaneous power displayed on the graph of the instantaneous load (Thanks to Ririx02)
 
-
 ### Version 2.0.0.0
-
 Complete rewrite of WinNUT in Visual Basic (the .Net Framework 4.5 is required to run WInNUT)
 Modification of the graphic part using the AGauge component (https://github.com/Code-Artist/AGauge) under MIT license.
 The AGauge component has been modified to adapt it to the needs of WinNUT and all the sources are supplied with WinNUT.
@@ -98,41 +84,29 @@ All the functions present in the AutoIt version are still present in V2 with som
   An Xls file is available to send me a translation in a new language.
   This will require an addition in a new build and therefore an update of WinNut
 
-
 ### Version 1.8.0.3
-
 #### Changed : 
   - WinNUT is ready to update to version 2
 
-
 ### Version 1.8.0.2
-
 #### Fix :
   - Correction of a bad state of the UPS when the return value is not only "OL"
 
-
 ### Version 1.8.0.1
-
 #### Fix :
   - Rounded Value for second displayed value in Graph
 
-
 ### Version 1.8.0.3
-
 #### Changed :
   - WinNUT is ready to update to version 2
 
-
 ### Version 1.8.0.2
-
 #### Fix :
   - Correction of a bad state of the UPS when the return value is not only "OL"
 
 ### Version 1.8.0.1
-
 #### Fix :
   - Rounded Value for second displayed value in Graph
-
 
 ### Version 1.8.0.0
 #### Fix :
@@ -144,101 +118,91 @@ All the functions present in the AutoIt version are still present in V2 with som
   - Compatibility with IPV6 (Experimental)
   - Capacity to update directly from WinNut (Addition of an executable Updater packaged in WinNUT and therefore installed with WinNut on its first launch)
   - Ability to display a second value on graphs (text value only and value not already used)
-
 #### Changed :
   - The executable is no longer called "upsclient.exe" but "WinNUT-client.exe"
   - DrawDial function moved to nutDraw.au3 file
   - When changing languages, it is no longer necessary to restart WinNUT. The window closes and reopens automatically with the new language.
 
-###Version 1.7.9.9
+### Version 1.7.9.9
 Not Released
-####Change/Add :
+#### Change/Add :
   - Graphic redesign of the icons as well as the setting of dynamic icons according to the connection/reconnection state, the connection state of the inverter and also the charge/discharge state of the battery.
   All of the icons are packaged in a DLL which will be installed with the executable WinNut during its first launch.
   - Logging Features
 
-###Version 1.7.3.1
-####Fix :
+### Version 1.7.3.1
+#### Fix :
   - Disconnect menu option is now disabled when connection to NUT server is not established
   - Correction of a problem with information refresh when the connection is established after starting WinNUT
-
-####Added :
+#### Added :
   - A notification message is displayed when the connection could not be re-established within the time allowed 
-
-####Changed :
+#### Changed :
   - Better syntactic respect of the code
 
-###Version 1.7.3.0
-####Added :
+### Version 1.7.3.0
+#### Added :
   - Compatibility with IPV6 (Experimental)
   - Disconnect Option in Menu
 
-###Version 1.7.2.2
+### Version 1.7.2.2
 No Build Release
-####Fix :
+#### Fix :
   - Fixed some graphical issues
-
-####Added :
+#### Added :
   - German translation
   - Ability to set the input frequency manually in case the UPS does not return this information. The value is set automatically when the UPS supplies it.
   - Possibility to choose the type of stop action (Shutdown/Sleep/Hibernate)
 
-###Version 1.7.2.1
-####Fix :
+### Version 1.7.2.1
+#### Fix :
   - Missing Translation
-
-####Changed :
+#### Changed :
   - Some default parameter values
   - README.md 
 
-###Version 1.7.2.0
-####Added :
+### Version 1.7.2.0
+#### Added :
   - Support for multi language
   - Auto reconnection 
 
-###Version 1.7.0.5
-####Fix :
+### Version 1.7.0.5
+#### Fix :
   - Some Source Cleanup
-
-####Added :
+#### Added :
   - Added ability to estimate the load level and run time of the UPS when he does not provide the information itself (or is inconsistent).
 
-###Version 1.7.0.0
-####Fix :
+### Version 1.7.0.0
+#### Fix :
   - Ups VarList Gui
-
-####Added :
+#### Added :
   - Custom Shutdown Options.
   - Allow software to not shutdown immediately and permit backup data before shutdown
 
-
-###Version 1.6.6.0
-####Added :
+### Version 1.6.6.0
+#### Added :
   - Option Close to tray
   - Minimize on startup
   - Aut2exe directive added (#pragma directive)
   - AutoItWrapper Directive removed
 
-###Version 1.6.5.0
-####Fix :
+### Version 1.6.5.0
+#### Fix :
   - Show/Hide Tray Icon when Gui is visible or not
 
-###Version 1.6.4.0
-####Fix : 
+### Version 1.6.4.0
+#### Fix : 
   - Change adlibenable / disable to register / unregister and some other code modification to make it compil on AutoIt v3.3.14
-
-####Added :
+#### Added :
   - Tray icon tooltip with load, charge and status
   - Start with Windows Option
   - Prevent shutdown when UPS not connected but NUT is running (from v1.6.2 written by crazytiti see https://github.com/crazytiti/Windows-Nut)
-
-####Changed : 
+#### Changed : 
   - Some code optimisation
   - Some aesthetic improvement of GUI
   - Tray icon improvment
 
-###Version 1.5.0.0
-####Added : 
+### Version 1.5.0.0
+#### Added : 
   - Calibration for all clocks except battery charge.
   Now you can suite the program to your ups readings.
   For example if you are in USA and your UPS supplies 30V when fully charged set the values as follows :
