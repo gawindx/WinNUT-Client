@@ -7,7 +7,7 @@
   - Add -f parameter to force shutdown (Issue #46)
   - Some modifications provided by tgp1994
   - Fixed a bug that could occur when using a value of "0" for the grace period (thanks to jcsmook - pull requests #55)
-  - Fixed a bug generating an infinite connection / reconnection loop when the load value is retrieved to "0" during connection (thanks to jcsmook, pull requests # 55)
+  - Fixed a bug generating an infinite connection / reconnection loop when the load value is retrieved to "0" during connection (thanks to jcsmook, pull requests #55)
   - Correction of a code error causing the event time not to be updated in the logs.
   - Fixed an error causing an unhandled exception when you do not want to apply the update immediately and the installation file already exists at the location specified for saving.
   - In the case of a left click on the systray icon, WinNUT was restored to its original size and the context menu was opened at the same time.
@@ -21,7 +21,7 @@
 
 ####Changed :
   - Some changes on how logs work (Thanks to tgp1994)
-  - Modification of the code to recover the power supply frequency of the UPS when it only provides the output frequency (modification made in response to an unsuccessful commit of pull requests # 55 - problem encountered by jcsmook)
+  - Modification of the code to recover the power supply frequency of the UPS when it only provides the output frequency (modification made in response to an unsuccessful commit of pull requests #55 - problem encountered by jcsmook)
   - Modification of the generated installer:
 		- Addition of a custom image banner
 		- Removal of the dependent Windows libraries installed in the WinNUT directory
