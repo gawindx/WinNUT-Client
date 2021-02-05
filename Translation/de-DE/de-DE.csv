@@ -20,7 +20,7 @@ To validate,Gawindx,Check for updates.,Auf Updates prüfen.
 To validate,Gawindx,Checks for updates at startup.,Sucht beim Start nach Updates.
 To validate,Gawindx,Clear,Leer
 To validate,Gawindx,Close,Schließen
-To validate,Gawindx,Close to Tray,In der Nähe von Tablett
+To validate,Gawindx,Close to Systray,In der Nähe von Systray
 To validate,Gawindx,Conditions met for launching the Extinguishing Process,Voraussetzungen für den Start des Löschprozesses
 To validate,Gawindx,Connected,In Verbindung gebracht
 To validate,Gawindx,Connection,Verbindung
@@ -78,7 +78,7 @@ To validate,Gawindx,Maximum input voltage. Accepted value: Numeric value from 0 
 To validate,Gawindx,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,Maximaler Lastpegel der USV. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
 To validate,Gawindx,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,Maximale Ausgangsspannung. Akzeptierter Wert: Numerischer Wert von 0 bis 999.
 To validate,Gawindx,Min,Min
-To validate,Gawindx,Minimize to tray,Minimize to tray
+To validate,Gawindx,Minimize to Systray,Auf Systray minimieren
 To validate,Gawindx,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Minimale Batteriespannung. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
 To validate,Gawindx,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,Mindestladezustand der USV. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
 To validate,Gawindx,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,Minimale Eingangsfrequenz. Akzeptierter Wert: Numerischer Wert von 0 bis 100.

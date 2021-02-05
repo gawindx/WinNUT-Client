@@ -1,20 +1,20 @@
 ﻿Public Class Update_Gui
+
     Private ChangeLogByteSize As Long
     Public Shared WithEvents LogFile As Logger
-    Private Const URLStable As String = "https://raw.githubusercontent.com/gawindx/WinNUT-Client/master/changelog.txt"
-    Private Const URLDev As String = "https://raw.githubusercontent.com/gawindx/WinNUT-Client/Dev/changelog.txt"
-    Private ReadOnly MSIStable As String = "https://github.com/gawindx/WinNUT-Client/releases/download/v{0}/WinNUT-Setup.msi"
-    Private ReadOnly MSIDev As String = "https://github.com/gawindx/WinNUT-Client/releases/download/v{0}-dev/WinNUT-Setup.msi"
+    Private Const GitApiURL As String = "https://api.github.com/repos/gawindx/WinNUT-Client/releases"
     Private WithEvents WebC As New System.Net.WebClient
-    Private ChangeLogFile As Object
+    Private JSONReleaseFile As Object
     Private sChangeLog As String
     Private ReadOnly ManualUpdate As Boolean = False
     Private UpdateInfoRetrieved As Boolean = False
     Private HasUpdate As Boolean = False
-    Private NewVersion As String
+    Private NewVersion As String = Nothing
+    Private NewVersionMsiURL As String
     Private Download_Form As Form
     Private DPBar As WinFormControls.CProgressBar
     Private Dlbl As Label
+
     Public Sub New(Optional ByRef mUpdate As Boolean = False)
         InitializeComponent()
         ManualUpdate = mUpdate
@@ -64,116 +64,58 @@
                 Diff = DateAndTime.DateDiff(DelayVerif, LastVerif, Today, FirstDayOfWeek.Monday, FirstWeekOfYear.Jan1)
             End If
             If Diff >= 1 Or ManualUpdate Then
-                Me.ChangeLogFile = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString()
-                Dim URL_Changelog As String = ""
-                If WinNUT_Params.Arr_Reg_Key.Item("StableOrDevBranch") = 0 Then
-                    URL_Changelog = URLStable
-                    LogFile.LogTracing("Verify Update from Stable branch", LogLvl.LOG_DEBUG, Me)
-                Else
-                    URL_Changelog = URLDev
-                    LogFile.LogTracing("Verify Update from Developpment branch", LogLvl.LOG_DEBUG, Me)
-
-                End If
-                Me.ChangeLogByteSize = GetDownloadSize(URL_Changelog)
-
-                AddHandler WebC.DownloadFileCompleted, AddressOf Changelog_Downloaded
-                WebC.DownloadFileAsync(New Uri(URL_Changelog), ChangeLogFile)
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12
+                WebC.Headers.Add(System.Net.HttpRequestHeader.Accept, "application/json")
+                WebC.Headers.Add(System.Net.HttpRequestHeader.UserAgent, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36 OPR/73.0.3856.344")
+                WebC.Headers.Add(System.Net.HttpRequestHeader.AcceptLanguage, "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7")
+                AddHandler WebC.DownloadStringCompleted, AddressOf Changelog_Downloaded
+                WebC.DownloadStringAsync(New Uri(GitApiURL))
             Else
                 Me.Close()
             End If
         End If
     End Sub
 
-    Private Sub Changelog_Downloaded()
-        Dim ChgLogInfo = New System.IO.FileInfo(ChangeLogFile)
-        Dim srFileReader As System.IO.StreamReader
-        If ChangeLogByteSize = ChgLogInfo.Length() Then
-            Dim ChangeLogDiff As New List(Of String)
-            Dim newline As String = ""
-            Dim sInputLine As String
-            Dim HighestVersion As Integer = Nothing
-            srFileReader = System.IO.File.OpenText(ChangeLogFile)
-            Dim ActualVersion As Integer = CInt(Strings.Replace(WinNUT_Globals.ProgramVersion, ".", ""))
-            Do
-                sInputLine = srFileReader.ReadLine()
-                If Strings.InStr(sInputLine, "History") = 0 Then
-                    If sInputLine <> "" Then
-                        Dim LogVersion As Integer
-                        Dim sPattern As System.Text.RegularExpressions.Regex = New System.Text.RegularExpressions.Regex("[Vv]ersion.*(\d+).*(\d+).*(\d+).*(\d+)$")
-                        Dim RegExResult = sPattern.Match(sInputLine)
-                        If RegExResult.Groups.Count > 1 Then
-                            Dim ResultVersion As String = ""
-                            Dim Index As Integer = 1
-                            For Each Match In sPattern.Match(sInputLine).Groups
-                                If Match.Value <> sPattern.Match(sInputLine).Groups(0).Value Then
-                                    Index += 1
-                                    ResultVersion &= Match.Value
-                                    If sPattern.Match(sInputLine).Groups.Count > Index Then
-                                        ResultVersion &= "."
+    Private Sub Changelog_Downloaded(ByVal sender As Object, ByVal e As System.Net.DownloadStringCompletedEventArgs)
+        Dim ChangeLogDiff As String = Nothing
+
+        Try
+            If (Not e.Cancelled And e.Error Is Nothing) Then
+                If e.Result.Length <> 0 Then
+                    Dim JSONReleases = Newtonsoft.Json.JsonConvert.DeserializeObject(e.Result)
+                    Dim HighestVersion As String = Nothing
+                    Dim ActualVersion As Version = Version.Parse(WinNUT_Globals.ProgramVersion)
+                    Dim sPattern As System.Text.RegularExpressions.Regex = New System.Text.RegularExpressions.Regex("[Vv](\d+\.\d+\.\d+\.\d+).*$")
+                    For Each JSONRelease In JSONReleases
+                        Dim PreRelease = Convert.ToBoolean(JSONRelease("prerelease").ToString)
+                        Dim DraftRelease = Convert.ToBoolean(JSONRelease("draft").ToString)
+
+                        If Not DraftRelease And ((PreRelease And WinNUT_Params.Arr_Reg_Key.Item("StableOrDevBranch") = 1) Or Not PreRelease) Then
+                            Dim ReleaseName = JSONRelease("name")
+                            Dim RegExVersion = sPattern.Match(ReleaseName)
+                            If RegExVersion.Groups.Count > 1 Then
+                                Dim ReleaseVersion As Version = Version.Parse(RegExVersion.Groups(1).Value)
+                                If ActualVersion.CompareTo(ReleaseVersion) = -1 Then
+                                    If HighestVersion = Nothing Or (HighestVersion <> Nothing AndAlso ReleaseVersion.CompareTo(Version.Parse(HighestVersion))) > 0 Then
+                                        HighestVersion = RegExVersion.Groups(1).Value
+                                        Me.NewVersion = HighestVersion
+                                        ChangeLogDiff = JSONRelease("body").ToString
+                                        Me.NewVersionMsiURL = JSONRelease("assets")(0)("browser_download_url").ToString
                                     End If
-                                End If
-                            Next
-                            If HighestVersion = Nothing Then
-                                HighestVersion = CInt(Strings.Replace(ResultVersion, ".", ""))
-                                Me.NewVersion = ResultVersion
-                            End If
-                            LogVersion = CInt(Strings.Replace(ResultVersion, ".", ""))
-                            If LogVersion > ActualVersion Then
-                                If ChangeLogDiff Is Nothing Then
-                                    ChangeLogDiff.Add(sInputLine)
-                                ElseIf ChangeLogDiff.Count >= 1 Then
-                                    ChangeLogDiff.Add("")
-                                End If
-                                ChangeLogDiff.Add(sInputLine)
-                            Else
-                                Exit Do
-                            End If
-                        Else
-                            If LogVersion > ActualVersion Then
-                                sPattern = New System.Text.RegularExpressions.Regex("^.*:.*$")
-                                RegExResult = sPattern.Match(sInputLine)
-                                Dim ResultVersion As String = ""
-                                For Each Match In sPattern.Match(sInputLine).Groups
-                                    ResultVersion &= Match.Value
-                                Next
-                                If RegExResult.Groups.Count = 1 Then
-                                    If newline <> "" Then
-                                        ChangeLogDiff.Add(newline)
-                                        newline = ""
-                                    End If
-                                    newline &= System.Text.RegularExpressions.Regex.Replace(Trim(sInputLine), "\s+", " ")
-                                Else
-                                    newline &= System.Text.RegularExpressions.Regex.Replace(Trim(sInputLine), "\s+", " ")
                                 End If
                             End If
                         End If
-                    Else
-                        ChangeLogDiff.Add(newline)
-                        newline = ""
-                    End If
-
-                End If
-            Loop Until sInputLine Is Nothing
-            If ChangeLogDiff IsNot Nothing Then
-                If ChangeLogDiff.Count > 0 Then
-                    Me.sChangeLog = ""
-                    For Each Line In ChangeLogDiff
-                        Me.sChangeLog &= Line & vbNewLine
                     Next
-                    Me.HasUpdate = True
-                    LogFile.LogTracing(String.Format("New Version Available : {0}", Me.NewVersion), LogLvl.LOG_DEBUG, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_UPDATE), Me.NewVersion))
-                Else
-                    HighestVersion = Nothing
-                    LogFile.LogTracing("No Update Available", LogLvl.LOG_DEBUG, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_NO_UPDATE))
-
+                    If ChangeLogDiff IsNot Nothing Then
+                        Me.sChangeLog = ChangeLogDiff
+                        Me.HasUpdate = True
+                        LogFile.LogTracing(String.Format("New Version Available : {0}", Me.NewVersion), LogLvl.LOG_DEBUG, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_UPDATE), Me.NewVersion))
+                    Else
+                        HighestVersion = Nothing
+                        LogFile.LogTracing("No Update Available", LogLvl.LOG_DEBUG, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_NO_UPDATE))
+                    End If
                 End If
             End If
-            srFileReader.Close()
-        Else
-            LogFile.LogTracing("Cannot download changelog.txt", LogLvl.LOG_ERROR, Me)
-        End If
-        Try
-            My.Computer.FileSystem.DeleteFile(ChangeLogFile)
         Catch excep As Exception
             WinNUT.LogFile.LogTracing(excep.Message, LogLvl.LOG_ERROR, Me)
         End Try
@@ -220,11 +162,7 @@
 
     Private Sub Update_Btn_Click(sender As Object, e As EventArgs) Handles Update_Btn.Click
         Dim MSIURL As String = Nothing
-        If WinNUT_Params.Arr_Reg_Key.Item("StableOrDevBranch") = 0 Then
-            MSIURL = String.Format(Me.MSIStable, Me.NewVersion)
-        Else
-            MSIURL = String.Format(Me.MSIDev, Me.NewVersion)
-        End If
+        MSIURL = Me.NewVersionMsiURL
         Download_Form = New Form
         DPBar = New WinFormControls.CProgressBar
         Dlbl = New Label
@@ -282,10 +220,11 @@
                     .FileName = System.IO.Path.GetFileName(Filename)
                 End With
                 If SaveFile.ShowDialog() = DialogResult.OK Then
-                    My.Computer.FileSystem.MoveFile(Filename, SaveFile.FileName)
+                    My.Computer.FileSystem.MoveFile(Filename, SaveFile.FileName, True)
                 End If
                 DPBar.Value = 100
                 Threading.Thread.Sleep(1000)
+                Me.Download_Form.Close()
                 Me.Close()
         End Select
     End Sub

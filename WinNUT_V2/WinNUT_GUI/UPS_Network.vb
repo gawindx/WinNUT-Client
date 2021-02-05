@@ -42,12 +42,14 @@ Public Class UPS_Network
     Private WriterStream As System.IO.StreamWriter
     Private ShutdownStatus As Boolean = False
     Private Unknown_UPS_Name As Boolean = False
+    Private Invalid_Data As Boolean = False
     Private Invalid_Auth_Data As Boolean = False
     Private Const CosPhi As Double = 0.6
 
     ' Define possible responses according to NUT protcol v1.2
     Enum NUTResponse
         OK
+        VAR
         ACCESSDENIED
         UNKNOWNUPS
         VARNOTSUPPORTED
@@ -325,7 +327,7 @@ Public Class UPS_Network
             LogFile.LogTracing("Connect To Nut Server", LogLvl.LOG_DEBUG, Me)
             If Me.Server <> "" And Me.Port <> 0 And Me.Delay <> 0 And Me.UPSName <> "" Then
                 Me.NutSocket = New System.Net.Sockets.Socket(Net.Sockets.AddressFamily.InterNetwork, Net.Sockets.ProtocolType.IP)
-                Me.NutTCP = New Net.Sockets.TcpClient(Me.Server, Me.Port)
+                Me.NutTCP = New System.Net.Sockets.TcpClient(Me.Server, Me.Port)
                 Me.NutStream = NutTCP.GetStream
                 Me.ReaderStream = New IO.StreamReader(NutStream)
                 Me.WriterStream = New IO.StreamWriter(NutStream)
@@ -336,13 +338,12 @@ Public Class UPS_Network
                     End If
                 End If
                 Me.ConnectionStatus = True
-                Me.Mfr = GetUPSVar("ups.mfr", "Unknown")
+                GetUPSProductInfo()
                 If Me.Unknown_UPS_Name Then 'TODO: Use LIST UPS protocol command to get valid UPSs.
                     Throw New System.Exception("Unknown UPS Name.")
+                ElseIf Me.Invalid_Data Then
+                    Throw New System.Exception("The Server Nut is accessible but the data cannot be recovered.")
                 End If
-                Me.Model = GetUPSVar("ups.model", "Unknown")
-                Me.Serial = GetUPSVar("ups.serial", "Unknown")
-                Me.Firmware = GetUPSVar("ups.firmware", "Unknown")
                 Update_Nut.Interval = Me.Delay
                 Update_Nut.Start()
                 Me.LConnect = False
@@ -354,6 +355,56 @@ Public Class UPS_Network
             Enter_Reconnect_Process(Excep, "Error When Connection to Nut Host : ")
         End Try
     End Sub
+
+    Public Function AuthLogin() As Boolean
+        Try
+            LogFile.LogTracing("Enter AuthLogin", LogLvl.LOG_DEBUG, Me)
+            Dim SendData = "USERNAME " & Me.Login & vbCr 'TODO: Is carriage return necessary?
+            Me.WriterStream.WriteLine(SendData) 'TODO: Move to generic request/response functions?
+            Me.WriterStream.Flush()
+            Dim DataResult As String = Me.ReaderStream.ReadLine()
+            Dim NUTResult = EnumResponse(DataResult)
+            Me.Invalid_Auth_Data = False
+
+            If NUTResult <> NUTResponse.OK Then
+                If NUTResult = NUTResponse.INVALIDUSERNAME Then
+                    Me.Invalid_Auth_Data = True
+                    RaiseEvent InvalidLogin()
+                    Throw New Exception("Invalid Username.")
+                ElseIf NUTResult = NUTResponse.ACCESSDENIED Then
+                    Throw New Exception("Access is denied.")
+                Else
+                    Me.AReconnect = False
+                    Throw New Exception("Unhandled login error: " & DataResult)
+                End If
+            End If
+
+            SendData = "PASSWORD " & Me.Password & vbCr
+            Me.WriterStream.WriteLine(SendData)
+            Me.WriterStream.Flush()
+            DataResult = Me.ReaderStream.ReadLine()
+            NUTResult = EnumResponse(DataResult)
+
+            If NUTResult <> NUTResponse.OK Then
+                If NUTResult = NUTResponse.INVALIDPASSWORD Then
+                    Me.Invalid_Auth_Data = True
+                    RaiseEvent InvalidLogin()
+                    Throw New Exception("Invalid Password.")
+                ElseIf NUTResult = NUTResponse.ACCESSDENIED Then
+                    Throw New Exception("Access is denied.")
+                Else
+                    Me.AReconnect = False
+                    Throw New Exception("Unhandled login error: " & DataResult)
+                End If
+            End If
+
+            Return True
+        Catch Excep As Exception
+            Me.Disconnect(True)
+            LogFile.LogTracing(Excep.Message, LogLvl.LOG_ERROR, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_FAILED), Me.Server, Me.Port, Excep.Message))
+            Return False
+        End Try
+    End Function
 
     Public Sub Enter_Reconnect_Process(ByVal Excep As Exception, ByVal Message As String)
         Me.ConnectionStatus = False
@@ -416,6 +467,7 @@ Public Class UPS_Network
             LogFile.LogTracing("Enter GetUPSVar", LogLvl.LOG_DEBUG, Me)
             If Not Me.ConnectionStatus Then
                 Throw New System.Exception("Connection to Nut Host seem broken when Retrieving " & varNAme)
+                Return Nothing
             Else
                 Dim SendData = "GET VAR " & Me.UPSName & " " & varNAme & vbCr
                 Me.WriterStream.WriteLine(SendData)
@@ -424,95 +476,44 @@ Public Class UPS_Network
                     Threading.Thread.Sleep(post_send_delay)
                 End If
                 Dim DataResult As String = Me.ReaderStream.ReadLine()
-                If DataResult = "ERR UNKNOWN-UPS" Then
-                    Me.Unknown_UPS_Name = True
-                    RaiseEvent Unknown_UPS()
-                    Throw New System.Exception("Unknown UPS Name.")
-                End If
-                Me.Unknown_UPS_Name = False
-                If InStr(DataResult, "ERR") <> 0 And Not String.IsNullOrEmpty(Fallback_value) Then
-                    LogFile.LogTracing("Apply Fallback Value when retrieving " & varNAme, LogLvl.LOG_WARNING, Me)
-                    DataResult = "VAR " & Me.UPSName & " " & varNAme & " " & """" & Fallback_value & """"
-                ElseIf DataResult = "" Then
-                    Throw New System.Exception("Connection to Nut Host seem broken when Retrieving " & varNAme)
-                End If
-                If CheckErr(DataResult) <> "OK" Then
-                    LogFile.LogTracing("Error Result On Retrieving  " & varNAme & " : " & DataResult, LogLvl.LOG_ERROR, Me)
-                    Return Nothing
-                Else
-                    LogFile.LogTracing("Process Result With " & varNAme & " : " & DataResult, LogLvl.LOG_DEBUG, Me)
-                    Return ProcessData(DataResult)
-                End If
+                Dim NUTResult = EnumResponse(DataResult)
+
+                Select Case NUTResult
+                    Case NUTResponse.OK
+                        Me.Unknown_UPS_Name = False
+                        Me.Invalid_Data = False
+                        LogFile.LogTracing("Process Result With " & varNAme & " : " & DataResult, LogLvl.LOG_DEBUG, Me)
+                        Return ProcessData(DataResult)
+                    Case NUTResponse.UNKNOWNUPS
+                        Me.Invalid_Data = False
+                        Me.Unknown_UPS_Name = True
+                        RaiseEvent Unknown_UPS()
+                        Throw New System.Exception("Unknown UPS Name.")
+                        Return Nothing
+                    Case NUTResponse.VARNOTSUPPORTED
+                        Me.Unknown_UPS_Name = False
+                        Me.Invalid_Data = False
+                        If Not String.IsNullOrEmpty(Fallback_value) Then
+                            LogFile.LogTracing("Apply Fallback Value when retrieving " & varNAme, LogLvl.LOG_WARNING, Me)
+                            DataResult = "VAR " & Me.UPSName & " " & varNAme & " " & """" & Fallback_value & """"
+                            Return ProcessData(DataResult)
+                        Else
+                            LogFile.LogTracing("Error Result On Retrieving  " & varNAme & " : " & DataResult, LogLvl.LOG_ERROR, Me)
+                            Return Nothing
+                        End If
+                    Case NUTResponse.DATASTALE
+                        Me.Invalid_Data = True
+                        LogFile.LogTracing("Error Result On Retrieving  " & varNAme & " : " & DataResult, LogLvl.LOG_ERROR, Me)
+                        Throw New System.Exception(varNAme & " : " & DataResult)
+                        Return Nothing
+                    Case Else
+                        Return Nothing
+                End Select
             End If
         Catch Excep As Exception
             Me.Disconnect(True)
-            Enter_Reconnect_Process(Excep, "Error When Retrieving GetUPSVar : ")
             Return Nothing
         End Try
-    End Function
-
-    Public Function AuthLogin() As Boolean
-        Try
-            LogFile.LogTracing("Enter AuthLogin", LogLvl.LOG_DEBUG, Me)
-            Dim SendData = "USERNAME " & Me.Login & vbCr 'TODO: Is carriage return necessary?
-            Me.WriterStream.WriteLine(SendData) 'TODO: Move to generic request/response functions?
-            Me.WriterStream.Flush()
-            Dim DataResult As String = Me.ReaderStream.ReadLine()
-            Dim NUTResult = EnumResponse(DataResult)
-
-            If NUTResult <> NUTResponse.OK Then
-                If NUTResult = NUTResponse.INVALIDUSERNAME Then
-                    Me.Invalid_Auth_Data = True
-                    RaiseEvent InvalidLogin()
-                    Throw New Exception("Invalid Username.")
-                ElseIf NUTResult = NUTResponse.ACCESSDENIED Then
-                    Throw New Exception("Access is denied.")
-                Else
-                    Me.AReconnect = False
-                    Throw New Exception("Unhandled login error: " & DataResult)
-                End If
-            End If
-
-            If DataResult = "ERR INVALID-USERNAME" And Not DataResult = "OK" Then
-                Me.Invalid_Auth_Data = True
-                RaiseEvent InvalidLogin()
-                Throw New System.Exception("Invalid Username.")
-            End If
-            Me.Invalid_Auth_Data = False
-            SendData = "PASSWORD " & Me.Password & vbCr
-            Me.WriterStream.WriteLine(SendData)
-            Me.WriterStream.Flush()
-            DataResult = Me.ReaderStream.ReadLine()
-            If DataResult = "ERR INVALID-PASSWORD" And Not DataResult = "OK" Then
-                Me.Invalid_Auth_Data = True
-                RaiseEvent InvalidLogin()
-                Throw New System.Exception("Invalid Password.")
-            End If
-            Me.Invalid_Auth_Data = False
-            Return True
-        Catch Excep As Exception
-            Me.Disconnect(True)
-            LogFile.LogTracing(Excep.Message, LogLvl.LOG_ERROR, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_CON_FAILED), Me.Server, Me.Port, Excep.Message))
-            Return False
-        End Try
-    End Function
-
-    ' Parse and enumerate a NUT protocol response.
-    Function EnumResponse(ByVal Response As String) As NUTResponse
-        ' Remove hyphens to prepare for parsing.
-        Dim SanitisedString = Response.Replace("-", String.Empty)
-        ' Break the response down so we can get specifics.
-        Dim SplitString = SanitisedString.Split(" "c)
-
-        Select Case SplitString(0)
-            Case "OK"
-                Return NUTResponse.OK
-            Case "ERR"
-                Return DirectCast([Enum].Parse(GetType(NUTResponse), SplitString(1)), NUTResponse)
-            Case Else
-                ' We don't recognize the response, throw an error.
-                Throw New Exception("Unknown response from NUT server: " & Response)
-        End Select
     End Function
 
     Public Function GetUPSDescVar(ByVal VarName As String) As String
@@ -529,18 +530,19 @@ Public Class UPS_Network
                 If DataResult = Nothing Then
                     Throw New System.Exception("Connection to Nut Host seem broken when Retrieving " & VarName)
                 Else
-                    If CheckErr(DataResult) <> "OK" Then
-                        LogFile.LogTracing("Error Result On Retrieving  " & VarName & " : " & DataResult, LogLvl.LOG_ERROR, Me)
-                        Return Nothing
-                    Else
-                        LogFile.LogTracing("Process Result With " & VarName & " : " & DataResult, LogLvl.LOG_DEBUG, Me)
-                        Return ProcessData(DataResult)
-                    End If
+                    Dim NUTResult = EnumResponse(DataResult)
+                    Select Case NUTResult
+                        Case NUTResponse.OK
+                            LogFile.LogTracing("Process Result With " & VarName & " : " & DataResult, LogLvl.LOG_DEBUG, Me)
+                            Return ProcessData(DataResult)
+                        Case Else
+                            LogFile.LogTracing("Error Result On Retrieving  " & VarName & " : " & DataResult, LogLvl.LOG_ERROR, Me)
+                            Return Nothing
+                    End Select
                 End If
             End If
         Catch Excep As Exception
             Me.Disconnect(True)
-            Enter_Reconnect_Process(Excep, "Error When Retrieving GetUPSDescVar : ")
             Return Nothing
         End Try
     End Function
@@ -564,7 +566,8 @@ Public Class UPS_Network
                     If DataResult = Nothing Or InStr(DataResult, "END LIST") <> 0 Then
                         Exit While
                     Else
-                        If CheckErr(DataResult) <> "OK" Then
+                        Dim NUTResult = EnumResponse(DataResult)
+                        If NUTResult <> NUTResponse.OK Then
                             LogFile.LogTracing("Error Result On Retrieving LIST VAR " & Me.UPSName & " : " & DataResult, LogLvl.LOG_ERROR, Me)
                             Return Nothing
                         End If
@@ -594,19 +597,35 @@ Public Class UPS_Network
         End Try
     End Function
 
-    Private Function CheckErr(ByVal NutResp As String)
+    ' Parse and enumerate a NUT protocol response.
+    Function EnumResponse(ByVal Response As String) As NUTResponse
+        ' Remove hyphens to prepare for parsing.
+        Dim SanitisedString = Response.Replace("-", String.Empty)
+        ' Break the response down so we can get specifics.
+        Dim SplitString = SanitisedString.Split(" "c)
 
-        If Strings.Left(NutResp, 3) = "ERR" Then
-            Dim StrArray = Strings.Split(NutResp, " ")
-            If StrArray.Count < 2 Then
-                Return "Uknown Error"
-            End If
-            Return StrArray(1)
-        Else
-            Return "OK"
-        End If
+        Select Case SplitString(0)
+            Case "OK", "VAR", "BEGIN", "DESC"
+                Return NUTResponse.OK
+            Case "ERR"
+                Return DirectCast([Enum].Parse(GetType(NUTResponse), SplitString(1)), NUTResponse)
+            Case Else
+                ' We don't recognize the response, throw an error.
+                Throw New Exception("Unknown response from NUT server: " & Response)
+        End Select
     End Function
-
+    Private Sub GetUPSProductInfo()
+        Me.Mfr = GetUPSVar("ups.mfr", "Unknown")
+        'If Me.Unknown_UPS_Name Then 'TODO: Use LIST UPS protocol command to get valid UPSs.
+        'Throw New System.Exception("Unknown UPS Name.")
+        'End If
+        'Me.Unknown_UPS_Name = False
+        If Me.ConnectionStatus Then
+            Me.Model = GetUPSVar("ups.model", "Unknown")
+            Me.Serial = GetUPSVar("ups.serial", "Unknown")
+            Me.Firmware = GetUPSVar("ups.firmware", "Unknown")
+        End If
+    End Sub
     Private Function ProcessData(ByVal UPSData)
         Dim StrArray = Strings.Split(UPSData, """")
 

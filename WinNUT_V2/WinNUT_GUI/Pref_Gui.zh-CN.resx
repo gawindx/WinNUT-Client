@@ -185,7 +185,7 @@
     <value>随 Windows 启动 WinNUT。</value>
   </data>
   <data name="CB_Close_Tray.Text" xml:space="preserve">
-    <value>关闭时缩小至托盘</value>
+    <value>靠近Systray</value>
   </data>
   <data name="CB_Close_Tray.ToolTip" xml:space="preserve">
     <value>关闭程序时缩小至托盘。</value>
@@ -197,7 +197,7 @@
     <value>启动时最小化 WinNUT。</value>
   </data>
   <data name="CB_Systray.Text" xml:space="preserve">
-    <value>缩小至任务栏。</value>
+    <value>最小化到系统托盘</value>
   </data>
   <data name="CB_Systray.ToolTip" xml:space="preserve">
     <value>缩小至任务栏或系统托盘。</value>

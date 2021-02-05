@@ -20,7 +20,7 @@ Valid,nonPointer,Check for updates.,检查应用更新。
 Valid,nonPointer,Checks for updates at startup.,在启动时检查更新。
 To Validate,Gawindx,Clear,清洁
 Valid,nonPointer,Close,关闭
-Valid,nonPointer,Close to Tray,关闭时缩小至托盘
+To Validate,Gawindx,Close to Systray,靠近Systray
 Valid,nonPointer,Conditions met for launching the Extinguishing Process,触发关机流程所需满足的条件
 Valid,nonPointer,Connected,已连接
 Valid,nonPointer,Connection,连接
@@ -78,7 +78,7 @@ Valid,nonPointer,Maximum input voltage. Accepted value: Numeric value from 0 to 
 Valid,nonPointer,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,最高 UPS 电量等级。取值：0-100 之间的数值。
 Valid,nonPointer,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,最高输出电压。取值：0-999 之间的数值。
 Valid,nonPointer,Min,最低
-Valid,nonPointer,Minimize to tray,缩小至任务栏。
+To Validate,Gawindx,Minimize to tray,最小化到系统托盘
 Valid,nonPointer,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,最低电池电压。取值：0-100 之间的数值。
 Valid,nonPointer,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,最低 UPS 电量等级。取值：0-100 之间的数值。
 Valid,nonPointer,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,最低输入频率。取值：0-100 之间的数值。

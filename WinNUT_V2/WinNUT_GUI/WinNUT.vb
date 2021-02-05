@@ -108,10 +108,10 @@ Public Class WinNUT
         'Init WinNUT Variables
         WinNUT_Globals.Init_Globals()
 
-        'Init WinNUT PArameters
+        'Init WinNUT Parameters
         WinNUT_Params.Init_Params()
 
-        'Load WinNUT PArameters
+        'Load WinNUT Parameters
         WinNUT_Params.Load_Params()
 
         'Init Log File
@@ -340,11 +340,13 @@ Public Class WinNUT
         HasFocus = False
     End Sub
 
-    Private Sub NotifyIcon_DoubleClick(sender As Object, e As EventArgs) Handles NotifyIcon.DoubleClick, NotifyIcon.Click
-        LogFile.LogTracing("Restore Main Gui On Double Click Notify Icon", LogLvl.LOG_DEBUG, Me)
-        Me.Visible = True
-        Me.NotifyIcon.Visible = False
-        Me.WindowState = FormWindowState.Normal
+    Private Sub NotifyIcon_MouseClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon.MouseClick, NotifyIcon.MouseDoubleClick
+        If e.Button <> MouseButtons.Right Then
+            LogFile.LogTracing("Restore Main Gui On Mouse Click Notify Icon", LogLvl.LOG_DEBUG, Me)
+            Me.Visible = True
+            Me.NotifyIcon.Visible = False
+            Me.WindowState = FormWindowState.Normal
+        End If
     End Sub
 
     Private Sub WinNUT_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
@@ -960,12 +962,18 @@ Public Class WinNUT
             End If
 
         Else
-                LogFile.LogTracing("Failed To import old IniFile", LogLvl.LOG_DEBUG, Me)
+            LogFile.LogTracing("Failed To import old IniFile", LogLvl.LOG_DEBUG, Me)
             LogFile.LogTracing("Initialisation Params Complete", LogLvl.LOG_DEBUG, Me)
             LogFile.LogTracing("Loaded Params Complete", LogLvl.LOG_DEBUG, Me)
         End If
         Me.WinNUT_PrefsChanged()
         UPS_Network.Connect()
     End Sub
+
+    Private Sub NotifyIcon_Click(sender As Object, e As MouseEventArgs)
+
+    End Sub
+
+
 End Class
 

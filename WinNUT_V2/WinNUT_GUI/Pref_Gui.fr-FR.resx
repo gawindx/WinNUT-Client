@@ -81,13 +81,13 @@
     <value>Démmarrer avec Windows</value>
   </data>
   <data name="CB_Close_Tray.Text" xml:space="preserve">
-    <value>Fermer vers la Barre de Tâche</value>
+    <value>Fermer vers le Systray</value>
   </data>
   <data name="CB_Start_Mini.Text" xml:space="preserve">
     <value>Démarrer Réduit</value>
   </data>
   <data name="CB_Systray.Text" xml:space="preserve">
-    <value>Réduire en Barre de Tâche</value>
+    <value>Réduire au Systray</value>
   </data>
   <data name="Tab_Miscellanous.Text" xml:space="preserve">
     <value>Divers</value>

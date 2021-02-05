@@ -79,13 +79,13 @@
     <value>Starte mit Windows</value>
   </data>
   <data name="CB_Close_Tray.Text" xml:space="preserve">
-    <value>In der Nähe von Tablett</value>
+    <value>In der Nähe von Systray</value>
   </data>
   <data name="CB_Start_Mini.Text" xml:space="preserve">
     <value>Minimiert starten</value>
   </data>
   <data name="CB_Systray.Text" xml:space="preserve">
-    <value>Minimize to tray</value>
+    <value>Auf Systray minimieren</value>
   </data>
   <data name="Tab_Miscellanous.Text" xml:space="preserve">
     <value>Verschiedenes</value>

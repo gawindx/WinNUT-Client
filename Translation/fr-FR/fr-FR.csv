@@ -20,7 +20,7 @@ Valid,Gawindx,Check for updates.,Vérifiez les mises à jour.
 Valid,Gawindx,Checks for updates at startup.,Vérifie les mises à jour au démarrage.
 Valid,Gawindx,Clear,Vider
 Valid,Gawindx,Close,Fermer
-Valid,Gawindx,Close to Tray,Fermer vers la Barre de Tâche
+Valid,Gawindx,Close to Tray,Fermer vers le Systray
 Valid,Gawindx,Conditions met for launching the Extinguishing Process,Conditions atteintes pour le lancement du Processus d'Extinction
 Valid,Gawindx,Connected,Connecté
 Valid,Gawindx,Connection,Connexion
@@ -78,7 +78,7 @@ Valid,Gawindx,Maximum input voltage. Accepted value: Numeric value from 0 to 999
 Valid,Gawindx,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,Niveau de charge maximum de l'onduleur. Valeur acceptée: valeur numérique de 0 à 100.
 Valid,Gawindx,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,Tension de sortie maximale. Valeur acceptée: valeur numérique de 0 à 999.
 Valid,Gawindx,Min,Mini
-Valid,Gawindx,Minimize to tray,Réduire en Barre de Tâche
+Valid,Gawindx,Minimize to Systray,Réduire au Systray
 Valid,Gawindx,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Tension minimale de la batterie. Valeur acceptée: valeur numérique de 0 à 100.
 Valid,Gawindx,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,Niveau de charge minimum de l'onduleur. Valeur acceptée: valeur numérique de 0 à 100.
 Valid,Gawindx,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,Fréquence d'entrée minimale. Valeur acceptée: valeur numérique de 0 à 100.
