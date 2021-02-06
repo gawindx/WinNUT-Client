@@ -116,9 +116,8 @@
                 If My.Computer.Registry.GetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, Nothing) Is Nothing Then
                     My.Computer.Registry.CurrentUser.CreateSubKey(RegPath)
                     My.Computer.Registry.SetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
-                Else
-                    WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key) = My.Computer.Registry.GetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
                 End If
+                WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key) = My.Computer.Registry.GetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
             Next
         Next
     End Sub
