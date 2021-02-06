@@ -56,6 +56,7 @@ Valid,Gawindx,Hide ChangeLog,Cacher ChangeLog
 Valid,Gawindx,Immediate Shutdown,Arrêt immédiat
 Valid,Gawindx,Immediate stop action,Action d'arrêt Immediate
 Valid,Gawindx,Import Ini File (v1.x),Import Fichier Ini (v1.x)
+Valid,Gawindx,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),Indique si une extinction doit être executé lorsque le serveur NUT signal une extinction forcée (FSD=Force ShutDown)
 Valid,Gawindx,Input Frequency,Fréquence d'entrée
 Valid,Gawindx,Input Voltage,Tension d'Entrée
 Valid,Gawindx,Item Properties,Propriétés
@@ -117,6 +118,7 @@ Valid,Gawindx,Show ChangeLog,Afficher ChangeLog
 Valid,Gawindx,Shutdown,Mise à l'arrêt
 Valid,Gawindx,Shutdown if battery lower than,Arrêter si le niveau de batterie est inférieur à
 Valid,Gawindx,Shutdown if runtime lower than (sec),Arrêter si le temps de maintien est inférieur à (secondes)
+Valid,Gawindx,Shutdown on NUT's FSD Signal,Arrêt sur le signal FSD de NUT
 Valid,Gawindx,Shutdown Options,Options d'Arrêt
 Valid,Gawindx,Sleep,Mise en Veille
 Valid,Gawindx,Stable,Stable
@@ -126,6 +128,7 @@ Valid,Gawindx,Start with Windows,Démmarrer avec Windows
 Valid,Gawindx,Starts the shutdown procedure immediately or timed.,Démarre la procédure d'arrêt immédiatement ou temporisée.
 Valid,Gawindx,Starts WinNut Minimized.,Démarre WinNut minimisé.
 Valid,Gawindx,Starts WinNUT when Windows starts.,Démarre WinNUT au démarrage de Windows.
+Valid,Gawindx,Stop condition imposed by the NUT server,Condition d'arrêt forcée signalée par le serveur NUT
 Valid,Gawindx,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,Arrêter le délai de la procédure en cas de retard. Valeur acceptée: valeur numérique de 0 à 3600.
 Valid,Gawindx,Time between each update of UPS data (default = 5000). Accepted value: Numerical value from 1 to 60000 ms.,Temps entre chaque mise à jour des données UPS (par défaut = 5000). Valeur acceptée: valeur numérique de 1 à 60000 ms.
 Valid,Gawindx,Try {0} of {1},Essai {0} sur {1}

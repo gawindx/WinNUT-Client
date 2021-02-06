@@ -7160,4 +7160,10 @@
   <data name="$this.Text" xml:space="preserve">
     <value>选项</value>
   </data>
+  <data name="CB_Follow_FSD.Text" xml:space="preserve">
+    <value>关闭NUT的FSD信号</value>
+  </data>
+  <data name="CB_Follow_FSD.ToolTip" xml:space="preserve">
+    <value>指示当NUT服务器发出强制关机信号时是否应执行关机（FSD =强制关机）</value>
+  </data>
 </root>

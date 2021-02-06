@@ -41,6 +41,7 @@ Public Class UPS_Network
     Private ReaderStream As System.IO.StreamReader
     Private WriterStream As System.IO.StreamWriter
     Private ShutdownStatus As Boolean = False
+    Private Follow_FSD As Boolean = False
     Private Unknown_UPS_Name As Boolean = False
     Private Invalid_Data As Boolean = False
     Private Invalid_Auth_Data As Boolean = False
@@ -294,12 +295,22 @@ Public Class UPS_Network
             Me.MaxRetry = Value
         End Set
     End Property
+
     Public Property Battery_Limit() As Integer
         Get
             Return Me.Low_Batt
         End Get
         Set(ByVal Value As Integer)
             Me.Low_Batt = Value
+        End Set
+    End Property
+
+    Public Property UPS_Follow_FSD() As Boolean
+        Get
+            Return Me.Follow_FSD
+        End Get
+        Set(ByVal Value As Boolean)
+            Me.Follow_FSD = Value
         End Set
     End Property
 
@@ -324,6 +335,7 @@ Public Class UPS_Network
 
     Public Sub Connect()
         Try
+            'TODO: Use LIST UPS protocol command to get valid UPSs.
             LogFile.LogTracing("Connect To Nut Server", LogLvl.LOG_DEBUG, Me)
             If Me.Server <> "" And Me.Port <> 0 And Me.Delay <> 0 And Me.UPSName <> "" Then
                 Me.NutSocket = New System.Net.Sockets.Socket(Net.Sockets.AddressFamily.InterNetwork, Net.Sockets.ProtocolType.IP)
@@ -616,16 +628,13 @@ Public Class UPS_Network
     End Function
     Private Sub GetUPSProductInfo()
         Me.Mfr = GetUPSVar("ups.mfr", "Unknown")
-        'If Me.Unknown_UPS_Name Then 'TODO: Use LIST UPS protocol command to get valid UPSs.
-        'Throw New System.Exception("Unknown UPS Name.")
-        'End If
-        'Me.Unknown_UPS_Name = False
         If Me.ConnectionStatus Then
             Me.Model = GetUPSVar("ups.model", "Unknown")
             Me.Serial = GetUPSVar("ups.serial", "Unknown")
             Me.Firmware = GetUPSVar("ups.firmware", "Unknown")
         End If
     End Sub
+
     Private Function ProcessData(ByVal UPSData)
         Dim StrArray = Strings.Split(UPSData, """")
 
@@ -691,6 +700,10 @@ Public Class UPS_Network
                     LogFile.LogTracing("Stop condition Canceled", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_SHUT_STOP))
                     ShutdownStatus = False
                     RaiseEvent Stop_Shutdown()
+                ElseIf Me.Follow_FSD And Me.Status.Trim().StartsWith("FSD") Then
+                    LogFile.LogTracing("Stop condition imposed by the NUT server", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_NUT_FSD))
+                    RaiseEvent Shutdown_Condition()
+                    ShutdownStatus = True
                 End If
             End If
         Catch Excep As Exception

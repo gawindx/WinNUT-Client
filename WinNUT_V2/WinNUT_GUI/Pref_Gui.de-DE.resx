@@ -7163,4 +7163,10 @@ Akzeptierter Wert: Numerischer Wert von 1 bis 60.000 ms.</value>
   <data name="Lbl_Login_Nut.Text" xml:space="preserve">
     <value>Anmeldung</value>
   </data>
+  <data name="CB_Follow_FSD.Text" xml:space="preserve">
+    <value>Herunterfahren des FSD-Signals der NUT</value>
+  </data>
+  <data name="CB_Follow_FSD.ToolTip" xml:space="preserve">
+    <value>Gibt an ob ein Herunterfahren durchgeführt werden soll wenn der NUT-Server ein erzwungenes Herunterfahren signalisiert (FSD = Force ShutDown).</value>
+  </data>
 </root>

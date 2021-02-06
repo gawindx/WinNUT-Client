@@ -542,7 +542,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une chaîne localisée semblable à Connection to Nut Host {0}:{1} Failed.
+        '''  Recherche une chaîne localisée semblable à Connection to Nut Host {0}:{1} Failed: {2}.
         '''</summary>
         Public ReadOnly Property Log_Str_03() As String
             Get
@@ -619,6 +619,15 @@ Namespace My.Resources
         Public ReadOnly Property Log_Str_11() As String
             Get
                 Return ResourceManager.GetString("Log_Str_11", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Stop condition imposed by the NUT server.
+        '''</summary>
+        Public ReadOnly Property Log_Str_12() As String
+            Get
+                Return ResourceManager.GetString("Log_Str_12", resourceCulture)
             End Get
         End Property
         

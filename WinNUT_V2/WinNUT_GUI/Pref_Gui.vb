@@ -40,6 +40,7 @@
         WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitBatteryCharge") = CInt(Tb_BattLimit_Load.Text)
         WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitUPSRemainTime") = CInt(Tb_BattLimit_Time.Text)
         WinNUT_Params.Arr_Reg_Key.Item("ImmediateStopAction") = Cb_ImmediateStop.Checked
+        WinNUT_Params.Arr_Reg_Key.Item("Follow_FSD") = CB_Follow_FSD.Checked
         WinNUT_Params.Arr_Reg_Key.Item("TypeOfStop") = Cbx_TypeStop.SelectedIndex
         WinNUT_Params.Arr_Reg_Key.Item("DelayToShutdown") = CInt(Tb_Delay_Stop.Text)
         WinNUT_Params.Arr_Reg_Key.Item("AllowExtendedShutdownDelay") = Cb_ExtendTime.Checked
@@ -117,6 +118,7 @@
         Tb_BattLimit_Load.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitBatteryCharge"))
         Tb_BattLimit_Time.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitUPSRemainTime"))
         Cb_ImmediateStop.Checked = WinNUT_Params.Arr_Reg_Key.Item("ImmediateStopAction")
+        CB_Follow_FSD.Checked = WinNUT_Params.Arr_Reg_Key.Item("Follow_FSD")
         Cbx_TypeStop.SelectedIndex = WinNUT_Params.Arr_Reg_Key.Item("TypeOfStop")
         Tb_Delay_Stop.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("DelayToShutdown"))
         Cb_ExtendTime.Checked = WinNUT_Params.Arr_Reg_Key.Item("AllowExtendedShutdownDelay")

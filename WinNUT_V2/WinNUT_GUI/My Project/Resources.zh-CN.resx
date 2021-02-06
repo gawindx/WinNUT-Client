@@ -112,4 +112,7 @@ Ini 文件重命名为 {0}.old</value>
   <data name="Log_Str_11" xml:space="preserve">
     <value>新版本 {0} 可以更新</value>
   </data>
+  <data name="Log_Str_12" xml:space="preserve">
+    <value>NUT服务器施加的停止条件</value>
+  </data>
 </root>

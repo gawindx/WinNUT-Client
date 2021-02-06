@@ -51,6 +51,7 @@ Public Enum AppResxStr
     STR_LOG_SHUT_STOP
     STR_LOG_NO_UPDATE
     STR_LOG_UPDATE
+    STR_LOG_NUT_FSD
 End Enum
 Public Class WinNUT
     Public Shared WithEvents LogFile As New Logger(False, 0)
@@ -152,6 +153,7 @@ Public Class WinNUT
         UPS_Network.AutoReconnect = WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect")
         UPS_Network.Battery_Limit = WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitBatteryCharge")
         UPS_Network.Backup_Limit = WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitUPSRemainTime")
+        UPS_Network.UPS_Follow_FSD = WinNUT_Params.Arr_Reg_Key.Item("Follow_FSD")
 
         'Force Positionning Text Label Because Unknow auto positionning property ???
         Lbl_RTime.Location = New Point(6, 116)
@@ -391,7 +393,8 @@ Public Class WinNUT
     End Sub
 
     Private Sub Event_UpdateNotifyIconStr(ByVal Optional Reason As String = Nothing, ByVal Optional Message As String = Nothing) Handles Me.UpdateNotifyIconStr
-        Dim NotifyStr As String = WinNUT_Globals.ProgramName & " - " & WinNUT_Globals.ProgramVersion & vbNewLine
+        Dim ShowVersion As String = StrReverse(StrReverse(WinNUT_Globals.ProgramVersion).Substring(StrReverse(WinNUT_Globals.ProgramVersion).IndexOf(".") + 1))
+        Dim NotifyStr As String = WinNUT_Globals.ProgramName & " - " & ShowVersion & vbNewLine
         Dim FormText As String = WinNUT_Globals.ProgramName
         Select Case Reason
             Case Nothing
@@ -422,7 +425,7 @@ Public Class WinNUT
             Case "Update Data"
                 FormText &= " - Bat: " & Me.UPS_BattCh & "% - " & WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_CONN) & " - "
                 NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_CONN) & vbNewLine
-                If Me.UPS_Status.Trim().StartsWith("OL") Then
+                If Me.UPS_Status.Trim().StartsWith("OL") Or StrReverse(Me.UPS_Status.Trim()).StartsWith("LO") Then
                     NotifyStr &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_OL) & vbNewLine
                     FormText &= WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_OL) & " - "
                 Else
@@ -539,7 +542,7 @@ Public Class WinNUT
         Me.UPS_OutPower = UPS_Network.UPS_OutPower
 
         If Me.UPS_Status <> Nothing Then
-            If Me.UPS_Status.Trim().StartsWith("OL") Then
+            If Me.UPS_Status.Trim().StartsWith("OL") Or StrReverse(Me.UPS_Status.Trim()).StartsWith("LO") Then
                 LogFile.LogTracing("UPS is plugged", LogLvl.LOG_DEBUG, Me)
                 Lbl_VOL.BackColor = Color.Green
                 Lbl_VOB.BackColor = Color.White
@@ -711,6 +714,9 @@ Public Class WinNUT
         If UPS_Network.NutPassword <> WinNUT_Params.Arr_Reg_Key.Item("NutPassword") Then
             NeedReconnect = True
             UPS_Network.NutPassword = WinNUT_Params.Arr_Reg_Key.Item("NutPassword")
+        End If
+        If UPS_Network.UPS_Follow_FSD <> WinNUT_Params.Arr_Reg_Key.Item("Follow_FSD") Then
+            UPS_Network.UPS_Follow_FSD = WinNUT_Params.Arr_Reg_Key.Item("Follow_FSD")
         End If
         UPS_Network.Battery_Limit = WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitBatteryCharge")
         UPS_Network.Backup_Limit = WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitUPSRemainTime")
@@ -969,11 +975,6 @@ Public Class WinNUT
         Me.WinNUT_PrefsChanged()
         UPS_Network.Connect()
     End Sub
-
-    Private Sub NotifyIcon_Click(sender As Object, e As MouseEventArgs)
-
-    End Sub
-
 
 End Class
 

@@ -112,4 +112,7 @@ Fichier Ini déplacé vers {0}.old</value>
   <data name="Frm_Main_Str_13" xml:space="preserve">
     <value>ID de connexion incorrect (nom d'utilisateur ou mot de passe)</value>
   </data>
+  <data name="Log_Str_12" xml:space="preserve">
+    <value>Condition d'arrêt forcée signalée par le serveur NUT</value>
+  </data>
 </root>

@@ -112,4 +112,7 @@ Ini-Datei nach {0}.old verschoben</value>
   <data name="Frm_Main_Str_13" xml:space="preserve">
     <value>Falsche Login-ID (Benutzername oder Passwort)</value>
   </data>
+  <data name="Log_Str_12" xml:space="preserve">
+    <value>Vom NUT-Server auferlegte Stoppbedingung</value>
+  </data>
 </root>

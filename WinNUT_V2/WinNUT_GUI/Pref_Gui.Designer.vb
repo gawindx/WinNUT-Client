@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Pref_Gui
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Pref_Gui
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
     'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Pref_Gui))
@@ -71,6 +71,7 @@ Partial Class Pref_Gui
         Me.CB_Start_Mini = New System.Windows.Forms.CheckBox()
         Me.CB_Systray = New System.Windows.Forms.CheckBox()
         Me.Tab_Shutdown = New System.Windows.Forms.TabPage()
+        Me.CB_Follow_FSD = New System.Windows.Forms.CheckBox()
         Me.Lbl_Percent = New System.Windows.Forms.Label()
         Me.Tb_GraceTime = New System.Windows.Forms.TextBox()
         Me.Cb_ExtendTime = New System.Windows.Forms.CheckBox()
@@ -427,6 +428,7 @@ Partial Class Pref_Gui
         '
         'Tab_Shutdown
         '
+        Me.Tab_Shutdown.Controls.Add(Me.CB_Follow_FSD)
         Me.Tab_Shutdown.Controls.Add(Me.Lbl_Percent)
         Me.Tab_Shutdown.Controls.Add(Me.Tb_GraceTime)
         Me.Tab_Shutdown.Controls.Add(Me.Cb_ExtendTime)
@@ -443,6 +445,13 @@ Partial Class Pref_Gui
         resources.ApplyResources(Me.Tab_Shutdown, "Tab_Shutdown")
         Me.Tab_Shutdown.Name = "Tab_Shutdown"
         Me.Tab_Shutdown.UseVisualStyleBackColor = True
+        '
+        'CB_Follow_FSD
+        '
+        resources.ApplyResources(Me.CB_Follow_FSD, "CB_Follow_FSD")
+        Me.CB_Follow_FSD.Name = "CB_Follow_FSD"
+        Me.Pref_TlTip.SetToolTip(Me.CB_Follow_FSD, resources.GetString("CB_Follow_FSD.ToolTip"))
+        Me.CB_Follow_FSD.UseVisualStyleBackColor = True
         '
         'Lbl_Percent
         '
@@ -689,4 +698,5 @@ Partial Class Pref_Gui
     Friend WithEvents Label3 As Label
     Friend WithEvents Lbl_Pwd_Nut As Label
     Friend WithEvents Lbl_Login_Nut As Label
+    Friend WithEvents CB_Follow_FSD As CheckBox
 End Class

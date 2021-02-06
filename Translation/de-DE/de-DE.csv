@@ -56,6 +56,7 @@ To validate,Gawindx,Hide ChangeLog,ChangeLog ausblenden
 To validate,Gawindx,Immediate Shutdown,Sofortiges Herunterfahren
 To validate,Gawindx,Immediate stop action,Sofortige Stoppaktion
 To validate,Gawindx,Import Ini File (v1.x),Ini-Datei importieren (v1.x)
+To Validate,Gawindx,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),Gibt an ob ein Herunterfahren durchgeführt werden soll wenn der NUT-Server ein erzwungenes Herunterfahren signalisiert (FSD = Force ShutDown).
 To validate,Gawindx,Input Frequency,Eingangsfrequenz
 To validate,Gawindx,Input Voltage,Eingangsspannung
 To validate,Gawindx,Item Properties,Eigenschaften
@@ -117,6 +118,7 @@ To validate,Gawindx,Show ChangeLog,ChangeLog anzeigen
 To validate,Gawindx,Shutdown,Shutdown
 To validate,Gawindx,Shutdown if battery lower than,Herunterfahren wenn die Batterie niedriger als ist
 To validate,Gawindx,Shutdown if runtime lower than (sec),Herunterfahren wenn die Laufzeit niedriger als (Sek.)
+To validate,Gawindx,Shutdown on NUT's FSD Signal,Herunterfahren des FSD-Signals der NUT
 To validate,Gawindx,Shutdown Options,Optionen zum Herunterfahren
 To validate,Gawindx,Sleep,Schlaf
 To validate,Gawindx,Stable,Stabil
@@ -126,6 +128,7 @@ To validate,Gawindx,Start with Windows,Starte mit Windows
 To validate,Gawindx,Starts the shutdown procedure immediately or timed.,Startet das Herunterfahren sofort oder zeitgesteuert.
 To validate,Gawindx,Starts WinNut Minimized.,Startet WinNut Minimized.
 To validate,Gawindx,Starts WinNUT when Windows starts.,Startet WinNUT beim Start von Windows.
+To Validate,Gawindx,Stop condition imposed by the NUT server,Vom NUT-Server auferlegte Stoppbedingung
 To validate,Gawindx,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,Stoppen Sie die Prozedurverzögerung wenn sie verzögert ist. Akzeptierter Wert: Numerischer Wert von 0 bis 3600.
 To validate,Gawindx,Time between each update of UPS data (default = 5000). Accepted value: Numerical value from 1 to 60000 ms.,Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5000). Akzeptierter Wert: Numerischer Wert von 1 bis 60000 ms.
 To validate,Gawindx,Try {0} of {1},Versuchen Sie {0} von {1}

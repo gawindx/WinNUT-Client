@@ -7162,4 +7162,10 @@ Valeur acceptée: valeur numérique de 1 à 60 000 ms.</value>
   <data name="Lbl_Login_Nut.Text" xml:space="preserve">
     <value>Identifiant</value>
   </data>
+  <data name="CB_Follow_FSD.Text" xml:space="preserve">
+    <value>Arrêt sur le signal FSD de NUT</value>
+  </data>
+  <data name="CB_Follow_FSD.ToolTip" xml:space="preserve">
+    <value>Indique si une extinction doit être executé lorsque le serveur NUT signal une extinction forcée (FSD=Force ShutDown)</value>
+  </data>
 </root>
