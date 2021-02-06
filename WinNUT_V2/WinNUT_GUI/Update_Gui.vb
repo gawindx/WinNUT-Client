@@ -84,8 +84,9 @@
                 If e.Result.Length <> 0 Then
                     Dim JSONReleases = Newtonsoft.Json.JsonConvert.DeserializeObject(e.Result)
                     Dim HighestVersion As String = Nothing
-                    Dim ActualVersion As Version = Version.Parse(WinNUT_Globals.ProgramVersion)
-                    Dim sPattern As System.Text.RegularExpressions.Regex = New System.Text.RegularExpressions.Regex("[Vv](\d+\.\d+\.\d+\.\d+).*$")
+                    'Dim ActualVersion As Version = Version.Parse(WinNUT_Globals.ProgramVersion)
+                    Dim ActualVersion As Version = Version.Parse("2.0.0.0")
+                    Dim sPattern As System.Text.RegularExpressions.Regex = New System.Text.RegularExpressions.Regex("[Vv](\d+\.\d+\.\d+\.?\d+?).*$")
                     For Each JSONRelease In JSONReleases
                         Dim PreRelease = Convert.ToBoolean(JSONRelease("prerelease").ToString)
                         Dim DraftRelease = Convert.ToBoolean(JSONRelease("draft").ToString)
