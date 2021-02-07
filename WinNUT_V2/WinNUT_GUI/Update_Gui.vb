@@ -84,26 +84,31 @@
                 If e.Result.Length <> 0 Then
                     Dim JSONReleases = Newtonsoft.Json.JsonConvert.DeserializeObject(e.Result)
                     Dim HighestVersion As String = Nothing
-                    Dim ActualVersion As Version = Version.Parse(WinNUT_Globals.ProgramVersion)
+                    'Dim ActualVersion As Version = Version.Parse(WinNUT_Globals.ProgramVersion)
+                    Dim ActualVersion As Version = Version.Parse("2.0.0.0")
                     Dim sPattern As System.Text.RegularExpressions.Regex = New System.Text.RegularExpressions.Regex("[Vv](\d+\.\d+\.\d+\.?\d+?).*$")
                     For Each JSONRelease In JSONReleases
                         Dim PreRelease = Convert.ToBoolean(JSONRelease("prerelease").ToString)
                         Dim DraftRelease = Convert.ToBoolean(JSONRelease("draft").ToString)
+                        Dim ReleaseName = JSONRelease("name")
+                        Dim RegExVersion = sPattern.Match(ReleaseName)
 
                         If Not DraftRelease And ((PreRelease And WinNUT_Params.Arr_Reg_Key.Item("StableOrDevBranch") = 1) Or Not PreRelease) Then
-                            Dim ReleaseName = JSONRelease("name")
-                            Dim RegExVersion = sPattern.Match(ReleaseName)
                             If RegExVersion.Groups.Count > 1 Then
                                 Dim ReleaseVersion As Version = Version.Parse(RegExVersion.Groups(1).Value)
                                 If ActualVersion.CompareTo(ReleaseVersion) = -1 Then
                                     If HighestVersion = Nothing Or (HighestVersion <> Nothing AndAlso ReleaseVersion.CompareTo(Version.Parse(HighestVersion))) > 0 Then
                                         HighestVersion = RegExVersion.Groups(1).Value
                                         Me.NewVersion = HighestVersion
-                                        ChangeLogDiff = JSONRelease("body").ToString
+                                        ChangeLogDiff = "Changelog :" & vbNewLine
+                                        ChangeLogDiff &= WinNUT_Globals.ProgramVersion & " => " & ReleaseVersion.ToString & vbNewLine
                                         Me.NewVersionMsiURL = JSONRelease("assets")(0)("browser_download_url").ToString
                                     End If
+                                    ChangeLogDiff &= vbNewLine & ReleaseName & vbNewLine & JSONRelease("body").ToString & vbNewLine
                                 End If
                             End If
+                        ElseIf Not DraftRelease Then
+                            ChangeLogDiff &= vbNewLine & ReleaseName & vbNewLine & JSONRelease("body").ToString & vbNewLine
                         End If
                     Next
                     If ChangeLogDiff IsNot Nothing Then
