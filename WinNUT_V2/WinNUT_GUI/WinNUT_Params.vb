@@ -53,14 +53,15 @@
         Dim Arr_Reg_Logging As New Dictionary(Of String, Object)
         Dim Arr_Reg_Power As New Dictionary(Of String, Object)
         Dim Arr_Reg_Update As New Dictionary(Of String, Object)
+        Dim Cryptor As New CryptData()
 
         With Arr_Reg_Connexion
             .Add("ServerAddress", "nutserver host")
             .Add("Port", 3493)
             .Add("UPSName", "UPSName")
             .Add("Delay", 5000)
-            .Add("NutLogin", "")
-            .Add("NutPassword", "")
+            .Add("enc_NutLogin", Cryptor.EncryptData(""))
+            .Add("enc_NutPassword", Cryptor.EncryptData(""))
             .Add("AutoReconnect", vbFalse)
         End With
         With Arr_Reg_Calibration
@@ -112,6 +113,21 @@
             .Add("Update", Arr_Reg_Update)
         End With
 
+        'Verify if non encoded Login/Password Exist
+        'if not, create it
+        Dim WinnutConnRegPath = WinNUT_Params.RegBranch & "WinNUT\Connexion"
+        If Not (My.Computer.Registry.GetValue(WinnutConnRegPath, "NutLogin", Nothing) Is Nothing) Then
+            Dim OldLogin = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutLogin", "")
+            My.Computer.Registry.SetValue(WinnutConnRegPath, "enc_NutLogin", Cryptor.EncryptData(OldLogin))
+            My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\WinNUT\Connexion", True).DeleteValue("NutLogin", False)
+        End If
+        If Not (My.Computer.Registry.GetValue(WinnutConnRegPath, "NutPassword", Nothing) Is Nothing) Then
+            Dim OldPassword = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutPassword", "")
+            My.Computer.Registry.SetValue(WinnutConnRegPath, "enc_NutPassword", Cryptor.EncryptData(OldPassword))
+            My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\WinNUT\Connexion", True).DeleteValue("NutPassword", False)
+        End If
+
+        'Read Data from registry
         For Each RegKeys As KeyValuePair(Of String, Dictionary(Of String, Object)) In Arr_Reg_Key_Base
             For Each RegValue As KeyValuePair(Of String, Object) In RegKeys.Value
                 RegPath = "WinNUT\" & RegKeys.Key
@@ -119,12 +135,24 @@
                     My.Computer.Registry.CurrentUser.CreateSubKey(RegPath)
                     My.Computer.Registry.SetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
                 End If
-                WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key) = My.Computer.Registry.GetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
+                If (RegValue.Key.StartsWith("enc")) Then
+                    Dim WinReg = My.Computer.Registry.GetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
+                    Dim Result = Cryptor.IsCryptedtData(WinReg)
+                    Dim Res = String.IsNullOrEmpty(WinReg)
+                    If String.IsNullOrEmpty(WinReg) And Not (Cryptor.IsCryptedtData(WinReg)) Then
+                        WinReg = Cryptor.EncryptData("")
+                    End If
+
+                    WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key) = Cryptor.DecryptData(WinReg)
+                Else
+                    WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key) = My.Computer.Registry.GetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
+                End If
             Next
         Next
     End Sub
 
     Public Function Save_Params() As Boolean
+        Dim Cryptor As New CryptData()
         Dim Result As Boolean = False
         Try
             For Each RegKeys As KeyValuePair(Of String, Dictionary(Of String, Object)) In Arr_Reg_Key_Base
@@ -134,7 +162,12 @@
                         My.Computer.Registry.CurrentUser.CreateSubKey(RegPath)
                         My.Computer.Registry.SetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
                     Else
-                        My.Computer.Registry.SetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key))
+                        If (RegValue.Key.StartsWith("enc")) Then
+                            My.Computer.Registry.SetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, Cryptor.EncryptData(WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key)))
+                        Else
+                            My.Computer.Registry.SetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key))
+                        End If
+
                     End If
                 Next
             Next
@@ -252,4 +285,5 @@
         End Try
         Return Result
     End Function
+
 End Module

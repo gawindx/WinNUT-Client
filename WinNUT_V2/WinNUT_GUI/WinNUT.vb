@@ -148,8 +148,8 @@ Public Class WinNUT
         UPS_Network.NutPort = WinNUT_Params.Arr_Reg_Key.Item("Port")
         UPS_Network.NutUPS = WinNUT_Params.Arr_Reg_Key.Item("UPSName")
         UPS_Network.NutDelay = WinNUT_Params.Arr_Reg_Key.Item("Delay")
-        UPS_Network.NutLogin = WinNUT_Params.Arr_Reg_Key.Item("NutLogin")
-        UPS_Network.NutPassword = WinNUT_Params.Arr_Reg_Key.Item("NutPassword")
+        UPS_Network.NutLogin = WinNUT_Params.Arr_Reg_Key.Item("enc_NutLogin")
+        UPS_Network.NutPassword = WinNUT_Params.Arr_Reg_Key.Item("enc_NutPassword")
         UPS_Network.AutoReconnect = WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect")
         UPS_Network.Battery_Limit = WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitBatteryCharge")
         UPS_Network.Backup_Limit = WinNUT_Params.Arr_Reg_Key.Item("ShutdownLimitUPSRemainTime")
@@ -707,13 +707,13 @@ Public Class WinNUT
             NeedReconnect = True
             UPS_Network.NutDelay = WinNUT_Params.Arr_Reg_Key.Item("Delay")
         End If
-        If UPS_Network.NutLogin <> WinNUT_Params.Arr_Reg_Key.Item("NutLogin") Then
+        If UPS_Network.NutLogin <> WinNUT_Params.Arr_Reg_Key.Item("enc_NutLogin") Then
             NeedReconnect = True
-            UPS_Network.NutLogin = WinNUT_Params.Arr_Reg_Key.Item("NutLogin")
+            UPS_Network.NutLogin = WinNUT_Params.Arr_Reg_Key.Item("enc_NutLogin")
         End If
-        If UPS_Network.NutPassword <> WinNUT_Params.Arr_Reg_Key.Item("NutPassword") Then
+        If UPS_Network.NutPassword <> WinNUT_Params.Arr_Reg_Key.Item("enc_NutPassword") Then
             NeedReconnect = True
-            UPS_Network.NutPassword = WinNUT_Params.Arr_Reg_Key.Item("NutPassword")
+            UPS_Network.NutPassword = WinNUT_Params.Arr_Reg_Key.Item("enc_NutPassword")
         End If
         If UPS_Network.UPS_Follow_FSD <> WinNUT_Params.Arr_Reg_Key.Item("Follow_FSD") Then
             UPS_Network.UPS_Follow_FSD = WinNUT_Params.Arr_Reg_Key.Item("Follow_FSD")
