@@ -23,8 +23,7 @@ Public NotInheritable Class CryptData
         Return hash
     End Function
 
-    Public Function EncryptData(
-    ByVal plaintext As String) As String
+    Public Function EncryptData(ByVal plaintext As String) As String
 
         ' Convert the plaintext string to a byte array.
         Dim plaintextBytes() As Byte =
@@ -45,8 +44,7 @@ Public NotInheritable Class CryptData
         Return Convert.ToBase64String(ms.ToArray)
     End Function
 
-    Public Function DecryptData(
-    ByVal encryptedtext As String) As String
+    Public Function DecryptData(ByVal encryptedtext As String) As String
 
         ' Convert the encrypted text string to a byte array.
         Dim encryptedBytes() As Byte = Convert.FromBase64String(encryptedtext)
@@ -55,8 +53,7 @@ Public NotInheritable Class CryptData
         Dim ms As New System.IO.MemoryStream
         ' Create the decoder to write to the stream.
         Dim decStream As New CryptoStream(ms,
-            TripleDes.CreateDecryptor(),
-            System.Security.Cryptography.CryptoStreamMode.Write)
+            TripleDes.CreateDecryptor(), System.Security.Cryptography.CryptoStreamMode.Write)
 
         ' Use the crypto stream to write the byte array to the stream.
         decStream.Write(encryptedBytes, 0, encryptedBytes.Length)
@@ -65,14 +62,17 @@ Public NotInheritable Class CryptData
         ' Convert the plaintext stream to a string.
         Return System.Text.Encoding.Unicode.GetString(ms.ToArray)
     End Function
-    Public Function IsCryptedtData(
-    ByVal encryptedtext As String) As Boolean
+    Public Function IsCryptedtData(ByVal encryptedtext As String) As Boolean
 
         Try
             ' Convert the encrypted text string to a byte array.
             Dim encryptedBytes() As Byte = Convert.FromBase64String(encryptedtext)
 
-            Return True
+            If encryptedtext = EncryptData(DecryptData(encryptedtext)) Then
+                Return True
+            Else
+                Return True
+            End If
         Catch
             Return False
         End Try

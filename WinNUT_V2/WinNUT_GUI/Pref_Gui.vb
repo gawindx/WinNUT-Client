@@ -17,8 +17,8 @@
         WinNUT_Params.Arr_Reg_Key.Item("Port") = CInt(Tb_Port.Text)
         WinNUT_Params.Arr_Reg_Key.Item("UPSName") = Tb_UPS_Name.Text
         WinNUT_Params.Arr_Reg_Key.Item("Delay") = CInt(Tb_Delay_Com.Text)
-        WinNUT_Params.Arr_Reg_Key.Item("enc_NutLogin") = Tb_Login_Nut.Text
-        WinNUT_Params.Arr_Reg_Key.Item("enc_NutPassword") = Tb_Pwd_Nut.Text
+        WinNUT_Params.Arr_Reg_Key.Item("NutLogin") = Tb_Login_Nut.Text
+        WinNUT_Params.Arr_Reg_Key.Item("NutPassword") = Tb_Pwd_Nut.Text
         WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect") = Cb_Reconnect.Checked
         WinNUT_Params.Arr_Reg_Key.Item("MinInputVoltage") = CInt(Tb_InV_Min.Text)
         WinNUT_Params.Arr_Reg_Key.Item("MaxInputVoltage") = CInt(Tb_InV_Max.Text)
@@ -95,8 +95,8 @@
         Tb_Port.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("Port"))
         Tb_UPS_Name.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("UPSName"))
         Tb_Delay_Com.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("Delay"))
-        Tb_Login_Nut.Text = WinNUT_Params.Arr_Reg_Key.Item("enc_NutLogin")
-        Tb_Pwd_Nut.Text = WinNUT_Params.Arr_Reg_Key.Item("enc_NutPassword")
+        Tb_Login_Nut.Text = WinNUT_Params.Arr_Reg_Key.Item("NutLogin")
+        Tb_Pwd_Nut.Text = WinNUT_Params.Arr_Reg_Key.Item("NutPassword")
         Cb_Reconnect.Checked = WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect")
         Tb_InV_Min.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("MinInputVoltage"))
         Tb_InV_Max.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("MaxInputVoltage"))

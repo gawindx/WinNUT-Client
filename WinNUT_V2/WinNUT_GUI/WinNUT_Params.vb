@@ -60,8 +60,8 @@
             .Add("Port", 3493)
             .Add("UPSName", "UPSName")
             .Add("Delay", 5000)
-            .Add("enc_NutLogin", Cryptor.EncryptData(""))
-            .Add("enc_NutPassword", Cryptor.EncryptData(""))
+            .Add("NutLogin", Cryptor.EncryptData(""))
+            .Add("NutPassword", Cryptor.EncryptData(""))
             .Add("AutoReconnect", vbFalse)
         End With
         With Arr_Reg_Calibration
@@ -116,15 +116,20 @@
         'Verify if non encoded Login/Password Exist
         'if not, create it
         Dim WinnutConnRegPath = WinNUT_Params.RegBranch & "WinNUT\Connexion"
-        If Not (My.Computer.Registry.GetValue(WinnutConnRegPath, "NutLogin", Nothing) Is Nothing) Then
-            Dim OldLogin = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutLogin", "")
-            My.Computer.Registry.SetValue(WinnutConnRegPath, "enc_NutLogin", Cryptor.EncryptData(OldLogin))
-            My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\WinNUT\Connexion", True).DeleteValue("NutLogin", False)
+        Dim LoginValue = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutLogin", Nothing)
+        Dim PasswordValue = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutPassword", Nothing)
+        If (LoginValue Is Nothing) Or Not (Cryptor.IsCryptedtData(LoginValue)) Then
+            My.Computer.Registry.SetValue(WinnutConnRegPath, "NutLogin", Cryptor.EncryptData(LoginValue))
+            'Dim OldLogin = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutLogin", "")
+            'My.Computer.Registry.SetValue(WinnutConnRegPath, "enc_NutLogin", Cryptor.EncryptData(OldLogin))
+            'My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\WinNUT\Connexion", True).DeleteValue("NutLogin", False)
         End If
-        If Not (My.Computer.Registry.GetValue(WinnutConnRegPath, "NutPassword", Nothing) Is Nothing) Then
-            Dim OldPassword = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutPassword", "")
-            My.Computer.Registry.SetValue(WinnutConnRegPath, "enc_NutPassword", Cryptor.EncryptData(OldPassword))
-            My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\WinNUT\Connexion", True).DeleteValue("NutPassword", False)
+
+        If (PasswordValue Is Nothing) Or Not (Cryptor.IsCryptedtData(PasswordValue)) Then
+            My.Computer.Registry.SetValue(WinnutConnRegPath, "NutPassword", Cryptor.EncryptData(PasswordValue))
+            'Dim OldPassword = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutPassword", "")
+            'My.Computer.Registry.SetValue(WinnutConnRegPath, "enc_NutPassword", Cryptor.EncryptData(OldPassword))
+            'My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\WinNUT\Connexion", True).DeleteValue("NutPassword", False)
         End If
 
         'Read Data from registry
@@ -135,14 +140,11 @@
                     My.Computer.Registry.CurrentUser.CreateSubKey(RegPath)
                     My.Computer.Registry.SetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
                 End If
-                If (RegValue.Key.StartsWith("enc")) Then
+                If (RegValue.Key = "NutLogin" Or RegValue.Key = "NutPassword") Then
                     Dim WinReg = My.Computer.Registry.GetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
-                    Dim Result = Cryptor.IsCryptedtData(WinReg)
-                    Dim Res = String.IsNullOrEmpty(WinReg)
-                    If String.IsNullOrEmpty(WinReg) And Not (Cryptor.IsCryptedtData(WinReg)) Then
+                    If String.IsNullOrEmpty(WinReg) Or Not (Cryptor.IsCryptedtData(WinReg)) Then
                         WinReg = Cryptor.EncryptData("")
                     End If
-
                     WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key) = Cryptor.DecryptData(WinReg)
                 Else
                     WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key) = My.Computer.Registry.GetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
@@ -162,7 +164,7 @@
                         My.Computer.Registry.CurrentUser.CreateSubKey(RegPath)
                         My.Computer.Registry.SetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, RegValue.Value)
                     Else
-                        If (RegValue.Key.StartsWith("enc")) Then
+                        If (RegValue.Key = "NutLogin" Or RegValue.Key = "NutPassword") Then
                             My.Computer.Registry.SetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, Cryptor.EncryptData(WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key)))
                         Else
                             My.Computer.Registry.SetValue(WinNUT_Params.RegBranch & RegPath, RegValue.Key, WinNUT_Params.Arr_Reg_Key.Item(RegValue.Key))
