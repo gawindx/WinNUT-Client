@@ -32,12 +32,14 @@ Partial Class About_Gui
         Me.Lbl_ProgNameVersion = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Btn_OK = New System.Windows.Forms.Button()
+        Me.Label_License = New System.Windows.Forms.Label()
         Me.GBox.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GBox
         '
+        Me.GBox.Controls.Add(Me.Label_License)
         Me.GBox.Controls.Add(Me.LkLbl_Github)
         Me.GBox.Controls.Add(Me.Lbl_Github)
         Me.GBox.Controls.Add(Me.Lbl_Sf)
@@ -45,9 +47,9 @@ Partial Class About_Gui
         Me.GBox.Controls.Add(Me.Lbl_Copyright_2006)
         Me.GBox.Controls.Add(Me.Lbl_ProgNameVersion)
         Me.GBox.Controls.Add(Me.PictureBox1)
-        Me.GBox.Location = New System.Drawing.Point(4, 7)
+        Me.GBox.Location = New System.Drawing.Point(4, 4)
         Me.GBox.Name = "GBox"
-        Me.GBox.Size = New System.Drawing.Size(316, 202)
+        Me.GBox.Size = New System.Drawing.Size(360, 364)
         Me.GBox.TabIndex = 0
         Me.GBox.TabStop = False
         '
@@ -117,18 +119,27 @@ Partial Class About_Gui
         '
         'Btn_OK
         '
-        Me.Btn_OK.Location = New System.Drawing.Point(135, 215)
+        Me.Btn_OK.Location = New System.Drawing.Point(157, 372)
         Me.Btn_OK.Name = "Btn_OK"
         Me.Btn_OK.Size = New System.Drawing.Size(70, 23)
         Me.Btn_OK.TabIndex = 1
         Me.Btn_OK.Text = "OK"
         Me.Btn_OK.UseVisualStyleBackColor = True
         '
+        'Label_License
+        '
+        Me.Label_License.AutoSize = True
+        Me.Label_License.Location = New System.Drawing.Point(8, 200)
+        Me.Label_License.Name = "Label_License"
+        Me.Label_License.Size = New System.Drawing.Size(344, 156)
+        Me.Label_License.TabIndex = 7
+        Me.Label_License.Text = resources.GetString("Label_License.Text")
+        '
         'About_Gui
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(324, 244)
+        Me.ClientSize = New System.Drawing.Size(368, 401)
         Me.Controls.Add(Me.Btn_OK)
         Me.Controls.Add(Me.GBox)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -152,4 +163,5 @@ Partial Class About_Gui
     Friend WithEvents Lbl_Sf As Label
     Friend WithEvents LkLbl_Github As LinkLabel
     Friend WithEvents Btn_OK As Button
+    Friend WithEvents Label_License As Label
 End Class

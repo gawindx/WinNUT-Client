@@ -1,27 +1,11 @@
-'Date: 08\23\2010 - Ludvik Jerabek - Initial Release
-'Version: 1.0
-'Comment: Allow INI manipulation in .NET
-'License: CPOL
+' WinNUT is a NUT windows client for monitoring your ups hooked up to your favorite linux server.
+' Copyright (C) 2019-2021 Gawindx (Decaux Nicolas)
 '
-'Revisions:
+' This program is free software: you can redistribute it and/or modify it under the terms of the
+' GNU General Public License as published by the Free Software Foundation, either version 3 of the
+' License, or any later version.
 '
-'08\23\2010 - Ludvik Jerabek - Initial Release
-'11\12\2010 - Ludvik Jerabek - Fixed section regex matching on key values with brackets
-'06\20\2015 - Ludvik Jerabek - Fixed key parsing regex to account for keys with spaces in names
-'
-'
-'**DISCLAIMER**
-'THIS MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
-'EITHER EXPRESS OR IMPLIED, INCLUDING, BUT Not LIMITED TO, THE
-'IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
-'PURPOSE, OR NON-INFRINGEMENT. SOME JURISDICTIONS DO NOT ALLOW THE
-'EXCLUSION OF IMPLIED WARRANTIES, SO THE ABOVE EXCLUSION MAY NOT
-'APPLY TO YOU. IN NO EVENT WILL I BE LIABLE TO ANY PARTY FOR ANY
-'DIRECT, INDIRECT, SPECIAL OR OTHER CONSEQUENTIAL DAMAGES FOR ANY
-'USE OF THIS MATERIAL INCLUDING, WITHOUT LIMITATION, ANY LOST
-'PROFITS, BUSINESS INTERRUPTION, LOSS OF PROGRAMS OR OTHER DATA ON
-'YOUR INFORMATION HANDLING SYSTEM OR OTHERWISE, EVEN If WE ARE
-'EXPRESSLY ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+' This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY
 
 Imports System.IO
 Imports System.Text.RegularExpressions
