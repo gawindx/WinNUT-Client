@@ -1,5 +1,23 @@
 ## History:
 
+### Version 2.0.7710
+#### Fix :
+  - Fixed an error generating a bad loading of the default parameters during the first launch following a new installation (without any version previously installed)
+  - Fix an error preventing the detection of certain updates if the name of the release does not include the revision version number
+
+#### Added :
+  - Username and password are now stored in an encrypted way in registry. (issue #37)
+  The conversion of old authentification data is automaticThe conversion of old authentication data is automatic at first launch of WinNUTs new version.
+  - Added FSD support that can be provided by NUT server.
+  If the NUT server informs that it is initiating a Forced Shutdown, WinNUT will take this into account and initiate the shutdown process in the same way as if it determines that the conditions are required to do so.
+  The option must be activated in the settings of WinNUT so that it takes into account the FSD signal (Follow FSD signal).
+
+#### Changed :
+  - WinNUT is now distributed under the GNU GPL v3 license (and later).
+  - When an update is present, the Changelog window will indicate the Changelog content of each version (both stable and development) present between the currently installed version and the new version.
+  In this way, it is easier to take into account all the evolutions / corrections applied from the installed version.
+
+
 ### Version 2.0.7706
 #### Fix : 
   - App crash when disconnecting with null streams (Thanks to tgp1994) (Issue #48)
@@ -13,10 +31,12 @@
   - In the case of a left click on the systray icon, WinNUT was restored to its original size and the context menu was opened at the same time.
   This behavior has been corrected and only the context menu opens.
   Restoring the WinNUT window to its original size is caused by a single or double click only.
+
 #### Added : 
   - Addition of a directory containing the translations at the repository level.
 	Makes it easier to submit a new translation (or correction) via a fork / pull request (nonPointer idea - issue #35)
   - Translation of the "List UPS Variable's" interface (translation forgot during v2.0)
+
 #### Changed :
   - Some changes on how logs work (Thanks to tgp1994)
   - Modification of the code to recover the power supply frequency of the UPS when it only provides the output frequency (modification made in response to an unsuccessful commit of pull requests #55 - problem encountered by jcsmook)
@@ -36,10 +56,12 @@
   - When the name of the UPS in the parameters is incorrect, it is no longer possible to display the UPS variable information window.
   - Fixed a typo preventing shutdown at the end of the timeout
   - When the name of the UPS in the parameters is incorrect, the connection is not established and a notification is displayed for 10 seconds.
+
 #### Added :
   - EXPERIMENTAL - Connection function to the nut server with identification and password.
   - When the application is minimized in the systray and a change of connection state to the Nut server or a change of state of the UPS occurs, a notification popup is displayed for 10 seconds.
   - When the application is minimized without being sent to the systray (in task bar), the connection and battery status is displayed in the text of the window in order to be quickly visualized when the application icon is hovered in the task bar.
+
 #### Changed :
   - The application icon has been modified to add an outline to the white shape in order to be visible when it is on a white background
   - The arrows of the icon displayed during reconnection are now in yellow to be more visible due to their small size.
@@ -56,6 +78,7 @@
 #### Fix :
   - All hard-coded translations are translated
   - The log file is now correctly created
+
 #### Added :
   - Some Translations
 
@@ -114,10 +137,12 @@ All the functions present in the AutoIt version are still present in V2 with som
   - Working Fallback Value on GetUPSVar
   - When the preferences are open but no modification is made, there is no longer a reconnection when clicking on the OK / Apply buttons (which could generate a flickering of the dials and unnecessary entries in the logs)
   - Incorrect calculation of the instantaneous power used
+
 #### Added :
   - Compatibility with IPV6 (Experimental)
   - Capacity to update directly from WinNut (Addition of an executable Updater packaged in WinNUT and therefore installed with WinNut on its first launch)
   - Ability to display a second value on graphs (text value only and value not already used)
+
 #### Changed :
   - The executable is no longer called "upsclient.exe" but "WinNUT-client.exe"
   - DrawDial function moved to nutDraw.au3 file
@@ -134,8 +159,10 @@ Not Released
 #### Fix :
   - Disconnect menu option is now disabled when connection to NUT server is not established
   - Correction of a problem with information refresh when the connection is established after starting WinNUT
+
 #### Added :
-  - A notification message is displayed when the connection could not be re-established within the time allowed 
+  - A notification message is displayed when the connection could not be re-established within the time allowed
+
 #### Changed :
   - Better syntactic respect of the code
 
@@ -148,6 +175,7 @@ Not Released
 No Build Release
 #### Fix :
   - Fixed some graphical issues
+
 #### Added :
   - German translation
   - Ability to set the input frequency manually in case the UPS does not return this information. The value is set automatically when the UPS supplies it.
@@ -156,6 +184,7 @@ No Build Release
 ### Version 1.7.2.1
 #### Fix :
   - Missing Translation
+
 #### Changed :
   - Some default parameter values
   - README.md 
@@ -168,12 +197,14 @@ No Build Release
 ### Version 1.7.0.5
 #### Fix :
   - Some Source Cleanup
+
 #### Added :
   - Added ability to estimate the load level and run time of the UPS when he does not provide the information itself (or is inconsistent).
 
 ### Version 1.7.0.0
 #### Fix :
   - Ups VarList Gui
+
 #### Added :
   - Custom Shutdown Options.
   - Allow software to not shutdown immediately and permit backup data before shutdown
@@ -192,10 +223,12 @@ No Build Release
 ### Version 1.6.4.0
 #### Fix : 
   - Change adlibenable / disable to register / unregister and some other code modification to make it compil on AutoIt v3.3.14
+
 #### Added :
   - Tray icon tooltip with load, charge and status
   - Start with Windows Option
   - Prevent shutdown when UPS not connected but NUT is running (from v1.6.2 written by crazytiti see https://github.com/crazytiti/Windows-Nut)
+
 #### Changed : 
   - Some code optimisation
   - Some aesthetic improvement of GUI
