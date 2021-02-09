@@ -78,7 +78,7 @@
     <value>Créer Fichier Journal</value>
   </data>
   <data name="CB_Start_W_Win.Text" xml:space="preserve">
-    <value>Démmarrer avec Windows</value>
+    <value>Démarrer avec Windows</value>
   </data>
   <data name="CB_Close_Tray.Text" xml:space="preserve">
     <value>Fermer vers le Systray</value>

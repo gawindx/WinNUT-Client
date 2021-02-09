@@ -9,6 +9,17 @@ To use it, please follow the following steps:
 3. If you were using an older version of WinNUT (v1.x), copy your "ups.ini" configuration file to the WinNUT installation directory (by default "C: \ Program Files (x86) \ WinNUT-client ") for an automatic import of your parameters during the first launch
 4. Start WinNUT V2 and modify the parameters according to your needs
 
+## Specific Configuration
+
+### For Synology NAS 
+If your NUT server is hosted on a Synology NAS, be sure to provide the following connection information (default):
+Login: upsmon
+Password: secret
+
+It will probably be necessary to allow the WinNUT IP to communicate with the NUT server.
+*See issue 47 for more information, specifically [this commentary](https://github.com/gawindx/WinNUT-Client/issues/47#issuecomment-759180793).*
+
+### 
 ## Translation
 WinNUT V2 is natively multilingual, so it is no longer necessary to select your language from the software interface.
 Currently, WinNUT supports:
