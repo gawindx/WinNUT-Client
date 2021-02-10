@@ -16,8 +16,7 @@
     <value>Reconnecter</value>
   </data>
   <data name="Lbl_Delay_Com.Text" xml:space="preserve">
-    <value>Intervalle
-</value>
+    <value>Intervalle d'interrogation</value>
   </data>
   <data name="Lbl_Name_UPS.Text" xml:space="preserve">
     <value>Nom UPS</value>
@@ -7018,8 +7017,8 @@ inférieur à</value>
     <value>Préférences</value>
   </data>
   <data name="Tb_Delay_Com.ToolTip" xml:space="preserve">
-    <value>Temps entre chaque mise à jour des données UPS (par défaut = 5000).
-Valeur acceptée: valeur numérique de 1 à 60 000 ms.</value>
+    <value>Temps entre chaque mise à jour des données UPS (par défaut = 5).
+Valeur acceptée: valeur numérique de 1 à 60 secondes.</value>
   </data>
   <data name="Tb_UPS_Name.ToolTip" xml:space="preserve">
     <value>Nom de l'onduleur à surveiller.

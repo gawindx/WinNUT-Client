@@ -68,7 +68,7 @@ Public Module WinNUT_Params
             .Add("ServerAddress", "nutserver host")
             .Add("Port", 3493)
             .Add("UPSName", "UPSName")
-            .Add("Delay", 5000)
+            .Add("Delay", 5)
             .Add("NutLogin", Cryptor.EncryptData(""))
             .Add("NutPassword", Cryptor.EncryptData(""))
             .Add("AutoReconnect", vbFalse)
@@ -129,16 +129,10 @@ Public Module WinNUT_Params
         Dim PasswordValue = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutPassword", Nothing)
         If (LoginValue Is Nothing) Or Not (Cryptor.IsCryptedtData(LoginValue)) Then
             My.Computer.Registry.SetValue(WinnutConnRegPath, "NutLogin", Cryptor.EncryptData(LoginValue))
-            'Dim OldLogin = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutLogin", "")
-            'My.Computer.Registry.SetValue(WinnutConnRegPath, "enc_NutLogin", Cryptor.EncryptData(OldLogin))
-            'My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\WinNUT\Connexion", True).DeleteValue("NutLogin", False)
         End If
 
         If (PasswordValue Is Nothing) Or Not (Cryptor.IsCryptedtData(PasswordValue)) Then
             My.Computer.Registry.SetValue(WinnutConnRegPath, "NutPassword", Cryptor.EncryptData(PasswordValue))
-            'Dim OldPassword = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutPassword", "")
-            'My.Computer.Registry.SetValue(WinnutConnRegPath, "enc_NutPassword", Cryptor.EncryptData(OldPassword))
-            'My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\WinNUT\Connexion", True).DeleteValue("NutPassword", False)
         End If
 
         'Read Data from registry

@@ -140,6 +140,7 @@ Partial Class Pref_Gui
         resources.ApplyResources(Me.Tb_Pwd_Nut, "Tb_Pwd_Nut")
         Me.Tb_Pwd_Nut.Name = "Tb_Pwd_Nut"
         Me.Pref_TlTip.SetToolTip(Me.Tb_Pwd_Nut, resources.GetString("Tb_Pwd_Nut.ToolTip"))
+        Me.Tb_Pwd_Nut.UseSystemPasswordChar = True
         '
         'Tb_Login_Nut
         '

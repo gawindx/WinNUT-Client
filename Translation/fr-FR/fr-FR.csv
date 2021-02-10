@@ -31,7 +31,6 @@ Valid,Gawindx,Create a log file (WinNUT-client.log file in the WinNUT installati
 Valid,Gawindx,Create LogFile,Créer Fichier Journal
 Valid,Gawindx,Daily,Quotidien
 Valid,Gawindx,Debug,Débogue
-Valid,Gawindx,Delay,Intervalle
 Valid,Gawindx,Delay Between Verification,Délai entre vérification
 Valid,Gawindx,Delay to Shutdown (sec),Temporiser l'Arrêt (sec)
 Valid,Gawindx,Delete log file.,Supprimer le fichier journal.
@@ -104,6 +103,7 @@ Valid,Gawindx,Open the log file.,Ouvrez le fichier journal.
 Valid,Gawindx,Options,Préférences
 Valid,Gawindx,Output Voltage,Tension de Sortie
 Valid,Gawindx,Password,Mot de Passe
+Valid,Gawindx,Polling Interval,Intervalle d'interrogation
 Valid,Gawindx,Reconnect,Re-Connecter
 Valid,Gawindx,Reconnection In Progress,Reconnexion en cours
 Valid,Gawindx,Reduced to the taskbar or Systray.,Réduit à la barre des tâches ou Systray.
@@ -130,7 +130,7 @@ Valid,Gawindx,Starts WinNut Minimized.,Démarre WinNut minimisé.
 Valid,Gawindx,Starts WinNUT when Windows starts.,Démarre WinNUT au démarrage de Windows.
 Valid,Gawindx,Stop condition imposed by the NUT server,Condition d'arrêt forcée signalée par le serveur NUT
 Valid,Gawindx,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,Arrêter le délai de la procédure en cas de retard. Valeur acceptée: valeur numérique de 0 à 3600.
-Valid,Gawindx,Time between each update of UPS data (default = 5000). Accepted value: Numerical value from 1 to 60000 ms.,Temps entre chaque mise à jour des données UPS (par défaut = 5000). Valeur acceptée: valeur numérique de 1 à 60000 ms.
+Valid,Gawindx,Time between each update of UPS data (default = 5).Accepted value: Numerical value from 1 to 60 seconds.,Temps entre chaque mise à jour des données de l'onduleur (par défaut = 5).Valeur acceptée: valeur numérique de 1 à 60 secondes.
 Valid,Gawindx,Try {0} of {1},Essai {0} sur {1}
 Valid,Gawindx,Try Reconnect {0} / {1},Tentative de reconnexion {0} / {1}
 Valid,Gawindx,Type of Stop,Type d'Arrêt

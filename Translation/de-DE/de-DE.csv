@@ -31,7 +31,6 @@ To validate,Gawindx,Create a log file (WinNUT-client.log file in the WinNUT inst
 To validate,Gawindx,Create LogFile,LogFile erstellen
 To validate,Gawindx,Daily,Täglich
 To validate,Gawindx,Debug,Debuggen
-To validate,Gawindx,Delay,Verzögern
 To validate,Gawindx,Delay Between Verification,Verzögerung zwischen der Überprüfung
 To validate,Gawindx,Delay to Shutdown (sec),Verzögerung beim Herunterfahren (Sek.)
 To validate,Gawindx,Delete log file.,Protokolldatei löschen.
@@ -104,6 +103,7 @@ To validate,Gawindx,Open the log file.,Öffnen Sie die Protokolldatei.
 To validate,Gawindx,Options,Optionen
 To validate,Gawindx,Output Voltage,Ausgangsspannung
 To validate,Gawindx,Password,Passwort
+To validate,Gawindx,Polling Interval,Abrufintervall
 To validate,Gawindx,Reconnect,Erneut verbinden
 To validate,Gawindx,Reconnection In Progress,Wiederverbindung läuft
 To validate,Gawindx,Reduced to the taskbar or Systray.,Reduziert auf die Taskleiste oder Systray.
@@ -130,7 +130,7 @@ To validate,Gawindx,Starts WinNut Minimized.,Startet WinNut Minimized.
 To validate,Gawindx,Starts WinNUT when Windows starts.,Startet WinNUT beim Start von Windows.
 To Validate,Gawindx,Stop condition imposed by the NUT server,Vom NUT-Server auferlegte Stoppbedingung
 To validate,Gawindx,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,Stoppen Sie die Prozedurverzögerung wenn sie verzögert ist. Akzeptierter Wert: Numerischer Wert von 0 bis 3600.
-To validate,Gawindx,Time between each update of UPS data (default = 5000). Accepted value: Numerical value from 1 to 60000 ms.,Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5000). Akzeptierter Wert: Numerischer Wert von 1 bis 60000 ms.
+To validate,Gawindx,Time between each update of UPS data (default = 5).Accepted value: Numerical value from 1 to 60 seconds.,Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5).Akzeptierter Wert: Numerischer Wert von 1 bis 60 Sekunden.
 To validate,Gawindx,Try {0} of {1},Versuchen Sie {0} von {1}
 To validate,Gawindx,Try Reconnect {0} / {1},Versuchen Sie erneut {0} / {1} zu verbinden
 To validate,Gawindx,Type of Stop,Art des Stopps

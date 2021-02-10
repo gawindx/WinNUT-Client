@@ -112,8 +112,8 @@
     <value>登录</value>
   </data>
   <data name="Tb_Delay_Com.ToolTip" xml:space="preserve">
-    <value>UPS 数据更新间隔（默认为 5000）。
-取值：1-60000 毫秒之间的数值。</value>
+    <value>每次更新UPS数据之间的时间（默认= 5）。
+接受值：1到60秒之间的数值。</value>
   </data>
   <data name="Tb_UPS_Name.ToolTip" xml:space="preserve">
     <value>监控的 UPS 名称。
@@ -134,7 +134,7 @@
     <value>启用自动连接/重连</value>
   </data>
   <data name="Lbl_Delay_Com.Text" xml:space="preserve">
-    <value>延时</value>
+    <value>轮询间隔</value>
   </data>
   <data name="Lbl_Name_UPS.Text" xml:space="preserve">
     <value>UPS 名称</value>

@@ -121,10 +121,13 @@
   <data name="Tb_Pwd_Nut.Location" type="System.Drawing.Point, System.Drawing">
     <value>154, 191</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Tb_Pwd_Nut.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
   <data name="Tb_Pwd_Nut.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 20</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Tb_Pwd_Nut.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
@@ -273,8 +276,8 @@ Accepted value: Numerical value from 1 to 60,000 ms.</value>
     <value>12</value>
   </data>
   <data name="Tb_Delay_Com.ToolTip" xml:space="preserve">
-    <value>Time between each update of UPS data (default = 5000).
-Accepted value: Numerical value from 1 to 60,000 ms.</value>
+    <value>Time between each update of UPS data (default = 5).
+Accepted value: Numerical value from 1 to 60 seconds.</value>
   </data>
   <data name="&gt;&gt;Tb_Delay_Com.Name" xml:space="preserve">
     <value>Tb_Delay_Com</value>
@@ -409,13 +412,13 @@ Accepted value: IPV4 / IPV6 / FQDN address.</value>
     <value>6, 102</value>
   </data>
   <data name="Lbl_Delay_Com.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
+    <value>76, 13</value>
   </data>
   <data name="Lbl_Delay_Com.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
   <data name="Lbl_Delay_Com.Text" xml:space="preserve">
-    <value>Delay</value>
+    <value>Polling Interval</value>
   </data>
   <data name="&gt;&gt;Lbl_Delay_Com.Name" xml:space="preserve">
     <value>Lbl_Delay_Com</value>

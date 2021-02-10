@@ -25,7 +25,7 @@ Public Class Pref_Gui
         WinNUT_Params.Arr_Reg_Key.Item("ServerAddress") = Tb_Server_IP.Text
         WinNUT_Params.Arr_Reg_Key.Item("Port") = CInt(Tb_Port.Text)
         WinNUT_Params.Arr_Reg_Key.Item("UPSName") = Tb_UPS_Name.Text
-        WinNUT_Params.Arr_Reg_Key.Item("Delay") = CInt(Tb_Delay_Com.Text)
+        WinNUT_Params.Arr_Reg_Key.Item("Delay") = (CInt(Tb_Delay_Com.Text) * 1000)
         WinNUT_Params.Arr_Reg_Key.Item("NutLogin") = Tb_Login_Nut.Text
         WinNUT_Params.Arr_Reg_Key.Item("NutPassword") = Tb_Pwd_Nut.Text
         WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect") = Cb_Reconnect.Checked
@@ -103,7 +103,7 @@ Public Class Pref_Gui
         Tb_Server_IP.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("ServerAddress"))
         Tb_Port.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("Port"))
         Tb_UPS_Name.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("UPSName"))
-        Tb_Delay_Com.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("Delay"))
+        Tb_Delay_Com.Text = CStr(Math.Round(WinNUT_Params.Arr_Reg_Key.Item("Delay") / 1000))
         Tb_Login_Nut.Text = WinNUT_Params.Arr_Reg_Key.Item("NutLogin")
         Tb_Pwd_Nut.Text = WinNUT_Params.Arr_Reg_Key.Item("NutPassword")
         Cb_Reconnect.Checked = WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect")
@@ -214,7 +214,7 @@ Public Class Pref_Gui
         Select Case sender.Name
             Case "Tb_Delay_Com"
                 MinValue = 0
-                MaxValue = 60000
+                MaxValue = 60
             Case "Tb_Port"
                 MinValue = 1
                 MaxValue = 65536

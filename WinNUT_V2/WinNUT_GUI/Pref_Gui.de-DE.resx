@@ -16,7 +16,7 @@
     <value>Stellen Sie die Verbindung wieder her</value>
   </data>
   <data name="Lbl_Delay_Com.Text" xml:space="preserve">
-    <value>Verzögern</value>
+    <value>Abrufintervall</value>
   </data>
   <data name="Lbl_Name_UPS.Text" xml:space="preserve">
     <value>UPS Name</value>
@@ -7019,8 +7019,8 @@ niedriger als ist</value>
     <value>Optionen</value>
   </data>
   <data name="Tb_Delay_Com.ToolTip" xml:space="preserve">
-    <value>Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5000).
-Akzeptierter Wert: Numerischer Wert von 1 bis 60.000 ms.</value>
+    <value>Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5).
+Akzeptierter Wert: Numerischer Wert von 1 bis 60 Sekunden.</value>
   </data>
   <data name="Tb_UPS_Name.ToolTip" xml:space="preserve">
     <value>Zu überwachender USV-Name.
