@@ -199,6 +199,15 @@
   <data name="App_Event_Str_01" xml:space="preserve">
     <value>Application shut down at</value>
   </data>
+  <data name="Battery_Charged" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Battery_Charged.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Battery_Charging" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Battery_Charging.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Battery_Discharging" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Battery_Discharging.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Delete_LogFile_24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Delete_LogFile_24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

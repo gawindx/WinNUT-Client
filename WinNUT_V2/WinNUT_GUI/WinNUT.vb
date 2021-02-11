@@ -96,6 +96,7 @@ Public Class WinNUT
     Private Event On_Battery()
     Private Event On_Line()
     Private Event UpdateNotifyIconStr(ByVal Reason As String, ByVal Message As String)
+    Private Event UpdateBatteryState(ByVal Reason As String)
     Declare Function SetSystemPowerState Lib "kernel32" (ByVal fSuspend As Integer, ByVal fForce As Integer) As Integer
 
     Public Property UpdateMethod() As String
@@ -399,6 +400,7 @@ Public Class WinNUT
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
         UpdateIcon_NotifyIcon()
         RaiseEvent UpdateNotifyIconStr("Deconnected", Nothing)
+        RaiseEvent UpdateBatteryState("Deconnected")
     End Sub
 
     Private Sub Event_UpdateNotifyIconStr(ByVal Optional Reason As String = Nothing, ByVal Optional Message As String = Nothing) Handles Me.UpdateNotifyIconStr
@@ -460,6 +462,33 @@ Public Class WinNUT
 
         LogFile.LogTracing("NotifyIcon Text => " & vbNewLine & NotifyStr, LogLvl.LOG_DEBUG, Me)
     End Sub
+
+    Private Sub Event_UpdateBatteryState(ByVal Optional Reason As String = Nothing) Handles Me.UpdateBatteryState
+        Static Dim Old_Battery_Value As Integer = Me.UPS_BattCh
+        Dim Status As String = "Unknown"
+        Select Case Reason
+            Case Nothing, "Deconnected", "Lost Connect"
+                If Not UPS_Network.IsConnected Then
+                    Me.PBox_Battery_State.Image = Nothing
+                End If
+                Status = "Unknown"
+            Case "Update Data"
+                If Me.UPS_BattCh = 100 Then
+                    Me.PBox_Battery_State.Image = My.Resources.Battery_Charged
+                    Status = "Charged"
+                Else
+                    If Me.UPS_Status.Trim().StartsWith("OL") Or StrReverse(Me.UPS_Status.Trim()).StartsWith("LO") Then
+                        Me.PBox_Battery_State.Image = My.Resources.Battery_Charging
+                        Status = "Charging"
+                    Else
+                        Me.PBox_Battery_State.Image = My.Resources.Battery_Discharging
+                        Status = "Discharging"
+                    End If
+                End If
+        End Select
+        Old_Battery_Value = Me.UPS_BattCh
+        LogFile.LogTracing("Battery Status => " & Status, LogLvl.LOG_DEBUG, Me)
+    End Sub
     Private Sub Event_Unknown_UPS() Handles UPS_Network.Unknown_UPS
         ActualAppIconIdx = AppIconIdx.IDX_ICO_OFFLINE
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
@@ -514,6 +543,7 @@ Public Class WinNUT
         AG_BattV.Value1 = WinNUT_Params.Arr_Reg_Key.Item("MinBattVoltage")
         UpdateIcon_NotifyIcon()
         RaiseEvent UpdateNotifyIconStr("Lost Connect", Nothing)
+        RaiseEvent UpdateBatteryState("Lost Connect")
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
     End Sub
 
@@ -613,6 +643,7 @@ Public Class WinNUT
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
         UpdateIcon_NotifyIcon()
         RaiseEvent UpdateNotifyIconStr("Update Data", Nothing)
+        RaiseEvent UpdateBatteryState("Update Data")
         If Me.UPS_Status = "OL" And UPS_Network.UPS_Status = "OB" Then
             RaiseEvent On_Battery()
         End If
@@ -629,6 +660,7 @@ Public Class WinNUT
         LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
         UpdateIcon_NotifyIcon()
         RaiseEvent UpdateNotifyIconStr("Deconnected", Nothing)
+        RaiseEvent UpdateBatteryState("Deconnected")
     End Sub
 
     Private Sub ReInitDisplayValues()

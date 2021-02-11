@@ -332,6 +332,36 @@ Namespace My.Resources
         '''<summary>
         '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
         '''</summary>
+        Public ReadOnly Property Battery_Charged() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Battery_Charged", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Public ReadOnly Property Battery_Charging() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Battery_Charging", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Public ReadOnly Property Battery_Discharging() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Battery_Discharging", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
         Public ReadOnly Property Delete_LogFile_24x24() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Delete_LogFile_24x24", resourceCulture)

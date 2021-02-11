@@ -7967,31 +7967,25 @@
   <data name="GB_BattCh_Dial.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="AG_BattCh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 27</value>
+  <data name="PBox_Battery_State.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 10</value>
   </data>
-  <data name="AG_BattCh.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>148, 130</value>
+  <data name="PBox_Battery_State.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
   </data>
-  <data name="AG_BattCh.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>148, 130</value>
+  <data name="PBox_Battery_State.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="AG_BattCh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 130</value>
+  <data name="&gt;&gt;PBox_Battery_State.Name" xml:space="preserve">
+    <value>PBox_Battery_State</value>
   </data>
-  <data name="AG_BattCh.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;PBox_Battery_State.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;AG_BattCh.Name" xml:space="preserve">
-    <value>AG_BattCh</value>
-  </data>
-  <data name="&gt;&gt;AG_BattCh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.AGauge, AGauge, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;AG_BattCh.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PBox_Battery_State.Parent" xml:space="preserve">
     <value>GB_BattCh_Dial</value>
   </data>
-  <data name="&gt;&gt;AG_BattCh.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;PBox_Battery_State.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="Lbl_BattCh_Dial.AutoSize" type="System.Boolean, mscorlib">
@@ -8032,6 +8026,33 @@
   </data>
   <data name="&gt;&gt;Lbl_BattCh_Dial.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="AG_BattCh.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 27</value>
+  </data>
+  <data name="AG_BattCh.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>148, 130</value>
+  </data>
+  <data name="AG_BattCh.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>148, 130</value>
+  </data>
+  <data name="AG_BattCh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 130</value>
+  </data>
+  <data name="AG_BattCh.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;AG_BattCh.Name" xml:space="preserve">
+    <value>AG_BattCh</value>
+  </data>
+  <data name="&gt;&gt;AG_BattCh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.AGauge, AGauge, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;AG_BattCh.Parent" xml:space="preserve">
+    <value>GB_BattCh_Dial</value>
+  </data>
+  <data name="&gt;&gt;AG_BattCh.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="GB_BattCh_Dial.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 188</value>

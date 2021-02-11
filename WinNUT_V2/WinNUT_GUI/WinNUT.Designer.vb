@@ -72,8 +72,9 @@ Partial Class WinNUT
         Me.AG_OutV = New System.Windows.Forms.AGauge()
         Me.Lbl_OutV_Dial = New System.Windows.Forms.Label()
         Me.GB_BattCh_Dial = New System.Windows.Forms.GroupBox()
-        Me.AG_BattCh = New System.Windows.Forms.AGauge()
+        Me.PBox_Battery_State = New System.Windows.Forms.PictureBox()
         Me.Lbl_BattCh_Dial = New System.Windows.Forms.Label()
+        Me.AG_BattCh = New System.Windows.Forms.AGauge()
         Me.GB_Load_Dial = New System.Windows.Forms.GroupBox()
         Me.AG_Load = New System.Windows.Forms.AGauge()
         Me.Lbl_Load_Dial = New System.Windows.Forms.Label()
@@ -90,6 +91,7 @@ Partial Class WinNUT
         Me.GB_InV_Dial.SuspendLayout()
         Me.GB_OutV_Dial.SuspendLayout()
         Me.GB_BattCh_Dial.SuspendLayout()
+        CType(Me.PBox_Battery_State, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GB_Load_Dial.SuspendLayout()
         Me.GB_BattV_Dial.SuspendLayout()
         Me.GB_InF_Dial.SuspendLayout()
@@ -471,10 +473,22 @@ Partial Class WinNUT
         'GB_BattCh_Dial
         '
         resources.ApplyResources(Me.GB_BattCh_Dial, "GB_BattCh_Dial")
-        Me.GB_BattCh_Dial.Controls.Add(Me.AG_BattCh)
+        Me.GB_BattCh_Dial.Controls.Add(Me.PBox_Battery_State)
         Me.GB_BattCh_Dial.Controls.Add(Me.Lbl_BattCh_Dial)
+        Me.GB_BattCh_Dial.Controls.Add(Me.AG_BattCh)
         Me.GB_BattCh_Dial.Name = "GB_BattCh_Dial"
         Me.GB_BattCh_Dial.TabStop = False
+        '
+        'PBox_Battery_State
+        '
+        resources.ApplyResources(Me.PBox_Battery_State, "PBox_Battery_State")
+        Me.PBox_Battery_State.Name = "PBox_Battery_State"
+        Me.PBox_Battery_State.TabStop = False
+        '
+        'Lbl_BattCh_Dial
+        '
+        resources.ApplyResources(Me.Lbl_BattCh_Dial, "Lbl_BattCh_Dial")
+        Me.Lbl_BattCh_Dial.Name = "Lbl_BattCh_Dial"
         '
         'AG_BattCh
         '
@@ -520,11 +534,6 @@ Partial Class WinNUT
         Me.AG_BattCh.UnitValue2 = System.Windows.Forms.AGauge.UnitValue.None
         Me.AG_BattCh.Value1 = 0!
         Me.AG_BattCh.Value2 = 0!
-        '
-        'Lbl_BattCh_Dial
-        '
-        resources.ApplyResources(Me.Lbl_BattCh_Dial, "Lbl_BattCh_Dial")
-        Me.Lbl_BattCh_Dial.Name = "Lbl_BattCh_Dial"
         '
         'GB_Load_Dial
         '
@@ -734,6 +743,7 @@ Partial Class WinNUT
         Me.GB_OutV_Dial.PerformLayout()
         Me.GB_BattCh_Dial.ResumeLayout(False)
         Me.GB_BattCh_Dial.PerformLayout()
+        CType(Me.PBox_Battery_State, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GB_Load_Dial.ResumeLayout(False)
         Me.GB_Load_Dial.PerformLayout()
         Me.GB_BattV_Dial.ResumeLayout(False)
@@ -806,4 +816,5 @@ Partial Class WinNUT
     Friend WithEvents Lbl_InF_Dial As Label
     Friend WithEvents CB_CurrentLog As ComboBox
     Friend WithEvents Menu_Import_Ini As ToolStripMenuItem
+    Friend WithEvents PBox_Battery_State As PictureBox
 End Class
