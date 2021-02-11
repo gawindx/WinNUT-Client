@@ -11,6 +11,7 @@ Module WinNUT_Globals
     Public LongProgramName As String
     Public ProgramName As String
     Public ProgramVersion As String
+    Public ShortProgramVersion As String
     Public GitHubURL As String
     Public Copyright As String
     Public Directory_AppData As String
@@ -23,6 +24,7 @@ Module WinNUT_Globals
         LongProgramName = My.Application.Info.Description
         ProgramName = My.Application.Info.ProductName
         ProgramVersion = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString
+        ShortProgramVersion = ProgramVersion.Substring(0, ProgramVersion.IndexOf(".", ProgramVersion.IndexOf(".") + 1))
         GitHubURL = My.Application.Info.Trademark
         Copyright = My.Application.Info.Copyright
         Directory_AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\WinNUT-Client"

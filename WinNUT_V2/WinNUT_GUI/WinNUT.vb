@@ -134,7 +134,7 @@ Public Class WinNUT
         LogFile.LogTracing("Loaded Params Complete", LogLvl.LOG_DEBUG, Me)
 
         'Init Systray
-        Me.NotifyIcon.Text = WinNUT_Globals.LongProgramName & " - " & WinNUT_Globals.ProgramVersion
+        Me.NotifyIcon.Text = WinNUT_Globals.LongProgramName & " - " & WinNUT_Globals.ShortProgramVersion
         Me.NotifyIcon.Visible = False
         LogFile.LogTracing("NotifyIcons Initialised", LogLvl.LOG_DEBUG, Me)
 
@@ -404,7 +404,7 @@ Public Class WinNUT
     End Sub
 
     Private Sub Event_UpdateNotifyIconStr(ByVal Optional Reason As String = Nothing, ByVal Optional Message As String = Nothing) Handles Me.UpdateNotifyIconStr
-        Dim ShowVersion As String = StrReverse(StrReverse(WinNUT_Globals.ProgramVersion).Substring(StrReverse(WinNUT_Globals.ProgramVersion).IndexOf(".") + 1))
+        Dim ShowVersion As String = WinNUT_Globals.ShortProgramVersion
         Dim NotifyStr As String = WinNUT_Globals.ProgramName & " - " & ShowVersion & vbNewLine
         Dim FormText As String = WinNUT_Globals.ProgramName
         Select Case Reason
