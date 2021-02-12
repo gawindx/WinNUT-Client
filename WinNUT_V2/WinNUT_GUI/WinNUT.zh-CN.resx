@@ -102,4 +102,7 @@
   <data name="Lbl_InF_Dial.Text" xml:space="preserve">
     <value>频率</value>
   </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Windows NUT Client</value>
+  </data>
 </root>

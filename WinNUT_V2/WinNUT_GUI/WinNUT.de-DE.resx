@@ -42,6 +42,9 @@
   <data name="Menu_Help.Text" xml:space="preserve">
     <value>Hilfe</value>
   </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Windows NUT Client</value>
+  </data>
   <data name="Menu_Sys_Settings.Text" xml:space="preserve">
     <value>die Einstellungen</value>
   </data>
