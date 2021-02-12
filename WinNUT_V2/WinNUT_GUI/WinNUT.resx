@@ -15251,7 +15251,7 @@
     <value>720, 420</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Windows NUT Client</value>
+    <value>WinNUT</value>
   </data>
   <data name="&gt;&gt;NotifyIcon.Name" xml:space="preserve">
     <value>NotifyIcon</value>
