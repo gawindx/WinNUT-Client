@@ -18,15 +18,15 @@ Valid,nonPointer,Cancel,取消
 Valid,nonPointer,Cancellation of the Extinguishing Process,取消关机进程
 Valid,nonPointer,Check for updates.,检查应用更新。
 Valid,nonPointer,Checks for updates at startup.,在启动时检查更新。
-To Validate,Gawindx,Clear,清洁
+Valid,Gawindx,Clear,清空
 Valid,nonPointer,Close,关闭
-To Validate,Gawindx,Close to Systray,靠近Systray
+Valid,Gawindx,Close to Systray,关闭至系统托盘
 Valid,nonPointer,Conditions met for launching the Extinguishing Process,触发关机流程所需满足的条件
 Valid,nonPointer,Connected,已连接
 Valid,nonPointer,Connection,连接
 Valid,nonPointer,Connection to Nut Host {0}:{1} Established,至 Nut 主机 {0}:{1} 的连接建立成功
 Valid,nonPointer,Connection to Nut Host {0}:{1} Failed: {2},至 Nut 主机 {0}:{1} 的连接建立失败: {2}
-To Validate,Gawindx,Copy,复印
+Valid,Gawindx,Copy,复制
 Valid,nonPointer,Create a log file (WinNUT-client.log file in the WinNUT installation directory).,创建日志文件（WinNUT-client.log 文件位于 WinNUT 的安装目录）。
 Valid,nonPointer,Create LogFile,创建日志文件
 Valid,nonPointer,Daily,每天
@@ -34,7 +34,7 @@ Valid,nonPointer,Debug,调试
 Valid,nonPointer,Delay Between Verification,每次检验的延时
 Valid,nonPointer,Delay to Shutdown (sec),延时关机（秒）
 Valid,nonPointer,Delete log file.,删除日志文件。
-To Validate,Gawindx,Description :,描述：
+Valid,Gawindx,Description :,描述：
 Valid,nonPointer,Development,开发版
 Valid,nonPointer,Disconnect,断开连接
 Valid,nonPointer,Disconnected from Nut Host,断开了至 Nut 主机的连接。
@@ -44,7 +44,7 @@ Valid,nonPointer,Exit,退出
 Valid,nonPointer,Extinction In Progress,正在关机
 Valid,nonPointer,File,文件
 Valid,nonPointer,Firmware :,固件：
-To Validate,Gawindx,Frequency,频率
+Valid,Gawindx,Frequency,频率
 Valid,nonPointer,Frequency of verification.,验证频率。
 Valid,nonPointer,Frequency Supply,供电频率
 Valid,nonPointer,Grace Delay to Shutdown (sec),关机的宽限延时（秒）：
@@ -55,10 +55,10 @@ Valid,nonPointer,Hide ChangeLog,隐藏更新日志
 Valid,nonPointer,Immediate Shutdown,立即关机
 Valid,nonPointer,Immediate stop action,即时停机操作
 Valid,nonPointer,Import Ini File (v1.x),导入 Ini 文件（v1.x 版本）
-To Validate,Gawindx,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),指示当NUT服务器发出强制关机信号时是否应执行关机（FSD =强制关机）
+Valid,Gawindx,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),指示当NUT服务器发出强制关机信号（FSD）时是否应执行关机操作
 Valid,nonPointer,Input Frequency,输入频率
 Valid,nonPointer,Input Voltage,输入电压
-To Validate,Gawindx,Item Properties,物产
+Valid,Gawindx,Item Properties,项目属性
 To Validate,Gawindx,List UPS Variables,UPS变量列表
 Valid,nonPointer,Log file log level,日志记录等级
 Valid,nonPointer,Logging level,日志等级
@@ -78,7 +78,7 @@ Valid,nonPointer,Maximum input voltage. Accepted value: Numeric value from 0 to 
 Valid,nonPointer,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,最高 UPS 电量等级。取值：0-100 之间的数值。
 Valid,nonPointer,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,最高输出电压。取值：0-999 之间的数值。
 Valid,nonPointer,Min,最低
-To Validate,Gawindx,Minimize to tray,最小化到系统托盘
+Valid,Gawindx,Minimize to tray,最小化至系统托盘
 Valid,nonPointer,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,最低电池电压。取值：0-100 之间的数值。
 Valid,nonPointer,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,最低 UPS 电量等级。取值：0-100 之间的数值。
 Valid,nonPointer,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,最低输入频率。取值：0-100 之间的数值。
@@ -103,12 +103,12 @@ Valid,nonPointer,Open the log file.,打开日志文件。
 Valid,nonPointer,Options,选项
 Valid,nonPointer,Output Voltage,输出电压
 Valid,nonPointer,Password,密码
-To Validate,Gawindx,Polling Interval,轮询间隔
+Valid,Gawindx,Polling Interval,轮询间隔
 Valid,nonPointer,Reconnect,重新连接
 Valid,nonPointer,Reconnection In Progress,重连中
 Valid,nonPointer,Reduced to the taskbar or Systray.,缩小至任务栏或系统托盘。
 Valid,nonPointer,Re-establish connection,重新建立连接
-To Validate,Gawindx,Reload,重装
+Valid,Gawindx,Reload,重载
 Valid,nonPointer,Remaining Time :,剩余时间：
 Valid,nonPointer,Sends in Systray at closing.,关闭程序时缩小至托盘。
 Valid,nonPointer,Serial :,序列号：
@@ -118,7 +118,7 @@ Valid,nonPointer,Show ChangeLog,显示更新日志
 Valid,nonPointer,Shutdown,关机
 Valid,nonPointer,Shutdown if battery lower than,如果电池低于百分比则关机
 Valid,nonPointer,Shutdown if runtime lower than (sec),如果续航时间低于则关机
-To validate,Gawindx,Shutdown on NUT's FSD Signal,关闭NUT的FSD信号
+Valid,Gawindx,Shutdown on NUT's FSD Signal,收到 FSD（强制关机）信号后关机
 Valid,nonPointer,Shutdown Options,关机选项
 Valid,nonPointer,Sleep,睡眠
 Valid,nonPointer,Stable,稳定
@@ -130,7 +130,7 @@ Valid,nonPointer,Starts WinNut Minimized.,启动时最小化 WinNUT。
 Valid,nonPointer,Starts WinNUT when Windows starts.,随 Windows 启动 WinNUT。
 To validate,Gawindx,Stop condition imposed by the NUT server,NUT服务器施加的停止条件
 Valid,nonPointer,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,停机流程延时。取值：0-3600 秒之间的数值。
-To Validate,gawindx,Time between each update of UPS data (default = 5).Accepted value: Numerical value from 1 to 60 seconds.,每次更新UPS数据之间的时间（默认= 5）。接受值：1到60秒之间的数值。
+Valid,gawindx,Time between each update of UPS data (default = 5).Accepted value: Numerical value from 1 to 60 seconds.,UPS 数据的更新频率（默认值5秒）。接受值：1到60秒之间的数值。
 Valid,nonPointer,Try {0} of {1},尝试 {1} 的 {0}
 Valid,nonPointer,Try Reconnect {0} / {1},尝试重连 {0} / {1}
 Valid,nonPointer,Type of Stop,停机类型
@@ -148,7 +148,7 @@ Valid,nonPointer,UPS On Line,UPS 已接入市电
 Valid,nonPointer,UPS Overload,UPS 过载
 Valid,nonPointer,UPS Variable,UPS 变量
 Valid,nonPointer,Use the Stable or Devellop branch during verification.,在验证期间使用稳定或开发分支。
-To Validate,Gawindx,Value :,值：
+Valid,Gawindx,Value :,值：
 Valid,nonPointer,Verify Update,验证更新
 Valid,nonPointer,Verify Update At Start,在启动时验证更新
 Valid,nonPointer,Version {0} Available,新版本 {0} 可供更新
