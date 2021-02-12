@@ -56,7 +56,7 @@ Public Class ToastPopup
         'toast.Failed += ToastFailed
 
         'Show the toast. Be sure to specify the AppUserModelId on your application's shortcut!
-        Dim AppId As String = WinNUT_Globals.ProgramName & " - " & WinNUT_Globals.ProgramVersion
+        Dim AppId As String = WinNUT_Globals.ProgramName & " - " & WinNUT_Globals.ShortProgramVersion
         Windows.UI.Notifications.ToastNotificationManager.CreateToastNotifier(AppId).Show(toast)
     End Sub
 End Class
