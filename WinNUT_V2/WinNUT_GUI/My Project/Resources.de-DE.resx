@@ -115,4 +115,10 @@ Ini-Datei nach {0}.old verschoben</value>
   <data name="Log_Str_12" xml:space="preserve">
     <value>Vom NUT-Server auferlegte Stoppbedingung</value>
   </data>
+  <data name="Frm_Main_Str_14" xml:space="preserve">
+    <value>Windows Standby, WinNUT wird getrennt.</value>
+  </data>
+  <data name="Frm_Main_Str_15" xml:space="preserve">
+    <value>Windows Standby. WinNUT wird getrennt. </value>
+  </data>
 </root>

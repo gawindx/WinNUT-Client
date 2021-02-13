@@ -115,4 +115,10 @@ Fichier Ini déplacé vers {0}.old</value>
   <data name="Log_Str_12" xml:space="preserve">
     <value>Condition d'arrêt forcée signalée par le serveur NUT</value>
   </data>
+  <data name="Frm_Main_Str_14" xml:space="preserve">
+    <value>Redémarrage de WinNUT après la sortie de veille de Windows.</value>
+  </data>
+  <data name="Frm_Main_Str_15" xml:space="preserve">
+    <value>Mise en veille de Windows. WinNUT va se déconnecter.</value>
+  </data>
 </root>

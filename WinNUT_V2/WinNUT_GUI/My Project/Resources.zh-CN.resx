@@ -115,4 +115,10 @@ Ini 文件重命名为 {0}.old</value>
   <data name="Log_Str_12" xml:space="preserve">
     <value>NUT服务器施加的停止条件</value>
   </data>
+  <data name="Frm_Main_Str_14" xml:space="preserve">
+    <value>从Windows唤醒后重新启动WinNUT。</value>
+  </data>
+  <data name="Frm_Main_Str_15" xml:space="preserve">
+    <value>Windows待机，WinNUT将断开连接。</value>
+  </data>
 </root>

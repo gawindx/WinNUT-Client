@@ -110,6 +110,7 @@ Valid,Gawindx,Reduced to the taskbar or Systray.,Réduit à la barre des tâches
 Valid,Gawindx,Re-establish connection,Reconnecter
 Valid,Gawindx,Reload,Recharger
 Valid,Gawindx,Remaining Time :,Temps de Sauvegarde :
+Valid,Gawindx,Restarting WinNUT after waking up from Windows.,Redémarrage de WinNUT après la sortie de veille de Windows.
 Valid,Gawindx,Sends in Systray at closing.,Envoie dans le Systray à la fermeture.
 Valid,Gawindx,Serial :,Serial :
 Valid,Gawindx,Sets the input frequency if not supplied by the UPS.,Règle la fréquence d'entrée si elle n'est pas fournie par l'onduleur.
@@ -154,4 +155,5 @@ Valid,Gawindx,Verify Update At Start,Vérifier la mise à jour au Démarrage
 Valid,Gawindx,Version {0} Available,Version {0} disponible
 Valid,Gawindx,Weekly,Hebdomadaire
 Valid,Gawindx,WinNut Preferences Changed,Préférences de WinNUT Modifiées
+Valid,Gawindx,Windows standby. WinNUT will disconnect.,Mise en veille de Windows. WinNUT va se déconnecter.
 Valid,Gawindx,Wrong Login ID (Username or Password),ID de connexion incorrect (nom d'utilisateur ou mot de passe)

@@ -110,6 +110,7 @@ Valid,nonPointer,Reduced to the taskbar or Systray.,缩小至任务栏或系统�
 Valid,nonPointer,Re-establish connection,重新建立连接
 To Validate,Gawindx,Reload,重装
 Valid,nonPointer,Remaining Time :,剩余时间：
+To Validate,Gawindx,Restarting WinNUT after waking up from Windows.,从Windows唤醒后重新启动WinNUT。
 Valid,nonPointer,Sends in Systray at closing.,关闭程序时缩小至托盘。
 Valid,nonPointer,Serial :,序列号：
 Valid,nonPointer,Sets the input frequency if not supplied by the UPS.,设置输入频率（如果UPS未提供）
@@ -154,4 +155,5 @@ Valid,nonPointer,Verify Update At Start,在启动时验证更新
 Valid,nonPointer,Version {0} Available,新版本 {0} 可供更新
 Valid,nonPointer,Weekly,每周
 Valid,nonPointer,WinNut Preferences Changed,WinNut 设置已修改
+to Validate, Gawindx,Windows standby. WinNUT will disconnect.,Windows待机。 WinNUT将断开连接。 
 Valid,nonPointer,Wrong Login ID (Username or Password),错误的登录凭据（用户名或密码）

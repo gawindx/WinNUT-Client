@@ -42,6 +42,8 @@ Public Enum AppResxStr
     STR_MAIN_UNKNOWN_UPS
     STR_MAIN_LOSTCONNECT
     STR_MAIN_INVALIDLOGIN
+    STR_MAIN_EXITSLEEP
+    STR_MAIN_GOTOSLEEP
     STR_UP_AVAIL
     STR_UP_SHOW
     STR_UP_HIDE
@@ -275,13 +277,13 @@ Public Class WinNUT
     Private Sub SystemEvents_PowerModeChanged(ByVal sender As Object, ByVal e As Microsoft.Win32.PowerModeChangedEventArgs)
         Select Case e.Mode
             Case Microsoft.Win32.PowerModes.Resume
+                LogFile.LogTracing("Restarting WinNUT after waking up from Windows", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_EXITSLEEP))
                 If WinNUT_Params.Arr_Reg_Key.Item("AutoReconnect") = True Then
                     UPS_Network.Connect()
                 End If
-            'Case PowerModes.StatusChange
             Case Microsoft.Win32.PowerModes.Suspend
+                LogFile.LogTracing("Windows standby, WinNUT will disconnect", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_MAIN_GOTOSLEEP))
                 UPS_Network.Disconnect()
-                RemoveHandler Microsoft.Win32.SystemEvents.PowerModeChanged, AddressOf SystemEvents_PowerModeChanged
         End Select
     End Sub
 

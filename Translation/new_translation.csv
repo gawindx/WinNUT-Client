@@ -110,6 +110,7 @@ Status,Translator,Message,Translation
 ,,Re-establish connection,
 ,,Reload,
 ,,Remaining Time :,
+,,Restarting WinNUT after waking up from Windows.,
 ,,Sends in Systray at closing.,
 ,,Serial :,
 ,,Sets the input frequency if not supplied by the UPS.,
@@ -154,4 +155,5 @@ Status,Translator,Message,Translation
 ,,Version {0} Available,
 ,,Weekly,
 ,,WinNut Preferences Changed,
+,,Windows standby, WinNUT will disconnect.,
 ,,Wrong Login ID (Username or Password),

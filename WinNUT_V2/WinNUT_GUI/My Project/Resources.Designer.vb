@@ -488,6 +488,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Recherche une chaîne localisée semblable à Restarting WinNUT after waking up from Windows..
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_14() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_14", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une chaîne localisée semblable à Windows standby. WinNUT will disconnect..
+        '''</summary>
+        Public ReadOnly Property Frm_Main_Str_15() As String
+            Get
+                Return ResourceManager.GetString("Frm_Main_Str_15", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Recherche une chaîne localisée semblable à Battery_Charge : {0}
         '''Remaining Time : {1}.
         '''</summary>
