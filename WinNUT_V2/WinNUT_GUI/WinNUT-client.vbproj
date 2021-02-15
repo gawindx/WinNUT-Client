@@ -204,6 +204,9 @@
     <EmbeddedResource Include="About_Gui.resx">
       <DependentUpon>About_Gui.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="About_Gui.ru-RU.resx">
+      <DependentUpon>About_Gui.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="About_Gui.zh-CN.resx">
       <DependentUpon>About_Gui.vb</DependentUpon>
     </EmbeddedResource>
@@ -216,11 +219,15 @@
     <EmbeddedResource Include="List_Var_Gui.resx">
       <DependentUpon>List_Var_Gui.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="List_Var_Gui.ru-RU.resx">
+      <DependentUpon>List_Var_Gui.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="List_Var_Gui.zh-CN.resx">
       <DependentUpon>List_Var_Gui.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.de-DE.resx" />
     <EmbeddedResource Include="My Project\Resources.fr-FR.resx" />
+    <EmbeddedResource Include="My Project\Resources.ru-RU.resx" />
     <EmbeddedResource Include="My Project\Resources.zh-CN.resx" />
     <EmbeddedResource Include="Pref_Gui.de-DE.resx">
       <DependentUpon>Pref_Gui.vb</DependentUpon>
@@ -229,6 +236,9 @@
       <DependentUpon>Pref_Gui.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pref_Gui.resx">
+      <DependentUpon>Pref_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pref_Gui.ru-RU.resx">
       <DependentUpon>Pref_Gui.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pref_Gui.zh-CN.resx">
@@ -243,6 +253,9 @@
     <EmbeddedResource Include="Shutdown_Gui.resx">
       <DependentUpon>Shutdown_Gui.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Shutdown_Gui.ru-RU.resx">
+      <DependentUpon>Shutdown_Gui.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Shutdown_Gui.zh-CN.resx">
       <DependentUpon>Shutdown_Gui.vb</DependentUpon>
     </EmbeddedResource>
@@ -253,6 +266,9 @@
       <DependentUpon>Update_Gui.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Update_Gui.resx">
+      <DependentUpon>Update_Gui.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update_Gui.ru-RU.resx">
       <DependentUpon>Update_Gui.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Update_Gui.zh-CN.resx">
@@ -273,6 +289,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinNUT.ru-RU.resx">
+      <DependentUpon>WinNUT.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinNUT.zh-CN.resx">
       <DependentUpon>WinNUT.vb</DependentUpon>
@@ -352,6 +371,7 @@
   <ItemGroup>
     <XliffResource Include="MultilingualResources\WinNUT-client.de-DE.xlf" />
     <XliffResource Include="MultilingualResources\WinNUT-client.fr-FR.xlf" />
+    <XliffResource Include="MultilingualResources\WinNUT-client.ru-RU.xlf" />
     <XliffResource Include="MultilingualResources\WinNUT-client.zh-CN.xlf" />
   </ItemGroup>
   <ItemGroup>

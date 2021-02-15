@@ -117,1026 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;Tb_Pwd_Nut.Name" xml:space="preserve">
-    <value>Tb_Pwd_Nut</value>
-  </data>
-  <data name="&gt;&gt;Tb_Pwd_Nut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_Pwd_Nut.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Tb_Pwd_Nut.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Tb_Login_Nut.Name" xml:space="preserve">
-    <value>Tb_Login_Nut</value>
-  </data>
-  <data name="&gt;&gt;Tb_Login_Nut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_Login_Nut.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Tb_Login_Nut.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Label3.Name" xml:space="preserve">
-    <value>Label3</value>
-  </data>
-  <data name="&gt;&gt;Label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Label3.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Label3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Pwd_Nut.Name" xml:space="preserve">
-    <value>Lbl_Pwd_Nut</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Pwd_Nut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Pwd_Nut.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Pwd_Nut.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Login_Nut.Name" xml:space="preserve">
-    <value>Lbl_Login_Nut</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Login_Nut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Login_Nut.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Login_Nut.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;Tb_Delay_Com.Name" xml:space="preserve">
-    <value>Tb_Delay_Com</value>
-  </data>
-  <data name="&gt;&gt;Tb_Delay_Com.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_Delay_Com.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Tb_Delay_Com.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;Tb_UPS_Name.Name" xml:space="preserve">
-    <value>Tb_UPS_Name</value>
-  </data>
-  <data name="&gt;&gt;Tb_UPS_Name.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_UPS_Name.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Tb_UPS_Name.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;Tb_Port.Name" xml:space="preserve">
-    <value>Tb_Port</value>
-  </data>
-  <data name="&gt;&gt;Tb_Port.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_Port.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Tb_Port.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;Tb_Server_IP.Name" xml:space="preserve">
-    <value>Tb_Server_IP</value>
-  </data>
-  <data name="&gt;&gt;Tb_Server_IP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_Server_IP.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Tb_Server_IP.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;Cb_Reconnect.Name" xml:space="preserve">
-    <value>Cb_Reconnect</value>
-  </data>
-  <data name="&gt;&gt;Cb_Reconnect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cb_Reconnect.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Cb_Reconnect.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Com.Name" xml:space="preserve">
-    <value>Lbl_Delay_Com</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Com.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Com.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Com.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Name_UPS.Name" xml:space="preserve">
-    <value>Lbl_Name_UPS</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Name_UPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Name_UPS.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Name_UPS.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Port.Name" xml:space="preserve">
-    <value>Lbl_Port</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Port.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Port.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Port.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Server_IP.Name" xml:space="preserve">
-    <value>Lbl_Server_IP</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Server_IP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Server_IP.Parent" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Server_IP.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="Tab_Connexion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Tab_Connexion.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="Tab_Connexion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>322, 234</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Tab_Connexion.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="Tab_Connexion.Text" xml:space="preserve">
-    <value>Connection</value>
-  </data>
-  <data name="&gt;&gt;Tab_Connexion.Name" xml:space="preserve">
-    <value>Tab_Connexion</value>
-  </data>
-  <data name="&gt;&gt;Tab_Connexion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tab_Connexion.Parent" xml:space="preserve">
-    <value>TabControl_Options</value>
-  </data>
-  <data name="&gt;&gt;Tab_Connexion.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Freq_Input.Name" xml:space="preserve">
-    <value>Cbx_Freq_Input</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Freq_Input.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Freq_Input.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Freq_Input.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattV_Max.Name" xml:space="preserve">
-    <value>Tb_BattV_Max</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattV_Max.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattV_Max.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattV_Max.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Tb_Load_Max.Name" xml:space="preserve">
-    <value>Tb_Load_Max</value>
-  </data>
-  <data name="&gt;&gt;Tb_Load_Max.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_Load_Max.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Tb_Load_Max.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Tb_OutV_Max.Name" xml:space="preserve">
-    <value>Tb_OutV_Max</value>
-  </data>
-  <data name="&gt;&gt;Tb_OutV_Max.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_OutV_Max.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Tb_OutV_Max.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Tb_InF_Max.Name" xml:space="preserve">
-    <value>Tb_InF_Max</value>
-  </data>
-  <data name="&gt;&gt;Tb_InF_Max.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_InF_Max.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Tb_InF_Max.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattV_Min.Name" xml:space="preserve">
-    <value>Tb_BattV_Min</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattV_Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattV_Min.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattV_Min.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;Tb_Load_Min.Name" xml:space="preserve">
-    <value>Tb_Load_Min</value>
-  </data>
-  <data name="&gt;&gt;Tb_Load_Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_Load_Min.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Tb_Load_Min.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;Tb_OutV_Min.Name" xml:space="preserve">
-    <value>Tb_OutV_Min</value>
-  </data>
-  <data name="&gt;&gt;Tb_OutV_Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_OutV_Min.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Tb_OutV_Min.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;Tb_InF_Min.Name" xml:space="preserve">
-    <value>Tb_InF_Min</value>
-  </data>
-  <data name="&gt;&gt;Tb_InF_Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_InF_Min.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Tb_InF_Min.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;Tb_InV_Max.Name" xml:space="preserve">
-    <value>Tb_InV_Max</value>
-  </data>
-  <data name="&gt;&gt;Tb_InV_Max.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_InV_Max.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Tb_InV_Max.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;Tb_InV_Min.Name" xml:space="preserve">
-    <value>Tb_InV_Min</value>
-  </data>
-  <data name="&gt;&gt;Tb_InV_Min.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_InV_Min.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Tb_InV_Min.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Maxi.Name" xml:space="preserve">
-    <value>Lbl_Maxi</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Maxi.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Maxi.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Maxi.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Mini.Name" xml:space="preserve">
-    <value>Lbl_Mini</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Mini.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Mini.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Mini.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattV.Name" xml:space="preserve">
-    <value>Lbl_BattV</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattV.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattV.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;Lbl_LoadUPS.Name" xml:space="preserve">
-    <value>Lbl_LoadUPS</value>
-  </data>
-  <data name="&gt;&gt;Lbl_LoadUPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_LoadUPS.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Lbl_LoadUPS.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;Lbl_OutputV.Name" xml:space="preserve">
-    <value>Lbl_OutputV</value>
-  </data>
-  <data name="&gt;&gt;Lbl_OutputV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_OutputV.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Lbl_OutputV.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;Lbl_InputF.Name" xml:space="preserve">
-    <value>Lbl_InputF</value>
-  </data>
-  <data name="&gt;&gt;Lbl_InputF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_InputF.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Lbl_InputF.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;Lbl_PowerF.Name" xml:space="preserve">
-    <value>Lbl_PowerF</value>
-  </data>
-  <data name="&gt;&gt;Lbl_PowerF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_PowerF.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Lbl_PowerF.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;Lbl_InputV.Name" xml:space="preserve">
-    <value>Lbl_InputV</value>
-  </data>
-  <data name="&gt;&gt;Lbl_InputV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_InputV.Parent" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Lbl_InputV.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="Tab_Calibrage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="Tab_Calibrage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="Tab_Calibrage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>322, 234</value>
-  </data>
-  <data name="Tab_Calibrage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="Tab_Calibrage.Text" xml:space="preserve">
-    <value>Calibration</value>
-  </data>
-  <data name="&gt;&gt;Tab_Calibrage.Name" xml:space="preserve">
-    <value>Tab_Calibrage</value>
-  </data>
-  <data name="&gt;&gt;Tab_Calibrage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tab_Calibrage.Parent" xml:space="preserve">
-    <value>TabControl_Options</value>
-  </data>
-  <data name="&gt;&gt;Tab_Calibrage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Cbx_LogLevel.Name" xml:space="preserve">
-    <value>Cbx_LogLevel</value>
-  </data>
-  <data name="&gt;&gt;Cbx_LogLevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cbx_LogLevel.Parent" xml:space="preserve">
-    <value>Tab_Miscellanous</value>
-  </data>
-  <data name="&gt;&gt;Cbx_LogLevel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Btn_DeleteLog.Name" xml:space="preserve">
-    <value>Btn_DeleteLog</value>
-  </data>
-  <data name="&gt;&gt;Btn_DeleteLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Btn_DeleteLog.Parent" xml:space="preserve">
-    <value>Tab_Miscellanous</value>
-  </data>
-  <data name="&gt;&gt;Btn_DeleteLog.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Btn_ViewLog.Name" xml:space="preserve">
-    <value>Btn_ViewLog</value>
-  </data>
-  <data name="&gt;&gt;Btn_ViewLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Btn_ViewLog.Parent" xml:space="preserve">
-    <value>Tab_Miscellanous</value>
-  </data>
-  <data name="&gt;&gt;Btn_ViewLog.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Lbl_LevelLog.Name" xml:space="preserve">
-    <value>Lbl_LevelLog</value>
-  </data>
-  <data name="&gt;&gt;Lbl_LevelLog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_LevelLog.Parent" xml:space="preserve">
-    <value>Tab_Miscellanous</value>
-  </data>
-  <data name="&gt;&gt;Lbl_LevelLog.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;CB_Use_Logfile.Name" xml:space="preserve">
-    <value>CB_Use_Logfile</value>
-  </data>
-  <data name="&gt;&gt;CB_Use_Logfile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CB_Use_Logfile.Parent" xml:space="preserve">
-    <value>Tab_Miscellanous</value>
-  </data>
-  <data name="&gt;&gt;CB_Use_Logfile.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;CB_Start_W_Win.Name" xml:space="preserve">
-    <value>CB_Start_W_Win</value>
-  </data>
-  <data name="&gt;&gt;CB_Start_W_Win.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CB_Start_W_Win.Parent" xml:space="preserve">
-    <value>Tab_Miscellanous</value>
-  </data>
-  <data name="&gt;&gt;CB_Start_W_Win.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;CB_Close_Tray.Name" xml:space="preserve">
-    <value>CB_Close_Tray</value>
-  </data>
-  <data name="&gt;&gt;CB_Close_Tray.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CB_Close_Tray.Parent" xml:space="preserve">
-    <value>Tab_Miscellanous</value>
-  </data>
-  <data name="&gt;&gt;CB_Close_Tray.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;CB_Start_Mini.Name" xml:space="preserve">
-    <value>CB_Start_Mini</value>
-  </data>
-  <data name="&gt;&gt;CB_Start_Mini.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CB_Start_Mini.Parent" xml:space="preserve">
-    <value>Tab_Miscellanous</value>
-  </data>
-  <data name="&gt;&gt;CB_Start_Mini.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;CB_Systray.Name" xml:space="preserve">
-    <value>CB_Systray</value>
-  </data>
-  <data name="&gt;&gt;CB_Systray.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CB_Systray.Parent" xml:space="preserve">
-    <value>Tab_Miscellanous</value>
-  </data>
-  <data name="&gt;&gt;CB_Systray.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="Tab_Miscellanous.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="Tab_Miscellanous.Size" type="System.Drawing.Size, System.Drawing">
-    <value>322, 234</value>
-  </data>
-  <data name="Tab_Miscellanous.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="Tab_Miscellanous.Text" xml:space="preserve">
-    <value>Miscellanous</value>
-  </data>
-  <data name="&gt;&gt;Tab_Miscellanous.Name" xml:space="preserve">
-    <value>Tab_Miscellanous</value>
-  </data>
-  <data name="&gt;&gt;Tab_Miscellanous.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tab_Miscellanous.Parent" xml:space="preserve">
-    <value>TabControl_Options</value>
-  </data>
-  <data name="&gt;&gt;Tab_Miscellanous.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;CB_Follow_FSD.Name" xml:space="preserve">
-    <value>CB_Follow_FSD</value>
-  </data>
-  <data name="&gt;&gt;CB_Follow_FSD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CB_Follow_FSD.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;CB_Follow_FSD.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Percent.Name" xml:space="preserve">
-    <value>Lbl_Percent</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Percent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Percent.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Percent.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Tb_GraceTime.Name" xml:space="preserve">
-    <value>Tb_GraceTime</value>
-  </data>
-  <data name="&gt;&gt;Tb_GraceTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_GraceTime.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Tb_GraceTime.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Cb_ExtendTime.Name" xml:space="preserve">
-    <value>Cb_ExtendTime</value>
-  </data>
-  <data name="&gt;&gt;Cb_ExtendTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cb_ExtendTime.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Cb_ExtendTime.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Tb_Delay_Stop.Name" xml:space="preserve">
-    <value>Tb_Delay_Stop</value>
-  </data>
-  <data name="&gt;&gt;Tb_Delay_Stop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_Delay_Stop.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Tb_Delay_Stop.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;Cbx_TypeStop.Name" xml:space="preserve">
-    <value>Cbx_TypeStop</value>
-  </data>
-  <data name="&gt;&gt;Cbx_TypeStop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cbx_TypeStop.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Cbx_TypeStop.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;Cb_ImmediateStop.Name" xml:space="preserve">
-    <value>Cb_ImmediateStop</value>
-  </data>
-  <data name="&gt;&gt;Cb_ImmediateStop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cb_ImmediateStop.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Cb_ImmediateStop.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattLimit_Time.Name" xml:space="preserve">
-    <value>Tb_BattLimit_Time</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattLimit_Time.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattLimit_Time.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattLimit_Time.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattLimit_Load.Name" xml:space="preserve">
-    <value>Tb_BattLimit_Load</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattLimit_Load.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattLimit_Load.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Tb_BattLimit_Load.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;Lbl_GraceTime.Name" xml:space="preserve">
-    <value>Lbl_GraceTime</value>
-  </data>
-  <data name="&gt;&gt;Lbl_GraceTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_GraceTime.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Lbl_GraceTime.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Stop.Name" xml:space="preserve">
-    <value>Lbl_Delay_Stop</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Stop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Stop.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Stop.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;Lbl_StopType.Name" xml:space="preserve">
-    <value>Lbl_StopType</value>
-  </data>
-  <data name="&gt;&gt;Lbl_StopType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_StopType.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Lbl_StopType.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattLimit_Time.Name" xml:space="preserve">
-    <value>Lbl_BattLimit_Time</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattLimit_Time.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattLimit_Time.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattLimit_Time.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattLimit_Load.Name" xml:space="preserve">
-    <value>Lbl_BattLimit_Load</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattLimit_Load.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattLimit_Load.Parent" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Lbl_BattLimit_Load.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="Tab_Shutdown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="Tab_Shutdown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="Tab_Shutdown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>322, 234</value>
-  </data>
-  <data name="Tab_Shutdown.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="Tab_Shutdown.Text" xml:space="preserve">
-    <value>Shutdown Options</value>
-  </data>
-  <data name="&gt;&gt;Tab_Shutdown.Name" xml:space="preserve">
-    <value>Tab_Shutdown</value>
-  </data>
-  <data name="&gt;&gt;Tab_Shutdown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tab_Shutdown.Parent" xml:space="preserve">
-    <value>TabControl_Options</value>
-  </data>
-  <data name="&gt;&gt;Tab_Shutdown.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="Cbx_Branch_Update.Items" xml:space="preserve">
-    <value>Stable</value>
-  </data>
-  <data name="Cbx_Branch_Update.Items1" xml:space="preserve">
-    <value>Development</value>
-  </data>
-  <data name="Cbx_Branch_Update.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 101</value>
-  </data>
-  <data name="Cbx_Branch_Update.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 21</value>
-  </data>
-  <data name="Cbx_Branch_Update.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="Cbx_Branch_Update.ToolTip" xml:space="preserve">
-    <value>Use the Stable or Devellop branch during verification.</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Branch_Update.Name" xml:space="preserve">
-    <value>Cbx_Branch_Update</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Branch_Update.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Branch_Update.Parent" xml:space="preserve">
-    <value>Tab_Update</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Branch_Update.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="Cbx_Delay_Verif.Items" xml:space="preserve">
-    <value>Daily</value>
-  </data>
-  <data name="Cbx_Delay_Verif.Items1" xml:space="preserve">
-    <value>Weekly</value>
-  </data>
-  <data name="Cbx_Delay_Verif.Items2" xml:space="preserve">
-    <value>Monthly</value>
-  </data>
-  <data name="Cbx_Delay_Verif.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 71</value>
-  </data>
-  <data name="Cbx_Delay_Verif.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 21</value>
-  </data>
-  <data name="Cbx_Delay_Verif.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <metadata name="Pref_TlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="Cbx_Delay_Verif.ToolTip" xml:space="preserve">
-    <value>Frequency of verification.</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Delay_Verif.Name" xml:space="preserve">
-    <value>Cbx_Delay_Verif</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Delay_Verif.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Delay_Verif.Parent" xml:space="preserve">
-    <value>Tab_Update</value>
-  </data>
-  <data name="&gt;&gt;Cbx_Delay_Verif.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Lbl_Branch_Update.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Branch_Update.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 102</value>
-  </data>
-  <data name="Lbl_Branch_Update.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 13</value>
-  </data>
-  <data name="Lbl_Branch_Update.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="Lbl_Branch_Update.Text" xml:space="preserve">
-    <value>Stable Or Dev Branch</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Branch_Update.Name" xml:space="preserve">
-    <value>Lbl_Branch_Update</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Branch_Update.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Branch_Update.Parent" xml:space="preserve">
-    <value>Tab_Update</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Branch_Update.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="Lbl_Delay_Verif.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Lbl_Delay_Verif.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 72</value>
-  </data>
-  <data name="Lbl_Delay_Verif.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 13</value>
-  </data>
-  <data name="Lbl_Delay_Verif.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="Lbl_Delay_Verif.Text" xml:space="preserve">
-    <value>Delay Between Verification</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Verif.Name" xml:space="preserve">
-    <value>Lbl_Delay_Verif</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Verif.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Verif.Parent" xml:space="preserve">
-    <value>Tab_Update</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Delay_Verif.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="Cb_Update_At_Start.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Cb_Update_At_Start.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="Cb_Update_At_Start.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="Cb_Update_At_Start.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>310, 0</value>
-  </data>
-  <data name="Cb_Update_At_Start.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 17</value>
-  </data>
-  <data name="Cb_Update_At_Start.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="Cb_Update_At_Start.Text" xml:space="preserve">
-    <value>Verify Update At Start</value>
-  </data>
-  <data name="Cb_Update_At_Start.ToolTip" xml:space="preserve">
-    <value>Checks for updates at startup.</value>
-  </data>
-  <data name="&gt;&gt;Cb_Update_At_Start.Name" xml:space="preserve">
-    <value>Cb_Update_At_Start</value>
-  </data>
-  <data name="&gt;&gt;Cb_Update_At_Start.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cb_Update_At_Start.Parent" xml:space="preserve">
-    <value>Tab_Update</value>
-  </data>
-  <data name="&gt;&gt;Cb_Update_At_Start.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="Cb_Verify_Update.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="Cb_Verify_Update.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="Cb_Verify_Update.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 12</value>
-  </data>
-  <data name="Cb_Verify_Update.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>310, 0</value>
-  </data>
-  <data name="Cb_Verify_Update.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 17</value>
-  </data>
-  <data name="Cb_Verify_Update.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="Cb_Verify_Update.Text" xml:space="preserve">
-    <value>Verify Update</value>
-  </data>
-  <data name="Cb_Verify_Update.ToolTip" xml:space="preserve">
-    <value>Check for updates.</value>
-  </data>
-  <data name="&gt;&gt;Cb_Verify_Update.Name" xml:space="preserve">
-    <value>Cb_Verify_Update</value>
-  </data>
-  <data name="&gt;&gt;Cb_Verify_Update.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cb_Verify_Update.Parent" xml:space="preserve">
-    <value>Tab_Update</value>
-  </data>
-  <data name="&gt;&gt;Cb_Verify_Update.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="Tab_Update.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="Tab_Update.Size" type="System.Drawing.Size, System.Drawing">
-    <value>322, 234</value>
-  </data>
-  <data name="Tab_Update.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="Tab_Update.Text" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="&gt;&gt;Tab_Update.Name" xml:space="preserve">
-    <value>Tab_Update</value>
-  </data>
-  <data name="&gt;&gt;Tab_Update.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Tab_Update.Parent" xml:space="preserve">
-    <value>TabControl_Options</value>
-  </data>
-  <data name="&gt;&gt;Tab_Update.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="TabControl_Options.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="TabControl_Options.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 260</value>
-  </data>
-  <data name="TabControl_Options.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;TabControl_Options.Name" xml:space="preserve">
-    <value>TabControl_Options</value>
-  </data>
-  <data name="&gt;&gt;TabControl_Options.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabControl_Options.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;TabControl_Options.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="Tb_Pwd_Nut.Location" type="System.Drawing.Point, System.Drawing">
     <value>154, 191</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Tb_Pwd_Nut.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>
   </data>
@@ -1146,9 +131,11 @@
   <data name="Tb_Pwd_Nut.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
+  <metadata name="Pref_TlTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="Tb_Pwd_Nut.ToolTip" xml:space="preserve">
-    <value>Time between each update of UPS data (default = 5000).
-Accepted value: Numerical value from 1 to 60,000 ms.</value>
+    <value>NUT server login password</value>
   </data>
   <data name="&gt;&gt;Tb_Pwd_Nut.Name" xml:space="preserve">
     <value>Tb_Pwd_Nut</value>
@@ -1172,8 +159,7 @@ Accepted value: Numerical value from 1 to 60,000 ms.</value>
     <value>15</value>
   </data>
   <data name="Tb_Login_Nut.ToolTip" xml:space="preserve">
-    <value>Time between each update of UPS data (default = 5000).
-Accepted value: Numerical value from 1 to 60,000 ms.</value>
+    <value>NUT server connection identifier</value>
   </data>
   <data name="&gt;&gt;Tb_Login_Nut.Name" xml:space="preserve">
     <value>Tb_Login_Nut</value>
@@ -1190,6 +176,7 @@ Accepted value: Numerical value from 1 to 60,000 ms.</value>
   <data name="Label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1526,6 +513,33 @@ Accepted value: IPV4 / IPV6 / FQDN address.</value>
   </data>
   <data name="&gt;&gt;Lbl_Server_IP.ZOrder" xml:space="preserve">
     <value>13</value>
+  </data>
+  <data name="Tab_Connexion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="Tab_Connexion.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="Tab_Connexion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>322, 234</value>
+  </data>
+  <data name="Tab_Connexion.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="Tab_Connexion.Text" xml:space="preserve">
+    <value>Connection</value>
+  </data>
+  <data name="&gt;&gt;Tab_Connexion.Name" xml:space="preserve">
+    <value>Tab_Connexion</value>
+  </data>
+  <data name="&gt;&gt;Tab_Connexion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tab_Connexion.Parent" xml:space="preserve">
+    <value>TabControl_Options</value>
+  </data>
+  <data name="&gt;&gt;Tab_Connexion.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="Cbx_Freq_Input.Items" xml:space="preserve">
     <value>50</value>
@@ -2023,6 +1037,33 @@ Accepted value: Numeric value from 0 to 999.</value>
   <data name="&gt;&gt;Lbl_InputV.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
+  <data name="Tab_Calibrage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="Tab_Calibrage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="Tab_Calibrage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>322, 234</value>
+  </data>
+  <data name="Tab_Calibrage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Tab_Calibrage.Text" xml:space="preserve">
+    <value>Calibration</value>
+  </data>
+  <data name="&gt;&gt;Tab_Calibrage.Name" xml:space="preserve">
+    <value>Tab_Calibrage</value>
+  </data>
+  <data name="&gt;&gt;Tab_Calibrage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tab_Calibrage.Parent" xml:space="preserve">
+    <value>TabControl_Options</value>
+  </data>
+  <data name="&gt;&gt;Tab_Calibrage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="Cbx_LogLevel.Items" xml:space="preserve">
     <value>Notice</value>
   </data>
@@ -2331,6 +1372,30 @@ Accepted value: Numeric value from 0 to 999.</value>
   </data>
   <data name="&gt;&gt;CB_Systray.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="Tab_Miscellanous.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="Tab_Miscellanous.Size" type="System.Drawing.Size, System.Drawing">
+    <value>322, 234</value>
+  </data>
+  <data name="Tab_Miscellanous.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="Tab_Miscellanous.Text" xml:space="preserve">
+    <value>Miscellanous</value>
+  </data>
+  <data name="&gt;&gt;Tab_Miscellanous.Name" xml:space="preserve">
+    <value>Tab_Miscellanous</value>
+  </data>
+  <data name="&gt;&gt;Tab_Miscellanous.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tab_Miscellanous.Parent" xml:space="preserve">
+    <value>TabControl_Options</value>
+  </data>
+  <data name="&gt;&gt;Tab_Miscellanous.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="CB_Follow_FSD.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2739,6 +1804,267 @@ Accepted value: Numeric value from 0 to 100.</value>
   </data>
   <data name="&gt;&gt;Lbl_BattLimit_Load.ZOrder" xml:space="preserve">
     <value>13</value>
+  </data>
+  <data name="Tab_Shutdown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="Tab_Shutdown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="Tab_Shutdown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>322, 234</value>
+  </data>
+  <data name="Tab_Shutdown.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="Tab_Shutdown.Text" xml:space="preserve">
+    <value>Shutdown Options</value>
+  </data>
+  <data name="&gt;&gt;Tab_Shutdown.Name" xml:space="preserve">
+    <value>Tab_Shutdown</value>
+  </data>
+  <data name="&gt;&gt;Tab_Shutdown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tab_Shutdown.Parent" xml:space="preserve">
+    <value>TabControl_Options</value>
+  </data>
+  <data name="&gt;&gt;Tab_Shutdown.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Cbx_Branch_Update.Items" xml:space="preserve">
+    <value>Stable</value>
+  </data>
+  <data name="Cbx_Branch_Update.Items1" xml:space="preserve">
+    <value>Development</value>
+  </data>
+  <data name="Cbx_Branch_Update.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 101</value>
+  </data>
+  <data name="Cbx_Branch_Update.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="Cbx_Branch_Update.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="Cbx_Branch_Update.ToolTip" xml:space="preserve">
+    <value>Use the Stable or Devellop branch during verification.</value>
+  </data>
+  <data name="&gt;&gt;Cbx_Branch_Update.Name" xml:space="preserve">
+    <value>Cbx_Branch_Update</value>
+  </data>
+  <data name="&gt;&gt;Cbx_Branch_Update.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Cbx_Branch_Update.Parent" xml:space="preserve">
+    <value>Tab_Update</value>
+  </data>
+  <data name="&gt;&gt;Cbx_Branch_Update.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Cbx_Delay_Verif.Items" xml:space="preserve">
+    <value>Daily</value>
+  </data>
+  <data name="Cbx_Delay_Verif.Items1" xml:space="preserve">
+    <value>Weekly</value>
+  </data>
+  <data name="Cbx_Delay_Verif.Items2" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+  <data name="Cbx_Delay_Verif.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 71</value>
+  </data>
+  <data name="Cbx_Delay_Verif.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 21</value>
+  </data>
+  <data name="Cbx_Delay_Verif.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="Cbx_Delay_Verif.ToolTip" xml:space="preserve">
+    <value>Frequency of verification.</value>
+  </data>
+  <data name="&gt;&gt;Cbx_Delay_Verif.Name" xml:space="preserve">
+    <value>Cbx_Delay_Verif</value>
+  </data>
+  <data name="&gt;&gt;Cbx_Delay_Verif.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Cbx_Delay_Verif.Parent" xml:space="preserve">
+    <value>Tab_Update</value>
+  </data>
+  <data name="&gt;&gt;Cbx_Delay_Verif.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Lbl_Branch_Update.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_Branch_Update.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 102</value>
+  </data>
+  <data name="Lbl_Branch_Update.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 13</value>
+  </data>
+  <data name="Lbl_Branch_Update.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="Lbl_Branch_Update.Text" xml:space="preserve">
+    <value>Stable Or Dev Branch</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Branch_Update.Name" xml:space="preserve">
+    <value>Lbl_Branch_Update</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Branch_Update.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Branch_Update.Parent" xml:space="preserve">
+    <value>Tab_Update</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Branch_Update.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Lbl_Delay_Verif.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lbl_Delay_Verif.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 72</value>
+  </data>
+  <data name="Lbl_Delay_Verif.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 13</value>
+  </data>
+  <data name="Lbl_Delay_Verif.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="Lbl_Delay_Verif.Text" xml:space="preserve">
+    <value>Delay Between Verification</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Delay_Verif.Name" xml:space="preserve">
+    <value>Lbl_Delay_Verif</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Delay_Verif.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Delay_Verif.Parent" xml:space="preserve">
+    <value>Tab_Update</value>
+  </data>
+  <data name="&gt;&gt;Lbl_Delay_Verif.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Cb_Update_At_Start.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Cb_Update_At_Start.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="Cb_Update_At_Start.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="Cb_Update_At_Start.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>310, 0</value>
+  </data>
+  <data name="Cb_Update_At_Start.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 17</value>
+  </data>
+  <data name="Cb_Update_At_Start.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Cb_Update_At_Start.Text" xml:space="preserve">
+    <value>Verify Update At Start</value>
+  </data>
+  <data name="Cb_Update_At_Start.ToolTip" xml:space="preserve">
+    <value>Checks for updates at startup.</value>
+  </data>
+  <data name="&gt;&gt;Cb_Update_At_Start.Name" xml:space="preserve">
+    <value>Cb_Update_At_Start</value>
+  </data>
+  <data name="&gt;&gt;Cb_Update_At_Start.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Cb_Update_At_Start.Parent" xml:space="preserve">
+    <value>Tab_Update</value>
+  </data>
+  <data name="&gt;&gt;Cb_Update_At_Start.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="Cb_Verify_Update.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Cb_Verify_Update.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="Cb_Verify_Update.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="Cb_Verify_Update.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>310, 0</value>
+  </data>
+  <data name="Cb_Verify_Update.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 17</value>
+  </data>
+  <data name="Cb_Verify_Update.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="Cb_Verify_Update.Text" xml:space="preserve">
+    <value>Verify Update</value>
+  </data>
+  <data name="Cb_Verify_Update.ToolTip" xml:space="preserve">
+    <value>Check for updates.</value>
+  </data>
+  <data name="&gt;&gt;Cb_Verify_Update.Name" xml:space="preserve">
+    <value>Cb_Verify_Update</value>
+  </data>
+  <data name="&gt;&gt;Cb_Verify_Update.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Cb_Verify_Update.Parent" xml:space="preserve">
+    <value>Tab_Update</value>
+  </data>
+  <data name="&gt;&gt;Cb_Verify_Update.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="Tab_Update.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="Tab_Update.Size" type="System.Drawing.Size, System.Drawing">
+    <value>322, 234</value>
+  </data>
+  <data name="Tab_Update.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="Tab_Update.Text" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="&gt;&gt;Tab_Update.Name" xml:space="preserve">
+    <value>Tab_Update</value>
+  </data>
+  <data name="&gt;&gt;Tab_Update.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tab_Update.Parent" xml:space="preserve">
+    <value>TabControl_Options</value>
+  </data>
+  <data name="&gt;&gt;Tab_Update.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="TabControl_Options.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="TabControl_Options.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 260</value>
+  </data>
+  <data name="TabControl_Options.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;TabControl_Options.Name" xml:space="preserve">
+    <value>TabControl_Options</value>
+  </data>
+  <data name="&gt;&gt;TabControl_Options.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabControl_Options.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TabControl_Options.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="Btn_Ok.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 278</value>

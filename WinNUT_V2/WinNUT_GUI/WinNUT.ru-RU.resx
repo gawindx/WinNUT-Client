@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Menu_Sys_Settings.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="Menu_Sys_Update.Text" xml:space="preserve">
+    <value>Проверять обновления</value>
+  </data>
+  <data name="Menu_Sys_About.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="Menu_Sys_Exit.Text" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="Menu_Import_Ini.Text" xml:space="preserve">
+    <value>Импорт ini (из версии 1.x)</value>
+  </data>
+  <data name="Menu_UPS_Var.Text" xml:space="preserve">
+    <value>Переменные ИБП</value>
+  </data>
+  <data name="Menu_Quit.Text" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="Menu_File.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="Menu_Reconnect.Text" xml:space="preserve">
+    <value>Переподключиться</value>
+  </data>
+  <data name="Menu_Disconnect.Text" xml:space="preserve">
+    <value>Отключиться</value>
+  </data>
+  <data name="Menu_Connection.Text" xml:space="preserve">
+    <value>Соединение</value>
+  </data>
+  <data name="Menu_Settings.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="Menu_About.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="Menu_Update.Text" xml:space="preserve">
+    <value>Проверять обновления</value>
+  </data>
+  <data name="Menu_Help.Text" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="Lbl_Firmware.Text" xml:space="preserve">
+    <value>Прошивка:</value>
+  </data>
+  <data name="Lbl_Serial.Text" xml:space="preserve">
+    <value>Серийный номер:</value>
+  </data>
+  <data name="Lbl_Name.Text" xml:space="preserve">
+    <value>Название:</value>
+  </data>
+  <data name="Lbl_Mfr.Text" xml:space="preserve">
+    <value>Производитель:</value>
+  </data>
+  <data name="Lbl_RTime.Text" xml:space="preserve">
+    <value>Осталось времени:</value>
+  </data>
+  <data name="Lbl_BL.Text" xml:space="preserve">
+    <value>ИБП Низкий заряд батареи</value>
+  </data>
+  <data name="Lbl_OLoad.Text" xml:space="preserve">
+    <value>ИБП Перегрузка</value>
+  </data>
+  <data name="Lbl_OB.Text" xml:space="preserve">
+    <value>ИБП От батареи</value>
+  </data>
+  <data name="Lbl_OL.Text" xml:space="preserve">
+    <value>ИБП От сети</value>
+  </data>
+  <data name="Lbl_InV_Dial.Text" xml:space="preserve">
+    <value>Входное напряжение</value>
+  </data>
+  <data name="Lbl_OutV_Dial.Text" xml:space="preserve">
+    <value>Выходное напряжение</value>
+  </data>
+  <data name="Lbl_BattCh_Dial.Text" xml:space="preserve">
+    <value>Заряд батареи</value>
+  </data>
+  <data name="Lbl_Load_Dial.Text" xml:space="preserve">
+    <value>Нагрузка ИБП</value>
+  </data>
+  <data name="Lbl_BattV_Dial.Text" xml:space="preserve">
+    <value>Напряжение батареи</value>
+  </data>
+  <data name="Lbl_InF_Dial.Text" xml:space="preserve">
+    <value>Частота</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Windows NUT CLient</value>
+  </data>
+</root>
