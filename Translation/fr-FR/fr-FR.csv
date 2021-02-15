@@ -93,6 +93,8 @@ Valid,Gawindx,Notice,Remarque
 Valid,Gawindx,NUT host,Serveur NUT
 Valid,Gawindx,NUT Port,Port NUT
 Valid,Gawindx,Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Adresse du serveur Nut. Valeur acceptée: adresse IPV4 / IPV6 / FQDN.
+Valid,Gawindx,NUT server connection identifier,Identifiant de connexion au serveur NUT
+Valid,Gawindx,NUT server login password,Mot de Passe de connexion au serveur NUT
 Valid,Gawindx,Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Numéro de port du serveur Nut (par défaut = 3493). Valeur acceptée: valeur numérique de 1 à 65535.
 Valid,Gawindx,Ok,Ok
 Valid,Gawindx,Old ups.ini imported,Ancien Fichier ups.ini importé

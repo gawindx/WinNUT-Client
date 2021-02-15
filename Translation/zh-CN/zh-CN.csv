@@ -93,6 +93,8 @@ Valid,nonPointer,Notice,注意
 Valid,nonPointer,NUT host,NUT 主机
 Valid,nonPointer,NUT Port,NUT 端口
 Valid,nonPointer,Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Nut 服务器地址。取值：IPv4/IPv6/FQDN 地址
+To validate,Gawindx,NUT server connection identifier,NUT服务器连接标识符
+To validate,Gawindx,NUT server login password,NUT服务器登录密码
 Valid,nonPointer,Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Nut 服务器端口（默认为3493）。取值：1-65535 之间的数值。
 Valid,nonPointer,Ok,好的
 Valid,nonPointer,Old ups.ini imported,导入了旧的 ups.ini
