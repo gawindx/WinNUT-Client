@@ -34,6 +34,9 @@ Public NotInheritable Class CryptData
 
     Public Function EncryptData(ByVal plaintext As String) As String
 
+        If IsNothing(plaintext) Then
+            plaintext = ""
+        End If
         ' Convert the plaintext string to a byte array.
         Dim plaintextBytes() As Byte =
             System.Text.Encoding.Unicode.GetBytes(plaintext)

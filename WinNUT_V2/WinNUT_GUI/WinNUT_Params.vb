@@ -12,14 +12,16 @@ Public Module WinNUT_Params
     Private Arr_Reg_Key_Base As New Dictionary(Of String, Dictionary(Of String, Object))
     Public RegBranch As String
     Private RegPath As String
+    Private Cryptor As New CryptData()
     Public Sub Init_Params()
+
         With Arr_Reg_Key
             .Add("ServerAddress", "")
             .Add("Port", 0)
             .Add("UPSName", "")
             .Add("Delay", 0)
-            .Add("NutLogin", "")
-            .Add("NutPassword", "")
+            .Add("NutLogin", Cryptor.EncryptData(""))
+            .Add("NutPassword", Cryptor.EncryptData(""))
             .Add("AutoReconnect", vbFalse)
             .Add("MinInputVoltage", 0)
             .Add("MaxInputVoltage", 0)
@@ -62,7 +64,7 @@ Public Module WinNUT_Params
         Dim Arr_Reg_Logging As New Dictionary(Of String, Object)
         Dim Arr_Reg_Power As New Dictionary(Of String, Object)
         Dim Arr_Reg_Update As New Dictionary(Of String, Object)
-        Dim Cryptor As New CryptData()
+
 
         With Arr_Reg_Connexion
             .Add("ServerAddress", "nutserver host")
@@ -125,8 +127,8 @@ Public Module WinNUT_Params
         'Verify if non encoded Login/Password Exist
         'if not, create it
         Dim WinnutConnRegPath = WinNUT_Params.RegBranch & "WinNUT\Connexion"
-        Dim LoginValue = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutLogin", Nothing)
-        Dim PasswordValue = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutPassword", Nothing)
+        Dim LoginValue = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutLogin", "")
+        Dim PasswordValue = My.Computer.Registry.GetValue(WinnutConnRegPath, "NutPassword", "")
         If (LoginValue Is Nothing) Or Not (Cryptor.IsCryptedtData(LoginValue)) Then
             My.Computer.Registry.SetValue(WinnutConnRegPath, "NutLogin", Cryptor.EncryptData(LoginValue))
         End If
