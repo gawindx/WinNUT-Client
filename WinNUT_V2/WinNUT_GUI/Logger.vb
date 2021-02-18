@@ -32,6 +32,7 @@ Public Class Logger
         Me.LogFile.Append = True
         Me.LogFile.AutoFlush = True
         Me.LogFile.BaseFileName = "WinNUT-CLient"
+        Me.LogFile.LogFileCreationSchedule = Logging.LogFileCreationScheduleOption.Daily
         Me.LogFile.Location = LogFileLocation.Custom
         Me.LogFile.CustomLocation = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\WinNUT-Client"
     End Sub
