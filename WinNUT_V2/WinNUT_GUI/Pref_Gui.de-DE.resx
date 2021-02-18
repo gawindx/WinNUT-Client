@@ -319,4 +319,13 @@ Akzeptierter Wert: Numerischer Wert von 0 bis 100.</value>
   <data name="CB_Follow_FSD.ToolTip" xml:space="preserve">
     <value>Gibt an ob ein Herunterfahren durchgeführt werden soll wenn der NUT-Server ein erzwungenes Herunterfahren signalisiert (FSD = Force ShutDown).</value>
   </data>
+  <data name="Lbl_BattV.ToolTip" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Btn_Cancel.ToolTip" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Tab_Connexion.ToolTip" xml:space="preserve">
+    <value></value>
+  </data>
 </root>

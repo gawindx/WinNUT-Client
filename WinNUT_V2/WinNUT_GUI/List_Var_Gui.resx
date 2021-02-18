@@ -140,102 +140,6 @@
   <data name="&gt;&gt;TView_UPSVar.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;Lbl_D_Value.Name" xml:space="preserve">
-    <value>Lbl_D_Value</value>
-  </data>
-  <data name="&gt;&gt;Lbl_D_Value.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_D_Value.Parent" xml:space="preserve">
-    <value>GB1</value>
-  </data>
-  <data name="&gt;&gt;Lbl_D_Value.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Lbl_V_Value.Name" xml:space="preserve">
-    <value>Lbl_V_Value</value>
-  </data>
-  <data name="&gt;&gt;Lbl_V_Value.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_V_Value.Parent" xml:space="preserve">
-    <value>GB1</value>
-  </data>
-  <data name="&gt;&gt;Lbl_V_Value.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Lbl_N_Value.Name" xml:space="preserve">
-    <value>Lbl_N_Value</value>
-  </data>
-  <data name="&gt;&gt;Lbl_N_Value.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_N_Value.Parent" xml:space="preserve">
-    <value>GB1</value>
-  </data>
-  <data name="&gt;&gt;Lbl_N_Value.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Lbl_D.Name" xml:space="preserve">
-    <value>Lbl_D</value>
-  </data>
-  <data name="&gt;&gt;Lbl_D.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_D.Parent" xml:space="preserve">
-    <value>GB1</value>
-  </data>
-  <data name="&gt;&gt;Lbl_D.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Lbl_V.Name" xml:space="preserve">
-    <value>Lbl_V</value>
-  </data>
-  <data name="&gt;&gt;Lbl_V.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_V.Parent" xml:space="preserve">
-    <value>GB1</value>
-  </data>
-  <data name="&gt;&gt;Lbl_V.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Name.Name" xml:space="preserve">
-    <value>Lbl_Name</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Name.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Name.Parent" xml:space="preserve">
-    <value>GB1</value>
-  </data>
-  <data name="&gt;&gt;Lbl_Name.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="GB1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 182</value>
-  </data>
-  <data name="GB1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 110</value>
-  </data>
-  <data name="GB1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="GB1.Text" xml:space="preserve">
-    <value>Item Properties</value>
-  </data>
-  <data name="&gt;&gt;GB1.Name" xml:space="preserve">
-    <value>GB1</value>
-  </data>
-  <data name="&gt;&gt;GB1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GB1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;GB1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="Lbl_D_Value.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -398,6 +302,30 @@
   <data name="&gt;&gt;Lbl_Name.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="GB1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 182</value>
+  </data>
+  <data name="GB1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>360, 110</value>
+  </data>
+  <data name="GB1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="GB1.Text" xml:space="preserve">
+    <value>Item Properties</value>
+  </data>
+  <data name="&gt;&gt;GB1.Name" xml:space="preserve">
+    <value>GB1</value>
+  </data>
+  <data name="&gt;&gt;GB1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GB1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GB1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="Btn_Reload.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 300</value>
   </data>
@@ -497,6 +425,9 @@
   <data name="&gt;&gt;Btn_Clip.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>en-US</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
