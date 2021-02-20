@@ -105,4 +105,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Windows NUT CLient</value>
   </data>
+  <data name="$this.ImeMode" xml:space="preserve" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
 </root>
