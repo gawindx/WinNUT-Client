@@ -95,6 +95,7 @@ Public Class WinNUT
     Private HasFocus As Boolean = True
     Private mUpdate As Boolean = False
     Private FormText As String
+    Private WinNUT_Crashed As Boolean = False
     Private Event On_Battery()
     Private Event On_Line()
     Private Event UpdateNotifyIconStr(ByVal Reason As String, ByVal Message As String)
@@ -114,8 +115,16 @@ Public Class WinNUT
             Me.mUpdate = Value
         End Set
     End Property
+    Public WriteOnly Property HasCrased() As Boolean
+        Set(ByVal Value As Boolean)
+            Me.WinNUT_Crashed = Value
+        End Set
+    End Property
 
     Private Sub WinNUT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LogFile.WriteLog = True
+        LogFile.LogLevel = 3
+
         AddHandler Microsoft.Win32.SystemEvents.PowerModeChanged, AddressOf SystemEvents_PowerModeChanged
 
         'Init WinNUT Variables
@@ -695,33 +704,41 @@ Public Class WinNUT
     End Sub
 
     Private Sub WinNUT_Deactivate(sender As Object, e As EventArgs) Handles MyBase.Deactivate
-        LogFile.LogTracing("Main Gui Lose Focus", LogLvl.LOG_DEBUG, Me)
-        HasFocus = False
-        Dim Tmp_App_Mode As Integer
-        If Not AppDarkMode Then
-            Tmp_App_Mode = AppIconIdx.WIN_DARK Or AppIconIdx.IDX_OFFSET
+        If WinNUT_Crashed Then
+            Me.Hide()
         Else
-            Tmp_App_Mode = AppIconIdx.IDX_OFFSET
+            LogFile.LogTracing("Main Gui Lose Focus", LogLvl.LOG_DEBUG, Me)
+            HasFocus = False
+            Dim Tmp_App_Mode As Integer
+            If Not AppDarkMode Then
+                Tmp_App_Mode = AppIconIdx.WIN_DARK Or AppIconIdx.IDX_OFFSET
+            Else
+                Tmp_App_Mode = AppIconIdx.IDX_OFFSET
+            End If
+            Dim TmpGuiIDX = ActualAppIconIdx Or Tmp_App_Mode
+            Me.Icon = GetIcon(TmpGuiIDX)
+            LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
+            UpdateIcon_NotifyIcon()
         End If
-        Dim TmpGuiIDX = ActualAppIconIdx Or Tmp_App_Mode
-        Me.Icon = GetIcon(TmpGuiIDX)
-        LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
-        UpdateIcon_NotifyIcon()
     End Sub
 
     Private Sub WinNUT_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
-        LogFile.LogTracing("Main Gui Has Focus", LogLvl.LOG_DEBUG, Me)
-        HasFocus = True
-        Dim Tmp_App_Mode As Integer
-        If AppDarkMode Then
-            Tmp_App_Mode = AppIconIdx.WIN_DARK Or AppIconIdx.IDX_OFFSET
+        If WinNUT_Crashed Then
+            Me.Hide()
         Else
-            Tmp_App_Mode = AppIconIdx.IDX_OFFSET
+            LogFile.LogTracing("Main Gui Has Focus", LogLvl.LOG_DEBUG, Me)
+            HasFocus = True
+            Dim Tmp_App_Mode As Integer
+            If AppDarkMode Then
+                Tmp_App_Mode = AppIconIdx.WIN_DARK Or AppIconIdx.IDX_OFFSET
+            Else
+                Tmp_App_Mode = AppIconIdx.IDX_OFFSET
+            End If
+            Dim TmpGuiIDX = ActualAppIconIdx Or Tmp_App_Mode
+            Me.Icon = GetIcon(TmpGuiIDX)
+            LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
+            UpdateIcon_NotifyIcon()
         End If
-        Dim TmpGuiIDX = ActualAppIconIdx Or Tmp_App_Mode
-        Me.Icon = GetIcon(TmpGuiIDX)
-        LogFile.LogTracing("Update Icon", LogLvl.LOG_DEBUG, Me)
-        UpdateIcon_NotifyIcon()
     End Sub
 
     Public Sub WinNUT_PrefsChanged()
