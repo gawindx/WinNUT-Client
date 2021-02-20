@@ -42,6 +42,7 @@ Public Class Logger
         Me.LogFile.Location = LogFileLocation.Custom
         Me.LogFile.CustomLocation = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\WinNUT-Client"
         Me.LastEventsList.Capacity = 50
+        WinNUT_Globals.LogFilePath = Me.LogFile.FullLogFileName
     End Sub
 
     Public Property WriteLog() As Boolean
@@ -70,6 +71,9 @@ Public Class Logger
         Dim SenderName = sender.GetType.Name
         Dim EventTime = Now.ToLocalTime
         Dim FinalMsg = EventTime & " Pid: " & Pid & " " & SenderName & " : " & message
+
+        'Update LogFilePath to make sure it's still the correct path
+        WinNUT_Globals.LogFilePath = Me.LogFile.FullLogFileName
 
         ' Always write log messages to the attached debug messages window.
 #If DEBUG Then

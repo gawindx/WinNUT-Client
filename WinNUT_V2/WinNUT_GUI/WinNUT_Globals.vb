@@ -28,7 +28,7 @@ Module WinNUT_Globals
         GitHubURL = My.Application.Info.Trademark
         Copyright = My.Application.Info.Copyright
         Directory_AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\WinNUT-Client"
-        LogFilePath = Directory_AppData & "\WinNUT-CLient.log"
+
         If Not System.IO.Directory.Exists(Directory_AppData) Then
             My.Computer.FileSystem.CreateDirectory(Directory_AppData)
         End If
