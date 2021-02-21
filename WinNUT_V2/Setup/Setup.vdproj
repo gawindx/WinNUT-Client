@@ -297,18 +297,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5D9F4510FB2E1DB827C759849D2C05EF"
-        "OwnerKey" = "8:_314CE5030A4040E69371869B1C94AA16"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5D9F4510FB2E1DB827C759849D2C05EF"
-        "OwnerKey" = "8:_99295A60B760C5A7B2A217EF6A2482C4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5DFBB58F1460C9FB8F9C0FD754DCC774"
         "OwnerKey" = "8:_70DBA11C2BF449198BA594449914C1BC"
         "MsmSig" = "8:_UNDEFINED"
@@ -2997,26 +2985,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D9F4510FB2E1DB827C759849D2C05EF"
-            {
-            "SourcePath" = "8:AGauge.tlb"
-            "TargetName" = "8:AGauge.tlb"
-            "Tag" = "8:"
-            "Folder" = "8:_7A1917372AF14D75845D775AAEB7CD48"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:2"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5DFBB58F1460C9FB8F9C0FD754DCC774"
             {
             "AssemblyRegister" = "3:1"
@@ -5624,22 +5592,22 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WinNUT"
-        "ProductCode" = "8:{1203E947-5DE0-4661-BA8E-DA6343971CEC}"
-        "PackageCode" = "8:{0124FE58-3E2A-401F-9B72-613A60953E58}"
+        "ProductCode" = "8:{27BA937E-88CF-46BD-9BDA-2426BDE4BA49}"
+        "PackageCode" = "8:{8553B0E9-8C88-4369-9388-88953E889692}"
         "UpgradeCode" = "8:{7EA17151-76E7-4E29-8F6A-621C1B4144C2}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.0.7721"
+        "ProductVersion" = "8:2.0.7722"
         "Manufacturer" = "8:Gawindx"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/gawindx/WinNUT-Client/issues"
         "Title" = "8:WinNUT-Setup"
-        "Subject" = "8:WinNUT-Client v2.0.7721"
+        "Subject" = "8:WinNUT-Client v2.0.7722"
         "ARPCONTACT" = "8:Gawindx"
-        "Keywords" = "8:WinNUT v2.0.7721"
+        "Keywords" = "8:WinNUT v2.0.7722.30975"
         "ARPCOMMENTS" = "8:Windows NUT Client"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:_33BCB1EF059B4E9B87FA7435A8F2499C"

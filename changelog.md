@@ -2,6 +2,16 @@
 
 ### Version 2.0.7721
 #### Fix :
+  - Fix  an error when checking for an update to the latest version.
+  This error causes the detection of an update that does not exist. (issue #70)
+  - Also fixes incorrect version number detection (build version number was truncated)
+
+#### Changed :
+  - Improvements to the code managing the "ups.status" variable to take into account all possible values
+
+
+### Version 2.0.7721
+#### Fix :
   - Fixed an error preventing WinNUT from starting on a new installation (crash in the encryption function due to a string = Nothing)
   Related to issue #62
   - Since the logging was improved, the view / delete functions of the current log file no longer pointed to the correct files.
