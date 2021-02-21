@@ -281,9 +281,6 @@ Public Class WinNUT
             HasFocus = False
         End If
         'ToastPopup.CreateToastCollection()
-        Dim truc As Integer = 0
-        Dim machin As Integer = 1
-        Dim bidule As Integer = (machin / truc)
     End Sub
 
     Private Sub SystemEvents_PowerModeChanged(ByVal sender As Object, ByVal e As Microsoft.Win32.PowerModeChangedEventArgs)
