@@ -66,25 +66,25 @@ Partial Class WinNUT
         Me.Lbl_OB = New System.Windows.Forms.Label()
         Me.Lbl_OL = New System.Windows.Forms.Label()
         Me.GB_InV_Dial = New System.Windows.Forms.GroupBox()
-        Me.AG_InV = New System.Windows.Forms.AGauge()
         Me.Lbl_InV_Dial = New System.Windows.Forms.Label()
         Me.GB_OutV_Dial = New System.Windows.Forms.GroupBox()
-        Me.AG_OutV = New System.Windows.Forms.AGauge()
         Me.Lbl_OutV_Dial = New System.Windows.Forms.Label()
         Me.GB_BattCh_Dial = New System.Windows.Forms.GroupBox()
         Me.PBox_Battery_State = New System.Windows.Forms.PictureBox()
         Me.Lbl_BattCh_Dial = New System.Windows.Forms.Label()
-        Me.AG_BattCh = New System.Windows.Forms.AGauge()
         Me.GB_Load_Dial = New System.Windows.Forms.GroupBox()
-        Me.AG_Load = New System.Windows.Forms.AGauge()
         Me.Lbl_Load_Dial = New System.Windows.Forms.Label()
         Me.GB_BattV_Dial = New System.Windows.Forms.GroupBox()
-        Me.AG_BattV = New System.Windows.Forms.AGauge()
         Me.Lbl_BattV_Dial = New System.Windows.Forms.Label()
         Me.GB_InF_Dial = New System.Windows.Forms.GroupBox()
-        Me.AG_InF = New System.Windows.Forms.AGauge()
         Me.Lbl_InF_Dial = New System.Windows.Forms.Label()
         Me.CB_CurrentLog = New System.Windows.Forms.ComboBox()
+        Me.AG_InF = New System.Windows.Forms.AGauge()
+        Me.AG_InV = New System.Windows.Forms.AGauge()
+        Me.AG_BattV = New System.Windows.Forms.AGauge()
+        Me.AG_Load = New System.Windows.Forms.AGauge()
+        Me.AG_OutV = New System.Windows.Forms.AGauge()
+        Me.AG_BattCh = New System.Windows.Forms.AGauge()
         Me.ContextMenu_Systray.SuspendLayout()
         Me.Main_Menu.SuspendLayout()
         Me.GB_Status.SuspendLayout()
@@ -362,51 +362,6 @@ Partial Class WinNUT
         Me.GB_InV_Dial.Name = "GB_InV_Dial"
         Me.GB_InV_Dial.TabStop = False
         '
-        'AG_InV
-        '
-        Me.AG_InV.BaseArcColor = System.Drawing.Color.Gray
-        Me.AG_InV.BaseArcRadius = 45
-        Me.AG_InV.BaseArcStart = 135
-        Me.AG_InV.BaseArcSweep = 270
-        Me.AG_InV.BaseArcWidth = 5
-        Me.AG_InV.Center = New System.Drawing.Point(74, 70)
-        Me.AG_InV.GaugeAutoSize = False
-        Me.AG_InV.GradientColor = System.Windows.Forms.AGauge.GradientType.RedGreen
-        Me.AG_InV.GradientColorOrientation = System.Windows.Forms.AGauge.GradientOrientation.BottomToUp
-        resources.ApplyResources(Me.AG_InV, "AG_InV")
-        Me.AG_InV.MaxValue = 100.0!
-        Me.AG_InV.MinValue = 0!
-        Me.AG_InV.Name = "AG_InV"
-        Me.AG_InV.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray
-        Me.AG_InV.NeedleColor2 = System.Drawing.Color.DimGray
-        Me.AG_InV.NeedleRadius = 32
-        Me.AG_InV.NeedleType = System.Windows.Forms.NeedleType.Advance
-        Me.AG_InV.NeedleWidth = 2
-        Me.AG_InV.ScaleLinesInterColor = System.Drawing.Color.Black
-        Me.AG_InV.ScaleLinesInterInnerRadius = 40
-        Me.AG_InV.ScaleLinesInterOuterRadius = 48
-        Me.AG_InV.ScaleLinesInterWidth = 1
-        Me.AG_InV.ScaleLinesMajorColor = System.Drawing.Color.Black
-        Me.AG_InV.ScaleLinesMajorInnerRadius = 40
-        Me.AG_InV.ScaleLinesMajorOuterRadius = 48
-        Me.AG_InV.ScaleLinesMajorStepValue = 50.0!
-        Me.AG_InV.ScaleLinesMajorWidth = 2
-        Me.AG_InV.ScaleLinesMinorColor = System.Drawing.Color.Gray
-        Me.AG_InV.ScaleLinesMinorInnerRadius = 42
-        Me.AG_InV.ScaleLinesMinorOuterRadius = 48
-        Me.AG_InV.ScaleLinesMinorTicks = 9
-        Me.AG_InV.ScaleLinesMinorWidth = 1
-        Me.AG_InV.ScaleNumbersColor = System.Drawing.Color.Black
-        Me.AG_InV.ScaleNumbersFormat = Nothing
-        Me.AG_InV.ScaleNumbersRadius = 60
-        Me.AG_InV.ScaleNumbersRotation = 0
-        Me.AG_InV.ScaleNumbersStartScaleLine = 0
-        Me.AG_InV.ScaleNumbersStepScaleLines = 1
-        Me.AG_InV.UnitValue1 = System.Windows.Forms.AGauge.UnitValue.Volts
-        Me.AG_InV.UnitValue2 = System.Windows.Forms.AGauge.UnitValue.None
-        Me.AG_InV.Value1 = 0!
-        Me.AG_InV.Value2 = 0!
-        '
         'Lbl_InV_Dial
         '
         resources.ApplyResources(Me.Lbl_InV_Dial, "Lbl_InV_Dial")
@@ -419,51 +374,6 @@ Partial Class WinNUT
         Me.GB_OutV_Dial.Controls.Add(Me.Lbl_OutV_Dial)
         Me.GB_OutV_Dial.Name = "GB_OutV_Dial"
         Me.GB_OutV_Dial.TabStop = False
-        '
-        'AG_OutV
-        '
-        Me.AG_OutV.BaseArcColor = System.Drawing.Color.Gray
-        Me.AG_OutV.BaseArcRadius = 45
-        Me.AG_OutV.BaseArcStart = 135
-        Me.AG_OutV.BaseArcSweep = 270
-        Me.AG_OutV.BaseArcWidth = 5
-        Me.AG_OutV.Center = New System.Drawing.Point(74, 70)
-        Me.AG_OutV.GaugeAutoSize = False
-        Me.AG_OutV.GradientColor = System.Windows.Forms.AGauge.GradientType.RedGreen
-        Me.AG_OutV.GradientColorOrientation = System.Windows.Forms.AGauge.GradientOrientation.BottomToUp
-        resources.ApplyResources(Me.AG_OutV, "AG_OutV")
-        Me.AG_OutV.MaxValue = 100.0!
-        Me.AG_OutV.MinValue = 0!
-        Me.AG_OutV.Name = "AG_OutV"
-        Me.AG_OutV.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray
-        Me.AG_OutV.NeedleColor2 = System.Drawing.Color.DimGray
-        Me.AG_OutV.NeedleRadius = 32
-        Me.AG_OutV.NeedleType = System.Windows.Forms.NeedleType.Advance
-        Me.AG_OutV.NeedleWidth = 2
-        Me.AG_OutV.ScaleLinesInterColor = System.Drawing.Color.Black
-        Me.AG_OutV.ScaleLinesInterInnerRadius = 40
-        Me.AG_OutV.ScaleLinesInterOuterRadius = 48
-        Me.AG_OutV.ScaleLinesInterWidth = 1
-        Me.AG_OutV.ScaleLinesMajorColor = System.Drawing.Color.Black
-        Me.AG_OutV.ScaleLinesMajorInnerRadius = 40
-        Me.AG_OutV.ScaleLinesMajorOuterRadius = 48
-        Me.AG_OutV.ScaleLinesMajorStepValue = 50.0!
-        Me.AG_OutV.ScaleLinesMajorWidth = 2
-        Me.AG_OutV.ScaleLinesMinorColor = System.Drawing.Color.Gray
-        Me.AG_OutV.ScaleLinesMinorInnerRadius = 42
-        Me.AG_OutV.ScaleLinesMinorOuterRadius = 48
-        Me.AG_OutV.ScaleLinesMinorTicks = 9
-        Me.AG_OutV.ScaleLinesMinorWidth = 1
-        Me.AG_OutV.ScaleNumbersColor = System.Drawing.Color.Black
-        Me.AG_OutV.ScaleNumbersFormat = Nothing
-        Me.AG_OutV.ScaleNumbersRadius = 60
-        Me.AG_OutV.ScaleNumbersRotation = 0
-        Me.AG_OutV.ScaleNumbersStartScaleLine = 0
-        Me.AG_OutV.ScaleNumbersStepScaleLines = 1
-        Me.AG_OutV.UnitValue1 = System.Windows.Forms.AGauge.UnitValue.Volts
-        Me.AG_OutV.UnitValue2 = System.Windows.Forms.AGauge.UnitValue.None
-        Me.AG_OutV.Value1 = 0!
-        Me.AG_OutV.Value2 = 0!
         '
         'Lbl_OutV_Dial
         '
@@ -490,51 +400,6 @@ Partial Class WinNUT
         resources.ApplyResources(Me.Lbl_BattCh_Dial, "Lbl_BattCh_Dial")
         Me.Lbl_BattCh_Dial.Name = "Lbl_BattCh_Dial"
         '
-        'AG_BattCh
-        '
-        Me.AG_BattCh.BaseArcColor = System.Drawing.Color.Gray
-        Me.AG_BattCh.BaseArcRadius = 45
-        Me.AG_BattCh.BaseArcStart = 135
-        Me.AG_BattCh.BaseArcSweep = 270
-        Me.AG_BattCh.BaseArcWidth = 5
-        Me.AG_BattCh.Center = New System.Drawing.Point(74, 70)
-        Me.AG_BattCh.GaugeAutoSize = False
-        Me.AG_BattCh.GradientColor = System.Windows.Forms.AGauge.GradientType.RedGreen
-        Me.AG_BattCh.GradientColorOrientation = System.Windows.Forms.AGauge.GradientOrientation.LeftToRight
-        resources.ApplyResources(Me.AG_BattCh, "AG_BattCh")
-        Me.AG_BattCh.MaxValue = 100.0!
-        Me.AG_BattCh.MinValue = 0!
-        Me.AG_BattCh.Name = "AG_BattCh"
-        Me.AG_BattCh.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray
-        Me.AG_BattCh.NeedleColor2 = System.Drawing.Color.DimGray
-        Me.AG_BattCh.NeedleRadius = 32
-        Me.AG_BattCh.NeedleType = System.Windows.Forms.NeedleType.Advance
-        Me.AG_BattCh.NeedleWidth = 2
-        Me.AG_BattCh.ScaleLinesInterColor = System.Drawing.Color.Black
-        Me.AG_BattCh.ScaleLinesInterInnerRadius = 40
-        Me.AG_BattCh.ScaleLinesInterOuterRadius = 48
-        Me.AG_BattCh.ScaleLinesInterWidth = 1
-        Me.AG_BattCh.ScaleLinesMajorColor = System.Drawing.Color.Black
-        Me.AG_BattCh.ScaleLinesMajorInnerRadius = 40
-        Me.AG_BattCh.ScaleLinesMajorOuterRadius = 48
-        Me.AG_BattCh.ScaleLinesMajorStepValue = 50.0!
-        Me.AG_BattCh.ScaleLinesMajorWidth = 2
-        Me.AG_BattCh.ScaleLinesMinorColor = System.Drawing.Color.Gray
-        Me.AG_BattCh.ScaleLinesMinorInnerRadius = 42
-        Me.AG_BattCh.ScaleLinesMinorOuterRadius = 48
-        Me.AG_BattCh.ScaleLinesMinorTicks = 9
-        Me.AG_BattCh.ScaleLinesMinorWidth = 1
-        Me.AG_BattCh.ScaleNumbersColor = System.Drawing.Color.Black
-        Me.AG_BattCh.ScaleNumbersFormat = Nothing
-        Me.AG_BattCh.ScaleNumbersRadius = 60
-        Me.AG_BattCh.ScaleNumbersRotation = 0
-        Me.AG_BattCh.ScaleNumbersStartScaleLine = 0
-        Me.AG_BattCh.ScaleNumbersStepScaleLines = 1
-        Me.AG_BattCh.UnitValue1 = System.Windows.Forms.AGauge.UnitValue.Percent
-        Me.AG_BattCh.UnitValue2 = System.Windows.Forms.AGauge.UnitValue.None
-        Me.AG_BattCh.Value1 = 0!
-        Me.AG_BattCh.Value2 = 0!
-        '
         'GB_Load_Dial
         '
         resources.ApplyResources(Me.GB_Load_Dial, "GB_Load_Dial")
@@ -542,51 +407,6 @@ Partial Class WinNUT
         Me.GB_Load_Dial.Controls.Add(Me.Lbl_Load_Dial)
         Me.GB_Load_Dial.Name = "GB_Load_Dial"
         Me.GB_Load_Dial.TabStop = False
-        '
-        'AG_Load
-        '
-        Me.AG_Load.BaseArcColor = System.Drawing.Color.Gray
-        Me.AG_Load.BaseArcRadius = 45
-        Me.AG_Load.BaseArcStart = 135
-        Me.AG_Load.BaseArcSweep = 270
-        Me.AG_Load.BaseArcWidth = 5
-        Me.AG_Load.Center = New System.Drawing.Point(74, 70)
-        Me.AG_Load.GaugeAutoSize = False
-        Me.AG_Load.GradientColor = System.Windows.Forms.AGauge.GradientType.RedGreen
-        Me.AG_Load.GradientColorOrientation = System.Windows.Forms.AGauge.GradientOrientation.RightToLeft
-        resources.ApplyResources(Me.AG_Load, "AG_Load")
-        Me.AG_Load.MaxValue = 100.0!
-        Me.AG_Load.MinValue = 0!
-        Me.AG_Load.Name = "AG_Load"
-        Me.AG_Load.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray
-        Me.AG_Load.NeedleColor2 = System.Drawing.Color.DimGray
-        Me.AG_Load.NeedleRadius = 32
-        Me.AG_Load.NeedleType = System.Windows.Forms.NeedleType.Advance
-        Me.AG_Load.NeedleWidth = 2
-        Me.AG_Load.ScaleLinesInterColor = System.Drawing.Color.Black
-        Me.AG_Load.ScaleLinesInterInnerRadius = 40
-        Me.AG_Load.ScaleLinesInterOuterRadius = 48
-        Me.AG_Load.ScaleLinesInterWidth = 1
-        Me.AG_Load.ScaleLinesMajorColor = System.Drawing.Color.Black
-        Me.AG_Load.ScaleLinesMajorInnerRadius = 40
-        Me.AG_Load.ScaleLinesMajorOuterRadius = 48
-        Me.AG_Load.ScaleLinesMajorStepValue = 50.0!
-        Me.AG_Load.ScaleLinesMajorWidth = 2
-        Me.AG_Load.ScaleLinesMinorColor = System.Drawing.Color.Gray
-        Me.AG_Load.ScaleLinesMinorInnerRadius = 42
-        Me.AG_Load.ScaleLinesMinorOuterRadius = 48
-        Me.AG_Load.ScaleLinesMinorTicks = 9
-        Me.AG_Load.ScaleLinesMinorWidth = 1
-        Me.AG_Load.ScaleNumbersColor = System.Drawing.Color.Black
-        Me.AG_Load.ScaleNumbersFormat = Nothing
-        Me.AG_Load.ScaleNumbersRadius = 60
-        Me.AG_Load.ScaleNumbersRotation = 0
-        Me.AG_Load.ScaleNumbersStartScaleLine = 0
-        Me.AG_Load.ScaleNumbersStepScaleLines = 1
-        Me.AG_Load.UnitValue1 = System.Windows.Forms.AGauge.UnitValue.Percent
-        Me.AG_Load.UnitValue2 = System.Windows.Forms.AGauge.UnitValue.Watts
-        Me.AG_Load.Value1 = 0!
-        Me.AG_Load.Value2 = 0!
         '
         'Lbl_Load_Dial
         '
@@ -601,51 +421,6 @@ Partial Class WinNUT
         Me.GB_BattV_Dial.Name = "GB_BattV_Dial"
         Me.GB_BattV_Dial.TabStop = False
         '
-        'AG_BattV
-        '
-        Me.AG_BattV.BaseArcColor = System.Drawing.Color.Gray
-        Me.AG_BattV.BaseArcRadius = 45
-        Me.AG_BattV.BaseArcStart = 135
-        Me.AG_BattV.BaseArcSweep = 270
-        Me.AG_BattV.BaseArcWidth = 5
-        Me.AG_BattV.Center = New System.Drawing.Point(74, 70)
-        Me.AG_BattV.GaugeAutoSize = False
-        Me.AG_BattV.GradientColor = System.Windows.Forms.AGauge.GradientType.RedGreen
-        Me.AG_BattV.GradientColorOrientation = System.Windows.Forms.AGauge.GradientOrientation.BottomToUp
-        resources.ApplyResources(Me.AG_BattV, "AG_BattV")
-        Me.AG_BattV.MaxValue = 100.0!
-        Me.AG_BattV.MinValue = 0!
-        Me.AG_BattV.Name = "AG_BattV"
-        Me.AG_BattV.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray
-        Me.AG_BattV.NeedleColor2 = System.Drawing.Color.DimGray
-        Me.AG_BattV.NeedleRadius = 32
-        Me.AG_BattV.NeedleType = System.Windows.Forms.NeedleType.Advance
-        Me.AG_BattV.NeedleWidth = 2
-        Me.AG_BattV.ScaleLinesInterColor = System.Drawing.Color.Black
-        Me.AG_BattV.ScaleLinesInterInnerRadius = 40
-        Me.AG_BattV.ScaleLinesInterOuterRadius = 48
-        Me.AG_BattV.ScaleLinesInterWidth = 1
-        Me.AG_BattV.ScaleLinesMajorColor = System.Drawing.Color.Black
-        Me.AG_BattV.ScaleLinesMajorInnerRadius = 40
-        Me.AG_BattV.ScaleLinesMajorOuterRadius = 48
-        Me.AG_BattV.ScaleLinesMajorStepValue = 50.0!
-        Me.AG_BattV.ScaleLinesMajorWidth = 2
-        Me.AG_BattV.ScaleLinesMinorColor = System.Drawing.Color.Gray
-        Me.AG_BattV.ScaleLinesMinorInnerRadius = 42
-        Me.AG_BattV.ScaleLinesMinorOuterRadius = 48
-        Me.AG_BattV.ScaleLinesMinorTicks = 9
-        Me.AG_BattV.ScaleLinesMinorWidth = 1
-        Me.AG_BattV.ScaleNumbersColor = System.Drawing.Color.Black
-        Me.AG_BattV.ScaleNumbersFormat = Nothing
-        Me.AG_BattV.ScaleNumbersRadius = 60
-        Me.AG_BattV.ScaleNumbersRotation = 0
-        Me.AG_BattV.ScaleNumbersStartScaleLine = 0
-        Me.AG_BattV.ScaleNumbersStepScaleLines = 1
-        Me.AG_BattV.UnitValue1 = System.Windows.Forms.AGauge.UnitValue.Volts
-        Me.AG_BattV.UnitValue2 = System.Windows.Forms.AGauge.UnitValue.None
-        Me.AG_BattV.Value1 = 0!
-        Me.AG_BattV.Value2 = 0!
-        '
         'Lbl_BattV_Dial
         '
         resources.ApplyResources(Me.Lbl_BattV_Dial, "Lbl_BattV_Dial")
@@ -658,6 +433,17 @@ Partial Class WinNUT
         Me.GB_InF_Dial.Controls.Add(Me.Lbl_InF_Dial)
         Me.GB_InF_Dial.Name = "GB_InF_Dial"
         Me.GB_InF_Dial.TabStop = False
+        '
+        'Lbl_InF_Dial
+        '
+        resources.ApplyResources(Me.Lbl_InF_Dial, "Lbl_InF_Dial")
+        Me.Lbl_InF_Dial.Name = "Lbl_InF_Dial"
+        '
+        'CB_CurrentLog
+        '
+        Me.CB_CurrentLog.FormattingEnabled = True
+        resources.ApplyResources(Me.CB_CurrentLog, "CB_CurrentLog")
+        Me.CB_CurrentLog.Name = "CB_CurrentLog"
         '
         'AG_InF
         '
@@ -704,16 +490,230 @@ Partial Class WinNUT
         Me.AG_InF.Value1 = 0!
         Me.AG_InF.Value2 = 0!
         '
-        'Lbl_InF_Dial
+        'AG_InV
         '
-        resources.ApplyResources(Me.Lbl_InF_Dial, "Lbl_InF_Dial")
-        Me.Lbl_InF_Dial.Name = "Lbl_InF_Dial"
+        Me.AG_InV.BaseArcColor = System.Drawing.Color.Gray
+        Me.AG_InV.BaseArcRadius = 45
+        Me.AG_InV.BaseArcStart = 135
+        Me.AG_InV.BaseArcSweep = 270
+        Me.AG_InV.BaseArcWidth = 5
+        Me.AG_InV.Center = New System.Drawing.Point(74, 70)
+        Me.AG_InV.GaugeAutoSize = False
+        Me.AG_InV.GradientColor = System.Windows.Forms.AGauge.GradientType.RedGreen
+        Me.AG_InV.GradientColorOrientation = System.Windows.Forms.AGauge.GradientOrientation.BottomToUp
+        resources.ApplyResources(Me.AG_InV, "AG_InV")
+        Me.AG_InV.MaxValue = 100.0!
+        Me.AG_InV.MinValue = 0!
+        Me.AG_InV.Name = "AG_InV"
+        Me.AG_InV.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray
+        Me.AG_InV.NeedleColor2 = System.Drawing.Color.DimGray
+        Me.AG_InV.NeedleRadius = 32
+        Me.AG_InV.NeedleType = System.Windows.Forms.NeedleType.Advance
+        Me.AG_InV.NeedleWidth = 2
+        Me.AG_InV.ScaleLinesInterColor = System.Drawing.Color.Black
+        Me.AG_InV.ScaleLinesInterInnerRadius = 40
+        Me.AG_InV.ScaleLinesInterOuterRadius = 48
+        Me.AG_InV.ScaleLinesInterWidth = 1
+        Me.AG_InV.ScaleLinesMajorColor = System.Drawing.Color.Black
+        Me.AG_InV.ScaleLinesMajorInnerRadius = 40
+        Me.AG_InV.ScaleLinesMajorOuterRadius = 48
+        Me.AG_InV.ScaleLinesMajorStepValue = 50.0!
+        Me.AG_InV.ScaleLinesMajorWidth = 2
+        Me.AG_InV.ScaleLinesMinorColor = System.Drawing.Color.Gray
+        Me.AG_InV.ScaleLinesMinorInnerRadius = 42
+        Me.AG_InV.ScaleLinesMinorOuterRadius = 48
+        Me.AG_InV.ScaleLinesMinorTicks = 9
+        Me.AG_InV.ScaleLinesMinorWidth = 1
+        Me.AG_InV.ScaleNumbersColor = System.Drawing.Color.Black
+        Me.AG_InV.ScaleNumbersFormat = Nothing
+        Me.AG_InV.ScaleNumbersRadius = 60
+        Me.AG_InV.ScaleNumbersRotation = 0
+        Me.AG_InV.ScaleNumbersStartScaleLine = 0
+        Me.AG_InV.ScaleNumbersStepScaleLines = 1
+        Me.AG_InV.UnitValue1 = System.Windows.Forms.AGauge.UnitValue.Volts
+        Me.AG_InV.UnitValue2 = System.Windows.Forms.AGauge.UnitValue.None
+        Me.AG_InV.Value1 = 0!
+        Me.AG_InV.Value2 = 0!
         '
-        'CB_CurrentLog
+        'AG_BattV
         '
-        Me.CB_CurrentLog.FormattingEnabled = True
-        resources.ApplyResources(Me.CB_CurrentLog, "CB_CurrentLog")
-        Me.CB_CurrentLog.Name = "CB_CurrentLog"
+        Me.AG_BattV.BaseArcColor = System.Drawing.Color.Gray
+        Me.AG_BattV.BaseArcRadius = 45
+        Me.AG_BattV.BaseArcStart = 135
+        Me.AG_BattV.BaseArcSweep = 270
+        Me.AG_BattV.BaseArcWidth = 5
+        Me.AG_BattV.Center = New System.Drawing.Point(74, 70)
+        Me.AG_BattV.GaugeAutoSize = False
+        Me.AG_BattV.GradientColor = System.Windows.Forms.AGauge.GradientType.RedGreen
+        Me.AG_BattV.GradientColorOrientation = System.Windows.Forms.AGauge.GradientOrientation.BottomToUp
+        resources.ApplyResources(Me.AG_BattV, "AG_BattV")
+        Me.AG_BattV.MaxValue = 100.0!
+        Me.AG_BattV.MinValue = 0!
+        Me.AG_BattV.Name = "AG_BattV"
+        Me.AG_BattV.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray
+        Me.AG_BattV.NeedleColor2 = System.Drawing.Color.DimGray
+        Me.AG_BattV.NeedleRadius = 32
+        Me.AG_BattV.NeedleType = System.Windows.Forms.NeedleType.Advance
+        Me.AG_BattV.NeedleWidth = 2
+        Me.AG_BattV.ScaleLinesInterColor = System.Drawing.Color.Black
+        Me.AG_BattV.ScaleLinesInterInnerRadius = 40
+        Me.AG_BattV.ScaleLinesInterOuterRadius = 48
+        Me.AG_BattV.ScaleLinesInterWidth = 1
+        Me.AG_BattV.ScaleLinesMajorColor = System.Drawing.Color.Black
+        Me.AG_BattV.ScaleLinesMajorInnerRadius = 40
+        Me.AG_BattV.ScaleLinesMajorOuterRadius = 48
+        Me.AG_BattV.ScaleLinesMajorStepValue = 50.0!
+        Me.AG_BattV.ScaleLinesMajorWidth = 2
+        Me.AG_BattV.ScaleLinesMinorColor = System.Drawing.Color.Gray
+        Me.AG_BattV.ScaleLinesMinorInnerRadius = 42
+        Me.AG_BattV.ScaleLinesMinorOuterRadius = 48
+        Me.AG_BattV.ScaleLinesMinorTicks = 9
+        Me.AG_BattV.ScaleLinesMinorWidth = 1
+        Me.AG_BattV.ScaleNumbersColor = System.Drawing.Color.Black
+        Me.AG_BattV.ScaleNumbersFormat = Nothing
+        Me.AG_BattV.ScaleNumbersRadius = 60
+        Me.AG_BattV.ScaleNumbersRotation = 0
+        Me.AG_BattV.ScaleNumbersStartScaleLine = 0
+        Me.AG_BattV.ScaleNumbersStepScaleLines = 1
+        Me.AG_BattV.UnitValue1 = System.Windows.Forms.AGauge.UnitValue.Volts
+        Me.AG_BattV.UnitValue2 = System.Windows.Forms.AGauge.UnitValue.None
+        Me.AG_BattV.Value1 = 0!
+        Me.AG_BattV.Value2 = 0!
+        '
+        'AG_Load
+        '
+        Me.AG_Load.BaseArcColor = System.Drawing.Color.Gray
+        Me.AG_Load.BaseArcRadius = 45
+        Me.AG_Load.BaseArcStart = 135
+        Me.AG_Load.BaseArcSweep = 270
+        Me.AG_Load.BaseArcWidth = 5
+        Me.AG_Load.Center = New System.Drawing.Point(74, 70)
+        Me.AG_Load.GaugeAutoSize = False
+        Me.AG_Load.GradientColor = System.Windows.Forms.AGauge.GradientType.RedGreen
+        Me.AG_Load.GradientColorOrientation = System.Windows.Forms.AGauge.GradientOrientation.RightToLeft
+        resources.ApplyResources(Me.AG_Load, "AG_Load")
+        Me.AG_Load.MaxValue = 100.0!
+        Me.AG_Load.MinValue = 0!
+        Me.AG_Load.Name = "AG_Load"
+        Me.AG_Load.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray
+        Me.AG_Load.NeedleColor2 = System.Drawing.Color.DimGray
+        Me.AG_Load.NeedleRadius = 32
+        Me.AG_Load.NeedleType = System.Windows.Forms.NeedleType.Advance
+        Me.AG_Load.NeedleWidth = 2
+        Me.AG_Load.ScaleLinesInterColor = System.Drawing.Color.Black
+        Me.AG_Load.ScaleLinesInterInnerRadius = 40
+        Me.AG_Load.ScaleLinesInterOuterRadius = 48
+        Me.AG_Load.ScaleLinesInterWidth = 1
+        Me.AG_Load.ScaleLinesMajorColor = System.Drawing.Color.Black
+        Me.AG_Load.ScaleLinesMajorInnerRadius = 40
+        Me.AG_Load.ScaleLinesMajorOuterRadius = 48
+        Me.AG_Load.ScaleLinesMajorStepValue = 50.0!
+        Me.AG_Load.ScaleLinesMajorWidth = 2
+        Me.AG_Load.ScaleLinesMinorColor = System.Drawing.Color.Gray
+        Me.AG_Load.ScaleLinesMinorInnerRadius = 42
+        Me.AG_Load.ScaleLinesMinorOuterRadius = 48
+        Me.AG_Load.ScaleLinesMinorTicks = 9
+        Me.AG_Load.ScaleLinesMinorWidth = 1
+        Me.AG_Load.ScaleNumbersColor = System.Drawing.Color.Black
+        Me.AG_Load.ScaleNumbersFormat = Nothing
+        Me.AG_Load.ScaleNumbersRadius = 60
+        Me.AG_Load.ScaleNumbersRotation = 0
+        Me.AG_Load.ScaleNumbersStartScaleLine = 0
+        Me.AG_Load.ScaleNumbersStepScaleLines = 1
+        Me.AG_Load.UnitValue1 = System.Windows.Forms.AGauge.UnitValue.Percent
+        Me.AG_Load.UnitValue2 = System.Windows.Forms.AGauge.UnitValue.Watts
+        Me.AG_Load.Value1 = 0!
+        Me.AG_Load.Value2 = 0!
+        '
+        'AG_OutV
+        '
+        Me.AG_OutV.BaseArcColor = System.Drawing.Color.Gray
+        Me.AG_OutV.BaseArcRadius = 45
+        Me.AG_OutV.BaseArcStart = 135
+        Me.AG_OutV.BaseArcSweep = 270
+        Me.AG_OutV.BaseArcWidth = 5
+        Me.AG_OutV.Center = New System.Drawing.Point(74, 70)
+        Me.AG_OutV.GaugeAutoSize = False
+        Me.AG_OutV.GradientColor = System.Windows.Forms.AGauge.GradientType.RedGreen
+        Me.AG_OutV.GradientColorOrientation = System.Windows.Forms.AGauge.GradientOrientation.BottomToUp
+        resources.ApplyResources(Me.AG_OutV, "AG_OutV")
+        Me.AG_OutV.MaxValue = 100.0!
+        Me.AG_OutV.MinValue = 0!
+        Me.AG_OutV.Name = "AG_OutV"
+        Me.AG_OutV.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray
+        Me.AG_OutV.NeedleColor2 = System.Drawing.Color.DimGray
+        Me.AG_OutV.NeedleRadius = 32
+        Me.AG_OutV.NeedleType = System.Windows.Forms.NeedleType.Advance
+        Me.AG_OutV.NeedleWidth = 2
+        Me.AG_OutV.ScaleLinesInterColor = System.Drawing.Color.Black
+        Me.AG_OutV.ScaleLinesInterInnerRadius = 40
+        Me.AG_OutV.ScaleLinesInterOuterRadius = 48
+        Me.AG_OutV.ScaleLinesInterWidth = 1
+        Me.AG_OutV.ScaleLinesMajorColor = System.Drawing.Color.Black
+        Me.AG_OutV.ScaleLinesMajorInnerRadius = 40
+        Me.AG_OutV.ScaleLinesMajorOuterRadius = 48
+        Me.AG_OutV.ScaleLinesMajorStepValue = 50.0!
+        Me.AG_OutV.ScaleLinesMajorWidth = 2
+        Me.AG_OutV.ScaleLinesMinorColor = System.Drawing.Color.Gray
+        Me.AG_OutV.ScaleLinesMinorInnerRadius = 42
+        Me.AG_OutV.ScaleLinesMinorOuterRadius = 48
+        Me.AG_OutV.ScaleLinesMinorTicks = 9
+        Me.AG_OutV.ScaleLinesMinorWidth = 1
+        Me.AG_OutV.ScaleNumbersColor = System.Drawing.Color.Black
+        Me.AG_OutV.ScaleNumbersFormat = Nothing
+        Me.AG_OutV.ScaleNumbersRadius = 60
+        Me.AG_OutV.ScaleNumbersRotation = 0
+        Me.AG_OutV.ScaleNumbersStartScaleLine = 0
+        Me.AG_OutV.ScaleNumbersStepScaleLines = 1
+        Me.AG_OutV.UnitValue1 = System.Windows.Forms.AGauge.UnitValue.Volts
+        Me.AG_OutV.UnitValue2 = System.Windows.Forms.AGauge.UnitValue.None
+        Me.AG_OutV.Value1 = 0!
+        Me.AG_OutV.Value2 = 0!
+        '
+        'AG_BattCh
+        '
+        Me.AG_BattCh.BaseArcColor = System.Drawing.Color.Gray
+        Me.AG_BattCh.BaseArcRadius = 45
+        Me.AG_BattCh.BaseArcStart = 135
+        Me.AG_BattCh.BaseArcSweep = 270
+        Me.AG_BattCh.BaseArcWidth = 5
+        Me.AG_BattCh.Center = New System.Drawing.Point(74, 70)
+        Me.AG_BattCh.GaugeAutoSize = False
+        Me.AG_BattCh.GradientColor = System.Windows.Forms.AGauge.GradientType.RedGreen
+        Me.AG_BattCh.GradientColorOrientation = System.Windows.Forms.AGauge.GradientOrientation.LeftToRight
+        resources.ApplyResources(Me.AG_BattCh, "AG_BattCh")
+        Me.AG_BattCh.MaxValue = 100.0!
+        Me.AG_BattCh.MinValue = 0!
+        Me.AG_BattCh.Name = "AG_BattCh"
+        Me.AG_BattCh.NeedleColor1 = System.Windows.Forms.AGaugeNeedleColor.Gray
+        Me.AG_BattCh.NeedleColor2 = System.Drawing.Color.DimGray
+        Me.AG_BattCh.NeedleRadius = 32
+        Me.AG_BattCh.NeedleType = System.Windows.Forms.NeedleType.Advance
+        Me.AG_BattCh.NeedleWidth = 2
+        Me.AG_BattCh.ScaleLinesInterColor = System.Drawing.Color.Black
+        Me.AG_BattCh.ScaleLinesInterInnerRadius = 40
+        Me.AG_BattCh.ScaleLinesInterOuterRadius = 48
+        Me.AG_BattCh.ScaleLinesInterWidth = 1
+        Me.AG_BattCh.ScaleLinesMajorColor = System.Drawing.Color.Black
+        Me.AG_BattCh.ScaleLinesMajorInnerRadius = 40
+        Me.AG_BattCh.ScaleLinesMajorOuterRadius = 48
+        Me.AG_BattCh.ScaleLinesMajorStepValue = 50.0!
+        Me.AG_BattCh.ScaleLinesMajorWidth = 2
+        Me.AG_BattCh.ScaleLinesMinorColor = System.Drawing.Color.Gray
+        Me.AG_BattCh.ScaleLinesMinorInnerRadius = 42
+        Me.AG_BattCh.ScaleLinesMinorOuterRadius = 48
+        Me.AG_BattCh.ScaleLinesMinorTicks = 9
+        Me.AG_BattCh.ScaleLinesMinorWidth = 1
+        Me.AG_BattCh.ScaleNumbersColor = System.Drawing.Color.Black
+        Me.AG_BattCh.ScaleNumbersFormat = Nothing
+        Me.AG_BattCh.ScaleNumbersRadius = 60
+        Me.AG_BattCh.ScaleNumbersRotation = 0
+        Me.AG_BattCh.ScaleNumbersStartScaleLine = 0
+        Me.AG_BattCh.ScaleNumbersStepScaleLines = 1
+        Me.AG_BattCh.UnitValue1 = System.Windows.Forms.AGauge.UnitValue.Percent
+        Me.AG_BattCh.UnitValue2 = System.Windows.Forms.AGauge.UnitValue.None
+        Me.AG_BattCh.Value1 = 0!
+        Me.AG_BattCh.Value2 = 0!
         '
         'WinNUT
         '

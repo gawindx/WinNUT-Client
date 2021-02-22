@@ -34,9 +34,9 @@ Partial Class Update_Gui
         '
         'GB1
         '
+        resources.ApplyResources(Me.GB1, "GB1")
         Me.GB1.Controls.Add(Me.TB_ChgLog)
         Me.GB1.Controls.Add(Me.Lbl)
-        resources.ApplyResources(Me.GB1, "GB1")
         Me.GB1.Name = "GB1"
         Me.GB1.TabStop = False
         '

@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Tab_Connexion.Text" xml:space="preserve">
+    <value>Соединение</value>
+  </data>
+  <data name="Tab_Calibrage.Text" xml:space="preserve">
+    <value>Калибровка</value>
+  </data>
+  <data name="Tab_Miscellanous.Text" xml:space="preserve">
+    <value>Прочее</value>
+  </data>
+  <data name="Tab_Shutdown.Text" xml:space="preserve">
+    <value>Настройка отключения</value>
+  </data>
+  <data name="Cbx_Branch_Update.Items" xml:space="preserve">
+    <value>Стабильная версия</value>
+  </data>
+  <data name="Cbx_Branch_Update.Items1" xml:space="preserve">
+    <value>Отладочная версия</value>
+  </data>
+  <data name="Cbx_Branch_Update.ToolTip" xml:space="preserve">
+    <value>Искать обновления до стабильной или отладочной версии.</value>
+  </data>
+  <data name="Cbx_Delay_Verif.Items" xml:space="preserve">
+    <value>Ежедневно</value>
+  </data>
+  <data name="Cbx_Delay_Verif.Items1" xml:space="preserve">
+    <value>Еженедельно</value>
+  </data>
+  <data name="Cbx_Delay_Verif.Items2" xml:space="preserve">
+    <value>Ежемесячно</value>
+  </data>
+  <data name="Cbx_Delay_Verif.ToolTip" xml:space="preserve">
+    <value>Частота проверок</value>
+  </data>
+  <data name="Lbl_Branch_Update.Text" xml:space="preserve">
+    <value>Стабильная или отладочная версия</value>
+  </data>
+  <data name="Lbl_Delay_Verif.Text" xml:space="preserve">
+    <value>Задержка между проверками</value>
+  </data>
+  <data name="Cb_Update_At_Start.Text" xml:space="preserve">
+    <value>Проверять при запуске</value>
+  </data>
+  <data name="Cb_Update_At_Start.ToolTip" xml:space="preserve">
+    <value>Проверяет обновления при запуске.</value>
+  </data>
+  <data name="Cb_Verify_Update.Text" xml:space="preserve">
+    <value>Проверять обновления</value>
+  </data>
+  <data name="Cb_Verify_Update.ToolTip" xml:space="preserve">
+    <value>Проверка обновлений.</value>
+  </data>
+  <data name="Tab_Update.Text" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="Tb_Pwd_Nut.ToolTip" xml:space="preserve">
+    <value>Пароль для входа на сервер NUT</value>
+  </data>
+  <data name="Tb_Login_Nut.ToolTip" xml:space="preserve">
+    <value>Идентификатор подключения к серверу NUT</value>
+  </data>
+  <data name="Label3.Text" xml:space="preserve">
+    <value>Реквизиты для подключения к серверу NUT (оставьте пустыми если не требуются)</value>
+  </data>
+  <data name="Lbl_Pwd_Nut.Text" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Lbl_Login_Nut.Text" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="Tb_Delay_Com.ToolTip" xml:space="preserve">
+    <value>Время между обновлениями данных ИБП (по умолчанию = 5).
+Число от 1 до 60 секунд.</value>
+  </data>
+  <data name="Tb_UPS_Name.ToolTip" xml:space="preserve">
+    <value>Имя ИБП для мониторинга.
+Допустимые значения: Имя ИБП из конфиграции сервера NUT</value>
+  </data>
+  <data name="Tb_Port.ToolTip" xml:space="preserve">
+    <value>Порт сервера NUT (по умолчанию = 3493).
+Число от 1 до 65535.</value>
+  </data>
+  <data name="Tb_Server_IP.ToolTip" xml:space="preserve">
+    <value>Адресс сервера NUT. 
+IPV4 / IPV6 / доменное имя.</value>
+  </data>
+  <data name="Cb_Reconnect.Text" xml:space="preserve">
+    <value>Переподключаться</value>
+  </data>
+  <data name="Cb_Reconnect.ToolTip" xml:space="preserve">
+    <value>Включить автопоключение/переподключение</value>
+  </data>
+  <data name="Lbl_Delay_Com.Text" xml:space="preserve">
+    <value>Интервал запросов</value>
+  </data>
+  <data name="Lbl_Name_UPS.Text" xml:space="preserve">
+    <value>Имя ИБП</value>
+  </data>
+  <data name="Lbl_Port.Text" xml:space="preserve">
+    <value>Порт NUT</value>
+  </data>
+  <data name="Lbl_Server_IP.Text" xml:space="preserve">
+    <value>Север NUT</value>
+  </data>
+  <data name="Cbx_Freq_Input.ToolTip" xml:space="preserve">
+    <value>Установка частоты сети если не передаётся ИБП.</value>
+  </data>
+  <data name="Tb_BattV_Max.ToolTip" xml:space="preserve">
+    <value>Максимальное напряжение батареи.
+Число от 0 до 100.</value>
+  </data>
+  <data name="Tb_Load_Max.ToolTip" xml:space="preserve">
+    <value>Максимальная нагрузка на ИБП.
+Число от 0 до 100.</value>
+  </data>
+  <data name="Tb_OutV_Max.ToolTip" xml:space="preserve">
+    <value>Максимальное напряжение на выходе.
+Число от 0 до 100.</value>
+  </data>
+  <data name="Tb_InF_Max.ToolTip" xml:space="preserve">
+    <value>Максимальная частота.
+Число от 0 до 100.</value>
+  </data>
+  <data name="Tb_BattV_Min.ToolTip" xml:space="preserve">
+    <value>Минимальное напряжение батареи.
+Число от 0 до 100.</value>
+  </data>
+  <data name="Tb_Load_Min.ToolTip" xml:space="preserve">
+    <value>Минимальная нагрузка на ИБП.
+Число от 0 до 100.</value>
+  </data>
+  <data name="Tb_OutV_Min.ToolTip" xml:space="preserve">
+    <value>Минимальное напряжение на выходе.
+Число от 0 до 100.</value>
+  </data>
+  <data name="Tb_InF_Min.ToolTip" xml:space="preserve">
+    <value>Минимальная частота.
+Число от 0 до 100.</value>
+  </data>
+  <data name="Tb_InV_Max.ToolTip" xml:space="preserve">
+    <value>Максимальное напряжение сети.
+Число от 0 до 999.</value>
+  </data>
+  <data name="Tb_InV_Min.ToolTip" xml:space="preserve">
+    <value>Минимальное напряжение сети.
+Число от 0 до 999.</value>
+  </data>
+  <data name="Lbl_Maxi.Text" xml:space="preserve">
+    <value>Максимум</value>
+  </data>
+  <data name="Lbl_Mini.Text" xml:space="preserve">
+    <value>Минимум</value>
+  </data>
+  <data name="Lbl_BattV.Text" xml:space="preserve">
+    <value>Напряжение батареи</value>
+  </data>
+  <data name="Lbl_LoadUPS.Text" xml:space="preserve">
+    <value>Нагрузка ИБП</value>
+  </data>
+  <data name="Lbl_OutputV.Text" xml:space="preserve">
+    <value>Выходное напряжение</value>
+  </data>
+  <data name="Lbl_InputF.Text" xml:space="preserve">
+    <value>Входная частота</value>
+  </data>
+  <data name="Lbl_PowerF.Text" xml:space="preserve">
+    <value>Частота сети</value>
+  </data>
+  <data name="Lbl_InputV.Text" xml:space="preserve">
+    <value>Входное напряжение</value>
+  </data>
+  <data name="Cbx_LogLevel.Items" xml:space="preserve">
+    <value>Замечания</value>
+  </data>
+  <data name="Cbx_LogLevel.Items1" xml:space="preserve">
+    <value>Предупреждения</value>
+  </data>
+  <data name="Cbx_LogLevel.Items2" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Cbx_LogLevel.Items3" xml:space="preserve">
+    <value>Отладка</value>
+  </data>
+  <data name="Cbx_LogLevel.ToolTip" xml:space="preserve">
+    <value>Уровень логирования.</value>
+  </data>
+  <data name="Btn_DeleteLog.ToolTip" xml:space="preserve">
+    <value>Удалить файл лога</value>
+  </data>
+  <data name="Btn_ViewLog.ToolTip" xml:space="preserve">
+    <value>Откыть файл лога</value>
+  </data>
+  <data name="Lbl_LevelLog.Text" xml:space="preserve">
+    <value>Уровень логирования</value>
+  </data>
+  <data name="Lbl_LevelLog.ToolTip" xml:space="preserve">
+    <value>Уровень логирования в файл</value>
+  </data>
+  <data name="CB_Use_Logfile.Text" xml:space="preserve">
+    <value>Создать файл лога</value>
+  </data>
+  <data name="CB_Use_Logfile.ToolTip" xml:space="preserve">
+    <value>Создать файл лога (файл WinNUT-client.log в папке установки WinNUT).</value>
+  </data>
+  <data name="CB_Start_W_Win.Text" xml:space="preserve">
+    <value>Запускать с Windows</value>
+  </data>
+  <data name="CB_Start_W_Win.ToolTip" xml:space="preserve">
+    <value>Запуск WinNUT вместе с Windows</value>
+  </data>
+  <data name="CB_Close_Tray.Text" xml:space="preserve">
+    <value>Закрыть в трей</value>
+  </data>
+  <data name="CB_Close_Tray.ToolTip" xml:space="preserve">
+    <value>Свернуть в трей при закрытии.</value>
+  </data>
+  <data name="CB_Start_Mini.Text" xml:space="preserve">
+    <value>Запускать свёрнутым</value>
+  </data>
+  <data name="CB_Start_Mini.ToolTip" xml:space="preserve">
+    <value>Запуск WinNUT свёрнутым</value>
+  </data>
+  <data name="CB_Systray.Text" xml:space="preserve">
+    <value>Сворачивать в трей</value>
+  </data>
+  <data name="CB_Systray.ToolTip" xml:space="preserve">
+    <value>Свернуть в панель задач или трей.</value>
+  </data>
+  <data name="CB_Follow_FSD.Text" xml:space="preserve">
+    <value>Выключение по запросу FSD сервера NUT</value>
+  </data>
+  <data name="CB_Follow_FSD.ToolTip" xml:space="preserve">
+    <value>Должжно ли быть выполнено принудительное выключение если  сервер NUT запрашивает FSD</value>
+  </data>
+  <data name="Tb_GraceTime.ToolTip" xml:space="preserve">
+    <value>Дополнительное время.
+Допустимые значения от 0 до 3600.</value>
+  </data>
+  <data name="Cb_ExtendTime.Text" xml:space="preserve">
+    <value>Добавить дополнительное время при выключении.</value>
+  </data>
+  <data name="Cb_ExtendTime.ToolTip" xml:space="preserve">
+    <value>Добавить время при выключении.
+Важно:
+это дополнительное время может выйти за время работы ИБП - ИСПОЛЬЗОВАТЬ С ОСТОРОЖНОСТЬЮ!!!</value>
+  </data>
+  <data name="Tb_Delay_Stop.ToolTip" xml:space="preserve">
+    <value>Задержка процедуры отключения если необходимо.
+Число от 0 до 3600</value>
+  </data>
+  <data name="Cbx_TypeStop.Items" xml:space="preserve">
+    <value>Выключение</value>
+  </data>
+  <data name="Cbx_TypeStop.Items1" xml:space="preserve">
+    <value>Сон</value>
+  </data>
+  <data name="Cbx_TypeStop.Items2" xml:space="preserve">
+    <value>Гибернация</value>
+  </data>
+  <data name="Cbx_TypeStop.ToolTip" xml:space="preserve">
+    <value>Тип отключения в конце процедуры отключения.</value>
+  </data>
+  <data name="Cb_ImmediateStop.Text" xml:space="preserve">
+    <value>Немедленное отключение</value>
+  </data>
+  <data name="Cb_ImmediateStop.ToolTip" xml:space="preserve">
+    <value>Выключение немедленно или с задержкой.</value>
+  </data>
+  <data name="Tb_BattLimit_Time.ToolTip" xml:space="preserve">
+    <value>Если значение времени резервирования меньше - будет запущена процедура выключения питания.
+Допустимые значения от 0 до 3600.</value>
+  </data>
+  <data name="Tb_BattLimit_Load.ToolTip" xml:space="preserve">
+    <value>Если значение заряда батареи меньше - будет запущена процедура выключения питания.
+Допустимые значения от 0 до 100.</value>
+  </data>
+  <data name="Lbl_GraceTime.Text" xml:space="preserve">
+    <value>Дополнительная задержка выключения (сек)</value>
+  </data>
+  <data name="Lbl_Delay_Stop.Text" xml:space="preserve">
+    <value>Задержка выключения (сек)</value>
+  </data>
+  <data name="Lbl_StopType.Text" xml:space="preserve">
+    <value>Тип отключения</value>
+  </data>
+  <data name="Lbl_BattLimit_Time.Text" xml:space="preserve">
+    <value>Выключение если время меньше (сек)</value>
+  </data>
+  <data name="Lbl_BattLimit_Load.Text" xml:space="preserve">
+    <value>Выключение если заряд меньше</value>
+  </data>
+  <data name="Btn_Ok.Text" xml:space="preserve">
+    <value>Ок</value>
+  </data>
+  <data name="Btn_Apply.Text" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="Btn_Cancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Опции</value>
+  </data>
+</root>

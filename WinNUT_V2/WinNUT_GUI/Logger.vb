@@ -14,6 +14,7 @@ Public Class Logger
     Public WriteLogValue As Boolean
     Public LogLevelValue As LogLvl
     Private L_CurrentLogData As String
+    Private LastEventsList As New List(Of Object)
     Public Event NewData(ByVal sender As Object)
     Public Property CurrentLogData() As String
         Get
@@ -25,6 +26,11 @@ Public Class Logger
             Me.L_CurrentLogData = Value
         End Set
     End Property
+    Public ReadOnly Property LastEvents() As List(Of Object)
+        Get
+            Return Me.LastEventsList
+        End Get
+    End Property
     Public Sub New(ByVal WriteLog As Boolean, ByVal LogLevel As LogLvl)
         Me.WriteLogValue = WriteLog
         Me.LogLevelValue = LogLevel
@@ -32,8 +38,11 @@ Public Class Logger
         Me.LogFile.Append = True
         Me.LogFile.AutoFlush = True
         Me.LogFile.BaseFileName = "WinNUT-CLient"
+        Me.LogFile.LogFileCreationSchedule = Logging.LogFileCreationScheduleOption.Daily
         Me.LogFile.Location = LogFileLocation.Custom
         Me.LogFile.CustomLocation = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\WinNUT-Client"
+        Me.LastEventsList.Capacity = 50
+        WinNUT_Globals.LogFilePath = Me.LogFile.FullLogFileName
     End Sub
 
     Public Property WriteLog() As Boolean
@@ -61,12 +70,21 @@ Public Class Logger
         Dim Pid = TEventCache.ProcessId
         Dim SenderName = sender.GetType.Name
         Dim EventTime = Now.ToLocalTime
-        Dim FinalMsg = EventTime & "Pid: " & Pid & " " & SenderName & " : " & message
+        Dim FinalMsg = EventTime & " Pid: " & Pid & " " & SenderName & " : " & message
+
+        'Update LogFilePath to make sure it's still the correct path
+        WinNUT_Globals.LogFilePath = Me.LogFile.FullLogFileName
 
         ' Always write log messages to the attached debug messages window.
 #If DEBUG Then
        Debug.WriteLine(FinalMsg)
 #End If
+        'Create Event in EventList in case of crash for generate Report
+        If Me.LastEventsList.Count = Me.LastEventsList.Capacity Then
+            Me.LastEventsList.RemoveAt(0)
+        End If
+
+        Me.LastEventsList.Add(FinalMsg)
 
         If Me.WriteLogValue AndAlso Me.LogLevel >= LvlError Then
             LogFile.WriteLine(FinalMsg)

@@ -7967,6 +7967,9 @@
   <data name="GB_BattCh_Dial.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
   </data>
+  <data name="PBox_Battery_State.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="PBox_Battery_State.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 10</value>
   </data>
@@ -15243,6 +15246,9 @@
         ABEVdxdtCj0LHwAAAADBDwAAgAcAAJJnAACiZwAAomcAAKJnAACiZwAAomcAAKJnAACiZwAAomMAAKJD
         AACAQQAAgIEAAOPLAADz/wAA
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>720, 420</value>

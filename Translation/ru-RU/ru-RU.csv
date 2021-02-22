@@ -1,0 +1,161 @@
+﻿Status,Translator,Message,Translation
+Valid,N0GooD,About,О программе
+Valid,N0GooD,Activate automatic connection / reconnection,Включить автопоключение/переподключение
+Valid,N0GooD,Additional grace period limit.Accepted value: Numeric value from 0 to 3600.,Дополнительное время. Допустимые значения от 0 до 3600.
+Valid,N0GooD,Alert,Предупреждения
+Valid,N0GooD,Allow additional time during the shutdown procedure.Note: This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!,Добавить время при выключении. Важно: это дополнительное время может выйти за время работы ИБП - ИСПОЛЬЗОВАТЬ С ОСТОРОЖНОСТЬЮ!!!
+Valid,N0GooD,Allow Extended Shutdown Time,Добавить дополнительное время при выключении.
+Valid,N0GooD,Application shut down at,Программное отключение в
+Valid,N0GooD,Apply,Применить
+Valid,N0GooD,Automatic Reconnection,Автоматическое переподключение
+Valid,N0GooD,Battery Charge,Заряд батареи
+Valid,N0GooD,Battery OK,Батарея ОК
+Valid,N0GooD,Battery Voltage,Напряжение батареи
+Valid,N0GooD,Battery_Charge : {0} Remaining Time : {1},Заряд : {0} Осталось времени : {1}
+Valid,N0GooD,Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text},Заряд : {WinNUT.UPS_BattCh} Осталось времени :  {WinNUT.Lbl_VRTime.Text}
+Valid,N0GooD,Calibration,Калибровка
+Valid,N0GooD,Cancel,Отмена
+Valid,N0GooD,Cancellation of the Extinguishing Process,Отмена процесса отключения
+Valid,N0GooD,Check for updates.,Проверка обновлений.
+Valid,N0GooD,Checks for updates at startup.,Проверяет обновления при запуске.
+Valid,N0GooD,Clear,Очистить
+Valid,N0GooD,Close,Закрыть
+Valid,N0GooD,Close to Systray,Закрыть в трей
+Valid,N0GooD,Conditions met for launching the Extinguishing Process,Достигнуты условия для запуска процесса отключения
+Valid,N0GooD,Connected,Подключено
+Valid,N0GooD,Connection,Соединение
+Valid,N0GooD,Connection to Nut Host {0}:{1} Established,Соединение с сервером NUT {0}:{1} Успех
+Valid,N0GooD,Connection to Nut Host {0}:{1} Failed: {2},Соединение с сервером NUT {0}:{1} Отказ: {2}
+Valid,N0GooD,Copy,Копировать
+Valid,N0GooD,Create a log file (WinNUT-client.log file in the WinNUT installation directory).,Создать файл лога (файл WinNUT-client.log в папке установки WinNUT).
+Valid,N0GooD,Create LogFile,Создать файл лога
+Valid,N0GooD,Daily,Ежедневно
+Valid,N0GooD,Debug,Отладка
+Valid,N0GooD,Delay Between Verification,Задержка между проверками
+Valid,N0GooD,Delay to Shutdown (sec),Задержка выключения (сек)
+Valid,N0GooD,Delete log file.,Удалить файл лога
+Valid,N0GooD,Description :,Описание:
+Valid,N0GooD,Developement,Отладочная версия
+Valid,N0GooD,Disconnect,Отключиться
+Valid,N0GooD,Disconnected from Nut Host,Отключиться от сервера NUT
+Valid,N0GooD,Download New Version from :,Скачать новую версию с:
+Valid,N0GooD,Error,Ошибка
+Valid,N0GooD,Exit,Выход
+Valid,N0GooD,Extinction In Progress,Отключение в процессе
+Valid,N0GooD,File,Файл
+Valid,N0GooD,Firmware :,Прошивка:
+Valid,N0GooD,Frequency,Частота
+Valid,N0GooD,Frequency of verification.,Частота проверок
+Valid,N0GooD,Frequency Supply,Частота сети
+Valid,N0GooD,Grace Delay to Shutdown (sec),Дополнительная задержка выключения (сек)
+Valid,N0GooD,Grace Time,Время задержки
+Valid,N0GooD,Help,Помощь
+Valid,N0GooD,Hibernate,Гибернация
+Valid,N0GooD,Hide ChangeLog,Скрыть список изменений
+Valid,N0GooD,Immediate Shutdown,Немедленное выключение
+Valid,N0GooD,Immediate stop action,Немедленное отключение
+Valid,N0GooD,Import Ini File (v1.x),Импорт ini (из версии 1.x)
+Valid,N0GooD,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),Должжно ли быть выполнено принудительное выключение если  сервер NUT запрашивает FSD
+Valid,N0GooD,Input Frequency,Входная частота
+Valid,N0GooD,Input Voltage,Входное напряжение
+Valid,N0GooD,Item Properties,Свойства
+Valid,N0GooD,List UPS Variables,Список переменных ИБП
+Valid,N0GooD,Log file log level,Уровень логирования в файл
+Valid,N0GooD,Logging level,Уровень логирования
+Valid,N0GooD,Logging level.,Уровень логирования.
+Valid,N0GooD,Login,Логин
+Valid,N0GooD,Login credentials to the Nut server (leave blank if not required),Реквизиты для подключения к серверу NUT (оставьте пустыми если не требуются)
+Valid,N0GooD,Lost Connect To {0}:{1},Потеря подключения к {0}:{1}
+Valid,N0GooD,Low Battery,Низкий заряд батареи
+Valid,N0GooD,Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.,Если значение времени резервирования меньше - будет запущена процедура выключения питания. Допустимые значения от 0 до 3600.
+Valid,N0GooD,Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.,Если значение заряда батареи меньше - будет запущена процедура выключения питания. Допустимые значения от 0 до 100.
+Valid,N0GooD,Manufacturer :,Производитель:
+Valid,N0GooD,Max,Максимум
+Valid,N0GooD,Max Retry reached. Wait for manual Reconnection,Достигнуто макимальное количество попыток повторного подключения. Ожидается ручное переподключение
+Valid,N0GooD,Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Максимальное напряжение батареи. Число от 0 до 100.
+Valid,N0GooD,Maximum input frequency. Accepted value: Numeric value from 0 to 100.,Максимальная частота. Число от 0 до 100.
+Valid,N0GooD,Maximum input voltage. Accepted value: Numeric value from 0 to 999.,Максимальное напряжение сети. Число от 0 до 999.
+Valid,N0GooD,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,Максимальная нагрузка на ИБП. Число от 0 до 100.
+Valid,N0GooD,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,Максимальное напряжение на выходе. Число от 0 до 100.
+Valid,N0GooD,Min,Минимум
+Valid,N0GooD,Minimize to Systray,Сворачивать в трей
+Valid,N0GooD,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Минимальное напряжение батареи. Число от 0 до 100.
+Valid,N0GooD,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,Минимальная нагрузка на ИБП. Число от 0 до 100.
+Valid,N0GooD,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,Минимальная частота. Число от 0 до 100.
+Valid,N0GooD,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,Минимальное напряжение сети. Число от 0 до 999.
+Valid,N0GooD,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,Минимальное напряжение на выходе. Число от 0 до 100.
+Valid,N0GooD,Miscellanous,Прочее
+Valid,N0GooD,Monthly,Ежемесячно
+Valid,N0GooD,Name :,Название:
+Valid,N0GooD,No Update Available,Обновлений нет
+Valid,N0GooD,Not Connected,Не подключено
+Valid,N0GooD,Notice,Замечания
+Valid,N0GooD,NUT host,Север NUT
+Valid,N0GooD,NUT Port,Порт NUT
+Valid,N0GooD,Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Адресс сервера NUT. IPV4 / IPV6 / доменное имя.
+To validate,Gawindx,NUT server connection identifier,Идентификатор подключения к серверу NUT
+To validate,Gawindx,NUT server login password,Пароль для входа на сервер NUT
+Valid,N0GooD,Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Порт сервера NUT (по умолчанию = 3493). Число от 1 до 65535.
+Valid,N0GooD,Ok,Ок
+Valid,N0GooD,Old ups.ini imported,Старая версия ups.ini импортирована
+Valid,N0GooD,Old ups.ini imported Ini File Moved to {0}.old,Старая версия ups.ini перемещена в {0}.old
+Valid,N0GooD,On Battery ({0}%),От батареи ({0}%)
+Valid,N0GooD,On Line,От сети
+Valid,N0GooD,Open the log file.,Откыть файл лога
+Valid,N0GooD,Options,Опции
+Valid,N0GooD,Output Voltage,Выходное напряжение
+Valid,N0GooD,Password,Пароль
+Valid,N0GooD,Polling Interval,Интервал запросов
+Valid,N0GooD,Reconnect,Переподключиться
+Valid,N0GooD,Reconnection In Progress,Переподключение в процессе
+Valid,N0GooD,Reduced to the taskbar or Systray.,Свернуть в панель задач или трей.
+Valid,N0GooD,Re-establish connection,Переподключаться
+Valid,N0GooD,Reload,Обновить
+Valid,N0GooD,Remaining Time :,Осталось времени:
+To validate,Gawindx,Restarting WinNUT after waking up from Windows.,Перезапуск WinNUT после выхода из Windows.
+Valid,N0GooD,Sends in Systray at closing.,Свернуть в трей при закрытии.
+Valid,N0GooD,Serial :,Серийный номер:
+Valid,N0GooD,Sets the input frequency if not supplied by the UPS.,Установка частоты сети если не передаётся ИБП.
+Valid,N0GooD,Settings,Настройки
+Valid,N0GooD,Show ChangeLog,Показать список изменений
+Valid,N0GooD,Shutdown,Выключение
+Valid,N0GooD,Shutdown if battery lower than,Выключение если заряд меньше
+Valid,N0GooD,Shutdown if runtime lower than (sec),Выключение если время меньше (сек)
+Valid,N0GooD,Shutdown on Nut's FSD Signal,Выключение по запросу FSD сервера NUT
+Valid,N0GooD,Shutdown Options,Настройка отключения
+Valid,N0GooD,Sleep,Сон
+Valid,N0GooD,Stable,Стабильная версия
+Valid,N0GooD,Stable Or Dev Branch,Стабильная или отладочная версия
+Valid,N0GooD,Start Minimized,Запускать свёрнутым
+Valid,N0GooD,Start with Windows,Запускать с Windows
+Valid,N0GooD,Starts the shutdown procedure immediately or timed.,Выключение немедленно или с задержкой.
+Valid,N0GooD,Starts WinNut Minimized.,Запуск WinNUT свёрнутым
+Valid,N0GooD,Starts WinNUT when Windows starts.,Запуск WinNUT вместе с Windows
+Valid,N0GooD,Stop condition imposed by the NUT server,Условие отключения наложенное сервером NUT
+Valid,N0GooD,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,Задержка процедуры отключения если необходимо. Число от 0 до 3600
+Valid,N0GooD,Time between each update of UPS data (default = 5).Accepted value: Numerical value from 1 to 60 seconds.,Время между обновлениями данных ИБП (по умолчанию = 5). Число от 1 до 60 секунд.
+Valid,N0GooD,Try {0} of {1},Попытка {0} из {1}
+Valid,N0GooD,Try Reconnect {0} / {1},Попытка переподключения {0} / {1}
+Valid,N0GooD,Type of Stop,Тип отключения
+Valid,N0GooD,Type of stop at the end of the stop procedure.,Тип отключения в конце процедуры отключения.
+Valid,N0GooD,Unknown UPS Name,Название ИБП неизвестно
+Valid,N0GooD,Update,Обновить
+Valid,N0GooD,Update Available : Version {0},Доступно обновление: Версия {0}
+Valid,N0GooD,Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,Обновить WinNUT сейчас? "ОК" - закрыть WinNUT и установить новую версию. "Отмена" - сохранить MSI и установить позже.
+Valid,N0GooD,UPS Battery Low,ИБП Низкий заряд батареи
+Valid,N0GooD,UPS Load,Нагрузка ИБП
+Valid,N0GooD,UPS Name,Имя ИБП
+Valid,N0GooD,UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,Имя ИБП для мониторинга. Допустимые значения: Имя ИБП из конфиграции сервера NUT
+Valid,N0GooD,UPS On Battery,ИБП От батареи
+Valid,N0GooD,UPS On Line,ИБП От сети
+Valid,N0GooD,UPS Overload,ИБП Перегрузка
+Valid,N0GooD,UPS Variable,Переменные ИБП
+Valid,N0GooD,Use the Stable or Devellop branch during verification.,Искать обновления до стабильной или отладочной версии.
+Valid,N0GooD,Value :,Значение:
+Valid,N0GooD,Verify Update,Проверять обновления
+Valid,N0GooD,Verify Update At Start,Проверять при запуске
+Valid,N0GooD,Version {0} Available,Доступна версия {0}
+Valid,N0GooD,Weekly,Еженедельно
+To validate,Gawindx,Windows standby. WinNUT will disconnect.,Ожидание Windows. WinNUT отключится.
+Valid,N0GooD,WinNut Preferences Changed,Настройки WinNUT изменены
+Valid,N0GooD,Wrong Login ID (Username or Password),Неправильные данные авторизации (логин или пароль)

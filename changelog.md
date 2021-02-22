@@ -1,5 +1,42 @@
 ## History:
 
+### Version 2.0.7721
+#### Fix :
+  - Fix  an error when checking for an update to the latest version.
+  This error causes the detection of an update that does not exist. (issue #70)
+  - Also fixes incorrect version number detection (build version number was truncated)
+
+#### Changed :
+  - Improvements to the code managing the "ups.status" variable to take into account all possible values
+
+
+### Version 2.0.7721
+#### Fix :
+  - Fixed an error preventing WinNUT from starting on a new installation (crash in the encryption function due to a string = Nothing)
+  Related to issue #62
+  - Since the logging was improved, the view / delete functions of the current log file no longer pointed to the correct files.
+  
+#### Added :
+  - Addition of a small signage icon indicating if the battery is in Charge / Discharge / Charged state.
+  When the status is unknown (Connection not established or lost), no status is displayed.
+  - Added Russian translation (ru-RU) (thanks to NoGood - #65)
+  - Addition of the possibility of creating a Bug Report when WinNUT encounters a critical error in order to retrieve the information necessary to resolve this bug.
+
+#### Changed :
+  - Password is now hidden in TextBox (#63)
+  - Windows Title Modified to "Windows NUT Client", like older versions (#61) and is now a translatable string
+  - Settings Poll Delay are now Expressed In seconds (#64), also renaming "Delay" parameters to "Polling Interval"
+  - The translations have been modified accordingly for these 3 fixes
+  - Change the way the program version is displayed in notifications
+  Only major and minor versions are displayed due to limitations on the number of characters that can be displayed in notifications
+  - Toast Popup : Use Short Program Version Instead of complete Program Version
+  - Some improvements on Preferences Gui
+  - Improved logging when entering or exiting Windows from sleep.
+  - The required .Net Framework version is now 4.7.2 (instead of 4.5.2) (Windows 7 sp1, 8, 8.1, 10)
+  - Addition of a daily rotation of the logs (previously required a deletion of the journal file when it exceeded 5000KB or else no longer journaling new elements)
+  - Translations Improvements
+
+
 ### Version 2.0.7710
 #### Fix :
   - Fixed an error generating a bad loading of the default parameters during the first launch following a new installation (without any version previously installed)

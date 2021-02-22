@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="App_Event_Str_01" xml:space="preserve">
+    <value>Программное отключение в</value>
+  </data>
+  <data name="Frm_Main_Str_01" xml:space="preserve">
+    <value>Старая версия ups.ini перемещена в {0}.old</value>
+  </data>
+  <data name="Frm_Main_Str_02" xml:space="preserve">
+    <value>Старая версия ups.ini импортирована</value>
+  </data>
+  <data name="Frm_Main_Str_03" xml:space="preserve">
+    <value>Переподключение в процессе</value>
+  </data>
+  <data name="Frm_Main_Str_04" xml:space="preserve">
+    <value>Попытка {0} из {1}</value>
+  </data>
+  <data name="Frm_Main_Str_05" xml:space="preserve">
+    <value>Не подключено</value>
+  </data>
+  <data name="Frm_Main_Str_06" xml:space="preserve">
+    <value>Подключено</value>
+  </data>
+  <data name="Frm_Main_Str_07" xml:space="preserve">
+    <value>От сети</value>
+  </data>
+  <data name="Frm_Main_Str_08" xml:space="preserve">
+    <value>От батареи ({0}%)</value>
+  </data>
+  <data name="Frm_Main_Str_09" xml:space="preserve">
+    <value>Низкий заряд батареи</value>
+  </data>
+  <data name="Frm_Main_Str_10" xml:space="preserve">
+    <value>Батарея ОК</value>
+  </data>
+  <data name="Frm_Main_Str_11" xml:space="preserve">
+    <value>Название ИБП неизвестно</value>
+  </data>
+  <data name="Frm_Main_Str_12" xml:space="preserve">
+    <value>Потеря подключения к {0}:{1}</value>
+  </data>
+  <data name="Frm_Main_Str_13" xml:space="preserve">
+    <value>Неправильные данные авторизации (логин или пароль)</value>
+  </data>
+  <data name="Frm_Main_Str_14" xml:space="preserve">
+    <value>Перезапуск WinNUT после выхода из Windows.</value>
+  </data>
+  <data name="Frm_Main_Str_15" xml:space="preserve">
+    <value>Ожидание Windows. WinNUT отключится.</value>
+  </data>
+  <data name="Frm_Shutdown_Str_01" xml:space="preserve">
+    <value>Заряд : {0}
+Осталось времени : {1}</value>
+  </data>
+  <data name="Frm_Update_Str_01" xml:space="preserve">
+    <value>Доступно обновление: Версия {0}</value>
+  </data>
+  <data name="Frm_Update_Str_02" xml:space="preserve">
+    <value>Показать список изменений</value>
+  </data>
+  <data name="Frm_Update_Str_03" xml:space="preserve">
+    <value>Скрыть список изменений</value>
+  </data>
+  <data name="Frm_Update_Str_04" xml:space="preserve">
+    <value>Обновить WinNUT сейчас?
+"ОК" - закрыть WinNUT и установить новую версию.
+"Отмена" - сохранить MSI и установить позже.</value>
+  </data>
+  <data name="Frm_Update_Str_05" xml:space="preserve">
+    <value>Скачать новую версию с:</value>
+  </data>
+  <data name="Log_Str_01" xml:space="preserve">
+    <value>Настройки WinNUT изменены</value>
+  </data>
+  <data name="Log_Str_02" xml:space="preserve">
+    <value>Соединение с сервером NUT {0}:{1} Успех</value>
+  </data>
+  <data name="Log_Str_03" xml:space="preserve">
+    <value>Соединение с сервером NUT {0}:{1} Отказ: {2}</value>
+  </data>
+  <data name="Log_Str_04" xml:space="preserve">
+    <value>Автоматическое переподключение</value>
+  </data>
+  <data name="Log_Str_05" xml:space="preserve">
+    <value>Отключиться от сервера NUT</value>
+  </data>
+  <data name="Log_Str_06" xml:space="preserve">
+    <value>Попытка переподключения {0} / {1}</value>
+  </data>
+  <data name="Log_Str_07" xml:space="preserve">
+    <value>Достигнуто макимальное количество попыток повторного подключения.
+Ожидается ручное переподключение</value>
+  </data>
+  <data name="Log_Str_08" xml:space="preserve">
+    <value>Достигнуты условия для запуска процесса отключения</value>
+  </data>
+  <data name="Log_Str_09" xml:space="preserve">
+    <value>Отмена процесса отключения</value>
+  </data>
+  <data name="Log_Str_10" xml:space="preserve">
+    <value>Обновлений нет</value>
+  </data>
+  <data name="Log_Str_11" xml:space="preserve">
+    <value>Доступна версия {0}</value>
+  </data>
+  <data name="Log_Str_12" xml:space="preserve">
+    <value>Условие отключения наложенное сервером NUT</value>
+  </data>
+</root>

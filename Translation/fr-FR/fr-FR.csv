@@ -93,6 +93,8 @@ Valid,Gawindx,Notice,Remarque
 Valid,Gawindx,NUT host,Serveur NUT
 Valid,Gawindx,NUT Port,Port NUT
 Valid,Gawindx,Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Adresse du serveur Nut. Valeur acceptée: adresse IPV4 / IPV6 / FQDN.
+Valid,Gawindx,NUT server connection identifier,Identifiant de connexion au serveur NUT
+Valid,Gawindx,NUT server login password,Mot de Passe de connexion au serveur NUT
 Valid,Gawindx,Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Numéro de port du serveur Nut (par défaut = 3493). Valeur acceptée: valeur numérique de 1 à 65535.
 Valid,Gawindx,Ok,Ok
 Valid,Gawindx,Old ups.ini imported,Ancien Fichier ups.ini importé
@@ -110,6 +112,7 @@ Valid,Gawindx,Reduced to the taskbar or Systray.,Réduit à la barre des tâches
 Valid,Gawindx,Re-establish connection,Reconnecter
 Valid,Gawindx,Reload,Recharger
 Valid,Gawindx,Remaining Time :,Temps de Sauvegarde :
+Valid,Gawindx,Restarting WinNUT after waking up from Windows.,Redémarrage de WinNUT après la sortie de veille de Windows.
 Valid,Gawindx,Sends in Systray at closing.,Envoie dans le Systray à la fermeture.
 Valid,Gawindx,Serial :,Serial :
 Valid,Gawindx,Sets the input frequency if not supplied by the UPS.,Règle la fréquence d'entrée si elle n'est pas fournie par l'onduleur.
@@ -154,4 +157,5 @@ Valid,Gawindx,Verify Update At Start,Vérifier la mise à jour au Démarrage
 Valid,Gawindx,Version {0} Available,Version {0} disponible
 Valid,Gawindx,Weekly,Hebdomadaire
 Valid,Gawindx,WinNut Preferences Changed,Préférences de WinNUT Modifiées
+Valid,Gawindx,Windows standby. WinNUT will disconnect.,Mise en veille de Windows. WinNUT va se déconnecter.
 Valid,Gawindx,Wrong Login ID (Username or Password),ID de connexion incorrect (nom d'utilisateur ou mot de passe)

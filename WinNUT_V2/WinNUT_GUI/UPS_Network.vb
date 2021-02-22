@@ -700,20 +700,57 @@ Public Class UPS_Network
                     Dim BattInstantCurrent = (Me.OutputV * Me.Load) / (Me.BattV * 100)
                     Me.BattRuntime = Math.Floor(Me.BattCapacity * 0.6 * Me.BattCh * (1 - PowerDivider) * 3600 / (BattInstantCurrent * 100))
                 End If
+
+                Dim StatusArr = Me.Status.Trim().Split(" ")
+                For Each State In StatusArr
+                    Select Case State
+                        Case "OL"
+                            If Not Update_Nut.Interval = Me.Delay Then
+                                Update_Nut.Stop()
+                                Update_Nut.Interval = Me.Delay
+                                Update_Nut.Start()
+                            End If
+                            If ShutdownStatus Then
+                                LogFile.LogTracing("Stop condition Canceled", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_SHUT_STOP))
+                                ShutdownStatus = False
+                                RaiseEvent Stop_Shutdown()
+                            End If
+                        Case "OB"
+                            If Update_Nut.Interval = Me.Delay Then
+                                Update_Nut.Stop()
+                                Update_Nut.Interval = If((Math.Floor(Me.Delay / 5) < 1000), 1000, Math.Floor(Me.Delay / 5))
+                                Update_Nut.Start()
+                            End If
+                            If ((Me.BattCh <= Me.Low_Batt Or Me.BattRuntime <= Me.Backup_Limit) And Not ShutdownStatus) Then
+                                LogFile.LogTracing("Stop condition reached", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_SHUT_START))
+                                RaiseEvent Shutdown_Condition()
+                                ShutdownStatus = True
+                            End If
+                        Case "FSD"
+                            LogFile.LogTracing("Stop condition imposed by the NUT server", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_NUT_FSD))
+                            RaiseEvent Shutdown_Condition()
+                            ShutdownStatus = True
+                        Case "LB", "HB"
+                            LogFile.LogTracing("High/Low Battery on UPS", LogLvl.LOG_NOTICE, Me)
+                        Case "CHRG"
+                            LogFile.LogTracing("Battery is Charging on UPS", LogLvl.LOG_NOTICE, Me)
+                        Case "DISCHRG"
+                            LogFile.LogTracing("Battery is Discharging on UPS", LogLvl.LOG_NOTICE, Me)
+                        Case "BYPASS"
+                            LogFile.LogTracing("UPS bypass circuit is active - no battery protection is available", LogLvl.LOG_NOTICE, Me)
+                        Case "CAL"
+                            LogFile.LogTracing("UPS is currently performing runtime calibration (on battery)", LogLvl.LOG_NOTICE, Me)
+                        Case "OFF"
+                            LogFile.LogTracing("UPS is offline and is not supplying power to the load", LogLvl.LOG_NOTICE, Me)
+                        Case "OVER"
+                            LogFile.LogTracing("UPS is overloaded", LogLvl.LOG_NOTICE, Me)
+                        Case "TRIM"
+                            LogFile.LogTracing("UPS is trimming incoming voltage", LogLvl.LOG_NOTICE, Me)
+                        Case "BOOST"
+                            LogFile.LogTracing("UPS is boosting incoming voltage", LogLvl.LOG_NOTICE, Me)
+                    End Select
+                Next
                 RaiseEvent DataUpdated()
-                If Not Me.Status.Trim().StartsWith("OL") And (Me.BattCh <= Me.Low_Batt Or Me.BattRuntime <= Me.Backup_Limit) And Not ShutdownStatus Then
-                    LogFile.LogTracing("Stop condition reached", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_SHUT_START))
-                    RaiseEvent Shutdown_Condition()
-                    ShutdownStatus = True
-                ElseIf ShutdownStatus And Me.Status.Trim().StartsWith("OL") Then
-                    LogFile.LogTracing("Stop condition Canceled", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_SHUT_STOP))
-                    ShutdownStatus = False
-                    RaiseEvent Stop_Shutdown()
-                ElseIf Me.Follow_FSD And Me.Status.Trim().StartsWith("FSD") Then
-                    LogFile.LogTracing("Stop condition imposed by the NUT server", LogLvl.LOG_NOTICE, Me, WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_NUT_FSD))
-                    RaiseEvent Shutdown_Condition()
-                    ShutdownStatus = True
-                End If
             End If
         Catch Excep As Exception
             Me.Disconnect(True)

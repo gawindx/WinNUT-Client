@@ -12,9 +12,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="1025" xml:space="preserve" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1025.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="App_Event_Str_01" xml:space="preserve">
     <value>Application arrêtée à </value>
   </data>
@@ -114,5 +111,11 @@ Fichier Ini déplacé vers {0}.old</value>
   </data>
   <data name="Log_Str_12" xml:space="preserve">
     <value>Condition d'arrêt forcée signalée par le serveur NUT</value>
+  </data>
+  <data name="Frm_Main_Str_14" xml:space="preserve">
+    <value>Redémarrage de WinNUT après la sortie de veille de Windows.</value>
+  </data>
+  <data name="Frm_Main_Str_15" xml:space="preserve">
+    <value>Mise en veille de Windows. WinNUT va se déconnecter.</value>
   </data>
 </root>

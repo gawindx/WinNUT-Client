@@ -251,6 +251,12 @@ Ini File Moved to {0}.old</value>
   <data name="Frm_Main_Str_13" xml:space="preserve">
     <value>Wrong Login ID (Username or Password)</value>
   </data>
+  <data name="Frm_Main_Str_14" xml:space="preserve">
+    <value>Restarting WinNUT after waking up from Windows.</value>
+  </data>
+  <data name="Frm_Main_Str_15" xml:space="preserve">
+    <value>Windows standby. WinNUT will disconnect.</value>
+  </data>
   <data name="Frm_Shutdown_Str_01" xml:space="preserve">
     <value>Battery_Charge : {0}
 Remaining Time : {1}</value>

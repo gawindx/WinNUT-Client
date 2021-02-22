@@ -5,8 +5,8 @@
 ## Installation
 To use it, please follow the following steps:
 1. Get the [last available Releases](https://github.com/gawindx/WinNUT-Client/releases)
-2. Install WinNUT using the "WinNUT-Setup.msi" file obtained previously
-3. If you were using an older version of WinNUT (v1.x), copy your "ups.ini" configuration file to the WinNUT installation directory (by default "C: \ Program Files (x86) \ WinNUT-client ") for an automatic import of your parameters during the first launch
+2. Install WinNUT-Client using the "WinNUT-Setup.msi" file obtained previously
+3. If you were using an older version of WinNUT (v1.x), copy your "ups.ini" configuration file to the WinNUT-Client installation directory (by default "C:\Program Files(x86)\WinNUT-Client ") for an automatic import of your parameters during the first launch
 4. Start WinNUT V2 and modify the parameters according to your needs
 
 ## Specific Configuration
@@ -16,17 +16,18 @@ If your NUT server is hosted on a Synology NAS, be sure to provide the following
 Login: upsmon
 Password: secret
 
-It will probably be necessary to allow the WinNUT IP to communicate with the NUT server.
+It will probably be necessary to allow the WinNUT-Client IP to communicate with the NUT server.
 *See issue 47 for more information, specifically [this commentary](https://github.com/gawindx/WinNUT-Client/issues/47#issuecomment-759180793).*
 
 ### 
 ## Translation
-WinNUT V2 is natively multilingual, so it is no longer necessary to select your language from the software interface.
-Currently, WinNUT supports:
+WinNUT-Client V2 is natively multilingual, so it is no longer necessary to select your language from the software interface.
+Currently, WinNUT-Client supports:
 - English
 - German
 - French
 - Simplified Chinese
+- Russian
 
 #### To add / correct a language
 
@@ -56,12 +57,12 @@ Currently, WinNUT supports:
 
 Your translation / correction will be added on a new version and will thus be available to the entire community.
 
-## Update WinNut
+## Update WinNUT-Client
 
-Since version 1.8.0.0, WinNut includes a process for checking for updates.
+Since version 1.8.0.0, WinNUT-Client includes a process for checking for updates.
 This process can be started automatically on startup or manually on demand (and you can choose whether you want to update from the stable or development version)
 
-During this update, the new installation file will be automatically downloaded and you can easily update your version of WinNut.
+During this update, the new installation file will be automatically downloaded and you can easily update your version of WinNUT-Client.
 
 This process is fully integrated and no longer requires a second executable.
 
@@ -74,7 +75,7 @@ WinNUT-Client uses:
 
 ## License
 
-WinNUT is a NUT windows client for monitoring your ups hooked up to your favorite linux server.
+WinNUT-Client is a NUT windows client for monitoring your ups hooked up to your favorite linux server.
 Copyright (C) 2019-2021 Gawindx (Decaux Nicolas)
 
 This program is free software: you can redistribute it and/or modify it under the terms of the

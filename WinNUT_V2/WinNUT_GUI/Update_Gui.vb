@@ -94,7 +94,7 @@ Public Class Update_Gui
                     Dim JSONReleases = Newtonsoft.Json.JsonConvert.DeserializeObject(e.Result)
                     Dim HighestVersion As String = Nothing
                     Dim ActualVersion As Version = Version.Parse(WinNUT_Globals.ProgramVersion)
-                    Dim sPattern As System.Text.RegularExpressions.Regex = New System.Text.RegularExpressions.Regex("[Vv](\d+\.\d+\.\d+\.?\d+?).*$")
+                    Dim sPattern As System.Text.RegularExpressions.Regex = New System.Text.RegularExpressions.Regex("[Vv](\d+\.\d+\.\d+\.?\d+).*$")
                     For Each JSONRelease In JSONReleases
                         Dim PreRelease = Convert.ToBoolean(JSONRelease("prerelease").ToString)
                         Dim DraftRelease = Convert.ToBoolean(JSONRelease("draft").ToString)
@@ -119,7 +119,7 @@ Public Class Update_Gui
                             ChangeLogDiff &= vbNewLine & ReleaseName & vbNewLine & JSONRelease("body").ToString & vbNewLine
                         End If
                     Next
-                    If ChangeLogDiff IsNot Nothing Then
+                    If ChangeLogDiff IsNot Nothing And Me.NewVersionMsiURL IsNot Nothing Then
                         Me.sChangeLog = ChangeLogDiff
                         Me.HasUpdate = True
                         LogFile.LogTracing(String.Format("New Version Available : {0}", Me.NewVersion), LogLvl.LOG_DEBUG, Me, String.Format(WinNUT_Globals.StrLog.Item(AppResxStr.STR_LOG_UPDATE), Me.NewVersion))
