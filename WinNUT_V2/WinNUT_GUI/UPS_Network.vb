@@ -676,8 +676,13 @@ Public Class UPS_Network
                 Me.Status = GetUPSVar("ups.status", "OL")
                 Me.OutPower = Double.Parse((GetUPSVar("ups.realpower.nominal", 0)), ciClone)
                 If Me.OutPower = 0 Then
-                    Me.InputA = Double.Parse(GetUPSVar("ups.current.nominal", 1), ciClone)
-                    Me.OutPower = Math.Round(Me.UPS_InputV * 0.95 * Me.UPS_InputA * CosPhi)
+                    Me.OutPower = Double.Parse((GetUPSVar("ups.power.nominal", 0)), ciClone)
+                    If Me.OutPower = 0 Then
+                        Me.InputA = Double.Parse(GetUPSVar("ups.current.nominal", 1), ciClone)
+                        Me.OutPower = Math.Round(Me.UPS_InputV * 0.95 * Me.UPS_InputA * CosPhi)
+                    Else
+                        Me.OutPower = Math.Round(Me.UPS_OutPower * (Me.UPS_Load / 100) * CosPhi)
+                    End If
                 Else
                     Me.OutPower = Math.Round(Me.UPS_OutPower * (Me.UPS_Load / 100))
                 End If
