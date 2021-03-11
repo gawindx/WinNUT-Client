@@ -8,7 +8,7 @@ Beta Release
 ### Changed
   - Redesign of the connection functions to the Nut server
   - Creation of a DLL containing functions not essential to the GUI in order to prepare for the upcoming arrival of service mode
-  - Modification of the instantaneous power calculation method in the case of inverters not supporting the variables previously used - in conjunction with issue #68
+  - Modification of the instantaneous power calculation method in the case of inverters not supporting the variables previously used - in conjunction with issue #68 (thanks to faugusztin)
 
 
 ### Version 2.0.7721
