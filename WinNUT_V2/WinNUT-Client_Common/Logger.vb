@@ -1,4 +1,4 @@
-﻿' WinNUT is a NUT windows client for monitoring your ups hooked up to your favorite linux server.
+﻿' WinNUT-Client is a NUT windows client for monitoring your ups hooked up to your favorite linux server.
 ' Copyright (C) 2019-2021 Gawindx (Decaux Nicolas)
 '
 ' This program is free software: you can redistribute it and/or modify it under the terms of the
@@ -8,7 +8,7 @@
 ' This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY
 
 Public Class Logger
-    Private ReadOnly LogFile As New FileLogTraceListener()
+    Private ReadOnly LogFile As New Microsoft.VisualBasic.Logging.FileLogTraceListener()
     Private ReadOnly TEventCache As New TraceEventCache()
     ' Enable writing to a log file.
     Public WriteLogValue As Boolean
@@ -16,6 +16,7 @@ Public Class Logger
     Private L_CurrentLogData As String
     Private LastEventsList As New List(Of Object)
     Public Event NewData(ByVal sender As Object)
+
     Public Property CurrentLogData() As String
         Get
             Dim Tmp_Data = Me.L_CurrentLogData
@@ -39,7 +40,7 @@ Public Class Logger
         Me.LogFile.AutoFlush = True
         Me.LogFile.BaseFileName = "WinNUT-CLient"
         Me.LogFile.LogFileCreationSchedule = Logging.LogFileCreationScheduleOption.Daily
-        Me.LogFile.Location = LogFileLocation.Custom
+        Me.LogFile.Location = Microsoft.VisualBasic.Logging.LogFileLocation.Custom
         Me.LogFile.CustomLocation = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\WinNUT-Client"
         Me.LastEventsList.Capacity = 50
         WinNUT_Globals.LogFilePath = Me.LogFile.FullLogFileName
@@ -79,6 +80,7 @@ Public Class Logger
 #If DEBUG Then
        Debug.WriteLine(FinalMsg)
 #End If
+
         'Create Event in EventList in case of crash for generate Report
         If Me.LastEventsList.Count = Me.LastEventsList.Capacity Then
             Me.LastEventsList.RemoveAt(0)

@@ -48,13 +48,13 @@ Partial Class List_Var_Gui
         '
         'GB1
         '
-        resources.ApplyResources(Me.GB1, "GB1")
         Me.GB1.Controls.Add(Me.Lbl_D_Value)
         Me.GB1.Controls.Add(Me.Lbl_V_Value)
         Me.GB1.Controls.Add(Me.Lbl_N_Value)
         Me.GB1.Controls.Add(Me.Lbl_D)
         Me.GB1.Controls.Add(Me.Lbl_V)
         Me.GB1.Controls.Add(Me.Lbl_Name)
+        resources.ApplyResources(Me.GB1, "GB1")
         Me.GB1.Name = "GB1"
         Me.GB1.TabStop = False
         '
@@ -112,7 +112,6 @@ Partial Class List_Var_Gui
         '
         'Timer_Update_List
         '
-        Me.Timer_Update_List.Enabled = True
         Me.Timer_Update_List.Interval = 1000
         '
         'Btn_Clip

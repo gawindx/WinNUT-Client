@@ -1,4 +1,4 @@
-﻿' WinNUT is a NUT windows client for monitoring your ups hooked up to your favorite linux server.
+﻿' WinNUT-Client is a NUT windows client for monitoring your ups hooked up to your favorite linux server.
 ' Copyright (C) 2019-2021 Gawindx (Decaux Nicolas)
 '
 ' This program is free software: you can redistribute it and/or modify it under the terms of the
@@ -7,43 +7,57 @@
 '
 ' This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY
 
+Imports WinNUT_Client_Common
+Imports System.Threading
+Imports System.ComponentModel
+
 Public Class List_Var_Gui
-    Private List_Var_Datas As List(Of UPS_Var_Node)
+    Private List_Var_Datas As List(Of UPS_List_Datas)
     Private LogFile As Logger
+    Private UPS_Name = WinNUT.Nut_Config.UPSName
     Private Sub List_Var_Gui_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.LogFile = WinNUT.LogFile
         LogFile.LogTracing("Load List Var Gui", LogLvl.LOG_DEBUG, Me)
         Me.Icon = WinNUT.Icon
-        Me.PopulateTreeView()
+        Me.Visible = False
+        PopulateTreeView()
+        Me.Visible = True
     End Sub
+
     Private Sub PopulateTreeView()
+        Dim action As Action
         LogFile.LogTracing("Populate TreeView", LogLvl.LOG_DEBUG, Me)
-        List_Var_Datas = WinNUT.UPS_Network.ListUPSVars()
+        List_Var_Datas = WinNUT.UPS_Device.GetUPS_ListVar()
+
         If List_Var_Datas Is Nothing Then
             LogFile.LogTracing("ListUPSVars return Nothing Value", LogLvl.LOG_DEBUG, Me)
             Return
         End If
-        TView_UPSVar.Nodes.Clear()
-        TView_UPSVar.Nodes.Add(WinNUT_Params.Arr_Reg_Key.Item("UPSName"), WinNUT_Params.Arr_Reg_Key.Item("UPSName"))
+
+        action = Sub() TView_UPSVar.Nodes.Clear()
+        TView_UPSVar.Invoke(action)
+        action = Sub() TView_UPSVar.Nodes.Add(WinNUT_Params.Arr_Reg_Key.Item("UPSName"), WinNUT_Params.Arr_Reg_Key.Item("UPSName"))
+        TView_UPSVar.Invoke(action)
         Dim TreeChild As New TreeNode
         Dim LastNode As New TreeNode
-        LastNode = TView_UPSVar.Nodes(0)
         For Each UPS_Var In List_Var_Datas
+            LastNode = TView_UPSVar.Nodes(0)
             Dim FullPathNode = String.Empty
             For Each SubPath In (Strings.Split(UPS_Var.VarKey, "."))
                 FullPathNode += SubPath & "."
                 Dim Nodes = TView_UPSVar.Nodes.Find(FullPathNode, True)
                 If Nodes.Length = 0 Then
                     If LastNode.Text = "" Then
-                        LastNode = TView_UPSVar.Nodes.Add(FullPathNode, SubPath)
+                        action = Sub() LastNode = TView_UPSVar.Nodes.Add(FullPathNode, SubPath)
+                        TView_UPSVar.Invoke(action)
                     Else
-                        LastNode = LastNode.Nodes.Add(FullPathNode, SubPath)
+                        action = Sub() LastNode = LastNode.Nodes.Add(FullPathNode, SubPath)
+                        TView_UPSVar.Invoke(action)
                     End If
                 Else
                     LastNode = Nodes(0)
                 End If
             Next
-            LastNode = TView_UPSVar.Nodes(0)
         Next
     End Sub
     Private Sub Btn_Clear_Click(sender As Object, e As EventArgs) Handles Btn_Clear.Click
@@ -67,15 +81,14 @@ Public Class List_Var_Gui
 
         Return Nothing
     End Function
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer_Update_List.Tick
+    Private Sub Event_Update_List(sender As Object, e As EventArgs) Handles Timer_Update_List.Tick
         Dim SelectedNode As TreeNode = TView_UPSVar.SelectedNode
-        Dim UPSNAme = WinNUT.UPS_Network.NutUPS
         If SelectedNode IsNot Nothing Then
             If SelectedNode.Parent IsNot Nothing Then
-                If SelectedNode.Parent.Text <> UPSNAme And SelectedNode.Nodes.Count = 0 Then
-                    Dim VarName = Strings.Replace(TView_UPSVar.SelectedNode.FullPath, WinNUT.UPS_Network.NutUPS & ".", "")
+                If SelectedNode.Parent.Text <> Me.UPS_Name And SelectedNode.Nodes.Count = 0 Then
+                    Dim VarName = Strings.Replace(TView_UPSVar.SelectedNode.FullPath, Me.UPS_Name & ".", "")
                     LogFile.LogTracing("Update {VarName}", LogLvl.LOG_DEBUG, Me)
-                    Lbl_V_Value.Text = WinNUT.UPS_Network.GetUPSVar(VarName)
+                    Lbl_V_Value.Text = WinNUT.UPS_Device.GetUPSVar(VarName, Me.UPS_Name)
                 End If
             End If
         End If
@@ -99,14 +112,14 @@ Public Class List_Var_Gui
         Dim index As Integer = 0
         Dim UPSName = WinNUT_Params.Arr_Reg_Key.Item("UPSName")
         Dim SelectedChild = Strings.Replace(e.Node.FullPath, UPSName & ".", "")
-        Dim FindChild As Predicate(Of UPS_Var_Node) = Function(ByVal x As UPS_Var_Node)
-                                                          If x.VarKey = SelectedChild Then
-                                                              Return True
-                                                          Else
-                                                              index += 1
-                                                              Return False
-                                                          End If
-                                                      End Function
+        Dim FindChild As Predicate(Of UPS_List_Datas) = Function(ByVal x As UPS_List_Datas)
+                                                            If x.VarKey = SelectedChild Then
+                                                                Return True
+                                                            Else
+                                                                index += 1
+                                                                Return False
+                                                            End If
+                                                        End Function
         If Not SelectedChild = UPSName And List_Var_Datas.FindIndex(FindChild) <> -1 Then
             LogFile.LogTracing("Select {List_Var_Datas.Item(index).VarKey} Node", LogLvl.LOG_DEBUG, Me)
             Lbl_N_Value.Text = List_Var_Datas.Item(index).VarKey
@@ -121,9 +134,12 @@ Public Class List_Var_Gui
 
     Private Sub Btn_Clip_Click(sender As Object, e As EventArgs) Handles Btn_Clip.Click
         LogFile.LogTracing("Export TreeView To Clipboard", LogLvl.LOG_DEBUG, Me)
-        Dim ToClipboard As String = WinNUT_Params.Arr_Reg_Key.Item("UPSName") & " (" & WinNUT.UPS_Mfr & "/" & WinNUT.UPS_Model & "/" & WinNUT.UPS_Firmware & ")" & vbNewLine
+        Dim ToClipBoard As String = Nothing
+        With WinNUT.UPS_Device.UPS_Datas
+            ToClipBoard = WinNUT_Params.Arr_Reg_Key.Item("UPSName") & " (" & .Mfr & "/" & .Model & "/" & .Firmware & ")" & vbNewLine
+        End With
         For Each LDatas In List_Var_Datas
-            ToClipboard &= LDatas.VarKey & " (" & LDatas.VarDesc & ") : " & LDatas.VarValue & vbNewLine
+            ToClipBoard &= LDatas.VarKey & " (" & LDatas.VarDesc & ") : " & LDatas.VarValue & vbNewLine
         Next
         My.Computer.Clipboard.SetText(ToClipboard)
     End Sub

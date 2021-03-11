@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{194AB29D-1F80-497B-86BE-4F35DACBA6BC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>WinNUT_client.My.MyApplication</StartupObject>
-    <RootNamespace>WinNUT_client</RootNamespace>
-    <AssemblyName>WinNUT-client</AssemblyName>
+    <StartupObject>WinNUT_Client.My.MyApplication</StartupObject>
+    <RootNamespace>WinNUT_Client</RootNamespace>
+    <AssemblyName>WinNUT-Client</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -40,7 +40,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>WinNUT-client.xml</DocumentationFile>
+    <DocumentationFile>WinNUT-Client.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Optimize>false</Optimize>
   </PropertyGroup>
@@ -49,9 +49,9 @@
     <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>WinNUT-client.xml</DocumentationFile>
+    <DocumentationFile>WinNUT-Client.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -102,7 +102,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
     <Reference Include="System.Runtime" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -129,6 +128,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.vb">
+      <Link>My Project\SharedAssemblyInfo.vb</Link>
+    </Compile>
     <Compile Include="About_Gui.Designer.vb">
       <DependentUpon>About_Gui.vb</DependentUpon>
     </Compile>
@@ -136,17 +138,14 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="CryptData.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ToastPopup.vb" />
     <Compile Include="CProgressBar.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="IniFileVb.vb" />
     <Compile Include="Update_Gui.Designer.vb">
       <DependentUpon>Update_Gui.vb</DependentUpon>
     </Compile>
@@ -165,16 +164,12 @@
     <Compile Include="List_Var_Gui.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Logger.vb" />
-    <Compile Include="UPS_Network.vb" />
-    <Compile Include="WinNUT_Globals.vb" />
     <Compile Include="Pref_Gui.Designer.vb">
       <DependentUpon>Pref_Gui.vb</DependentUpon>
     </Compile>
     <Compile Include="Pref_Gui.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinNUT_Params.vb" />
     <Compile Include="WinNUT.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -378,6 +373,10 @@
     <ProjectReference Include="..\AGauge_mod\AGauge.csproj">
       <Project>{cbdb1d25-5a95-43d4-a958-bf6ae65c6c3f}</Project>
       <Name>AGauge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinNUT-Client_Common\WinNUT-Client_Common.vbproj">
+      <Project>{9074ce60-db9a-4bdf-b851-6eab8a81f366}</Project>
+      <Name>WinNUT-Client_Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

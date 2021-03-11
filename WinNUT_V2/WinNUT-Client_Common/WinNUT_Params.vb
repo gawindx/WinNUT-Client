@@ -1,4 +1,4 @@
-﻿' WinNUT is a NUT windows client for monitoring your ups hooked up to your favorite linux server.
+﻿' WinNUT-Client is a NUT windows client for monitoring your ups hooked up to your favorite linux server.
 ' Copyright (C) 2019-2021 Gawindx (Decaux Nicolas)
 '
 ' This program is free software: you can redistribute it and/or modify it under the terms of the

@@ -18,13 +18,10 @@ Imports System.Runtime.InteropServices
 
 ' Vérifiez les valeurs des attributs de l'assembly
 
-<Assembly: AssemblyTitle("WinNUT-Client")>
-<Assembly: AssemblyDescription("Windows NUT Client")>
-
-<Assembly: ComVisible(False)>
-
-'Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-<Assembly: Guid("00424259-e020-4e5c-a70a-5660aa21cb0b")>
+<Assembly: AssemblyCompany("Gawindx")>
+<Assembly: AssemblyProduct("WinNUT-Client")>
+<Assembly: AssemblyCopyright("Copyright Gawinx (Decaux Nicolas) ©  2019-2021")>
+<Assembly: AssemblyTrademark("https://github.com/gawindx/WinNUT-Client")>
 
 ' Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 '
@@ -37,3 +34,5 @@ Imports System.Runtime.InteropServices
 ' en utilisant '*', comme indiqué ci-dessous :
 ' <Assembly: AssemblyVersion("1.0.*")>
 
+<Assembly: AssemblyVersion("2.1.*")>
+<Assembly: NeutralResourcesLanguage("en-US")>

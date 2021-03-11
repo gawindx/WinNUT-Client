@@ -1,5 +1,16 @@
 ## History:
 
+### Version 2.1.7740
+Beta Release
+#### Fix :
+  - Fixed a string length error for the German language (this problem should also exist with other languages but only if the strings were long enough) - related to issue #74
+
+### Changed
+  - Redesign of the connection functions to the Nut server
+  - Creation of a DLL containing functions not essential to the GUI in order to prepare for the upcoming arrival of service mode
+  - Modification of the instantaneous power calculation method in the case of inverters not supporting the variables previously used - in conjunction with issue #68
+
+
 ### Version 2.0.7721
 #### Fix :
   - Fix  an error when checking for an update to the latest version.

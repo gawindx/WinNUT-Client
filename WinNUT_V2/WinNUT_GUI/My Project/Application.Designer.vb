@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.WinNUT_client.WinNUT
+            Me.MainForm = Global.WinNUT_Client.WinNUT
         End Sub
     End Class
 End Namespace
