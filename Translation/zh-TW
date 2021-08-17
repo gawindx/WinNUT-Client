@@ -1,0 +1,159 @@
+Status,Translator,Message,Translation
+To Validate,sam7894604,About,關於
+To Validate,sam7894604,Activate automatic connection / reconnection,啟動 自動連線 / 自動重新連線
+To Validate,sam7894604,Additional grace period limit.Accepted value: Numeric value from 0 to 3600.,額外的延長關機時間。取值：0-3600。
+To Validate,sam7894604,Alert,警告
+To Validate,sam7894604,Allow additional time during the shutdown procedure.Note: This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!,允許延長更多的關機時間。注意：這個額外的時間可能會超過UPS備援時間，使用請注意！！
+To Validate,sam7894604,Allow Extended Shutdown Time,允許延長關機時間
+To Validate,sam7894604,Application shut down at,程式被關閉於
+To Validate,sam7894604,Apply,套用
+To Validate,sam7894604,Automatic Reconnection,自動重新連線
+To Validate,sam7894604,Battery Charge,電池電量
+To Validate,sam7894604,Battery OK,電池正常
+To Validate,sam7894604,Battery Voltage,電池電壓
+To Validate,sam7894604,Battery_Charge : {0} Remaining Time : {1},電池電量：{0} 　剩餘時間：{1}
+To Validate,sam7894604,Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text},電池電量：{WinNUT.UPS_BattCh} 　剩餘時間：{WinNUT.Lbl_VRTime.Text}
+To Validate,sam7894604,Calibration,校正
+To Validate,sam7894604,Cancel,取消
+To Validate,sam7894604,Cancellation of the Extinguishing Process,取消關機程式
+To Validate,sam7894604,Check for updates.,檢查更新
+To Validate,sam7894604,Checks for updates at startup.,啟動時檢查更新
+To Validate,sam7894604,Clear,清空
+To Validate,sam7894604,Close,關閉
+To Validate,sam7894604,Close to Systray,關閉至系統列
+To Validate,sam7894604,Conditions met for launching the Extinguishing Process,觸發關機程式所需條件
+To Validate,sam7894604,Connected,已連線
+To Validate,sam7894604,Connection,連線
+To Validate,sam7894604,Connection to Nut Host {0}:{1} Established,至 Nut 主機 {0}:{1} 的連線建立成功
+To Validate,sam7894604,Connection to Nut Host {0}:{1} Failed: {2},至 Nut 主機 {0}:{1} 的連線建立失敗：{2}
+To Validate,sam7894604,Copy,複製
+To Validate,sam7894604,Create a log file (WinNUT-client.log file in the WinNUT installation directory).,建立日誌檔案（WinNUT-client.log 檔案位於 WinNUT 安裝目錄下）
+To Validate,sam7894604,Create LogFile,建立日誌檔案
+To Validate,sam7894604,Daily,每天
+To Validate,sam7894604,Debug,除錯
+To Validate,sam7894604,Delay Between Verification,每次驗證的延遲
+To Validate,sam7894604,Delay to Shutdown (sec),延遲關機（秒）
+To Validate,sam7894604,Delete log file.,刪除日誌檔案。
+To Validate,sam7894604,Description :,描述：
+To Validate,sam7894604,Devellopement,開發版
+To Validate,sam7894604,Disconnect,斷開連線
+To Validate,sam7894604,Disconnected from Nut Host,斷開了至 Nut 主機的連線
+To Validate,sam7894604,Download New Version from :,下載了新版本於：
+To Validate,sam7894604,Error,錯誤
+To Validate,sam7894604,Exit,離開
+To Validate,sam7894604,Extinction In Progress,正在關機中
+To Validate,sam7894604,File,檔案
+To Validate,sam7894604,Firmware :,韌體：
+To Validate,sam7894604,Frequency,頻率
+To Validate,sam7894604,Frequency of verification.,驗證頻率
+To Validate,sam7894604,Frequency Supply,供電頻率
+To Validate,sam7894604,Grace Delay to Shutdown (sec),延長關機時間 (秒)
+To Validate,sam7894604,Grace Time,延長時間
+To Validate,sam7894604,Help,幫助
+To Validate,sam7894604,Hibernate,休眠
+To Validate,sam7894604,Hide ChangeLog,隱藏更新日誌
+To Validate,sam7894604,Immediate Shutdown,立即關機
+To Validate,sam7894604,Immediate stop action,即時停機操作
+To Validate,sam7894604,Import Ini File (v1.x),匯入 Ini 檔案（v1.x 版本）
+To Validate,sam7894604,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),指示當NUT伺服器發出強制關機信號（FSD=Force ShutDown）時是否應執行關機操作 
+To Validate,sam7894604,Input Frequency,輸入頻率
+To Validate,sam7894604,Input Voltage,輸入電壓
+To Validate,sam7894604,Item Properties,項目屬性
+To Validate,sam7894604,List UPS Variables,UPS 變數列表
+To Validate,sam7894604,Log file log level,日誌記錄等級
+To Validate,sam7894604,Logging level,日誌等級
+To Validate,sam7894604,Logging level.,日誌等級。
+To Validate,sam7894604,Login,登入
+To Validate,sam7894604,Login credentials to the Nut server (leave blank if not required),Nut 伺服器登入憑證（如果不需要，請留空）
+To Validate,sam7894604,Lost Connect To {0}:{1},斷開了至 {0} 的連線：{1}
+To Validate,sam7894604,Low Battery,電池電量過低
+To Validate,sam7894604,Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.,觸發停機流程的最低續航時間。取值：0-3600 之間的數字。 
+To Validate,sam7894604,Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.,觸發停機流程的最低電池電量百分比。取值：0-100 之間的數字。 
+To Validate,sam7894604,Manufacturer :,製造商：
+To Validate,sam7894604,Max,最大
+To Validate,sam7894604,Max Retry reached. Wait for manual Reconnection,達到最大重試次數。等待手動重連。
+To Validate,sam7894604,Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.,最高電池電壓。取值：0-100 之間的數字。
+To Validate,sam7894604,Maximum input frequency. Accepted value: Numeric value from 0 to 100.,最高輸入頻率。取值：0-100 之間的數字。
+To Validate,sam7894604,Maximum input voltage. Accepted value: Numeric value from 0 to 999.,最高輸入電壓。取值：0-999 之間的數字。
+To Validate,sam7894604,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,最高 UPS 電量百分比。取值：0-100 之間的數字。
+To Validate,sam7894604,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,最高輸出電壓。取值：0-999 之間的數字。 
+To Validate,sam7894604,Min,最小
+To Validate,sam7894604,Minimize to Systray,最小化至系統列
+To Validate,sam7894604,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,最低電池電壓。取值：0-100 之間的數字。
+To Validate,sam7894604,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,最低 UPS 電量百分比。取值：0-100 之間的數字。
+To Validate,sam7894604,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,最低輸入頻率。取值：0-100 之間的數字。
+To Validate,sam7894604,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,最低輸入電壓。取值：0-999 之間的數字。
+To Validate,sam7894604,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,最低輸出電壓。取值：0-999 之間的數字。 
+To Validate,sam7894604,Miscellanous,其他
+To Validate,sam7894604,Monthly,每月
+To Validate,sam7894604,Name :,名稱：
+To Validate,sam7894604,No Update Available,沒有可用更新
+To Validate,sam7894604,Not Connected,尚未連線
+To Validate,sam7894604,Notice,注意
+To Validate,sam7894604,NUT host,NUT 主機
+To Validate,sam7894604,NUT Port,NUT 埠號
+To Validate,sam7894604,Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Nut 服務器地址。取值：IPv4/IPv6/FQDN 地址
+To Validate,sam7894604,Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Nut 伺服器埠號（默認 3493）。取值：1-65535 之間的數字。
+To Validate,sam7894604,Ok,確認
+To Validate,sam7894604,Old ups.ini imported,導入舊 ups.ini
+To Validate,sam7894604,Old ups.ini imported Ini File Moved to {0}.old,導入舊 ups.ini，Ini 檔案重新命名為 {0}.old 
+To Validate,sam7894604,On Battery ({0}%),使用電池中（({0}%） 
+To Validate,sam7894604,On Line,使用市電中
+To Validate,sam7894604,Open the log file.,開啟日誌檔案。
+To Validate,sam7894604,Options,選項
+To Validate,sam7894604,Output Voltage,輸出電壓
+To Validate,sam7894604,Password,密碼
+To Validate,sam7894604,Polling Interval,輪詢間隔
+To Validate,sam7894604,Reconnect,重新連線
+To Validate,sam7894604,Reconnection In Progress,程式重新連線中
+To Validate,sam7894604,Reduced to the taskbar or Systray.,縮小至工作列或系統列
+To Validate,sam7894604,Re-establish connection,重新建立連線
+To Validate,sam7894604,Reload,更新
+To Validate,sam7894604,Remaining Time :,剩餘時間：
+To Validate,sam7894604,Restarting WinNUT after waking up from Windows.,從Windows喚醒後重新啟動WinNUT。
+To Validate,sam7894604,Sends in Systray at closing.,關閉時縮小至系統列。
+To Validate,sam7894604,Serial :,序號：
+To Validate,sam7894604,Sets the input frequency if not supplied by the UPS.,設定輸入頻率（如果 UPS 未顯示）
+To Validate,sam7894604,Settings,設定
+To Validate,sam7894604,Show ChangeLog,顯示更新日誌
+To Validate,sam7894604,Shutdown,關機
+To Validate,sam7894604,Shutdown if battery lower than,如果電池低於百分比則關機
+To Validate,sam7894604,Shutdown if runtime lower than (sec),如果續航時間低於則關機（秒） 
+To Validate,sam7894604,Shutdown on Nut's FSD Signal,收到 FSD（強制關機）訊號後關機
+To Validate,sam7894604,Shutdown Options,關機選項
+To Validate,sam7894604,Sleep,延遲
+To Validate,sam7894604,Stable,穩定
+To Validate,sam7894604,Stable Or Dev Branch,穩定或開發分支
+To Validate,sam7894604,Start Minimized,啟動時最小化
+To Validate,sam7894604,Start with Windows,隨 Windows 啟動
+To Validate,sam7894604,Starts the shutdown procedure immediately or timed.,立即或定時執行關機流程
+To Validate,sam7894604,Starts WinNut Minimized.,啟動時最小化 WinNUT。
+To Validate,sam7894604,Starts WinNUT when Windows starts.,隨 Windows 啟動 WinNUT。
+To Validate,sam7894604,Stop condition imposed by the NUT server,由 NUT 伺服器規定的停止條件
+To Validate,sam7894604,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,停止流程延時。取值：0-3600 秒之間的數字。
+To Validate,sam7894604,Time between each update of UPS data (default = 5).Accepted value: Numerical value from 1 to 60 seconds.,UPS 數據的更新頻率（默認值5秒）。取值：1 到 60秒之間的數字。
+To Validate,sam7894604,Try {0} of {1},嘗試 {1} 的 {0} 
+To Validate,sam7894604,Try Reconnect {0} / {1},嘗試重新連線 {1} / {0} 
+To Validate,sam7894604,Type of Stop,停止類型
+To Validate,sam7894604,Type of stop at the end of the stop procedure.,停止流程結束時的停止類型
+To Validate,sam7894604,Unknown UPS Name,未知的 UPS 名稱
+To Validate,sam7894604,Update,更新
+To Validate,sam7894604,Update Available : Version {0},可用的新版本：{0}
+To Validate,sam7894604,Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,立即更新WinNUT-Client嗎？確定：關閉WinNut並安裝新版本　取消：保存 Msi 並於稍後安裝
+To Validate,sam7894604,UPS Battery Low,UPS 電池電量低
+To Validate,sam7894604,UPS Load,UPS 負載
+To Validate,sam7894604,UPS Name,UPS 名稱
+To Validate,sam7894604,UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,UPS 的監控名稱。允許值：在 UPS 的 Nut 伺服器所設定的名稱。
+To Validate,sam7894604,UPS On Battery,UPS 使用電池供電
+To Validate,sam7894604,UPS On Line,UPS 已接入市電
+To Validate,sam7894604,UPS Overload,UPS 過載
+To Validate,sam7894604,UPS Variable,UPS 變數
+To Validate,sam7894604,Use the Stable or Devellop branch during verification.,在驗證期間使用穩定或開發分支。
+To Validate,sam7894604,Value :,值：
+To Validate,sam7894604,Verify Update,驗證更新
+To Validate,sam7894604,Verify Update At Start,啟動時驗證更新
+To Validate,sam7894604,Version {0} Available,新版本 {0} 可供更新
+To Validate,sam7894604,Weekly,每週
+To Validate,sam7894604,WinNut Preferences Changed,WinNut 選項已修改
+To Validate,sam7894604,Windows standby. WinNUT will disconnect.,Windows 待命，WinNUT 將斷開連接。
+To Validate,sam7894604,Wrong Login ID (Username or Password),錯誤的登入憑證（帳號或密碼）
