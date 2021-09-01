@@ -96,12 +96,27 @@ Partial Class Pref_Gui
         Me.Btn_Apply = New System.Windows.Forms.Button()
         Me.Btn_Cancel = New System.Windows.Forms.Button()
         Me.Pref_TlTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Tab_Variables = New System.Windows.Forms.TabPage()
+        Me.Tb_InV_Var = New System.Windows.Forms.TextBox()
+        Me.Tb_BattCh_Var = New System.Windows.Forms.TextBox()
+        Me.Tb_Load_Var = New System.Windows.Forms.TextBox()
+        Me.Tb_BattV_Var = New System.Windows.Forms.TextBox()
+        Me.Tb_OutV_Var = New System.Windows.Forms.TextBox()
+        Me.Tb_Freq_Var = New System.Windows.Forms.TextBox()
+        Me.Lbl_Variables = New System.Windows.Forms.Label()
+        Me.Lbl_InV_Var = New System.Windows.Forms.Label()
+        Me.Lbl_Freq_Var = New System.Windows.Forms.Label()
+        Me.Lbl_BattV_Var = New System.Windows.Forms.Label()
+        Me.Lbl_Load_Var = New System.Windows.Forms.Label()
+        Me.Lbl_BattCh_Var = New System.Windows.Forms.Label()
+        Me.Lbl_OutV_Var = New System.Windows.Forms.Label()
         Me.TabControl_Options.SuspendLayout()
         Me.Tab_Connexion.SuspendLayout()
         Me.Tab_Calibrage.SuspendLayout()
         Me.Tab_Miscellanous.SuspendLayout()
         Me.Tab_Shutdown.SuspendLayout()
         Me.Tab_Update.SuspendLayout()
+        Me.Tab_Variables.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl_Options
@@ -109,6 +124,7 @@ Partial Class Pref_Gui
         resources.ApplyResources(Me.TabControl_Options, "TabControl_Options")
         Me.TabControl_Options.Controls.Add(Me.Tab_Connexion)
         Me.TabControl_Options.Controls.Add(Me.Tab_Calibrage)
+        Me.TabControl_Options.Controls.Add(Me.Tab_Variables)
         Me.TabControl_Options.Controls.Add(Me.Tab_Miscellanous)
         Me.TabControl_Options.Controls.Add(Me.Tab_Shutdown)
         Me.TabControl_Options.Controls.Add(Me.Tab_Update)
@@ -634,6 +650,96 @@ Partial Class Pref_Gui
         Me.Btn_Cancel.UseVisualStyleBackColor = True
         Me.Btn_Cancel.UseWaitCursor = True
         '
+        'Tab_Variables
+        '
+        Me.Tab_Variables.Controls.Add(Me.Lbl_BattV_Var)
+        Me.Tab_Variables.Controls.Add(Me.Lbl_Load_Var)
+        Me.Tab_Variables.Controls.Add(Me.Lbl_BattCh_Var)
+        Me.Tab_Variables.Controls.Add(Me.Lbl_OutV_Var)
+        Me.Tab_Variables.Controls.Add(Me.Lbl_Freq_Var)
+        Me.Tab_Variables.Controls.Add(Me.Lbl_InV_Var)
+        Me.Tab_Variables.Controls.Add(Me.Lbl_Variables)
+        Me.Tab_Variables.Controls.Add(Me.Tb_Freq_Var)
+        Me.Tab_Variables.Controls.Add(Me.Tb_OutV_Var)
+        Me.Tab_Variables.Controls.Add(Me.Tb_BattV_Var)
+        Me.Tab_Variables.Controls.Add(Me.Tb_Load_Var)
+        Me.Tab_Variables.Controls.Add(Me.Tb_BattCh_Var)
+        Me.Tab_Variables.Controls.Add(Me.Tb_InV_Var)
+        resources.ApplyResources(Me.Tab_Variables, "Tab_Variables")
+        Me.Tab_Variables.Name = "Tab_Variables"
+        Me.Tab_Variables.UseVisualStyleBackColor = True
+        '
+        'Tb_InV_Var
+        '
+        resources.ApplyResources(Me.Tb_InV_Var, "Tb_InV_Var")
+        Me.Tb_InV_Var.Name = "Tb_InV_Var"
+        Me.Pref_TlTip.SetToolTip(Me.Tb_InV_Var, resources.GetString("Tb_InV_Var.ToolTip"))
+        '
+        'Tb_BattCh_Var
+        '
+        resources.ApplyResources(Me.Tb_BattCh_Var, "Tb_BattCh_Var")
+        Me.Tb_BattCh_Var.Name = "Tb_BattCh_Var"
+        Me.Pref_TlTip.SetToolTip(Me.Tb_BattCh_Var, resources.GetString("Tb_BattCh_Var.ToolTip"))
+        '
+        'Tb_Load_Var
+        '
+        resources.ApplyResources(Me.Tb_Load_Var, "Tb_Load_Var")
+        Me.Tb_Load_Var.Name = "Tb_Load_Var"
+        Me.Pref_TlTip.SetToolTip(Me.Tb_Load_Var, resources.GetString("Tb_Load_Var.ToolTip"))
+        '
+        'Tb_BattV_Var
+        '
+        resources.ApplyResources(Me.Tb_BattV_Var, "Tb_BattV_Var")
+        Me.Tb_BattV_Var.Name = "Tb_BattV_Var"
+        Me.Pref_TlTip.SetToolTip(Me.Tb_BattV_Var, resources.GetString("Tb_BattV_Var.ToolTip"))
+        '
+        'Tb_OutV_Var
+        '
+        resources.ApplyResources(Me.Tb_OutV_Var, "Tb_OutV_Var")
+        Me.Tb_OutV_Var.Name = "Tb_OutV_Var"
+        Me.Pref_TlTip.SetToolTip(Me.Tb_OutV_Var, resources.GetString("Tb_OutV_Var.ToolTip"))
+        '
+        'Tb_Freq_Var
+        '
+        resources.ApplyResources(Me.Tb_Freq_Var, "Tb_Freq_Var")
+        Me.Tb_Freq_Var.Name = "Tb_Freq_Var"
+        Me.Pref_TlTip.SetToolTip(Me.Tb_Freq_Var, resources.GetString("Tb_Freq_Var.ToolTip"))
+        '
+        'Lbl_Variables
+        '
+        resources.ApplyResources(Me.Lbl_Variables, "Lbl_Variables")
+        Me.Lbl_Variables.Name = "Lbl_Variables"
+        '
+        'Lbl_InV_Var
+        '
+        resources.ApplyResources(Me.Lbl_InV_Var, "Lbl_InV_Var")
+        Me.Lbl_InV_Var.Name = "Lbl_InV_Var"
+        '
+        'Lbl_Freq_Var
+        '
+        resources.ApplyResources(Me.Lbl_Freq_Var, "Lbl_Freq_Var")
+        Me.Lbl_Freq_Var.Name = "Lbl_Freq_Var"
+        '
+        'Lbl_BattV_Var
+        '
+        resources.ApplyResources(Me.Lbl_BattV_Var, "Lbl_BattV_Var")
+        Me.Lbl_BattV_Var.Name = "Lbl_BattV_Var"
+        '
+        'Lbl_Load_Var
+        '
+        resources.ApplyResources(Me.Lbl_Load_Var, "Lbl_Load_Var")
+        Me.Lbl_Load_Var.Name = "Lbl_Load_Var"
+        '
+        'Lbl_BattCh_Var
+        '
+        resources.ApplyResources(Me.Lbl_BattCh_Var, "Lbl_BattCh_Var")
+        Me.Lbl_BattCh_Var.Name = "Lbl_BattCh_Var"
+        '
+        'Lbl_OutV_Var
+        '
+        resources.ApplyResources(Me.Lbl_OutV_Var, "Lbl_OutV_Var")
+        Me.Lbl_OutV_Var.Name = "Lbl_OutV_Var"
+        '
         'Pref_Gui
         '
         resources.ApplyResources(Me, "$this")
@@ -657,6 +763,8 @@ Partial Class Pref_Gui
         Me.Tab_Shutdown.PerformLayout()
         Me.Tab_Update.ResumeLayout(False)
         Me.Tab_Update.PerformLayout()
+        Me.Tab_Variables.ResumeLayout(False)
+        Me.Tab_Variables.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -733,4 +841,18 @@ Partial Class Pref_Gui
     Friend WithEvents Lbl_Pwd_Nut As Label
     Friend WithEvents Lbl_Login_Nut As Label
     Friend WithEvents CB_Follow_FSD As CheckBox
+    Friend WithEvents Tab_Variables As TabPage
+    Friend WithEvents Tb_Freq_Var As TextBox
+    Friend WithEvents Tb_OutV_Var As TextBox
+    Friend WithEvents Tb_BattV_Var As TextBox
+    Friend WithEvents Tb_Load_Var As TextBox
+    Friend WithEvents Tb_BattCh_Var As TextBox
+    Friend WithEvents Tb_InV_Var As TextBox
+    Friend WithEvents Lbl_InV_Var As Label
+    Friend WithEvents Lbl_Variables As Label
+    Friend WithEvents Lbl_BattV_Var As Label
+    Friend WithEvents Lbl_Load_Var As Label
+    Friend WithEvents Lbl_BattCh_Var As Label
+    Friend WithEvents Lbl_OutV_Var As Label
+    Friend WithEvents Lbl_Freq_Var As Label
 End Class
