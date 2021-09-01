@@ -34,6 +34,12 @@ Public Module WinNUT_Params
             .Add("MaxUPSLoad", 0)
             .Add("MinBattVoltage", 0)
             .Add("MaxBattVoltage", 0)
+            .Add("VarInputVoltage", "input.voltage")
+            .Add("VarFrequency", "input.frequency")
+            .Add("VarOutputVoltage", "output.voltage")
+            .Add("VarBatteryCharge", "battery.charge")
+            .Add("VarUPSLoad", "ups.load")
+            .Add("VarBattVoltage", "battery.voltage")
             .Add("MinimizeToTray", vbFalse)
             .Add("MinimizeOnStart", vbFalse)
             .Add("CloseToTray", vbFalse)
@@ -60,6 +66,7 @@ Public Module WinNUT_Params
     Public Sub Load_Params()
         Dim Arr_Reg_Connexion As New Dictionary(Of String, Object)
         Dim Arr_Reg_Calibration As New Dictionary(Of String, Object)
+        Dim Arr_Reg_Variables As New Dictionary(Of String, Object)
         Dim Arr_Reg_Miscellanous As New Dictionary(Of String, Object)
         Dim Arr_Reg_Logging As New Dictionary(Of String, Object)
         Dim Arr_Reg_Power As New Dictionary(Of String, Object)
@@ -87,6 +94,14 @@ Public Module WinNUT_Params
             .Add("MaxUPSLoad", 100)
             .Add("MinBattVoltage", 6)
             .Add("MaxBattVoltage", 18)
+        End With
+        With Arr_Reg_Variables
+            .Add("VarInputVoltage", "input.voltage")
+            .Add("VarFrequency", "input.frequency")
+            .Add("VarOutputVoltage", "output.voltage")
+            .Add("VarBatteryCharge", "battery.charge")
+            .Add("VarUPSLoad", "ups.load")
+            .Add("VarBattVoltage", "battery.voltage")
         End With
         With Arr_Reg_Miscellanous
             .Add("MinimizeToTray", vbFalse)
@@ -119,6 +134,7 @@ Public Module WinNUT_Params
             .Add("Connexion", Arr_Reg_Connexion)
             .Add("Appareance", Arr_Reg_Miscellanous)
             .Add("Calibration", Arr_Reg_Calibration)
+            .Add("Variables", Arr_Reg_Variables)
             .Add("Power", Arr_Reg_Power)
             .Add("Logging", Arr_Reg_Logging)
             .Add("Update", Arr_Reg_Update)

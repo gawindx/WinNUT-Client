@@ -665,14 +665,14 @@ Public Class UPS_Network
                     Freq_Fallback = Double.Parse(GetUPSVar("output.frequency.nominal", (50 + CInt(WinNUT_Params.Arr_Reg_Key.Item("FrequencySupply")) * 10)), ciClone)
                 End If
 
-                Me.BattCh = Double.Parse(GetUPSVar("battery.charge", 255, 50), ciClone)
-                Me.BattV = Double.Parse(GetUPSVar("battery.voltage", 12), ciClone)
+                Me.BattCh = Double.Parse(GetUPSVar(WinNUT_Params.Arr_Reg_Key("VarBatteryCharge"), 255, 50), ciClone)
+                Me.BattV = Double.Parse(GetUPSVar(WinNUT_Params.Arr_Reg_Key("VarBattVoltage"), 12), ciClone)
                 Me.BattRuntime = Double.Parse(GetUPSVar("battery.runtime", 86400), ciClone)
                 Me.BattCapacity = Double.Parse(GetUPSVar("battery.capacity", 7), ciClone)
-                Me.PowerFreq = Double.Parse(GetUPSVar("input.frequency", Double.Parse(GetUPSVar("output.frequency", Freq_Fallback), ciClone)), ciClone)
-                Me.InputV = Double.Parse(GetUPSVar("input.voltage", 220), ciClone)
-                Me.OutputV = Double.Parse(GetUPSVar("output.voltage", Me.UPS_InputV), ciClone)
-                Me.Load = Double.Parse(GetUPSVar("ups.load", 100), ciClone)
+                Me.PowerFreq = Double.Parse(GetUPSVar(WinNUT_Params.Arr_Reg_Key("VarFrequency"), Double.Parse(GetUPSVar("output.frequency", Freq_Fallback), ciClone)), ciClone)
+                Me.InputV = Double.Parse(GetUPSVar(WinNUT_Params.Arr_Reg_Key("VarInputVoltage"), 220), ciClone)
+                Me.OutputV = Double.Parse(GetUPSVar(WinNUT_Params.Arr_Reg_Key("VarOutputVoltage"), Me.UPS_InputV), ciClone)
+                Me.Load = Double.Parse(GetUPSVar(WinNUT_Params.Arr_Reg_Key("VarUPSLoad"), 100), ciClone)
                 Me.Status = GetUPSVar("ups.status", "OL")
                 Me.OutPower = Double.Parse((GetUPSVar("ups.realpower.nominal", 0)), ciClone)
                 If Me.OutPower = 0 Then

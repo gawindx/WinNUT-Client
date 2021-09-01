@@ -44,6 +44,12 @@ Public Class Pref_Gui
             WinNUT_Params.Arr_Reg_Key.Item("MaxUPSLoad") = CInt(Tb_Load_Max.Text)
             WinNUT_Params.Arr_Reg_Key.Item("MinBattVoltage") = CInt(Tb_BattV_Min.Text)
             WinNUT_Params.Arr_Reg_Key.Item("MaxBattVoltage") = CInt(Tb_BattV_Max.Text)
+            WinNUT_Params.Arr_Reg_Key.Item("VarInputVoltage") = Tb_InV_Var.Text
+            WinNUT_Params.Arr_Reg_Key.Item("VarFrequency") = Tb_Freq_Var.Text
+            WinNUT_Params.Arr_Reg_Key.Item("VarOutputVoltage") = Tb_OutV_Var.Text
+            WinNUT_Params.Arr_Reg_Key.Item("VarBatteryCharge") = Tb_BattCh_Var.Text
+            WinNUT_Params.Arr_Reg_Key.Item("VarUPSLoad") = Tb_Load_Var.Text
+            WinNUT_Params.Arr_Reg_Key.Item("VarBattVoltage") = Tb_BattV_Var.Text
             WinNUT_Params.Arr_Reg_Key.Item("MinimizeToTray") = CB_Systray.Checked
             WinNUT_Params.Arr_Reg_Key.Item("MinimizeOnStart") = CB_Start_Mini.Checked
             WinNUT_Params.Arr_Reg_Key.Item("CloseToTray") = CB_Close_Tray.Checked
@@ -133,6 +139,12 @@ Public Class Pref_Gui
             Tb_Load_Max.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("MaxUPSLoad"))
             Tb_BattV_Min.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("MinBattVoltage"))
             Tb_BattV_Max.Text = CStr(WinNUT_Params.Arr_Reg_Key.Item("MaxBattVoltage"))
+            Tb_InV_Var.Text = WinNUT_Params.Arr_Reg_Key.Item("VarInputVoltage")
+            Tb_Freq_Var.Text = WinNUT_Params.Arr_Reg_Key.Item("VarFrequency")
+            Tb_OutV_Var.Text = WinNUT_Params.Arr_Reg_Key.Item("VarOutputVoltage")
+            Tb_BattCh_Var.Text = WinNUT_Params.Arr_Reg_Key.Item("VarBatteryCharge")
+            Tb_Load_Var.Text = WinNUT_Params.Arr_Reg_Key.Item("VarUPSLoad")
+            Tb_BattV_Var.Text = WinNUT_Params.Arr_Reg_Key.Item("VarBattVoltage")
             CB_Systray.Checked = WinNUT_Params.Arr_Reg_Key.Item("MinimizeToTray")
             CB_Start_Mini.Checked = WinNUT_Params.Arr_Reg_Key.Item("MinimizeOnStart")
             CB_Close_Tray.Checked = WinNUT_Params.Arr_Reg_Key.Item("CloseToTray")
