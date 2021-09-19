@@ -419,6 +419,25 @@ Public Class UPS_Network
                 End If
             End If
 
+            SendData = "LOGIN " & Me.UPSName & vbCr
+            Me.WriterStream.WriteLine(SendData)
+            Me.WriterStream.Flush()
+            DataResult = Me.ReaderStream.ReadLine()
+            NUTResult = EnumResponse(DataResult)
+
+            If NUTResult <> NUTResponse.OK Then
+                If NUTResult = NUTResponse.UNKNOWNUPS Then
+                    Me.Unknown_UPS_Name = True
+                    RaiseEvent Unknown_UPS()
+                    Throw New Exception("Unknown UPS Name.")
+                ElseIf NUTResult = NUTResponse.ACCESSDENIED Then
+                    Throw New Exception("Access is denied.")
+                Else
+                    Me.AReconnect = False
+                    Throw New Exception("Unhandled login error: " & DataResult)
+                End If
+            End If
+
             Return True
         Catch Excep As Exception
             Me.Disconnect(True)
