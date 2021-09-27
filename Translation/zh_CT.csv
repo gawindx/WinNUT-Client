@@ -1,0 +1,160 @@
+,,About,關於
+,,Activate automatic connection / reconnection,啟用自動連接/重新連接
+,,Additional grace period limit. Accepted value: Numeric value from 0 to 3600.,增加寬限期限制。值：0-3600。
+,,Alert,警告
+,,Allow additional time during the shutdown procedure. Note: This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!,在關機過程中允許的額外時間。注意: 這段額外時間可能超過 UPS 的使用時間 - 謹慎使用！！！
+,,Allow Extended Shutdown Time,允許的延長關機時間
+,,Application shut down at,應用程式被關閉於
+,,Apply,應用
+,,Automatic Reconnection,自動重連
+,,Battery Charge,電池電量
+,,Battery OK,電池正常
+,,Battery_Charge : {0} Remaining Time : {1},電池電量 : {0} 時間 : {1}
+,,Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text},電池電量 : {WinNUT.UPS_BattCh} 剩餘時間 : {WinNUT.Lbl_VRTime.Text}
+,,Battery Voltage,電池電壓
+,,Calibration,校正
+,,Cancel,取消
+,,Cancellation of the Extinguishing Process,取消關機程序
+,,Check for updates.,檢查更新。
+,,Checks for updates at startup.,在啟動時檢查更新。
+,,Clear,清空
+,,Close,關閉
+,,Close to Systray,關閉至工作列
+,,Conditions met for launching the Extinguishing Process,觸發關機程序所需滿足的條件
+,,Connected,已連接
+,,Connection,連接
+,,Connection to Nut Host {0}:{1} Established,至 Nut 主機 {0}:{1} 的連接建立成功
+,,Connection to Nut Host {0}:{1} Failed: {2},至 Nut 主機 {0}:{1} 的連接建立失敗: {2}
+,,Copy,複製
+,,Create a log file (WinNUT-client.log file in the WinNUT installation directory).,創建紀錄檔（WinNUT-client.log 檔位於 WinNUT 的安裝目錄）。
+,,Create LogFile,建立紀錄檔
+,,Daily,每天
+,,Debug,除錯
+,,Delay Between Verification,每次檢驗的延時
+,,Delay to Shutdown (sec),延時關機（秒）
+,,Delete log file.,刪除紀錄檔。
+,,Description :,描述：
+,,Development,開發版
+,,Disconnect,離線
+,,Disconnected from Nut Host,至 Nut 主機離線。
+,,Download New Version from :,下載新版本：
+,,Error,錯誤
+,,Exit,退出
+,,Extinction In Progress,正在關機
+,,File,文件
+,,Firmware :,韌體：
+,,Frequency,頻率
+,,Frequency of verification.,驗證頻率。
+,,Frequency Supply,供電頻率
+,,Grace Delay to Shutdown (sec),關機的寬限延時（秒）：
+,,Grace Time,寬限時間
+,,Help,幫助
+,,Hibernate,休眠
+,,Hide ChangeLog,隱藏更新日誌
+,,Immediate Shutdown,立即關機
+,,Immediate stop action,即時停機操作
+,,Import Ini File (v1.x),導入 Ini 文件（v1.x 版本）
+,,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),指示當NUT伺服器發出強制關機信號（FSD）時是否應執行關機操作
+,,Input Frequency,輸入頻率
+,,Input Voltage,輸入電壓
+,,Item Properties,專案屬性
+,,List UPS Variables,UPS變數清單
+,,Log file log level,日誌記錄等級
+,,Logging level,日誌等級
+,,Logging level.,日誌等級。
+,,Login,登錄
+,,Login credentials to the Nut server (leave blank if not required),Nut伺服器的登錄憑據（如果不需要，請留空）
+,,Lost Connect To {0}:{1},斷開了至 {0} 的連接：{1}
+,,Low Battery,電池電量過低
+,,Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.,觸發停機流程的最低續航時間。取值：0-3600 之間的數值。
+,,Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.,觸發停機流程的最低電池電量百分比。取值：0-100 之間的數值。
+,,Manufacturer :,製造商：
+,,Max,最高
+,,Max Retry reached. Wait for manual Reconnection,達到最大重試次數。等待手動重連。
+,,Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.,最高電池電壓。取值：0-100 之間的數值。
+,,Maximum input frequency. Accepted value: Numeric value from 0 to 100.,最高輸入頻率。取值：0-100 之間的數值。
+,,Maximum input voltage. Accepted value: Numeric value from 0 to 999.,最高輸入電壓。取值：0-999 之間的數值。
+,,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,最高 UPS 電量等級。取值：0-100 之間的數值。
+,,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,最高輸出電壓。取值：0-999 之間的數值。
+,,Min,最低
+,,Minimize to tray,最小化至系統託盤
+,,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,最低電池電壓。取值：0-100 之間的數值。
+,,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,最低 UPS 電量等級。取值：0-100 之間的數值。
+,,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,最低輸入頻率。取值：0-100 之間的數值。
+,,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,最低輸入電壓。取值：0-999 之間的數值。
+,,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,最低輸出電壓。取值：0-999 之間的數值。
+,,Miscellanous,其他
+,,Monthly,每月
+,,Name :,名稱：
+,,No Update Available,沒有可用的更新
+,,Not Connected,未連接
+,,Notice,注意
+,,NUT host,NUT 主機
+,,NUT Port,NUT 埠
+,,Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Nut 伺服器地址。取值：IPv4/IPv6/FQDN 地址
+,,NUT server connection identifier,NUT伺服器連接識別字
+,,NUT server login password,NUT伺服器登錄密碼
+,,Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Nut 伺服器埠（默認為3493）。取值：1-65535 之間的數值。
+,,Ok,好的
+,,Old ups.ini imported,導入了舊的 ups.ini
+,,Old ups.ini imported Ini File Moved to {0}.old,導入了舊的 ups.ini Ini 檔重命名為 {0}.old
+,,On Battery ({0}%),使用電池中 ({0}%)
+,,On Line,使用市電中
+,,Open the log file.,打開紀錄檔。
+,,Options,選項
+,,Output Voltage,輸出電壓
+,,Password,密碼
+,,Polling Interval,輪詢間隔
+,,Reconnect,重新連接
+,,Reconnection In Progress,重連中
+,,Reduced to the taskbar or Systray.,縮小至工作列。
+,,Re-establish connection,重新建立連接
+,,Reload,重載
+,,Remaining Time :,剩餘時間：
+,,Restarting WinNUT after waking up from Windows.,從Windows喚醒後重新啟動WinNUT。
+,,Sends in Systray at closing.,關閉程式時縮小至工作列。
+,,Serial :,序號：
+,,Sets the input frequency if not supplied by the UPS.,設置輸入頻率（如果UPS未提供）
+,,Settings,設置
+,,Show ChangeLog,顯示更新日誌
+,,Shutdown,關機
+,,Shutdown if battery lower than,如果電池低於百分比則關機
+,,Shutdown if runtime lower than (sec),如果續航時間低於則關機
+,,Shutdown on NUT's FSD Signal,收到 FSD（強制關機）信號後關機
+,,Shutdown Options,關機選項
+,,Sleep,睡眠
+,,Stable,穩定
+,,Stable Or Dev Branch,穩定或開發分支
+,,Start Minimized,啟動時最小化當前應用
+,,Start with Windows,隨 Windows 啟動當前應用
+,,Starts the shutdown procedure immediately or timed.,立刻或定時執行關機流程。
+,,Starts WinNut Minimized.,啟動時最小化 WinNUT。
+,,Starts WinNUT when Windows starts.,隨 Windows 啟動 WinNUT。
+,,Stop condition imposed by the NUT server,NUT伺服器施加的停止條件
+,,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,停機流程延時。取值：0-3600 秒之間的數值。
+,,Time between each update of UPS data (default = 5).Accepted value: Numerical value from 1 to 60 seconds.,UPS 資料的更新頻率（預設值5秒）。接受值：1到60秒之間的數值。
+,,Try {0} of {1},嘗試 {1} 的 {0}
+,,Try Reconnect {0} / {1},嘗試重連 {0} / {1}
+,,Type of Stop,停機類型
+,,Type of stop at the end of the stop procedure.,停機流程結束時的停機類型
+,,Unknown UPS Name,未知的 UPS 名稱
+,,Update,更新
+,,Update Available : Version {0},可用的新版本：{0}
+,,Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,立即更新WinNUT-Client嗎？按一下確定以關閉WinNut並安裝新版本 取消以保存 Msi 並於稍後安裝
+,,UPS Battery Low,UPS 電池電量低
+,,UPS Load,UPS 負載
+,,UPS Name,UPS 名稱
+,,UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,監控的 UPS 名稱。允許值：在 UPS 的 Nut 服務端所配置的名稱。
+,,UPS On Battery,UPS 使用電池工作
+,,UPS On Line,UPS 已接入市電
+,,UPS Overload,UPS 超載
+,,UPS Variable,UPS 變數
+,,Use the Stable or Devellop branch during verification.,在驗證期間使用穩定或開發分支。
+,,Value :,值：
+,,Verify Update,驗證更新
+,,Verify Update At Start,在啟動時驗證更新
+,,Version {0} Available,新版本 {0} 可供更新
+,,Weekly,每週
+,,WinNut Preferences Changed,WinNut 設置已修改
+,,Windows standby. WinNUT will disconnect.,Windows待機。 WinNUT將斷開連接。 
+,,Wrong Login ID (Username or Password),錯誤的登錄憑據（用戶名或密碼）
