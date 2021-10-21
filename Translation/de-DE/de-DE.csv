@@ -1,161 +1,161 @@
 ﻿Status,Translator,﻿Message,Translation
-To validate,Gawindx,About,Über
-To validate,Gawindx,Activate automatic connection / reconnection,Aktivieren Sie die automatische Verbindung / Wiederverbindung
-To validate,Gawindx,Additional grace period limit. Accepted value: Numeric value from 0 to 3600.,Zusätzliche Nachfrist. Akzeptierter Wert: Numerischer Wert von 0 bis 3600.
-To validate,Gawindx,Alert,Aufmerksam
-To validate,Gawindx,Allow additional time during the shutdown procedure.Note:This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!,Warten Sie während des Herunterfahrens zusätzliche Zeit.Hinweis:Diese zusätzliche Zeit kann über die USV-Sicherungszeit hinausgehen - MIT VORSICHT VERWENDEN !!!
-To validate,Gawindx,Allow Extended Shutdown Time,Erweiterte Abschaltzeit zulassen
-To validate,Gawindx,Application shut down at,Anwendung heruntergefahren um
-To validate,Gawindx,Apply,Anwenden
-To validate,Gawindx,Automatic Reconnection,Automatische Wiederverbindung
-To validate,Gawindx,Battery Charge,Batterieladung
-To validate,Gawindx,Battery OK,Batterie OK
-To validate,Gawindx,Battery Voltage,Batteriespannung
-To validate,Gawindx,Battery_Charge : {0} Remaining Time : {1},Batterieladung: {0} Verbleibende Zeit: {1}
-To validate,Gawindx,Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text},Batterieladung: {WinNUT.UPS_BattCh} Verbleibende Zeit: {WinNUT.Lbl_VRTime.Text}
-To validate,Gawindx,Calibration,Kalibrierung
-To validate,Gawindx,Cancel,Stornieren
-To validate,Gawindx,Cancellation of the Extinguishing Process,Aufhebung des Löschprozesses
-To validate,Gawindx,Check for updates.,Auf Updates prüfen.
-To validate,Gawindx,Checks for updates at startup.,Sucht beim Start nach Updates.
-To validate,Gawindx,Clear,Leer
-To validate,Gawindx,Close,Schließen
-To validate,Gawindx,Close to Systray,In der Nähe von Systray
-To validate,Gawindx,Conditions met for launching the Extinguishing Process,Voraussetzungen für den Start des Löschprozesses
-To validate,Gawindx,Connected,In Verbindung gebracht
-To validate,Gawindx,Connection,Verbindung
-To validate,Gawindx,Connection to Nut Host {0}:{1} Established,Verbindung zum Nut Host {0}:{1} hergestellt
-To validate,Gawindx,Connection to Nut Host {0}:{1} Failed: {2},Verbindung zum Nut-Host {0}:{1} fehlgeschlagen: {2}
-To validate,Gawindx,Copy,Kopieren
-To validate,Gawindx,Create a log file (WinNUT-client.log file in the WinNUT installation directory).,Erstellen Sie eine Protokolldatei (Datei WinNUT-client.log im WinNUT-Installationsverzeichnis).
-To validate,Gawindx,Create LogFile,LogFile erstellen
-To validate,Gawindx,Daily,Täglich
-To validate,Gawindx,Debug,Debuggen
-To validate,Gawindx,Delay Between Verification,Verzögerung zwischen der Überprüfung
-To validate,Gawindx,Delay to Shutdown (sec),Verzögerung beim Herunterfahren (Sek.)
-To validate,Gawindx,Delete log file.,Protokolldatei löschen.
-To validate,Gawindx,Description :,Beschreibung :
-To validate,Gawindx,Devellopement,Entwicklung
-To validate,Gawindx,Disconnect,Trennen
-To validate,Gawindx,Disconnected from Nut Host,Vom Nut Host getrennt
-To validate,Gawindx,Download New Version from :,Neue Version herunterladen von :
-To validate,Gawindx,Error,Error
-To validate,Gawindx,Exit,Ausgang
-To validate,Gawindx,Extinction In Progress,Aussterben im Gange
-To validate,Gawindx,File,Datei
-To validate,Gawindx,Firmware :,Firmware:
-To validate,Gawindx,Frequency,Frequenz
-To validate,Gawindx,Frequency of verification.,Häufigkeit der Überprüfung.
-To validate,Gawindx,Frequency Supply,Frequenzversorgung.
-To validate,Gawindx,Grace Delay to Shutdown (sec),Grace Verzögerung beim Herunterfahren (Sek.)
-To validate,Gawindx,Grace Time,Grace Time
-To validate,Gawindx,Help,Hilfe
-To validate,Gawindx,Hibernate,Überwintern
-To validate,Gawindx,Hide ChangeLog,ChangeLog ausblenden
-To validate,Gawindx,Immediate Shutdown,Sofortiges Herunterfahren
-To validate,Gawindx,Immediate stop action,Sofortige Stoppaktion
-To validate,Gawindx,Import Ini File (v1.x),Ini-Datei importieren (v1.x)
-To Validate,Gawindx,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),Gibt an ob ein Herunterfahren durchgeführt werden soll wenn der NUT-Server ein erzwungenes Herunterfahren signalisiert (FSD = Force ShutDown).
-To validate,Gawindx,Input Frequency,Eingangsfrequenz
-To validate,Gawindx,Input Voltage,Eingangsspannung
-To validate,Gawindx,Item Properties,Eigenschaften
-To validate,Gawindx,List UPS Variables,Liste der UPS Variablen
-To validate,Gawindx,Log file log level,Protokolldatei Protokollstufe
-To validate,Gawindx,Logging level,Protokollierungsstufe
-To validate,Gawindx,Logging level.,Protokollierungsstufe.
-To validate,Gawindx,Login,Anmeldung
-To validate,Gawindx,Login credentials to the Nut server (leave blank if not required),Anmeldeinformationen beim Nut-Server (leer lassen wenn nicht erforderlich)
-To validate,Gawindx,Lost Connect To {0}:{1},Verlorene Verbindung zu {0}:{1}
-To validate,Gawindx,Low Battery,Niedriger Batteriestatus
-To validate,Gawindx,Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.,Unteres Backup-Zeitlimit das das Herunterfahren auslöst. Akzeptierter Wert: Numerischer Wert von 0 bis 3600.
-To validate,Gawindx,Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.,Untergrenze des Batteriestands der den Abschaltvorgang auslöst. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
-To validate,Gawindx,Manufacturer :,Hersteller:
-To validate,Gawindx,Max,Max
-To validate,Gawindx,Max Retry reached. Wait for manual Reconnection,Max Retry erreicht. Warten Sie auf die manuelle Wiederverbindung
-To validate,Gawindx,Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Maximale Batteriespannung. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
-To validate,Gawindx,Maximum input frequency. Accepted value: Numeric value from 0 to 100.,Maximale Eingangsfrequenz. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
-To validate,Gawindx,Maximum input voltage. Accepted value: Numeric value from 0 to 999.,Maximale Eingangsspannung. Akzeptierter Wert: Numerischer Wert von 0 bis 999.
-To validate,Gawindx,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,Maximaler Lastpegel der USV. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
-To validate,Gawindx,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,Maximale Ausgangsspannung. Akzeptierter Wert: Numerischer Wert von 0 bis 999.
-To validate,Gawindx,Min,Min
-To validate,Gawindx,Minimize to Systray,Auf Systray minimieren
-To validate,Gawindx,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Minimale Batteriespannung. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
-To validate,Gawindx,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,Mindestladezustand der USV. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
-To validate,Gawindx,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,Minimale Eingangsfrequenz. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
-To validate,Gawindx,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,Minimale Eingangsspannung. Akzeptierter Wert: Numerischer Wert von 0 bis 999.
-To validate,Gawindx,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,Minimale Ausgangsspannung. Akzeptierter Wert: Numerischer Wert von 0 bis 999.
-To validate,Gawindx,Miscellanous,Verschiedenes
-To validate,Gawindx,Monthly,Monatlich
-To validate,Gawindx,Name :,Name :
-To validate,Gawindx,No Update Available,Kein Update verfügbar
-To validate,Gawindx,Not Connected,Nicht verbunden
-To validate,Gawindx,Notice,Notice
-To validate,Gawindx,NUT host,NUT Host
-To validate,Gawindx,NUT Port,NUT Port
-To validate,Gawindx,Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Nut Server Adresse. Akzeptierter Wert: IPV4 / IPV6 / FQDN-Adresse.
-To validate,Gawindx,NUT server connection identifier,Verbindungskennung des NUT-Servers
-To validate,Gawindx,NUT server login password,Anmeldekennwort des NUT-Servers
-To validate,Gawindx,Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Nut Server Port Number (Standard = 3493). Akzeptierter Wert: Numerischer Wert von 1 bis 65535.
-To validate,Gawindx,Ok,OK
-To validate,Gawindx,Old ups.ini imported,Alte ups.ini importiert
-To validate,Gawindx,Old ups.ini imported Ini File Moved to {0}.old,Alte ups.ini importiert Ini-Datei nach {0}.old verschoben
-To validate,Gawindx,On Battery ({0}%),Batterie ({0}%)
-To validate,Gawindx,On Line,Online
-To validate,Gawindx,Open the log file.,Öffnen Sie die Protokolldatei.
-To validate,Gawindx,Options,Optionen
-To validate,Gawindx,Output Voltage,Ausgangsspannung
-To validate,Gawindx,Password,Passwort
-To validate,Gawindx,Polling Interval,Abrufintervall
-To validate,Gawindx,Reconnect,Erneut verbinden
-To validate,Gawindx,Reconnection In Progress,Wiederverbindung läuft
-To validate,Gawindx,Reduced to the taskbar or Systray.,Reduziert auf die Taskleiste oder Systray.
-To validate,Gawindx,Re-establish connection,Stellen Sie die Verbindung wieder her
-To validate,Gawindx,Reload,Neu laden
-To validate,Gawindx,Remaining Time :,Verbleibende Zeit :
-To validate,Gawindx,Restarting WinNUT after waking up from Windows.,Neustart von WinNUT nach dem Aufwachen von Windows.
-To validate,Gawindx,Sends in Systray at closing.,Sendet beim Schließen in Systray.
-To validate,Gawindx,Serial :,Seriennummer:
-To validate,Gawindx,Sets the input frequency if not supplied by the UPS.,Legt die Eingangsfrequenz fest wenn diese nicht von der USV geliefert wird.
-To validate,Gawindx,Settings,die Einstellungen
-To validate,Gawindx,Show ChangeLog,ChangeLog anzeigen
-To validate,Gawindx,Shutdown,Shutdown
-To validate,Gawindx,Shutdown if battery lower than,Herunterfahren wenn die Batterie niedriger als ist
-To validate,Gawindx,Shutdown if runtime lower than (sec),Herunterfahren wenn die Laufzeit niedriger als (Sek.)
-To validate,Gawindx,Shutdown on NUT's FSD Signal,Herunterfahren des FSD-Signals der NUT
-To validate,Gawindx,Shutdown Options,Optionen zum Herunterfahren
-To validate,Gawindx,Sleep,Schlaf
-To validate,Gawindx,Stable,Stabil
-To validate,Gawindx,Stable Or Dev Branch,Stabiler oder Entwicklungszweig
-To validate,Gawindx,Start Minimized,Minimiert starten
-To validate,Gawindx,Start with Windows,Starte mit Windows
-To validate,Gawindx,Starts the shutdown procedure immediately or timed.,Startet das Herunterfahren sofort oder zeitgesteuert.
-To validate,Gawindx,Starts WinNut Minimized.,Startet WinNut Minimized.
-To validate,Gawindx,Starts WinNUT when Windows starts.,Startet WinNUT beim Start von Windows.
-To Validate,Gawindx,Stop condition imposed by the NUT server,Vom NUT-Server auferlegte Stoppbedingung
-To validate,Gawindx,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,Stoppen Sie die Prozedurverzögerung wenn sie verzögert ist. Akzeptierter Wert: Numerischer Wert von 0 bis 3600.
-To validate,Gawindx,Time between each update of UPS data (default = 5).Accepted value: Numerical value from 1 to 60 seconds.,Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5).Akzeptierter Wert: Numerischer Wert von 1 bis 60 Sekunden.
-To validate,Gawindx,Try {0} of {1},Versuchen Sie {0} von {1}
-To validate,Gawindx,Try Reconnect {0} / {1},Versuchen Sie erneut {0} / {1} zu verbinden
-To validate,Gawindx,Type of Stop,Art des Stopps
-To validate,Gawindx,Type of stop at the end of the stop procedure.,Art des Stopps am Ende des Stoppvorgangs.
-To validate,Gawindx,Unknown UPS Name,Unbekannter USV-Name
-To validate,Gawindx,Update,Aktualisieren
-To validate,Gawindx,Update Available : Version {0},Update verfügbar : Version {0}
-To validate,Gawindx,Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,WinNUT-Client jetzt aktualisieren? Ok um WinNut zu chließen und neue Version zu installieren Abbrechen um Msi zu speichern und später zu installieren
-To validate,Gawindx,UPS Battery Low,USV-Batterie schwach
-To validate,Gawindx,UPS Load,USV laden
-To validate,Gawindx,UPS Name,UPS Name
-To validate,Gawindx,UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,Zu überwachender USV-Name. Akzeptierter Wert: Name der auf dem Nut-Server konfigurierten USV.
-To validate,Gawindx,UPS On Battery,USV im Akkubetrieb
-To validate,Gawindx,UPS On Line,USV angeschlossen
-To validate,Gawindx,UPS Overload,USV-Überlastung
-To validate,Gawindx,UPS Variable,USV-Variable
-To validate,Gawindx,Use the Stable or Devellop branch during verification.,Verwenden Sie während der Überprüfung den Zweig Stabil oder Entwickeln.
-To validate,Gawindx,Value :,Wert :
-To validate,Gawindx,Verify Update,Überprüfen Sie das Update
-To validate,Gawindx,Verify Update At Start,Überprüfen Sie das Update beim Start
-To validate,Gawindx,Version {0} Available,Version {0} Verfügbar
-To validate,Gawindx,Weekly,Wöchentlich
-To validate,Gawindx,WinNut Preferences Changed,WinNut-Einstellungen geändert
-To validate,Gawindx,Windows standby. WinNUT will disconnect.,Windows Standby. WinNUT wird getrennt.
-To validate,Gawindx,Wrong Login ID (Username or Password),Falsche Login-ID (Benutzername oder Passwort)
+Valid,Gawindx,About,Über
+Valid,Lineflyer,Activate automatic connection / reconnection,Automatische Verbindung / Wiederverbindung aktivieren
+Valid,Lineflyer,Additional grace period limit. Accepted value: Numeric value from 0 to 3600., Limit für zusätzliche Verzögerung. Wertebereich: Numerischer Wert von 0 bis 3600.
+Valid,Lineflyer,Alert,Alarm
+Valid,Lineflyer,Allow additional time during the shutdown procedure.Note:This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!,Zusätzliche Zeit zum Herunterfahrens erlauben. Hinweis: Diese zusätzliche Zeit kann über die Verfügbarkeit der USV hinausgehen - MIT VORSICHT VERWENDEN !!!
+Valid,Lineflyer,Allow Extended Shutdown Time,Längere Abschaltzeit zulassen
+Valid,Gawindx,Application shut down at,Anwendung heruntergefahren um
+Valid,Gawindx,Apply,Anwenden
+Valid,Gawindx,Automatic Reconnection,Automatische Wiederverbindung
+Valid,Gawindx,Battery Charge,Batterieladung
+Valid,Gawindx,Battery OK,Batterie OK
+Valid,Gawindx,Battery Voltage,Batteriespannung
+Valid,Gawindx,Battery_Charge : {0} Remaining Time : {1},Batterieladung: {0} Verbleibende Zeit: {1}
+Valid,Gawindx,Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text},Batterieladung: {WinNUT.UPS_BattCh} Verbleibende Zeit: {WinNUT.Lbl_VRTime.Text}
+Valid,Gawindx,Calibration,Kalibrierung
+Valid,Lineflyer,Cancel,Abbrechen
+To validate,Lineflyer,Cancellation of the Extinguishing Process,Abbruch des Löschprozesses
+Valid,Gawindx,Check for updates.,Auf Updates prüfen.
+Valid,Gawindx,Checks for updates at startup.,Sucht beim Start nach Updates.
+Valid,Lineflyer,Clear,Leeren
+Valid,Gawindx,Close,Schließen
+Valid,Lineflyer,Close to Systray,Auf Systray minimieren
+To validate,Lineflyer,Conditions met for launching the Extinguishing Process,Voraussetzungen für den Start des Löschprozesses liegen vor
+Valid,Lineflyer,Connected,Verbunden
+Valid,Gawindx,Connection,Verbindung
+Valid,Gawindx,Connection to Nut Host {0}:{1} Established,Verbindung zum Nut Host {0}:{1} hergestellt
+Valid,Gawindx,Connection to Nut Host {0}:{1} Failed: {2},Verbindung zum Nut-Host {0}:{1} fehlgeschlagen: {2}
+Valid,Gawindx,Copy,Kopieren
+Valid,Lineflyer,Create a log file (WinNUT-client.log file in the WinNUT installation directory).,Eine Logdatei (Datei WinNUT-client.log im WinNUT-Installationsverzeichnis) erstellen.
+Valid,Lineflyer,Create LogFile,Logdatei erstellen
+Valid,Gawindx,Daily,Täglich
+Valid,Gawindx,Debug,Debuggen
+Valid,Lineflyer,Delay Between Verification,Verzögerung zwischen Überprüfungen
+Valid,Lineflyer,Delay to Shutdown (sec),Verzögerung vor dem Herunterfahren (Sek.)
+Valid,Lineflyer,Delete log file.,Logdatei löschen.
+Valid,Gawindx,Description :,Beschreibung :
+Valid,Gawindx,Devellopement,Entwicklung
+Valid,Gawindx,Disconnect,Trennen
+Valid,Lineflyer,Disconnected from Nut Host,Vom Nut-Host getrennt
+Valid,Gawindx,Download New Version from :,Neue Version herunterladen von :
+Valid,Lineflyer,Error,Fehler
+Valid,Lineflyer,Exit,Beenden
+To validate,Lineflyer,Extinction In Progress,Löschen gestartet
+Valid,Gawindx,File,Datei
+Valid,Gawindx,Firmware :,Firmware:
+Valid,Gawindx,Frequency,Frequenz
+Valid,Gawindx,Frequency of verification.,Häufigkeit der Überprüfung.
+Valid,Lineflyer,Frequency Supply,Netzfrequenz.
+Valid,Lineflyer,Grace Delay to Shutdown (sec),Verzögerung vor Herunterfahren (Sek.)
+Valid,Lineflyer,Grace Time,Verzögerungszeit
+Valid,Gawindx,Help,Hilfe
+Valid,Lineflyer,Hibernate,Ruhezustand
+Valid,Lineflyer,Hide ChangeLog,Change-Log ausblenden
+Valid,Gawindx,Immediate Shutdown,Sofortiges Herunterfahren
+To validate,Lineflyer,Immediate stop action,Sofortige Stopp-Aktion
+Valid,Lineflyer,Import Ini File (v1.x),INI-Datei importieren (v1.x)
+Valid,Gawindx,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),Gibt an ob ein Herunterfahren durchgeführt werden soll wenn der NUT-Server ein erzwungenes Herunterfahren signalisiert (FSD = Force ShutDown).
+Valid,Gawindx,Input Frequency,Eingangsfrequenz
+Valid,Gawindx,Input Voltage,Eingangsspannung
+Valid,Gawindx,Item Properties,Eigenschaften
+Valid,Lineflyer,List UPS Variables,Liste der USV-Variablen
+Valid,Lineflyer,Log file log level,Detailstufe für die Logdatei
+Valid,Lineflyer,Logging level,Detailstufe
+Valid,Lineflyer,Logging level.,Detailstufe.
+Valid,Lineflyer,Login,Anmeldung
+Valid,Lineflyer,Login credentials to the Nut server (leave blank if not required),Anmeldeinformationen des Nut-Server (Leer lassen wenn nicht erforderlich)
+Valid,Lineflyer,Lost Connect To {0}:{1},Verbindung zu {0}:{1} verloren
+Valid,Gawindx,Low Battery,Niedriger Batteriestatus
+Valid,Lineflyer,Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.,Unteres Backup-Zeitlimit welches das Herunterfahren auslöst. Wertebereich: Numerischer Wert von 0 bis 3600.
+Valid,Lineflyer,Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.,Untergrenze des Batteriestands der den Abschaltvorgang auslöst. Wertebereich: Numerischer Wert von 0 bis 100.
+Valid,Gawindx,Manufacturer :,Hersteller:
+Valid,Gawindx,Max,Max
+Valid,Lineflyer,Max Retry reached. Wait for manual Reconnection,Maximale Anzahl Verbindungsversuche erreicht. Auf manuelle Wiederverbindung warten.
+Valid,Lineflyer,Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Maximale Batteriespannung. Wertebereich: Numerischer Wert von 0 bis 100.
+Valid,Lineflyer,Maximum input frequency. Accepted value: Numeric value from 0 to 100.,Maximale Eingangsfrequenz. Wertebereich: Numerischer Wert von 0 bis 100.
+Valid,Lineflyer,Maximum input voltage. Accepted value: Numeric value from 0 to 999.,Maximale Eingangsspannung. Wertebereich: Numerischer Wert von 0 bis 999.
+Valid,Lineflyer,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,Maximaler Last der USV. Wertebereich: Numerischer Wert von 0 bis 100.
+Valid,Lineflyer,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,Maximale Ausgangsspannung. Wertebereich: Numerischer Wert von 0 bis 999.
+Valid,Gawindx,Min,Min
+Valid,Gawindx,Minimize to Systray,Auf Systray minimieren
+Valid,Lineflyer,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Minimale Batteriespannung. Wertebereich: Numerischer Wert von 0 bis 100.
+Valid,Lineflyer,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,Mindestladezustand der USV. Wertebereich: Numerischer Wert von 0 bis 100.
+Valid,Lineflyer,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,Minimale Eingangsfrequenz. Wertebereich: Numerischer Wert von 0 bis 100.
+Valid,Lineflyer,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,Minimale Eingangsspannung. Wertebereich: Numerischer Wert von 0 bis 999.
+Valid,Lineflyer,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,Minimale Ausgangsspannung. Wertebereich: Numerischer Wert von 0 bis 999.
+Valid,Gawindx,Miscellanous,Verschiedenes
+Valid,Gawindx,Monthly,Monatlich
+Valid,Gawindx,Name :,Name :
+Valid,Gawindx,No Update Available,Kein Update verfügbar
+Valid,Gawindx,Not Connected,Nicht verbunden
+Valid,Lineflyer,Notice,Hinweis
+Valid,Lineflyer,NUT host,NUT-Host
+Valid,Lineflyer,NUT Port,NUT-Port
+Valid,Lineflyer,Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Nut-Serveradresse. Wertebereich: IPV4 / IPV6 / FQDN-Adresse.
+Valid,Gawindx,NUT server connection identifier,Verbindungskennung des NUT-Servers
+Valid,Gawindx,NUT server login password,Anmeldekennwort des NUT-Servers
+Valid,Lineflyer,Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Nut-Server Portnummer (Standard = 3493). Wertebereich: Numerischer Wert von 1 bis 65535.
+Valid,Gawindx,Ok,OK
+Valid,Gawindx,Old ups.ini imported,Alte ups.ini importiert
+Valid,Lineflyer,Old ups.ini imported Ini File Moved to {0}.old,Alte ups.ini importiert INI-Datei nach {0}.old verschoben
+To validate,Lineflyer,On Battery ({0}%),Auf Batterie ({0}%)
+To validate,Lineflyer,On Line,Auf Netzbetrieb
+Valid,Lineflyer,Open the log file.,Logdatei öffnen.
+Valid,Gawindx,Options,Optionen
+Valid,Gawindx,Output Voltage,Ausgangsspannung
+Valid,Gawindx,Password,Passwort
+Valid,Gawindx,Polling Interval,Abrufintervall
+Valid,Gawindx,Reconnect,Erneut verbinden
+Valid,Gawindx,Reconnection In Progress,Wiederverbindung läuft
+Valid,Lineflyer,Reduced to the taskbar or Systray.,Auf Taskleiste oder Systray minimieren.
+Valid,Lineflyer,Re-establish connection,Verbindung wiederherstellen
+Valid,Gawindx,Reload,Neu laden
+Valid,Gawindx,Remaining Time :,Verbleibende Zeit :
+Valid,Gawindx,Restarting WinNUT after waking up from Windows.,Neustart von WinNUT nach dem Aufwachen von Windows.
+Valid,Lineflyer,Sends in Systray at closing.,Minimiert beim Schließen in den Systray.
+Valid,Gawindx,Serial :,Seriennummer:
+Valid,Lineflyer,Sets the input frequency if not supplied by the UPS.,Legt die Eingangsfrequenz fest wenn dieser Wert nicht von der USV geliefert wird.
+Valid,Lineflyer,Settings,Einstellungen
+Valid,Lineflyer,Show ChangeLog,Change-Log anzeigen
+Valid,Lineflyer,Shutdown,Herunterfahren
+Valid,Lineflyer,Shutdown if battery lower than,Herunterfahren wenn Batteriestand niedriger als
+Valid,Lineflyer,Shutdown if runtime lower than (sec),Herunterfahren wenn Laufzeit niedriger als (Sek.)
+Valid,Lineflyer,Shutdown on NUT's FSD Signal,Herunterfahren bei FSD-Signal des NUT
+Valid,Gawindx,Shutdown Options,Optionen zum Herunterfahren
+Valid,Lineflyer,Sleep,Energie sparen
+Valid,Gawindx,Stable,Stabil
+Valid,Lineflyer,Stable Or Dev Branch,Stabiler- oder Entwicklungszweig
+Valid,Gawindx,Start Minimized,Minimiert starten
+Valid,Lineflyer,Start with Windows,Mit Windows starten
+Valid,Gawindx,Starts the shutdown procedure immediately or timed.,Startet das Herunterfahren sofort oder zeitgesteuert.
+Valid,Lineflyer,Starts WinNut Minimized.,Startet WinNut minimiert.
+Valid,Gawindx,Starts WinNUT when Windows starts.,Startet WinNUT beim Start von Windows.
+Valid,Lineflyer,Stop condition imposed by the NUT server,Vom NUT-Server auferlegte Stopp-Bedingung
+To validate,Lineflyer,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,Prozedurverzögerung bei Verzögerung stoppen. Wertebereich: Numerischer Wert von 0 bis 3600.
+Valid,Lineflyer,Time between each update of UPS data (default = 5).Accepted value: Numerical value from 1 to 60 seconds.,Zeit zwischen jeder Aktualisierung der USV-Daten (Standard = 5).Wertebereich: Numerischer Wert von 1 bis 60 Sekunden.
+Valid,Lineflyer,Try {0} of {1},Versuch {0} von {1}
+Valid,Lineflyer,Try Reconnect {0} / {1},Versuche Wiederverbindung {0} / {1}
+Valid,Gawindx,Type of Stop,Art des Stopps
+Valid,Gawindx,Type of stop at the end of the stop procedure.,Art des Stopps am Ende des Stoppvorgangs.
+Valid,Gawindx,Unknown UPS Name,Unbekannter USV-Name
+Valid,Gawindx,Update,Aktualisieren
+Valid,Gawindx,Update Available : Version {0},Update verfügbar : Version {0}
+Valid,Lineflyer,Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,WinNUT-Client jetzt aktualisieren? OK um WinNut zu schließen und neue Version zu installieren Abbrechen um MSI-Datei zu speichern und später zu installieren
+Valid,Gawindx,UPS Battery Low,USV-Batterie schwach
+Valid,Lineflyer,UPS Load,USV-Last
+Valid,Lineflyer,UPS Name,USV-Name
+Valid,Lineflyer,UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,Name der zu überwachenden USV. Wertebereich: Name der auf dem Nut-Server konfigurierten USV.
+Valid,Gawindx,UPS On Battery,USV im Akkubetrieb
+Valid,Lineflyer,UPS On Line,USV im Netzbetrieb
+Valid,Gawindx,UPS Overload,USV-Überlastung
+Valid,Lineflyer,UPS Variable,USV-Variablen
+Valid,Lineflyer,Use the Stable or Devellop branch during verification.,Bei der Versionsüberprüfung den stabilen oder Entwicklungszweig verwenden.
+Valid,Gawindx,Value :,Wert :
+Valid,Lineflyer,Verify Update,Auf Update prüfen
+Valid,Lineflyer,Verify Update At Start,Beim Start auf Updates prüfen
+Valid,Lineflyer,Version {0} Available,Version {0} verfügbar
+Valid,Gawindx,Weekly,Wöchentlich
+Valid,Gawindx,WinNut Preferences Changed,WinNut-Einstellungen geändert
+Valid,Gawindx,Windows standby. WinNUT will disconnect.,Windows Standby. WinNUT wird getrennt.
+Valid,Gawindx,Wrong Login ID (Username or Password),Falsche Login-ID (Benutzername oder Passwort)
