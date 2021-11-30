@@ -1,0 +1,159 @@
+Status,Translator,Message,Translation
+To validate,BuhoSolitario,About,Acerca de
+To validate,BuhoSolitario,Activate automatic connection / reconnection,Activar re/conexión automática 
+To validate,BuhoSolitario,Additional grace period limit.Accepted value: Numeric value from 0 to 3600.,Limite del periodo de gracia adicional. Valor aceptado: Numero entre 0 y 3600.
+To validate,BuhoSolitario,Alert,Alerta
+To validate,BuhoSolitario,Allow additional time during the shutdown procedure.Note: This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!,Permitir tiempo adicional durante el proceso de apagado. Nota: Este tiempo adicional podría ir por debajo del tiempo de descarga del SAI - ¡¡¡ÚSALO CON PRECAUCIÓN!!!
+To validate,BuhoSolitario,Allow Extended Shutdown Time,Permitir tiendo añadido de apagado
+To validate,BuhoSolitario,Application shut down at,Apagar aplicación a las:
+To validate,BuhoSolitario,Apply,Aplicar
+To validate,BuhoSolitario,Automatic Reconnection,Reconexión automática
+To validate,BuhoSolitario,Battery Charge,Carga de la batería
+To validate,BuhoSolitario,Battery OK,Batería correcta
+To validate,BuhoSolitario,Battery Voltage,Voltaje de la batería
+To validate,BuhoSolitario,Battery_Charge : {0} Remaining Time : {1},Carga de la batería : {0} Tiempo restante : {1} 
+To validate,BuhoSolitario,Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text},Carga de la batería : {WinNUT.UPS_BattCh} Tiempo restante : {WinNUT.Lbl_VRTime.Text}
+To validate,BuhoSolitario,Calibration,Calibración
+To validate,BuhoSolitario,Cancel,Cancelar
+To validate,BuhoSolitario,Cancellation of the Extinguishing Process,Cancelación del proceso de apagado
+To validate,BuhoSolitario,Check for updates.,Comprobar actualizaciones
+To validate,BuhoSolitario,Checks for updates at startup.,Comprobar actualizaciones al iniciar
+To validate,BuhoSolitario,Clear,Limpiar
+To validate,BuhoSolitario,Close,Cerrar
+To validate,BuhoSolitario,Close to Systray,Cerrar a la bandeja del sistema
+To validate,BuhoSolitario,Conditions met for launching the Extinguishing Process,Condiciones cumplidas para iniciar el proceso de apagado.
+To validate,BuhoSolitario,Connected,Conectado
+To validate,BuhoSolitario,Connection,Conexión
+To validate,BuhoSolitario,Connection to Nut Host {0}:{1} Established,Conectando al cliente Nut {0}:{1} Establecido
+To validate,BuhoSolitario,Connection to Nut Host {0}:{1} Failed: {2},Conectando al cliente Nut {0}:{1} Fallo: {2}
+To validate,BuhoSolitario,Copy,Copiar
+To validate,BuhoSolitario,Create a log file (WinNUT-client.log file in the WinNUT installation directory).,Crear un archivo de registro (WinNUT-client.log en el directorio de instalación de WinNUT).
+To validate,BuhoSolitario,Create LogFile,Crear archivo de registro
+To validate,BuhoSolitario,Daily,Diariamente
+To validate,BuhoSolitario,Debug,Depurar
+To validate,BuhoSolitario,Delay Between Verification,Intevalo de renovación
+To validate,BuhoSolitario,Delay to Shutdown (sec),Tiempo para iniciar apagado (seg)
+To validate,BuhoSolitario,Delete log file.,Eliminar archivo de registro
+To validate,BuhoSolitario,Description :,Descripción :
+To validate,BuhoSolitario,Devellopement,Desarrollo
+To validate,BuhoSolitario,Disconnect,Desconectar
+To validate,BuhoSolitario,Disconnected from Nut Host,Desconectado del cliente de Nut
+To validate,BuhoSolitario,Download New Version from :,Descargar Nueva Versión desde :
+To validate,BuhoSolitario,Error,Error
+To validate,BuhoSolitario,Exit,Salir
+To validate,BuhoSolitario,Extinction In Progress,Apagado en proceso
+To validate,BuhoSolitario,File,Archivo
+To validate,BuhoSolitario,Firmware :,Firmware :
+To validate,BuhoSolitario,Frequency,Frecuencia
+To validate,BuhoSolitario,Frequency of verification.,Frecuencia de verificación
+To validate,BuhoSolitario,Frequency Supply,Proveedor de frecuencia
+To validate,BuhoSolitario,Grace Delay to Shutdown (sec),Periodo de gracia para apagado
+To validate,BuhoSolitario,Grace Time,Periodo de gracia
+To validate,BuhoSolitario,Help,Ayuda
+To validate,BuhoSolitario,Hibernate,Hibernar
+To validate,BuhoSolitario,Hide ChangeLog,Ocultar registro de cambios
+To validate,BuhoSolitario,Immediate Shutdown,Apagado inmediato
+To validate,BuhoSolitario,Immediate stop action,Parar acción automáticamente
+To validate,BuhoSolitario,Import Ini File (v1.x),Importar archivo (v1.x)
+To validate,BuhoSolitario,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),Indica si un apagado debería realizarse cuando el servidor NUT envía una señal de apagado forzado (FSD = Apagado forzado)
+To validate,BuhoSolitario,Input Frequency,Frecuencia de entrada
+To validate,BuhoSolitario,Input Voltage,Voltaje de entrada
+To validate,BuhoSolitario,Item Properties,Propiedades del objeto
+To validate,BuhoSolitario,List UPS Variables,Ver variables SAI
+To validate,BuhoSolitario,Log file log level,Nivel de registro del fichero
+To validate,BuhoSolitario,Logging level,Nivel de registro
+To validate,BuhoSolitario,Logging level.,Nivel de registro.
+To validate,BuhoSolitario,Login,Inicio de sesión
+To validate,BuhoSolitario,Login credentials to the Nut server (leave blank if not required),Credenciales de inicio de sesión al servidor Nut (dejar en blanco si no son necesarias)
+To validate,BuhoSolitario,Lost Connect To {0}:{1},Conexión perdida a {0}:{1}
+To validate,BuhoSolitario,Low Battery,Baja batería
+To validate,BuhoSolitario,Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.,Límite de tiempo restante de la batería para lanzar el procedimiento de apagado. Valor aceptado: Número entre 0 y 3600.
+To validate,BuhoSolitario,Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.,Límite por lo bajo del nivel de batería para lanzar el procedimiento de apagado. Valor aceptado: Número entre 0 y 3600.
+To validate,BuhoSolitario,Manufacturer :,Fabricante :
+To validate,BuhoSolitario,Max,Max
+To validate,BuhoSolitario,Max Retry reached. Wait for manual Reconnection,Alcanzado el número máximo de reintentos. Esperando a la reconexión manual
+To validate,BuhoSolitario,Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Voltaje de batería máximo. Valor aceptado: Número entre 0 y 100.
+To validate,BuhoSolitario,Maximum input frequency. Accepted value: Numeric value from 0 to 100.,Frecuencia de entrada máxima. Valor aceptado: Número entre 0 y 100.
+To validate,BuhoSolitario,Maximum input voltage. Accepted value: Numeric value from 0 to 999.,Voltaje de entrada máximo. Valor aceptado: Número entre 0 y 999.
+To validate,BuhoSolitario,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,Nivel de carga máximo del SAI. Valor aceptado: Número entre 0 y 100.
+To validate,BuhoSolitario,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,Voltaje de salida máximo. Valor aceptado: Número entre 0 y 999.
+To validate,BuhoSolitario,Min,Min
+To validate,BuhoSolitario,Minimize to Systray,Minimizar a la bandeja del sistema
+To validate,BuhoSolitario,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,Voltaje de batería mínimo. Valor aceptado: Número entre 0 y 100.
+To validate,BuhoSolitario,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,Nivel de carga mínimo del SAI. Valor aceptado: Número entre 0 y 100.
+To validate,BuhoSolitario,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,Frecuencia de entrada mínima. Valor aceptado: Número entre 0 y 100.
+To validate,BuhoSolitario,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,Voltaje de entrada mínimo. Valor aceptado: Número entre 0 y 999.
+To validate,BuhoSolitario,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,Voltaje de salida mínimo. Valor aceptado: Número entre 0 y 999.
+To validate,BuhoSolitario,Miscellanous,Miscelanea
+To validate,BuhoSolitario,Monthly,Mensualmente
+To validate,BuhoSolitario,Name :,Nombre :
+To validate,BuhoSolitario,No Update Available,No hay actualizaciones
+To validate,BuhoSolitario,Not Connected,No conectado
+To validate,BuhoSolitario,Notice,Nota
+To validate,BuhoSolitario,NUT host,Cliente NUT
+To validate,BuhoSolitario,NUT Port,Puerto NUT
+To validate,BuhoSolitario,Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,Dirección del servidor Nut. Valores aceptados: IPV4 / IPV6 / Direcciones FQDN.
+To validate,BuhoSolitario,Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,Número de puerto del servidor Nut (por defecto = 3493). Valor aceptado: Número entre 1 y 65535.
+To validate,BuhoSolitario,Ok,Ok
+To validate,BuhoSolitario,Old ups.ini imported,Importado ups.ini obsoleto
+To validate,BuhoSolitario,Old ups.ini imported Ini File Moved to {0}.old,Importado ups.ini Archivo ini obsoleto movido a {0}.old
+To validate,BuhoSolitario,On Battery ({0}%),En batería ({0}%)
+To validate,BuhoSolitario,On Line,En red eléctrica
+To validate,BuhoSolitario,Open the log file.,Abrir el archivo de registro
+To validate,BuhoSolitario,Options,Opciones
+To validate,BuhoSolitario,Output Voltage,Voltaje de salida
+To validate,BuhoSolitario,Password,Contraseña
+To validate,BuhoSolitario,Polling Interval,Intervalo de actualización
+To validate,BuhoSolitario,Reconnect,Reconectar
+To validate,BuhoSolitario,Reconnection In Progress,Reconexión en progreso
+To validate,BuhoSolitario,Reduced to the taskbar or Systray.,Minimizado a la barra de tareas o bandeja del sistema.
+To validate,BuhoSolitario,Re-establish connection,Restablecer conexión
+To validate,BuhoSolitario,Reload,Recaragar
+To validate,BuhoSolitario,Remaining Time :,Tiempo restante :
+To validate,BuhoSolitario,Restarting WinNUT after waking up from Windows.,Reiniciando WinNUT tras iniciar Windows.
+To validate,BuhoSolitario,Sends in Systray at closing.,Envia a la bandeja del sistema al cerrar.
+To validate,BuhoSolitario,Serial :,Serial :
+To validate,BuhoSolitario,Sets the input frequency if not supplied by the UPS.,Asigna la frecuencia de entrada si no se suministra.
+To validate,BuhoSolitario,Settings,Configuración
+To validate,BuhoSolitario,Show ChangeLog,Mostrar registro de cambios
+To validate,BuhoSolitario,Shutdown,Apagado
+To validate,BuhoSolitario,Shutdown if battery lower than,Apagar si el nivel batería es menor de
+To validate,BuhoSolitario,Shutdown if runtime lower than (sec),Apagar si el nivel batería es menor de (seg)
+To validate,BuhoSolitario,Shutdown on Nut's FSD Signal,Apagar si SAI envía señal de apagado
+To validate,BuhoSolitario,Shutdown Options,Opciones de apagado
+To validate,BuhoSolitario,Sleep,Suspender
+To validate,BuhoSolitario,Stable,Estable
+To validate,BuhoSolitario,Stable Or Dev Branch,Estable o rama de Desarrollo
+To validate,BuhoSolitario,Start Minimized,Iniciar minimizado
+To validate,BuhoSolitario,Start with Windows,Iniciar con Windows
+To validate,BuhoSolitario,Starts the shutdown procedure immediately or timed.,Iniciar el procedimiento de apagado inmediatamente o al tiempo.
+To validate,BuhoSolitario,Starts WinNut Minimized.,Inicia WinNUT minimizado.
+To validate,BuhoSolitario,Starts WinNUT when Windows starts.,Inicia WinNUT cuando arranca Windows.
+To validate,BuhoSolitario,Stop condition imposed by the NUT server,Condición de parada impuesta por el servidor NUT
+To validate,BuhoSolitario,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,Tiempo de detención del proceso si se retrasa. Valor aceptado: Número entre 0 y 3600.
+To validate,BuhoSolitario,Time between each update of UPS data (default = 5).Accepted value: Numerical value from 1 to 60 seconds.,Tiempo entre cada actualización de datos del SAI (por defecto = 5). Valor aceptado: Número entre 1 y 60 segundos.
+To validate,BuhoSolitario,Try {0} of {1}, Intento {0} de {1}
+To validate,BuhoSolitario,Try Reconnect {0} / {1},Intentando reconectar {0} / {1}
+To validate,BuhoSolitario,Type of Stop,Tipo de parada
+To validate,BuhoSolitario,Type of stop at the end of the stop procedure.,Tipo de parada al final del procedimiento de parada.
+To validate,BuhoSolitario,Unknown UPS Name,Nombre del SAI desconocido
+To validate,BuhoSolitario,Update,Actualizar
+To validate,BuhoSolitario,Update Available : Version {0},Actualización disponible : Versión {0}
+To validate,BuhoSolitario,Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,¿Actualizar WinNUT-Client ahora mismo? Ok para Cerrar WinNut e instalar la Nueva Versión Cancelar para Guardar el Msi e instalarlo más tarde
+To validate,BuhoSolitario,UPS Battery Low,Batería baja en el SAI
+To validate,BuhoSolitario,UPS Load,Carga del SAI
+To validate,BuhoSolitario,UPS Name,Nombre del SAI
+To validate,BuhoSolitario,UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,Nombre del SAI a monitorizar. Valor aceptado: Nombre del SAI configurado en el servidor Nut.
+To validate,BuhoSolitario,UPS On Battery,SAI en batería
+To validate,BuhoSolitario,UPS On Line,SAI en red eléctrica
+To validate,BuhoSolitario,UPS Overload,Sobrecarga del SAI
+To validate,BuhoSolitario,UPS Variable,Variable del SAI
+To validate,BuhoSolitario,Use the Stable or Devellop branch during verification.,Usa la rama estable o de desarrollo en la búsqueda de actualización.
+To validate,BuhoSolitario,Value :,Valor :
+To validate,BuhoSolitario,Verify Update,Buscar actualizaciones
+To validate,BuhoSolitario,Verify Update At Start,Buscar actualizaciones al iniciar
+To validate,BuhoSolitario,Version {0} Available,Versión {0} disponible
+To validate,BuhoSolitario,Weekly,Semanalmente
+To validate,BuhoSolitario,WinNut Preferences Changed,Configuración de WinNUT cambiada
+To validate,BuhoSolitario,Windows standby. WinNUT will disconnect.,Suspensión de Windows. WinNUT se desconectará.
+To validate,BuhoSolitario,Wrong Login ID (Username or Password),ID de inicio de sesión (Usuario o Contraseña)
