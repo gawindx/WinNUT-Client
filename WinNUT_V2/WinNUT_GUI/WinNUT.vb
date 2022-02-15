@@ -100,7 +100,7 @@ Public Class WinNUT
     Private Event On_Line()
     Private Event UpdateNotifyIconStr(ByVal Reason As String, ByVal Message As String)
     Private Event UpdateBatteryState(ByVal Reason As String)
-    Declare Function SetSystemPowerState Lib "kernel32" (ByVal fSuspend As Integer, ByVal fForce As Integer) As Integer
+    Declare Function SetSuspendState Lib "PowrProf" (ByVal Hibernate As Integer, ByVal ForceCritical As Integer, ByVal DisableWakeEvent As Integer) As Integer    
 
     Public Property UpdateMethod() As String
         Get
@@ -980,9 +980,9 @@ Public Class WinNUT
             Case 0
                 Process.Start("C:\WINDOWS\system32\Shutdown.exe", "-f -s -t 0")
             Case 1
-                SetSystemPowerState(True, 0)
+                SetSuspendState(False, False, True)  'Suspend
             Case 2
-                SetSystemPowerState(False, 0)
+                SetSuspendState(True, False, True)   'Hibernate
         End Select
     End Sub
 
