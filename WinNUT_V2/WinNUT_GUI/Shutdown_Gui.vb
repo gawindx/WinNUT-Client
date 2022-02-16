@@ -97,6 +97,12 @@ Public Class Shutdown_Gui
         System.Threading.Thread.Sleep(1000)
         WinNUT.Shutdown_Action()
         Run_Timer.Enabled = False
+        Me.Shutdown_Timer.Stop()
+        Me.Shutdown_Timer.Enabled = False
+        Me.Grace_Timer.Stop()
+        Me.Grace_Timer.Enabled = False
+        Me.Hide()
+        Me.Close()
     End Sub
 
     Private Sub Run_Timer_Tick(sender As Object, e As EventArgs) Handles Run_Timer.Tick
