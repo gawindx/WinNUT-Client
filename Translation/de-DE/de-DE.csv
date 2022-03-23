@@ -143,7 +143,7 @@ To validate,Gawindx,Update,Aktualisieren
 To validate,Gawindx,Update Available : Version {0},Update verfügbar : Version {0}
 To validate,Gawindx,Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,WinNUT-Client jetzt aktualisieren? Ok um WinNut zu chließen und neue Version zu installieren Abbrechen um Msi zu speichern und später zu installieren
 To validate,Gawindx,UPS Battery Low,USV-Batterie schwach
-To validate,Gawindx,UPS Load,USV laden
+To validate,Gawindx,UPS Load,USV Last
 To validate,Gawindx,UPS Name,UPS Name
 To validate,Gawindx,UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,Zu überwachender USV-Name. Akzeptierter Wert: Name der auf dem Nut-Server konfigurierten USV.
 To validate,Gawindx,UPS On Battery,USV im Akkubetrieb
