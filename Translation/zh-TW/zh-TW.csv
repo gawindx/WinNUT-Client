@@ -1,0 +1,161 @@
+﻿Status,Translator,Message,Translate
+Valid,TGi,About,關於
+Valid,TGi,Activate automatic connection / reconnection,啟用自動連線/重新連線
+Valid,TGi,Additional grace period limit. Accepted value: Numeric value from 0 to 3600.,額外的寬限期。範圍：0-3600。
+Valid,TGi,Alert,警告
+Valid,TGi,Allow additional time during the shutdown procedure. Note: This additional time could go beyond the UPS backup time - USE WITH CAUTION!!!,在關機過程中留出額外的時間。注意：這個額外的時間可能會超過 UPS 的備援時間 - 請謹慎使用！
+Valid,TGi,Allow Extended Shutdown Time,允許的延長關機時間
+Valid,TGi,Application shut down at,應用程式關閉於
+Valid,TGi,Apply,套用
+Valid,TGi,Automatic Reconnection,自動重新連線
+Valid,TGi,Battery Charge,電池電量
+Valid,TGi,Battery OK,電池正常
+Valid,TGi,Battery_Charge : {0} Remaining Time : {1},電池電量：{0} 剩餘時間：{1}
+Valid,TGi,Battery_Charge : {WinNUT.UPS_BattCh} Remaining Time : {WinNUT.Lbl_VRTime.Text},電池電量：{WinNUT.UPS_BattCh} 剩餘時間：{WinNUT.Lbl_VRTime.Text}
+Valid,TGi,Battery Voltage,電池電壓
+Valid,TGi,Calibration,校正
+Valid,TGi,Cancel,取消
+Valid,TGi,Cancellation of the Extinguishing Process,取消關機程序
+Valid,TGi,Check for updates.,檢查應用程式更新。
+Valid,TGi,Checks for updates at startup.,在啟動時檢查更新。
+Valid,TGi,Clear,清除
+Valid,TGi,Close,關閉
+Valid,TGi,Close to Systray,關閉至工作列角落圖示
+Valid,TGi,Conditions met for launching the Extinguishing Process,啟動關機程序的條件
+Valid,TGi,Connected,已連線
+Valid,TGi,Connection,連線
+Valid,TGi,Connection to Nut Host {0}:{1} Established,連線到 NUT 主機 {0}:{1} 成功
+Valid,TGi,Connection to Nut Host {0}:{1} Failed: {2},連線到 NUT 主機 {0}:{1} 失敗：{2}
+Valid,TGi,Copy,複製
+Valid,TGi,Create a log file (WinNUT-client.log file in the WinNUT installation directory).,建立日誌檔案 (WinNUT-client.log 檔案位於 WinNUT 的安裝目錄)。
+Valid,TGi,Create LogFile,建立日誌檔案
+Valid,TGi,Daily,每天
+Valid,TGi,Debug,除錯
+Valid,TGi,Delay Between Verification,每次檢驗延遲
+Valid,TGi,Delay to Shutdown (sec),關機前延遲 (秒)
+Valid,TGi,Delete log file.,刪除日誌檔案。
+Valid,TGi,Description :,描述：
+Valid,TGi,Development,開發版本
+Valid,TGi,Disconnect,中斷連線
+Valid,TGi,Disconnected from Nut Host,已與 NUT 主機中斷連線。
+Valid,TGi,Download New Version from :,下載新版本來源：
+Valid,TGi,Error,錯誤
+Valid,TGi,Exit,離開
+Valid,TGi,Extinction In Progress,正在進行關機程序
+Valid,TGi,File,檔案
+Valid,TGi,Firmware :,韌體：
+Valid,TGi,Frequency,頻率
+Valid,TGi,Frequency of verification.,驗證頻率。
+Valid,TGi,Frequency Supply,供電頻率
+Valid,TGi,Grace Delay to Shutdown (sec),關機前寬限時間 (秒)：
+Valid,TGi,Grace Time,寬限時間
+Valid,TGi,Help,說明
+Valid,TGi,Hibernate,休眠
+Valid,TGi,Hide ChangeLog,隱藏更新日誌
+Valid,TGi,Immediate Shutdown,立即關機
+Valid,TGi,Immediate stop action,立刻執行停機動作
+Valid,TGi,Import Ini File (v1.x),匯入 ini 檔案 (v1.x 版本)
+Valid,TGi,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),指示當 NUT 伺服器發出強制關機訊號 (FSD) 時是否應執行關機
+Valid,TGi,Input Frequency,輸入頻率
+Valid,TGi,Input Voltage,輸入電壓
+Valid,TGi,Item Properties,項目屬性
+Valid,TGi,List UPS Variables,UPS 變數清單
+Valid,TGi,Log file log level,日誌檔案記錄等級
+Valid,TGi,Logging level,日誌等級
+Valid,TGi,Logging level.,日誌等級。
+Valid,TGi,Login,登入
+Valid,TGi,Login credentials to the Nut server (leave blank if not required),NUT 伺服器的登入憑證 (若不需要請留空)
+Valid,TGi,Lost Connect To {0}:{1},中斷與 {0} 的連線：{1}
+Valid,TGi,Low Battery,電池電量過低
+Valid,TGi,Lower backup time limit triggering the shutdown procedure. Accepted value: Numeric value from 0 to 3600.,觸發停機流程的最低續航時間，範圍：0-3600。
+Valid,TGi,Lower limit of the battery level triggering the shutdown procedure. Accepted value: Numeric value from 0 to 100.,觸發停機流程的最低電池電量百分比，範圍：0-100。
+Valid,TGi,Manufacturer :,廠牌：
+Valid,TGi,Max,最高
+Valid,TGi,Max Retry reached. Wait for manual Reconnection,已達最大重試次數，等待手動重新連線。
+Valid,TGi,Maximum Battery Voltage. Accepted value: Numeric value from 0 to 100.,最高電池電壓，範圍：0-100 。
+Valid,TGi,Maximum input frequency. Accepted value: Numeric value from 0 to 100.,最高輸入頻率，範圍：0-100 。
+Valid,TGi,Maximum input voltage. Accepted value: Numeric value from 0 to 999.,最高輸入電壓，範圍：0-999 。
+Valid,TGi,Maximum Load Level of the UPS. Accepted value: Numeric value from 0 to 100.,最高 UPS 電量百分比，範圍：0-100 。
+Valid,TGi,Maximum Output Voltage. Accepted value: Numeric value from 0 to 999.,最低輸出電壓，範圍：0-999 。
+Valid,TGi,Min,最低
+Valid,TGi,Minimize to tray,最小化至縮小到工作列角落圖示
+Valid,TGi,Minimum Battery Voltage. Accepted value: Numeric value from 0 to 100.,最低電池電壓，範圍：0-100 。
+Valid,TGi,Minimum Charge Level of the UPS. Accepted value: Numeric value from 0 to 100.,最低 UPS 電量百分比，範圍：0-100 。
+Valid,TGi,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,最低輸入頻率，範圍：0-100 。
+Valid,TGi,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,最低輸入電壓，範圍：0-999 。
+Valid,TGi,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,最低輸出電壓，範圍：0-999 。
+Valid,TGi,Miscellanous,其他
+Valid,TGi,Monthly,每月
+Valid,TGi,Name :,名稱：
+Valid,TGi,No Update Available,沒有可用的更新
+Valid,TGi,Not Connected,未連線
+Valid,TGi,Notice,注意
+Valid,TGi,NUT host,NUT 主機
+Valid,TGi,NUT Port,NUT 埠號
+Valid,TGi,Nut server address. Accepted value: IPV4 / IPV6 / FQDN address.,NUT 伺服器位址，請使用 IPv4/IPv6/FQDN 位址
+Valid,TGi,NUT server connection identifier,NUT 伺服器連線指示器
+Valid,TGi,NUT server login password,NUT 伺服器登入密碼
+Valid,TGi,Nut Server Port Number (default = 3493). Accepted value: Numeric value from 1 to 65535.,NUT 伺服器埠號 (預設值 3493)，範圍：1-65535。
+Valid,TGi,Ok,確定
+Valid,TGi,Old ups.ini imported,匯入舊的 ups.ini
+Valid,TGi,Old ups.ini imported Ini File Moved to {0}.old,已匯入舊的 ups.ini， ini 檔案已重新命名為 {0}.old
+Valid,TGi,On Battery ({0}%),由電池供電 ({0}%)
+Valid,TGi,On Line,由市電供電
+Valid,TGi,Open the log file.,開啟日誌檔案
+Valid,TGi,Options,選項
+Valid,TGi,Output Voltage,輸出電壓
+Valid,TGi,Password,密碼
+Valid,TGi,Polling Interval,輪詢間隔時間
+Valid,TGi,Reconnect,重新連線
+Valid,TGi,Reconnection In Progress,正在重新連線
+Valid,TGi,Reduced to the taskbar or Systray.,縮小到工作列或角落圖示。
+Valid,TGi,Re-establish connection,重新建立連線
+Valid,TGi,Reload,重新載入
+Valid,TGi,Remaining Time :,預估剩餘時間：
+Valid,TGi,Restarting WinNUT after waking up from Windows.,喚醒 Windows 後重新啟動 WinNUT。
+Valid,TGi,Sends in Systray at closing.,關閉程式視窗時縮小到工作列角落圖示。
+Valid,TGi,Serial :,序號：
+Valid,TGi,Sets the input frequency if not supplied by the UPS.,設定輸入頻率 (若 UPS 未提供)
+Valid,TGi,Settings,設定
+Valid,TGi,Show ChangeLog,顯示更新日誌
+Valid,TGi,Shutdown,關機
+Valid,TGi,Shutdown if battery lower than,若電池電量低於百分比數值時關機
+Valid,TGi,Shutdown if runtime lower than (sec),若續航時間低於秒數時關機
+Valid,TGi,Shutdown on NUT's FSD Signal,接收 FSD (強制關機) 訊號後關機
+Valid,TGi,Shutdown Options,關機選項
+Valid,TGi,Sleep,睡眠
+Valid,TGi,Stable,穩定版本
+Valid,TGi,Stable Or Dev Branch,穩定或開發版本
+Valid,TGi,Start Minimized,啟動時最小化
+Valid,TGi,Start with Windows,随 Windows 启动当前应用
+Valid,TGi,Starts the shutdown procedure immediately or timed.,立刻或定时执行关机流程。
+Valid,TGi,Starts WinNut Minimized.,啟動時最小化 WinNUT。
+Valid,TGi,Starts WinNUT when Windows starts.,跟隨 Windows 啟動 WinNUT。
+Valid,TGi,Stop condition imposed by the NUT server,NUT 伺服器附加的停機條件
+Valid,TGi,Stop procedure delay if delayed. Accepted value: Numeric value from 0 to 3600.,停機流程延遲時間，範圍：0-3600 秒。
+Valid,TGi,Time between each update of UPS data (default = 5).Accepted value: Numerical value from 1 to 60 seconds.,UPS 數據更新頻率 (預設值 5 秒)。範圍：1-60 秒。
+Valid,TGi,Try {0} of {1},重試第 {0} 次，共 {1} 次
+Valid,TGi,Try Reconnect {0} / {1},重試連線 {0} / {1}
+Valid,TGi,Type of Stop,停機方式
+Valid,TGi,Type of stop at the end of the stop procedure.,停機流程最後的停機方式
+Valid,TGi,Unknown UPS Name,未知的 UPS 名稱
+Valid,TGi,Update,更新
+Valid,TGi,Update Available : Version {0},可用的新版本：{0}
+Valid,TGi,Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,您是否要立即更新 WinNUT-Client? 點選確定以關閉 WinNUT 並安裝新版本，點選取消以儲存 Msi 檔案並於稍後手動安裝。
+Valid,TGi,UPS Battery Low,UPS 低電池電量
+Valid,TGi,UPS Load,UPS 負載
+Valid,TGi,UPS Name,UPS 名稱
+Valid,TGi,UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,監控的 UPS 名稱。請使用在 Nut 伺服器所設定 UPS 的名稱。
+Valid,TGi,UPS On Battery,UPS 使用電池供電
+Valid,TGi,UPS On Line,UPS 已接上市電
+Valid,TGi,UPS Overload,UPS 過載
+Valid,TGi,UPS Variable,UPS 變數
+Valid,TGi,Use the Stable or Devellop branch during verification.,在驗證期間使用穩定或開發分支。
+Valid,TGi,Value :,值：
+Valid,TGi,Verify Update,驗證更新
+Valid,TGi,Verify Update At Start,在啟動時驗證更新
+Valid,TGi,Version {0} Available,有新版本 {0} 可以使用
+Valid,TGi,Weekly,每週
+Valid,TGi,WinNut Preferences Changed,WinNUT 設定已變更
+Valid,TGi,Windows standby. WinNUT will disconnect.,Windows 待機時，WinNUT 將中斷連線。 
+Valid,TGi,Wrong Login ID (Username or Password),錯誤的登入憑證 (帳號或密碼)
