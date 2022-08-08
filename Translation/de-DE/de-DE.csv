@@ -55,7 +55,7 @@ To validate,Gawindx,Hide ChangeLog,ChangeLog ausblenden
 To validate,Gawindx,Immediate Shutdown,Sofortiges Herunterfahren
 To validate,Gawindx,Immediate stop action,Sofortige Stoppaktion
 To validate,Gawindx,Import Ini File (v1.x),Ini-Datei importieren (v1.x)
-To Validate,julianx03,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),Gibt an, ob das System herruntergefahren werden soll, wenn der NUT-Server ein erzwungenes Herunterfahren signalisiert (FSD = Force ShutDown).
+To Validate,julianx03,Indicates whether a shutdown should be performed when the NUT server signals a forced shutdown (FSD = Force ShutDown),Gibt an ob das System herruntergefahren werden soll wenn der NUT-Server ein erzwungenes Herunterfahren signalisiert (FSD = Force ShutDown).
 To validate,Gawindx,Input Frequency,Eingangsfrequenz
 To validate,Gawindx,Input Voltage,Eingangsspannung
 To validate,Gawindx,Item Properties,Eigenschaften
