@@ -18,7 +18,7 @@
   <data name="Tab_Calibrage.Text" xml:space="preserve">
     <value>Калибровка</value>
   </data>
-  <data name="Tab_Miscellanous.Text" xml:space="preserve">
+  <data name="Tab_Miscellaneous.Text" xml:space="preserve">
     <value>Прочее</value>
   </data>
   <data name="Tab_Shutdown.Text" xml:space="preserve">
