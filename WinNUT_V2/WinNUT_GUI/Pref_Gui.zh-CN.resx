@@ -85,7 +85,7 @@
   <data name="Tab_Calibrage.Text" xml:space="preserve">
     <value>校准</value>
   </data>
-  <data name="Tab_Miscellanous.Text" xml:space="preserve">
+  <data name="Tab_Miscellaneous.Text" xml:space="preserve">
     <value>其他</value>
   </data>
   <data name="Tab_Shutdown.Text" xml:space="preserve">
