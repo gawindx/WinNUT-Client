@@ -84,7 +84,7 @@ Status,Translator,Message,Translation
 ,,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,
 ,,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,
 ,,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,
-,,Miscellanous,
+,,Miscellaneous,
 ,,Monthly,
 ,,Name :,
 ,,No Update Available,
