@@ -84,7 +84,7 @@ Valid,N0GooD,Minimum Charge Level of the UPS. Accepted value: Numeric value from
 Valid,N0GooD,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,Минимальная частота. Число от 0 до 100.
 Valid,N0GooD,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,Минимальное напряжение сети. Число от 0 до 999.
 Valid,N0GooD,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,Минимальное напряжение на выходе. Число от 0 до 100.
-Valid,N0GooD,Miscellanous,Прочее
+Valid,N0GooD,Miscellaneous,Прочее
 Valid,N0GooD,Monthly,Ежемесячно
 Valid,N0GooD,Name :,Название:
 Valid,N0GooD,No Update Available,Обновлений нет
