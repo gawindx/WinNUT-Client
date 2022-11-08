@@ -60,7 +60,7 @@ Public Module WinNUT_Params
     Public Sub Load_Params()
         Dim Arr_Reg_Connexion As New Dictionary(Of String, Object)
         Dim Arr_Reg_Calibration As New Dictionary(Of String, Object)
-        Dim Arr_Reg_Miscellanous As New Dictionary(Of String, Object)
+        Dim Arr_Reg_Miscellaneous As New Dictionary(Of String, Object)
         Dim Arr_Reg_Logging As New Dictionary(Of String, Object)
         Dim Arr_Reg_Power As New Dictionary(Of String, Object)
         Dim Arr_Reg_Update As New Dictionary(Of String, Object)
@@ -88,7 +88,7 @@ Public Module WinNUT_Params
             .Add("MinBattVoltage", 6)
             .Add("MaxBattVoltage", 18)
         End With
-        With Arr_Reg_Miscellanous
+        With Arr_Reg_Miscellaneous
             .Add("MinimizeToTray", vbFalse)
             .Add("MinimizeOnStart", vbFalse)
             .Add("CloseToTray", vbFalse)
@@ -117,7 +117,7 @@ Public Module WinNUT_Params
         End With
         With Arr_Reg_Key_Base
             .Add("Connexion", Arr_Reg_Connexion)
-            .Add("Appareance", Arr_Reg_Miscellanous)
+            .Add("Appareance", Arr_Reg_Miscellaneous)
             .Add("Calibration", Arr_Reg_Calibration)
             .Add("Power", Arr_Reg_Power)
             .Add("Logging", Arr_Reg_Logging)
