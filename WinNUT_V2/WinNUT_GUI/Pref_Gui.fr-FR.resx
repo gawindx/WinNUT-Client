@@ -88,7 +88,7 @@
   <data name="CB_Systray.Text" xml:space="preserve">
     <value>Réduire au Systray</value>
   </data>
-  <data name="Tab_Miscellanous.Text" xml:space="preserve">
+  <data name="Tab_Miscellaneous.Text" xml:space="preserve">
     <value>Divers</value>
   </data>
   <data name="Lbl_Percent.Text" xml:space="preserve">
