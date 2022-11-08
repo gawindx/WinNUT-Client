@@ -84,7 +84,7 @@ To validate,Gawindx,Minimum Charge Level of the UPS. Accepted value: Numeric val
 To validate,Gawindx,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,Minimale Eingangsfrequenz. Akzeptierter Wert: Numerischer Wert von 0 bis 100.
 To validate,Gawindx,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,Minimale Eingangsspannung. Akzeptierter Wert: Numerischer Wert von 0 bis 999.
 To validate,Gawindx,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,Minimale Ausgangsspannung. Akzeptierter Wert: Numerischer Wert von 0 bis 999.
-To validate,Gawindx,Miscellanous,Verschiedenes
+To validate,Gawindx,Miscellaneous,Verschiedenes
 To validate,Gawindx,Monthly,Monatlich
 To validate,Gawindx,Name :,Name :
 To validate,Gawindx,No Update Available,Kein Update verfügbar
