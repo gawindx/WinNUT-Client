@@ -84,7 +84,7 @@ Valid,nonPointer,Minimum Charge Level of the UPS. Accepted value: Numeric value 
 Valid,nonPointer,Minimum input frequency. Accepted value: Numeric value from 0 to 100.,最低输入频率。取值：0-100 之间的数值。
 Valid,nonPointer,Minimum input voltage. Accepted value: Numeric value from 0 to 999.,最低输入电压。取值：0-999 之间的数值。
 Valid,nonPointer,Minimum Output Voltage. Accepted value: Numeric value from 0 to 999.,最低输出电压。取值：0-999 之间的数值。
-Valid,nonPointer,Miscellanous,其他
+Valid,nonPointer,Miscellaneous,其他
 Valid,nonPointer,Monthly,每月
 Valid,nonPointer,Name :,名称：
 Valid,nonPointer,No Update Available,没有可用的更新
