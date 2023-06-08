@@ -2,6 +2,9 @@
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=FAFJ3ZKMENGCU)
 
+## ⚠️ Warning
+This repository is **no longer active**, development has been moved to [nutdotnet/WinNUT-Client](/nutdotnet/WinNUT-Client).
+
 ## Installation
 To use it, please follow the following steps:
 1. Get the [last available Releases](https://github.com/gawindx/WinNUT-Client/releases)
