@@ -40,7 +40,7 @@ To validate,Gawindx,Disconnect,Trennen
 To validate,Gawindx,Disconnected from Nut Host,Vom Nut Host getrennt
 To validate,Gawindx,Download New Version from :,Neue Version herunterladen von :
 To validate,Gawindx,Error,Error
-To validate,Gawindx,Exit,Ausgang
+To validate,Gawindx,Exit,Beenden
 To validate,Gawindx,Extinction In Progress,Aussterben im Gange
 To validate,Gawindx,File,Datei
 To validate,Gawindx,Firmware :,Firmware:
@@ -118,12 +118,12 @@ To validate,Gawindx,Serial :,Seriennummer:
 To validate,Gawindx,Sets the input frequency if not supplied by the UPS.,Legt die Eingangsfrequenz fest wenn diese nicht von der USV geliefert wird.
 To validate,Gawindx,Settings,die Einstellungen
 To validate,Gawindx,Show ChangeLog,ChangeLog anzeigen
-To validate,Gawindx,Shutdown,Shutdown
+To validate,Gawindx,Shutdown,Herunterfahren
 To validate,Gawindx,Shutdown if battery lower than,Herunterfahren wenn die Batterie niedriger als ist
 To validate,Gawindx,Shutdown if runtime lower than (sec),Herunterfahren wenn die Laufzeit niedriger als (Sek.)
 To validate,Gawindx,Shutdown on NUT's FSD Signal,Herunterfahren des FSD-Signals der NUT
 To validate,Gawindx,Shutdown Options,Optionen zum Herunterfahren
-To validate,Gawindx,Sleep,Schlaf
+To validate,Gawindx,Sleep, Energie sparen
 To validate,Gawindx,Stable,Stabil
 To validate,Gawindx,Stable Or Dev Branch,Stabiler oder Entwicklungszweig
 To validate,Gawindx,Start Minimized,Minimiert starten
@@ -143,8 +143,8 @@ To validate,Gawindx,Update,Aktualisieren
 To validate,Gawindx,Update Available : Version {0},Update verfügbar : Version {0}
 To validate,Gawindx,Update WinNUT-Client Now? Ok to Close WinNut and Install New Version Cancel to Save Msi and Install Later,WinNUT-Client jetzt aktualisieren? Ok um WinNut zu chließen und neue Version zu installieren Abbrechen um Msi zu speichern und später zu installieren
 To validate,Gawindx,UPS Battery Low,USV-Batterie schwach
-To validate,Gawindx,UPS Load,USV laden
-To validate,Gawindx,UPS Name,UPS Name
+To validate,Gawindx,UPS Load,USV Last
+To validate,Gawindx,UPS Name,USV Name
 To validate,Gawindx,UPS name to monitor. Accepted Value: Name of the UPS configured in the Nut server.,Zu überwachender USV-Name. Akzeptierter Wert: Name der auf dem Nut-Server konfigurierten USV.
 To validate,Gawindx,UPS On Battery,USV im Akkubetrieb
 To validate,Gawindx,UPS On Line,USV angeschlossen
@@ -152,8 +152,8 @@ To validate,Gawindx,UPS Overload,USV-Überlastung
 To validate,Gawindx,UPS Variable,USV-Variable
 To validate,Gawindx,Use the Stable or Devellop branch during verification.,Verwenden Sie während der Überprüfung den Zweig Stabil oder Entwickeln.
 To validate,Gawindx,Value :,Wert :
-To validate,Gawindx,Verify Update,Überprüfen Sie das Update
-To validate,Gawindx,Verify Update At Start,Überprüfen Sie das Update beim Start
+To validate,Gawindx,Verify Update,Update Überprüfen
+To validate,Gawindx,Verify Update At Start,Update beim Start Überprüfen
 To validate,Gawindx,Version {0} Available,Version {0} Verfügbar
 To validate,Gawindx,Weekly,Wöchentlich
 To validate,Gawindx,WinNut Preferences Changed,WinNut-Einstellungen geändert
